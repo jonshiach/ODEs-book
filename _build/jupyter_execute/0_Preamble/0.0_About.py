@@ -10,7 +10,7 @@
 # The exercises contained in this book have the solutions hidden from the reader by default but can be revealed by clicking on the drop down link. Readers are advised to avoid the temptation of accessing the solutions before an attempt has been made to answer the questions.
 # 
 # ## Contact information
-# :::{image} ../Images/jon_Shiach.jpeg
+# :::{image} ../Images/jon_shiach.jpeg
 # :width: 125px
 # :align: left
 # :::

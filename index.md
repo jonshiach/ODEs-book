@@ -1,5 +1,5 @@
 :::{figure} /Images/MMU_logo.png
-:height: 50
+:height: 100
 :::
 
 <center> <span style="font-size:24pt;">Runge-Kutta Methods & Computational Linear Algebra</span> </center>
