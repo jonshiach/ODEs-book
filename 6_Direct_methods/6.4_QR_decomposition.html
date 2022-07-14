@@ -117,7 +117,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_Preamble/0.0_About.html">
-   Introduction
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preamble/0.1_Teaching_schedule.html">
+   Teaching schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preamble/0.3_Python_and_MATLAB.html">
+   Python &amp; MATLAB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preamble/0.4_Learning_and_teaching.html">
+   Learning and teaching
   </a>
  </li>
 </ul>
@@ -725,7 +740,7 @@ title="Print to PDF"
 <span id="qr-gram-schmidt-section"></span><h2>QR decomposition using the Gram-Schmidt process<a class="headerlink" href="#qr-decomposition-using-the-gram-schmidt-process" title="Permalink to this headline">#</a></h2>
 <p>The calculation of the orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> can be achieved by using the <strong>Gram-Schmidt process</strong>. Given a matrix consisting of <span class="math notranslate nohighlight">\(n\)</span> linearly independent column vectors <span class="math notranslate nohighlight">\(A=(\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)\)</span> we wish to find a matrix that consists of <span class="math notranslate nohighlight">\(n\)</span> orthogonal vectors <span class="math notranslate nohighlight">\(U=(\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)\)</span> where the span of <span class="math notranslate nohighlight">\(A\)</span> is that same as the span of <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 <div class="figure align-default" id="gram-schmidt-figure">
-<img alt="6_Direct_methods/Images/gram_schmidt.png" src="6_Direct_methods/Images/gram_schmidt.png" />
+<img alt="../_images/gram_schmidt.png" src="../_images/gram_schmidt.png" />
 <p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">The Gram-Schmidt process</span><a class="headerlink" href="#gram-schmidt-figure" title="Permalink to this image">#</a></p>
 </div>
 <p>Consider the diagram in <a class="reference internal" href="#gram-schmidt-figure"><span class="std std-numref">Fig. 19</span></a> where we have vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>. Let <span class="math notranslate nohighlight">\(\mathbf{u}_1 = \mathbf{a}_1\)</span> then the vector that is orthogonal to <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u}_2\)</span>, can be found by subtracting the <a class="reference external" href="https://en.wikipedia.org/wiki/Vector_projection"><strong>vector projection</strong></a> of <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>,</p>
@@ -998,7 +1013,7 @@ x3 = 3.0
 <span id="qr-householder-section"></span><h2>QR decomposition using Householder transformations<a class="headerlink" href="#qr-decomposition-using-householder-transformations" title="Permalink to this headline">#</a></h2>
 <p>Another method we can use to calculate the QR decomposition of a matrix is by the use of Householder transformations. Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 20</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane represented by the dashed line so that it is parallel to the basis vector<span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</p>
 <div class="figure align-default" id="householder-1-figure">
-<img alt="6_Direct_methods/Images/householder_1.png" src="6_Direct_methods/Images/householder_1.png" />
+<img alt="../_images/householder_1.png" src="../_images/householder_1.png" />
 <p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Householder transformation: the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Permalink to this image">#</a></p>
 </div>
 <p>The Householder matrix is an orthogonal matrix that performs the Householder transformation reflection</p>
@@ -1015,7 +1030,7 @@ x3 = 3.0
 </div>
 <p>If <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is nearly parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then the denominator in equation <a class="reference internal" href="#equation-householder-equation">(37)</a> is close to zero and computational rounding errors can occur. However, we can choose to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead.</p>
 <div class="figure align-default" id="householder-2-figure">
-<img alt="6_Direct_methods/Images/householder_2.png" src="6_Direct_methods/Images/householder_2.png" />
+<img alt="../_images/householder_2.png" src="../_images/householder_2.png" />
 <p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Householder transformation: the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> to avoid computational rounding errors.</span><a class="headerlink" href="#householder-2-figure" title="Permalink to this image">#</a></p>
 </div>
 <p>In <a class="reference internal" href="#householder-2-figure"><span class="std std-numref">Fig. 21</span></a> above, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is to be transformed to <span class="math notranslate nohighlight">\(-\|\mathbf{x}\|\mathbf{e}_1\)</span> then</p>
