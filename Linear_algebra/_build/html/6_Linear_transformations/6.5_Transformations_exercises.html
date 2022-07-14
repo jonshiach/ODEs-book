@@ -1,0 +1,1145 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformations exercises &#8212; Linear Algebra Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear Algebra Cheat Sheet" href="../7_Appendices/7.1_Cheat_sheet.html" />
+    <link rel="prev" title="Translation" href="6.3_Translation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Linear Algebra Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.0_about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.1_Teaching_schedule.html">
+   Teaching schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.2_Assessment.html">
+   Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.3_Mathematical_preliminaries.html">
+   Mathematical preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.4_Python.html">
+   Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.5_How_to_pass.html">
+   How to pass the unit
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../1_Matrices/1.0_Matrices.html">
+   Matrices
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.1_Matrix_multiplication.html">
+     Matrix multiplication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.2_Matrix_transpose.html">
+     Matrix transpose
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.3_Special_matrices.html">
+     Special matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.4_Determinants.html">
+     Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.5_Inverse_matrix.html">
+     Inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.6_Matrix_algebra.html">
+     Matrix algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.8_Matrices_exercises.html">
+     Matrices exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.0_Systems_of_linear_equations.html">
+   Systems of Linear Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.1_Solving_using_inverse_matrix.html">
+     Solving systems of linear equations using the inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.2_Cramers_rule.html">
+     Cramer’s rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html">
+     Gaussian elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.4_Partial_pivoting.html">
+     Partial pivoting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.5_Gauss_Jordan_elimination.html">
+     Gauss-Jordan elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html">
+     Consistent, inconsistent and indeterminate systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.7_Homogeneous_systems.html">
+     Homogeneous systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.9_Systems_of_linear_equations_exercises.html">
+     Systems of linear equations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_Vectors/3.0_Vectors.html">
+   Vectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.1_Arithmetic_operations_on_vectors.html">
+     Arithmetic operations on vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.2_Vector_magnitude.html">
+     Vector magnitude
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html">
+     Vector products
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.4_Linear_combination_of_vectors.html">
+     Linear combination of vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.6_Vectors_exercises.html">
+     Vectors exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html">
+   Co-ordinate Geometry
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.1_Planes.html">
+     Planes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.2_Shortest_distance_problems.html">
+     Shortest distance problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.4_Coordinate_geometry_exercises.html">
+     Co-ordinate geometry exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5_Vector_spaces/5.0_Vector_spaces.html">
+   Vector spaces
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.1_Subspaces.html">
+     Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.2_Linear_dependence.html">
+     Linear dependence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html">
+     Basis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.5_Vector_spaces_exercises.html">
+     Vector spaces exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="6.0_Linear_transformations.html">
+   Linear Transformations
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.1_Composite_linear_transformations.html">
+     Composite linear transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.2_Rotation_reflection_and_scaling.html">
+     Rotation, reflection and scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.3_Translation.html">
+     Translation
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Transformations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_Appendices/7.1_Cheat_sheet.html">
+   Linear Algebra Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_Appendices/7.2_Sympy.html">
+   SymPy commands
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/drjonshiach/Linear_algebra_book/main?urlpath=tree/6_Linear_transformations/6.5_Transformations_exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/6_Linear_transformations/6.5_Transformations_exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Transformations exercises</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="transformations-exercises">
+<span id="transformations-exercises-section"></span><h1>Transformations exercises<a class="headerlink" href="#transformations-exercises" title="Permalink to this headline">#</a></h1>
+<div class="note admonition" id="ex6-1">
+<p class="admonition-title">Exercise 6.1</p>
+<p>Which of the following transformations are linear transformations?</p>
+<p>(a)   <span class="math notranslate nohighlight">\(T: (x, y) \mapsto (0, y)\)</span>;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\((x_1, y_1), (x_2, y_2) \in \mathbb{R}^2\)</span> and <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T\left( \begin{pmatrix} x_1 \\ y_1\end{pmatrix} + \alpha \begin{pmatrix} x_2 \\ y_2 \end{pmatrix} \right)
+    &amp;= T\begin{pmatrix} x_1 + \alpha x_2 \\ y_1 + \alpha y_2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 0 \\ y_1 + \alpha y_2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 0 \\ y_1 \end{pmatrix} + \alpha \begin{pmatrix} 0 \\ y_2 \end{pmatrix}\\
+    &amp;= T\begin{pmatrix} x_1 \\ y_1 \end{pmatrix} + \alpha T\begin{pmatrix} x_2 \\ y_2 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(T\)</span> is a linear transformation.</p>
+</div>
+</details><p>(b)   <span class="math notranslate nohighlight">\(T: (x, y) \mapsto (x, 5)\)</span>;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(T\)</span> is not a linear transformation since</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T\left( \begin{pmatrix} 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right) = \begin{pmatrix} 2 \\ 5 \end{pmatrix}, \\
+    T\begin{pmatrix} 1 \\ 0 \end{pmatrix} + T\begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 2 \\ 10 \end{pmatrix}.
+\end{align*}\]</div>
+</div>
+</details><p>(c)   <span class="math notranslate nohighlight">\(T: (x, y) \mapsto (x, x - y)\)</span>;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\((x_1, y_1), (x_2, y_2) \in \mathbb{R}^2\)</span> and <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T\left(\begin{pmatrix} x_1 \\ y_1 \end{pmatrix} + \alpha \begin{pmatrix} x_2 \\ y_2 \end{pmatrix} \right) 
+    &amp;= T\begin{pmatrix} x_1 + \alpha x_2 \\ y_1 + \alpha y_2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} x_1 + \alpha x_2 \\ x_1 - y_1 + \alpha x_2 - \alpha y_2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} x_1 \\ x_1 - y_1 \end{pmatrix} + \alpha \begin{pmatrix} x_2 \\ x_2 - y_2 \end{pmatrix} \\
+    &amp;= T\begin{pmatrix} x_1 \\ y_1 \end{pmatrix} + \alpha T\begin{pmatrix} x_2 \\ y_2 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(T\)</span> is a linear transformation.</p>
+</div>
+</details><p>(d)   <span class="math notranslate nohighlight">\(T: (x, y, z) \mapsto (x + y, z)\)</span>;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\((x_1, y_1, z_2) \in \mathbb{R}^3\)</span>, <span class="math notranslate nohighlight">\((x_2, y_2) \in \mathbb{R}^2\)</span> and <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T\left( \begin{pmatrix} x_1 \\ y_1 \\ z_1 \end{pmatrix} + \alpha \begin{pmatrix} x_2 \\ y_2 \\ z_2 \end{pmatrix} \right) &amp;= T\begin{pmatrix} x_1 + \alpha x_2 \\ y_1 + \alpha y_2 \\ z_1 + \alpha z_2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} x_1 + y_1 + \alpha x_2 + \alpha y_2 \\  z_1 + \alpha z_2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} x_1 + y_1 \\ z_1 \end{pmatrix} + \alpha \begin{pmatrix} x_2 + y_2 \\ z_2 \end{pmatrix} \\
+    &amp;= T\begin{pmatrix} x_1 \\ y_1 \\ z_1 \end{pmatrix} + \alpha T\begin{pmatrix} x_2 \\ y_2 \\ z_2 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(T\)</span> is a linear transformation.</p>
+</div>
+</details><p>(e)   <span class="math notranslate nohighlight">\(T: (x, y) \mapsto (3x + 1, y)\)</span>;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(T\)</span> is not a linear transformation since</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T\left( \begin{pmatrix} 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right)
+    &amp;= T \begin{pmatrix} 2 \\ 1 \end{pmatrix} 
+    = \begin{pmatrix} 7 \\ 1 \end{pmatrix}, \\
+    T\begin{pmatrix} 1 \\ 0 \end{pmatrix} + T \begin{pmatrix} 1 \\ 1 \end{pmatrix} 
+    &amp;= \begin{pmatrix} 4 \\ 0 \end{pmatrix} + \begin{pmatrix} 4 \\ 1 \end{pmatrix} 
+    = \begin{pmatrix} 8 \\ 1 \end{pmatrix},
+\end{align*}\]</div>
+</div>
+</details><p>(f)   <span class="math notranslate nohighlight">\(T: f(x) \mapsto \dfrac{\mathrm{d}}{\mathrm{d}x} f(x)\)</span>;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(f(x),g(x) \in P(\mathbb{R})\)</span> and <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T(f(x) + \alpha g(x)) &amp;= f'(x) + \alpha g'(x) \\
+    &amp;= f'(x) + g'(x) \\ 
+    &amp;=  T(f(x)) + \alpha T(g(x))
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(T\)</span> is a linear transformation.</p>
+</div>
+</details><p>(g)   <span class="math notranslate nohighlight">\(T: f(x) \mapsto xf(x)\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(f(x),g(x) \in P(\mathbb{R})\)</span> and <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T(f(x) + \alpha g(x)) &amp;= x f(x) + \alpha x g(x) \\
+    &amp;= T(f(x)) + \alpha T(g(x))
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(T\)</span> is a linear transformation.</p>
+</div>
+</details><p>(h)   <span class="math notranslate nohighlight">\(T: \mathbb{C}^2 \to \mathbb{C}\)</span> where <span class="math notranslate nohighlight">\(T: (x, y) \mapsto x + y\)</span>;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\((x_1 + i y_1, x_2 + i y_2), (x_3 + i y_3, x_4 + i y_4) \in \mathbb{C}\)</span> and <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    &amp;T \left( \begin{pmatrix} x_1 + i y_1 \\ x_2 + i y_2 \end{pmatrix} + \alpha \begin{pmatrix} x_3 + i y_3 \\ x_4 + i y_4 \end{pmatrix} \right)  \\ 
+    &amp;\qquad = T \begin{pmatrix} x_1 + i y_1 + \alpha(x_3 + i y_3) \\ x_2 + i y_2 + \alpha(x_4 + i y_4) \end{pmatrix} \\
+    &amp;\qquad = x_1 + i y_1 + x_2 + i y_2 + \alpha(x_3 + i y_3 + x_4 + i y_4) \\
+    &amp;\qquad = T \begin{pmatrix} x_1 + i y_1 \\ x_2 + i y_2 \end{pmatrix} + \alpha T\begin{pmatrix} x_3 + i y_3 \\ x_4 + i y_4 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(T\)</span> is a linear transformation.</p>
+</div>
+</details><p>(i)   <span class="math notranslate nohighlight">\(T: \mathbb{C}^2 \to \mathbb{C}\)</span> where <span class="math notranslate nohighlight">\(T: (x, y) \mapsto x y\)</span>;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\((1, i) \in \mathbb{C}^2\)</span> then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T \left( 2 \begin{pmatrix} 1 \\ i \end{pmatrix} \right) &amp;= T \begin{pmatrix} 2 \\ 2 i \end{pmatrix} = 4 i, \\
+    2 T\begin{pmatrix} 1 \\ i \end{pmatrix} = 2 i,
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(B\)</span> is not a linear transformation.</p>
+</div>
+</details><p>(j)   <span class="math notranslate nohighlight">\(T: \mathbb{C}^2 \to \mathbb{C}\)</span> where <span class="math notranslate nohighlight">\(T: (x, y) \mapsto \bar{y}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\bar{x}\)</span> is the complex conjugate of <span class="math notranslate nohighlight">\(x = a + bi\)</span> defined by <span class="math notranslate nohighlight">\(\bar{x} = a - bi\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\((x_1 + iy_1, x_2 + iy_2), (x_3 + iy_3, x_4 + iy_4) \in \mathbb{C}\)</span> and <span class="math notranslate nohighlight">\(\alpha \in \mathbb{R}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T \left( \begin{pmatrix} x_1 + i y_1 \\ x_2 + i y_2 \end{pmatrix} + 
+    \alpha \begin{pmatrix} x_3 + i y_3 \\ x_4 + i y_4 \end{pmatrix} \right)
+    &amp;= T \begin{pmatrix} x_1 + i y_1 + \alpha(x_3 + i y_3) \\ x_2 + i y_2 + \alpha(x_4 + i y_4) \end{pmatrix} \\
+    &amp;= x_2 - i y_2 + \alpha(x_4 - i y_4) \\
+    &amp;= T \begin{pmatrix} x_1 + i y_1 \\ x_2 + i y_2 \end{pmatrix} + \alpha T \begin{pmatrix} x_3 + i y_3 \\ x_4 + i y_4 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(C\)</span> is a linear transformation.</p>
+</div>
+</details></div>
+<div class="note admonition" id="ex6-2">
+<p class="admonition-title">Exercise 6.2</p>
+<p>A linear transformation <span class="math notranslate nohighlight">\(T: \mathbb{R}^2 \to \mathbb{R}^2\)</span> is defined by <span class="math notranslate nohighlight">\(T: (x, y) \mapsto (-x + 3y, x - 4y)\)</span>. Determine the transformation matrix for <span class="math notranslate nohighlight">\(T\)</span> and hence calculate <span class="math notranslate nohighlight">\(T \begin{pmatrix} 2 \\ 5 \end{pmatrix}\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A = \begin{pmatrix} -1 &amp; 3 \\ 1 &amp; -4 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">Calculating <span class="math notranslate nohighlight">\(T \begin{pmatrix} 2 \\ 5 \end{pmatrix}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T\begin{pmatrix} 2 \\ 5 \end{pmatrix} = \begin{pmatrix} -1 &amp; 3 \\ 1 &amp; -4 \end{pmatrix} 
+    \begin{pmatrix} 2 \\ 5 \end{pmatrix}
+    = \begin{pmatrix} 13 \\ -18 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(T\begin{pmatrix} 2 \\ 5 \end{pmatrix} = (13, -18)\)</span>.</p>
+</div>
+</details></div>
+<div class="note admonition" id="ex6-3">
+<p class="admonition-title">Exercise 6.3</p>
+<p>A linear transformation <span class="math notranslate nohighlight">\(T: \mathbb{R}^2 \to \mathbb{R}^2\)</span> is defined by <span class="math notranslate nohighlight">\(T: (x, y) \mapsto (x - 2y, 2x + 3y)\)</span>. Given <span class="math notranslate nohighlight">\(T(\mathbf{u}) = \begin{pmatrix} -1 \\ 5 \end{pmatrix}\)</span> determine <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The transformation matrix is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A &amp;= \begin{pmatrix} 1 &amp; -2 \\ 2 &amp; 3 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">so the inverse is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A^{-1} &amp;= \begin{pmatrix} \frac{3}{7} &amp; \frac{2}{7} \\ -\frac{2}{7} &amp; \frac{1}{7} \end{pmatrix}.
+\end{align*}\]</div>
+<p class="sd-card-text">Therefore</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \mathbf{u} &amp;= A^{-1} \begin{pmatrix} -1 \\ 5 \end{pmatrix} 
+    = \begin{pmatrix} \frac{3}{7} &amp; \frac{2}{7} \\ -\frac{2}{7} &amp; \frac{1}{7} \end{pmatrix}
+    \begin{pmatrix} -1 \\ 5 \end{pmatrix}
+    = \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex6-4">
+<p class="admonition-title">Exercise 6.4</p>
+<p><span class="math notranslate nohighlight">\(T: \mathbb{R}^3 \to \mathbb{R}^3\)</span> is a linear transformation such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} &amp;= \begin{pmatrix} 4 \\ 3 \\ 11 \end{pmatrix}, &amp;
+    T\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} &amp;= \begin{pmatrix} 1 \\ 0 \\ 4 \end{pmatrix}, &amp;
+    T\begin{pmatrix} -2 \\ -1 \\ 1 \end{pmatrix} &amp;= \begin{pmatrix} 1 \\ 3 \\-1 \end{pmatrix}.
+\end{align*}\]</div>
+<p>Find the transformation matrix for <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The transformation matrix is determined using equation <a class="reference internal" href="6.0_Linear_transformations.html#equation-determining-the-transformation-matrix">(23)</a> which is</p>
+<div class="math notranslate nohighlight">
+\[A = (T(\mathbf{u}_1), T(\mathbf{u}_2), \ldots, T(\mathbf{u}_n)) \cdot (\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_n)^{-1}.\]</div>
+<p class="sd-card-text">Using Gauss-Jordan elimination to calculate the inverse of <span class="math notranslate nohighlight">\((\mathbf{u}_1, \mathbf{u}_2, \mathbf{u}_3)^{-1}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    &amp; \left( \begin{array}{rrr|rrr}
+        1 &amp; 0 &amp; 3 &amp; 1 &amp; 0 &amp; 0 \\
+        -1 &amp; 1 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 4 &amp; 3 &amp; 0 &amp; 0 &amp; 1 
+    \end{array} \right)
+    \begin{array}{l} \\ R_2 + R_1 \\ \phantom{x} \end{array} \\ \\
+    \longrightarrow \quad &amp;
+    \left( \begin{array}{rrr|rrr}
+        1 &amp; 0 &amp; 3 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 5 &amp; 1 &amp; 1 &amp; 0 \\
+        0 &amp; 4 &amp; 3 &amp; 0 &amp; 0 &amp; 1 
+    \end{array} \right)
+    \begin{array}{l} \\ \\ R_3 - 4R_2 \end{array} \\ \\
+    \longrightarrow \quad &amp;
+    \left( \begin{array}{rrr|rrr}
+        1 &amp; 0 &amp; 3 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 5 &amp; 1 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; -17 &amp; -4 &amp; -4 &amp; 1 
+    \end{array} \right)
+    \begin{array}{l} \\ \\ -\frac{1}{17}R_3 \end{array} \\ \\
+    \longrightarrow \quad &amp;
+    \left( \begin{array}{rrr|rrr}
+        1 &amp; 0 &amp; 3 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 5 &amp; 1 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; \frac{4}{17} &amp; \frac{4}{17} &amp; -\frac{1}{17} 
+    \end{array} \right)
+    \begin{array}{l} R_1 - 3 R_3 \\ R_2 - 5 R_3 \\ \phantom{x} \end{array} \\ \\
+    \longrightarrow \quad &amp;
+    \left( \begin{array}{rrr|rrr}
+        1 &amp; 0 &amp; 0 &amp; \frac{5}{17} &amp; -\frac{12}{17} &amp; \frac{3}{17} \\
+        0 &amp; 1 &amp; 0 &amp; -\frac{3}{17} &amp; -\frac{3}{17} &amp; \frac{5}{17} \\
+        0 &amp; 0 &amp; 1 &amp; \frac{4}{17} &amp; \frac{4}{17} &amp; -\frac{1}{17} 
+    \end{array} \right)
+\end{align*}\]</div>
+<p class="sd-card-text">So <span class="math notranslate nohighlight">\((\mathbf{u}_1, \mathbf{u}_2, \mathbf{u}_3)^{-1} = \begin{pmatrix} \frac{5}{17} &amp; -\frac{12}{17} &amp; \frac{3}{17} \\ -\frac{3}{17} &amp; -\frac{3}{17} &amp; \frac{5}{17} \\ \frac{4}{17} &amp; \frac{4}{17} &amp; -\frac{1}{17} \end{pmatrix}\)</span> and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A &amp;= \begin{pmatrix} 4 &amp; 1 &amp; 1 \\ 3 &amp; 0 &amp; 3 \\ 11 &amp; 4 &amp; -1 \end{pmatrix}
+    \begin{pmatrix} 
+        \frac{5}{17} &amp; -\frac{12}{17} &amp; \frac{3}{17} \\
+        -\frac{3}{17} &amp; -\frac{3}{17} &amp; \frac{5}{17} \\
+        \frac{4}{17} &amp; \frac{4}{17} &amp; -\frac{1}{17} 
+    \end{pmatrix}
+    = \begin{pmatrix} 1 &amp; 0 &amp; 3 \\ -1 &amp; 1 &amp; 2 \\ 0 &amp; 4 &amp; 3 \end{pmatrix}.
+\end{align*}\]</div>
+<p class="sd-card-text">Checking <span class="math notranslate nohighlight">\(A\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} &amp;=
+    \begin{pmatrix} 1 &amp; 0 &amp; 3 \\ -1 &amp; 1 &amp; 2 \\ 0 &amp; 4 &amp; 3 \end{pmatrix}
+    \begin{pmatrix}1 \\ 2 \\ 1 \end{pmatrix} 
+    = \begin{pmatrix} 4 \\ 3 \\ 11 \end{pmatrix} \quad \checkmark
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex6-5">
+<p class="admonition-title">Exercise 6.5</p>
+<p>A rotate the point with co-ordinates <span class="math notranslate nohighlight">\((2, 1)\)</span> by <span class="math notranslate nohighlight">\(\frac{\pi}{6}\)</span> anti-clockwise about the origin.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The transformation matrix is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    Rot\left(\frac{\pi}{6}\right) &amp;= \begin{pmatrix} 
+        \cos(\frac{\pi}{6}) &amp; -\sin(\frac{\pi}{6}) \\
+        \sin(\frac{\pi}{6}) &amp; \cos(\frac{\pi}{6})
+    \end{pmatrix}  \\
+    &amp;= \begin{pmatrix}
+        \frac{\sqrt{3}}{2} &amp; -\frac{1}{2} \\
+        \frac{1}{2} &amp; \frac{\sqrt{3}}{2}
+    \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">therefore</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    R(\left(\frac{\pi}{6}\right) \begin{pmatrix} 2 \\ 1 \end{pmatrix}
+    &amp;= \begin{pmatrix}
+        \frac{\sqrt{3}}{2} &amp; -\frac{1}{2} \\
+        \frac{1}{2} &amp; \frac{\sqrt{3}}{2}
+    \end{pmatrix}
+    \begin{pmatrix} 2 \\ 1 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} \sqrt{3} - \frac{1}{2} \\ 1 + \frac{\sqrt{3}}{2} \end{pmatrix}
+    \approx \begin{pmatrix} 1.2321 \\ 1.8660 \end{pmatrix}
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex6-6">
+<p class="admonition-title">Exercise 6.6</p>
+<p>Reflect the point <span class="math notranslate nohighlight">\((5, 3)\)</span> about the line that passes through <span class="math notranslate nohighlight">\((0, 0)\)</span> and makes an angle <span class="math notranslate nohighlight">\(\frac{\pi}{3}\)</span> with the <span class="math notranslate nohighlight">\(x\)</span>-axis.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The transformation matrix is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    Ref\left(\frac{\pi}{3}\right) &amp;=
+    \begin{pmatrix} 
+        \cos(\frac{2\pi}{3}) &amp; \sin(\frac{2\pi}{3}) \\
+        \sin(\frac{2\pi}{3}) &amp; -\cos(\frac{2\pi}{3})
+    \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">therefore</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    Ref\left(\frac{\pi}{3}\right)\begin{pmatrix} 5 \\ 3 \end{pmatrix} 
+    &amp;= \begin{pmatrix} 
+        \cos(\frac{2\pi}{3}) &amp; \sin(\frac{2\pi}{3}) \\
+        \sin(\frac{2\pi}{3}) &amp; -\cos(\frac{2\pi}{3})
+    \end{pmatrix}
+    \begin{pmatrix} 5 \\ 3 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} \frac{3\sqrt{3}}{2} - \frac{5}{2} \\ \frac{3}{2} + \frac{5\sqrt{3}}{2} \end{pmatrix} 
+    \approx \begin{pmatrix} 0.0981 \\ 5.8301 \end{pmatrix}.
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex6-7">
+<p class="admonition-title">Exercise 6.7</p>
+<p>A square with side lengths 2 is centred at the co-ordinates <span class="math notranslate nohighlight">\((3, 2)\)</span>. It is to be translated so the centre is at the origin, rotated by an angle <span class="math notranslate nohighlight">\(\frac{\pi}{3}\)</span> clockwise about the origin and then translated back to its initial position.</p>
+<p>(a)   Write down matrix containing the homoegeneous co-ordinates for the vertices of the square.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    P = \begin{pmatrix} 
+        2 &amp; 4 &amp; 4 &amp; 2 \\
+        1 &amp; 1 &amp; 3 &amp; 3 \\
+        1 &amp; 1 &amp; 1 &amp; 1 
+\end{pmatrix}
+\end{align*}\]</div>
+</div>
+</details><p>(b)   Determine the transformation matrices that perform the three transformations.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Translate to the origin:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+    T \begin{pmatrix} -3 \\ -2 \end{pmatrix} = \begin{pmatrix}
+        1 &amp; 0 &amp; -3 \\
+        0 &amp; 1 &amp; -2 \\
+        0 &amp; 0 &amp; 1 
+    \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">Rotate by <span class="math notranslate nohighlight">\(\frac{\pi}{3}\)</span> clockwise about the origin:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    Rot\left(-\frac{\pi}{3}\right) &amp;=
+    \begin{pmatrix}
+        \cos(\frac{\pi}{3}) &amp; \sin(\frac{\pi}{3}) \\
+        -\sin(\frac{\pi}{3}) &amp; \cos(\frac{\pi}{3})
+    \end{pmatrix} \\
+    &amp;= \begin{pmatrix}
+        \frac{1}{2} &amp; \frac{\sqrt{3}}{2} \\
+        -\frac{\sqrt{3}}{2} &amp; \frac{1}{2}
+    \end{pmatrix} \\
+    &amp;\approx \begin{pmatrix}
+        0.5 &amp; 0.8660 \\
+        -0.8660 &amp; 0.5
+    \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">Translate back to the original centre:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    T \begin{pmatrix} 3 \\ 2 \end{pmatrix} &amp;= \begin{pmatrix}
+        1 &amp; 0 &amp; 3 \\
+        0 &amp; 1 &amp; 2 \\
+        0 &amp; 0 &amp; 1
+    \end{pmatrix}
+\end{align*}\]</div>
+</div>
+</details><p>(c)   Calculate the composite transformation matrix and apply with to the co-ordinate matrix from part (a).</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Calculate composite alignment matrix</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A &amp;= T \begin{pmatrix} 3 \\ 2 \end{pmatrix} Rot\left(-\frac{\pi}{3}\right) T \begin{pmatrix} -3 \\ -2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix}
+        1 &amp; 0 &amp; 3 \\
+        0 &amp; 1 &amp; 2 \\
+        0 &amp; 0 &amp; 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        \frac{1}{2} &amp; \frac{\sqrt{3}}{2} \\
+        -\frac{\sqrt{3}}{2} &amp; \frac{1}{2}
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 &amp; 0 &amp; -3 \\
+        0 &amp; 1 &amp; -2 \\
+        0 &amp; 0 &amp; 1 
+    \end{pmatrix} \\
+    &amp;= \begin{pmatrix}
+        \frac{1}{2} &amp; \frac{\sqrt{3}}{2} &amp; \frac{3}{2} - \sqrt{3} \\
+        -\frac{\sqrt{3}}{2} &amp; \frac{1}{2} &amp; 1 + \frac{3\sqrt{3}}{2} \\
+        0 &amp; 0 &amp; 1 
+    \end{pmatrix} \\
+    &amp;\approx
+    \begin{pmatrix}
+        0.5 &amp; 0.8660 &amp; -0.2321 \\
+        -0.8660 &amp; 0.5 &amp; 3.5981 \\
+        0 &amp; 0 &amp; 1
+    \end{pmatrix}.
+\end{align*}\]</div>
+<p class="sd-card-text">Apply composite transformation matrix</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    AP &amp;= \begin{pmatrix}
+        \frac{1}{2} &amp; \frac{\sqrt{3}}{2} &amp; \frac{3}{2} - \sqrt{3} \\
+        -\frac{\sqrt{3}}{2} &amp; \frac{1}{2} &amp; 1 + \frac{3\sqrt{3}}{2} \\
+        0 &amp; 0 &amp; 1 
+    \end{pmatrix}
+    \begin{pmatrix} 
+        2 &amp; 4 &amp; 4 &amp; 2 \\
+        1 &amp; 1 &amp; 3 &amp; 3 \\
+        1 &amp; 1 &amp; 1 &amp; 1 
+    \end{pmatrix} \\
+    &amp;= \begin{pmatrix}
+        \frac{5}{2} - \frac{\sqrt{3}}{2} &amp; \frac{7}{2} - \frac{\sqrt{3}}{2} &amp; \frac{\sqrt{3}}{2} + \frac{7}{2} &amp; \frac{\sqrt{3}}{2} + \frac{5}{2} \\
+        \frac{\sqrt{3}}{2} + \frac{3}{2} &amp; \frac{3}{2} - \frac{\sqrt{3}}{2} &amp; \frac{5}{2} - \frac{\sqrt{3}}{2} &amp; \frac{\sqrt{3}}{2} + \frac{5}{2} \\
+        1 &amp; 1 &amp; 1 &amp; 1
+    \end{pmatrix} \\
+    &amp;\approx \begin{pmatrix}
+        1.634 &amp; 2.634 &amp; 4.366 &amp; 3.366 \\
+        2.366 &amp; 0.634 &amp; 1.634 &amp; 3.366 \\
+        1 &amp; 1 &amp; 1 &amp; 1 
+    \end{pmatrix}
+\end{align*}\]</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6.5_Transformations_exercises_6_1.png" src="../_images/6.5_Transformations_exercises_6_1.png" />
+</div>
+</div>
+</details></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./6_Linear_transformations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="6.3_Translation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Translation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../7_Appendices/7.1_Cheat_sheet.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linear Algebra Cheat Sheet</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Jon Shiach<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

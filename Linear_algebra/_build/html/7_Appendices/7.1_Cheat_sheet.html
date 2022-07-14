@@ -1,0 +1,1094 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Algebra Cheat Sheet &#8212; Linear Algebra Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SymPy commands" href="7.2_Sympy.html" />
+    <link rel="prev" title="Transformations exercises" href="../6_Linear_transformations/6.5_Transformations_exercises.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Linear Algebra Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.0_about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.1_Teaching_schedule.html">
+   Teaching schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.2_Assessment.html">
+   Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.3_Mathematical_preliminaries.html">
+   Mathematical preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.4_Python.html">
+   Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.5_How_to_pass.html">
+   How to pass the unit
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../1_Matrices/1.0_Matrices.html">
+   Matrices
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.1_Matrix_multiplication.html">
+     Matrix multiplication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.2_Matrix_transpose.html">
+     Matrix transpose
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.3_Special_matrices.html">
+     Special matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.4_Determinants.html">
+     Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.5_Inverse_matrix.html">
+     Inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.6_Matrix_algebra.html">
+     Matrix algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.8_Matrices_exercises.html">
+     Matrices exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.0_Systems_of_linear_equations.html">
+   Systems of Linear Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.1_Solving_using_inverse_matrix.html">
+     Solving systems of linear equations using the inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.2_Cramers_rule.html">
+     Cramer’s rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html">
+     Gaussian elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.4_Partial_pivoting.html">
+     Partial pivoting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.5_Gauss_Jordan_elimination.html">
+     Gauss-Jordan elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html">
+     Consistent, inconsistent and indeterminate systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.7_Homogeneous_systems.html">
+     Homogeneous systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.9_Systems_of_linear_equations_exercises.html">
+     Systems of linear equations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_Vectors/3.0_Vectors.html">
+   Vectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.1_Arithmetic_operations_on_vectors.html">
+     Arithmetic operations on vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.2_Vector_magnitude.html">
+     Vector magnitude
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html">
+     Vector products
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.4_Linear_combination_of_vectors.html">
+     Linear combination of vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.6_Vectors_exercises.html">
+     Vectors exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html">
+   Co-ordinate Geometry
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.1_Planes.html">
+     Planes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.2_Shortest_distance_problems.html">
+     Shortest distance problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.4_Coordinate_geometry_exercises.html">
+     Co-ordinate geometry exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5_Vector_spaces/5.0_Vector_spaces.html">
+   Vector spaces
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.1_Subspaces.html">
+     Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.2_Linear_dependence.html">
+     Linear dependence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html">
+     Basis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.5_Vector_spaces_exercises.html">
+     Vector spaces exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html">
+   Linear Transformations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.1_Composite_linear_transformations.html">
+     Composite linear transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.2_Rotation_reflection_and_scaling.html">
+     Rotation, reflection and scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.3_Translation.html">
+     Translation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.5_Transformations_exercises.html">
+     Transformations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Linear Algebra Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7.2_Sympy.html">
+   SymPy commands
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/drjonshiach/Linear_algebra_book/main?urlpath=tree/7_Appendices/7.1_Cheat_sheet.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/7_Appendices/7.1_Cheat_sheet.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrices">
+   Matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#systems-of-linear-equations">
+   Systems of linear equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectors">
+   Vectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#co-ordinate-geometry">
+   Co-ordinate geometry
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vector-spaces">
+   Vector spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-transformations">
+   Linear transformations
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Linear Algebra Cheat Sheet</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrices">
+   Matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#systems-of-linear-equations">
+   Systems of linear equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectors">
+   Vectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#co-ordinate-geometry">
+   Co-ordinate geometry
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vector-spaces">
+   Vector spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-transformations">
+   Linear transformations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="linear-algebra-cheat-sheet">
+<h1>Linear Algebra Cheat Sheet<a class="headerlink" href="#linear-algebra-cheat-sheet" title="Permalink to this headline">#</a></h1>
+<div class="section" id="matrices">
+<h2>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-Matrix">Matrix<a class="headerlink" href="#term-Matrix" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../1_Matrices/1.0_Matrices.html#definition-of-a-matrix-section"><span class="std std-ref">matrix</span></a> is a rectangular array of elements.</p>
+</dd>
+<dt id="term-Matrix-indexing">Matrix indexing<a class="headerlink" href="#term-Matrix-indexing" title="Permalink to this term">#</a></dt><dd><p>If a matrix <span class="math notranslate nohighlight">\(A\)</span> has <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns then the elements of <span class="math notranslate nohighlight">\(A\)</span> are <a class="reference internal" href="../1_Matrices/1.0_Matrices.html#indexing-a-matrix-section"><span class="std std-ref">indexed</span></a> by <span class="math notranslate nohighlight">\(a_{ij}\)</span> where <span class="math notranslate nohighlight">\(i\)</span> denotes the row and <span class="math notranslate nohighlight">\(j\)</span> denotes the column. For example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+    \begin{pmatrix} 
+        a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1m} \\  
+        a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2m} \\ 
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 
+        a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} 
+    \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Matrix-equality">Matrix equality<a class="headerlink" href="#term-Matrix-equality" title="Permalink to this term">#</a></dt><dd><p>Two <span class="math notranslate nohighlight">\(m \times n\)</span> matrices are <a class="reference internal" href="../1_Matrices/1.0_Matrices.html#matrix-equality-definition"><span class="std std-ref">equal</span></a> if their corresponding elements have the same value.</p>
+</dd>
+<dt id="term-Addition-subtraction">Addition/subtraction<a class="headerlink" href="#term-Addition-subtraction" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_Matrices/1.0_Matrices.html#matrix-addition-definition"><span class="std std-ref">addition or subtraction</span></a> of two <span class="math notranslate nohighlight">\(n \times m\)</span> matrices is calculated by adding and subtracting corresponding elements. For example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+    A + B = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} + 
+    \begin{pmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{pmatrix}
+    = \begin{pmatrix} 6 &amp; 8 \\ 10 &amp; 12 \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Multiplication-by-a-scalar">Multiplication by a scalar<a class="headerlink" href="#term-Multiplication-by-a-scalar" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_Matrices/1.0_Matrices.html#scalar-multiplication-of-a-matrix-definition"><span class="std std-ref">scalar multiplication</span></a> of a matrix by a scalar is calculated by multiplying each element in the matrix by the scalar.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+    3 A = 3 \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} 
+    = \begin{pmatrix} 3 &amp; 6 \\ 9 &amp; 12 \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Matrix-multiplication">Matrix multiplication<a class="headerlink" href="#term-Matrix-multiplication" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_Matrices/1.1_Matrix_multiplication.html#matrix-multiplication-definition"><span class="std std-ref">multiplication</span></a> of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> and an <span class="math notranslate nohighlight">\(p \times q\)</span> matrix <span class="math notranslate nohighlight">\(B\)</span> where <span class="math notranslate nohighlight">\(n = p\)</span> results in an <span class="math notranslate nohighlight">\(m \times q\)</span> matrix calculated using <span class="math notranslate nohighlight">\([AB]_{ij} = \displaystyle\sum_{k=1}^n a_{ik}b_{kj}\)</span> for <span class="math notranslate nohighlight">\(i = 1, \ldots, m\)</span> and <span class="math notranslate nohighlight">\(j = 1, \ldots, q\)</span>. For example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    AB &amp;= \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} 
+    \begin{pmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{pmatrix}
+    = \begin{pmatrix} 5 + 14 &amp; 6 + 16 \\ 15 + 28 &amp; 18 + 32 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Matrix-exponent">Matrix exponent<a class="headerlink" href="#term-Matrix-exponent" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_Matrices/1.1_Matrix_multiplication.html#matrix-exponents-definition"><span class="std std-ref">exponent</span></a> of the matrix <span class="math notranslate nohighlight">\(A\)</span> is calculated using <span class="math notranslate nohighlight">\(A^k = \underbrace{AA \cdots A}_{k}\)</span>. For example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A^2 = AA = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
+    = \begin{pmatrix} 7 &amp; 10 \\ 15 &amp; 22 \end{pmatrix}
+\end{align*}\]</div>
+</dd>
+<dt id="term-Matrix-transpose">Matrix transpose<a class="headerlink" href="#term-Matrix-transpose" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_Matrices/1.2_Matrix_transpose.html#matrix-transpose-definition"><span class="std std-ref">transpose</span></a> of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(n \times m\)</span> matrix <span class="math notranslate nohighlight">\(A^\mathrm{T}\)</span> defined by <span class="math notranslate nohighlight">\([A^\mathrm{T}]_{ij} = a_{ji}\)</span>. For example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A^\mathrm{T} = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}^\mathrm{T} = 
+    \begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Diagonal-matrix">Diagonal matrix<a class="headerlink" href="#term-Diagonal-matrix" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is said to be a <a class="reference internal" href="../1_Matrices/1.3_Special_matrices.html#diagonal-matrix-definition"><span class="std std-ref">diagonal matrix</span></a> if all of the elements have a value of zero except the elements on the main diagonal <span class="math notranslate nohighlight">\(a_{ii}\)</span> for <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span>. For example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+    \begin{pmatrix} 
+      a &amp; 0 &amp; 0 \\ 
+      0 &amp; b &amp; 0 \\ 
+      0 &amp; 0 &amp; c
+    \end{pmatrix}
+\end{align*}\]</div>
+</dd>
+<dt id="term-Zero-matrix">Zero matrix<a class="headerlink" href="#term-Zero-matrix" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../1_Matrices/1.3_Special_matrices.html#zero-matrix-definition"><span class="std std-ref">zero matrix</span></a> is a matrix where all of the elements have a value of zero. For example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+    \mathbf{0}_{2\times 3} = \begin{pmatrix} 
+      0 &amp; 0 &amp; 0 \\ 
+      0 &amp; 0  &amp; 0 
+    \end{pmatrix}
+\end{align*}\]</div>
+</dd>
+<dt id="term-Identity-matrix">Identity matrix<a class="headerlink" href="#term-Identity-matrix" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_Matrices/1.3_Special_matrices.html#identity-matrix-definition"><span class="std std-ref">identity matrix</span></a> is a diagonal matrix <span class="math notranslate nohighlight">\(I\)</span> such that <span class="math notranslate nohighlight">\(AI = IA = A\)</span> where the elements on the main diagonal all have a value of 1.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    I_3 = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
+\end{align*}\]</div>
+</dd>
+<dt id="term-Symmetric-matrix">Symmetric matrix<a class="headerlink" href="#term-Symmetric-matrix" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is said to be a <a class="reference internal" href="../1_Matrices/1.3_Special_matrices.html#symmetric-matrix-definition"><span class="std std-ref">symmetric matrix</span></a> if <span class="math notranslate nohighlight">\([A]_{ij} = [A]_{ji}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{pmatrix} a &amp; b &amp; c \\ b &amp; d &amp; e \\ c &amp; e &amp; f \end{pmatrix}
+\end{align*}\]</div>
+</dd>
+<dt id="term-Determinant-of-an-2-times-2-matrix">Determinant of an <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix<a class="headerlink" href="#term-Determinant-of-an-2-times-2-matrix" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_Matrices/1.4_Determinants.html#x2-determinant-definition"><span class="std std-ref">determinant of an <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix</span></a> <span class="math notranslate nohighlight">\(A\)</span> is calculated using <span class="math notranslate nohighlight">\(\det \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix} = \begin{vmatrix} a &amp; b \\ c &amp; d \end{vmatrix} = ad - bc\)</span>. For example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \det(A) = \begin{vmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{vmatrix} = 1(4) - 2(3) = -2
+\end{align*}\]</div>
+</dd>
+<dt id="term-Minor">Minor<a class="headerlink" href="#term-Minor" title="Permalink to this term">#</a></dt><dd><p>For an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>, the value of the <a class="reference internal" href="../1_Matrices/1.4_Determinants.html#minor-definition"><span class="std std-ref">minor</span></a> for the element in row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(M_{ij}\)</span>, is the determinant of the matrix formed by omitting row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> from <span class="math notranslate nohighlight">\(A\)</span>. For example, for the matrix <span class="math notranslate nohighlight">\(A = \begin{pmatrix} 1 &amp; 0 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{pmatrix}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    M_{21} = \begin{vmatrix} \square &amp; 0 &amp; 3 \\ \square &amp; \square &amp; \square \\ \square &amp; 8 &amp; 9 \end{vmatrix} = \begin{vmatrix} 0 &amp; 3 \\ 8 &amp; 9 \end{vmatrix} = -24.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Co-factor">Co-factor<a class="headerlink" href="#term-Co-factor" title="Permalink to this term">#</a></dt><dd><p>For an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>, the value of the <a class="reference internal" href="../1_Matrices/1.4_Determinants.html#cofactor-definition"><span class="std std-ref">cofactor</span></a> is <span class="math notranslate nohighlight">\(C_{ij} = (-1)^{i+j} M_{ij}\)</span>. For example, for the matrix <span class="math notranslate nohighlight">\(A\)</span> defined above</p>
+<div class="math notranslate nohighlight">
+\[ C_{21} = (-1)^{2+1} M_{21} = (-1)^3 (-24) = 24. \]</div>
+</dd>
+<dt id="term-Determinant-of-an-n-times-n-matrix">Determinant of an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix<a class="headerlink" href="#term-Determinant-of-an-n-times-n-matrix" title="Permalink to this term">#</a></dt><dd><p>The <span class="xref myst">determinant of an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix</span> <span class="math notranslate nohighlight">\(A\)</span> is calculated using <span class="math notranslate nohighlight">\(\det(A) = \displaystyle\sum_{i = 1}^n a_{ij} C_{ij}\)</span> for <span class="math notranslate nohighlight">\(j \in \{1, \ldots, n\}\)</span> for <span class="math notranslate nohighlight">\(C_{ij}\)</span> is the co-factor for the element <span class="math notranslate nohighlight">\(a_{ij}\)</span>. For example, for the matrix <span class="math notranslate nohighlight">\(A\)</span> defined above</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{vmatrix} 1 &amp; 0 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{vmatrix} 
+    &amp;= 1 \begin{vmatrix} 5 &amp; 6 \\ 8 &amp; 9 \end{vmatrix} - 0 
+    \begin{vmatrix} 4 &amp; 6 \\ 7 &amp; 9 \end{vmatrix} + 3 
+    \begin{vmatrix} 4 &amp; 5 \\ 7 &amp; 8 \end{vmatrix} \\
+    &amp;= 1(45 - 48) + 0(36 - 42) + 3(32 - 35) \\
+    &amp;= -12
+\end{align*}\]</div>
+</dd>
+<dt id="term-Inverse-matrix">Inverse matrix<a class="headerlink" href="#term-Inverse-matrix" title="Permalink to this term">#</a></dt><dd><p>For an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> such that <span class="math notranslate nohighlight">\(\det(A) \neq 0\)</span> then the <a class="reference internal" href="../1_Matrices/1.5_Inverse_matrix.html#inverse-matrix-definition"><span class="std std-ref">inverse matrix</span></a> is an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A^{-1}\)</span> such that <span class="math notranslate nohighlight">\(AA^{-1} = A^{-1}A = I\)</span>.</p>
+</dd>
+<dt id="term-Adjoint-matrix">Adjoint matrix<a class="headerlink" href="#term-Adjoint-matrix" title="Permalink to this term">#</a></dt><dd><p>For an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> the <a class="reference internal" href="../1_Matrices/1.5_Inverse_matrix.html#adjoint-definition"><span class="std std-ref">adjoint matrix</span></a> is calculated using <span class="math notranslate nohighlight">\(\operatorname{adj}(A) = C^T\)</span>. For example for the matrix <span class="math notranslate nohighlight">\(A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \operatorname{adj}(A) = \begin{pmatrix} 4 &amp; -3 \\ -2 &amp; 1 \end{pmatrix}^\mathrm{T} =
+    \begin{pmatrix} 4 &amp; -3 \\ -2 &amp; 1 \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-The-adjoint-determinant-formula">The adjoint-determinant formula<a class="headerlink" href="#term-The-adjoint-determinant-formula" title="Permalink to this term">#</a></dt><dd><p>The inverse of a non-singular square matrix <span class="math notranslate nohighlight">\(A\)</span> can be calculated using the <a class="reference internal" href="../1_Matrices/1.5_Inverse_matrix.html#adjoint-determinant-formula-definition"><span class="std std-ref">adjoint-determinant formula</span></a> <span class="math notranslate nohighlight">\(A^{-1} = \dfrac{\operatorname{adj}(A)}{\det(A)}\)</span>. For example, for the matrix <span class="math notranslate nohighlight">\(A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A^{-1} = \dfrac{1}{-2} \begin{pmatrix} 4 &amp; -3 \\ -2 &amp; 1 \end{pmatrix}
+    = \begin{pmatrix} -2 &amp; \frac{3}{2} \\ 1 &amp; -\frac{1}{2} \end{pmatrix}
+\end{align*}\]</div>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="systems-of-linear-equations">
+<h2>Systems of linear equations<a class="headerlink" href="#systems-of-linear-equations" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-System-of-linear-equations">System of linear equations<a class="headerlink" href="#term-System-of-linear-equations" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.0_Systems_of_linear_equations.html#system-of-linear-equation-definition"><span class="std std-ref">system of linear equations</span></a> can be expressed as the matrix equation <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{pmatrix}
+        a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1m} \\
+        a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2m} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+    \end{pmatrix}
+    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} =
+    \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Elementary-Row-Operations-EROs">Elementary Row Operations (EROs)<a class="headerlink" href="#term-Elementary-Row-Operations-EROs" title="Permalink to this term">#</a></dt><dd><p>The following <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html#ero-definition"><span class="std std-ref"><strong>elementary row operations</strong></span></a> can be applied to a system without changing the solution</p>
+<ul class="simple">
+<li><p><strong>Swap rows <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span></strong>:    <span class="math notranslate nohighlight">\(R_i \leftrightarrow R_j\)</span></p></li>
+<li><p><strong>Multiply row <span class="math notranslate nohighlight">\(i\)</span> by <span class="math notranslate nohighlight">\(k\)</span></strong>:    <span class="math notranslate nohighlight">\(kR_i\)</span></p></li>
+<li><p><strong>Add row <span class="math notranslate nohighlight">\(j\)</span> multiplied by <span class="math notranslate nohighlight">\(k\)</span> to row <span class="math notranslate nohighlight">\(i\)</span></strong>:    <span class="math notranslate nohighlight">\(R_i + kR_j\)</span></p></li>
+</ul>
+</dd>
+<dt id="term-Pivot-element">Pivot element<a class="headerlink" href="#term-Pivot-element" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html#ref-definition"><span class="std std-ref">pivot element</span></a> is the first non-zero element in the row.</p>
+</dd>
+<dt id="term-Row-Echelon-Form-REF">Row Echelon Form (REF)<a class="headerlink" href="#term-Row-Echelon-Form-REF" title="Permalink to this term">#</a></dt><dd><p>A matrix is in <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html#ref-definition"><span class="std std-ref">row echelon form</span></a> if in each non-zero row the pivot element is to the right of the pivot element of the row above.</p>
+</dd>
+<dt id="term-Row-reduction-to-row-echelon-form">Row reduction to row echelon form<a class="headerlink" href="#term-Row-reduction-to-row-echelon-form" title="Permalink to this term">#</a></dt><dd><p>To <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html#ge-definition"><span class="std std-ref">row reduce</span></a> an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> to reduced row echelon form we do the following:</p>
+<ol class="simple">
+<li><p>Initialise the pivot row to <span class="math notranslate nohighlight">\(i=1\)</span> and pivot column to <span class="math notranslate nohighlight">\(k=1\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(a_{ik} = 0\)</span> perform a row swap with a row beneath the pivot row <span class="math notranslate nohighlight">\(i\)</span> with a non-zero element in the pivot column <span class="math notranslate nohighlight">\(k\)</span>. If no such rows exist set <span class="math notranslate nohighlight">\(k = k + 1\)</span> and repeat step 2.</p></li>
+<li><p>For each row <span class="math notranslate nohighlight">\(j = i+1 \ldots m\)</span> beneath the pivot row subtract the pivot row <span class="math notranslate nohighlight">\(i\)</span> multiplied by <span class="math notranslate nohighlight">\(\dfrac{a_{jk}}{a_{ik}}\)</span> from row <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(i = 1 + 1\)</span> and <span class="math notranslate nohighlight">\(k = k + 1\)</span> and repeat steps 2 and 3 until <span class="math notranslate nohighlight">\(i &gt; m\)</span> or <span class="math notranslate nohighlight">\(k &gt; n\)</span>.</p></li>
+</ol>
+</dd>
+<dt id="term-Partial-pivoting">Partial pivoting<a class="headerlink" href="#term-Partial-pivoting" title="Permalink to this term">#</a></dt><dd><p>A row swap is performed so that the pivot element has a larger absolute value than the elements in the column below it.</p>
+</dd>
+<dt id="term-Row-reduction-using-partial-pivoting">Row reduction using partial pivoting<a class="headerlink" href="#term-Row-reduction-using-partial-pivoting" title="Permalink to this term">#</a></dt><dd><p>To row reduce an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> to row echelon form using <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.4_Partial_pivoting.html#ge-pp-definition"><span class="std std-ref">partial pivoting</span></a> we do the following:</p>
+<ol class="simple">
+<li><p>Initialise the pivot row to <span class="math notranslate nohighlight">\(i=1\)</span> and pivot column to <span class="math notranslate nohighlight">\(k=1\)</span></p></li>
+<li><p>Swap the pivot row <span class="math notranslate nohighlight">\(i\)</span> with the row below which has the largest absolute value element in the pivot column <span class="math notranslate nohighlight">\(k\)</span> which is greater than the absolute value of the pivot element <span class="math notranslate nohighlight">\(|a_{ik}|\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(a_{ik} = 0\)</span> then set <span class="math notranslate nohighlight">\(k = k + 1\)</span> and repeat step 2.</p></li>
+<li><p>For each row <span class="math notranslate nohighlight">\(j = i+1 \ldots m\)</span> beneath the pivot row subtract the pivot row <span class="math notranslate nohighlight">\(i\)</span> multiplied by <span class="math notranslate nohighlight">\(\dfrac{a_{jk}}{a_{ik}}\)</span> from row <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(i = 1 + 1\)</span> and <span class="math notranslate nohighlight">\(k = k + 1\)</span> and repeat steps 2 to 4 until <span class="math notranslate nohighlight">\(i &gt; m\)</span> or <span class="math notranslate nohighlight">\(k &gt; n\)</span>.</p></li>
+</ol>
+</dd>
+<dt id="term-Reduced-Row-Echelon-Form-RREF">Reduced Row Echelon Form (RREF)<a class="headerlink" href="#term-Reduced-Row-Echelon-Form-RREF" title="Permalink to this term">#</a></dt><dd><p>The matrix is in <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.5_Gauss_Jordan_elimination.html#rref-definition"><span class="std std-ref">reduced row echelon form</span></a> if the pivot element in each row has a value of 1 and it is the only non-zero element in its column.</p>
+</dd>
+<dt id="term-Row-reduction-to-reduced-row-echelon-form">Row reduction to reduced row echelon form<a class="headerlink" href="#term-Row-reduction-to-reduced-row-echelon-form" title="Permalink to this term">#</a></dt><dd><p>To row reduce an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> to <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.5_Gauss_Jordan_elimination.html#rref-definition"><span class="std std-ref">reduced row echelon form</span></a> we do the following</p>
+<ol class="simple">
+<li><p>Initalise the pivot row to <span class="math notranslate nohighlight">\(i=1\)</span> and pivot column to <span class="math notranslate nohighlight">\(k=1\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(a_{ik} = 0\)</span> perform a row swap with a row beneath the pivot row <span class="math notranslate nohighlight">\(i\)</span> with a non-zero element in the pivot column <span class="math notranslate nohighlight">\(k\)</span>. If no such rows exist set <span class="math notranslate nohighlight">\(k = k + 1\)</span> and repeat step 2.</p></li>
+<li><p>Divide the pivot row <span class="math notranslate nohighlight">\(i\)</span> by the value of the pivot element <span class="math notranslate nohighlight">\(a_{ik}\)</span>.</p></li>
+<li><p>For each row <span class="math notranslate nohighlight">\(j = i \ldots m\)</span> where <span class="math notranslate nohighlight">\(i \neq j\)</span> subtract the pivot row <span class="math notranslate nohighlight">\(i\)</span> multiplied by <span class="math notranslate nohighlight">\(a_{ik}\)</span> from row <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(i = 1 + 1\)</span> and <span class="math notranslate nohighlight">\(k = k + 1\)</span> and repeat steps 2 to 4 until <span class="math notranslate nohighlight">\(i &gt; m\)</span> or <span class="math notranslate nohighlight">\(k &gt; n\)</span>.</p></li>
+</ol>
+</dd>
+<dt id="term-Solution-of-a-linear-system-of-equations-used-inverse-matrix">Solution of a linear system of equations used inverse matrix<a class="headerlink" href="#term-Solution-of-a-linear-system-of-equations-used-inverse-matrix" title="Permalink to this term">#</a></dt><dd><p>The solution to a linear system of equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> can be calculated using the <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.1_Solving_using_inverse_matrix.html#solution-using-inverse-matrix-theorem"><span class="std std-ref">inverse matrix</span></a> by <span class="math notranslate nohighlight">\(\mathbf{x} = A^{-1} \mathbf{b}\)</span></p>
+</dd>
+<dt id="term-Cramer-s-rule">Cramer’s rule<a class="headerlink" href="#term-Cramer-s-rule" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.2_Cramers_rule.html#cramers-rule-theorem"><span class="std std-ref">Cramer’s rule</span></a> for calculating the solution to a system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is <span class="math notranslate nohighlight">\(x_i = \dfrac{\det(A_i)}{\det(A)}\)</span> where <span class="math notranslate nohighlight">\(A_i\)</span> is a matrix formed by replacing column <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(A\)</span> with <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
+</dd>
+<dt id="term-Gaussian-Elimination-GE">Gaussian Elimination (GE)<a class="headerlink" href="#term-Gaussian-Elimination-GE" title="Permalink to this term">#</a></dt><dd><p>To calculate the solution to a system of linear equations using <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html#ge-definition"><span class="std std-ref"><strong>Gaussian elimination</strong></span></a> form an augmented matrix <span class="math notranslate nohighlight">\((A \mid \mathbf{b})\)</span> and use elementary row operations to row reduce to row echelon form. The solution is then calculated using back substitution.</p>
+</dd>
+<dt id="term-Gauss-Jordan-Elimination-GJE">Gauss-Jordan Elimination (GJE)<a class="headerlink" href="#term-Gauss-Jordan-Elimination-GJE" title="Permalink to this term">#</a></dt><dd><p>To calculate the solution to a system of linear equations using <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.5_Gauss_Jordan_elimination.html#gje-definition"><span class="std std-ref"><strong>Gauss-Jordan elimination</strong></span></a> form an augmented matrix <span class="math notranslate nohighlight">\((A \mid \mathbf{b})\)</span> and use elementary row operations to row reduce to reduced row echelon form. The solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is contained to the right of the partition.</p>
+</dd>
+<dt id="term-Calculating-an-inverse-matrix-using-Gauss-Jordan-elimination">Calculating an inverse matrix using Gauss-Jordan elimination<a class="headerlink" href="#term-Calculating-an-inverse-matrix-using-Gauss-Jordan-elimination" title="Permalink to this term">#</a></dt><dd><p>To calculate the inverse of a non-singular matrix <span class="math notranslate nohighlight">\(A\)</span> form an augmented matrix <span class="math notranslate nohighlight">\((A \mid I)\)</span> and row reduce to reduced row echelon form. The inverse of <span class="math notranslate nohighlight">\(A\)</span> is the matrix to the right-hand side of the partition.</p>
+</dd>
+<dt id="term-Rank-of-a-matrix">Rank of a matrix<a class="headerlink" href="#term-Rank-of-a-matrix" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html#rank-definition"><span class="std std-ref">rank</span></a> of a matrix <span class="math notranslate nohighlight">\(\operatorname{rank}(A)\)</span> is the number of non-zero rows of the row echelon form of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</dd>
+<dt id="term-Consistent-system">Consistent system <a class="headerlink" href="#term-Consistent-system" title="Permalink to this term">#</a></dt><dd><p>A system of linear equations is <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html#consistent-system-theorem"><span class="std std-ref">consistent</span></a> and has a solution if <span class="math notranslate nohighlight">\(\operatorname{rank}(A \mid \mathbf{b}) = \operatorname{rank}(A)\)</span>.</p>
+</dd>
+<dt id="term-Inconsistent-system">Inconsistent system     <a class="headerlink" href="#term-Inconsistent-system" title="Permalink to this term">#</a></dt><dd><p>A system of linear equations is <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html#inconsistent-system-theorem"><span class="std std-ref">inconsistent</span></a> and does not have a solution if <span class="math notranslate nohighlight">\(\operatorname{rank}(A \mid \mathbf{b}) &gt; \operatorname{rank}(A)\)</span>.</p>
+</dd>
+<dt id="term-Indeterminate-system">Indeterminate system<a class="headerlink" href="#term-Indeterminate-system" title="Permalink to this term">#</a></dt><dd><p>A system of <span class="math notranslate nohighlight">\(n\)</span> linear equations is <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html#indeterminate-system-theorem"><span class="std std-ref">indeterminate</span></a> and has an infinite number of solutions if it is consistent and <span class="math notranslate nohighlight">\(\operatorname{rank}(A \mid \mathbf{b}) &lt; n\)</span>.</p>
+</dd>
+<dt id="term-Solution-of-an-indeterminate-system">Solution of an indeterminate system<a class="headerlink" href="#term-Solution-of-an-indeterminate-system" title="Permalink to this term">#</a></dt><dd><p>A general <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html#indeterminate-system-theorem"><span class="std std-ref">solution to an indeterminate system</span></a> can be found by assigning parameters to the free variables and solving for the rest.</p>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="vectors">
+<h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-Vector">Vector<a class="headerlink" href="#term-Vector" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../3_Vectors/3.0_Vectors.html#vectors-section"><span class="std std-ref">vector</span></a> is an object which has direction and magnitude (length).</p>
+</dd>
+<dt id="term-Position-vector">Position vector<a class="headerlink" href="#term-Position-vector" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../3_Vectors/3.0_Vectors.html#position-vector-section"><span class="std std-ref">position vector</span></a> is a vector which has a tail positioned at the origin.</p>
+</dd>
+<dt id="term-Magnitude-of-a-vector">Magnitude of a vector<a class="headerlink" href="#term-Magnitude-of-a-vector" title="Permalink to this term">#</a></dt><dd><p>The magnitude of a vector <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> is the length of the vector which is calculated using <span class="math notranslate nohighlight">\(|\mathbf{a}| = \sqrt{\displaystyle\sum_{i=1}^n a_i^2}\)</span>. For example, for the vector <span class="math notranslate nohighlight">\(\mathbf{a} = (1, 2, 3)\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    |\mathbf{a}| &amp;= \sqrt{1^2 + 2^2 + 3^2} = \sqrt{14}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Unit-vector">Unit vector<a class="headerlink" href="#term-Unit-vector" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../3_Vectors/3.2_Vector_magnitude.html#unit-vector-definition"><span class="std std-ref">unit vector</span></a> is a vector with a magnitude of 1.</p>
+</dd>
+<dt id="term-Normalising-a-vector">Normalising a vector<a class="headerlink" href="#term-Normalising-a-vector" title="Permalink to this term">#</a></dt><dd><p>A unit vector pointing in the same direction as <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> can be determined by <a class="reference internal" href="../3_Vectors/3.2_Vector_magnitude.html#normalising-a-vector-proposition"><span class="std std-ref">normalising</span></a> the vector by calculating <span class="math notranslate nohighlight">\(\hat{\mathbf{a}} = \dfrac{\mathbf{a}}{|\mathbf{a}|}\)</span>. For example, for the vector <span class="math notranslate nohighlight">\(\mathbf{a} = (1, 2, 3)\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \hat{\mathbf{a}} = \frac{1}{\sqrt{14}} \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} = 
+    \begin{pmatrix} \frac{1}{\sqrt{14}} \\ \frac{2}{\sqrt{14}} \\ \frac{3}{\sqrt{14}} \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-The-dot-product">The dot product<a class="headerlink" href="#term-The-dot-product" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html#dot-product-definition"><span class="std std-ref">dot product</span></a> between the two vectors <span class="math notranslate nohighlight">\(\mathbf{a} = (a_1, a_2, \ldots, a_n)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} = (b_1, b_2, \ldots, b_n)\)</span> is a scalar value calculated using <span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{b} = \displaystyle\sum_{i=1}^n a_i b_i\)</span>. For example, for the vectors <span class="math notranslate nohighlight">\(\mathbf{a} = (1, 2, 3)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} = (4, 5, 6)\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \mathbf{a} \cdot \mathbf{b} = 1(4) + 2(5) + 3(6) = 32.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Geometric-definition-of-the-dot-product">Geometric definition of the dot product<a class="headerlink" href="#term-Geometric-definition-of-the-dot-product" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html#dot-product-definition"><span class="std std-ref">dot product</span></a> between the two vectors <span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{b}\)</span> is related to <span class="math notranslate nohighlight">\(\theta\)</span> the angle between <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> by <span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{b} = |\mathbf{a}| |\mathbf{b}| \cos(\theta)\)</span>.</p>
+</dd>
+<dt id="term-Basis-vectors-in-mathbb-R-3">Basis vectors in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span><a class="headerlink" href="#term-Basis-vectors-in-mathbb-R-3" title="Permalink to this term">#</a></dt><dd><p>The standard basis vectors in <span class="math notranslate nohighlight">\(\mathbf{R}^3\)</span> are <span class="math notranslate nohighlight">\(\mathbf{i} = (1, 0, 0)\)</span>, <span class="math notranslate nohighlight">\(\mathbf{j} = (0, 1, 0)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{k} = (0, 0, 1)\)</span>.</p>
+</dd>
+<dt id="term-The-cross-product">The cross product<a class="headerlink" href="#term-The-cross-product" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html#cross-product-definition"><span class="std std-ref">cross product</span></a> between the two vectors in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>, <span class="math notranslate nohighlight">\(\mathbf{a} = (a_1, a_2, a_3)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} = (b_1, b_2, b_3)\)</span> is a vector calculated using <span class="math notranslate nohighlight">\(\mathbf{a} \times \mathbf{b} = \begin{vmatrix} \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\ a_1 &amp; a_2 &amp; a_3 \\ b_1 &amp; b_2 &amp; b_3 \end{vmatrix}\)</span>. For example, for the vectors <span class="math notranslate nohighlight">\(\mathbf{a} = (1, 2, 3)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} = (4, 5, 6)\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \mathbf{a} \times \mathbf{b} = 
+    \begin{vmatrix} 
+        \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+        1 &amp; 2 &amp; 3 \\
+        4 &amp; 5 &amp; 6
+    \end{vmatrix} =
+    -3\mathbf{i} + 6\mathbf{j} - 3\mathbf{k} = \begin{pmatrix} -3 \\ 6 \\ -3 \end{pmatrix}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Geometric-definition-of-the-cross-product">Geometric definition of the cross product<a class="headerlink" href="#term-Geometric-definition-of-the-cross-product" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html#dot-product-definition"><span class="std std-ref">cross product</span></a> between the two vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> is perpendicular to the plane that both <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> lie on.</p>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="co-ordinate-geometry">
+<h2>Co-ordinate geometry<a class="headerlink" href="#co-ordinate-geometry" title="Permalink to this headline">#</a></h2>
+<dl class="glossary simple">
+<dt id="term-Euclidean-space">Euclidean space<a class="headerlink" href="#term-Euclidean-space" title="Permalink to this term">#</a></dt><dd><p>The position of an object in <span class="math notranslate nohighlight">\(n\)</span>-dimensional space, <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, is defined as the signed distance along <span class="math notranslate nohighlight">\(n\)</span> orthogonal (perpendicular) axis from the origin. These distances are expressed in an <span class="math notranslate nohighlight">\(n\)</span>-tuple, e.g., <span class="math notranslate nohighlight">\((x, y, z)\)</span> for <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>.</p>
+</dd>
+<dt id="term-Points">Points<a class="headerlink" href="#term-Points" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html#points-section"><span class="std std-ref">point</span></a> is an object that has no dimension.</p>
+</dd>
+<dt id="term-Lines">Lines<a class="headerlink" href="#term-Lines" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html#lines-section"><span class="std std-ref">line</span></a> is a one dimensional object which has length but no breath.</p>
+</dd>
+<dt id="term-Planes">Planes<a class="headerlink" href="#term-Planes" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../4_Coordinate_geometry/4.1_Planes.html#planes-section"><span class="std std-ref">plane</span></a> is a two dimensional object with length and breadth.</p>
+</dd>
+<dt id="term-Vector-equation-of-a-line">Vector equation of a line<a class="headerlink" href="#term-Vector-equation-of-a-line" title="Permalink to this term">#</a></dt><dd><p>A point on the line <span class="math notranslate nohighlight">\(\ell\)</span> can be calculated using the [vector equation of a line]((vector-equation-of-a-line-definition) <span class="math notranslate nohighlight">\(Q = P + t\mathbf{d}\)</span> where <span class="math notranslate nohighlight">\(P\)</span> is a point on the line, <span class="math notranslate nohighlight">\(t\in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> is a vector indicating the direction of the line.</p>
+</dd>
+<dt id="term-Intersecting-lines">Intersecting lines<a class="headerlink" href="#term-Intersecting-lines" title="Permalink to this term">#</a></dt><dd><p>The two lines <span class="math notranslate nohighlight">\(\ell_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2\)</span> <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html#line-line-intersection-definition"><span class="std std-ref">intersect</span></a> if there exists a value of <span class="math notranslate nohighlight">\(t\)</span> such that <span class="math notranslate nohighlight">\(P_1 + t\mathbf{d}_1 = P_2 + t\mathbf{d}_2\)</span>.</p>
+</dd>
+<dt id="term-Parallel-lines">Parallel lines<a class="headerlink" href="#term-Parallel-lines" title="Permalink to this term">#</a></dt><dd><p>The two lines <span class="math notranslate nohighlight">\(\ell_1: P_1 + t\mathbf{d}_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2: P_2 + t\mathbf{d}_2\)</span> are <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html#parallel-lines-definition"><span class="std std-ref">parallel</span></a> if there exists a value <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{d}_1 = k\mathbf{d}_2\)</span>.</p>
+</dd>
+<dt id="term-Skew-lines">Skew lines<a class="headerlink" href="#term-Skew-lines" title="Permalink to this term">#</a></dt><dd><p>The two lines <span class="math notranslate nohighlight">\(\ell_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2\)</span> are <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html#skew-lines-definition"><span class="std std-ref">skew</span></a> if they do not intersect and are not parallel.</p>
+</dd>
+<dt id="term-Perpendicular-lines">Perpendicular lines<a class="headerlink" href="#term-Perpendicular-lines" title="Permalink to this term">#</a></dt><dd><p>The two lines <span class="math notranslate nohighlight">\(\ell_1: P_1 + t\mathbf{d}_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2: P_2 + t\mathbf{d}_2\)</span> are <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html#perpendicular-lines-definition"><span class="std std-ref">perpendicular</span></a> if <span class="math notranslate nohighlight">\(\mathbf{d}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{d}_2\)</span> are at right angles, i.e., <span class="math notranslate nohighlight">\(\mathbf{d}_1 \cdot \mathbf{d}_2 = 0\)</span>.</p>
+</dd>
+<dt id="term-Normal-vector">Normal vector<a class="headerlink" href="#term-Normal-vector" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Coordinate_geometry/4.1_Planes.html#normal-vector-definition"><span class="std std-ref">normal vector</span></a> to a plane is a vector which is perpendicular to every vector that lies on the plane, and is calculated using <span class="math notranslate nohighlight">\(\mathbf{n} = \mathbf{d}_1 \times \mathbf{d}_2\)</span>.</p>
+</dd>
+<dt id="term-Point-normal-equation-of-a-plane">Point-normal equation of a plane<a class="headerlink" href="#term-Point-normal-equation-of-a-plane" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Coordinate_geometry/4.1_Planes.html#point-normal-definition"><span class="std std-ref">point-normal equation</span></a> plane which passes through the point with co-ordinates <span class="math notranslate nohighlight">\((x_0, y_0, z_0)\)</span> and has a normal vector <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is <span class="math notranslate nohighlight">\(\mathbf{n} \cdot (x - x_0, y - y_0, z - z_0) = 0\)</span>.</p>
+</dd>
+<dt id="term-Intersection-between-three-planes">Intersection between three planes<a class="headerlink" href="#term-Intersection-between-three-planes" title="Permalink to this term">#</a></dt><dd><p>Three planes in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> can intersect at a single point, on a single line or not intersect at all.</p>
+</dd>
+<dt id="term-Shortest-distance-between-two-points">Shortest distance between two points<a class="headerlink" href="#term-Shortest-distance-between-two-points" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Coordinate_geometry/4.2_Shortest_distance_problems.html#shortest-distance-between-two-points"><span class="std std-ref">shortest distance between the two points</span></a> <span class="math notranslate nohighlight">\(P = (p_1, p_2, \ldots, p_n)\)</span> and <span class="math notranslate nohighlight">\(Q = (q_1, q_2, \ldots, q_n)\)</span> is <span class="math notranslate nohighlight">\(d = |Q - P|\)</span>.</p>
+</dd>
+<dt id="term-Shortest-distance-between-a-point-and-a-line">Shortest distance between a point and a line<a class="headerlink" href="#term-Shortest-distance-between-a-point-and-a-line" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Coordinate_geometry/4.2_Shortest_distance_problems.html#point-line-distance-theorem"><span class="std std-ref">shortest distance between the point <span class="math notranslate nohighlight">\(Q\)</span> and the line</span></a> <span class="math notranslate nohighlight">\(\ell:P + t\mathbf{d}\)</span> is <span class="math notranslate nohighlight">\(d = |Q - R|\)</span> where <span class="math notranslate nohighlight">\(R = P + t\mathbf{d}\)</span> and <span class="math notranslate nohighlight">\(t = \dfrac{(Q - P)\cdot \mathbf{d}}{\mathbf{d} \cdot \mathbf{d}}\)</span>.</p>
+</dd>
+<dt id="term-Shortest-distance-between-two-skew-lines">Shortest distance between two skew lines<a class="headerlink" href="#term-Shortest-distance-between-two-skew-lines" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Coordinate_geometry/4.2_Shortest_distance_problems.html#line-line-distance-theorem"><span class="std std-ref">shortest distances between the two skew lines</span></a> <span class="math notranslate nohighlight">\(\ell_1:P_1 + t\mathbf{d}_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2:P_2 + t\mathbf{d}_2\)</span> is <span class="math notranslate nohighlight">\(d = (P_2 - P_1) \cdot \hat{\mathbf{n}}\)</span> where <span class="math notranslate nohighlight">\(\mathbf{n} = \mathbf{d}_1 \cdot \mathbf{d}_2\)</span>.</p>
+</dd>
+<dt id="term-Shortest-distance-between-a-point-and-a-plane">Shortest distance between a point and a plane<a class="headerlink" href="#term-Shortest-distance-between-a-point-and-a-plane" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Coordinate_geometry/4.4_Coordinate_geometry_exercises.html#ex4-7"><span class="std std-ref">shortest distance between the point <span class="math notranslate nohighlight">\(Q\)</span> and the plane</span></a> which passes through the point <span class="math notranslate nohighlight">\(P\)</span> and has normal vector <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is <span class="math notranslate nohighlight">\(d = (Q - P)\cdot \hat{\mathbf{n}}\)</span>.</p>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="vector-spaces">
+<h2>Vector spaces<a class="headerlink" href="#vector-spaces" title="Permalink to this headline">#</a></h2>
+<dl class="glossary simple">
+<dt id="term-Vector-space">Vector space<a class="headerlink" href="#term-Vector-space" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../5_Vector_spaces/5.0_Vector_spaces.html#vector-space-definition"><span class="std std-ref">vector space</span></a> over a field <span class="math notranslate nohighlight">\(F\)</span> is a non-empty set <span class="math notranslate nohighlight">\(V\)</span> of which the following operations are defined:</p>
+<ul class="simple">
+<li><p>addition: If <span class="math notranslate nohighlight">\(\mathbf{u}, \mathbf{v} \in V\)</span> then <span class="math notranslate nohighlight">\(\mathbf{u} + \mathbf{v} \in V\)</span>.</p></li>
+<li><p>scalar multiplication: If <span class="math notranslate nohighlight">\(\mathbf{u} \in V\)</span> and <span class="math notranslate nohighlight">\(\alpha \in F\)</span> then <span class="math notranslate nohighlight">\(\alpha \mathbf{u} \in V\)</span>.</p></li>
+</ul>
+</dd>
+<dt id="term-Vector-space-axioms">Vector space axioms<a class="headerlink" href="#term-Vector-space-axioms" title="Permalink to this term">#</a></dt><dd><p>For <span class="math notranslate nohighlight">\(V\)</span> to be a vector space over <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(\alpha, \beta \in F\)</span> eight <a class="reference internal" href="../5_Vector_spaces/5.0_Vector_spaces.html#vector-space-axioms-theorem"><span class="std std-ref">axioms</span></a> must hold.</p>
+</dd>
+<dt id="term-Subspace">Subspace<a class="headerlink" href="#term-Subspace" title="Permalink to this term">#</a></dt><dd><p>If <span class="math notranslate nohighlight">\(V\)</span> is a vector space and <span class="math notranslate nohighlight">\(W \subset V\)</span> then <span class="math notranslate nohighlight">\(W\)</span> is a <a class="reference internal" href="../5_Vector_spaces/5.1_Subspaces.html#subspace-definition"><span class="std std-ref">subspace</span></a> if <span class="math notranslate nohighlight">\(\mathbf{u} + \alpha \mathbf{w} \in W\)</span> where <span class="math notranslate nohighlight">\(\mathbf{u}, \mathbf{w} \in W\)</span> and <span class="math notranslate nohighlight">\(\alpha \in F\)</span>.</p>
+</dd>
+<dt id="term-Linear-combination">Linear combination<a class="headerlink" href="#term-Linear-combination" title="Permalink to this term">#</a></dt><dd><p>For <span class="math notranslate nohighlight">\(\mathbf{u} \in V\)</span> there exists a <a class="reference internal" href="../5_Vector_spaces/5.2_Linear_dependence.html#linear-combination-definition"><span class="std std-ref">linear combination</span></a> of vectors  <span class="math notranslate nohighlight">\(\mathbf{v}_i \in W\)</span> and <span class="math notranslate nohighlight">\(\alpha_i \in F\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{u} = \alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \cdots + \alpha_n \mathbf{v}_n\)</span>.</p>
+</dd>
+<dt id="term-Linear-independence">Linear independence<a class="headerlink" href="#term-Linear-independence" title="Permalink to this term">#</a></dt><dd><p>Let <span class="math notranslate nohighlight">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n \in V\)</span> then if the only solution to <span class="math notranslate nohighlight">\(\alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \cdots + \alpha_n \mathbf{v}_n = \mathbf{0}\)</span> is <span class="math notranslate nohighlight">\(\alpha_i = 0\)</span> then <span class="math notranslate nohighlight">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n \in V\)</span> are <a class="reference internal" href="../5_Vector_spaces/5.2_Linear_dependence.html#linear-dependence-definition"><span class="std std-ref">linearly independent</span></a> over <span class="math notranslate nohighlight">\(F\)</span>.</p>
+</dd>
+<dt id="term-Linear-dependence">Linear dependence<a class="headerlink" href="#term-Linear-dependence" title="Permalink to this term">#</a></dt><dd><p>If the linear combination of vectors above is satisfied for at least one non-zero <span class="math notranslate nohighlight">\(\alpha_i\)</span> then <span class="math notranslate nohighlight">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n \in V\)</span> are <a class="reference internal" href="../5_Vector_spaces/5.2_Linear_dependence.html#linear-dependence-definition"><span class="std std-ref">linearly dependent</span></a> over <span class="math notranslate nohighlight">\(F\)</span>.</p>
+</dd>
+<dt id="term-Spanning-set">Spanning set<a class="headerlink" href="#term-Spanning-set" title="Permalink to this term">#</a></dt><dd><p>Let <span class="math notranslate nohighlight">\(V\)</span> be a vector space over <span class="math notranslate nohighlight">\(F\)</span> and <span class="math notranslate nohighlight">\(W\)</span> is a subspace of <span class="math notranslate nohighlight">\(V\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{u} \in W\)</span> are expressible as a linear combination of <span class="math notranslate nohighlight">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n \in V\)</span> then <span class="math notranslate nohighlight">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\)</span> is a <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html#spanning-set-definition"><span class="std std-ref">spanning set</span></a> for <span class="math notranslate nohighlight">\(W\)</span>.</p>
+</dd>
+<dt id="term-Basis">Basis<a class="headerlink" href="#term-Basis" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html#basis-definition"><span class="std std-ref">basis</span></a> of a vector space <span class="math notranslate nohighlight">\(V\)</span> over <span class="math notranslate nohighlight">\(F\)</span> is a linearly independent spanning subset of <span class="math notranslate nohighlight">\(V\)</span>.</p>
+</dd>
+<dt id="term-Orthogonal-basis">Orthogonal basis<a class="headerlink" href="#term-Orthogonal-basis" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html#orthogonal-basis-definition"><span class="std std-ref">orthogonal basis</span></a> where each of the basis vector is orthogonal (perpendicular) to each other basis vector.</p>
+</dd>
+<dt id="term-Orthonormal-basis">Orthonormal basis<a class="headerlink" href="#term-Orthonormal-basis" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html#orthonormal-basis-definition"><span class="std std-ref">orthonormal basis</span></a> is an orthogonal basis where each of the basis vector is a unit vector.</p>
+</dd>
+<dt id="term-Vector-space-dimension">Vector space dimension<a class="headerlink" href="#term-Vector-space-dimension" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html#vector-space-dimension-definition"><span class="std std-ref">dimension</span></a> of a vector space is the number of elements in the basis for the vector space.</p>
+</dd>
+<dt id="term-Standard-basis">Standard basis<a class="headerlink" href="#term-Standard-basis" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html#change-of-basis-section"><span class="std std-ref">standard basis</span></a> for <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is <span class="math notranslate nohighlight">\(E = \{ \mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n \}\)</span> where <span class="math notranslate nohighlight">\(\mathbf{e}_i\)</span> is column <span class="math notranslate nohighlight">\(i\)</span> of the identity matrix.</p>
+</dd>
+<dt id="term-Change-of-basis">Change of basis<a class="headerlink" href="#term-Change-of-basis" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html#change-of-basis-section"><span class="std std-ref">change of basis</span></a> for the vector <span class="math notranslate nohighlight">\([\mathbf{u}]_E\)</span> represented with respect to another basis <span class="math notranslate nohighlight">\(W= \{ \mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n \}\)</span> is <span class="math notranslate nohighlight">\([\mathbf{u}]_W = (\alpha_1, \alpha_2, \ldots, \alpha_n)\)</span> such that <span class="math notranslate nohighlight">\(\alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \cdots + \alpha_n \mathbf{v}_n = \mathbf{u}\)</span>.</p>
+</dd>
+<dt id="term-Change-of-basis-matrix">Change of basis matrix<a class="headerlink" href="#term-Change-of-basis-matrix" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html#change-of-basis-matrix-definition"><span class="std std-ref">change of basis matrix</span></a> is a matrix <span class="math notranslate nohighlight">\(A_{E \to W}\)</span> such that <span class="math notranslate nohighlight">\([\mathbf{u}]_W = A_{E\to W} \mathbf{u}\)</span>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="linear-transformations">
+<h2>Linear transformations<a class="headerlink" href="#linear-transformations" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-Linear-transformation">Linear transformation <a class="headerlink" href="#term-Linear-transformation" title="Permalink to this term">#</a></dt><dd><p>If <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(W\)</span> are two vectors spaces over <span class="math notranslate nohighlight">\(F\)</span> then a <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html#linear-transformation-definition"><span class="std std-ref">linear transformation</span></a> is a mapping <span class="math notranslate nohighlight">\(T: V \to W\)</span> such that for <span class="math notranslate nohighlight">\(x,y \in V\)</span> and <span class="math notranslate nohighlight">\(\alpha \in F\)</span> the following hold</p>
+<ul class="simple">
+<li><p><strong>Addition</strong>: <span class="math notranslate nohighlight">\(T(x + y) = T(x) + T(y)\)</span>.</p></li>
+<li><p><strong>Scalar multiplication</strong>: <span class="math notranslate nohighlight">\(T(\alpha x) = \alpha T(x)\)</span>.</p></li>
+</ul>
+<p>We can combine these two conditions to give <span class="math notranslate nohighlight">\(T(x + \alpha y) = T(x) + \alpha T(y)\)</span>.</p>
+</dd>
+<dt id="term-Image">Image<a class="headerlink" href="#term-Image" title="Permalink to this term">#</a></dt><dd><p>The result of apply a transformation to an object is known as the <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html#linear-transformation-definition"><span class="std std-ref">image</span></a>.</p>
+</dd>
+<dt id="term-Transformation-matrix">Transformation matrix<a class="headerlink" href="#term-Transformation-matrix" title="Permalink to this term">#</a></dt><dd><p>Let <span class="math notranslate nohighlight">\(T:V \to W\)</span> be a linear transformation and <span class="math notranslate nohighlight">\(\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}\)</span> is a basis of <span class="math notranslate nohighlight">\(V\)</span> then the <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html#transformation-matrix-definition"><span class="std std-ref">transformation matrix</span></a> is the matrix <span class="math notranslate nohighlight">\(A\)</span> such that <span class="math notranslate nohighlight">\(T(\mathbf{u}) = A \mathbf{u}\)</span> where <span class="math notranslate nohighlight">\(A = (T(\mathbf{v}_1), T(\mathbf{v}_2), \ldots, T(\mathbf{v}_n))\)</span>.</p>
+</dd>
+<dt id="term-Finding-the-transformation-matrix-from-the-images">Finding the transformation matrix from the images<a class="headerlink" href="#term-Finding-the-transformation-matrix-from-the-images" title="Permalink to this term">#</a></dt><dd><p>Given a set of <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html#finding-transformation-matrix-theorem"><span class="std std-ref">images of a linear transformation</span></a> <span class="math notranslate nohighlight">\(T\)</span> then the transformation matrix for <span class="math notranslate nohighlight">\(T\)</span> is <span class="math notranslate nohighlight">\(A = (T(\mathbf{u}_1), T(\mathbf{u}_2), \ldots, T(\mathbf{u}_n)) \cdot (\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_n)^{-1}\)</span>.</p>
+</dd>
+<dt id="term-Inverse-transformation">Inverse transformation <a class="headerlink" href="#term-Inverse-transformation" title="Permalink to this term">#</a></dt><dd><p>Let <span class="math notranslate nohighlight">\(T:V \to W\)</span> be a linear transformation then its <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html#inverse-transformation-definition"><span class="std std-ref">inverse</span></a> is <span class="math notranslate nohighlight">\(T^{-1}: W \to V\)</span>.</p>
+</dd>
+<dt id="term-Composite-transformation">Composite transformation<a class="headerlink" href="#term-Composite-transformation" title="Permalink to this term">#</a></dt><dd><p>Let <span class="math notranslate nohighlight">\(S:V \to W\)</span> and <span class="math notranslate nohighlight">\(T:W \to X\)</span> be two linear transformations then the <a class="reference internal" href="../6_Linear_transformations/6.1_Composite_linear_transformations.html#composite-transformation-definition"><span class="std std-ref">composite transformation</span></a> <span class="math notranslate nohighlight">\(S \circ T\)</span> is <span class="math notranslate nohighlight">\(S\circ T: V \to X\)</span> defined by <span class="math notranslate nohighlight">\(S(T(\mathbf{u}))\)</span> for <span class="math notranslate nohighlight">\(\mathbf{u} \in V.\)</span></p>
+</dd>
+<dt id="term-Composite-transformation-matrices">Composite transformation matrices<a class="headerlink" href="#term-Composite-transformation-matrices" title="Permalink to this term">#</a></dt><dd><p>If <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are the transformation matrices for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(S\)</span> respectively then the <a class="reference internal" href="../6_Linear_transformations/6.1_Composite_linear_transformations.html#composite-transformation-matrices-theorem"><span class="std std-ref">composite transformation matrix</span></a> for <span class="math notranslate nohighlight">\(S \circ T\)</span> is  <span class="math notranslate nohighlight">\(S(T(\mathbf{u})) = BA \mathbf{u}.\)</span></p>
+</dd>
+<dt id="term-Homogeneous-co-ordinates">Homogeneous co-ordinates<a class="headerlink" href="#term-Homogeneous-co-ordinates" title="Permalink to this term">#</a></dt><dd><p>The homogeneous co-ordinates of a point <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> in <span class="math notranslate nohighlight">\(\mathbf{R}^n\)</span> expressed using <a class="reference internal" href="../6_Linear_transformations/6.3_Translation.html#homogeneous-coordinates-definition"><span class="std std-ref">homogeneous co-ordinates</span></a> is <span class="math notranslate nohighlight">\(\mathbf{u} = (\lambda u_1, \lambda u_2, \ldots, \lambda u_n, \lambda)\)</span>. Note that <span class="math notranslate nohighlight">\((x, y, z)\)</span> in Cartesian co-ordinates is the same as <span class="math notranslate nohighlight">\((x, y, z, 1)\)</span> in homogeneous co-ordinates.</p>
+</dd>
+<dt id="term-Translation">Translation<a class="headerlink" href="#term-Translation" title="Permalink to this term">#</a></dt><dd><p>The transformation matrix to <a class="reference internal" href="../6_Linear_transformations/6.3_Translation.html#translation-definition"><span class="std std-ref">translate</span></a> a vector in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> expressed in homogeneous co-ordinates by a translation vector <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}T(\mathbf{t}) = \begin{pmatrix} &amp; &amp; &amp; t_1 \\  &amp; I &amp; &amp; \vdots \\ &amp; &amp; &amp; t_n \\ 0 &amp; \cdots &amp; 0 &amp; 1 \end{pmatrix}.\end{split}\]</div>
+</dd>
+<dt id="term-Reflection">Reflection<a class="headerlink" href="#term-Reflection" title="Permalink to this term">#</a></dt><dd><p>The transformation matrix to <a class="reference internal" href="../6_Linear_transformations/6.2_Rotation_reflection_and_scaling.html#reflection-theorem"><span class="std std-ref">reflect</span></a> a vector  in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> expressed in homogeneous co-ordinates about a line that passes through the origin and makes an angle <span class="math notranslate nohighlight">\(\theta\)</span> with the <span class="math notranslate nohighlight">\(x\)</span>-axis is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{Rot}(\theta) = \begin{pmatrix} \cos(\theta) &amp; -\sin(\theta) &amp; 0 \\ \sin(\theta) &amp; \cos(\theta) &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}.\end{split}\]</div>
+</dd>
+<dt id="term-Scaling">Scaling<a class="headerlink" href="#term-Scaling" title="Permalink to this term">#</a></dt><dd><p>The transformation matrix to <a class="reference internal" href="../6_Linear_transformations/6.2_Rotation_reflection_and_scaling.html#scaling-definition"><span class="std std-ref">scale</span></a> a vector in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> expressed in homogeneous co-ordinates by the scaling vector <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{S}(\mathbf{s}) = \begin{pmatrix} s_1 &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; s_2 &amp; \ddots &amp; \vdots \\ \vdots &amp; \ddots &amp; \ddots &amp; 0 \\ 0 &amp; \cdots &amp; 0 &amp; 1 \end{pmatrix}.\end{split}\]</div>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./7_Appendices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../6_Linear_transformations/6.5_Transformations_exercises.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Transformations exercises</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="7.2_Sympy.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SymPy commands</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Jon Shiach<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

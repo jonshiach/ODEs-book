@@ -1,0 +1,1181 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrices &#8212; Linear Algebra Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matrix multiplication" href="1.1_Matrix_multiplication.html" />
+    <link rel="prev" title="How to pass the unit" href="../0_Preliminaries/0.5_How_to_pass.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Linear Algebra Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.0_about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.1_Teaching_schedule.html">
+   Teaching schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.2_Assessment.html">
+   Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.3_Mathematical_preliminaries.html">
+   Mathematical preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.4_Python.html">
+   Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.5_How_to_pass.html">
+   How to pass the unit
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Matrices
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.1_Matrix_multiplication.html">
+     Matrix multiplication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.2_Matrix_transpose.html">
+     Matrix transpose
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.3_Special_matrices.html">
+     Special matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.4_Determinants.html">
+     Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.5_Inverse_matrix.html">
+     Inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.6_Matrix_algebra.html">
+     Matrix algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.8_Matrices_exercises.html">
+     Matrices exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.0_Systems_of_linear_equations.html">
+   Systems of Linear Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.1_Solving_using_inverse_matrix.html">
+     Solving systems of linear equations using the inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.2_Cramers_rule.html">
+     Cramer’s rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html">
+     Gaussian elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.4_Partial_pivoting.html">
+     Partial pivoting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.5_Gauss_Jordan_elimination.html">
+     Gauss-Jordan elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html">
+     Consistent, inconsistent and indeterminate systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.7_Homogeneous_systems.html">
+     Homogeneous systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.9_Systems_of_linear_equations_exercises.html">
+     Systems of linear equations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_Vectors/3.0_Vectors.html">
+   Vectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.1_Arithmetic_operations_on_vectors.html">
+     Arithmetic operations on vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.2_Vector_magnitude.html">
+     Vector magnitude
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html">
+     Vector products
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.4_Linear_combination_of_vectors.html">
+     Linear combination of vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.6_Vectors_exercises.html">
+     Vectors exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html">
+   Co-ordinate Geometry
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.1_Planes.html">
+     Planes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.2_Shortest_distance_problems.html">
+     Shortest distance problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.4_Coordinate_geometry_exercises.html">
+     Co-ordinate geometry exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5_Vector_spaces/5.0_Vector_spaces.html">
+   Vector spaces
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.1_Subspaces.html">
+     Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.2_Linear_dependence.html">
+     Linear dependence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html">
+     Basis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.5_Vector_spaces_exercises.html">
+     Vector spaces exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html">
+   Linear Transformations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.1_Composite_linear_transformations.html">
+     Composite linear transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.2_Rotation_reflection_and_scaling.html">
+     Rotation, reflection and scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.3_Translation.html">
+     Translation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.5_Transformations_exercises.html">
+     Transformations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_Appendices/7.1_Cheat_sheet.html">
+   Linear Algebra Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_Appendices/7.2_Sympy.html">
+   SymPy commands
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/drjonshiach/Linear_algebra_book/main?urlpath=tree/1_Matrices/1.0_Matrices.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_Matrices/1.0_Matrices.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition-of-a-matrix">
+   Definition of a matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-code">
+     Python code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexing-a-matrix">
+   Indexing a matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Python code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-arithmetic-operations">
+   Basic arithmetic operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-equality">
+     Matrix equality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-addition">
+     Matrix addition
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Python code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalar-multiplication-of-matrices">
+     Scalar multiplication of matrices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Python code
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Matrices</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition-of-a-matrix">
+   Definition of a matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-code">
+     Python code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexing-a-matrix">
+   Indexing a matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Python code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-arithmetic-operations">
+   Basic arithmetic operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-equality">
+     Matrix equality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-addition">
+     Matrix addition
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Python code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalar-multiplication-of-matrices">
+     Scalar multiplication of matrices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Python code
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="matrices">
+<span id="matrices-chapter"></span><h1>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h1>
+<p><strong>Learning outcomes</strong></p>
+<p>On successful completion of this chapter students will be able to:</p>
+<ul class="simple">
+<li><p>define and <a class="reference internal" href="#indexing-a-matrix-section"><span class="std std-ref">index</span></a> matrices;</p></li>
+<li><p>perform the arithmetic operations of <a class="reference internal" href="#matrix-addition-section"><span class="std std-ref">addition</span></a>, <a class="reference internal" href="#scalar-multiplication-of-matrices"><span class="std std-ref">multiplication by a scalar</span></a>, <a class="reference internal" href="1.1_Matrix_multiplication.html#matrix-multiplication-definition"><span class="std std-ref">matrix multiplication</span></a>, <a class="reference internal" href="1.1_Matrix_multiplication.html#matrix-exponents-definition"><span class="std std-ref">matrix exponents</span></a> and <a class="reference internal" href="1.2_Matrix_transpose.html#matrix-transpose-definition"><span class="std std-ref">matrix transpose</span></a>;</p></li>
+<li><p>recognise and define special matrices such as <a class="reference internal" href="1.3_Special_matrices.html#diagonal-matrix-definition"><span class="std std-ref">diagonal matrices</span></a>, the <a class="reference internal" href="1.3_Special_matrices.html#zero-matrix-definition"><span class="std std-ref">zero matrix</span></a>, the <a class="reference internal" href="1.3_Special_matrices.html#identity-matrix-definition"><span class="std std-ref">identity matrix</span></a> and <a class="reference internal" href="1.3_Special_matrices.html#symmetric-matrix-definition"><span class="std std-ref">symmetric matrices</span></a>;</p></li>
+<li><p>calculate the determinant of a <a class="reference internal" href="1.4_Determinants.html#x2-determinant-definition"><span class="std std-ref"><span class="math notranslate nohighlight">\(2\times 2\)</span></span></a> and <a class="reference internal" href="1.4_Determinants.html#nxn-determinant-definition"><span class="std std-ref"><span class="math notranslate nohighlight">\(n\times n\)</span></span></a> matrix, the <a class="reference internal" href="1.5_Inverse_matrix.html#adjoint-definition"><span class="std std-ref">adjoint</span></a> and <a class="reference internal" href="1.5_Inverse_matrix.html#inverse-matrix-definition"><span class="std std-ref">inverse</span></a> of a non-singular square matrix using the <a class="reference internal" href="1.5_Inverse_matrix.html#adjoint-determinant-formula-definition"><span class="std std-ref">adjoint-determinant formula</span></a>;</p></li>
+<li><p>perform <a class="reference internal" href="1.6_Matrix_algebra.html#matrix-algebra-section"><span class="std std-ref">algebraic manipulation</span></a> of equations involving matrices.</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="definition-of-a-matrix">
+<span id="definition-of-a-matrix-section"></span><h2>Definition of a matrix<a class="headerlink" href="#definition-of-a-matrix" title="Permalink to this headline">#</a></h2>
+<p>A <strong>matrix</strong> (plural <strong>matrices</strong>) is a rectangular array of elements which can be numbers, mathematical expressions, symbols, or even other matrices. Matrices are arranged in rows and columns and enclosed by parentheses (or sometimes square brackets), for example</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{pmatrix}
+        1 &amp; 2 &amp; 3 \\
+        4 &amp; 5 &amp; 6
+    \end{pmatrix}.
+\end{align*}\]</div>
+<p>This matrix contains 6 elements arranged in 2 (horizontal) rows and 3 (vertical) columns.</p>
+<div class="note admonition" id="dimension-of-a-matrix-definition">
+<p class="admonition-title">Definition: Dimension of a matrix</p>
+<p>The dimension or size of a matrix is defined to be <strong>rows</strong> <span class="math notranslate nohighlight">\(\times\)</span> <strong>columns</strong>, where ‘rows’ is the number of horizontal rows and ‘columns’ the number of vertical columns of said matrix. If rows <span class="math notranslate nohighlight">\(=\)</span> columns we say that the matrix is a square matrix.</p>
+</div>
+<div class="seealso admonition" id="matrix-dimension-example">
+<p class="admonition-title">Example 1.1</p>
+<p>Determine the dimensions of the following matrices:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(i)   <span class="math notranslate nohighlight">\(A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(ii)   <span class="math notranslate nohighlight">\(B = \begin{pmatrix} a &amp; b \\ c &amp; d \\ e &amp; f \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(iii)   <span class="math notranslate nohighlight">\(C = \begin{pmatrix} \sin(x) &amp; \ln(x) &amp; \cos(x+1) \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(iv)   <span class="math notranslate nohighlight">\(D = \begin{pmatrix} 0 \end{pmatrix}\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(i)   <span class="math notranslate nohighlight">\(2\times 2 \)</span></p>
+<p class="sd-card-text">(ii)   <span class="math notranslate nohighlight">\(3\times 2\)</span></p>
+<p class="sd-card-text">(iii)   <span class="math notranslate nohighlight">\(1 \times 3\)</span></p>
+<p class="sd-card-text">(iv)   <span class="math notranslate nohighlight">\(1 \times 1\)</span></p>
+</div>
+</details></div>
+<div class="section" id="python-code">
+<h3>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h3>
+<p>To define and perform operations on matrices in Python we can use the <strong>SymPy</strong> library (short for <em>symbolic Python</em>) library. A matrix can then be defined using the <code class="docutils literal notranslate"><span class="pre">Matrix</span></code> command, for example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}1 &amp; 2\\3 &amp; 4\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Note that the matrix is defined using square brackets and each row is contained within another pair of square brackets. Commas separate elements in the same row and the different rows of a matrix.</p>
+<p>The command for determining the number of rows and columns of a matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> is <code class="docutils literal notranslate"><span class="pre">A.shape</span></code> which returns a 2-tuple containing. The following code defines the matrix <span class="math notranslate nohighlight">\(A\)</span> from <a class="reference internal" href="#matrix-dimension-example"><span class="std std-ref">example 1.1</span></a> and outputs its dimensions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The matrix A is an </span><span class="si">{</span><span class="n">nrows</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">ncols</span><span class="si">}</span><span class="s2"> matrix&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The matrix A is an 2 x 2 matrix
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indexing-a-matrix">
+<span id="indexing-a-matrix-section"></span><h2>Indexing a matrix<a class="headerlink" href="#indexing-a-matrix" title="Permalink to this headline">#</a></h2>
+<p>Matrices are typically labeled using uppercase characters (e.g. <span class="math notranslate nohighlight">\(A\)</span>) and the elements of a matrix are labeled with the corresponding lowercase character (e.g. <span class="math notranslate nohighlight">\(a\)</span>). Individual entries of a matrix are <strong>indexed</strong> using two subscript indices: <span class="math notranslate nohighlight">\(a_{ij}\)</span> where <span class="math notranslate nohighlight">\(i\)</span> corresponds to the row number reading from top to bottom and <span class="math notranslate nohighlight">\(j\)</span> is the column number reading from left to right.</p>
+<p>For example, let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix}
+  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} 
+\end{pmatrix}.\end{split}\]</div>
+<p>Some alternate notation includes</p>
+<div class="math notranslate nohighlight">
+\[a_{ij} = [A]_{ij} = A[i,j].\]</div>
+<div class="seealso admonition" id="matrix-indexing-example">
+<p class="admonition-title">Example 1.2</p>
+<p>Given the matrix
+<span class="math notranslate nohighlight">\(A = \begin{pmatrix}
+    2 &amp; 0 &amp; -3 \\
+    1 &amp; 7 &amp; 4 
+\end{pmatrix},\)</span></p>
+<p>write down the following elements:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>(i)   <span class="math notranslate nohighlight">\(a_{11}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>(ii)   <span class="math notranslate nohighlight">\(a_{13}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>(iii)   <span class="math notranslate nohighlight">\([A]_{21}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>(iv)   <span class="math notranslate nohighlight">\(A[2,2]\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(i)  <span class="math notranslate nohighlight">\(a_{11} = 2\)</span></p>
+<p class="sd-card-text">(ii) <span class="math notranslate nohighlight">\(a_{13} = -3\)</span></p>
+<p class="sd-card-text">(iii) <span class="math notranslate nohighlight">\([A]_{21} = 1\)</span></p>
+<p class="sd-card-text">(iv) <span class="math notranslate nohighlight">\(A[2,2] = 7\)</span></p>
+</div>
+</details></div>
+<div class="section" id="id1">
+<h3>Python code<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Matrices and arrays in Python are indexed using the syntax <code class="docutils literal notranslate"><span class="pre">A[i,j]</span></code> which returns the value of the element in row <code class="docutils literal notranslate"><span class="pre">i</span></code> and column <code class="docutils literal notranslate"><span class="pre">j</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Python is a <strong>zero indexing</strong> language which means indexing starts at zero. So to index the element <span class="math notranslate nohighlight">\(a_{23}\)</span> we would use <code class="docutils literal notranslate"><span class="pre">a[1,2]</span></code> i.e., remember to subtract 1 from the indices.</p>
+</div>
+<p>The following code defines the matrix <span class="math notranslate nohighlight">\(A\)</span> from <a class="reference internal" href="#matrix-indexing-example"><span class="std std-ref">example 1.2</span></a> and outputs the values of the indexed elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(i)   a_11 = </span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(ii)  a_13 = </span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(iii) [A]_21 = </span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(iv)  A[2,2] = </span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(i)   a_11 = 2
+(ii)  a_13 = -3
+(iii) [A]_21 = 1
+(iv)  A[2,2] = 7
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="basic-arithmetic-operations">
+<span id="basic-arithmetic-operations-section"></span><h2>Basic arithmetic operations<a class="headerlink" href="#basic-arithmetic-operations" title="Permalink to this headline">#</a></h2>
+<p>So far, we have given a fancy name to a rectangular array of objects and showed how we can index its elements. Now we are going to fully develop an algebra for matrices. A system, where there are operations of addition and multiplication and necessarily rules that accompany them. This system resembles that of real numbers but we will see some differences and new concepts. For simplicity, we are going to assume that the entries of our matrices are numbers, however the developed theory applies to a broader range of objects.</p>
+<div class="section" id="matrix-equality">
+<h3>Matrix equality<a class="headerlink" href="#matrix-equality" title="Permalink to this headline">#</a></h3>
+<div class="note admonition" id="matrix-equality-definition">
+<p class="admonition-title">Definition: Matrix equality </p>
+<p>We say that an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> and an <span class="math notranslate nohighlight">\(p \times q\)</span> matrix <span class="math notranslate nohighlight">\(B\)</span> are <strong>equal</strong> and write <span class="math notranslate nohighlight">\(A = B\)</span> if and only if <strong>both</strong> of the following conditions are satisfied:</p>
+<ul class="simple">
+<li><p>they have the same dimensions, in other words <span class="math notranslate nohighlight">\(m = p\)</span> and <span class="math notranslate nohighlight">\(n = q\)</span>;</p></li>
+<li><p>for all <span class="math notranslate nohighlight">\(1 \leq i \leq m\)</span> and <span class="math notranslate nohighlight">\(1 \leq j \leq n\)</span>, <span class="math notranslate nohighlight">\(a_{ij} = b_{ij}\)</span>.</p></li>
+</ul>
+</div>
+<p>For example, consider the following matrices</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A &amp;= \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}, &amp;
+    B &amp;= \begin{pmatrix} 1 &amp; 2 &amp; 5 \\ 3 &amp; 4 &amp; 6 \end{pmatrix}, &amp;
+    C &amp;= \begin{pmatrix} 3^0 &amp; \sqrt{4} \\ 1 + 2 &amp; 2^2 \end{pmatrix}.
+\end{align*}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(A \neq B\)</span> since <span class="math notranslate nohighlight">\(A\)</span> has 2 columns and <span class="math notranslate nohighlight">\(B\)</span> has 3 columns. However, <span class="math notranslate nohighlight">\(A=C\)</span> because both <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(C\)</span> have the same number of rows and columns and all of the corresponding elements are equal.</p>
+</div>
+<div class="section" id="matrix-addition">
+<span id="matrix-addition-section"></span><h3>Matrix addition<a class="headerlink" href="#matrix-addition" title="Permalink to this headline">#</a></h3>
+<div class="note admonition" id="matrix-addition-definition">
+<p class="admonition-title">Definition: Matrix addition and subtraction </p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be two <span class="math notranslate nohighlight">\(m \times n\)</span> matrices. The addition or subtraction of two <span class="math notranslate nohighlight">\(m \times n\)</span> matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A \pm B\)</span> defined by:</p>
+<div class="math notranslate nohighlight">
+\[[A \pm B]_{ij} = a_{ij} \pm a_{ij},\]</div>
+<p>where <span class="math notranslate nohighlight">\(1 \leq i \leq m\)</span> and <span class="math notranslate nohighlight">\(1 \leq j \leq n\)</span>.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{pmatrix}
+        a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+        a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+    \end{pmatrix} \pm 
+    \begin{pmatrix}
+        b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1n} \\
+        b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2n} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        b_{m1} &amp; b_{m2} &amp; \cdots &amp; b_{mn}
+    \end{pmatrix} \\
+    =
+    \begin{pmatrix}
+        a_{11} \pm b_{11} &amp; a_{12} \pm b_{12} &amp; \cdots &amp; a_{1n} \pm b_{1n} \\
+        a_{21} \pm b_{21} &amp; a_{22} \pm b_{22} &amp; \cdots &amp; a_{2n} \pm a_{2n} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        a_{m1} \pm b_{m1} &amp; a_{m2} \pm b_{m2} &amp; \cdots &amp; a_{mn} \pm b_{mn}
+    \end{pmatrix}.
+\end{align*}\]</div>
+</div>
+<p>The addition and subtraction of two matrices of different sizes is <strong>not defined</strong>.</p>
+<div class="important admonition" id="properties-of-matrix-addition-theorem">
+<p class="admonition-title">Theorem: Properties of matrix addition</p>
+<p>For all <span class="math notranslate nohighlight">\(m \times n\)</span> matrices <span class="math notranslate nohighlight">\(A,B\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, the following conditions are satisfied:</p>
+<ul class="simple">
+<li><p>matrix addition is commutative, i.e., <span class="math notranslate nohighlight">\(A + B = B + A\)</span>;</p></li>
+<li><p>matrix addition is associative, i.e., <span class="math notranslate nohighlight">\(A + (B + C) = (A + B) + C\)</span>.</p></li>
+</ul>
+</div>
+<div class="seealso admonition" id="matrix-addition-example">
+<p class="admonition-title">Example 1.3</p>
+<p>Evaluate the following:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>(i) <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} + \begin{pmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>(ii) <span class="math notranslate nohighlight">\(\begin{pmatrix} 2 \\ 3 \\ 5 \end{pmatrix} - \begin{pmatrix} 7 \\ -11 \\ -13 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12 docutils">
+<p>(iii) <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 3 &amp; 5 \\ 7 &amp; 9 &amp; 11 \end{pmatrix} + \begin{pmatrix}2 &amp; 3 \\ 5 &amp; 7 \end{pmatrix}\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(i) <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} + \begin{pmatrix} 5 &amp; 6 \\ 7 &amp; 8 \end{pmatrix} = \begin{pmatrix} 1 + 5 &amp; 2 + 6 \\ 3 + 7 &amp; 4 + 8 \end{pmatrix}= \begin{pmatrix}6 &amp; 8 \\ 10 &amp; 12 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(ii) <span class="math notranslate nohighlight">\(\begin{pmatrix} 2 \\ 3 \\ 5 \end{pmatrix} - \begin{pmatrix} 7 \\ -11 \\ -13 \end{pmatrix} = \begin{pmatrix}2 - 7 \\ 3 + 11 \\ 5 + 13 \end{pmatrix} = \begin{pmatrix} -5 \\ 14 \\ 18\end{pmatrix}\)</span></p>
+<p class="sd-card-text">(iii) undefined since the left matrix is <span class="math notranslate nohighlight">\(2\times 3\)</span> and the right matrix is <span class="math notranslate nohighlight">\(2\times 2\)</span></p>
+</div>
+</details></div>
+<div class="section" id="id2">
+<h4>Python code<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>The Python command for calculating the sum of two matrices <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> is simply <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">+</span> <span class="pre">B</span></code>. The Python code below calculates the solution to question (i) from <a class="reference internal" href="#matrix-addition-example"><span class="std std-ref">example 1.3</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+
+<span class="n">AplusB</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+<span class="n">display</span><span class="p">(</span><span class="n">AplusB</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}6 &amp; 8\\10 &amp; 12\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scalar-multiplication-of-matrices">
+<span id="id3"></span><h3>Scalar multiplication of matrices<a class="headerlink" href="#scalar-multiplication-of-matrices" title="Permalink to this headline">#</a></h3>
+<div class="note admonition" id="scalar-multiplication-of-a-matrix-definition">
+<p class="admonition-title">Definition: Scalar multiplication </p>
+<p>The scalar multiplication of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix by a scalar is calculated by multiplying each element in the matrix by the scalar</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    k[A]_{ij} = ka_{ij}, \qquad i = 1, \ldots, m, \quad j = 1, \ldots, n.
+\end{align*}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    k \begin{pmatrix}
+        a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+        a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+    \end{pmatrix} = 
+    \begin{pmatrix}
+        ka_{11} &amp; ka_{12} &amp; \cdots &amp; ka_{1n} \\
+        ka_{21} &amp; ka_{22} &amp; \cdots &amp; ka_{2n} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        ka_{m1} &amp; ka_{m2} &amp; \cdots &amp; ka_{mn}
+    \end{pmatrix}
+\end{align*}\]</div>
+</div>
+<div class="important admonition" id="properties-of-scalar-multiplication-of-matrices-theorem">
+<p class="admonition-title">Theorem: Properties of scalar multiplication of matrices</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be two <span class="math notranslate nohighlight">\(m \times n\)</span> matrices and <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(\ell\)</span> are scalars, then</p>
+<ul class="simple">
+<li><p>scalar multiplication is commutative: <span class="math notranslate nohighlight">\(kA=Ak\)</span>;</p></li>
+<li><p>scalar multiplication is distributive over matrix addition: <span class="math notranslate nohighlight">\(k(A + B) = kA + kB\)</span>;</p></li>
+<li><p>scalar multiplication is distributive over scalar addition: <span class="math notranslate nohighlight">\((k+\ell)A = kA + \ell A\)</span>;</p></li>
+<li><p>scalar multiplication is associative: <span class="math notranslate nohighlight">\(k(\ell A) = (k \ell)A\)</span>;</p></li>
+<li><p>multiplication by <span class="math notranslate nohighlight">\(-1\)</span> gives the additive inverse: <span class="math notranslate nohighlight">\((-1)A = -A\)</span>.</p></li>
+</ul>
+</div>
+<div class="seealso admonition" id="scalar-multiplication-of-matrices-example">
+<p class="admonition-title">Example 1.4</p>
+<p>Evaluate the following:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(i) <span class="math notranslate nohighlight">\(2 \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(ii) <span class="math notranslate nohighlight">\(\dfrac{1}{2} \begin{pmatrix} 0 &amp; -1 \\ 3 &amp; 2 \\ 4 &amp; -2 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(iii) <span class="math notranslate nohighlight">\(\dfrac{1}{3} \begin{pmatrix}1 &amp; 6 &amp; 4 \\ 0 &amp; 3 &amp; -1 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(iv) <span class="math notranslate nohighlight">\(101 \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix} - 99 \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix}\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(i) <span class="math notranslate nohighlight">\(2 \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} = \begin{pmatrix}2 &amp; 4 \\ 6 &amp; 8 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(ii) <span class="math notranslate nohighlight">\(\dfrac{1}{2} \begin{pmatrix} 0 &amp; -1 \\ 3 &amp; 2 \\ 4 &amp; -2 \end{pmatrix} =  \begin{pmatrix} 0 &amp; -\frac{1}{2} \\ \frac{3}{2} &amp; 1 \\ 2 &amp; -1 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(iii) <span class="math notranslate nohighlight">\(\dfrac{1}{3} \begin{pmatrix}1 &amp; 6 &amp; 4 \\ 0 &amp; 3 &amp; -1 \end{pmatrix} = \begin{pmatrix} \frac{1}{3} &amp; 2 &amp; \frac{4}{3} \\ 0 &amp; 1 &amp; -\frac{1}{3} \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(iv) <span class="math notranslate nohighlight">\(101\begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix} - 99 \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix} = 2 \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix} =  \begin{pmatrix} 2 &amp; 4 \\ 0 &amp; 2 \end{pmatrix}\)</span></p>
+</div>
+</details></div>
+</div>
+<div class="section" id="id4">
+<h3>Python code<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>The command for multiplying a SymPy matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> by a scalar <code class="docutils literal notranslate"><span class="pre">k</span></code> is simply <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">*</span> <span class="pre">A</span></code>. The following code calculates the solutions <a class="reference internal" href="#scalar-multiplication-of-matrices-example"><span class="std std-ref">example 1.4</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (i)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(i)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># (ii)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(ii)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">B</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># (iii)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(iii)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># (iv)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(iv)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="mi">101</span> <span class="o">*</span> <span class="n">D</span> <span class="o">-</span> <span class="mi">99</span> <span class="o">*</span> <span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(i)
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}2 &amp; 4\\6 &amp; 8\end{matrix}\right]\end{split}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(ii)
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}0 &amp; - \frac{1}{2}\\\frac{3}{2} &amp; 1\\2 &amp; -1\end{matrix}\right]\end{split}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(iii)
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}\frac{1}{3} &amp; 2 &amp; \frac{4}{3}\\0 &amp; 1 &amp; - \frac{1}{3}\end{matrix}\right]\end{split}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(iv)
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}2 &amp; 4\\0 &amp; 2\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_Matrices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../0_Preliminaries/0.5_How_to_pass.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">How to pass the unit</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="1.1_Matrix_multiplication.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matrix multiplication</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Jon Shiach<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

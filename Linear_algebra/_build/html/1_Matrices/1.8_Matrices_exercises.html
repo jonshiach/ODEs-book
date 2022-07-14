@@ -1,0 +1,1468 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrices exercises &#8212; Linear Algebra Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Systems of Linear Equations" href="../2_Systems_of_Linear%20Equations/2.0_Systems_of_linear_equations.html" />
+    <link rel="prev" title="Matrix algebra" href="1.6_Matrix_algebra.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Linear Algebra Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.0_about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.1_Teaching_schedule.html">
+   Teaching schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.2_Assessment.html">
+   Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.3_Mathematical_preliminaries.html">
+   Mathematical preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.4_Python.html">
+   Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.5_How_to_pass.html">
+   How to pass the unit
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="1.0_Matrices.html">
+   Matrices
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.1_Matrix_multiplication.html">
+     Matrix multiplication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.2_Matrix_transpose.html">
+     Matrix transpose
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.3_Special_matrices.html">
+     Special matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.4_Determinants.html">
+     Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.5_Inverse_matrix.html">
+     Inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.6_Matrix_algebra.html">
+     Matrix algebra
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Matrices exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.0_Systems_of_linear_equations.html">
+   Systems of Linear Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.1_Solving_using_inverse_matrix.html">
+     Solving systems of linear equations using the inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.2_Cramers_rule.html">
+     Cramer’s rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html">
+     Gaussian elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.4_Partial_pivoting.html">
+     Partial pivoting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.5_Gauss_Jordan_elimination.html">
+     Gauss-Jordan elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html">
+     Consistent, inconsistent and indeterminate systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.7_Homogeneous_systems.html">
+     Homogeneous systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.9_Systems_of_linear_equations_exercises.html">
+     Systems of linear equations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_Vectors/3.0_Vectors.html">
+   Vectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.1_Arithmetic_operations_on_vectors.html">
+     Arithmetic operations on vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.2_Vector_magnitude.html">
+     Vector magnitude
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html">
+     Vector products
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.4_Linear_combination_of_vectors.html">
+     Linear combination of vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.6_Vectors_exercises.html">
+     Vectors exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../4_Coordinate_geometry/4.0_Coordinate_geometry.html">
+   Co-ordinate Geometry
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.1_Planes.html">
+     Planes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.2_Shortest_distance_problems.html">
+     Shortest distance problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Coordinate_geometry/4.4_Coordinate_geometry_exercises.html">
+     Co-ordinate geometry exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5_Vector_spaces/5.0_Vector_spaces.html">
+   Vector spaces
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.1_Subspaces.html">
+     Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.2_Linear_dependence.html">
+     Linear dependence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html">
+     Basis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.5_Vector_spaces_exercises.html">
+     Vector spaces exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html">
+   Linear Transformations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.1_Composite_linear_transformations.html">
+     Composite linear transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.2_Rotation_reflection_and_scaling.html">
+     Rotation, reflection and scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.3_Translation.html">
+     Translation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.5_Transformations_exercises.html">
+     Transformations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_Appendices/7.1_Cheat_sheet.html">
+   Linear Algebra Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_Appendices/7.2_Sympy.html">
+   SymPy commands
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/drjonshiach/Linear_algebra_book/main?urlpath=tree/1_Matrices/1.8_Matrices_exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_Matrices/1.8_Matrices_exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Matrices exercises</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="matrices-exercises">
+<h1>Matrices exercises<a class="headerlink" href="#matrices-exercises" title="Permalink to this headline">#</a></h1>
+<div class="note admonition" id="ex1-1">
+<p class="admonition-title">Exercise 1.1</p>
+<p>Write down the <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> whose entries are given by <span class="math notranslate nohighlight">\(a_{ij} = i+j.\)</span></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A = \begin{pmatrix} 2 &amp; 3 &amp; 4 \\
+        3 &amp; 4 &amp; 5 \\
+        4 &amp; 5 &amp; 6 \end{pmatrix}
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex1-2">
+<p class="admonition-title">Exercise 1.2</p>
+<p>Write down the <span class="math notranslate nohighlight">\(4 \times 4\)</span> matrix <span class="math notranslate nohighlight">\(B\)</span> whose entries are given by <span class="math notranslate nohighlight">\(b_{ij} = (-1)^{i+j}.\)</span></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    B = \begin{pmatrix}
+        1 &amp; -1 &amp; 1 &amp; -1 \\
+        -1 &amp; 1 &amp; -1 &amp; 1 \\
+        1 &amp; -1 &amp; 1 &amp; -1 \\
+        -1 &amp; 1 &amp; -1 &amp; 1
+        \end{pmatrix}
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex1-3">
+<p class="admonition-title">Exercise 1.3</p>
+<p>Write down the <span class="math notranslate nohighlight">\(4 \times 4\)</span> matrix <span class="math notranslate nohighlight">\(C\)</span> whose entries are given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    c_{ij} = 
+    \begin{cases}
+    -1, &amp; i&gt;j, \\
+    0, &amp; i=j, \\
+    1, &amp; i&lt;j. \\
+    \end{cases}
+\end{align*}\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    C = \begin{pmatrix}
+        0 &amp; 1 &amp; 1 &amp; 1 \\
+        -1 &amp; 0 &amp; 1 &amp; 1 \\
+        -1 &amp; -1 &amp; 0 &amp; 1 \\
+        -1 &amp; -1 &amp; -1 &amp; 0
+    \end{pmatrix}
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex1-4">
+<p class="admonition-title">Exercise 1.4</p>
+<p>Given the matrices</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A &amp;= \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}, &amp;
+    B &amp;= \begin{pmatrix} 3 &amp; 0 \\ -1 &amp; 5 \end{pmatrix}, \\
+    C &amp;= \begin{pmatrix} 5 \\ 9 \end{pmatrix}, &amp;
+    D &amp;= \begin{pmatrix} 1 &amp; 1 &amp; 3 \\ 4 &amp; -2 &amp; 3 \end{pmatrix}, \\
+    E &amp;= \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 6 \\ -2 &amp; 3 \end{pmatrix} &amp;
+    F &amp;= \begin{pmatrix} 1 &amp; -2 &amp; 4 \end{pmatrix}, \\
+    G &amp;= \begin{pmatrix} 4 &amp; 2 &amp; 3 \\ -2 &amp; 6 &amp; 0 \\ 0 &amp; 7 &amp; 1 \end{pmatrix}, &amp;
+    H &amp;= \begin{pmatrix} 1 &amp; 0 &amp; 1 \\ 5 &amp; 2 &amp; -2 \\ 2 &amp; -3 &amp; 4 \end{pmatrix}.
+\end{align*}\]</div>
+<p>Calculate the following where possible:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(a)   <span class="math notranslate nohighlight">\(A + B\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(b)   <span class="math notranslate nohighlight">\(B + C\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(c)   <span class="math notranslate nohighlight">\(A^\mathrm{T}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(d)   <span class="math notranslate nohighlight">\(C^\mathrm{T}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(e)   <span class="math notranslate nohighlight">\(D + E^\mathrm{T}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(f)   <span class="math notranslate nohighlight">\(3B - A\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(g)   <span class="math notranslate nohighlight">\(E + F^\mathrm{T}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(h)   <span class="math notranslate nohighlight">\((F^\mathrm{T})^\mathrm{T}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(i)   <span class="math notranslate nohighlight">\(2(G + H)\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(j)   <span class="math notranslate nohighlight">\(A^\mathrm{T} + B^\mathrm{T}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(k)   <span class="math notranslate nohighlight">\((A + B)^\mathrm{T}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(l)   <span class="math notranslate nohighlight">\(-G\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solutions<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(a)   <span class="math notranslate nohighlight">\(A + B = \begin{pmatrix} 1 + 3 &amp; -3 + 0 \\ 4 + (-1) &amp; 2 + 5 \end{pmatrix} = \begin{pmatrix} 4 &amp; -3 \\ 3 &amp; 7 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(b)   <span class="math notranslate nohighlight">\(B + C\)</span> is undefined since <span class="math notranslate nohighlight">\(B\)</span> is <span class="math notranslate nohighlight">\(2\times 2\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is <span class="math notranslate nohighlight">\(2\times 1\)</span></p>
+<p class="sd-card-text">(c)   <span class="math notranslate nohighlight">\(A^\mathrm{T} = \begin{pmatrix} 1 &amp; 4 \\ -3 &amp; 2 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(d)   <span class="math notranslate nohighlight">\(C^\mathrm{T} = \begin{pmatrix} 5 &amp; 9 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(e)   <span class="math notranslate nohighlight">\(D + E^\mathrm{T} = \begin{pmatrix} 1 &amp; 1 &amp; 3 \\ 4 &amp; -2 &amp; 3 \end{pmatrix} + \begin{pmatrix} 1 &amp; 0 &amp; -2 \\ 2 &amp; 6 &amp; 3 \end{pmatrix} = \begin{pmatrix} 2 &amp; 1 &amp; 1 \\ 6 &amp; 4 &amp; 6 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(f)   <span class="math notranslate nohighlight">\(3 B - A = \begin{pmatrix} 9 &amp; 0 \\ -3 &amp; 15 \end{pmatrix} - \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} = \begin{pmatrix} 8 &amp; 3 \\ -7 &amp; 13 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(g)   <span class="math notranslate nohighlight">\(E + F^\mathrm{T}\)</span> is undefined since <span class="math notranslate nohighlight">\(E\)</span> is <span class="math notranslate nohighlight">\(3\times 2\)</span> and <span class="math notranslate nohighlight">\(F^\mathrm{T}\)</span> is <span class="math notranslate nohighlight">\(3\times 1\)</span></p>
+<p class="sd-card-text">(h)    <span class="math notranslate nohighlight">\((F^\mathrm{T})^\mathrm{T} = \begin{pmatrix} 1 \\ 2 \\ 4 \end{pmatrix}^\mathrm{T} = \begin{pmatrix} 1 &amp; -2 &amp; 4 \end{pmatrix} = F\)</span></p>
+<p class="sd-card-text">(i)   <span class="math notranslate nohighlight">\(2(G+H) = 2 \begin{pmatrix} 5 &amp; 2 &amp; 4 \\ 3 &amp; 8 &amp; -2 \\ 2 &amp; 4 &amp; 5 \end{pmatrix} = \begin{pmatrix} 10 &amp; 4 &amp; 8 \\ 6 &amp; 16 &amp; -4 \\ 4 &amp; 8 &amp; 10 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(j)   <span class="math notranslate nohighlight">\(A^\mathrm{T} + B^\mathrm{T} = \begin{pmatrix} 1 &amp; 4 \\ -3 &amp; 2 \end{pmatrix} + \begin{pmatrix} 3 &amp; -1 \\ 0 &amp; 5 \end{pmatrix} = \begin{pmatrix} 4 &amp; 3 \\ -3 &amp; 7 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(k)   <span class="math notranslate nohighlight">\((A + B)^\mathrm{T} = \begin{pmatrix} 4 &amp; -3 \\ 3 &amp; 7 \end{pmatrix}^\mathrm{T} = \begin{pmatrix} 4 &amp; 3 \\ -3 &amp; 7 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(l)   <span class="math notranslate nohighlight">\(-G = \begin{pmatrix} -1 &amp; 0 &amp; -1 \\ -5 &amp; -2 &amp; 2 \\ -2 &amp; 3 &amp; -4 \end{pmatrix}\)</span></p>
+</div>
+</details></div>
+<div class="note admonition" id="ex1-5">
+<p class="admonition-title">Exercise 1.5</p>
+<p>Using the matrices from <a class="reference internal" href="#ex1-4"><span class="std std-ref">exercise 1.4</span></a> calculate the following where possible:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(a)    <span class="math notranslate nohighlight">\(AB\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(b)    <span class="math notranslate nohighlight">\(BA\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(c)    <span class="math notranslate nohighlight">\(AC\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(d)    <span class="math notranslate nohighlight">\(CA\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(e)    <span class="math notranslate nohighlight">\(C^\mathrm{T}C\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(f)    <span class="math notranslate nohighlight">\(CC^\mathrm{T}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(g)    <span class="math notranslate nohighlight">\(DE\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(h)    <span class="math notranslate nohighlight">\(GH\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(i)    <span class="math notranslate nohighlight">\(A(DE)\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(j)    <span class="math notranslate nohighlight">\((AD)E\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(k)    <span class="math notranslate nohighlight">\(A^3\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(l)    <span class="math notranslate nohighlight">\(G^4\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solutions<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(a)   <span class="math notranslate nohighlight">\(AB = \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} \begin{pmatrix} 3 &amp; 0 \\ -1 &amp; 5 \end{pmatrix} = \begin{pmatrix} 3 + 3 &amp; 0 - 15 \\ 7 - 2 &amp; 0 + 10 \end{pmatrix} = \begin{pmatrix}6 &amp; -15 \\ 10 &amp; 10 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(b)   <span class="math notranslate nohighlight">\(BA = \begin{pmatrix} 3 &amp; 0 \\ -1 &amp; 5 \end{pmatrix}\begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} = \begin{pmatrix} 3 + 0 &amp; -9 + 0 \\ -1 + 20 &amp; 3 + 10 \end{pmatrix} = \begin{pmatrix} 3 &amp; -9 \\ 19 &amp; 13 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(c)   <span class="math notranslate nohighlight">\(AC = \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}\begin{pmatrix} 5 \\ 9 \end{pmatrix} = \begin{pmatrix} 15 - 27 \\ 20 + 18 \end{pmatrix} = \begin{pmatrix} -22 \\ 38 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(d)   <span class="math notranslate nohighlight">\(CA\)</span> is undefined since <span class="math notranslate nohighlight">\(C\)</span> has 1 column and <span class="math notranslate nohighlight">\(A\)</span> has 2 rows</p>
+<p class="sd-card-text">(e)   <span class="math notranslate nohighlight">\(C^TC = \begin{pmatrix} 5 &amp; 9 \end{pmatrix} \begin{pmatrix} 5 \\ 9 \end{pmatrix} = 25 + 81 = 106\)</span></p>
+<p class="sd-card-text">(f)   <span class="math notranslate nohighlight">\(CC^T = \begin{pmatrix} 5 \\ 9 \end{pmatrix}\begin{pmatrix} 5 &amp; 9 \end{pmatrix} = \begin{pmatrix} 25 &amp; 45 \\ 45 &amp; 81 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(g)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    DE &amp;= \begin{pmatrix} 1 &amp; 1 &amp; 3 \\ 4 &amp; -2 &amp; 3 \end{pmatrix} \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 6 \\ -2 &amp; 3 \end{pmatrix} = \begin{pmatrix} 1 + 0 - 6 &amp; 2 + 6 + 9 \\ 4 + 0 - 6 &amp; 8 - 12 + 9 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} -5 &amp; 17 \\ -2 &amp; 5 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(h)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    GH &amp;= \begin{pmatrix} 4 &amp; 2 &amp; 3 \\ -2 &amp; 6 &amp; 0 \\ 0 &amp; 7 &amp; 1 \end{pmatrix}
+    \begin{pmatrix} 1 &amp; 0 &amp; 1 \\ 5 &amp; 2 &amp; -2 \\ 2 &amp; -3 &amp; 4 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 
+        4 + 10 + 6 &amp; 0 + 4 - 9 &amp; 4 - 4 + 12 \\
+        -2 + 30 + 0 &amp; 0 + 12 + 0 &amp; -2 - 12 + 0 \\
+        0 + 35 + 2 &amp; 0 + 14 - 3 &amp; 0 - 14 + 4
+    \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 20 &amp; -5 &amp; 12 \\ 28 &amp; 12 &amp; -14 \\ 37 &amp; 11 &amp; -10 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(i)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A(DE) &amp;= \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} \left(
+    \begin{pmatrix} 1 &amp; 1 &amp; 3 \\ 4 &amp; -2 &amp; 3 \end{pmatrix} 
+    \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 6 \\ -2 &amp; 3 \end{pmatrix} \right) \\
+    &amp;= \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}
+    \begin{pmatrix} -5 &amp; 17 \\ -2 &amp; 5 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 1 &amp; 2 \\ -24 &amp; 78 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(j)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    (AD)E &amp;= \left(
+    \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}
+    \begin{pmatrix} 1 &amp; 1 &amp; 3 \\ 4 &amp; -2 &amp; 3 \end{pmatrix}
+    \right)
+    \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 6 \\ -2 &amp; 3 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} -11 &amp; 7 &amp; -6 \\ 12 &amp; 0 &amp; 18 \end{pmatrix}
+    \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 6 \\ -2 &amp; 3 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 1 &amp; 2 \\ -24 &amp; 78 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(k)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A^3 &amp;= \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}
+    \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}
+    \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} -11 &amp; -9 \\ 12 &amp; -8 \end{pmatrix}
+    \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} -47 &amp; 15 \\ -20 &amp; -52 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(l)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    G^2 &amp;= \begin{pmatrix} 4 &amp; 2 &amp; 3 \\ -2 &amp; 6 &amp; 0 \\ 0 &amp; 7 &amp; 1 \end{pmatrix}
+    \begin{pmatrix} 4 &amp; 2 &amp; 3 \\ -2 &amp; 6 &amp; 0 \\ 0 &amp; 7 &amp; 1 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 12 &amp; 41 &amp; 15 \\ -20 &amp; 32 &amp; -6 \\ -14 &amp; 49 &amp; 1 \end{pmatrix} \\
+    \therefore G^4 &amp;= G^2G^2 = 
+    \begin{pmatrix} 12 &amp; 41 &amp; 15 \\ -20 &amp; 32 &amp; -6 \\ -14 &amp; 49 &amp; 1 \end{pmatrix}
+    \begin{pmatrix} 12 &amp; 41 &amp; 15 \\ -20 &amp; 32 &amp; -6 \\ -14 &amp; 49 &amp; 1 \end{pmatrix} \\
+    &amp;=
+    \begin{pmatrix} -886 &amp; 2539 &amp; -51 \\ -796 &amp; -90 &amp; -498 \\ -1162 &amp; 1043 &amp; -503 \end{pmatrix}
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex1-6">
+<p class="admonition-title">Exercise 1.6</p>
+<p>Using the matrices from <a class="reference internal" href="#ex1-4"><span class="std std-ref">exercise 1.4</span></a> calculate the following:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(a)    <span class="math notranslate nohighlight">\(\det(A)\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(b)    <span class="math notranslate nohighlight">\(|B|\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(c)    <span class="math notranslate nohighlight">\(\det(3A)\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(d)    <span class="math notranslate nohighlight">\(\det(G)\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(e)    <span class="math notranslate nohighlight">\(\operatorname{adj}(B)\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(f)    <span class="math notranslate nohighlight">\(\operatorname{adj}(H)\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(g)    <span class="math notranslate nohighlight">\(A^{-1}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(h)    <span class="math notranslate nohighlight">\(B^{-1}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(i)    <span class="math notranslate nohighlight">\(G^{-1}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(j)    <span class="math notranslate nohighlight">\((AB)^{-1}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(k)    <span class="math notranslate nohighlight">\(B^{-1}A^{-1}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>(l)    <span class="math notranslate nohighlight">\((DE)^{-1}\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solutions<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(a)    <span class="math notranslate nohighlight">\(\det(A) = 1(2) - (-3)4 = 2 + 12 = 14\)</span></p>
+<p class="sd-card-text">(b)    <span class="math notranslate nohighlight">\(|B| = 3(5) - 0(-1) = 15\)</span></p>
+<p class="sd-card-text">(c)    <span class="math notranslate nohighlight">\(\det(3A) = 3\begin{vmatrix} 3 &amp; -9 \\ 12 &amp; 6 \end{vmatrix} = 3(6) - (-9)(12) = 126\)</span>.</p>
+<p class="sd-card-text">Alternatively since each row of <span class="math notranslate nohighlight">\(A\)</span> is multiplied by 3 then by the <a class="reference internal" href="1.4_Determinants.html#properties-of-determinants-theorem"><span class="std std-ref">properties of determinants</span></a> we could simply multiply <span class="math notranslate nohighlight">\(\det(A)=14\)</span> by <span class="math notranslate nohighlight">\(3 \times 3 = 9\)</span> to give <span class="math notranslate nohighlight">\(\det(3A) = 126\)</span>.</p>
+<p class="sd-card-text">(d)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \det(G) &amp;= \begin{vmatrix} 4 &amp; 2 &amp; 3 \\ -2 &amp; 6 &amp; 0 \\ 0 &amp; 7 &amp; 1 \end{vmatrix} \\
+    &amp;= 4 \begin{vmatrix} 6 &amp; 0 \\ 7 &amp; 1 \end{vmatrix} - (-2)
+    \begin{vmatrix} 2 &amp; 3 \\ 7 &amp; 1 \end{vmatrix} \\
+    &amp;= 4(6) + 2(2 - 21) = -14
+\end{align*}\]</div>
+<p class="sd-card-text">(e)    <span class="math notranslate nohighlight">\(\operatorname{adj}(B) = \begin{pmatrix} 5 &amp; -(-1) \\ 0 &amp; 3 \end{pmatrix} = \begin{pmatrix} 5 &amp; 0 \\ 1 &amp; 3 \end{pmatrix}\)</span></p>
+<p class="sd-card-text">(f)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \operatorname{adj}(H) &amp;= 
+    \begin{pmatrix}
+        \begin{vmatrix} 2 &amp; -2 \\ -3 &amp; 4 \end{vmatrix} &amp;
+        - \begin{vmatrix} 5 &amp; -2 \\ 2 &amp; 4 \end{vmatrix} &amp;
+        \begin{vmatrix} 5 &amp; 2 \\ 2 &amp; -3 \end{vmatrix} \\
+        - \begin{vmatrix} 0 &amp; 1 \\ -3 &amp; 4 \end{vmatrix} &amp;
+        \begin{vmatrix} 1 &amp; 1 \\ 2 &amp; 4 \end{vmatrix} &amp;
+        - \begin{vmatrix} 1 &amp; 0 \\ 2 &amp; -3 \end{vmatrix} \\
+        \begin{vmatrix} 0 &amp; 1 \\ 2 &amp; -2 \end{vmatrix} &amp;
+        - \begin{vmatrix} 1 &amp; 1 \\ 5 &amp; -2 \end{vmatrix} &amp;
+        \begin{vmatrix} 1 &amp; 0 \\ 5 &amp; 2 \end{vmatrix}
+    \end{pmatrix}^T \\
+    &amp;= \begin{pmatrix} 2 &amp; -24 &amp; -19 \\ -3 &amp; 2 &amp; 3 \\ -2 &amp; 7 &amp; 2 \end{pmatrix}^T \\
+    &amp;= \begin{pmatrix} 2 &amp; -3 &amp; -2 \\ -24 &amp; 2 &amp; 7 \\ -19 &amp; 3 &amp; 2 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(g)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \operatorname{adj}(A) &amp;= \begin{pmatrix} 2 &amp; 3 \\ -4 &amp; 1 \end{pmatrix}, \qquad
+    \det(A) = 14, \\
+    \therefore A^{-1} &amp;= \frac{\operatorname{adj}(A)}{\det(A)} 
+    = \frac{1}{14}\begin{pmatrix} 2 &amp; -4 \\ 3 &amp; 1 \end{pmatrix}
+    = \begin{pmatrix} \frac{1}{7} &amp; \frac{3}{14} \\ -\frac{2}{7} &amp; \frac{1}{14} \end{pmatrix} 
+\end{align*}\]</div>
+<p class="sd-card-text">Check: <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}\begin{pmatrix} \frac{1}{7} &amp; \frac{3}{14} \\ -\frac{2}{7} &amp; \frac{1}{14} \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \quad \checkmark\)</span></p>
+<p class="sd-card-text">(h)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \operatorname{adj}(B) &amp;= \begin{pmatrix} 5 &amp; 0 \\ 1 &amp; 3 \end{pmatrix}, \qquad
+    \det(B) = 15, \\
+    \therefore B^{-1} &amp;= \frac{\operatorname{adj}(B)}{\det(A)} 
+    = \frac{1}{15} \begin{pmatrix} 5 &amp; 0 \\ 1 &amp; 3 \end{pmatrix} 
+    = \begin{pmatrix} \frac{1}{3} &amp; 0 \\ \frac{1}{15} &amp; \frac{1}{5} \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">Check: <span class="math notranslate nohighlight">\(BB^{-1} = \begin{pmatrix} 3 &amp; 0 \\ -1 &amp; 5 \end{pmatrix}\begin{pmatrix} \frac{1}{3} &amp; 0 \\ \frac{1}{15} &amp; \frac{1}{5} \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \quad \checkmark\)</span></p>
+<p class="sd-card-text">(i)    <span class="math notranslate nohighlight">\(G^{-1}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \operatorname{adj}(G) &amp;= 
+    \begin{pmatrix}  6 &amp; 2 &amp; -14 \\ 19 &amp; 4 &amp; -28 \\ -18 &amp; -6 &amp; 28 \end{pmatrix}^T
+    = \begin{pmatrix} 6 &amp; 19 &amp; -18 \\ 2 &amp; 4 &amp; -6 \\ -14 &amp; -28 &amp; 28 \end{pmatrix}, \\
+    \det(G) &amp;= -14, \\
+    \therefore G^{-1} &amp;= \frac{\operatorname{adj}(G)}{\det(G)} = -\frac{1}{14}
+    \begin{pmatrix} 6 &amp; 19 &amp; -18 \\ 2 &amp; 4 &amp; -6 \\ -14 &amp; -28 &amp; 28 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 
+        -\frac{3}{7} &amp; -\frac{19}{14} &amp; \frac{9}{7} \\
+        -\frac{1}{7} &amp; -\frac{2}{7} &amp; \frac{3}{7} \\
+        1 &amp; 2 &amp; -2
+    \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">Check: <span class="math notranslate nohighlight">\(GG^{-1} = \begin{pmatrix} 4 &amp; 2 &amp; 3 \\ -2 &amp; 6 &amp; 0 \\ 0 &amp; 7 &amp; 1 \end{pmatrix} 
+    \begin{pmatrix} 
+        -\frac{3}{7} &amp; -\frac{19}{14} &amp; \frac{9}{7} \\
+        -\frac{1}{7} &amp; -\frac{2}{7} &amp; \frac{3}{7} \\
+        1 &amp; 2 &amp; -2
+    \end{pmatrix} =
+    \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix} \quad  \checkmark\)</span></p>
+<p class="sd-card-text">(j)    <span class="math notranslate nohighlight">\((AB)^{-1}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \operatorname{adj}(AB) &amp;= \begin{pmatrix} 10 &amp; -15 \\ 10 &amp; 6 \end{pmatrix}, \qquad
+    \det(AB) = 60 + 150 = 210, \\
+    \therefore (AB)^{-1} &amp;= \frac{\operatorname{adj}(AB)}{\det(AB)} = \frac{1}{210}
+    \begin{pmatrix} 10 &amp; -15 \\ 10 &amp; 6 \end{pmatrix} =
+    \begin{pmatrix} \frac{1}{21} &amp; \frac{1}{14} \\ -\frac{1}{21} &amp; \frac{1}{35} \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">Check <span class="math notranslate nohighlight">\((AB)(AB)^{-1} = \begin{pmatrix} 6 &amp; -15 \\ 10 &amp; 10 \end{pmatrix} \begin{pmatrix} \frac{1}{21} &amp; \frac{1}{14} \\ -\frac{1}{21} &amp; \frac{1}{35} \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \quad \checkmark\)</span></p>
+<p class="sd-card-text">(k)   Using the <span class="xref myst">properties of inverse matrices</span> we know that <span class="math notranslate nohighlight">\((AB)^{-1} = B^{-1}A^{-1}\)</span> so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    B^{-1}A^{-1} = \begin{pmatrix} \frac{1}{21} &amp; \frac{1}{14} \\ -\frac{1}{21} &amp; \frac{1}{35} \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(l)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \operatorname{adj}(DE) &amp;= \begin{pmatrix} 5 &amp; -17 \\ 2 &amp; -5 \end{pmatrix}, \qquad
+    \det(DE) = -25 + 34 = 9, \\
+    \therefore (DE)^{-1} &amp;= \frac{\operatorname{adj}(DE)}{\det(DE)} 
+    = \frac{1}{9} \begin{pmatrix} 5 &amp; -17 \\ 2 &amp; -5 \end{pmatrix}
+    = \begin{pmatrix} \frac{5}{9} &amp; -\frac{17}{9} \\ \frac{2}{9} &amp; -\frac{5}{9} \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">Check: <span class="math notranslate nohighlight">\((DE)(DE)^{-1} = \begin{pmatrix} -5 &amp; 17 \\ -2 &amp; 5 \end{pmatrix} \begin{pmatrix} \frac{5}{9} &amp; -\frac{17}{9} \\ \frac{2}{9} &amp; -\frac{5}{9} \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \quad \checkmark\)</span></p>
+</div>
+</details></div>
+<div class="note admonition" id="ex1-7">
+<p class="admonition-title">Exercise 1.7</p>
+<p>Using <a class="reference internal" href="1.4_Determinants.html#properties-of-determinants-theorem"><span class="std std-ref">the properties of determinants</span></a> and solutions from <a class="reference internal" href="#ex1-6"><span class="std std-ref">exercise 1.6</span></a> where necessary, find the determinants for the following matrices.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(a)    <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 2 \\ 2 &amp; 4 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(b)    <span class="math notranslate nohighlight">\(\begin{pmatrix} 4 &amp; 2 \\ 1 &amp; -3 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(c)    <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 0 \\ -1 &amp; 0 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(d)    <span class="math notranslate nohighlight">\(\begin{pmatrix} 4 &amp; 2 &amp; 3 \\ -4 &amp; 12 &amp; 0 \\ 0 &amp; 7 &amp; 1 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(e)    <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 2 &amp; 3 \\ -1 &amp; -2 &amp; -3 \\ 2 &amp; 4 &amp; 4 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(f)    <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 2 &amp; 1 \\ -3 &amp; -6 &amp; 1 \\ 2 &amp; 4 &amp; 4 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(g)    <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 2 &amp; 3 \\ -1 &amp; -2 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(h)    <span class="math notranslate nohighlight">\(\begin{pmatrix} 3 &amp; 6 \\ -1 &amp; 3 \end{pmatrix}\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solutions<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(a)   Row 2 is 2 times row 1 so the determinant is 0.</p>
+<p class="sd-card-text">(b)   This is the same as the matrix <span class="math notranslate nohighlight">\(A\)</span> above but with rows 1 and 2 swapped. Therefore the determinant of this matrix is <span class="math notranslate nohighlight">\(-\det(A) = -14\)</span>.</p>
+<p class="sd-card-text">(c)   Column 2 is all zeros so the determinant is 0.</p>
+<p class="sd-card-text">(d)   This it the same as the matrix <span class="math notranslate nohighlight">\(G\)</span> from above with row 2 multiplied by 2. Therefore the determinant of this matrix is <span class="math notranslate nohighlight">\(2\det(G) = 2(-14) = -28\)</span>.</p>
+<p class="sd-card-text">(e)   Row 2 is -1 times row 1 so the determinant is 0.</p>
+<p class="sd-card-text">(f)   Column 2 is 2 times column 1 so the determinant is 0.</p>
+<p class="sd-card-text">(g)   Row 3 is all zeros so the determinant is 0.</p>
+<p class="sd-card-text">(h)   This is the same as the matrix <span class="math notranslate nohighlight">\(B\)</span> from above with 2 times column 1 added to column 2. Therefore the determinant of this matrix is <span class="math notranslate nohighlight">\(\det(B) = 15\)</span>.</p>
+</div>
+</details></div>
+<div class="note admonition" id="ex1-8">
+<p class="admonition-title">Exercise 1.8</p>
+<p>Prove that adding a multiple of a row or column to another row or column does not change the value of the determinant for a <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\)</span> and <span class="math notranslate nohighlight">\(k\)</span> be a scalar then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{vmatrix} a &amp; b \\ c + ka &amp; d + kb \end{vmatrix} &amp;= ad + abk - bc - abk = ad - bc = \det(A), \\
+    \begin{vmatrix} a &amp; b + ak \\ c &amp; d + ck \end{vmatrix} &amp;= ad + ack - bc - ack = ad - bc = \det(A)
+\end{align*}\]</div>
+<div style="text-align: right"> &#9633; </div>
+</div>
+</details></div>
+<div class="admonition-exercise-1-9 admonition">
+<p class="admonition-title">Exercise 1.9</p>
+<p>Given the matrices</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A &amp;= \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}, &amp;
+    B &amp;= \begin{pmatrix} 3 &amp; 0 \\ -1 &amp; 5 \end{pmatrix},
+\end{align*}\]</div>
+<p>solve the following equations for <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(a)   <span class="math notranslate nohighlight">\(5X = A\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(b)   <span class="math notranslate nohighlight">\(X + A = I\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(c)   <span class="math notranslate nohighlight">\(2X - B = A\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(d)   <span class="math notranslate nohighlight">\(XA = I\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(e)   <span class="math notranslate nohighlight">\(BX = A\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(f)   <span class="math notranslate nohighlight">\(A^2 = X\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(g)   <span class="math notranslate nohighlight">\(X^2 = B\)</span></p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<p>(h)   <span class="math notranslate nohighlight">\((X + A)B = I\)</span></p>
+</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solutions<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">(a)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    5X &amp;= A \\
+    X &amp;= \frac{1}{5} A \\
+    &amp;= \dfrac{1}{5}\begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} 
+    = \begin{pmatrix} \frac{1}{5} &amp; -\frac{3}{5} \\ \frac{4}{5} &amp; \frac{2}{5} \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(b)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    X + A &amp;= I \\
+    X &amp;= I - A \\
+    &amp;= \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} = \begin{pmatrix} 0 &amp; 3 \\ -4 &amp; -1 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(c)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    2X - B &amp;= A \\
+    2X &amp;= A + B \\
+    X &amp;= \dfrac{1}{2}(A + B) = \dfrac{1}{2}\left( \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} + \begin{pmatrix} 3 &amp; 0 \\ -1 &amp; 5 \end{pmatrix} \right) \\
+    &amp;= \dfrac{1}{2} \begin{pmatrix} 4 &amp; -3 \\ 3 &amp; 7 \end{pmatrix} = \begin{pmatrix} 2 &amp; -\frac{3}{2} \\ \frac{3}{2} &amp; \frac{7}{2} \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(d)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    XA &amp;= I \\
+    X &amp;= IA^{-1} = A^{-1}I \\
+    &amp;= \dfrac{1}{14} \begin{pmatrix} 2 &amp; 3 \\ -4 &amp; 1 \end{pmatrix} = \begin{pmatrix} \frac{1}{7} &amp; \frac{3}{14} \\ -\frac{2}{7} &amp; \frac{1}{14} \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(e)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    BX &amp;= A \\
+    X &amp;= B^{-1}A \\
+    &amp;= \dfrac{1}{15}\begin{pmatrix} 5 &amp; -1 \\ 0 &amp; 3 \end{pmatrix} \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} \\
+    &amp;= \dfrac{1}{15} \begin{pmatrix} 5 &amp; -15 \\ 13 &amp; 3\end{pmatrix} = \begin{pmatrix} \frac{1}{3} &amp; -1 \\ \frac{13}{15} &amp; \frac{1}{5} \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(f)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    A^2 &amp;= X \\
+    X &amp;= \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}\begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix} = \begin{pmatrix} -11 &amp; -9 \\ 12 &amp; -8 \end{pmatrix}
+\end{align*}\]</div>
+<p class="sd-card-text">(g)   We begin by setting <span class="math notranslate nohighlight">\(X = \begin{pmatrix}a &amp; b \\ c &amp; d\end{pmatrix}\)</span>, and then <span class="math notranslate nohighlight">\(X^2 = B\)</span> gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{pmatrix}a^2 + bc &amp; ab + bd \\ ca+dc &amp; cb+d^2\end{pmatrix} =
+    \begin{pmatrix} a^2 + bc &amp; b(a + d) \\ c(a + d) &amp; cb + d^2 \end{pmatrix} =
+    \begin{pmatrix} 3 &amp; 0 \\ -1 &amp; 5 \end{pmatrix}.
+\end{align*}\]</div>
+<p class="sd-card-text">Now we can solve the quadratic equations over <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, since <span class="math notranslate nohighlight">\([X^2]_{12} = 0\)</span> then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    b(a + d) &amp;= 0 \\
+    \therefore b &amp;= 0 \text{ or } a = -d.
+\end{align*}\]</div>
+<p class="sd-card-text">For the case when <span class="math notranslate nohighlight">\(b = 0\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    a^2 + bc &amp;= 3 \implies a = \pm \sqrt{3}, \\
+    cb + d^2 &amp;= 5 \implies d = \pm \sqrt{5}.
+\end{align*}\]</div>
+<p class="sd-card-text">So we have four possible solutions</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    X &amp;= \begin{pmatrix} \pm \sqrt{3} &amp; 0 \\ - 1 / (\pm \sqrt{3} \pm \sqrt{5}) &amp; \pm\sqrt{5} \end{pmatrix}, &amp;
+    X &amp;\begin{pmatrix} \pm \sqrt{3} &amp; 0 \\ - 1 / (\pm \sqrt{3} \mp \sqrt{5}) &amp; \mp\sqrt{5} \end{pmatrix}.
+\end{align*}\]</div>
+<p class="sd-card-text">For the case when <span class="math notranslate nohighlight">\(a = -d\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    c(a + d) = 0c = -1,
+\end{align*}\]</div>
+<p class="sd-card-text">which is a contradiction so <span class="math notranslate nohighlight">\(a = -d\)</span> yields no solutions.</p>
+<p class="sd-card-text">(h)  </p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    (X + A)B &amp;= I \\
+    XB + AB &amp;= I \\
+    XB &amp;= I - AB \\
+    X &amp;= B^{-1}(I - AB) \\
+    &amp;= \begin{pmatrix} \frac{1}{3} &amp; 0 \\ \frac{1}{15} &amp; \frac{1}{5} \end{pmatrix}\left(
+    \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - 
+    \begin{pmatrix} 1 &amp; -3 \\ 4 &amp; 2 \end{pmatrix}
+    \begin{pmatrix} 3 &amp; 0 \\ -1 &amp; 5 \end{pmatrix} \right) \\
+    &amp;= \begin{pmatrix} \frac{1}{3} &amp; 0 \\ \frac{1}{15} &amp; \frac{1}{5} \end{pmatrix}\left(
+    \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - 
+    \begin{pmatrix} 6 &amp; -15 \\ 10 &amp; 10 \end{pmatrix} \right) \\
+    &amp;= \begin{pmatrix} \frac{1}{3} &amp; 0 \\ \frac{1}{15} &amp; \frac{1}{5} \end{pmatrix}
+    \begin{pmatrix} -5 &amp; 15 \\ -10 &amp; -9 \end{pmatrix} \\
+    &amp;= \begin{pmatrix} -\frac{5}{3} &amp; 5 \\ -\frac{7}{3} &amp; -\frac{4}{5} \end{pmatrix}
+\end{align*}\]</div>
+</div>
+</details></div>
+<div class="note admonition" id="ex1-10">
+<p class="admonition-title">Exercise 1.10</p>
+<p>Use Python and SymPy to calculate the solutions to exercises <a class="reference internal" href="#ex1-4"><span class="std std-ref">1.4</span></a> to <a class="reference internal" href="#ex1-6"><span class="std std-ref">1.6</span></a>.</p>
+<p><a class="reference internal" href="#ex1-4"><span class="std std-ref">Exercise 1.4</span></a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">]])</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+<span class="c1"># Exercise 1.4</span>
+<span class="c1"># (a)</span>
+<span class="n">AplusB</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">AplusB</span><span class="p">)</span>
+
+<span class="c1"># (b) B + C is undefined</span>
+
+<span class="c1"># (c)</span>
+<span class="n">AT</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(c)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">AT</span><span class="p">)</span>
+
+<span class="c1"># (d)</span>
+<span class="n">CT</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(d)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CT</span><span class="p">)</span>
+
+<span class="c1"># (e)</span>
+<span class="n">DplusET</span> <span class="o">=</span> <span class="n">D</span> <span class="o">+</span> <span class="n">E</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(e)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">DplusET</span><span class="p">)</span>
+
+<span class="c1"># (d)</span>
+<span class="n">threeBminusA</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">B</span> <span class="o">-</span> <span class="n">A</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(f)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">threeBminusA</span><span class="p">)</span>
+
+<span class="c1"># (g) E + F^T is undefined</span>
+
+<span class="c1"># (h)</span>
+<span class="n">FTT</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(h)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">FTT</span><span class="p">)</span>
+
+<span class="c1"># (i)</span>
+<span class="n">twoGplusH</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">G</span> <span class="o">+</span> <span class="n">H</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(i)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">twoGplusH</span><span class="p">)</span>
+
+<span class="c1"># (j)</span>
+<span class="n">ATplusBT</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(j)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ATplusBT</span><span class="p">)</span>
+
+<span class="c1"># (k)</span>
+<span class="n">AplusBT</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(k)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">AplusBT</span><span class="p">)</span>
+
+<span class="c1"># (l)</span>
+<span class="n">minusG</span> <span class="o">=</span> <span class="o">-</span><span class="n">G</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(l)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">minusG</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><p><a class="reference internal" href="#ex1-5"><span class="std std-ref">Exercise 1.5</span></a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exercise 1.5</span>
+<span class="c1"># (a)</span>
+<span class="n">AB</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">AB</span><span class="p">)</span>
+ 
+<span class="c1"># (b)</span>
+<span class="n">BA</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">A</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(b)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span>
+
+<span class="c1"># (c)</span>
+<span class="n">AC</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">C</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(c)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">AC</span><span class="p">)</span>
+
+<span class="c1"># (d) CA is undefined&quot;</span>
+
+<span class="c1"># (e)</span>
+<span class="n">CTC</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">C</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(e)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CTC</span><span class="p">)</span>
+
+<span class="c1"># (f)</span>
+<span class="n">CCT</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(f)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">CCT</span><span class="p">)</span>
+
+<span class="c1"># (g)</span>
+<span class="n">DE</span> <span class="o">=</span> <span class="n">D</span> <span class="o">*</span> <span class="n">E</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(g)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">DE</span><span class="p">)</span>
+
+<span class="c1"># (h)</span>
+<span class="n">GH</span> <span class="o">=</span> <span class="n">G</span> <span class="o">*</span> <span class="n">H</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(h)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">GH</span><span class="p">)</span>
+
+<span class="c1"># (i)</span>
+<span class="n">ADE</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="p">(</span><span class="n">D</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(i)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ADE</span><span class="p">)</span>
+
+<span class="c1"># (j)</span>
+<span class="n">ADE</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">*</span> <span class="n">D</span><span class="p">)</span> <span class="o">*</span> <span class="n">E</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(j)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ADE</span><span class="p">)</span>
+
+<span class="c1"># (k)</span>
+<span class="n">A3</span> <span class="o">=</span> <span class="n">A</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(k)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
+
+<span class="c1"># (g)</span>
+<span class="n">G4</span> <span class="o">=</span> <span class="n">G</span> <span class="o">**</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(l)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">G4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details><p><a class="reference internal" href="#ex1-6"><span class="std std-ref">Exercise 1.6</span></a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exercise 1.6</span>
+<span class="c1"># (a)</span>
+<span class="n">detA</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(a) det(A) = </span><span class="si">{</span><span class="n">detA</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># (b)</span>
+<span class="n">detB</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(b) |B| = </span><span class="si">{</span><span class="n">detB</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># (c)</span>
+<span class="n">det3A</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(c) det(3A) = </span><span class="si">{</span><span class="n">det3A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># (d)</span>
+<span class="n">detG</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(d) det(G) = </span><span class="si">{</span><span class="n">detG</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># (e)</span>
+<span class="n">adjB</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">adjugate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(e)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">adjB</span><span class="p">)</span>
+
+<span class="c1"># (f)</span>
+<span class="n">adjH</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">adjugate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(f)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">adjH</span><span class="p">)</span>
+
+<span class="c1"># (g)</span>
+<span class="n">invA</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(g) &quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">invA</span><span class="p">)</span>
+
+<span class="c1"># (h)</span>
+<span class="n">invB</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(h)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">invB</span><span class="p">)</span>
+
+<span class="c1"># (i)</span>
+<span class="n">invG</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(i)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">invG</span><span class="p">)</span>
+
+<span class="c1"># (j)</span>
+<span class="n">invAB</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(j)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">invAB</span><span class="p">)</span>
+
+<span class="c1"># (k)</span>
+<span class="n">invBinvA</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span> <span class="o">*</span> <span class="n">A</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(k)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">invBinvA</span><span class="p">)</span>
+
+<span class="c1"># (l)</span>
+<span class="n">invDE</span> <span class="o">=</span> <span class="p">(</span><span class="n">D</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(l)&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">invDE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_Matrices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="1.6_Matrix_algebra.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Matrix algebra</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../2_Systems_of_Linear%20Equations/2.0_Systems_of_linear_equations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Systems of Linear Equations</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Jon Shiach<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

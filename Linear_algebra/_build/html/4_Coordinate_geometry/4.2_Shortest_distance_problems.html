@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shortest distance problems &#8212; Linear Algebra Lecture Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Co-ordinate geometry exercises" href="4.4_Coordinate_geometry_exercises.html" />
+    <link rel="prev" title="Planes" href="4.1_Planes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Linear Algebra Lecture Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.0_about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.1_Teaching_schedule.html">
+   Teaching schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.2_Assessment.html">
+   Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.3_Mathematical_preliminaries.html">
+   Mathematical preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.4_Python.html">
+   Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preliminaries/0.5_How_to_pass.html">
+   How to pass the unit
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../1_Matrices/1.0_Matrices.html">
+   Matrices
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.1_Matrix_multiplication.html">
+     Matrix multiplication
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.2_Matrix_transpose.html">
+     Matrix transpose
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.3_Special_matrices.html">
+     Special matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.4_Determinants.html">
+     Determinants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.5_Inverse_matrix.html">
+     Inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.6_Matrix_algebra.html">
+     Matrix algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_Matrices/1.8_Matrices_exercises.html">
+     Matrices exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.0_Systems_of_linear_equations.html">
+   Systems of Linear Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.1_Solving_using_inverse_matrix.html">
+     Solving systems of linear equations using the inverse matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.2_Cramers_rule.html">
+     Cramer’s rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.3_Gaussian_elimination.html">
+     Gaussian elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.4_Partial_pivoting.html">
+     Partial pivoting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.5_Gauss_Jordan_elimination.html">
+     Gauss-Jordan elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.6_Consistent_inconsistent_and_indeterminate_systems.html">
+     Consistent, inconsistent and indeterminate systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.7_Homogeneous_systems.html">
+     Homogeneous systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_Systems_of_Linear%20Equations/2.9_Systems_of_linear_equations_exercises.html">
+     Systems of linear equations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_Vectors/3.0_Vectors.html">
+   Vectors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.1_Arithmetic_operations_on_vectors.html">
+     Arithmetic operations on vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.2_Vector_magnitude.html">
+     Vector magnitude
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.3_Vector_products.html">
+     Vector products
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.4_Linear_combination_of_vectors.html">
+     Linear combination of vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_Vectors/3.6_Vectors_exercises.html">
+     Vectors exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="4.0_Coordinate_geometry.html">
+   Co-ordinate Geometry
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="4.1_Planes.html">
+     Planes
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Shortest distance problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4.4_Coordinate_geometry_exercises.html">
+     Co-ordinate geometry exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5_Vector_spaces/5.0_Vector_spaces.html">
+   Vector spaces
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.1_Subspaces.html">
+     Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.2_Linear_dependence.html">
+     Linear dependence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.3_Basis.html">
+     Basis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_Vector_spaces/5.5_Vector_spaces_exercises.html">
+     Vector spaces exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../6_Linear_transformations/6.0_Linear_transformations.html">
+   Linear Transformations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.1_Composite_linear_transformations.html">
+     Composite linear transformations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.2_Rotation_reflection_and_scaling.html">
+     Rotation, reflection and scaling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.3_Translation.html">
+     Translation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6_Linear_transformations/6.5_Transformations_exercises.html">
+     Transformations exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_Appendices/7.1_Cheat_sheet.html">
+   Linear Algebra Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_Appendices/7.2_Sympy.html">
+   SymPy commands
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/drjonshiach/Linear_algebra_book/main?urlpath=tree/4_Coordinate_geometry/4.2_Shortest_distance_problems.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/4_Coordinate_geometry/4.2_Shortest_distance_problems.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortest-distance-between-two-points">
+   Shortest distance between two points
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortest-distance-between-a-line-and-a-point">
+   Shortest distance between a line and a point
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortest-distance-between-two-lines">
+   Shortest distance between two lines
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Shortest distance problems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortest-distance-between-two-points">
+   Shortest distance between two points
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortest-distance-between-a-line-and-a-point">
+   Shortest distance between a line and a point
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortest-distance-between-two-lines">
+   Shortest distance between two lines
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="shortest-distance-problems">
+<span id="id1"></span><h1>Shortest distance problems<a class="headerlink" href="#shortest-distance-problems" title="Permalink to this headline">#</a></h1>
+<p>We can take advantage of vector geometry to calculate the solutions to shortest distance problems.</p>
+<div class="section" id="shortest-distance-between-two-points">
+<span id="id2"></span><h2>Shortest distance between two points<a class="headerlink" href="#shortest-distance-between-two-points" title="Permalink to this headline">#</a></h2>
+<p>In <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> the shortest distance, <span class="math notranslate nohighlight">\(d\)</span>, between two points <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> is the length of a straight line segment connecting them. If we think about this segment as of a vector, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    d = |\overrightarrow{PQ}| = \sqrt{\displaystyle\sum_{i=1}^n (p_i-q_i)^2},
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P=(p_1,p_2,\dots,p_n)\)</span> and <span class="math notranslate nohighlight">\(Q=(q_1,q_2,\dots,q_n)\)</span>.</p>
+</div>
+<div class="section" id="shortest-distance-between-a-line-and-a-point">
+<h2>Shortest distance between a line and a point<a class="headerlink" href="#shortest-distance-between-a-line-and-a-point" title="Permalink to this headline">#</a></h2>
+<p>To find the shortest distance, <span class="math notranslate nohighlight">\(d\)</span>, between a line <span class="math notranslate nohighlight">\(\ell: P + \mathbf{d}t\)</span> and a point <span class="math notranslate nohighlight">\(Q\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> we look at a plane they both lie in. Let <span class="math notranslate nohighlight">\(R\)</span> be a point on the line such that the vector <span class="math notranslate nohighlight">\(\overrightarrow{RQ}\)</span> is perpendicular to <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> (<a class="reference internal" href="#line-point-distance-figure"><span class="std std-numref">Fig. 21</span></a>) then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    d = | \overrightarrow{RQ} |.
+\end{align*}\]</div>
+<div class="figure align-default" id="line-point-distance-figure">
+<img alt="../_images/line_point_distance.png" src="../_images/line_point_distance.png" />
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">The shortest distance of a point <span class="math notranslate nohighlight">\(Q\)</span> from the line <span class="math notranslate nohighlight">\(\ell\)</span> is the length of the chord <span class="math notranslate nohighlight">\(R \to Q\)</span> which is perpendicular to <span class="math notranslate nohighlight">\(\ell\)</span>.</span><a class="headerlink" href="#line-point-distance-figure" title="Permalink to this image">#</a></p>
+</div>
+<p>Since <span class="math notranslate nohighlight">\(\overrightarrow{RQ}\)</span> is perpendicular to <span class="math notranslate nohighlight">\(d\)</span> then <span class="math notranslate nohighlight">\(\overrightarrow{RQ} \cdot \mathbf{d} = 0\)</span> so we calculate the position of <span class="math notranslate nohighlight">\(R\)</span> that satisfies</p>
+<div class="math notranslate nohighlight" id="equation-point-line-distance-equation">
+<span class="eqno">(15)<a class="headerlink" href="#equation-point-line-distance-equation" title="Permalink to this equation">#</a></span>\[(Q - R) \cdot \mathbf{d} = 0.\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(R = P + t\mathbf{d}\)</span> into equation <a class="reference internal" href="#equation-point-line-distance-equation">(15)</a> and rearranging to make <span class="math notranslate nohighlight">\(t\)</span> the subject gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    (Q - P - t \mathbf{d}) \cdot \mathbf{d} &amp;= 0 \\
+    (Q - P) \cdot \mathbf{d} - t \mathbf{d} \cdot \mathbf{d} &amp;= 0 \\
+    \therefore t &amp;= \frac{(Q - P) \cdot \mathbf{d}}{ \mathbf{d} \cdot \mathbf{d}}.
+\end{align*}\]</div>
+<p>This gives the value of the parameter <span class="math notranslate nohighlight">\(t\)</span> that can be used to calculate the co-ordinates of the point <span class="math notranslate nohighlight">\(R\)</span> and therefore the shortest distance between the point <span class="math notranslate nohighlight">\(Q\)</span> and the line <span class="math notranslate nohighlight">\(\ell\)</span> is <span class="math notranslate nohighlight">\(|Q - R|\)</span>.</p>
+<div class="important admonition" id="point-line-distance-theorem">
+<p class="admonition-title">Theorem: The shortest distance between a point and a line</p>
+<p>The shortest distance between the point <span class="math notranslate nohighlight">\(Q\)</span> and a line that passes through the point <span class="math notranslate nohighlight">\(P\)</span> in the direction <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> is <span class="math notranslate nohighlight">\(|Q - R|\)</span> where <span class="math notranslate nohighlight">\(R = P + t\mathbf{d}\)</span> and</p>
+<div class="math notranslate nohighlight" id="equation-point-line-t-equation">
+<span class="eqno">(16)<a class="headerlink" href="#equation-point-line-t-equation" title="Permalink to this equation">#</a></span>\[t = \frac{(Q - P) \cdot \mathbf{d}}{ \mathbf{d} \cdot \mathbf{d}}.\]</div>
+</div>
+<div class="seealso admonition" id="point-line-distance-example">
+<p class="admonition-title">Example 4.8</p>
+<p>Find the shortest distance between the point <span class="math notranslate nohighlight">\(Q = (2,2,2)\)</span> and the line <span class="math notranslate nohighlight">\(\ell : (t,t-2, t+1)\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Writing <span class="math notranslate nohighlight">\(\ell\)</span> as a vector equation</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{pmatrix} 0 \\ -2 \\ 1 \end{pmatrix} + t
+    \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">so the direction vector is <span class="math notranslate nohighlight">\(\mathbf{d} = (1, 1, 1)\)</span>. Using <a class="reference internal" href="#equation-point-line-distance-equation">(15)</a></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    t &amp;= \frac{ \left( \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} - 
+    \begin{pmatrix} 0 \\ -2 \\ 1 \end{pmatrix}\right) \cdot 
+    \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}}{
+    \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \cdot 
+    \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+    }
+    = \frac{\begin{pmatrix} 2 \\ 4 \\ 1 \end{pmatrix} \cdot 
+    \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+    }{1 + 1 + 1} 
+    = \frac{2 + 4 + 1}{3} = \frac{7}{3}.
+\end{align*}\]</div>
+<p class="sd-card-text">So the point on <span class="math notranslate nohighlight">\(\ell\)</span> which is closest to <span class="math notranslate nohighlight">\(Q\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    R = \begin{pmatrix} t \\ t - 2 \\ t + 1 \end{pmatrix} 
+    = \begin{pmatrix} \frac{7}{3} \\ \frac{7}{3} - 2 \\ \frac{7}{3} + 1 \end{pmatrix}
+    = \begin{pmatrix} \frac{7}{3} \\ \frac{1}{3} \\ \frac{10}{3} \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">and the shortest distance is <span class="math notranslate nohighlight">\(|Q - R|\)</span> so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    Q - R = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} - 
+    \begin{pmatrix} \frac{7}{3} \\ \frac{1}{3} \\ \frac{10}{3} \end{pmatrix} =
+    \begin{pmatrix} -\frac{1}{3} \\ \frac{5}{3} \\ -4/ 3 \end{pmatrix}, \\
+    \therefore |\overrightarrow{QR}| &amp;= \sqrt{\left(-\frac{1}{3}\right)^2 + \left(\frac{5}{3}\right)^2 + \left( -\frac{4}{3}\right)^2} = \sqrt{\frac{14}{3}} \approx 2.16.
+\end{align*}\]</div>
+</div>
+</details></div>
+</div>
+<div class="section" id="shortest-distance-between-two-lines">
+<h2>Shortest distance between two lines<a class="headerlink" href="#shortest-distance-between-two-lines" title="Permalink to this headline">#</a></h2>
+<p>Given two lines described by <span class="math notranslate nohighlight">\(\ell_1: P_1 + t\mathbf{d}_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2: P_2 + t\mathbf{d}_2\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> we have three situations to consider</p>
+<ul class="simple">
+<li><p>If the two lines intersect then obviously the shortest distance is obviously 0.</p></li>
+<li><p>If the two lines are parallel then any point on <span class="math notranslate nohighlight">\(\ell_1\)</span> can gives the shortest distance between <span class="math notranslate nohighlight">\(\ell_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2\)</span>. Hence we simply choose a point <span class="math notranslate nohighlight">\(R\)</span> on <span class="math notranslate nohighlight">\(\ell_2\)</span> and apply method for <span class="xref myst">finding the distance between a point and a line</span>.</p></li>
+<li><p>If the two lines are skew then the shortest distance is the distance of the chord that is perpendicular to both <span class="math notranslate nohighlight">\(\ell_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2\)</span> (<a class="reference internal" href="#line-line-distance-figure"><span class="std std-numref">Fig. 22</span></a>).</p></li>
+</ul>
+<div class="figure align-default" id="line-line-distance-figure">
+<img alt="../_images/line_line_distance.png" src="../_images/line_line_distance.png" />
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">The shortest distance between skew lines is the distance of the chord which is perpendicular to both lines.</span><a class="headerlink" href="#line-line-distance-figure" title="Permalink to this image">#</a></p>
+</div>
+<p>If <span class="math notranslate nohighlight">\(Q_1\)</span> and <span class="math notranslate nohighlight">\(Q_2\)</span> are points on the lines <span class="math notranslate nohighlight">\(\ell_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2\)</span> respectively then the chord <span class="math notranslate nohighlight">\(Q_2 - Q_1\)</span> which is perpendicular to both lines has the direction vector <span class="math notranslate nohighlight">\(\mathbf{n} = \mathbf{d}_1 \times \mathbf{d}_2\)</span>. If <span class="math notranslate nohighlight">\(d\)</span> is the distance between <span class="math notranslate nohighlight">\(Q_1\)</span> and <span class="math notranslate nohighlight">\(Q_2\)</span> then</p>
+<div class="math notranslate nohighlight" id="equation-line-line-distance-equation-1">
+<span class="eqno">(17)<a class="headerlink" href="#equation-line-line-distance-equation-1" title="Permalink to this equation">#</a></span>\[Q_2 - Q_1 = d (\mathbf{d}_1 \times \mathbf{d}_2),\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\hat{\mathbf{n}} = \dfrac{\mathbf{d}_1 \times \mathbf{d}_2}{|\mathbf{d}_1 \times \mathbf{d}_2|}\)</span> and substituting the equations of <span class="math notranslate nohighlight">\(Q_1\)</span> and <span class="math notranslate nohighlight">\(Q_2\)</span> equation <a class="reference internal" href="#equation-line-line-distance-equation-1">(17)</a> gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    Q_2 - Q_1 &amp;= d \hat{\mathbf{n}}\\
+    (P_2 + t_2 \mathbf{d}_2) - (P_1 + t_1 \mathbf{d}_1) 
+    &amp;= d \hat{\mathbf{n}}\\
+    (P_2 + t_2 \mathbf{d}_2) \cdot \hat{\mathbf{n}} - (P_1 + t_1 \mathbf{d}_1) \cdot \hat{\mathbf{n}} 
+    &amp;= d \hat{\mathbf{n}} \cdot \hat{\mathbf{n}} \\
+    P_2 \cdot \hat{\mathbf{n}} + t_2 \mathbf{d}_2 \cdot \hat{\mathbf{n}} - P_1 \cdot \hat{\mathbf{n}} - t_1 \mathbf{d}_1 \cdot \hat{\mathbf{n}} 
+    &amp;= d \hat{\mathbf{n}} \cdot \hat{\mathbf{n}}.
+\end{align*}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is perpendicular to both <span class="math notranslate nohighlight">\(\ell_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2\)</span> then <span class="math notranslate nohighlight">\(\mathbf{d}_1 \cdot \mathbf{n} = \mathbf{d}_2 \cdot \mathbf{n} = 0\)</span> and <span class="math notranslate nohighlight">\(\hat{\mathbf{n}} \cdot \hat{\mathbf{n}} = 1\)</span> then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    P_2 \cdot \hat{\mathbf{n}} - P_1 \cdot \hat{\mathbf{n}} &amp;= d,
+\end{align*}\]</div>
+<p>which simplifies to</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    d &amp;= (P_2 - P_1) \cdot \hat{\mathbf{n}}.
+\end{align*}\]</div>
+<div class="important admonition" id="line-line-distance-theorem">
+<p class="admonition-title">Theorem: The shortest distance between two skew lines</p>
+<p>The shortest distance between two skew lines <span class="math notranslate nohighlight">\(Q_1 = P_1 + t \mathbf{d}_1\)</span> and <span class="math notranslate nohighlight">\(Q_2 = P_2 + t \mathbf{d}_2\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-line-line-distance-equation">
+<span class="eqno">(18)<a class="headerlink" href="#equation-line-line-distance-equation" title="Permalink to this equation">#</a></span>\[d = (P_2 - P_1) \cdot \hat{\mathbf{n}}.\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{n} = \dfrac{\mathbf{d}_1 \times \mathbf{d}_2}{|\mathbf{d}_1 \times \mathbf{d}_2|}\)</span>.</p>
+</div>
+<div class="seealso admonition" id="line-line-distance-example">
+<p class="admonition-title">Example 4.9</p>
+<p>Find the shortest distance between the two lines <span class="math notranslate nohighlight">\(\ell_1 = \{(t,1+4t,3 + 2t):t\in\mathbb{R}\}\)</span> and <span class="math notranslate nohighlight">\(\ell_2 = \{(1,1+2t,3 + 4t):t\in\mathbb{R}\}\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">First, we need to identify the direction vectors <span class="math notranslate nohighlight">\(\mathbf{d}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{d}_2\)</span>. Writing <span class="math notranslate nohighlight">\(\ell_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2\)</span> as vector equations gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    Q_1 &amp;= P_1 + t\mathbf{d}_1 = \begin{pmatrix} 0 \\ 1 \\ 3 \end{pmatrix} + t
+    \begin{pmatrix} 1 \\ 4 \\ 2 \end{pmatrix} , \\
+    Q_2 &amp;= P_2 + t\mathbf{d}_2 = \begin{pmatrix} 1 \\ 1 \\ 3 \end{pmatrix} + t
+    \begin{pmatrix} 0 \\ 2 \\ 4 \end{pmatrix},
+\end{align*}\]</div>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(\mathbf{d}_1 = (1, 4, 2)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{d}_2 = (0, 2, 4)\)</span>. Now we can calculate <span class="math notranslate nohighlight">\(\hat{\mathbf{n}}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \mathbf{n} &amp;= \mathbf{d}_1 \times \mathbf{d}_2
+    = \begin{vmatrix} 
+        \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+        1 &amp; 4 &amp; 2 \\
+        0 &amp; 2 &amp; 4
+    \end{vmatrix} = 
+    \begin{pmatrix} 12 \\ -4 \\ 2 \end{pmatrix}, \\
+    |\mathbf{n}| &amp;= \sqrt{12^2 + (-4)^2 + 2^2} = \sqrt{164} = 2\sqrt{41}, \\
+    \therefore \hat{\mathbf{n}} &amp;= \frac{\mathbf{n}}{|\mathbf{n}|} = 
+    \begin{pmatrix} \frac{6}{\sqrt{41}} \\ -\frac{2}{\sqrt{41}} \\ \frac{1}{\sqrt{41}} \end{pmatrix} 
+    = \begin{pmatrix} \frac{6\sqrt{41}}{41} \\ -\frac{2\sqrt{41}}{41} \\ \frac{\sqrt{41}}{41} \end{pmatrix}.
+\end{align*}\]</div>
+<p class="sd-card-text">Note that since <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is non-zero, <span class="math notranslate nohighlight">\(\ell_1\)</span> and <span class="math notranslate nohighlight">\(\ell_2\)</span> are skew lines. Using equation <a class="reference internal" href="#equation-line-line-distance-equation">(18)</a></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    d &amp;= (P_2 - P_1) \cdot \hat{\mathbf{n}} \\
+    &amp;= \left( \begin{pmatrix} 1 \\ 1 \\ 3 \end{pmatrix} -
+    \begin{pmatrix} 0 \\ 1 \\ 3 \end{pmatrix} \right) \cdot 
+    \begin{pmatrix} \frac{6\sqrt{41}}{41} \\ -\frac{2\sqrt{41}}{41} \\ \frac{\sqrt{41}}{41} \end{pmatrix} \\
+    &amp;= \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \cdot 
+    \begin{pmatrix} \frac{6\sqrt{41}}{41} \\ -\frac{2\sqrt{41}}{41} \\ \frac{\sqrt{41}}{41} \end{pmatrix} \\
+    &amp;= \frac{6 \sqrt{41}}{41}.
+\end{align*}\]</div>
+</div>
+</details></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./4_Coordinate_geometry"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="4.1_Planes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Planes</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="4.4_Coordinate_geometry_exercises.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Co-ordinate geometry exercises</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dr Jon Shiach<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
