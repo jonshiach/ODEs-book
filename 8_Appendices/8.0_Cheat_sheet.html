@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explicit Runge-Kutta Methods &#8212; Runge-Kutta Methods and Computational Linear Algebra</title>
+    <title>Cheat Sheet &#8212; Runge-Kutta Methods and Computational Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Derivation of Explicit Runge-Kutta Methods" href="2.1_ERK_Derivation.html" />
-    <link rel="prev" title="Initial Value Problems Exercises" href="../1_IVPs/1.7_Exercises.html" />
+    <link rel="prev" title="Indirect methods exercises" href="../7_Indirect_methods/7.6_Indirect_methods_exercises.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -141,7 +140,7 @@ const thebe_selector_output = ".output, .cell_output"
   Runge-Kutta Methods
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../1_IVPs/1.0_IVPs.html">
    Initial Value Problems
@@ -189,38 +188,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_ERKs/2.0_ERKs.html">
    Explicit Runge-Kutta Methods
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.1_ERK_Derivation.html">
+    <a class="reference internal" href="../2_ERKs/2.1_ERK_Derivation.html">
      Derivation of Explicit Runge-Kutta Methods
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.2_RK4_Derivation.html">
+    <a class="reference internal" href="../2_ERKs/2.2_RK4_Derivation.html">
      Derivation of a fourth-order explicit Runge-Kutta method
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.3_Solving_IVPs_using_ERK_methods.html">
+    <a class="reference internal" href="../2_ERKs/2.3_Solving_IVPs_using_ERK_methods.html">
      Solving initial value problems using explicit Runge-Kutta methods
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.4_ERK_Summary.html">
+    <a class="reference internal" href="../2_ERKs/2.4_ERK_Summary.html">
      Chapter Summary
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.5_ERK_Exercises.html">
+    <a class="reference internal" href="../2_ERKs/2.5_ERK_Exercises.html">
      Explicit Runge-Kutta Methods Exercises
     </a>
    </li>
@@ -424,10 +423,10 @@ const thebe_selector_output = ".output, .cell_output"
   Appendices
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../8_Appendices/8.0_Cheat_sheet.html">
-   Glossary
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cheat Sheet
   </a>
  </li>
 </ul>
@@ -489,7 +488,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/drjonshiach/ODEs_book/main?urlpath=tree/2_ERKs/2.0_ERKs.ipynb"
+        <a href="https://mybinder.org/v2/gh/drjonshiach/ODEs_book/main?urlpath=tree/8_Appendices/8.0_Cheat_sheet.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -532,7 +531,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/2_ERKs/2.0_ERKs.ipynb"
+        <a href="../_sources/8_Appendices/8.0_Cheat_sheet.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -592,28 +591,19 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general-form-of-a-runge-kutta-method">
-   General form of a Runge-Kutta method
+  <a class="reference internal nav-link" href="#initial-value-problems">
+   Initial value problems
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#butcher-tableau">
-     Butcher tableau
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explicit-and-implicit-runge-kutta-methods">
-   Explicit and implicit Runge-Kutta methods
+  <a class="reference internal nav-link" href="#explicit-runge-kutta-methods">
+   Explicit Runge-Kutta methods
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#butcher-tableau-for-explicit-and-implicit-runge-kutta-methods">
-     Butcher tableau for explicit and implicit Runge-Kutta methods
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implicit-runge-kutta-methods">
+   Implicit Runge-Kutta methods
+  </a>
  </li>
 </ul>
 
@@ -624,7 +614,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Explicit Runge-Kutta Methods</h1>
+                <h1>Cheat Sheet</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -635,28 +625,19 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general-form-of-a-runge-kutta-method">
-   General form of a Runge-Kutta method
+  <a class="reference internal nav-link" href="#initial-value-problems">
+   Initial value problems
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#butcher-tableau">
-     Butcher tableau
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explicit-and-implicit-runge-kutta-methods">
-   Explicit and implicit Runge-Kutta methods
+  <a class="reference internal nav-link" href="#explicit-runge-kutta-methods">
+   Explicit Runge-Kutta methods
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#butcher-tableau-for-explicit-and-implicit-runge-kutta-methods">
-     Butcher tableau for explicit and implicit Runge-Kutta methods
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implicit-runge-kutta-methods">
+   Implicit Runge-Kutta methods
+  </a>
  </li>
 </ul>
 
@@ -668,184 +649,137 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="explicit-runge-kutta-methods">
-<span id="erk-chapter"></span><h1>Explicit Runge-Kutta Methods<a class="headerlink" href="#explicit-runge-kutta-methods" title="Permalink to this headline">#</a></h1>
-<p><strong>Learning Outcomes</strong></p>
-<p>On successful completion of this chapter readers will be able to:</p>
-<ul class="simple">
-<li><p>identify a <a class="reference internal" href="#rk-definition"><span class="std std-ref">Runge-Kutta method</span></a> and express it using a <a class="reference internal" href="#butcher-tableau-definition"><span class="std std-ref">Butcher tableau</span></a>;</p></li>
-<li><p>distinguish between <a class="reference internal" href="#explicit-and-implicit-rk-methods-section"><span class="std std-ref">explicit and implicit</span></a> Runge-Kutta methods;</p></li>
-<li><p>derive an explicit Runge-Kutta method using the order conditions;</p></li>
-<li><p>apply <a class="reference internal" href="2.3_Solving_IVPs_using_ERK_methods.html#applying-erk-methods-to-solve-ivps-section"><span class="std std-ref">explicit Runge-Kutta methods to solve an initial value problem</span></a>.</p></li>
-</ul>
-<hr class="docutils" />
-<div class="section" id="general-form-of-a-runge-kutta-method">
-<span id="general-form-of-a-rk-method-section"></span><h2>General form of a Runge-Kutta method<a class="headerlink" href="#general-form-of-a-runge-kutta-method" title="Permalink to this headline">#</a></h2>
-<p>Runge-Methods are the most popular family of methods used to solve Ordinary Differential Equations (ODEs). They are known as <strong>single step methods</strong> because they update the solution for the next step <span class="math notranslate nohighlight">\(y_{n+1}\)</span> using information from the single step <span class="math notranslate nohighlight">\(y_n\)</span>. The other type of method for solving ODEs are <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_multistep_method"><strong>linear multistep methods</strong></a> that calculate <span class="math notranslate nohighlight">\(y_{n+1}\)</span> using information from multiple steps <span class="math notranslate nohighlight">\(y_n ,y_{n-1} ,y_{n-2} ,\ldots \)</span></p>
-<div class="note admonition" id="rk-definition">
-<p class="admonition-title">Definition: General form of a Runge-Kutta method</p>
-<p>The general form of a Runge-Kutta method for solving the ODE <span class="math notranslate nohighlight">\(y' =f(t,y)\)</span> is</p>
-<div class="math notranslate nohighlight" id="equation-rk-equation">
-<span class="eqno">(6)<a class="headerlink" href="#equation-rk-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
-    y_{n+1} &amp;=y_n +h\sum_{i=1}^s b_i k_i,\\
-    k_i &amp;=f(t_n +c_i h,y_n +h\sum_{j=1}^s a_{ij} k_j ),
-\end{align}\end{split}\]</div>
-<p>where</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(t_n\)</span> is some value of the independent variable <span class="math notranslate nohighlight">\(t\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(y_n=y(t_n)\)</span> is the value of the function <span class="math notranslate nohighlight">\(y\)</span> at <span class="math notranslate nohighlight">\(t=t_n\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(h=t_{n+1}-t_n\)</span> is the <strong>step length</strong>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(s\)</span> is the number of <strong>stages</strong> of the method;</p></li>
-<li><p><span class="math notranslate nohighlight">\(k_i\)</span> are intermediate <strong>stage values</strong> used to calculate <span class="math notranslate nohighlight">\(y_{n+1}\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> are coefficients that defined a particular Runge-Kutta method.</p></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="cheat-sheet">
+<h1>Cheat Sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this headline">#</a></h1>
+<div class="section" id="initial-value-problems">
+<h2>Initial value problems<a class="headerlink" href="#initial-value-problems" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-Ordinary-Differential-Equation-ODE">Ordinary Differential Equation (ODE)<a class="headerlink" href="#term-Ordinary-Differential-Equation-ODE" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../1_IVPs/1.0_IVPs.html#ode-section"><span class="std std-ref">ODE</span></a> is an equation of the for</p>
+<div class="math notranslate nohighlight">
+\[y^{(n)} = f(t, y, y', y'', \ldots, y^{(n-1)}),\]</div>
+<p>where <span class="math notranslate nohighlight">\(y(t)\)</span> is a function of the independent variable <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</dd>
+<dt id="term-Initial-Value-Problem-IVP">Initial Value Problem (IVP)    <a class="headerlink" href="#term-Initial-Value-Problem-IVP" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../1_IVPs/1.0_IVPs.html#ivp-definition"><span class="std std-ref">initial value problem</span></a> is an ODE where the solution at some initial state is known</p>
+<div class="math notranslate nohighlight">
+\[y' = f(t, y), \qquad t \in [a, b], \qquad y(a) = \alpha.\]</div>
+</dd>
+<dt id="term-The-Taylor-series">The Taylor series<a class="headerlink" href="#term-The-Taylor-series" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_IVPs/1.1_Taylor_Series.html#taylor-series-section"><span class="std std-ref">Taylor series</span></a> is a series expansion of a function <span class="math notranslate nohighlight">\(f(t)\)</span></p>
+<div class="math notranslate nohighlight">
+\[f(t + h) = \sum_{n=0}^\infty \frac{h^n}{n!}f^{(n)}(t).\]</div>
+</dd>
+<dt id="term-Truncating-the-Taylor-series">Truncating the Taylor series<a class="headerlink" href="#term-Truncating-the-Taylor-series" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../1_IVPs/1.1_Taylor_Series.html#taylor-series-section"><span class="std std-ref">Truncating the Taylor series</span></a> is where all terms after the <span class="math notranslate nohighlight">\(n\)</span>th derivative in the Taylor series are omitted.</p>
+<div class="math notranslate nohighlight">
+\[f(t + h) \approx f(t) + hf'(t) + \frac{h^2}{2!} f''(t) + \cdots + \frac{h^n}{n!} f^{(n)}(t).\]</div>
+</dd>
+<dt id="term-The-Euler-method">The Euler method<a class="headerlink" href="#term-The-Euler-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_IVPs/1.2_Euler_Method.html#euler-method-section"><span class="std std-ref">Euler method</span></a> is a first-order accurate numerical method for solving an initial value problem of the form <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, <span class="math notranslate nohighlight">\(t\in [a, b]\)</span>, <span class="math notranslate nohighlight">\(t_0 = \alpha\)</span></p>
+<div class="math notranslate nohighlight">
+\[y_{n+1} = y_n + h f(t_n, y_n),\]</div>
+<p><span class="math notranslate nohighlight">\(t_n\)</span> is a value of <span class="math notranslate nohighlight">\(t\)</span> at step <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(y_n = y(t_n)\)</span> and <span class="math notranslate nohighlight">\(h = t_{n+1} - t_n\)</span> is the step length.</p>
+</dd>
+<dt id="term-Local-Truncation-Error-LTE">Local Truncation Error (LTE)<a class="headerlink" href="#term-Local-Truncation-Error-LTE" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#local-truncation-error-section"><span class="std std-ref">local truncation error</span></a> is the error in the calculation of a single step of a numerical method assuming that the previous values are exact.</p>
+</dd>
+<dt id="term-Global-Truncation-Error-GTE">Global Truncation Error (GTE)<a class="headerlink" href="#term-Global-Truncation-Error-GTE" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#global-truncation-error-section"><span class="std std-ref">global truncation error</span></a> is the error that has accumulated over all previous steps of a numerical method assuming the initial solution was known to be exact.</p>
+</dd>
+<dt id="term-Big-O-notation">Big-O notation<a class="headerlink" href="#term-Big-O-notation" title="Permalink to this term">#</a></dt><dd><p><span class="math notranslate nohighlight">\(f(h) = O(h^n)\)</span> means that as <span class="math notranslate nohighlight">\(h \to 0\)</span> then <span class="math notranslate nohighlight">\(f(h) \to 0\)</span> at least as fast as <span class="math notranslate nohighlight">\(h^n \to 0\)</span>.</p>
+</dd>
+<dt id="term-Order-of-a-method">Order of a method<a class="headerlink" href="#term-Order-of-a-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#global-truncation-error-section"><span class="std std-ref">order</span></a> of a method is the degree of <span class="math notranslate nohighlight">\(O(h^n)\)</span> for the global truncation error of the method.</p>
+</dd>
+<dt id="term-Reducing-higher-order-ODE-to-first-order-ODEs">Reducing higher order ODE to first-order ODEs<a class="headerlink" href="#term-Reducing-higher-order-ODE-to-first-order-ODEs" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(n\)</span>th order ODE <span class="math notranslate nohighlight">\(y^{(n)} = f(t, y, y', y'', \ldots, y^{(n-1)}\)</span> can be written as a system of <span class="math notranslate nohighlight">\(n\)</span> first order ODES such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    y_1' &amp;= y_2, \\
+    y_2' &amp;= y_3, \\
+    &amp; \vdots \\
+    y_n' &amp;= f(t, y_1, y_2, \ldots, y_n).
+\end{align*}\]</div>
+</dd>
+</dl>
 </div>
-<div class="section" id="butcher-tableau">
-<span id="butcher-tableau-section"></span><h3>Butcher tableau<a class="headerlink" href="#butcher-tableau" title="Permalink to this headline">#</a></h3>
-<p>For convenience, Runge-Kutta methods are often expressing in a <strong>Butcher tableau</strong><a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
-<div class="note admonition" id="butcher-tableau-definition">
-<p class="admonition-title">Definition: Butcher Tableau</p>
-<p>A Butcher tableau is a table of values containing the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> for a Runge-Kutta method</p>
+<hr class="docutils" />
+<div class="section" id="explicit-runge-kutta-methods">
+<h2>Explicit Runge-Kutta methods<a class="headerlink" href="#explicit-runge-kutta-methods" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-General-form-of-a-Runge-Kutta-method">General form of a Runge-Kutta method<a class="headerlink" href="#term-General-form-of-a-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#general-form-of-a-rk-method-section"><span class="std std-ref">general form of a Runge-Kutta method</span></a> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    y_{n+1} &amp;= y_n + h\sum_{i=1}^s b_i k_i, \\
+    k_i &amp;= f(t_n + c_ih, y_n + h \sum_{j=1}^s a_{ij} k_i,
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_i\)</span> are intermediate stage valeus.</p>
+</dd>
+<dt id="term-Butcher-tableau">Butcher tableau<a class="headerlink" href="#term-Butcher-tableau" title="Permalink to this term">#</a></dt><dd><p>Runge-Kutta methods can be represented using a <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#butcher-tableau-section"><span class="std std-ref">Butcher tableau</span></a> such that</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|c}
         \mathbf{c} &amp; A \\ \hline
-        &amp; \mathbf{b}^T
+        &amp; \mathbf{b}^\mathrm{T}
     \end{array}
 \end{align*}\]</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span> is a matrix of <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> are column vectors containing the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> coefficients</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    A &amp;= \begin{pmatrix}
-        a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1s} \\
-        a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2s} \\
-        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-        a_{s1} &amp; a_{2s} &amp; \cdots &amp; a_{ss}
-    \end{pmatrix}, &amp;
-    \mathbf{b} &amp;= \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_s \end{pmatrix}, &amp;
-    \mathbf{c} &amp;= \begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_s \end{pmatrix},
-\end{align*}\]</div>
-<p>i.e.,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \begin{array}{c|cccc}
-        c_1  &amp; a_{11}  &amp; a_{12}  &amp; \cdots  &amp; a_{1s} \\
-        c_2  &amp; a_{21}  &amp; a_{22}  &amp; \cdots  &amp; a_{2s} \\
-        \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
-        c_s  &amp; a_{s1}  &amp; a_{s2}  &amp; \cdots  &amp; a_{ss} \\ \hline
-        &amp; b_1  &amp; b_2  &amp; \cdots  &amp; b_s 
-    \end{array}
-\end{align*}\]</div>
-</div>
-<div class="seealso admonition" id="butcher-tableau-example">
-<p class="admonition-title">Example 2.1</p>
-<p>Express the second-order Runge-Kutta method given below as a Butcher tableau</p>
-<div class="math notranslate nohighlight" id="equation-butcher-tableau-example-equation-1">
-<span class="eqno">(7)<a class="headerlink" href="#equation-butcher-tableau-example-equation-1" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
-    y_{n+1} &amp;= y_n + \frac{h}{2}(k_1 + k_2), \\
-    k_1 &amp;= f(t_n, y_n), \\
-    k_2 &amp;= f\left( t_n + h, y_n + hk_1 \right).
-\end{align*}\end{split}\]</div>
-<p><strong>Solution</strong></p>
-<p>The general form of a two-stage Runge-Kutta method is</p>
-<div class="math notranslate nohighlight" id="equation-butcher-tableau-example-equation-2">
-<span class="eqno">(8)<a class="headerlink" href="#equation-butcher-tableau-example-equation-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
-    y_{n+1} &amp;= y_n + h(b_1 k_1 + b_2 k_2), \\
-    k_1 &amp;= f(t_n + c_1 h, y_n + h(a_{11}k_1 + a_{12}k_2)), \\
-    k_2 &amp;= f(t_n + c_2 h, y_n + h(a_{21}k_1 + a_{22}k_2)). 
-\end{align*}\end{split}\]</div>
-<p>Comparing equations <a class="reference internal" href="#equation-butcher-tableau-example-equation-1">(7)</a> and <a class="reference internal" href="#equation-butcher-tableau-example-equation-2">(8)</a> we can see that <span class="math notranslate nohighlight">\(a_{11} = a_{12} = a_{22} = 0\)</span>, <span class="math notranslate nohighlight">\(b_1 = b_2 = 1\)</span>, <span class="math notranslate nohighlight">\(c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(c_2 = 1\)</span> therefore the Butcher tableau for this method is</p>
+<p>where <span class="math notranslate nohighlight">\([A]_{ij} = a_{ij}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b} = (b_1, \ldots, b_s)^\mathrm{T}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{c} = (c_1, \ldots, c_s)^\mathrm{T}\)</span>.</p>
+</dd>
+<dt id="term-Explicit-Runge-Kutta-method">Explicit Runge-Kutta method<a class="headerlink" href="#term-Explicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#explicit-and-implicit-rk-methods-section"><span class="std std-ref">explicit Runge-Kutta method</span></a> is a method where <span class="math notranslate nohighlight">\(c_1 = 0\)</span>, <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> where <span class="math notranslate nohighlight">\(i \leq j\)</span> such that the stage values are explicit functions.</p>
+</dd>
+<dt id="term-Order-conditions-of-a-Runge-Kutta-method">Order conditions of a Runge-Kutta method<a class="headerlink" href="#term-Order-conditions-of-a-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>Comparing the <span class="math notranslate nohighlight">\(n\)</span>th order Taylor series expansion of <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span> to that of the general form of a Runge-Kutta method gives the <a class="reference internal" href="../2_ERKs/2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">order conditions</span></a> which need to be satisfied for an <span class="math notranslate nohighlight">\(n\)</span>th order Runge-Kutta method.</p>
+</dd>
+<dt id="term-The-row-sum-condition">The row sum condition<a class="headerlink" href="#term-The-row-sum-condition" title="Permalink to this term">#</a></dt><dd><p>The values of <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> must satisfy the <a class="reference internal" href="../2_ERKs/2.2_RK4_Derivation.html#row-sum-condition"><span class="std std-ref">row sum condition</span></a> which is <span class="math notranslate nohighlight">\(c_i = \displaystyle_{j=1}^s a_{ij}\)</span>.</p>
+</dd>
+<dt id="term-The-second-order-explicit-Runge-Kutta-method-RK2">The second-order explicit Runge-Kutta method (RK2)<a class="headerlink" href="#term-The-second-order-explicit-Runge-Kutta-method-RK2" title="Permalink to this term">#</a></dt><dd><p><em>The</em> <a class="reference internal" href="../2_ERKs/2.1_ERK_Derivation.html#rk2-derivation-example"><span class="std std-ref">second-order explicit Runge-Kutta method</span></a> has the Butcher tableau</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cc}
-        0 &amp; 0 &amp; 0 \\
-        1 &amp; 1 &amp; 0 \\ \hline
+        0 &amp; 0 \\ 
+        1 &amp; 1 \\ \hline
         &amp; \frac{1}{2} &amp; \frac{1}{2}
     \end{array}
 \end{align*}\]</div>
-</div>
-</div>
-</div>
-<div class="section" id="explicit-and-implicit-runge-kutta-methods">
-<span id="explicit-and-implicit-rk-methods-section"></span><h2>Explicit and implicit Runge-Kutta methods<a class="headerlink" href="#explicit-and-implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h2>
-<p>Expanding out the stage values from equation <a class="reference internal" href="#equation-rk-equation">(6)</a> we see that the stage values of a general Runge-Kutta method are</p>
+</dd>
+<dt id="term-The-fourth-order-explicit-Runge-Kutta-method-RK4">The fourth-order explicit Runge-Kutta method (RK4)<a class="headerlink" href="#term-The-fourth-order-explicit-Runge-Kutta-method-RK4" title="Permalink to this term">#</a></dt><dd><p><em>The</em> <a class="reference internal" href="../2_ERKs/2.2_RK4_Derivation.html#rk4-definition"><span class="std std-ref">fourth-order explicit Runge-Kutta method</span></a> has the Butcher tableau</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    k_1 &amp;=f(t_n +c_1 h,y_n +h(a_{11} k_1 +a_{12} k_2 +\cdots +a_{1s} k_s ),\\
-    k_2 &amp;=f(t_n +c_2 h,y_n +h(a_{21} k_1 +a_{22} k_2 +\cdots +a_{2s} k_s ),\\
-    &amp;\vdots \\
-    k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s ).
-\end{align*}\]</div>
-<p>The first equation where we are calculating <span class="math notranslate nohighlight">\(k_1\)</span> includes <span class="math notranslate nohighlight">\(k_1\)</span> on the right-hand side and in the second equation where we are calculating <span class="math notranslate nohighlight">\(k_2\)</span> includes <span class="math notranslate nohighlight">\(k_2\)</span> on the right-hand side and so on. These are examples of <a class="reference external" href="https://en.wikipedia.org/wiki/Implicit_function"><strong>implicit functions</strong></a> and Runge-Kutta methods where the stage values are expressed using implicit functions are known as <strong>Implicit Runge-Kutta (IRK)</strong> methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations <a class="reference internal" href="../3_IRKs/3.0_IRKs.html#irk-chapter"><span class="std std-ref">see Implicit Runge-Kutta Methods</span></a>.</p>
-<p>If the summation in the stage value <span class="math notranslate nohighlight">\(k_i\)</span> in equation <a class="reference internal" href="#equation-rk-equation">(6)</a> is altered so the upper limit to the sum is <span class="math notranslate nohighlight">\(i-1\)</span>, i.e.,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    k_i = f(t_n + c_1 h,y_n + h\sum_{j=1}^{i-1} a_{ij} k_j)
-\end{align*}\]</div>
-<p>and let <span class="math notranslate nohighlight">\(c_1 = 0\)</span> then we have the following equations for calculating the stage values</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    k_1 &amp;=f(t_n ,y_n),\\
-    k_2 &amp;=f(t_n +c_2 h,y_n +ha_{21} k_1 ),\\
-    k_3 &amp;=f(t_n +c_3 h,y_n +h(a_{31} k_1 +a_{32} k_2 )),\\
-    &amp;\vdots \\
-    k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{s,s-1} k_{s-1} )).
-\end{align*}\]</div>
-<p>These stage values are <strong>explicit functions</strong> where the subject of the equation does not appear on the right-hand side. Runge-Kutta methods where the stages values are calculated using explicit functions are known as <strong>Explicit Runge Kutta (ERK)</strong> methods. These are easier to compute than implicit Runge-Kutta methods because the stage values can be calculated sequentially in order, i.e., <span class="math notranslate nohighlight">\(k_1\)</span> can be calculated using <span class="math notranslate nohighlight">\(t_n\)</span> and <span class="math notranslate nohighlight">\(y_n\)</span> and then used to calculate <span class="math notranslate nohighlight">\(k_2\)</span> and so on. However for some ODEs explicit methods require a very small value for the step length and and we must then use implicit methods <a class="reference internal" href="../4_Stability/4.0_Stability.html#stability-chapter"><span class="std std-ref">(see Stability)</span></a>.</p>
-<div class="section" id="butcher-tableau-for-explicit-and-implicit-runge-kutta-methods">
-<h3>Butcher tableau for explicit and implicit Runge-Kutta methods<a class="headerlink" href="#butcher-tableau-for-explicit-and-implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h3>
-<p>Explicit and implicit Runge-Kutta methods can be easily distinguished by looking at their Butcher tableaux. The <span class="math notranslate nohighlight">\(A\)</span> matrix in the top right region of a Butcher tableau for an explicit method is lower-triangular whereas for an implicit method the main-diagonal and upper triangular elements are non-zero.</p>
-<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
-<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Explicit Runge-Kutta method</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \begin{array}{c|ccccc}
-        0 &amp;  &amp;  &amp;  &amp;  &amp; \\
-        c_2  &amp; a_{21}  &amp;  &amp;  &amp;  &amp; \\
-        c_3  &amp; a_{31}  &amp; a_{32}  &amp;  &amp;  &amp; \\
-        \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp;  &amp; \\
-        c_s  &amp; a_{s1}  &amp; a_{s2}  &amp; \cdots  &amp; a_{s,s-1}  &amp; \\ \hline
-        &amp; b_1  &amp; b_2  &amp; \cdots  &amp; b_{s-1}  &amp; b_s 
+    \begin{array}{c|cccc}
+        0 &amp; 0 \\
+        \frac{1}{2} &amp; \frac{1}{2} \\
+        \frac{1}{2} &amp; 0 &amp; \frac{1}{2} \\ 
+        1 &amp; 0 &amp; 0 &amp; 1 \\ \hline
+        &amp; \frac{1}{6} &amp; \frac{1}{3} &amp; \frac{1}{3} &amp; \frac{1}{6}
     \end{array}
 \end{align*}\]</div>
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Implicit Runge-Kutta method</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \begin{array}{c|ccccc}
-        c_1  &amp; a_{11}  &amp; a_{12}  &amp; a_{13}  &amp; \cdots  &amp; a_{1s} \\
-        c_2  &amp; a_{21}  &amp; a_{22}  &amp; a_{23}  &amp; \cdots  &amp; a_{2s} \\
-        c_3  &amp; a_{31}  &amp; a_{32}  &amp; a_{33}  &amp; \cdots  &amp; a_{3s} \\
-        \vdots  &amp; \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
-        c_s  &amp; a_{s1}  &amp; a_{s2}  &amp; a_{s3}  &amp; \cdots  &amp; a_{ss} \\ \hline
-         &amp; b_1  &amp; b_2  &amp; b_3  &amp; \cdots  &amp; b_s 
-    \end{array}
-\end{align*}\]</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Named after the New Zealand mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/John_C._Butcher">John Butcher</a>, the authority on Runge-Kutta methods and it is well worth seeking out his publications.</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="toctree-wrapper compound">
+<hr class="docutils" />
+<div class="section" id="implicit-runge-kutta-methods">
+<h2>Implicit Runge-Kutta methods<a class="headerlink" href="#implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-Implicit-Runge-Kutta-methods-IRK">Implicit Runge-Kutta methods (IRK)<a class="headerlink" href="#term-Implicit-Runge-Kutta-methods-IRK" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../3_IRKs/3.0_IRKs.html#irk-chapter"><span class="std std-ref">implicit Runge-Kutta method</span></a> is where the stage values are implicit functions.</p>
+</dd>
+<dt id="term-Order-of-an-implicit-Runge-Kutta-method">Order of an implicit Runge-Kutta method<a class="headerlink" href="#term-Order-of-an-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>Implicit Runge-Kutta methods can have a higher order of accuracy for the same number of stages as an explicit Runge-Kutta method. The <a class="reference internal" href="../3_IRKs/3.0_IRKs.html#order-of-irk-section"><span class="std std-ref">order of an implicit Runge-Kutta methods</span></a> is the highest value of <span class="math notranslate nohighlight">\(k\)</span> for which the order conditions <span class="math notranslate nohighlight">\(B(k)\)</span>, <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> and <span class="math notranslate nohighlight">\(D(\lfloor \frac{k}{2} \rfloor)\)</span> are satisfied where</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    B(k): &amp;&amp; \sum_{i=1}^s b_i c_i^{j-1} = &amp; \frac{1}{j}, &amp; j&amp;=1\ldots k, \\
+    C(k): &amp;&amp; \sum_{j=1}^s a_{ij} c_j^{\ell-1} = &amp; \frac{1}{\ell}c_i^{\ell} , &amp; i&amp;=1 \ldots s, &amp; \ell &amp;=1 \ldots k,\\
+    D(k): &amp;&amp; \sum_{i=1}^s b_i c_i^{\ell-1} a_{ij} = &amp; \frac{1}{\ell}b_j (1-c_j^{\ell}), &amp; j&amp;=1 \ldots s, &amp; \ell &amp;=1 \ldots k.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Gauss-Legendre-implicit-Runge-Kutta-methods">Gauss-Legendre implicit Runge-Kutta methods<a class="headerlink" href="#term-Gauss-Legendre-implicit-Runge-Kutta-methods" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(s\)</span>-stage <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#gauss-legendre-derivation"><span class="std std-ref">Gauss-Legendre</span></a> implicit Runge-Kutta method has order <span class="math notranslate nohighlight">\(k = 2s\)</span> and are derived by setting <span class="math notranslate nohighlight">\(c_i\)</span> to be the roots of the Legendre polynomial</p>
+<div class="math notranslate nohighlight">
+\[P_n(t) = \displaystyle\sum_{k=0}^n \binom{n}{k} \binom{n+k}{k} (t - 1)^k,\]</div>
+<p>and <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are chosen to satisfy the <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> order conditions. For</p>
+</dd>
+<dt id="term-Radau-IA-implicit-Runge-Kutta-method">Radau IA implicit Runge-Kutta method<a class="headerlink" href="#term-Radau-IA-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(s\)</span>-stage <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#radau-derivation"><span class="std std-ref">Radau IA implicit Runge-Kutta method</span></a> has order <span class="math notranslate nohighlight">\(k = 2s - 1\)</span> and are derived by setting <span class="math notranslate nohighlight">\(c_i\)</span> to be the roots of <span class="math notranslate nohighlight">\(P_s(t) + P_{s-1}(t)\)</span> and the values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are chosen to satisfy the order condition <span class="math notranslate nohighlight">\(D(k)\)</span>.</p>
+</dd>
+<dt id="term-Radau-IIA-implicit-Runge-Kutta-method">Radau IIA implicit Runge-Kutta method <a class="headerlink" href="#term-Radau-IIA-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(s\)</span>-stage <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#radau-derivation"><span class="std std-ref">Radau IIA implicit Runge-Kutta method</span></a> has order <span class="math notranslate nohighlight">\(k = 2s - 1\)</span>  are derived by setting <span class="math notranslate nohighlight">\(c_i\)</span> to be the roots of <span class="math notranslate nohighlight">\(P_s(t) - P_{s-1}(t)\)</span> and the values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are chosen to satisfy the order condition <span class="math notranslate nohighlight">\(C(k)\)</span>.</p>
+</dd>
+<dt id="term-Diagonally-Implicit-Runge-Kutta-DIRK-methods">Diagonally Implicit Runge-Kutta (DIRK) methods<a class="headerlink" href="#term-Diagonally-Implicit-Runge-Kutta-DIRK-methods" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#dirk-derivation"><span class="std std-ref">DIRK</span></a> method is an implicit Runge-Kutta method where <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> where <span class="math notranslate nohighlight">\(i &lt; j\)</span> and is derived by satisfying the <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{b}^T A \mathbf{c} = \frac{1}{k!}.\]</div>
+<p>The stage values of a DIRK method can be calculated sequentially.</p>
+</dd>
+<dt id="term-Singly-Diagonally-Implicit-Runge-Kutta-SDIRK-methods">Singly Diagonally Implicit Runge-Kutta (SDIRK) methods<a class="headerlink" href="#term-Singly-Diagonally-Implicit-Runge-Kutta-SDIRK-methods" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#sdirk-derivation"><span class="std std-ref">SDIRK</span></a> method an implicit Runge-Kutta method where <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> where <span class="math notranslate nohighlight">\(i &lt; j\)</span> and is derived by satisfying the <span class="math notranslate nohighlight">\(B(k)\)</span>, <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> and <span class="math notranslate nohighlight">\(D(\lfloor \frac{k}{2} \rfloor)\)</span> order conditions.</p>
+</dd>
+<dt id="term-Computing-the-stage-values-of-an-implicit-Runge-Kutta-method">Computing the stage values of an implicit Runge-Kutta method<a class="headerlink" href="#term-Computing-the-stage-values-of-an-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../3_IRKs/3.2_Solving_IVPs_using_IRK_methods.html#solving-ivps-using-irk-methods-section"><span class="std std-ref">Computing the stage values</span></a> of an implicit Runge-Kutta method requires the solution to a system of nonlinear equations. This is typically done using Newton’s method but can also be done using the Gauss-Seidel method.</p>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -862,7 +796,7 @@ Implicit Runge-Kutta method</div>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./2_ERKs"
+            path: "./8_Appendices"
         },
         predefinedOutput: true
     }
@@ -876,19 +810,12 @@ Implicit Runge-Kutta method</div>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../1_IVPs/1.7_Exercises.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../7_Indirect_methods/7.6_Indirect_methods_exercises.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Initial Value Problems Exercises</p>
+            <p class="prev-next-title">Indirect methods exercises</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="2.1_ERK_Derivation.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Derivation of Explicit Runge-Kutta Methods</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
