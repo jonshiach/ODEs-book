@@ -1,3 +1,7 @@
+---
+title: "Runge-Kutta Methods and Computational Linear Algebra"
+---
+
 :::{figure} /Images/MMU_logo.png
 :height: 100
 :::
