@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solving initial value problems using implicit Runge-Kutta methods &#8212; Runge-Kutta Methods and Computational Linear Algebra</title>
+    <title>Solving initial value problems using implicit Runge-Kutta methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -93,7 +93,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Computational Linear Algebra</h1>
+      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -104,34 +104,24 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    <no title>
+                <a class="reference internal" href="../intro.html">
+                    Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preamble
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.0_About.html">
-   About
-  </a>
- </li>
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_Preamble/0.1_Teaching_schedule.html">
    Teaching schedule
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.3_Python_and_MATLAB.html">
-   Python &amp; MATLAB
+  <a class="reference internal" href="../0_Preamble/0.2_Software.html">
+   Software
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.4_Learning_and_teaching.html">
+  <a class="reference internal" href="../0_Preamble/0.3_Learning_and_teaching.html">
    Learning and teaching
   </a>
  </li>
@@ -419,6 +409,23 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.0_Cheat_sheet.html">
+   Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.1_Python.html">
+   Python code
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -630,8 +637,8 @@ title="Print to PDF"
 <div class="math notranslate nohighlight" id="equation-yi-equation">
 <span class="eqno">(21)<a class="headerlink" href="#equation-yi-equation" title="Permalink to this equation">#</a></span>\[Y_i = y_n +h \displaystyle\sum_{j=1}^s a_{ij} k_j\]</div>
 <p>then we can write these equations as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-578a04d7-de88-460b-8b01-351357973c0a">
-<span class="eqno">(22)<a class="headerlink" href="#equation-578a04d7-de88-460b-8b01-351357973c0a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-44ee13e7-7ebd-42eb-9918-620e4f954785">
+<span class="eqno">(22)<a class="headerlink" href="#equation-44ee13e7-7ebd-42eb-9918-620e4f954785" title="Permalink to this equation">#</a></span>\[\begin{align}
    \label{eq:irk yn+1}
    y_{n+1} &amp;= y_n + h \sum_{i=1}^s b_i f(t_n + c_i h, Y_i),\\
    \label{eq:irk Yi}
@@ -655,9 +662,9 @@ title="Print to PDF"
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
    \begin{array}{c|cc}
-      0 &amp; 1/4 &amp; -1/4 \\
-      2/3 &amp; 1/4 &amp; 5/12 \\ \hline
-      &amp; 1/4 &amp; 3/4
+      0 &amp; \frac{1}{4} &amp; -\frac{1}{4} \\
+      \frac{2}{3} &amp; \frac{1}{4} &amp; \frac{5}{12} \\ \hline
+      &amp; \frac{1}{4} &amp; \frac{3}{4}
     \end{array}
 \end{align*}\]</div>
 <p>Use this method to calculate the solution of the following initial value problem using a step length of <span class="math notranslate nohighlight">\(h=0.2\)</span> and a convergence tolerance of <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</p>
