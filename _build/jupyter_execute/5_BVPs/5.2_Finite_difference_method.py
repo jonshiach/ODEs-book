@@ -57,6 +57,7 @@
 # 
 # Once the linear system is defined it can be solved using LU decomposition.
 # 
+# (thomas-algorithm-section)=
 # ## The Thomas algorithm
 # 
 # The coefficient matrix for the linear system that results from the application of the second-order symmetric finite-difference approximation of $y''$ is [tridiagonal](https://en.wikipedia.org/wiki/Tridiagonal_matrix) (the only non-zero elements are on the main, lower and upper diagonals). The usual methods for solving linear systems of equations such as Gaussian elimination and LU decomposition could be applied here, however there is a more efficient method that can solve tridiagonal systems called the [**Thomas algorithm**](https://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm). 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# (sec:euler_method)=
+# (euler-method-section)=
 # # The Euler method
 # 
 # The Euler method is the simplest numerical method used to solve ODEs can be derived very easily by truncating equation the Taylor series after the first-order term

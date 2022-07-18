@@ -48,7 +48,7 @@
 # Let $\lambda_1, \lambda_2, \ldots, \lambda_n$ be the eigenvalues of a matrix $A$ then the spectral radius of $A$ denoted by $\rho(A)$ is
 # 
 # ```{math}
-# :label: spectral-radius-definition
+# :label: spectral-radius-equation
 # 
 # \begin{align*}
 #     \rho(A) = \max_i(|\lambda_i|).

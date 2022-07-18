@@ -149,6 +149,7 @@ glue("euler_stability_region_plot", fig, display=False)
 #     \end{pmatrix}.
 # \end{align*}
 # 
+# (A-stability)=
 # ## A-stability
 # 
 # As we saw in the plot of the [region of absolute stability of the backwards Euler method](euler-stability-region-figure), implicit methods have a much greater stability region than explicit methods and are very useful for solving stiff ODEs where the stability constraints placed on an explicit method means the step length $h$ is too small to be of practical use. A desirable property of some implicit methods is that there is no limit placed on the value of $h$ for which will result in an unstable method, this is known as .
@@ -249,35 +250,27 @@ glue("euler_stability_region_plot", fig, display=False)
 # In[2]:
 
 
-from sympy import *
-from IPython.display import display, Math
+import sympy as sp
+from IPython.display import Math
 
+# Define numerator and denominator functions
 def P(z):
     return (I - z * A + z * ebT).det()
-
 
 def Q(z):
     return (I - z * A).det()
 
 
 # Define RK method
-A = Matrix([[Rational(5,12), -Rational(1,12)],
-            [Rational(3,4), Rational(1,4)]])
-ebT = Matrix([[Rational(3,4), 0], [0, Rational(1,4)]])
-I = eye(2)
+A = sp.Matrix([[sp.Rational(5,12), -sp.Rational(1,12)],
+            [sp.Rational(3,4), sp.Rational(1,4)]])
+ebT = sp.Matrix([[sp.Rational(3,4), 0], [0, sp.Rational(1,4)]])
+I = sp.eye(2)
 
 # Calculate R(z)
-z, y = symbols('z, y')
+z, y = sp.symbols('z, y')
 Rz = P(z) / Q(z)
-display(Math(f"R(z) = {latex(nsimplify(Rz))}"))
-
-# Check roots of Q have positive real parts
-roots = solve(Q(z) - 0)
-display(Math(f"\\text{{roots of }}Q(z): z = {latex(roots)}"))
-
-# Check E(y) >= 0
-E = Q(1j * y) * Q(-1j * y) - P(1j * y) * P(-1j * y)
-display(Math(f"E(y) = {latex(simplify(nsimplify(E)))}"))
+display(Math(f"R(z) = {sp.latex(sp.nsimplify(Rz))}"))
 
 
 # In[3]:

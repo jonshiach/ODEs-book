@@ -120,7 +120,7 @@
 #     \begin{array}{c|cc}
 #     0 & & \\
 #     1 & 1 & \\ \hline
-#     & 1/2 & 1/2
+#     & \frac{1}{2} & \frac{1}{2}
 #     \end{array}
 # \end{align*}
 # 
@@ -136,23 +136,23 @@
 # 
 # The algebra used to solve the order conditions in the [example](#rk2-derivation-example) above is quite easy to perform but for higher order methods it can soon get more complicated (see the [derivation of a fourth-order explicit Runge-Kutta method](#rk4-derivation-example) for an example) and it is therefore useful to use software to help with the algebra. There is a Python library called [**SymPy**](https://www.sympy.org/en/index.html) (short for *symbolic Python*) that has functions that can solve algebraic equations. 
 # 
-# The code below derives the second-order explicit Runge-Kutta method from the [example](#rk2-derivation-example) above using SymPy. After importing SymPy we need to declare each of the coefficients $a_{21}$, $b_1$, $b_2$ and $c_2$ as **symbolic variables** before setting $c_2=1$. Each order condition is then defined using the symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side from the left. We have also used the `Rational(1,2)` command for the fraction $\frac{1}{2}$ so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations `eq1`, `eq2` and `eq3` is then solved using the `solve` command.
+# The code below derives the second-order explicit Runge-Kutta method from the [example](#rk2-derivation-example) above using SymPy. After importing SymPy we need to declare each of the coefficients $a_{21}$, $b_1$, $b_2$ and $c_2$ as **symbolic variables** using the `sp.symbols` command before setting $c_2=1$. Each order condition is then defined using the symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side from the left. We have also used the `sp.Rational(1,2)` command for the fraction $\frac{1}{2}$ so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations `eq1`, `eq2` and `eq3` is then solved using the `sp.solve` command.
 
 # In[1]:
 
 
-from sympy import *
-init_printing()
+import sympy as sp
+sp.init_printing()
 
 # Declare symbolic variables
-a21, b1, b2, c2 = symbols('a21, b1, b2, c2')
+a21, b1, b2, c2 = sp.symbols('a21, b1, b2, c2')
 c2 = 1
 
 # Define order conditions
 eq1 = b1 + b2 - 1
-eq2 = b2 * c2 - Rational(1,2)
-eq3 = a21 * b2 - Rational(1,2)
+eq2 = b2 * c2 - sp.Rational(1,2)
+eq3 = a21 * b2 - sp.Rational(1,2)
 
 # Solve order conditions
-solve((eq1, eq2, eq3))
+sp.solve((eq1, eq2, eq3))
 

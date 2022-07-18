@@ -17,6 +17,8 @@
 # -  Solve a [system of linear equations using QR decomposition](qr-crout-section). 
 # 
 # ---
+# 
+# (systems-of-linear-equations-section)=
 # ## Systems of linear equations
 # 
 # [Systems of linear equations](https://en.wikipedia.org/wiki/System_of_linear_equations) appear often in the topics of numerical analysis and numerical solutions to differential equations. Examples include the solution of the [stage values of an implicit Runge-Kutta method](solving-ivps-using-irk-methods-section) and the solution to a boundary value problem using the [finite-difference method](finite-difference-method-section). The methods that are applied to solve systems of linear equations fall into one of two categories: **direct methods** that use an algebraic approach and [**indirect methods**](indirect-methods-chapter) that use an iterative approach. On this chapter we will look at some common direct methods.

@@ -26,6 +26,7 @@
 # 
 # ````{admonition} Example 3.2
 # :class: seealso
+# :name: fourth-order-Gauss-Legendre-method-example
 # 
 # Derive a fourth-order Gauss-Legendre method.
 # 

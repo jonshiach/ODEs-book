@@ -20,7 +20,7 @@
 # ```
 # ````
 # 
-# The derivation of the RK2 method is covered [here](2.1_ERK_Derivation).
+# The derivation of the RK2 method is covered in [Derivation of Explicit Runge-Kutta Methods](rk2-derivation-section).
 # 
 # ````{admonition} Example 7.3
 # :class: seealso

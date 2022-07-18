@@ -16,6 +16,7 @@
 # 
 # ---
 # 
+# (bvp-section)=
 # ## General two-point boundary value problem
 # 
 # A **Boundary Value Problem (BVP)** is an ODE where the solutions at the boundaries of the domain are known. 

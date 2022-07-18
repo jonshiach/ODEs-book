@@ -139,6 +139,7 @@ A, P = partial_pivot(A)
 print(f"A = \n{A}\n\nP = \n{P}")
 
 
+# (lup-decomposition-section)=
 # ## LU decomposition with partial pivoting
 # 
 # To calculate **LU decomposition with partial pivoting** (also known as **LUP decomposition**) we use the same process as in [LU decomposition](LU-definition) with the exception that the coefficient matrix has partial pivoting applied prior to the calculation of $L$ and $U$, i.e., 

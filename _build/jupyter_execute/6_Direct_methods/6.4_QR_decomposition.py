@@ -18,14 +18,7 @@
 # :class: note
 # :name: orthogonal-vector-definition
 # 
-# A set of vectors $\lbrace \mathbf{v}_1 ,\mathbf{v}_2 ,\mathbf{v}_3 ,\dots \rbrace$ is said to be **orthogonal** if $\mathbf{v}_i \cdot \mathbf{v}_j =0$ for $i\not= j$. Furthermore the set is said to be **orthonormal** if
-# \begin{align*}
-#     \mathbf{v}_i^T \mathbf{v}_j = 
-#     \begin{cases}
-#         1, & i = j, \\
-#         0, & i \neq j.
-#     \end{cases}
-# \end{align*}
+# A set of vectors $\lbrace \mathbf{v}_1 ,\mathbf{v}_2 ,\mathbf{v}_3 ,\dots \rbrace$ is said to be **orthogonal** if $\mathbf{v}_i \cdot \mathbf{v}_j =0$ for $i\not= j$. Furthermore the set is said to be **orthonormal** if $\mathbf{v}_i$ are all unit vectors.
 # ````
 # 
 # ````{admonition} Definition: Orthogonal matrix
@@ -77,7 +70,7 @@
 # (qr-gram-schmidt-section)=
 # ## QR decomposition using the Gram-Schmidt process
 # 
-# The calculation of the orthogonal matrix $Q$ can be achieved by using the **Gram-Schmidt process**. Given a matrix consisting of $n$ linearly independent column vectors $A=(\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)$ we wish to find a matrix that consists of $n$ orthogonal vectors $U=(\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)$ where the span of $A$ is that same as the span of $Q$.
+# The calculation of the orthogonal matrix $Q$ can be achieved by using the **Gram-Schmidt process**. Given a ordered set of $n$ linearly independent column vectors $(\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)$ we wish to find a set that consists of $n$ orthogonal vectors $(\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)$ where the span of $(\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)$ is that same as the span of $(\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)$.
 # 
 # ```{figure} ../Images/gram_schmidt.png
 # :name: gram-schmidt-figure
@@ -134,7 +127,7 @@
 # 
 # The QR decomposition of an $m\times n$ matrix $A$ results in an $m\times n$ orthogonal matrix $Q$ and an $n\times n$ upper-triangular matrix $R$ such that $A =QR$. The elements of $Q$ and $R$ can be calculated using the Gram-Schmidt process which is:
 # 
-# For $j = 1, \ldots, n$:
+# For $j = 1, \ldots, n$
 # 
 # \begin{align*}
 #     r_{ij} &=\mathbf{q}_i \cdot \mathbf{a}_j , \qquad i = 1,\dots ,j-1,\\

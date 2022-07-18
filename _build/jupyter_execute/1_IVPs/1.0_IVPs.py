@@ -15,7 +15,7 @@
 # - apply an ODE solver to [solve a system of ordinary differential equation](solving-systems-of-odes-section).
 # 
 # ---
-# (sec:odes)=
+# (ode-section)=
 # ## Ordinary Differential Equations (ODEs)
 # 
 # ````{admonition} Definition: Ordinary Differential Equation

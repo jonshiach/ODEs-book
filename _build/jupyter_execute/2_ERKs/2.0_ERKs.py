@@ -14,6 +14,7 @@
 # - apply [explicit Runge-Kutta methods to solve an initial value problem](applying-erk-methods-to-solve-ivps-section).
 # 
 # ---
+# (general-form-of-a-RK-method-section)=
 # ## General form of a Runge-Kutta method
 # 
 # Runge-Methods are the most popular family of methods used to solve Ordinary Differential Equations (ODEs). They are known as **single step methods** because they update the solution for the next step $y_{n+1}$ using information from the single step $y_n$. The other type of method for solving ODEs are [**linear multistep methods**](https://en.wikipedia.org/wiki/Linear_multistep_method) that calculate $y_{n+1}$ using information from multiple steps $y_n ,y_{n-1} ,y_{n-2} ,\ldots $
@@ -41,6 +42,7 @@
 # 
 # ````
 # 
+# (butcher-tableau-section)=
 # ### Butcher tableau
 # 
 # For convenience, Runge-Kutta methods are often expressing in a **Butcher tableau**[^1].

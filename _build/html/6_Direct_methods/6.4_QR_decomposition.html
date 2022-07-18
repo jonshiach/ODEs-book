@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QR decomposition &#8212; Runge-Kutta Methods and Computational Linear Algebra</title>
+    <title>QR decomposition &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -93,7 +93,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Computational Linear Algebra</h1>
+      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -104,34 +104,24 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    <no title>
+                <a class="reference internal" href="../intro.html">
+                    Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preamble
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.0_About.html">
-   About
-  </a>
- </li>
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_Preamble/0.1_Teaching_schedule.html">
    Teaching schedule
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.3_Python_and_MATLAB.html">
-   Python &amp; MATLAB
+  <a class="reference internal" href="../0_Preamble/0.2_Software.html">
+   Software
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.4_Learning_and_teaching.html">
+  <a class="reference internal" href="../0_Preamble/0.3_Learning_and_teaching.html">
    Learning and teaching
   </a>
  </li>
@@ -419,6 +409,23 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.0_Cheat_sheet.html">
+   Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.1_Python.html">
+   Python code
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -689,15 +696,7 @@ title="Print to PDF"
 <p>where <span class="math notranslate nohighlight">\(Q\)</span> is an orthogonal matrix and <span class="math notranslate nohighlight">\(R\)</span> is an upper triangular matrix.</p>
 <div class="note admonition" id="orthogonal-vector-definition">
 <p class="admonition-title">Definition: Orthogonal vectors</p>
-<p>A set of vectors <span class="math notranslate nohighlight">\(\lbrace \mathbf{v}_1 ,\mathbf{v}_2 ,\mathbf{v}_3 ,\dots \rbrace\)</span> is said to be <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i \cdot \mathbf{v}_j =0\)</span> for <span class="math notranslate nohighlight">\(i\not= j\)</span>. Furthermore the set is said to be <strong>orthonormal</strong> if</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \mathbf{v}_i^T \mathbf{v}_j = 
-    \begin{cases}
-        1, &amp; i = j, \\
-        0, &amp; i \neq j.
-    \end{cases}
-\end{align*}\]</div>
+<p>A set of vectors <span class="math notranslate nohighlight">\(\lbrace \mathbf{v}_1 ,\mathbf{v}_2 ,\mathbf{v}_3 ,\dots \rbrace\)</span> is said to be <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i \cdot \mathbf{v}_j =0\)</span> for <span class="math notranslate nohighlight">\(i\not= j\)</span>. Furthermore the set is said to be <strong>orthonormal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> are all unit vectors.</p>
 </div>
 <div class="note admonition" id="orthogonal-matrix-definition">
 <p class="admonition-title">Definition: Orthogonal matrix</p>
@@ -738,7 +737,7 @@ title="Print to PDF"
 </div>
 <div class="section" id="qr-decomposition-using-the-gram-schmidt-process">
 <span id="qr-gram-schmidt-section"></span><h2>QR decomposition using the Gram-Schmidt process<a class="headerlink" href="#qr-decomposition-using-the-gram-schmidt-process" title="Permalink to this headline">#</a></h2>
-<p>The calculation of the orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> can be achieved by using the <strong>Gram-Schmidt process</strong>. Given a matrix consisting of <span class="math notranslate nohighlight">\(n\)</span> linearly independent column vectors <span class="math notranslate nohighlight">\(A=(\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)\)</span> we wish to find a matrix that consists of <span class="math notranslate nohighlight">\(n\)</span> orthogonal vectors <span class="math notranslate nohighlight">\(U=(\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)\)</span> where the span of <span class="math notranslate nohighlight">\(A\)</span> is that same as the span of <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>The calculation of the orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> can be achieved by using the <strong>Gram-Schmidt process</strong>. Given a ordered set of <span class="math notranslate nohighlight">\(n\)</span> linearly independent column vectors <span class="math notranslate nohighlight">\((\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)\)</span> we wish to find a set that consists of <span class="math notranslate nohighlight">\(n\)</span> orthogonal vectors <span class="math notranslate nohighlight">\((\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)\)</span> where the span of <span class="math notranslate nohighlight">\((\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)\)</span> is that same as the span of <span class="math notranslate nohighlight">\((\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)\)</span>.</p>
 <div class="figure align-default" id="gram-schmidt-figure">
 <img alt="../_images/gram_schmidt.png" src="../_images/gram_schmidt.png" />
 <p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">The Gram-Schmidt process</span><a class="headerlink" href="#gram-schmidt-figure" title="Permalink to this image">#</a></p>
@@ -785,7 +784,7 @@ title="Print to PDF"
 <div class="note admonition" id="qr-gramschmidt-definition">
 <p class="admonition-title">Definition: QR decomposition</p>
 <p>The QR decomposition of an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> results in an <span class="math notranslate nohighlight">\(m\times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and an <span class="math notranslate nohighlight">\(n\times n\)</span> upper-triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A =QR\)</span>. The elements of <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span> can be calculated using the Gram-Schmidt process which is:</p>
-<p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span>:</p>
+<p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{ij} &amp;=\mathbf{q}_i \cdot \mathbf{a}_j , \qquad i = 1,\dots ,j-1,\\

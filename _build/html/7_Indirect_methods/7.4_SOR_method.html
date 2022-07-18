@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Successive Over Relaxation (SOR) method &#8212; Runge-Kutta Methods and Computational Linear Algebra</title>
+    <title>The Successive Over Relaxation (SOR) method &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -93,7 +93,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Computational Linear Algebra</h1>
+      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -104,34 +104,24 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    <no title>
+                <a class="reference internal" href="../intro.html">
+                    Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preamble
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.0_About.html">
-   About
-  </a>
- </li>
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_Preamble/0.1_Teaching_schedule.html">
    Teaching schedule
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.3_Python_and_MATLAB.html">
-   Python &amp; MATLAB
+  <a class="reference internal" href="../0_Preamble/0.2_Software.html">
+   Software
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.4_Learning_and_teaching.html">
+  <a class="reference internal" href="../0_Preamble/0.3_Learning_and_teaching.html">
    Learning and teaching
   </a>
  </li>
@@ -419,6 +409,23 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.0_Cheat_sheet.html">
+   Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.1_Python.html">
+   Python code
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -635,7 +642,7 @@ title="Print to PDF"
 <p class="admonition-title">Definition: The Successive Over Relaxation (SOR) method</p>
 <p>The SOR method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-sor-method-equation">
-<span class="eqno">(46)<a class="headerlink" href="#equation-sor-method-equation" title="Permalink to this equation">#</a></span>\[x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right).\]</div>
+<span class="eqno">(46)<a class="headerlink" href="#equation-sor-method-equation" title="Permalink to this equation">#</a></span>\[x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n.\]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span>.</p>
 </div>
 <p>The iteration matrix for the SOR method is derived by writing the coefficient matrix of the linear system <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> using</p>
@@ -672,7 +679,7 @@ title="Print to PDF"
 <p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">The estimated solution oscillates about the exact solution.</span><a class="headerlink" href="#under-relaxation-figure" title="Permalink to this image">#</a></p>
 </div>
 <div class="section" id="optimum-value-of-the-relaxation-parameter">
-<h2>Optimum value of the relaxation parameter<a class="headerlink" href="#optimum-value-of-the-relaxation-parameter" title="Permalink to this headline">#</a></h2>
+<span id="optimum-relaxation-parameter-section"></span><h2>Optimum value of the relaxation parameter<a class="headerlink" href="#optimum-value-of-the-relaxation-parameter" title="Permalink to this headline">#</a></h2>
 <p>The optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> will be the one that minimises the spectral radius of the iteration matrix. The <a class="reference internal" href="#sor-method-iteration-matrix-definition"><span class="std std-ref">iteration matrix</span></a> will depend on the value of <span class="math notranslate nohighlight">\(\omega\)</span>. One way to estimate the optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> is to calculate <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for values in the range <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span> and choose the value of <span class="math notranslate nohighlight">\(\omega\)</span> which minimises this value. This has been done for the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a> and the plot is shown in <a class="reference internal" href="#optimum-relaxation-parameter-figure"><span class="std std-numref">Fig. 24</span></a>.</p>
 <div class="figure align-default" id="optimum-relaxation-parameter-figure">
 <div class="cell_output docutils container">
@@ -892,12 +899,12 @@ The SOR method for this system is</p>
     <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxiter</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">mysum</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
-                    <span class="n">s</span> <span class="o">-=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">mysum</span> <span class="o">-=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
         
-            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">s</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">mysum</span>
             
         <span class="n">r</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>   
         <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>

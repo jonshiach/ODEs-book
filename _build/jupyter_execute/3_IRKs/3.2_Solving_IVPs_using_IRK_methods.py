@@ -52,9 +52,9 @@
 # 
 # \begin{align*}
 #    \begin{array}{c|cc}
-#       0 & 1/4 & -1/4 \\
-#       2/3 & 1/4 & 5/12 \\ \hline
-#       & 1/4 & 3/4
+#       0 & \frac{1}{4} & -\frac{1}{4} \\
+#       \frac{2}{3} & \frac{1}{4} & \frac{5}{12} \\ \hline
+#       & \frac{1}{4} & \frac{3}{4}
 #     \end{array}
 # \end{align*}
 # 

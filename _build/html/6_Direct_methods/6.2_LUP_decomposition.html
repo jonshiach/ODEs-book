@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LUP decomposition &#8212; Runge-Kutta Methods and Computational Linear Algebra</title>
+    <title>LUP decomposition &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cholesky decomposition" href="6.3_Cholesky_decomposition.html" />
+    <link rel="prev" title="LU decomposition" href="6.1_LU_decomposition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,7 +93,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Computational Linear Algebra</h1>
+      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -102,20 +104,325 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    <no title>
+                <a class="reference internal" href="../intro.html">
+                    Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preamble/0.1_Teaching_schedule.html">
+   Teaching schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preamble/0.2_Software.html">
+   Software
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../0_Preamble/0.3_Learning_and_teaching.html">
+   Learning and teaching
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  0_Preamble
+  Runge-Kutta Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../1_IVPs/1.0_IVPs.html">
+   Initial Value Problems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IVPs/1.1_Taylor_Series.html">
+     The Taylor Series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IVPs/1.2_Euler_Method.html">
+     The Euler method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html">
+     Error analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IVPs/1.4_RK2.html">
+     The Second-Order Runge-Kutta Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IVPs/1.5_Higher_Order_ODEs.html">
+     Higher-order Ordinary Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IVPs/1.6_IVP_Summary.html">
+     Initial Value Problems Chapter Summary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IVPs/1.7_Exercises.html">
+     Initial Value Problems Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_ERKs/2.0_ERKs.html">
+   Explicit Runge-Kutta Methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_ERKs/2.1_ERK_Derivation.html">
+     Derivation of Explicit Runge-Kutta Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_ERKs/2.2_RK4_Derivation.html">
+     Derivation of a fourth-order explicit Runge-Kutta method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_ERKs/2.3_Solving_IVPs_using_ERK_methods.html">
+     Solving initial value problems using explicit Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_ERKs/2.4_ERK_Summary.html">
+     Chapter Summary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_ERKs/2.5_ERK_Exercises.html">
+     Explicit Runge-Kutta Methods Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_IRKs/3.0_IRKs.html">
+   Implicit Runge-Kutta Methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html">
+     Deriving implicit Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_IRKs/3.2_Solving_IVPs_using_IRK_methods.html">
+     Solving initial value problems using implicit Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_IRKs/3.3_IRK_summary.html">
+     Chapter Summary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_IRKs/3.4_IRK_exercises.html">
+     Implicit Runge-Kutta Methods Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../4_Stability/4.0_Stability.html">
+   Stability
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Stability/4.1_Stability_functions.html">
+     Stability functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Stability/4.2_RK_stability_function.html">
+     Stability function of a Runge-Kutta method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Stability/4.3_IRK_stability_function.html">
+     Stability functions of implicit methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Stability/4.4_Stability_summary.html">
+     Chapter summary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_Stability/4.5_Stability_exercises.html">
+     Stability Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../5_BVPs/5.0_BVPs.html">
+   Boundary Value Problems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_BVPs/5.1_Shooting_method.html">
+     The shooting method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_BVPs/5.2_Finite_difference_method.html">
+     The finite-difference method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_BVPs/5.3_BVP_summary.html">
+     Chapter summary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_BVPs/5.4_BVP_exercises.html">
+     Boundary value problems exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Solving Linear Systems of Equations
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="6.0_Direct_methods.html">
+   Direct Methods
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.1_LU_decomposition.html">
+     LU decomposition
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     LUP decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.3_Cholesky_decomposition.html">
+     Cholesky decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.4_QR_decomposition.html">
+     QR decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.5_Direct_methods_summary.html">
+     Chapter summary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.6_Direct_methods_exercises.html">
+     Direct methods exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../7_Indirect_methods/7.0_Indirect_methods.html">
+   Indirect Methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7_Indirect_methods/7.1_Jacobi_method.html">
+     Jacobi method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7_Indirect_methods/7.2_Gauss_Seidel_method.html">
+     Gauss-Seidel method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7_Indirect_methods/7.3_Convergence_of_indirect_methods.html">
+     Convergence of indirect methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7_Indirect_methods/7.4_SOR_method.html">
+     The Successive Over Relaxation (SOR) method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7_Indirect_methods/7.5_Indirect_methods_summary.html">
+     Chapter summary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../7_Indirect_methods/7.6_Indirect_methods_exercises.html">
+     Indirect methods exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.0_About.html">
-   Introduction
+  <a class="reference internal" href="../8_Appendices/8.0_Cheat_sheet.html">
+   Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.1_Python.html">
+   Python code
   </a>
  </li>
 </ul>
@@ -486,7 +793,7 @@ P =
 </div>
 </div>
 <div class="section" id="lu-decomposition-with-partial-pivoting">
-<h2>LU decomposition with partial pivoting<a class="headerlink" href="#lu-decomposition-with-partial-pivoting" title="Permalink to this headline">#</a></h2>
+<span id="lup-decomposition-section"></span><h2>LU decomposition with partial pivoting<a class="headerlink" href="#lu-decomposition-with-partial-pivoting" title="Permalink to this headline">#</a></h2>
 <p>To calculate <strong>LU decomposition with partial pivoting</strong> (also known as <strong>LUP decomposition</strong>) we use the same process as in <a class="reference internal" href="6.1_LU_decomposition.html#lu-definition"><span class="std std-ref">LU decomposition</span></a> with the exception that the coefficient matrix has partial pivoting applied prior to the calculation of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span>, i.e.,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -531,7 +838,7 @@ P =
         0 &amp; 1 &amp; 0
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>Calculating the LU decomposition of <span class="math notranslate nohighlight">\(PA\)</span> using <a class="reference internal" href="6.1_LU_decomposition.html#equation-lu-equation">()</a></p>
+<p>Calculating the LU decomposition of <span class="math notranslate nohighlight">\(PA\)</span> using <a class="reference internal" href="6.1_LU_decomposition.html#equation-lu-equation">(35)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     j &amp;= 1: &amp; u_{11} &amp;=a_{11} =3, \\
@@ -686,6 +993,20 @@ x3 = -3.0
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="6.1_LU_decomposition.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">LU decomposition</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="6.3_Cholesky_decomposition.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cholesky decomposition</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

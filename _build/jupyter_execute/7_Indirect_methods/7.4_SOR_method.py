@@ -15,7 +15,7 @@
 # ```{math}
 # :label: sor-method-equation
 # 
-# x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right).
+# x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n.
 # ```
 # 
 # where $\omega \in [0, 2]$.
@@ -69,7 +69,7 @@
 # The estimated solution oscillates about the exact solution.
 # ```
 # 
-# 
+# (optimum-relaxation-parameter-section)=
 # ## Optimum value of the relaxation parameter
 # 
 # The optimum value of $\omega$ will be the one that minimises the spectral radius of the iteration matrix. The [iteration matrix](sor-method-iteration-matrix-definition) will depend on the value of $\omega$. One way to estimate the optimum value of $\omega$ is to calculate $\rho(T_{SOR})$ for values in the range $\omega \in [0, 2]$ and choose the value of $\omega$ which minimises this value. This has been done for the system of linear equations from [example 7.1](jacobi-method-example) and the plot is shown in {numref}`optimum-relaxation-parameter-figure`.
@@ -481,12 +481,12 @@ def sor(A, b, omega, tol=1e-6):
     maxiter = 100
     for k in range(maxiter):
         for i in range(n):
-            s = b[i]
+            mysum = b[i]
             for j in range(n):
                 if i != j:
-                    s -= A[i,j] * x[j]
+                    mysum -= A[i,j] * x[j]
         
-            x[i] = (1 - omega) * x[i] + omega / A[i,i] * s
+            x[i] = (1 - omega) * x[i] + omega / A[i,i] * mysum
             
         r = b - np.dot(A, x)   
         if max(abs(r)) < tol:

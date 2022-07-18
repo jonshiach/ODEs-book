@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explicit Runge-Kutta Methods &#8212; Runge-Kutta Methods and Computational Linear Algebra</title>
+    <title>Explicit Runge-Kutta Methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -93,7 +93,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Computational Linear Algebra</h1>
+      <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -104,34 +104,24 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
-                    <no title>
+                <a class="reference internal" href="../intro.html">
+                    Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preamble
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.0_About.html">
-   About
-  </a>
- </li>
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../0_Preamble/0.1_Teaching_schedule.html">
    Teaching schedule
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.3_Python_and_MATLAB.html">
-   Python &amp; MATLAB
+  <a class="reference internal" href="../0_Preamble/0.2_Software.html">
+   Software
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Preamble/0.4_Learning_and_teaching.html">
+  <a class="reference internal" href="../0_Preamble/0.3_Learning_and_teaching.html">
    Learning and teaching
   </a>
  </li>
@@ -419,6 +409,23 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.0_Cheat_sheet.html">
+   Cheat Sheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.1_Python.html">
+   Python code
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -668,7 +675,7 @@ title="Print to PDF"
 </ul>
 <hr class="docutils" />
 <div class="section" id="general-form-of-a-runge-kutta-method">
-<h2>General form of a Runge-Kutta method<a class="headerlink" href="#general-form-of-a-runge-kutta-method" title="Permalink to this headline">#</a></h2>
+<span id="general-form-of-a-rk-method-section"></span><h2>General form of a Runge-Kutta method<a class="headerlink" href="#general-form-of-a-runge-kutta-method" title="Permalink to this headline">#</a></h2>
 <p>Runge-Methods are the most popular family of methods used to solve Ordinary Differential Equations (ODEs). They are known as <strong>single step methods</strong> because they update the solution for the next step <span class="math notranslate nohighlight">\(y_{n+1}\)</span> using information from the single step <span class="math notranslate nohighlight">\(y_n\)</span>. The other type of method for solving ODEs are <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_multistep_method"><strong>linear multistep methods</strong></a> that calculate <span class="math notranslate nohighlight">\(y_{n+1}\)</span> using information from multiple steps <span class="math notranslate nohighlight">\(y_n ,y_{n-1} ,y_{n-2} ,\ldots \)</span></p>
 <div class="note admonition" id="rk-definition">
 <p class="admonition-title">Definition: General form of a Runge-Kutta method</p>
@@ -689,7 +696,7 @@ title="Print to PDF"
 </ul>
 </div>
 <div class="section" id="butcher-tableau">
-<h3>Butcher tableau<a class="headerlink" href="#butcher-tableau" title="Permalink to this headline">#</a></h3>
+<span id="butcher-tableau-section"></span><h3>Butcher tableau<a class="headerlink" href="#butcher-tableau" title="Permalink to this headline">#</a></h3>
 <p>For convenience, Runge-Kutta methods are often expressing in a <strong>Butcher tableau</strong><a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
 <div class="note admonition" id="butcher-tableau-definition">
 <p class="admonition-title">Definition: Butcher Tableau</p>

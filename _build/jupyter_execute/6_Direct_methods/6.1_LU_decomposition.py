@@ -57,7 +57,7 @@
 #     \ell_{ij} =\frac{1}{u_{jj} }\left(a_{ij} -\sum_{k=1}^{j-1} \ell_{ik} u_{kj} \right).
 # \end{align*}
 # 
-# For the elements in the upper triangular region$(i\le j$ we have
+# For the elements in the upper triangular region where $i\le j$ we have
 # 
 # \begin{align*}
 #     u_{ij} =u_{ij} +\sum_{k=1}^{i-1} \ell_{ik} u_{kj},

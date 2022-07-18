@@ -39,6 +39,7 @@
 # 
 # So the stability function of the Euler method is $R(z) = 1 + z$.
 # 
+# (absolute-stability-section)=
 # ## Absolute stability
 # 
 # We have seen that a necessary [condition for stability](stability-definition) of a method is that the local truncation errors must not grow from one step to the next. A method satisfying this basic condition is considered to be **absolutely stable**. Since the stability function $R(z)$ is expressed using $z=h\lambda$ then a method may be stable for some value of $h$ and unstable for others. This provides the definition for absolute stability.
@@ -96,6 +97,7 @@ plt.ylabel("$\mathrm{Im}(z)$", fontsize=14)
 plt.show()
 
 
+# (interval-of-absolute-stability-section)=
 # ## Interval of absolute stability
 # 
 # The choice of step length used in a method will depend on accuracy requirements, the computational resources available, the stability properties of the method and the ODE being solved. It is often necessary to use as large a value of the step length as possible permitted by the stability requirements to minimise the computational effort required to solve an ODE. The range values of the step length that can be chosen is governed by the stability region and provides use with the following definition.

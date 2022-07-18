@@ -44,7 +44,7 @@
 # \mathbf{x}^{(k+1)} = D^{-1} (\mathbf{b} - (L + U)\mathbf{x}^{(k)}),
 # ```
 # 
-# and writing this out for each element gives the Jacobi method.
+# and writing this out for each element gives the Jacobi method gives the following definition of the Jacobi method.
 # 
 # ````{admonition} Definition: The Jacobi method
 # :class: note
@@ -108,7 +108,7 @@
 # As $\mathbf{x}^{(k)} \to \mathbf{x}$, $\mathbf{r} \to 0$ so we can use the following convergence criteria
 # 
 # \begin{align*}
-#     \| \mathbf{r} \| < tol,
+#     \max(|\mathbf{r}|) < tol,
 # \end{align*}
 # 
 # where $tol$ is some small number. The smaller the value of $tol$ the closer $\mathbf{x}^{(k)}$ is to the exact solution but of course this will require more iterations. In practice a compromise is made between the accuracy required and the computational resources available. Typical values of $tol$ are around $10^{-4}$ or $10^{-6}$.

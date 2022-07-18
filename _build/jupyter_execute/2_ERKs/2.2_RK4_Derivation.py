@@ -166,23 +166,23 @@
 # In[1]:
 
 
-from sympy import *
-init_printing()
+import sympy as sp
+sp.init_printing()
 
 # Declare symbolic variables
-a21, a31, a32, a41, a42, a43 = symbols('a21, a31, a32, a41, a42, a43')
-b1, b2, b3, b4 = symbols('b1, b2, b3, b4')
-c2, c3, c4 = symbols('c2, c3, c4')
+a21, a31, a32, a41, a42, a43 = sp.symbols('a21, a31, a32, a41, a42, a43')
+b1, b2, b3, b4 = sp.symbols('b1, b2, b3, b4')
+c2, c3, c4 = sp.symbols('c2, c3, c4')
 
 # Choose 4 values for the unkowns
-c2, c3, c4, b2 = Rational(1,2), Rational(1,2), 1, Rational(1,3)
+c2, c3, c4, b2 = sp.Rational(1,2), sp.Rational(1,2), 1, sp.Rational(1,3)
 
 # Define order conditions
 eq1 = b1 + b2 + b3 + b4 - 1
-eq2 = b2 * c2 + b3 * c3 + b4 * c4 - Rational(1,2)
-eq3 = b2 * c2 ** 2 + b3 * c3 ** 2 + b4 * c4 ** 2 - Rational(1,3)
-eq4 = b2 * c2 ** 3 + b3 * c3 ** 3 + b4 * c4 ** 4 - Rational(1,4)
-eq5 = b3 * c3 * a32 * c2 + b4 * c4 * (a42 * c2 + a43 * c3) - Rational(1,8)
+eq2 = b2 * c2 + b3 * c3 + b4 * c4 - sp.Rational(1,2)
+eq3 = b2 * c2 ** 2 + b3 * c3 ** 2 + b4 * c4 ** 2 - sp.Rational(1,3)
+eq4 = b2 * c2 ** 3 + b3 * c3 ** 3 + b4 * c4 ** 4 - sp.Rational(1,4)
+eq5 = b3 * c3 * a32 * c2 + b4 * c4 * (a42 * c2 + a43 * c3) - sp.Rational(1,8)
 eq6 = b3 * a32 + b4 * a42 - b2 * (1 - c2)
 eq7 = b4 * a43 - b3 * (1 - c3)
 eq8 = b4 * (1 - c4)
@@ -191,5 +191,5 @@ eq10 = c3 - a31 - a32
 eq11 = c4 - a41- a42 - a43
 
 # Solve order conditions
-solve((eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8, eq9, eq10, eq11))
+sp.solve((eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8, eq9, eq10, eq11))
 

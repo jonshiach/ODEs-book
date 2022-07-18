@@ -163,7 +163,7 @@ from myst_nb import glue
 glue("rk4_example_plot", fig, display=False)
 
 
-# Doing a visual comparison of the solutions using the [second-order](1.4_RK2) ({numref}`rk2-example-figure`) and [fourth-order](rk4-definition) ({numref}`rk4-example-figure`) Runge-Kutta methods in it appears that the two solutions are very similar. A loglog plot of the global truncation errors for the Euler, second and fourth-order Runge-Kutta methods is shown in {numref}`rk4-gte-plot-figure`.
+# Doing a visual comparison of the solutions using the [second-order](rk2-definition) ({numref}`rk2-example-figure`) and [fourth-order](rk4-definition) ({numref}`rk4-example-figure`) Runge-Kutta methods in it appears that the two solutions are very similar. A loglog plot of the global truncation errors for the Euler, second and fourth-order Runge-Kutta methods is shown in {numref}`rk4-gte-plot-figure`.
 # 
 # ```{glue:figure} rk4_gte_plot
 # :name: rk4-gte-plot-figure

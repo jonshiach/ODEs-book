@@ -4,8 +4,9 @@
 # (error-analysis-section)=
 # # Error analysis
 # 
-# We have seen in the [previous section](sec:euler_method) that the [Euler method solution](euler-example) of an initial value problem deviates from the exact solution. This is because we have truncated the [Taylor series](taylor-series-definition) so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to $f(t+h)$ and we have introduced an error in our calculations. It is important that we study this error and the effect that the errors have on our solutions. 
+# We have seen in the [previous section](euler-method-section) that the [Euler method solution](euler-example) of an initial value problem deviates from the exact solution. This is because we have truncated the [Taylor series](taylor-series-definition) so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to $f(t+h)$ and we have introduced an error in our calculations. It is important that we study this error and the effect that the errors have on our solutions. 
 # 
+# (local-truncation-error-section)=
 # ## Local truncation error
 # 
 # ````{admonition} Definition: Local Truncation Error (LTE)
@@ -30,6 +31,7 @@
 # 
 # The first term is the *supremum* (it has a larger value that the other terms) so we can say that the value $\tau$ is bounded by some function $Ch^2$ where $C$ is some positive constant. We express this idea using the [**big-O**](https://en.wikipedia.org/wiki/Big_O_notation) notation where $\tau = O(h^{n+1})$ which is read as *"tau is big oh of h to the power n plus 1"*.
 # 
+# (global-truncation-error-section)=
 # ## Global truncation error
 # 
 # ````{admonition} Definition: Global Truncation Error (GTE)
@@ -143,6 +145,7 @@ glue("gte_fig", fig, display=False)
 # 
 # ````{admonition} Definition: Order of a method
 # :class: note
+# :name: order-of-a-method-definition
 # 
 # The order of a method is the order of the global truncation error for that method.
 # 
