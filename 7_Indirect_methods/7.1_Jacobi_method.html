@@ -419,6 +419,18 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../8_Appendices/8.0_Cheat_sheet.html">
+   Cheat Sheet
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -663,7 +675,7 @@ title="Print to PDF"
 <p>Let the <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> on the left-hand side be <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> and the <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> on the right-hand side be <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-matrix-form-of-the-jacobi-method-equation">
 <span class="eqno">(39)<a class="headerlink" href="#equation-matrix-form-of-the-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} = D^{-1} (\mathbf{b} - (L + U)\mathbf{x}^{(k)}),\]</div>
-<p>and writing this out for each element gives the Jacobi method.</p>
+<p>and writing this out for each element gives the Jacobi method gives the following definition of the Jacobi method.</p>
 <div class="note admonition" id="jacobi-method-definition">
 <p class="admonition-title">Definition: The Jacobi method</p>
 <p>The Jacobi method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
@@ -700,7 +712,7 @@ title="Print to PDF"
 <p>As <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)} \to \mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{r} \to 0\)</span> so we can use the following convergence criteria</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \| \mathbf{r} \| &lt; tol,
+    \max(|\mathbf{r}|) &lt; tol,
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(tol\)</span> is some small number. The smaller the value of <span class="math notranslate nohighlight">\(tol\)</span> the closer <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> is to the exact solution but of course this will require more iterations. In practice a compromise is made between the accuracy required and the computational resources available. Typical values of <span class="math notranslate nohighlight">\(tol\)</span> are around <span class="math notranslate nohighlight">\(10^{-4}\)</span> or <span class="math notranslate nohighlight">\(10^{-6}\)</span>.</p>
 <div class="seealso admonition" id="jacobi-method-example">

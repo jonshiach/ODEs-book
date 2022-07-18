@@ -605,6 +605,26 @@ title="Print to PDF"
    Implicit Runge-Kutta methods
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stability">
+   Stability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boundary-value-problems">
+   Boundary Value Problems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#direct-methods">
+   Direct methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indirect-methods">
+   Indirect methods
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -637,6 +657,26 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implicit-runge-kutta-methods">
    Implicit Runge-Kutta methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stability">
+   Stability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boundary-value-problems">
+   Boundary Value Problems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#direct-methods">
+   Direct methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indirect-methods">
+   Indirect methods
   </a>
  </li>
 </ul>
@@ -766,9 +806,9 @@ title="Print to PDF"
 \[P_n(t) = \displaystyle\sum_{k=0}^n \binom{n}{k} \binom{n+k}{k} (t - 1)^k,\]</div>
 <p>and <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are chosen to satisfy the <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> order conditions. For</p>
 </dd>
-<dt id="term-Radau-IA-implicit-Runge-Kutta-method">Radau IA implicit Runge-Kutta method<a class="headerlink" href="#term-Radau-IA-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(s\)</span>-stage <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#radau-derivation"><span class="std std-ref">Radau IA implicit Runge-Kutta method</span></a> has order <span class="math notranslate nohighlight">\(k = 2s - 1\)</span> and are derived by setting <span class="math notranslate nohighlight">\(c_i\)</span> to be the roots of <span class="math notranslate nohighlight">\(P_s(t) + P_{s-1}(t)\)</span> and the values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are chosen to satisfy the order condition <span class="math notranslate nohighlight">\(D(k)\)</span>.</p>
+<dt id="term-Radau-IA-implicit-Runge-Kutta-method">Radau IA implicit Runge-Kutta method<a class="headerlink" href="#term-Radau-IA-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(s\)</span>-stage <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#radau-derivation"><span class="std std-ref">Radau IA</span></a> implicit Runge-Kutta method has order <span class="math notranslate nohighlight">\(k = 2s - 1\)</span> and are derived by setting <span class="math notranslate nohighlight">\(c_i\)</span> to be the roots of <span class="math notranslate nohighlight">\(P_s(t) + P_{s-1}(t)\)</span> and the values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are chosen to satisfy the order condition <span class="math notranslate nohighlight">\(D(k)\)</span>.</p>
 </dd>
-<dt id="term-Radau-IIA-implicit-Runge-Kutta-method">Radau IIA implicit Runge-Kutta method <a class="headerlink" href="#term-Radau-IIA-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(s\)</span>-stage <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#radau-derivation"><span class="std std-ref">Radau IIA implicit Runge-Kutta method</span></a> has order <span class="math notranslate nohighlight">\(k = 2s - 1\)</span>  are derived by setting <span class="math notranslate nohighlight">\(c_i\)</span> to be the roots of <span class="math notranslate nohighlight">\(P_s(t) - P_{s-1}(t)\)</span> and the values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are chosen to satisfy the order condition <span class="math notranslate nohighlight">\(C(k)\)</span>.</p>
+<dt id="term-Radau-IIA-implicit-Runge-Kutta-method">Radau IIA implicit Runge-Kutta method <a class="headerlink" href="#term-Radau-IIA-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>An <span class="math notranslate nohighlight">\(s\)</span>-stage <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#radau-derivation"><span class="std std-ref">Radau IIA</span></a> implicit Runge-Kutta method has order <span class="math notranslate nohighlight">\(k = 2s - 1\)</span>  are derived by setting <span class="math notranslate nohighlight">\(c_i\)</span> to be the roots of <span class="math notranslate nohighlight">\(P_s(t) - P_{s-1}(t)\)</span> and the values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are chosen to satisfy the order condition <span class="math notranslate nohighlight">\(C(k)\)</span>.</p>
 </dd>
 <dt id="term-Diagonally-Implicit-Runge-Kutta-DIRK-methods">Diagonally Implicit Runge-Kutta (DIRK) methods<a class="headerlink" href="#term-Diagonally-Implicit-Runge-Kutta-DIRK-methods" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#dirk-derivation"><span class="std std-ref">DIRK</span></a> method is an implicit Runge-Kutta method where <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> where <span class="math notranslate nohighlight">\(i &lt; j\)</span> and is derived by satisfying the <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> and</p>
 <div class="math notranslate nohighlight">
@@ -778,6 +818,214 @@ title="Print to PDF"
 <dt id="term-Singly-Diagonally-Implicit-Runge-Kutta-SDIRK-methods">Singly Diagonally Implicit Runge-Kutta (SDIRK) methods<a class="headerlink" href="#term-Singly-Diagonally-Implicit-Runge-Kutta-SDIRK-methods" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../3_IRKs/3.1_Deriving_IRK_methods.html#sdirk-derivation"><span class="std std-ref">SDIRK</span></a> method an implicit Runge-Kutta method where <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> where <span class="math notranslate nohighlight">\(i &lt; j\)</span> and is derived by satisfying the <span class="math notranslate nohighlight">\(B(k)\)</span>, <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> and <span class="math notranslate nohighlight">\(D(\lfloor \frac{k}{2} \rfloor)\)</span> order conditions.</p>
 </dd>
 <dt id="term-Computing-the-stage-values-of-an-implicit-Runge-Kutta-method">Computing the stage values of an implicit Runge-Kutta method<a class="headerlink" href="#term-Computing-the-stage-values-of-an-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../3_IRKs/3.2_Solving_IVPs_using_IRK_methods.html#solving-ivps-using-irk-methods-section"><span class="std std-ref">Computing the stage values</span></a> of an implicit Runge-Kutta method requires the solution to a system of nonlinear equations. This is typically done using Newton’s method but can also be done using the Gauss-Seidel method.</p>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="stability">
+<h2>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-Stability">Stability<a class="headerlink" href="#term-Stability" title="Permalink to this term">#</a></dt><dd><p>A method is <a class="reference internal" href="../4_Stability/4.0_Stability.html#stability-definition"><span class="std std-ref">stable</span></a> if the local truncation errors do not increase from one step to the next.</p>
+</dd>
+<dt id="term-Stiffness">Stiffness<a class="headerlink" href="#term-Stiffness" title="Permalink to this term">#</a></dt><dd><p>An ODE is <span class="xref myst">stiff</span> if it requires a very small value of the step length <span class="math notranslate nohighlight">\(h\)</span> in order for a method to remain stable.</p>
+</dd>
+<dt id="term-Stiffness-ratio">Stiffness ratio<a class="headerlink" href="#term-Stiffness-ratio" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Stability/4.0_Stability.html#stiffness-ratio-definition"><span class="std std-ref">stiffness ratio</span></a> gives a measure to whether an system of ODEs is stiff and is calculated using</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    S = \frac{\max_i(|\lambda_i|)}{\min_i(|\lambda_i|)}.
+\end{align*}\]</div>
+<p>If <span class="math notranslate nohighlight">\(S\)</span> is large then the system is considered stiff.</p>
+</dd>
+<dt id="term-Test-ODE">Test ODE<a class="headerlink" href="#term-Test-ODE" title="Permalink to this term">#</a></dt><dd><p>The stability of numerical methods for solving ODEs can be analysed by considering the simple <a class="reference internal" href="../4_Stability/4.1_Stability_functions.html#stability-functions-section"><span class="std std-ref">test ODE</span></a> <span class="math notranslate nohighlight">\(y' = \lambda \lambda y\)</span>.</p>
+</dd>
+<dt id="term-Stability-function">Stability function<a class="headerlink" href="#term-Stability-function" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Stability/4.1_Stability_functions.html#stability-function-definition"><span class="std std-ref">stability function</span></a> <span class="math notranslate nohighlight">\(R(z)\)</span> for a method is the change of the solution over a single step of the method when used to solve the test ODE</p>
+<div class="math notranslate nohighlight">
+\[y_{n+1} = R(z) y_n.\]</div>
+</dd>
+<dt id="term-Absolute-stability">Absolute stability<a class="headerlink" href="#term-Absolute-stability" title="Permalink to this term">#</a></dt><dd><p>A method is considered <a class="reference internal" href="../4_Stability/4.1_Stability_functions.html#absolute-stability-section"><span class="std std-ref">absolutely stable</span></a> if <span class="math notranslate nohighlight">\(|R(z)| \leq 1\)</span> for <span class="math notranslate nohighlight">\(z \in \mathbb{C}\)</span>.</p>
+</dd>
+<dt id="term-Region-of-absolute-stability">Region of absolute stability<a class="headerlink" href="#term-Region-of-absolute-stability" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Stability/4.1_Stability_functions.html#region-of-absolute-stability-definition"><span class="std std-ref">region of absolute stability</span></a> is the set of values of <span class="math notranslate nohighlight">\(z\)</span> for which the method is absolutely stable.</p>
+</dd>
+<dt id="term-Interval-of-absolute-stability">Interval of absolute stability<a class="headerlink" href="#term-Interval-of-absolute-stability" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Stability/4.1_Stability_functions.html#interval-of-absolute-stability-section"><span class="std std-ref">interval of absolute stability</span></a> is the range of values of <span class="math notranslate nohighlight">\(h\)</span> for which a method is absolutely stable.</p>
+</dd>
+<dt id="term-Stability-function-of-an-explicit-Runge-Kutta-method">Stability function of an explicit Runge-Kutta method<a class="headerlink" href="#term-Stability-function-of-an-explicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Stability/4.2_RK_stability_function.html#erk-rz-section"><span class="std std-ref">stability function of an explicit Runge-Kutta method</span></a> can be determined using</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    R(z)=1+\sum_{k=0}^{\infty} \mathbf{b}^T A^k \mathbf{e}\,z^{k+1} =1+\mathbf{b}^T \mathbf{e}\,z+\mathbf{b}^T A\mathbf{e}\,z^2 +\mathbf{b}^T A^2 \mathbf{e}\,z^3 + \cdots
+\end{align*}\]</div>
+</dd>
+<dt id="term-Order-of-an-explicit-Runge-Kutta-method">Order of an explicit Runge-Kutta method<a class="headerlink" href="#term-Order-of-an-explicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>The order of an explicit Runge-Kutta method is the order of the highest term in the stability function for that method that agrees with the series expansion of <span class="math notranslate nohighlight">\(e^z\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    e^z = \sum_{k=0}^{\infty} \frac{1}{k!} z^k = 1 + z + \frac{1}{2!}z^2 + \frac{1}{3!}z^3 + \frac{1}{4!}z^4 + \cdots
+\end{align*}\]</div>
+</dd>
+<dt id="term-Stability-function-of-an-implicit-Runge-Kutta-method">Stability function of an implicit Runge-Kutta method<a class="headerlink" href="#term-Stability-function-of-an-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Stability/4.3_IRK_stability_function.html#implicit-rz-section"><span class="std std-ref">stability function of an implicit Runge-Kutta method</span></a> can be determined using</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^T)}{\det(I - zA)}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-A-stability">A-stability<a class="headerlink" href="#term-A-stability" title="Permalink to this term">#</a></dt><dd><p>An implicit method is considered <a class="reference internal" href="../4_Stability/4.3_IRK_stability_function.html#a-stability"><span class="std std-ref">A-stable</span></a> if its region of absolute stability includes all points on the left-hand side of the complex plane.</p>
+</dd>
+<dt id="term-Conditions-for-A-stability">Conditions for A-stability<a class="headerlink" href="#term-Conditions-for-A-stability" title="Permalink to this term">#</a></dt><dd><p>For a method to be A-stable it must satisfied the following <a class="reference internal" href="../4_Stability/4.3_IRK_stability_function.html#a-stability-theorem"><span class="std std-ref">conditions</span></a></p>
+<ul class="simple">
+<li><p>All roots of the denominator of <span class="math notranslate nohighlight">\(R(z)\)</span> have positive real parts</p></li>
+<li><p><span class="math notranslate nohighlight">\(E(y)=Q(iy)Q(-iy)-P(iy)P(-iy) \geq 0\)</span> for all <span class="math notranslate nohighlight">\(y\in \mathbb{R}\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="boundary-value-problems">
+<h2>Boundary Value Problems<a class="headerlink" href="#boundary-value-problems" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-Two-point-Boundary-Value-Problem-BVP">Two point Boundary Value Problem (BVP)<a class="headerlink" href="#term-Two-point-Boundary-Value-Problem-BVP" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../5_BVPs/5.0_BVPs.html#bvp-section"><span class="std std-ref">two point boundary value problem</span></a> is an ODE where the solutions at the lower and upper boundaries of the domain are known</p>
+<div class="math notranslate nohighlight">
+\[y'' = f(t, y), \qquad t \in [a, b], \qquad y(a) = \alpha, \qquad y(b) = \beta.\]</div>
+</dd>
+<dt id="term-Uniqueness-of-solutions-to-a-BVP">Uniqueness of solutions to a BVP<a class="headerlink" href="#term-Uniqueness-of-solutions-to-a-BVP" title="Permalink to this term">#</a></dt><dd><p>A BVP may have a <a class="reference internal" href="../5_BVPs/5.0_BVPs.html#existence-and-uniqueness-of-bvp-solutions-section"><span class="std std-ref">unique solution, infinitely many solutions or no solutions</span></a>. A BVP of the form <span class="math notranslate nohighlight">\(y'' = p(t) y' + q(t) y + r(t)\)</span> has a unique solution if the following conditions are satisfied</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are continuous on <span class="math notranslate nohighlight">\([a, b]\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(q(t) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t\in [a,b]\)</span>.</p></li>
+</ul>
+</dd>
+<dt id="term-The-shooting-method">The shooting method<a class="headerlink" href="#term-The-shooting-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_BVPs/5.1_Shooting_method.html#shooting-method-section"><span class="std std-ref">shooting method</span></a> for solving a BVP uses estimates of the initial value of <span class="math notranslate nohighlight">\(y'(a)\)</span> and compares the numerical solution for <span class="math notranslate nohighlight">\(y(b)\)</span> to the known solution <span class="math notranslate nohighlight">\(y(b)=\beta\)</span> and changes the estimates accordingly.</p>
+</dd>
+<dt id="term-The-secant-method">The secant method<a class="headerlink" href="#term-The-secant-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_BVPs/5.1_Shooting_method.html#secant-method-section"><span class="std std-ref">secant method</span></a> is a root finding method that can be used to calculate improved estimates in the shooting method. If <span class="math notranslate nohighlight">\(s_{i}\)</span> and <span class="math notranslate nohighlight">\(s_{i-1}\)</span> are current and previous guess values of <span class="math notranslate nohighlight">\(y'(a)\)</span> then an improved guess value is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    s_{i+1} = s_i - g(s_i)\frac{s_i - s_{i-1}}{g(s_i) - g(s_{i-1})}.
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(g(s) = y'(a) - y_n\)</span> and <span class="math notranslate nohighlight">\(y_n\)</span> is the numerical solution for <span class="math notranslate nohighlight">\(y(b)\)</span>.</p>
+</dd>
+<dt id="term-Finite-difference-approximations">Finite-difference approximations<a class="headerlink" href="#term-Finite-difference-approximations" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../5_BVPs/5.2_Finite_difference_method.html#finite-difference-method-section"><span class="std std-ref">finite-difference approximation</span></a> is an approximation of a derivative derived from the Taylor series.</p>
+</dd>
+<dt id="term-Finite-difference-methods">Finite-difference methods<a class="headerlink" href="#term-Finite-difference-methods" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_BVPs/5.2_Finite_difference_method.html#finite-difference-method-section"><span class="std std-ref">finite-difference method</span></a> uses finite-difference approximations to approximate a BVP using a system of linear equations (usually tridiagonal).</p>
+</dd>
+<dt id="term-The-Thomas-algorithm">The Thomas algorithm<a class="headerlink" href="#term-The-Thomas-algorithm" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_BVPs/5.2_Finite_difference_method.html#thomas-algorithm-section"><span class="std std-ref">Thomas algorithm</span></a> is an efficient method for solving tridiagonal systems of linear equations.</p>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="direct-methods">
+<h2>Direct methods<a class="headerlink" href="#direct-methods" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-System-of-linear-equations">System of linear equations<a class="headerlink" href="#term-System-of-linear-equations" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../6_Direct_methods/6.0_Direct_methods.html#systems-of-linear-equations-section"><span class="std std-ref">system of linear equations</span></a> is a set of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> where the solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> satisfies all equations in the system.</p>
+</dd>
+<dt id="term-Direct-methods">Direct methods<a class="headerlink" href="#term-Direct-methods" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../6_Direct_methods/6.0_Direct_methods.html#direct-methods-chapter"><span class="std std-ref">Direct methods</span></a> solve a system of linear equations using a single application of the method.</p>
+</dd>
+<dt id="term-LU-decomposition">LU decomposition<a class="headerlink" href="#term-LU-decomposition" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../6_Direct_methods/6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a> factorises a square matrix <span class="math notranslate nohighlight">\(A\)</span> into a lower and upper triangular matrix <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> such that <span class="math notranslate nohighlight">\(A = LU\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-df5e4eb8-d1ab-481d-8cf2-badec671a12f">
+<span class="eqno">(49)<a class="headerlink" href="#equation-df5e4eb8-d1ab-481d-8cf2-badec671a12f" title="Permalink to this equation">#</a></span>\[\begin{align}
+    u_{ij} &amp;= a_{ij} - \sum_{k=1}^{i-1} \ell_{ik}u_{kj}, &amp; i &amp;= 1, \ldots, j, \\
+    \ell_{ij} &amp;= \dfrac{1}{u_{jj}} \left(a_{ij} - \displaystyle \sum_{k=1}^{j-1} \ell_{ik}u_{kj}\right), &amp; i &amp;= j+1, \ldots, n.
+\end{align}\]</div>
+</dd>
+<dt id="term-Crout-s-method">Crout’s method<a class="headerlink" href="#term-Crout-s-method" title="Permalink to this term">#</a></dt><dd><p>The solution of a system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> can be calculated using <a class="reference internal" href="../6_Direct_methods/6.1_LU_decomposition.html#crouts-method-section"><span class="std std-ref">Crout’s method</span></a> where <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span> is solved for <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> by forward substitution and <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span> is solved for <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> by back substitution.</p>
+</dd>
+<dt id="term-Partial-pivoting">Partial pivoting<a class="headerlink" href="#term-Partial-pivoting" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../6_Direct_methods/6.2_LUP_decomposition.html#partial-pivoting-section"><span class="std std-ref">Partial pivoting</span></a> uses row swaps to ensure that the pivot elements <span class="math notranslate nohighlight">\(a_{jj}\)</span> have a larger absolute value that the elements in the column beneath it.</p>
+</dd>
+<dt id="term-Permutation-matrix">Permutation matrix<a class="headerlink" href="#term-Permutation-matrix" title="Permalink to this term">#</a></dt><dd><p>The permutation matrix is calculated by performing the same row swaps as used in partial pivoting to the identity matrix.</p>
+</dd>
+<dt id="term-LUP-decomposition">LUP decomposition<a class="headerlink" href="#term-LUP-decomposition" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../6_Direct_methods/6.2_LUP_decomposition.html#lup-decomposition-section"><span class="std std-ref">LUP decomposition</span></a> factorises a square matrix <span class="math notranslate nohighlight">\(A\)</span> into a lower and upper triangular matrices <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> and the permutation matrix <span class="math notranslate nohighlight">\(P\)</span> such that <span class="math notranslate nohighlight">\(PA = LU\)</span>.</p>
+</dd>
+<dt id="term-Crout-s-method-with-LUP-decomposition">Crout’s method with LUP decomposition<a class="headerlink" href="#term-Crout-s-method-with-LUP-decomposition" title="Permalink to this term">#</a></dt><dd><p>The solution of a system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> can be calculated using <a class="reference internal" href="../6_Direct_methods/6.2_LUP_decomposition.html#lup-decomposition-section"><span class="std std-ref">Crout’s method</span></a> where <span class="math notranslate nohighlight">\(L \mathbf{y} = P \mathbf{b}\)</span> is solved for <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> by forward substitution and <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span> is solved for <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> by back substitution.</p>
+</dd>
+<dt id="term-Positive-definite-matrix">Positive definite matrix<a class="headerlink" href="#term-Positive-definite-matrix" title="Permalink to this term">#</a></dt><dd><p>A matrix is <a class="reference internal" href="../6_Direct_methods/6.3_Cholesky_decomposition.html#cholesky-section"><span class="std std-ref">positive definite</span></a> if it is symmetric and the determinants of all upper left square matrices are all positive.</p>
+</dd>
+<dt id="term-Cholesky-decomposition">Cholesky decomposition<a class="headerlink" href="#term-Cholesky-decomposition" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../6_Direct_methods/6.3_Cholesky_decomposition.html#cholesky-definition"><span class="std std-ref">Cholesky decomposition</span></a> factorises a positive definite matrix <span class="math notranslate nohighlight">\(A\)</span> into a lower triangular matrix <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(A = LL^\mathrm{T}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \ell_{jj} &amp;= \sqrt{a_{jj} - \sum_{k=1}^{j-1} \ell_{jk}^2 }, &amp; j &amp;= 1, \ldots, n,\\
+    \ell_{ij} &amp;= \dfrac{1}{\ell_{jj} }\left(a_{ij} -\displaystyle \sum_{k=1}^{i-1} \ell_{ik} \ell_{jk} \right), &amp; i &amp;= j + 1,\ldots ,n.
+\end{align*}\]</div>
+</dd>
+<dt id="term-The-Cholesky-Crout-method">The Cholesky-Crout method<a class="headerlink" href="#term-The-Cholesky-Crout-method" title="Permalink to this term">#</a></dt><dd><p>The solution of a system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> where <span class="math notranslate nohighlight">\(A\)</span> is positive definite can be calculated using the <a class="reference internal" href="../6_Direct_methods/6.3_Cholesky_decomposition.html#cholesky-crout-method-section"><span class="std std-ref">Cholesky-Crout’s method</span></a> where <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span> is solved for <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> by forward substitution and <span class="math notranslate nohighlight">\(L^\mathrm{T} \mathbf{x} = \mathbf{y}\)</span> is solved for <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> by back substitution.</p>
+</dd>
+<dt id="term-Orthogonal-vectors">Orthogonal vectors<a class="headerlink" href="#term-Orthogonal-vectors" title="Permalink to this term">#</a></dt><dd><p>A set of vectors <span class="math notranslate nohighlight">\(\lbrace \mathbf{v}_1 ,\mathbf{v}_2 ,\mathbf{v}_3 ,\dots \rbrace\)</span> is said to be <a class="reference internal" href="../6_Direct_methods/6.4_QR_decomposition.html#qr-section"><span class="std std-ref">orthogonal</span></a> if <span class="math notranslate nohighlight">\(\mathbf{v}_i \cdot \mathbf{v}_j =0\)</span> for <span class="math notranslate nohighlight">\(i\not= j\)</span>.</p>
+</dd>
+<dt id="term-Orthonormal-vectors">Orthonormal vectors<a class="headerlink" href="#term-Orthonormal-vectors" title="Permalink to this term">#</a></dt><dd><p>A set of orthogonal vectors is <a class="reference internal" href="../6_Direct_methods/6.4_QR_decomposition.html#qr-section"><span class="std std-ref">orthonormal</span></a> if the vectors are all unit vectors.</p>
+</dd>
+<dt id="term-QR-decomposition">QR decomposition <a class="headerlink" href="#term-QR-decomposition" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../6_Direct_methods/6.4_QR_decomposition.html#qr-section"><span class="std std-ref">QR decomposition</span></a> factorises an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> into an orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and an upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
+</dd>
+<dt id="term-The-Gram-Schmidt-process">The Gram-Schmidt process<a class="headerlink" href="#term-The-Gram-Schmidt-process" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../6_Direct_methods/6.4_QR_decomposition.html#qr-gram-schmidt-section"><span class="std std-ref">Gram-Schmidt</span></a> process applied to a set of <span class="math notranslate nohighlight">\(n\)</span> independent vectors <span class="math notranslate nohighlight">\((\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)\)</span> produces a set of <span class="math notranslate nohighlight">\(n\)</span> orthogonal vectors <span class="math notranslate nohighlight">\((\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)\)</span> by subtracting the projection of <span class="math notranslate nohighlight">\(\mathbf{a}_i\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{u}_j\)</span> for <span class="math notranslate nohighlight">\(j = 1, \ldots, i = 1\)</span>.</p>
+</dd>
+<dt id="term-QR-decomposition-using-the-Gram-Schmidt-process">QR decomposition using the Gram-Schmidt process<a class="headerlink" href="#term-QR-decomposition-using-the-Gram-Schmidt-process" title="Permalink to this term">#</a></dt><dd><p>The QR decomposition of a matrix <span class="math notranslate nohighlight">\(A\)</span> calculated using the <a class="reference internal" href="../6_Direct_methods/6.4_QR_decomposition.html#qr-gramschmidt-definition"><span class="std std-ref">Gram-Schmidt process</span></a> is</p>
+<p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    r_{ij} &amp;=\mathbf{q}_i \cdot \mathbf{a}_j , \qquad i = 1,\dots ,j-1,\\
+    \mathbf{u}_j &amp;= \mathbf{a}_j - \sum_{i=1}^{j-1} r_{ij} \mathbf{q}_i ,\\
+    r_{jj} &amp;= \| \mathbf{u}_j \|,\\
+    \mathbf{q}_j &amp;=\frac{\mathbf{u}_j }{r_{jj}}.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Crout-s-method-with-QR-decomposition">Crout’s method with QR decomposition<a class="headerlink" href="#term-Crout-s-method-with-QR-decomposition" title="Permalink to this term">#</a></dt><dd><p>The solution of a system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> where <span class="math notranslate nohighlight">\(A\)</span> is positive definite can be calculated using the <a class="reference internal" href="../6_Direct_methods/6.4_QR_decomposition.html#qr-crout-section"><span class="std std-ref">Crout’s method with QR decomposition</span></a> by solving <span class="math notranslate nohighlight">\(Rx = Q^\mathrm{T} \mathbf{b}\)</span> using back substitution.</p>
+</dd>
+<dt id="term-Householder-transformations">Householder transformations<a class="headerlink" href="#term-Householder-transformations" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../6_Direct_methods/6.4_QR_decomposition.html#qr-householder-section"><span class="std std-ref">Householder transformations</span></a> reflect a vector about a line that passes through the origin.</p>
+</dd>
+<dt id="term-QR-decomposition-using-Householder-transformations">QR decomposition using Householder transformations<a class="headerlink" href="#term-QR-decomposition-using-Householder-transformations" title="Permalink to this term">#</a></dt><dd><p>The QR decomposition a matrix <span class="math notranslate nohighlight">\(A\)</span> calculated using <a class="reference internal" href="../6_Direct_methods/6.4_QR_decomposition.html#qr-householder-definition"><span class="std std-ref">Householder transformations</span></a> uses the following steps.</p>
+<p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{e} = (1, \underbrace{0, \ldots, 0}_{m-j})^T\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u} = (r_{jj}, r_{j+1,j}, \ldots, r_{m,j})^T\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{u} + \operatorname{sign}(r_{jj})\|\mathbf{u}\|\mathbf{e}\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v} = \dfrac{\mathbf{u}}{\| \mathbf{u} \|}\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(H = \begin{pmatrix}
+      I_{j-1} &amp; 0 \\
+      0 &amp; I_{m-j+1} - 2 \mathbf{v}\mathbf{v}^T
+  \end{pmatrix}\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(R = H R\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q = Q H\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="indirect-methods">
+<h2>Indirect methods<a class="headerlink" href="#indirect-methods" title="Permalink to this headline">#</a></h2>
+<dl class="glossary">
+<dt id="term-Indirect-method">Indirect method<a class="headerlink" href="#term-Indirect-method" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../7_Indirect_methods/7.0_Indirect_methods.html#indirect-methods-chapter"><span class="std std-ref">Indirect methods</span></a> is multiple applications of the method to calculate the solution to a system of linear equations. An estimate is made of the solution <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)}\)</span> and an indirect method is applied to calculate the improved estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(1)}\)</span>. The method is applied repeatedly until two successive estimates agree to some tolerance.</p>
+</dd>
+<dt id="term-Jacobi-method">Jacobi method<a class="headerlink" href="#term-Jacobi-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../7_Indirect_methods/7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">Jacobi method</span></a> for calculating the solution to a system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j = 1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j = i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots ,n.
+\end{align*}\]</div>
+</dd>
+<dt id="term-Gauss-Seidel-method">Gauss-Seidel method<a class="headerlink" href="#term-Gauss-Seidel-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../7_Indirect_methods/7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel method</span></a> for calculating the solution to a system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    x_i^{(k+1)} = \frac{1}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i=1, \ldots , n.
+\end{align*}\]</div>
+</dd>
+<dt id="term-The-SOR-method">The SOR method<a class="headerlink" href="#term-The-SOR-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../7_Indirect_methods/7.4_SOR_method.html#sor-method-section"><span class="std std-ref">SOR method</span></a> for calculating the solution to a system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1 , \ldots, n,
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span> is a relaxation parameter.</p>
+</dd>
+<dt id="term-Iteration-matrix">Iteration matrix<a class="headerlink" href="#term-Iteration-matrix" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../7_Indirect_methods/7.0_Indirect_methods.html#indirect-methods-chapter"><span class="std std-ref">iteration matrix</span></a> for a method is the matrix <span class="math notranslate nohighlight">\(T\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)} = T\mathbf{x}^{(k)} + \mathbf{c}\)</span> where <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> are current and next estimates of the solution. The iteration matrices for the indirect methods are</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \textsf{Jacobi}: &amp;&amp; T_J &amp;= - D^{-1}(L + U),\\
+    \textsf{Gauss-Seidel}: &amp;&amp; T_{GS} &amp;=-(L+D)^{-1} U, \\
+    \textsf{SOR}: &amp;&amp; T_{SOR} &amp;=(D+\omega L)^{-1} ((1-\omega )D-\omega U),
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(A = L + D + U\)</span> and <span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(D\)</span>, and <span class="math notranslate nohighlight">\(U\)</span> are lower, diagonal and upper triangular elements of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</dd>
+<dt id="term-Spectral-radius">Spectral radius<a class="headerlink" href="#term-Spectral-radius" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../7_Indirect_methods/7.3_Convergence_of_indirect_methods.html#spectral-radius-definition"><span class="std std-ref">spectral radius</span></a> of a matrix is the largest absolute eigenvalue of the matrix.</p>
+</dd>
+<dt id="term-Convergence-of-direct-methods">Convergence of direct methods<a class="headerlink" href="#term-Convergence-of-direct-methods" title="Permalink to this term">#</a></dt><dd><p>A direct method will <a class="reference internal" href="../7_Indirect_methods/7.3_Convergence_of_indirect_methods.html#convergence-of-indirect-methods-section"><span class="std std-ref">converge</span></a> to a solution if the spectral radius of the iteration matrix is less than 1. The smaller the spectral radius of the convergence matrix, the faster the convergence.</p>
+</dd>
+<dt id="term-Optimum-value-of-the-relaxation-parameter">Optimum value of the relaxation parameter<a class="headerlink" href="#term-Optimum-value-of-the-relaxation-parameter" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../7_Indirect_methods/7.4_SOR_method.html#optimum-relaxation-parameter-section"><span class="std std-ref">optimum value of the relaxation parameter</span></a> for the SOR method is the value of <span class="math notranslate nohighlight">\(\omega\)</span> such that the spectral radius of the iteration matrix is minimised. If the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> has all real eigenvalues then the optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \omega_{opt} = 1+{\left(\frac{\rho (T_J )}{1+\sqrt{1-\rho (T_J )^2 }}\right)}^2,
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the Jacobi method iteration matrix.</p>
 </dd>
 </dl>
 </div>
