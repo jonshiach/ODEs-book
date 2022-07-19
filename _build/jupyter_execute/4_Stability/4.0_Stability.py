@@ -138,7 +138,7 @@ glue("stiff_solution_2", fig, display=False)
 # (stiffness-section)=
 # ## Stiffness
 # 
-# Whether a numerical method used to solve an ODE is stable or unstable depends upon the ODE being solved and the step length used. A method could be stable for one ODE using a particular step length and unstable for another using the same step length. ODEs that require particularly small step length for a method to be stable are known as **stiff** ODEs. There is no mathematical definition of what makes an ODE stiff, however,  {cite:t}`lambert:1991` J.D. Lambert provides a useful description
+# Whether a numerical method used to solve an ODE is stable or unstable depends upon the ODE being solved and the step length used. A method could be stable for one ODE using a particular step length and unstable for another using the same step length. ODEs that require particularly small step length for a method to be stable are known as **stiff** ODEs. There is no mathematical definition of what makes an ODE stiff, however, a useful description is provided by {cite:t}`lambert:1991`
 # 
 # >*If a numerical method with a finite region of absolute stability, applied to a system with any initial conditions, is forced to use in a certain interval of integration a step length which is excessively small in relation to the smoothness of the exact solution in that interval, then the system is said to be stiff in that interval.*
 # 

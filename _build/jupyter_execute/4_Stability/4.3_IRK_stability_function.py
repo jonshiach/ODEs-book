@@ -272,6 +272,14 @@ z, y = sp.symbols('z, y')
 Rz = P(z) / Q(z)
 display(Math(f"R(z) = {sp.latex(sp.nsimplify(Rz))}"))
 
+# Check roots of Q have positive real parts
+roots = sp.solve(Q(z) - 0)
+display(Math(f"\\text{{roots of }}Q(z): z = {sp.latex(roots)}"))
+
+# Check E(y) >= 0
+E = Q(1j * y) * Q(-1j * y) - P(1j * y) * P(-1j * y)
+display(Math(f"E(y) = {sp.latex(sp.simplify(sp.nsimplify(E)))}"))
+
 
 # In[3]:
 

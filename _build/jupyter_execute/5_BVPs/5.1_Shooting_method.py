@@ -6,7 +6,7 @@
 # 
 # Consider the two-point boundary value problem 
 # 
-# $$y'' = f(t,y),\qquad, \qquad y(a) = \alpha ,\qquad y(b) = \beta.$$
+# $$y'' = f(t,y), \qquad t \in [a, b], \qquad y(a) = \alpha ,\qquad y(b) = \beta.$$
 # 
 # Since the ODE solvers we use can only be applied to a first-order ODE we need to rewrite the second-order ODE as a system of two first-order ODEs
 # 

@@ -10,9 +10,7 @@
 #     A = LU.
 # \end{align*}
 # 
-# The advantage of writing a matrix as a product of $L$ and $U$ is that the solution to a triangular set of equations is easy to calculate using forward or back substitution. Consider the LU decomposition of a $3\times 3$ matrix[^1]
-# 
-# [^1]: Here we use $\ell$ instead of the lowercase character $l$ to avoid confusion with the uppercase character $I$ or the number 1.
+# The advantage of writing a matrix as a product of $L$ and $U$ is that the solution to a triangular set of equations is easy to calculate using forward or back substitution. Consider the LU decomposition of a $3\times 3$ matrix
 # 
 # \begin{align*}
 #     \begin{pmatrix}
@@ -31,7 +29,9 @@
 #     \end{pmatrix},
 # \end{align*}
 # 
-# which gives a system of 9 equations (one for each element in $A$) in 12 unknowns which has an infinite number of solutions. If we use the condition $\ell_{ii} = 1$ then
+# which gives a system of 9 equations (one for each element in $A$) in 12 unknowns which has an infinite number of solutions. If we use the condition $\ell_{ii} = 1$ then[^1]
+# 
+# [^1]: Here we use $\ell$ instead of the lowercase character $l$ to avoid confusion with the uppercase character $I$ or the number 1.
 # 
 # \begin{align*}
 #     \begin{pmatrix}
