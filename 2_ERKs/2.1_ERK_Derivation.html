@@ -91,6 +91,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -640,10 +645,10 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>then the Taylor series becomes</p>
 <div class="math notranslate nohighlight" id="equation-ode-taylor-equation">
-<span class="eqno">(9)<a class="headerlink" href="#equation-ode-taylor-equation" title="Permalink to this equation">#</a></span>\[\begin{align*}
+<span class="eqno">(8)<a class="headerlink" href="#equation-ode-taylor-equation" title="Permalink to this equation">#</a></span>\[\begin{align*}
     y_{n+1} &amp;= y_n + h f(t_n, y_n) + \frac{h^2}{2}(f_t(t_n, y_n) + f(t_n, y_n) f_y(t_n, y_n)) + O(h^3)
 \end{align*}\]</div>
-<p>This is the second-order Taylor series expansion for the ODE <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span>. To be able to solve this ODE we need the Taylor series expansion of a Runge-Kutta method to be equivalent to equation <a class="reference internal" href="#equation-ode-taylor-equation">(9)</a>. Recall that the general form of a second-order explicit Runge-Kutta method is</p>
+<p>This is the second-order Taylor series expansion for the ODE <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span>. To be able to solve this ODE we need the Taylor series expansion of a Runge-Kutta method to be equivalent to equation <a class="reference internal" href="#equation-ode-taylor-equation">(8)</a>. Recall that the general form of a second-order explicit Runge-Kutta method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;= y_n + h(b_1 k_1 + b_2 k_2), \\
@@ -662,11 +667,11 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>Substituting <span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> into the expression for <span class="math notranslate nohighlight">\(y_{n+1}\)</span> gives</p>
 <div class="math notranslate nohighlight" id="equation-bivariate-rk2-equation">
-<span class="eqno">(10)<a class="headerlink" href="#equation-bivariate-rk2-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(9)<a class="headerlink" href="#equation-bivariate-rk2-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 y_{n+1} &amp;= y_n + h (b_1 f(t_n, y_n) \\
 &amp; \qquad + b_2 (f(t_n, y_n) + c_2 h f_t(t_n, y_n) + h a_{21} f(t_n, y_n) f_y(t_n, y_n))) + O(h^3).
 \end{align*}\end{split}\]</div>
-<p>We need equation <a class="reference internal" href="#equation-bivariate-rk2-equation">(10)</a> to be equal to <a class="reference internal" href="#equation-ode-taylor-equation">(9)</a>. Equating the coefficients of <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span> we have</p>
+<p>We need equation <a class="reference internal" href="#equation-bivariate-rk2-equation">(9)</a> to be equal to <a class="reference internal" href="#equation-ode-taylor-equation">(8)</a>. Equating the coefficients of <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     h b_1 + h b_2 &amp;= h \\
@@ -688,7 +693,7 @@ y_{n+1} &amp;= y_n + h (b_1 f(t_n, y_n) \\
 <div class="note admonition" id="rk2-order-conditions-definition">
 <p class="admonition-title">Definition: Order conditions for a second-order explicit Runge-Kutta method</p>
 <div class="math notranslate nohighlight" id="equation-rk2-order-conditions-equation">
-<span class="eqno">(11)<a class="headerlink" href="#equation-rk2-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(10)<a class="headerlink" href="#equation-rk2-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     b_1 +b_2 &amp;=1,\\
     c_2 b_2 &amp;=\frac{1}{2},\\
     a_{21} b_2 &amp;=\frac{1}{2}
@@ -722,8 +727,8 @@ y_{n+1} &amp;= y_n + h (b_1 f(t_n, y_n) \\
 </div>
 <div class="section" id="using-python-to-solve-the-order-conditions">
 <h2>Using Python to solve the order conditions<a class="headerlink" href="#using-python-to-solve-the-order-conditions" title="Permalink to this headline">#</a></h2>
-<p>The algebra used to solve the order conditions in the <a class="reference external" href="#rk2-derivation-example">example</a> above is quite easy to perform but for higher order methods it can soon get more complicated (see the <a class="reference external" href="#rk4-derivation-example">derivation of a fourth-order explicit Runge-Kutta method</a> for an example) and it is therefore useful to use software to help with the algebra. There is a Python library called <a class="reference external" href="https://www.sympy.org/en/index.html"><strong>SymPy</strong></a> (short for <em>symbolic Python</em>) that has functions that can solve algebraic equations.</p>
-<p>The code below derives the second-order explicit Runge-Kutta method from the <a class="reference external" href="#rk2-derivation-example">example</a> above using SymPy. After importing SymPy we need to declare each of the coefficients <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> as <strong>symbolic variables</strong> using the <code class="docutils literal notranslate"><span class="pre">sp.symbols</span></code> command before setting <span class="math notranslate nohighlight">\(c_2=1\)</span>. Each order condition is then defined using the symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side from the left. We have also used the <code class="docutils literal notranslate"><span class="pre">sp.Rational(1,2)</span></code> command for the fraction <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code>, <code class="docutils literal notranslate"><span class="pre">eq2</span></code> and <code class="docutils literal notranslate"><span class="pre">eq3</span></code> is then solved using the <code class="docutils literal notranslate"><span class="pre">sp.solve</span></code> command.</p>
+<p>The algebra used to solve the order conditions in <a class="reference external" href="#rk2-derivation-example">example 2.2</a> above is quite easy to perform but for higher order methods it can soon get more complicated (see the <a class="reference external" href="#rk4-derivation-example">derivation of a fourth-order explicit Runge-Kutta method</a> for an example) and it is therefore useful to use software to help with the algebra. There is a Python library called <a class="reference external" href="https://www.sympy.org/en/index.html"><strong>SymPy</strong></a> (short for <em>symbolic Python</em>) that has functions that can solve algebraic equations.</p>
+<p>The code below derives the second-order explicit Runge-Kutta method from <a class="reference external" href="#rk2-derivation-example">example 2.2</a> using SymPy. After importing SymPy we need to declare each of the coefficients <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> as <strong>symbolic variables</strong> using the <code class="docutils literal notranslate"><span class="pre">sp.symbols</span></code> command before setting <span class="math notranslate nohighlight">\(c_2=1\)</span>. Each order condition is then defined using these symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side. We have also used the <code class="docutils literal notranslate"><span class="pre">sp.Rational(1,2)</span></code> command for the fraction <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code>, <code class="docutils literal notranslate"><span class="pre">eq2</span></code> and <code class="docutils literal notranslate"><span class="pre">eq3</span></code> is then solved using the <code class="docutils literal notranslate"><span class="pre">sp.solve</span></code> command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>

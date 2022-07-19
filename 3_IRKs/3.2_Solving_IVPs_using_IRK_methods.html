@@ -91,6 +91,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -635,24 +640,22 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>To help simplify the calculations we let</p>
 <div class="math notranslate nohighlight" id="equation-yi-equation">
-<span class="eqno">(21)<a class="headerlink" href="#equation-yi-equation" title="Permalink to this equation">#</a></span>\[Y_i = y_n +h \displaystyle\sum_{j=1}^s a_{ij} k_j\]</div>
+<span class="eqno">(19)<a class="headerlink" href="#equation-yi-equation" title="Permalink to this equation">#</a></span>\[Y_i = y_n +h \displaystyle\sum_{j=1}^s a_{ij} k_j\]</div>
 <p>then we can write these equations as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-44ee13e7-7ebd-42eb-9918-620e4f954785">
-<span class="eqno">(22)<a class="headerlink" href="#equation-44ee13e7-7ebd-42eb-9918-620e4f954785" title="Permalink to this equation">#</a></span>\[\begin{align}
-   \label{eq:irk yn+1}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
    y_{n+1} &amp;= y_n + h \sum_{i=1}^s b_i f(t_n + c_i h, Y_i),\\
-   \label{eq:irk Yi}
    Y_i &amp;= y_n + h \sum_{j=1}^s a_{ij} f(t_n + c_j h, Y_j).
-\end{align}\]</div>
-<p>Expanding the summation in equation <a class="reference internal" href="#equation-yi-equation">(21)</a> for each stage gives</p>
+\end{align*}\]</div>
+<p>Expanding the summation in equation <a class="reference internal" href="#equation-yi-equation">(19)</a> for each stage gives</p>
 <div class="math notranslate nohighlight" id="equation-irk-stage-values-equation">
-<span class="eqno">(23)<a class="headerlink" href="#equation-irk-stage-values-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(20)<a class="headerlink" href="#equation-irk-stage-values-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     Y_1 &amp;= y_n + h(a_{11} f(t_n + c_1 h, Y_1) + a_{12} f(t_n + c_2 h, Y_2) + \cdots + a_{1s} f(t_n + c_s h, Y_s)), \\
     Y_2 &amp;= y_n + h(a_{21} f(t_n + c_1 h, Y_1) + a_{22} f(t_n + c_2 h, Y_2) + \cdots + a_{2s} f(t_n + c_s h, Y_s)), \\
     &amp; \vdots \\
     Y_s &amp;= y_n + h(a_{s1} f(t_n + c_1 h, Y_1) + a_{s2} f(t_n + c_2 h, Y_2) + \cdots + a_{ss} f(t_n + c_s h, Y_s)), \\
 \end{align*}\end{split}\]</div>
-<p>The values of <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots, Y_s\)</span> are found by solving this system of equations. One way to do this is to estimate the values of <span class="math notranslate nohighlight">\(Y_i\)</span> by assigning each a value and use the equations <a class="reference internal" href="#equation-irk-stage-values-equation">(23)</a> to calculate improved estimates. If we repeat this enough times then our estimations of <span class="math notranslate nohighlight">\(Y_i\)</span> will be close to the actual values of <span class="math notranslate nohighlight">\(Y_i\)</span>. We cease iterations when the largest difference between two successive estimates is small</p>
+<p>The values of <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots, Y_s\)</span> are found by solving this system of equations. One way to do this is to estimate the values of <span class="math notranslate nohighlight">\(Y_i\)</span> by assigning each a value and use the equations <a class="reference internal" href="#equation-irk-stage-values-equation">(20)</a> to calculate improved estimates. If we repeat this enough times then our estimations of <span class="math notranslate nohighlight">\(Y_i\)</span> will be close to the actual values of <span class="math notranslate nohighlight">\(Y_i\)</span>. We cease iterations when the largest difference between two successive estimates is small</p>
 <div class="math notranslate nohighlight">
 \[\max_i| Y_i^{(k+1)} - Y_i^{(k)}| &lt; tol\]</div>
 <p>where <span class="math notranslate nohighlight">\(Y_i^{(k+1)}\)</span> and <span class="math notranslate nohighlight">\(Y_i^{(k)}\)</span> are the new and old estimates respectively and <span class="math notranslate nohighlight">\(tol\)</span> is a <strong>convergence tolerance</strong>. The value of <span class="math notranslate nohighlight">\(tol\)</span> is arbitrary but we need it to be small enough to give good estimates of <span class="math notranslate nohighlight">\(Y_i\)</span> but not so small that we are spending too much time calculating the iterations. A common default value for the tolerance is <span class="math notranslate nohighlight">\(tol=10^{-6}\)</span>.</p>
@@ -824,7 +827,7 @@ title="Print to PDF"
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The method used to calculate the stage values <span class="math notranslate nohighlight">\(Y_i\)</span> here is an iterative method known as the <span class="xref myst">Gauss-Seidel method</span>. This is not the most efficient method available to estimate the stage values and in practice <a class="reference external" href="https://en.wikipedia.org/wiki/Newton%27s_method">Newtons method</a> is preferred since it is more efficient. However this requires calculation of a matrix of derivatives of <span class="math notranslate nohighlight">\(f(t,y)\)</span> known as a <a class="reference external" href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant">Jacobian matrix</a>, and whilst not a particularly difficult to calculate, it can complicate the code somewhat especially when solving a system of ODEs. Therefore, here we only use the Gauss-Seidel method.</p>
+<p>The method used to calculate the stage values <span class="math notranslate nohighlight">\(Y_i\)</span> here is an iterative method known as the <a class="reference internal" href="../7_Indirect_methods/7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel method</span></a>. This is not the most efficient method available to estimate the stage values and in practice <a class="reference external" href="https://en.wikipedia.org/wiki/Newton%27s_method">Newtons method</a> is preferred since it is more efficient. However this requires calculation of a matrix of derivatives of <span class="math notranslate nohighlight">\(f(t,y)\)</span> known as a <a class="reference external" href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant">Jacobian matrix</a>, and whilst not a particularly difficult to calculate, it can complicate the code somewhat especially when solving a system of ODEs. Therefore, here we only use the Gauss-Seidel method.</p>
 </div>
 </div>
 </div>

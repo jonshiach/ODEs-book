@@ -91,6 +91,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -660,12 +665,12 @@ title="Print to PDF"
 <p>There are several types of implicit Runge-Kutta methods which are derived using the <a class="reference internal" href="3.0_IRKs.html#bk-ck-dk-order-conditions"><span class="std std-ref"><span class="math notranslate nohighlight">\(B(k)\)</span>, <span class="math notranslate nohighlight">\(C(k)\)</span> and <span class="math notranslate nohighlight">\(D(k)\)</span> order conditions</span></a> along with the <a class="reference internal" href="../2_ERKs/2.2_RK4_Derivation.html#row-sum-condition"><span class="std std-ref">row sum condition</span></a>.</p>
 <div class="section" id="gauss-legendre-methods">
 <span id="gauss-legendre-derivation"></span><h2>Gauss-Legendre methods<a class="headerlink" href="#gauss-legendre-methods" title="Permalink to this headline">#</a></h2>
-<p>Gauss-Legendre methods are a family of methods that are derived using <a class="reference external" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature">Gauss-Legendre quadrature</a>. An <span class="math notranslate nohighlight">\(s\)</span>-stage Gauss-Legendre method has order <span class="math notranslate nohighlight">\(k=2s\)</span>. They are derived using <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre_polynomials">Legendre polynomials</a> which are are a system of orthogonal polynomials</p>
+<p>Gauss-Legendre methods are a family of methods that are derived using <a class="reference external" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature">Gauss-Legendre quadrature</a>. An <span class="math notranslate nohighlight">\(s\)</span>-stage Gauss-Legendre method has order <span class="math notranslate nohighlight">\(k=2s\)</span>. They are derived using <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre_polynomials">Legendre polynomials</a> which are are a system of orthogonal polynomials.</p>
 <div class="note admonition" id="legendre-polynomials-definition">
 <p class="admonition-title">Definition: Legendre polynomials</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7cd6c7c2-d1a1-4dcf-8cc3-41cb76ee1b73">
-<span class="eqno">(17)<a class="headerlink" href="#equation-7cd6c7c2-d1a1-4dcf-8cc3-41cb76ee1b73" title="Permalink to this equation">#</a></span>\[\begin{align}
-   P_n (t)=\sum_{k=0}^n \binom{n}{k}\binom{n+k}{k}(t-1)^k ,
+<div class="amsmath math notranslate nohighlight" id="equation-d48cbbf8-4c67-43fb-8e34-a0d054ecba38">
+<span class="eqno">(15)<a class="headerlink" href="#equation-d48cbbf8-4c67-43fb-8e34-a0d054ecba38" title="Permalink to this equation">#</a></span>\[\begin{align}
+   P_n (t)=\sum_{k=0}^n \binom{n}{k}\binom{n+k}{k}(t-1)^k,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\displaystyle\binom{n}{k}\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_coefficient">Binomial coefficient</a>.</p>
 </div>
@@ -698,27 +703,27 @@ title="Print to PDF"
     a_{21} c_1 + a_{22} c_2 = &amp; \frac{1}{2}c_2^2 .
 \end{align*}\]</div>
 <p>Using SymPy to solve the order conditions</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">init_printing</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
 
 <span class="c1"># Define symbolic variables</span>
-<span class="n">t</span><span class="p">,</span> <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;t, a11, a12, a21, a22, b1, b2, c1, c2&quot;</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;t, a11, a12, a21, a22, b1, b2, c1, c2&quot;</span><span class="p">)</span>
 
 <span class="c1"># Calculate c values</span>
-<span class="n">P2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">P2</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">P2</span><span class="p">))</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">))</span>
 
 <span class="c1"># Define order conditions</span>
 <span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">eq2</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">eq3</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">+</span> <span class="n">a12</span> <span class="o">-</span> <span class="n">c1</span>
 <span class="n">eq4</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">+</span> <span class="n">a22</span> <span class="o">-</span> <span class="n">c2</span>
-<span class="n">eq5</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">a12</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">eq6</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">a22</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">a12</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">a22</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span>
 
 <span class="c1"># Solve order conditions</span>
-<span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">))</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Gives the solution</p>
@@ -806,25 +811,25 @@ title="Print to PDF"
 <p>we see that whilst these are still implicit equations, there is only one unknown in each one, i.e., the equation for <span class="math notranslate nohighlight">\(k_i\)</span> does not include <span class="math notranslate nohighlight">\(k_{i+1} \dots k_s\)</span>. So the advantage of DIRK methods is that the solutions to these can be obtained sequentially and is more computationally efficient than non-DIRK methods.</p>
 <p>The coefficients of a <span class="math notranslate nohighlight">\(k\)</span>th-order DIRK method are chosen to satisfy the <a class="reference internal" href="3.0_IRKs.html#bk-ck-dk-order-conditions"><span class="std std-ref"><span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> order conditions</span></a> along with</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-condition">
-<span class="eqno">(18)<a class="headerlink" href="#equation-dirk-order-condition" title="Permalink to this equation">#</a></span>\[\mathbf{b}^T A\mathbf{c}=\frac{1}{k!}\]</div>
+<span class="eqno">(16)<a class="headerlink" href="#equation-dirk-order-condition" title="Permalink to this equation">#</a></span>\[\mathbf{b}^T A\mathbf{c}=\frac{1}{k!}\]</div>
 <div class="seealso admonition">
 <p class="admonition-title">Example 3.4</p>
 <p>Derive a 2-stage third-order DIRK method.</p>
 <p><strong>Solution</strong></p>
 <p>Since <span class="math notranslate nohighlight">\(k = 2\)</span> and <span class="math notranslate nohighlight">\(a_{11} = c_1\)</span> and <span class="math notranslate nohighlight">\(a_{12} = 0\)</span> the <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions are</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-conditions-1">
-<span class="eqno">(19)<a class="headerlink" href="#equation-dirk-order-conditions-1" title="Permalink to this equation">#</a></span>\[\begin{split}b_1 + b_2  &amp; = 1,\\
+<span class="eqno">(17)<a class="headerlink" href="#equation-dirk-order-conditions-1" title="Permalink to this equation">#</a></span>\[\begin{split}b_1 + b_2  &amp; = 1,\\
 b_1 c_1 + b_2 c_2  &amp; = \frac{1}{2},\\
 b_1 c_1^2 + b_2 c_2^2  &amp; = \frac{1}{3},\\
 a_{21} + a_{22}  &amp; = c_2.\end{split}\]</div>
-<p>We also have equation <a class="reference internal" href="#equation-dirk-order-condition">(18)</a> which is</p>
+<p>We also have equation <a class="reference internal" href="#equation-dirk-order-condition">(16)</a> which is</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-conditions-2">
-<span class="eqno">(20)<a class="headerlink" href="#equation-dirk-order-conditions-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{pmatrix} b_1 &amp; b_2 \end{pmatrix}
+<span class="eqno">(18)<a class="headerlink" href="#equation-dirk-order-conditions-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{pmatrix} b_1 &amp; b_2 \end{pmatrix}
 \begin{pmatrix} a_{11} &amp; 0 \\ a_{21} &amp; a_{22} \end{pmatrix} 
 \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} &amp;= \frac{1}{6} \\
 b_1 a_{11} c_1 + b_2(a_{21} c_1 + a_{22} c_2)  &amp;= \frac{1}{6} \\
 b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &amp;= \frac{1}{6}\end{split}\]</div>
-<p>Equations <a class="reference internal" href="#equation-dirk-order-conditions-1">(19)</a> and <a class="reference internal" href="#equation-dirk-order-conditions-2">(20)</a> give a system of 5 equations in 6 unknowns. If we let <span class="math notranslate nohighlight">\(c_1 = a_{11} = \frac{1}{4}\)</span> (this choice is arbitrary) then we can solve for the other coefficients which give</p>
+<p>Equations <a class="reference internal" href="#equation-dirk-order-conditions-1">(17)</a> and <a class="reference internal" href="#equation-dirk-order-conditions-2">(18)</a> give a system of 5 equations in 6 unknowns. If we let <span class="math notranslate nohighlight">\(c_1 = a_{11} = \frac{1}{4}\)</span> (this choice is arbitrary) then we can solve for the other coefficients which give</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   a_{21} &amp;= \frac{2}{3}, &amp;

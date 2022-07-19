@@ -91,6 +91,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -627,29 +632,33 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-euler-method">
 <span id="euler-method-section"></span><h1>The Euler method<a class="headerlink" href="#the-euler-method" title="Permalink to this headline">#</a></h1>
-<p>The Euler method is the simplest numerical method used to solve ODEs can be derived very easily by truncating equation the Taylor series after the first-order term</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_method"><strong>Euler method</strong></a> is the simplest numerical method used to solve ODEs can be derived very easily by truncating equation the Taylor series after the first-order term</p>
 <div class="math notranslate nohighlight">
 \[y(t + h) = y(t) + h y'(t).\]</div>
-<p>We wish to solve the ODE <span class="math notranslate nohighlight">\(y'(t) = f(t, y)\)</span> so we have</p>
+<p>We wish to solve the ODE <span class="math notranslate nohighlight">\(y'(t) = f(t, y)\)</span> so replacing <span class="math notranslate nohighlight">\(y'(t)\)</span> with <span class="math notranslate nohighlight">\(f(t,y)\)</span> we have</p>
 <div class="math notranslate nohighlight">
-\[y(t + h) = y(t) + h f(t, y).\]</div>
-<p>Introducing subscript notation where <span class="math notranslate nohighlight">\(y(t) = y_n\)</span> and <span class="math notranslate nohighlight">\(y(t+h) = y_{n+1}\)</span> then this becomes</p>
+\[y(t + h) = y(t) + h f(t, y),\]</div>
+<p>and introducing subscript notation where <span class="math notranslate nohighlight">\(y(t) = y_n\)</span> and <span class="math notranslate nohighlight">\(y(t+h) = y_{n+1}\)</span> then this gives us the Euler method.</p>
 <div class="note admonition" id="euler-method-definition">
 <p class="admonition-title">Definition: The Euler method</p>
+<p>The Euler method for solving the initial value problem <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, <span class="math notranslate nohighlight">\(t \in [a, b]\)</span>, <span class="math notranslate nohighlight">\(y_0 = y(a)\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-euler-method-equation">
-<span class="eqno">(3)<a class="headerlink" href="#equation-euler-method-equation" title="Permalink to this equation">#</a></span>\[y_{n+1} = y_n + h f(t_n ,y_n),\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-euler-method-equation" title="Permalink to this equation">#</a></span>\[\begin{align}
+y_{n+1} = y_n + h f(t_n ,y_n),
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(h = t_{n+1} - t_n\)</span>.</p>
 </div>
-<p>where <span class="math notranslate nohighlight">\(t_n = a + hn\)</span> is a discrete value of <span class="math notranslate nohighlight">\(t\)</span> at some step <span class="math notranslate nohighlight">\(n\)</span>. The solution of the initial value problem using the Euler method will result in two vectors containing the values of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(y\)</span></p>
+<p>The solution of the initial value problem using the Euler method will result in two vectors containing the values of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(y\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{t} &amp;= \begin{pmatrix} t_0 \\ t_0 + h \\ t_0 + 2h \\ \vdots \\ t_0 + nh \end{pmatrix}, &amp;
     \mathbf{y} &amp;= \begin{pmatrix} y_0 \\ y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}.
 \end{align*}\]</div>
-<p>To apply the Euler method to solve an initial value problem of the form <span class="math notranslate nohighlight">\(y'=f(t, y)\)</span> over the domain <span class="math notranslate nohighlight">\(t\in [a, b]\)</span> with <span class="math notranslate nohighlight">\(y(a) = \alpha\)</span> we first calculate the number of steps of the method that are required so that we calculate up to <span class="math notranslate nohighlight">\(t_n = b\)</span>. If we are using a constant value for the step length than the number of steps required is</p>
+<p>To apply the Euler method we first calculate the number of steps of the method that are required to calculate the solution over the <span class="math notranslate nohighlight">\(t\)</span> domain from <span class="math notranslate nohighlight">\(t_0 = a\)</span> up to <span class="math notranslate nohighlight">\(t_n = b\)</span>. If we are using a constant value for the step length than the number of steps required is</p>
 <div class="math notranslate nohighlight">
 \[n = \operatorname{int}\left(\frac{b - a}{h}\right),\]</div>
 <p>where <span class="math notranslate nohighlight">\(\operatorname{int}(x)\)</span> rounds the number <span class="math notranslate nohighlight">\(x\)</span> to the integer below. If <span class="math notranslate nohighlight">\(h\)</span> divides <span class="math notranslate nohighlight">\(b - a\)</span> exactly then the last value of <span class="math notranslate nohighlight">\(t_n = b\)</span>. If <span class="math notranslate nohighlight">\(h\)</span> does not divide <span class="math notranslate nohighlight">\(b - a\)</span> exactly then <span class="math notranslate nohighlight">\(t_n &lt; b\)</span>, in these cases we can use a smaller step length for the last step or leave it as it is (here we will use a constant value of <span class="math notranslate nohighlight">\(h\)</span>).</p>
-<p>To solve an initial value problem using the Euler method we first initialise the <span class="math notranslate nohighlight">\(t_0 = a\)</span> and <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and then calculate the value of <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="#equation-euler-method-equation">(3)</a> and <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span>. Then we use <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the value of <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(t_2 = t_1 + h\)</span>. We continue in this way until we have calculated up to <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step.</p>
+<p>To solve an initial value problem using the Euler method we first initialise the <span class="math notranslate nohighlight">\(t_0 = a\)</span> and <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and then calculate the value of <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="#equation-euler-method-equation">(2)</a> and <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span>. Then we use <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the value of <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(t_2 = t_1 + h\)</span>. We continue in this way until we have calculated up to <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step.</p>
 <div class="seealso admonition" id="euler-example">
 <p class="admonition-title">Example 1.2</p>
 <p>Calculate the solution to the following initial value problem using the Euler method with <span class="math notranslate nohighlight">\(h = 0.2\)</span></p>
@@ -660,10 +669,10 @@ title="Print to PDF"
 <p>Since <span class="math notranslate nohighlight">\(t\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(h=0.2\)</span> then the number of steps required is</p>
 <div class="math notranslate nohighlight">
 \[n = \operatorname{int}\left(\frac{1 - 0}{0.2}\right) = 5, \]</div>
-<p>and the <span class="math notranslate nohighlight">\(t\)</span> values are</p>
+<p>therefore the <span class="math notranslate nohighlight">\(t\)</span> values are</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{t} = (0, 0.2, 0.4, 0.6, 0.8, 1.0).\]</div>
-<p>We know the ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> and initial value is <span class="math notranslate nohighlight">\(y_0 = 1\)</span> so using equation <a class="reference internal" href="#equation-euler-method-equation">(3)</a></p>
+<p>We know the ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> and initial value is <span class="math notranslate nohighlight">\(y_0 = 1\)</span> so using equation <a class="reference internal" href="#equation-euler-method-equation">(2)</a> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_1 &amp;= y_0 + h f(t_0, y_0) = 1 + 0.2(0)(1) = 1,  \\
@@ -726,7 +735,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>The Python code below defines the function <code class="docutils literal notranslate"><span class="pre">euler()</span></code> which calculates the Euler method solutions to an initial value problem.</p>
+<p>Next we define a function called <code class="docutils literal notranslate"><span class="pre">euler()</span></code> which uses the Euler method to calculate calculates the solution to an initial value problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
@@ -745,12 +754,12 @@ title="Print to PDF"
 </div>
 <p>The inputs to the function <code class="docutils literal notranslate"><span class="pre">euler()</span></code> are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> - the name of the ODE function to be solved;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tspan</span></code> - an array of two values defining the lower and upper boundaries of the <span class="math notranslate nohighlight">\(t\)</span> domain;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">y0</span></code> - an array of values containing the solution of the ODE at the initial value <span class="math notranslate nohighlight">\(t=a\)</span>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">h</span></code> - the step length used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> - the name of the ODE function to be solved (this needs to be defined elsewhere)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tspan</span></code> - an array of two values defining the lower and upper boundaries of the <span class="math notranslate nohighlight">\(t\)</span> domain</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y0</span></code> - an array of values containing the solution of the ODE at the initial value <span class="math notranslate nohighlight">\(t=a\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h</span></code> - the step length used</p></li>
 </ul>
-<p>The function first determines the number of steps required and the number of ODEs being solved and stores these in <code class="docutils literal notranslate"><span class="pre">nsteps</span></code> and <code class="docutils literal notranslate"><span class="pre">neq</span></code> respectively. In the example here we are only solving for one equation but later we will need to be able to solve multiple ODEs at the same time (see <a class="reference internal" href="1.5_Higher_Order_ODEs.html#solving-systems-of-odes-section"><span class="std std-ref">solving systems of ODEs</span></a>). It then calculates two arrays called <code class="docutils literal notranslate"><span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. The array <code class="docutils literal notranslate"><span class="pre">t</span></code> array contains the values of <span class="math notranslate nohighlight">\(t_n\)</span> for which the Euler method calculates the solution and is determined by <code class="docutils literal notranslate"><span class="pre">h</span></code> and <code class="docutils literal notranslate"><span class="pre">nsteps</span></code><a class="footnote-reference brackets" href="#id2" id="id1">1</a>. The <code class="docutils literal notranslate"><span class="pre">y</span></code> array has <code class="docutils literal notranslate"><span class="pre">nsteps</span> <span class="pre">+</span> <span class="pre">1</span></code> rows and <code class="docutils literal notranslate"><span class="pre">neq</span></code> columns will contain the solutions of the ODE(s) where each row contains the solution at each step of the Euler method and the first row of <code class="docutils literal notranslate"><span class="pre">y</span></code> is set to <code class="docutils literal notranslate"><span class="pre">y0</span></code> since it contains the initial solution. A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is used to loop through each of the steps and calculate the solution using the Euler method. The arrays <code class="docutils literal notranslate"><span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> containing the solution to the IVP are returned.</p>
+<p>The function first determines the number of steps required and the number of ODEs being solved and stores these in <code class="docutils literal notranslate"><span class="pre">nsteps</span></code> and <code class="docutils literal notranslate"><span class="pre">neq</span></code> respectively. In the example here we are only solving for one equation but <a class="reference internal" href="1.5_Higher_Order_ODEs.html#solving-systems-of-odes-section"><span class="std std-ref">later</span></a> we will need to be able to solve multiple ODEs at the same time. It then calculates two arrays called <code class="docutils literal notranslate"><span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. The array <code class="docutils literal notranslate"><span class="pre">t</span></code> array contains the values of <span class="math notranslate nohighlight">\(t_n\)</span> for which the Euler method calculates the solution and is determined by <code class="docutils literal notranslate"><span class="pre">h</span></code> and <code class="docutils literal notranslate"><span class="pre">nsteps</span></code><a class="footnote-reference brackets" href="#id2" id="id1">1</a>. The <code class="docutils literal notranslate"><span class="pre">y</span></code> array has <code class="docutils literal notranslate"><span class="pre">nsteps</span> <span class="pre">+</span> <span class="pre">1</span></code> rows and <code class="docutils literal notranslate"><span class="pre">neq</span></code> columns will contain the solutions of the ODE(s) where each row contains the solution at each step of the Euler method and the first row of <code class="docutils literal notranslate"><span class="pre">y</span></code> is set to <code class="docutils literal notranslate"><span class="pre">y0</span></code> since it contains the initial solution. A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is used to loop through each of the steps and calculate the solution using the Euler method. The arrays <code class="docutils literal notranslate"><span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> containing the solution to the IVP are returned.</p>
 <p>The code below defines the functions <code class="docutils literal notranslate"><span class="pre">f(t,</span> <span class="pre">y)</span></code> and <code class="docutils literal notranslate"><span class="pre">exact(t)</span></code> which calculate the ODE function and exact solution to the IVP (this is usually not known).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

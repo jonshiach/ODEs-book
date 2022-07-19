@@ -91,6 +91,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -629,29 +634,31 @@ Solution<div class="sd-summary-down docutils">
 </summary><div class="sd-summary-content sd-card-body docutils">
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{t} &amp;= (0, 0.4, 0.8, 1.2, 1.6, 2), \\
-    \\
-    y_0 &amp;= 2, \\
-    \\
-    k_1 &amp;= t_0 + y_0 = 0 + 2 = 2, \\
-    k_2 &amp;= (t_0 + h) + (y_0 + hk_1) = (0 + 0.4) + (0 + 0.4(2)) = 3.2, \\
-    y_1 &amp;= y_0 + \frac{h}{2}(k_1 + k_2) = 2 + \frac{0.4}{2}(2 + 3.2) = 3.04, \\
-    \\
-    k_1 &amp;= t_1 + y_1 = 0.4 + 3.04 = 3.44, \\
-    k_2 &amp;= (t_1 + h) + (y_1 + hk_1) = (0.4 + 0.4) + (3.04 + 0.4(3.44)) = 5.216, \\
-    y_2 &amp;= y_1 + \frac{h}{2}(k_1 + k_2) = 3.04 + \frac{0.4}{2}(3.44 + 5.216) = 4.7712, \\
-    \\
-    k_1 &amp;= t_2 + y_2 = 0.8 + 4.7712 = 5.5712, \\
-    k_2 &amp;= (t_2 + h) + (y_2 + hk_1) = (0.8 + 0.4) + (4.7712 + 0.4(5.5712)) = 8.1997, \\
-    y_3 &amp;= y_2 + \frac{h}{2}(k_1 + k_2) = 4.7712 + \frac{0.4}{2}(5.5712 + 8.1997) = 7.5254, \\
-    \\
-    k_1 &amp;= t_3 + y_3 = 1.2 + 7.5254 = 8.7254, \\
-    k_2 &amp;= (t_3 + h) + (y_3 + hk_1) = (1.2 + 0.4) + (7.5254 + 0.4(8.7254)) = 12.6155, \\
-    y_4 &amp;= y_3 + \frac{h}{2}(k_1 + k_2) = 7.5254 + \frac{0.4}{2}(8.7254 + 12.6155) = 11.7936, \\
-    \\
-    k_1 &amp;= t_4 + y_4 = 1.6 + 11.7936 = 13.3936, \\
-    k_2 &amp;= (t_4 + h) + (y_4 + hk_1) = (1.6 + 0.4) + (11.7936 + 0.4(13.3936)) = 19.1510, \\
-    y_5 &amp;= y_4 + \frac{h}{2}(k_1 + k_2) = 11.7936 + \frac{0.4}{2}(13.3936 + 19.1510) = 18.3025.
+    k_1 &amp;= f(t_0, y_0) = (0.0) + (2.000000) = 2.000000, \\
+    k_2 &amp;= f(t_0 + h, y_0 + hk_1) = (0.0 + 0.4) + (2.000000 + 0.4(2.000000)) \\
+    &amp;= 3.200000, \\
+    y_1 &amp;= y_0 + \frac{h}{2}(k_1 + k_2) = 2.000000 + 0.2(2.000000 + 3.200000) \\
+    &amp;= 3.040000, \\ \\
+    k_1 &amp;= f(t_1, y_1) = (0.4) + (3.040000) = 3.040000, \\
+    k_2 &amp;= f(t_1 + h, y_1 + hk_1) = (0.4 + 0.4) + (3.040000 + 0.4(3.440000)) \\
+    &amp;= 5.216000, \\
+    y_2 &amp;= y_1 + \frac{h}{2}(k_1 + k_2) = 3.040000 + 0.2(3.440000 + 5.216000) \\
+    &amp;= 4.771200, \\ \\
+    k_1 &amp;= f(t_2, y_2) = (0.8) + (4.771200) = 4.771200, \\
+    k_2 &amp;= f(t_2 + h, y_2 + hk_1) = (0.8 + 0.4) + (4.771200 + 0.4(5.571200)) \\
+    &amp;= 8.199680, \\
+    y_3 &amp;= y_2 + \frac{h}{2}(k_1 + k_2) = 4.771200 + 0.2(5.571200 + 8.199680) \\
+    &amp;= 7.525376, \\ \\
+    k_1 &amp;= f(t_3, y_3) = (1.2) + (7.525376) = 7.525376, \\
+    k_2 &amp;= f(t_3 + h, y_3 + hk_1) = (1.2 + 0.4) + (7.525376 + 0.4(8.725376)) \\
+    &amp;= 12.615526, \\
+    y_4 &amp;= y_3 + \frac{h}{2}(k_1 + k_2) = 7.525376 + 0.2(8.725376 + 12.615526) \\
+    &amp;= 11.793556, \\ \\
+    k_1 &amp;= f(t_4, y_4) = (1.6) + (11.793556) = 11.793556, \\
+    k_2 &amp;= f(t_4 + h, y_4 + hk_1) = (1.6 + 0.4) + (11.793556 + 0.4(13.393556)) \\
+    &amp;= 19.150979, \\
+    y_5 &amp;= y_4 + \frac{h}{2}(k_1 + k_2) = 11.793556 + 0.2(13.393556 + 19.150979) \\
+    &amp;= 18.302464.
 \end{align*}\]</div>
 </div>
 </details></div>
@@ -708,7 +715,6 @@ Solution<div class="sd-summary-down docutils">
 <span class="n">t</span><span class="p">,</span> <span class="n">y_rk2</span> <span class="o">=</span> <span class="n">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
 <span class="c1"># Output table of solutions</span>
-<span class="n">yexact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|   t   |   Euler   |    RK2    |&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|:-----:|:---------:|:---------:|&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
@@ -760,7 +766,7 @@ Solution<div class="sd-summary-down docutils">
 </div>
 <p class="sd-card-text">Output</p>
 <div class="cell_output docutils container">
-<img alt="../_images/1.7_Exercises_6_0.png" src="../_images/1.7_Exercises_6_0.png" />
+<img alt="../_images/1.7_Exercises_7_0.png" src="../_images/1.7_Exercises_7_0.png" />
 </div>
 </div>
 </details></div>
@@ -772,7 +778,9 @@ Solution<div class="sd-summary-down docutils">
     \theta'' + \frac{g}{L} \sin(\theta) = 0,
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between the pendulum and the vertical, <span class="math notranslate nohighlight">\(L\)</span> is the length of the pendulum and <span class="math notranslate nohighlight">\(g=9.81\)</span> ms<span class="math notranslate nohighlight">\(^{-2}\)</span> is the acceleration due to gravity.</p>
-<img alt="../_images/pendulum.png" class="align-center" src="../_images/pendulum.png" />
+<div class="figure align-center">
+<img alt="../_images/pendulum.png" src="../_images/pendulum.png" />
+</div>
 <p>Write a Python program that uses the RK2 method with <span class="math notranslate nohighlight">\(h=0.1\)</span> to calculate the solution for <span class="math notranslate nohighlight">\(\theta\)</span> over the interval <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> for a pendulum of length <span class="math notranslate nohighlight">\(L = 1\)</span> set at an initial angle <span class="math notranslate nohighlight">\(\theta = \frac{\pi}{2}\)</span>. Produce a plot of the displacement angle <span class="math notranslate nohighlight">\(\theta\)</span> against <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -836,9 +844,6 @@ Solution<div class="sd-summary-down docutils">
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/1.7_Exercises_8_1.png" src="../_images/1.7_Exercises_8_1.png" />
 </div>
 </div>
 </details></div>
