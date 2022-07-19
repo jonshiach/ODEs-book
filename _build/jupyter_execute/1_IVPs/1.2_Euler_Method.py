@@ -4,35 +4,42 @@
 # (euler-method-section)=
 # # The Euler method
 # 
-# The Euler method is the simplest numerical method used to solve ODEs can be derived very easily by truncating equation the Taylor series after the first-order term
+# The [**Euler method**](https://en.wikipedia.org/wiki/Euler_method) is the simplest numerical method used to solve ODEs can be derived very easily by truncating equation the Taylor series after the first-order term
 # 
 # $$y(t + h) = y(t) + h y'(t).$$
 # 
-# We wish to solve the ODE $y'(t) = f(t, y)$ so we have
+# We wish to solve the ODE $y'(t) = f(t, y)$ so replacing $y'(t)$ with $f(t,y)$ we have
 # 
-# $$y(t + h) = y(t) + h f(t, y).$$
+# $$y(t + h) = y(t) + h f(t, y),$$
 # 
-# Introducing subscript notation where $y(t) = y_n$ and $y(t+h) = y_{n+1}$ then this becomes
+# and introducing subscript notation where $y(t) = y_n$ and $y(t+h) = y_{n+1}$ then this gives us the Euler method. 
 # 
 # ````{admonition} Definition: The Euler method
 # :class: note
 # :name: euler-method-definition
 # 
+# The Euler method for solving the initial value problem $y' = f(t, y)$, $t \in [a, b]$, $y_0 = y(a)$ is 
+# 
 # ```{math}
 # :label: euler-method-equation
+# 
+# \begin{align}
 # y_{n+1} = y_n + h f(t_n ,y_n),
+# \end{align}
 # ```
+# 
+# where $h = t_{n+1} - t_n$.
 # 
 # ````
 # 
-# where $t_n = a + hn$ is a discrete value of $t$ at some step $n$. The solution of the initial value problem using the Euler method will result in two vectors containing the values of $t$ and $y$
+# The solution of the initial value problem using the Euler method will result in two vectors containing the values of $t$ and $y$
 # 
 # \begin{align*}
 #     \mathbf{t} &= \begin{pmatrix} t_0 \\ t_0 + h \\ t_0 + 2h \\ \vdots \\ t_0 + nh \end{pmatrix}, &
 #     \mathbf{y} &= \begin{pmatrix} y_0 \\ y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}.
 # \end{align*}
 # 
-# To apply the Euler method to solve an initial value problem of the form $y'=f(t, y)$ over the domain $t\in [a, b]$ with $y(a) = \alpha$ we first calculate the number of steps of the method that are required so that we calculate up to $t_n = b$. If we are using a constant value for the step length than the number of steps required is
+# To apply the Euler method we first calculate the number of steps of the method that are required to calculate the solution over the $t$ domain from $t_0 = a$ up to $t_n = b$. If we are using a constant value for the step length than the number of steps required is
 # 
 # $$n = \operatorname{int}\left(\frac{b - a}{h}\right),$$
 # 
@@ -56,11 +63,11 @@
 # 
 # $$n = \operatorname{int}\left(\frac{1 - 0}{0.2}\right) = 5, $$
 # 
-# and the $t$ values are 
+# therefore the $t$ values are 
 # 
 # $$\mathbf{t} = (0, 0.2, 0.4, 0.6, 0.8, 1.0).$$
 # 
-# We know the ODE function is $f(t, y) = ty$ and initial value is $y_0 = 1$ so using equation {eq}`euler-method-equation`
+# We know the ODE function is $f(t, y) = ty$ and initial value is $y_0 = 1$ so using equation {eq}`euler-method-equation` we have
 # 
 # \begin{align*}
 #     y_1 &= y_0 + h f(t_0, y_0) = 1 + 0.2(0)(1) = 1,  \\
@@ -95,7 +102,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# The Python code below defines the function `euler()` which calculates the Euler method solutions to an initial value problem.
+# Next we define a function called `euler()` which uses the Euler method to calculate calculates the solution to an initial value problem.
 
 # In[2]:
 
@@ -114,12 +121,12 @@ def euler(f, tspan, y0, h):
 
 # The inputs to the function `euler()` are:
 # 
-# - `f` - the name of the ODE function to be solved;
-# - `tspan` - an array of two values defining the lower and upper boundaries of the $t$ domain;
-# - `y0` - an array of values containing the solution of the ODE at the initial value $t=a$;
-# - `h` - the step length used.
+# - `f` - the name of the ODE function to be solved (this needs to be defined elsewhere)
+# - `tspan` - an array of two values defining the lower and upper boundaries of the $t$ domain
+# - `y0` - an array of values containing the solution of the ODE at the initial value $t=a$
+# - `h` - the step length used
 # 
-# The function first determines the number of steps required and the number of ODEs being solved and stores these in `nsteps` and `neq` respectively. In the example here we are only solving for one equation but later we will need to be able to solve multiple ODEs at the same time (see [solving systems of ODEs](solving-systems-of-odes-section)). It then calculates two arrays called `t` and `y`. The array `t` array contains the values of $t_n$ for which the Euler method calculates the solution and is determined by `h` and `nsteps`[^1]. The `y` array has `nsteps + 1` rows and `neq` columns will contain the solutions of the ODE(s) where each row contains the solution at each step of the Euler method and the first row of `y` is set to `y0` since it contains the initial solution. A `for` loop is used to loop through each of the steps and calculate the solution using the Euler method. The arrays `t` and `y` containing the solution to the IVP are returned.
+# The function first determines the number of steps required and the number of ODEs being solved and stores these in `nsteps` and `neq` respectively. In the example here we are only solving for one equation but [later](solving-systems-of-odes-section) we will need to be able to solve multiple ODEs at the same time. It then calculates two arrays called `t` and `y`. The array `t` array contains the values of $t_n$ for which the Euler method calculates the solution and is determined by `h` and `nsteps`[^1]. The `y` array has `nsteps + 1` rows and `neq` columns will contain the solutions of the ODE(s) where each row contains the solution at each step of the Euler method and the first row of `y` is set to `y0` since it contains the initial solution. A `for` loop is used to loop through each of the steps and calculate the solution using the Euler method. The arrays `t` and `y` containing the solution to the IVP are returned.
 # 
 # [^1]: This assumes that we are using a constant step length. Some methods use [adaptive step size](https://en.wikipedia.org/wiki/Adaptive_step_size) where the value of $h$ is modified at each step to optimise the accuracy. These methods are outside the scope of this unit so will not be considered here)
 # 

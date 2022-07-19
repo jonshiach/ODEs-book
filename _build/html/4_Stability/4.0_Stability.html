@@ -91,6 +91,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -686,7 +691,7 @@ title="Print to PDF"
 </div>
 <p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Stable and unstable solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span>.</span><a class="headerlink" href="#stiff-solution-1" title="Permalink to this image">#</a></p>
 </div>
-<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution and the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#lte-definition"><span class="std std-ref">local truncation error</span></a>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#gte-definition"><span class="std std-ref">global truncation error</span></a>, <span class="math notranslate nohighlight">\(E\)</span>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stiff-solution-1"><span class="std std-numref">Fig. 11</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
+<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution and the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#lte-definition"><span class="std std-ref">local truncation error</span></a>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#gte-definition"><span class="std std-ref">global truncation error</span></a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stiff-solution-1"><span class="std std-numref">Fig. 11</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
 <div class="note admonition" id="stability-definition">
 <p class="admonition-title">Definition: stability</p>
 <p>If <span class="math notranslate nohighlight">\(\tau_n\)</span> is the local truncation error of a numerical method defined by</p>
@@ -696,13 +701,13 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_n\)</span> is the exact solution and <span class="math notranslate nohighlight">\(\bar{y}_n\)</span> the numerical approximation then the method is considered <strong>stable</strong> if</p>
 <div class="math notranslate nohighlight" id="equation-stability-equation">
-<span class="eqno">(24)<a class="headerlink" href="#equation-stability-equation" title="Permalink to this equation">#</a></span>\[|\tau_{n+1} - \tau_n | \leq 1,\]</div>
+<span class="eqno">(21)<a class="headerlink" href="#equation-stability-equation" title="Permalink to this equation">#</a></span>\[|\tau_{n+1} - \tau_n | \leq 1,\]</div>
 <p>for all steps of the method. If a method is not stable then it is <strong>unstable</strong>.</p>
 </div>
 </div>
 <div class="section" id="stiffness">
 <span id="stiffness-section"></span><h2>Stiffness<a class="headerlink" href="#stiffness" title="Permalink to this headline">#</a></h2>
-<p>Whether a numerical method used to solve an ODE is stable or unstable depends upon the ODE being solved and the step length used. A method could be stable for one ODE using a particular step length and unstable for another using the same step length. ODEs that require particularly small step length for a method to be stable are known as <strong>stiff</strong> ODEs. There is no mathematical definition of what makes an ODE stiff, however, J.D. Lambert provides a useful description</p>
+<p>Whether a numerical method used to solve an ODE is stable or unstable depends upon the ODE being solved and the step length used. A method could be stable for one ODE using a particular step length and unstable for another using the same step length. ODEs that require particularly small step length for a method to be stable are known as <strong>stiff</strong> ODEs. There is no mathematical definition of what makes an ODE stiff, however,  <span id="id1">Lambert [<a class="reference internal" href="#id4" title="J.D. Lambert. Numerical Methods for Ordinary Differential Systems: The Initial Value Problem. Wiley, 1991.">1991</a>]</span> J.D. Lambert provides a useful description</p>
 <blockquote>
 <div><p><em>If a numerical method with a finite region of absolute stability, applied to a system with any initial conditions, is forced to use in a certain interval of integration a step length which is excessively small in relation to the smoothness of the exact solution in that interval, then the system is said to be stiff in that interval.</em></p>
 </div></blockquote>
@@ -740,7 +745,7 @@ title="Print to PDF"
 \[S = \frac{\max_i(|\lambda_i|)}{\min_i(|\lambda_i|)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda_i\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </div>
-<p>If the stiffness ratio of a system of ODEs is large<a class="footnote-reference brackets" href="#id2" id="id1">1</a> then the system is considered to be stiff.</p>
+<p>If the stiffness ratio of a system of ODEs is large<a class="footnote-reference brackets" href="#id6" id="id2">1</a> then the system is considered to be stiff.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Example 4.1</p>
 <p>Determine the stiffness ration of the following ODE</p>
@@ -787,9 +792,16 @@ title="Print to PDF"
 <p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler and implicit Euler method.</span><a class="headerlink" href="#stiff-solution-2" title="Permalink to this image">#</a></p>
 </div>
 <p>So if we were constrained with using a step length of <span class="math notranslate nohighlight">\(h=0.25\)</span> then we could choose the implicit Euler method to solve this initial value problem.</p>
+<div class="docutils container" id="id3">
+<dl class="citation">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">Lam91</a></span></dt>
+<dd><p>J.D. Lambert. <em>Numerical Methods for Ordinary Differential Systems: The Initial Value Problem</em>. Wiley, 1991.</p>
+</dd>
+</dl>
+</div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
 <dd><p>What constitutes “large” is vague and subjective. As a rule of thumb if <span class="math notranslate nohighlight">\(S\)</span> is in the hundreds or greater we can consider the system to be stiff.</p>
 </dd>
 </dl>

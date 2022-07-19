@@ -16,7 +16,7 @@
 # 
 # ## Implicit Runge-Kutta methods
 # 
-# Runge-Kutta methods can be either an explicit or implicit methods depending on the functions used to calculate the stage values. We have seen in the [previous section on explicit methods](erk-chapter) that they are straightforward to apply, however they are not always suitable for solving ODEs that are **stiff** (see [next chapter on stability](stability-chapter)). This is why we need to also consider implicit methods.
+# Runge-Kutta methods can be either an explicit or implicit methods depending on the functions used to calculate the stage values. We have seen in the [previous chapter on explicit methods](erk-chapter) that they are straightforward to apply, however they are not always suitable for solving ODEs that are [**stiff**](stiffness-section). This is why we need to also consider implicit methods.
 # 
 # Recall that the [general form of a Runge-Kutta method](rk-definition) to solve a first-order ODE $y'=f(t,y)$ is
 # 
@@ -51,17 +51,17 @@
 # (order-of-irk-section)=
 # ## Determining the order of an implicit Runge-Kutta method
 # 
-# One of the differences between implicit and explicit methods is that an implicit method can achieve the same accuracy as an explicit method but using fewer stages. To determine the order of an implicit method we need to consider the **order conditions** that govern the values of $a_{ij}$, $b_i$ and $c_i$ which are
+# One of the differences between implicit and explicit methods is that an implicit method can achieve the same accuracy as an explicit method but using fewer stages. To determine the order of an implicit method we need to consider the **order conditions** that govern the values of $a_{ij}$, $b_i$ and $c_i$.
 # 
 # ````{admonition} Definition: $B(k)$, $C(k)$ and $D(k)$ order conditions 
 # :class: note
 # :name: Bk_Ck_Dk_order_conditions
 # 
-# \begin{align}
+# \begin{align*}
 #   B(k): && \sum_{i=1}^s b_i c_i^{j-1} = & \frac{1}{j}, & j&=1\ldots k, \\
 #   C(k): && \sum_{j=1}^s a_{ij} c_j^{\ell-1} = & \frac{1}{\ell}c_i^{\ell} , & i&=1 \ldots s, & \ell &=1 \ldots k,\\
 #   D(k): && \sum_{i=1}^s b_i c_i^{\ell-1} a_{ij} = & \frac{1}{\ell}b_j (1-c_j^{\ell}), & j&=1 \ldots s, & \ell &=1 \ldots k.
-# \end{align}
+# \end{align*}
 # ````
 # 
 # If $G(k)$ represents the fact that a given implicit method has order $k$ then it can be shown that 
@@ -102,7 +102,7 @@
 #   && RHS &= \frac{1}{3}.
 # \end{align*}
 # 
-# So since $LHS=RHS$ up to $j=2$ the $B(2)$ condition is satisfied. Now we need to check whether $C(\lfloor \frac{2}{2} \rfloor)=C(1)$ order condition is satisfied. Note that $\ell = 1$ (if $k \geq 2$ then we would need to check $i = 1, 2, \ldots \ell$ for each $\ell = 1, 2, \ldots$)
+# So since $LHS=RHS$ up to $j=2$ the $B(2)$ condition is satisfied. Now we need to check whether $C(\lfloor \frac{2}{2} \rfloor)=C(1)$ order condition is satisfied. Note that here $\ell=1$ so we only need to check $i = 1$ and $2$ but if $k \geq 2$ then we would need to check $i = 1, 2, \ldots, s$ for each $\ell = 1, 2, \ldots$.
 # 
 # \begin{align*}
 #   i &= 1, & LHS&=a_{11} c_1^0 + a_{12} c_2^0 =\frac{1}{4}(1)+0(1)=\frac{1}{4}, \\

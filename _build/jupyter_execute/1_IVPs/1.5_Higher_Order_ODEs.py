@@ -58,7 +58,7 @@
 #     y_n' &= f_n(t, y_n).
 # \end{align*}
 # 
-# Let $\mathbf{y}$ and $\mathbf{f}(t_n, \mathbf{y})$ be the vectors
+# Let $\mathbf{y}$ and $\mathbf{f}(t_n, \mathbf{y})$ be vectors such that
 # 
 # \begin{align*}
 #     \mathbf{y} &= \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}, &

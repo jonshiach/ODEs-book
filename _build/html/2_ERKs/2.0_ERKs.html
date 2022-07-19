@@ -91,6 +91,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -670,7 +675,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>identify a <a class="reference internal" href="#rk-definition"><span class="std std-ref">Runge-Kutta method</span></a> and express it using a <a class="reference internal" href="#butcher-tableau-definition"><span class="std std-ref">Butcher tableau</span></a>;</p></li>
 <li><p>distinguish between <a class="reference internal" href="#explicit-and-implicit-rk-methods-section"><span class="std std-ref">explicit and implicit</span></a> Runge-Kutta methods;</p></li>
-<li><p>derive an explicit Runge-Kutta method using the order conditions;</p></li>
+<li><p><a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">derive</span></a> an explicit Runge-Kutta method;</p></li>
 <li><p>apply <a class="reference internal" href="2.3_Solving_IVPs_using_ERK_methods.html#applying-erk-methods-to-solve-ivps-section"><span class="std std-ref">explicit Runge-Kutta methods to solve an initial value problem</span></a>.</p></li>
 </ul>
 <hr class="docutils" />
@@ -679,9 +684,9 @@ title="Print to PDF"
 <p>Runge-Methods are the most popular family of methods used to solve Ordinary Differential Equations (ODEs). They are known as <strong>single step methods</strong> because they update the solution for the next step <span class="math notranslate nohighlight">\(y_{n+1}\)</span> using information from the single step <span class="math notranslate nohighlight">\(y_n\)</span>. The other type of method for solving ODEs are <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_multistep_method"><strong>linear multistep methods</strong></a> that calculate <span class="math notranslate nohighlight">\(y_{n+1}\)</span> using information from multiple steps <span class="math notranslate nohighlight">\(y_n ,y_{n-1} ,y_{n-2} ,\ldots \)</span></p>
 <div class="note admonition" id="rk-definition">
 <p class="admonition-title">Definition: General form of a Runge-Kutta method</p>
-<p>The general form of a Runge-Kutta method for solving the ODE <span class="math notranslate nohighlight">\(y' =f(t,y)\)</span> is</p>
+<p>The general form of a Runge-Kutta method for solving the initial value problem <span class="math notranslate nohighlight">\(y' =f(t,y)\)</span>, <span class="math notranslate nohighlight">\(t \in [a, b]\)</span>, <span class="math notranslate nohighlight">\(y_0 = y(a)\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-rk-equation">
-<span class="eqno">(6)<a class="headerlink" href="#equation-rk-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(5)<a class="headerlink" href="#equation-rk-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
     y_{n+1} &amp;=y_n +h\sum_{i=1}^s b_i k_i,\\
     k_i &amp;=f(t_n +c_i h,y_n +h\sum_{j=1}^s a_{ij} k_j ),
 \end{align}\end{split}\]</div>
@@ -697,7 +702,7 @@ title="Print to PDF"
 </div>
 <div class="section" id="butcher-tableau">
 <span id="butcher-tableau-section"></span><h3>Butcher tableau<a class="headerlink" href="#butcher-tableau" title="Permalink to this headline">#</a></h3>
-<p>For convenience, Runge-Kutta methods are often expressing in a <strong>Butcher tableau</strong><a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<p>Runge-Kutta methods are often summarised in a <strong>Butcher tableau</strong> named after the New Zealand mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/John_C._Butcher">John Butcher</a>.</p>
 <div class="note admonition" id="butcher-tableau-definition">
 <p class="admonition-title">Definition: Butcher Tableau</p>
 <p>A Butcher tableau is a table of values containing the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> for a Runge-Kutta method</p>
@@ -736,7 +741,7 @@ title="Print to PDF"
 <p class="admonition-title">Example 2.1</p>
 <p>Express the second-order Runge-Kutta method given below as a Butcher tableau</p>
 <div class="math notranslate nohighlight" id="equation-butcher-tableau-example-equation-1">
-<span class="eqno">(7)<a class="headerlink" href="#equation-butcher-tableau-example-equation-1" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(6)<a class="headerlink" href="#equation-butcher-tableau-example-equation-1" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{2}(k_1 + k_2), \\
     k_1 &amp;= f(t_n, y_n), \\
     k_2 &amp;= f\left( t_n + h, y_n + hk_1 \right).
@@ -744,12 +749,12 @@ title="Print to PDF"
 <p><strong>Solution</strong></p>
 <p>The general form of a two-stage Runge-Kutta method is</p>
 <div class="math notranslate nohighlight" id="equation-butcher-tableau-example-equation-2">
-<span class="eqno">(8)<a class="headerlink" href="#equation-butcher-tableau-example-equation-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(7)<a class="headerlink" href="#equation-butcher-tableau-example-equation-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     y_{n+1} &amp;= y_n + h(b_1 k_1 + b_2 k_2), \\
     k_1 &amp;= f(t_n + c_1 h, y_n + h(a_{11}k_1 + a_{12}k_2)), \\
     k_2 &amp;= f(t_n + c_2 h, y_n + h(a_{21}k_1 + a_{22}k_2)). 
 \end{align*}\end{split}\]</div>
-<p>Comparing equations <a class="reference internal" href="#equation-butcher-tableau-example-equation-1">(7)</a> and <a class="reference internal" href="#equation-butcher-tableau-example-equation-2">(8)</a> we can see that <span class="math notranslate nohighlight">\(a_{11} = a_{12} = a_{22} = 0\)</span>, <span class="math notranslate nohighlight">\(b_1 = b_2 = 1\)</span>, <span class="math notranslate nohighlight">\(c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(c_2 = 1\)</span> therefore the Butcher tableau for this method is</p>
+<p>Comparing equations <a class="reference internal" href="#equation-butcher-tableau-example-equation-1">(6)</a> and <a class="reference internal" href="#equation-butcher-tableau-example-equation-2">(7)</a> we can see that <span class="math notranslate nohighlight">\(a_{11} = a_{12} = a_{22} = 0\)</span>, <span class="math notranslate nohighlight">\(b_1 = b_2 = 1\)</span>, <span class="math notranslate nohighlight">\(c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(c_2 = 1\)</span> therefore the Butcher tableau for this method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cc}
@@ -763,7 +768,7 @@ title="Print to PDF"
 </div>
 <div class="section" id="explicit-and-implicit-runge-kutta-methods">
 <span id="explicit-and-implicit-rk-methods-section"></span><h2>Explicit and implicit Runge-Kutta methods<a class="headerlink" href="#explicit-and-implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h2>
-<p>Expanding out the stage values from equation <a class="reference internal" href="#equation-rk-equation">(6)</a> we see that the stage values of a general Runge-Kutta method are</p>
+<p>Expanding out the stage values from equation <a class="reference internal" href="#equation-rk-equation">(5)</a> we see that the stage values of a general Runge-Kutta method are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     k_1 &amp;=f(t_n +c_1 h,y_n +h(a_{11} k_1 +a_{12} k_2 +\cdots +a_{1s} k_s ),\\
@@ -772,7 +777,7 @@ title="Print to PDF"
     k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s ).
 \end{align*}\]</div>
 <p>The first equation where we are calculating <span class="math notranslate nohighlight">\(k_1\)</span> includes <span class="math notranslate nohighlight">\(k_1\)</span> on the right-hand side and in the second equation where we are calculating <span class="math notranslate nohighlight">\(k_2\)</span> includes <span class="math notranslate nohighlight">\(k_2\)</span> on the right-hand side and so on. These are examples of <a class="reference external" href="https://en.wikipedia.org/wiki/Implicit_function"><strong>implicit functions</strong></a> and Runge-Kutta methods where the stage values are expressed using implicit functions are known as <strong>Implicit Runge-Kutta (IRK)</strong> methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations <a class="reference internal" href="../3_IRKs/3.0_IRKs.html#irk-chapter"><span class="std std-ref">see Implicit Runge-Kutta Methods</span></a>.</p>
-<p>If the summation in the stage value <span class="math notranslate nohighlight">\(k_i\)</span> in equation <a class="reference internal" href="#equation-rk-equation">(6)</a> is altered so the upper limit to the sum is <span class="math notranslate nohighlight">\(i-1\)</span>, i.e.,</p>
+<p>If the summation in the stage value <span class="math notranslate nohighlight">\(k_i\)</span> in equation <a class="reference internal" href="#equation-rk-equation">(5)</a> is altered so the upper limit to the sum is <span class="math notranslate nohighlight">\(i-1\)</span>, i.e.,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     k_i = f(t_n + c_1 h,y_n + h\sum_{j=1}^{i-1} a_{ij} k_j)
@@ -786,7 +791,7 @@ title="Print to PDF"
     &amp;\vdots \\
     k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{s,s-1} k_{s-1} )).
 \end{align*}\]</div>
-<p>These stage values are <strong>explicit functions</strong> where the subject of the equation does not appear on the right-hand side. Runge-Kutta methods where the stages values are calculated using explicit functions are known as <strong>Explicit Runge Kutta (ERK)</strong> methods. These are easier to compute than implicit Runge-Kutta methods because the stage values can be calculated sequentially in order, i.e., <span class="math notranslate nohighlight">\(k_1\)</span> can be calculated using <span class="math notranslate nohighlight">\(t_n\)</span> and <span class="math notranslate nohighlight">\(y_n\)</span> and then used to calculate <span class="math notranslate nohighlight">\(k_2\)</span> and so on. However for some ODEs explicit methods require a very small value for the step length and and we must then use implicit methods <a class="reference internal" href="../4_Stability/4.0_Stability.html#stability-chapter"><span class="std std-ref">(see Stability)</span></a>.</p>
+<p>These stage values are <strong>explicit functions</strong> where the subject of the equation does not appear on the right-hand side. Runge-Kutta methods where the stages values are calculated using explicit functions are known as <strong>Explicit Runge Kutta (ERK)</strong> methods. These are easier to compute than implicit Runge-Kutta methods because the stage values can be calculated sequentially in order, i.e., <span class="math notranslate nohighlight">\(k_1\)</span> can be calculated using <span class="math notranslate nohighlight">\(t_n\)</span> and <span class="math notranslate nohighlight">\(y_n\)</span> and then used to calculate <span class="math notranslate nohighlight">\(k_2\)</span> and so on. However for some ODEs explicit methods require a very small value for the step length and and we must then use implicit methods (see the chapter on <a class="reference internal" href="../4_Stability/4.0_Stability.html#stability-chapter"><span class="std std-ref">Stability)</span></a> for more detail).</p>
 <div class="section" id="butcher-tableau-for-explicit-and-implicit-runge-kutta-methods">
 <h3>Butcher tableau for explicit and implicit Runge-Kutta methods<a class="headerlink" href="#butcher-tableau-for-explicit-and-implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h3>
 <p>Explicit and implicit Runge-Kutta methods can be easily distinguished by looking at their Butcher tableaux. The <span class="math notranslate nohighlight">\(A\)</span> matrix in the top right region of a Butcher tableau for an explicit method is lower-triangular whereas for an implicit method the main-diagonal and upper triangular elements are non-zero.</p>
@@ -832,12 +837,6 @@ Implicit Runge-Kutta method</div>
 </div>
 </div>
 </div>
-<hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Named after the New Zealand mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/John_C._Butcher">John Butcher</a>, the authority on Runge-Kutta methods and it is well worth seeking out his publications.</p>
-</dd>
-</dl>
 </div>
 </div>
 <div class="toctree-wrapper compound">

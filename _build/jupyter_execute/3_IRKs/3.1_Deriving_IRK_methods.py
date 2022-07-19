@@ -9,22 +9,22 @@
 # (gauss-legendre-derivation)=
 # ## Gauss-Legendre methods
 # 
-# Gauss-Legendre methods are a family of methods that are derived using [Gauss-Legendre quadrature](https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature). An $s$-stage Gauss-Legendre method has order $k=2s$. They are derived using [Legendre polynomials](https://en.wikipedia.org/wiki/Legendre_polynomials) which are are a system of orthogonal polynomials
+# Gauss-Legendre methods are a family of methods that are derived using [Gauss-Legendre quadrature](https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature). An $s$-stage Gauss-Legendre method has order $k=2s$. They are derived using [Legendre polynomials](https://en.wikipedia.org/wiki/Legendre_polynomials) which are are a system of orthogonal polynomials.
 # 
-# ````{admonition} Definition: Legendre polynomials
+# ::::{admonition} Definition: Legendre polynomials
 # :class: note
 # :name: legendre-polynomials-definition
 # 
 # \begin{align}
-#    P_n (t)=\sum_{k=0}^n \binom{n}{k}\binom{n+k}{k}(t-1)^k ,
+#    P_n (t)=\sum_{k=0}^n \binom{n}{k}\binom{n+k}{k}(t-1)^k,
 # \end{align}
 # 
 # where $\displaystyle\binom{n}{k}$ is the [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient).
-# ````
+# ::::
 # 
 # The values of the $c_i$ coefficients in a Gauss-Legendre method are the roots of $P_s(t)$, the values of the $b_i$ coefficients are chosen to satisfy the $B(k)$ condition and the $a_{ij}$ coefficients are chosen to satisfy the $C(\lfloor \frac{k}{2} \rfloor)$ condition.
 # 
-# ````{admonition} Example 3.2
+# ::::{admonition} Example 3.2
 # :class: seealso
 # :name: fourth-order-Gauss-Legendre-method-example
 # 
@@ -60,29 +60,29 @@
 # 
 # Using SymPy to solve the order conditions
 # 
-# ```python
-# from sympy import *
-# init_printing()
+# :::python
+# import sympy as sp
+# sp.init_printing()
 # 
 # # Define symbolic variables
-# t, a11, a12, a21, a22, b1, b2, c1, c2 = symbols("t, a11, a12, a21, a22, b1, b2, c1, c2")
+# t, a11, a12, a21, a22, b1, b2, c1, c2 = sp.symbols("t, a11, a12, a21, a22, b1, b2, c1, c2")
 # 
 # # Calculate c values
-# P2 = 1 + binomial(2,1) * binomial(3,1) * (t - 1) + binomial(2,2) * binomial(4,2) * (t - 1) ** 2
-# c1, c2 = solve(P2)
-# display(solve(P2))
+# P = 1 + sp.binomial(2,1) * sp.binomial(3,1) * (t - 1) + sp.binomial(2,2) * sp.binomial(4,2) * (t - 1) ** 2
+# c1, c2 = sp.solve(P)
+# display(sp.solve(P))
 # 
 # # Define order conditions
 # eq1 = b1 + b2 - 1
-# eq2 = b1 * c1 + b2 * c2 - Rational(1,2)
+# eq2 = b1 * c1 + b2 * c2 - sp.Rational(1,2)
 # eq3 = a11 + a12 - c1
 # eq4 = a21 + a22 - c2
-# eq5 = a11 * c1 + a12 * c2 - Rational(1,2) * c1 ** 2
-# eq6 = a21 * c1 + a22 * c2 - Rational(1,2) * c2 ** 2
+# eq5 = a11 * c1 + a12 * c2 - sp.Rational(1,2) * c1 ** 2
+# eq6 = a21 * c1 + a22 * c2 - sp.Rational(1,2) * c2 ** 2
 # 
 # # Solve order conditions
-# solve((eq1, eq2, eq3, eq4, eq5, eq6))
-# ```
+# sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
+# :::
 # 
 # Gives the solution
 # 
@@ -104,41 +104,32 @@
 #         & \frac{1}{2} & \frac{1}{2}
 #     \end{array}
 # \end{align*}   
-# ````
+# ::::
 
 # In[1]:
 
 
-from sympy import *
-init_printing()
-
-# Define Legendre polynomial
-def P(n):
-    t = Symbol("t")
-    P = 0
-    for k in range(n + 1):
-        P += binomial(n, k) * binomial(n + k, k) * (t - 1) ** k
-
-    return P
-
+import sympy as sp
+sp.init_printing()
 
 # Define symbolic variables
-a11, a12, a21, a22, b1, b2, c1, c2 = symbols("a11, a12, a21, a22, b1, b2, c1, c2")
+t, a11, a12, a21, a22, b1, b2, c1, c2 = sp.symbols("t, a11, a12, a21, a22, b1, b2, c1, c2")
 
 # Calculate c values
-c1, c2 = solve(P(2))
-display(solve(P(2)))
+P = 1 + sp.binomial(2,1) * sp.binomial(3,1) * (t - 1) + sp.binomial(2,2) * sp.binomial(4,2) * (t - 1) ** 2
+c1, c2 = sp.solve(P)
+display(sp.solve(P))
 
 # Define order conditions
 eq1 = b1 + b2 - 1
-eq2 = b1 * c1 + b2 * c2 - Rational(1,2)
+eq2 = b1 * c1 + b2 * c2 - sp.Rational(1,2)
 eq3 = a11 + a12 - c1
 eq4 = a21 + a22 - c2
-eq5 = a11 * c1 + a12 * c2 - Rational(1,2) * c1 ** 2
-eq6 = a21 * c1 + a22 * c2 - Rational(1,2) * c2 ** 2
+eq5 = a11 * c1 + a12 * c2 - sp.Rational(1,2) * c1 ** 2
+eq6 = a21 * c1 + a22 * c2 - sp.Rational(1,2) * c2 ** 2
 
 # Solve order conditions
-solve((eq1, eq2, eq3, eq4, eq5, eq6))
+sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 
 
 # (radau-derivation)=
@@ -150,7 +141,7 @@ solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # 
 # - For a **Radau IIA** method the $c_i$ values are the roots of $0 = P_s(t) - P_{s-1}(t)$ and the values of $a_{ij}$ and $b_i$ satisfy the [$C(k)$ order condition](Bk_Ck_Dk_order_conditions).
 # 
-# ````{admonition} Example 3.3
+# ::::{admonition} Example 3.3
 # :class: seealso
 # :name: radau-derivation-example
 # 
@@ -186,41 +177,41 @@ solve((eq1, eq2, eq3, eq4, eq5, eq6))
 #         & \tfrac{1}{4} & \tfrac{3}{4}
 #     \end{array}
 # \end{align*}
-# ````
+# ::::
 
 # In[2]:
 
 
-from sympy import *
-init_printing()
+import sympy as sp
+sp.init_printing()
 
 # Define Legendre polynomial
 def P(n):
-    t = Symbol("t")
+    t = sp.Symbol("t")
     P = 0
     for k in range(n + 1):
-        P += binomial(n, k) * binomial(n + k, k) * (t - 1) ** k
+        P += sp.binomial(n, k) * sp.binomial(n + k, k) * (t - 1) ** k
 
     return P
 
 
 # Define symbolic variables
-a11, a12, a21, a22, b1, b2, c1, c2 = symbols("a11, a12, a21, a22, b1, b2, c1, c2")
+a11, a12, a21, a22, b1, b2, c1, c2 = sp.symbols("a11, a12, a21, a22, b1, b2, c1, c2")
 
 # Calculate c values
-c1, c2 = solve(P(2) + P(1))
-display(solve(P(2) + P(1)))
+c1, c2 = sp.solve(P(2) + P(1))
+display(sp.solve(P(2) + P(1)))
 
 # Define order conditions
 eq1 = b1 + b2 - 1
-eq2 = b1 * c1 + b2 * c2 - Rational(1,2)
+eq2 = b1 * c1 + b2 * c2 - sp.Rational(1,2)
 eq3 = b1 * a11 + b2 * a21 - b1 * (1 - c1)
 eq4 = b1 * a12 + b2 * a22 - b2 * (1 - c2)
-eq5 = b1 * c1 * a11 + b2 * c2 * a21 - Rational(1,2) * b1 * (1 - c1 ** 2)
-eq6 = b1 * c1 * a12 + b2 * c2 * a22 - Rational(1,2) * b2 * (1 - c2 ** 2)
+eq5 = b1 * c1 * a11 + b2 * c2 * a21 - sp.Rational(1,2) * b1 * (1 - c1 ** 2)
+eq6 = b1 * c1 * a12 + b2 * c2 * a22 - sp.Rational(1,2) * b2 * (1 - c2 ** 2)
 
 # Solve order conditions
-solve((eq1, eq2, eq3, eq4, eq5, eq6))
+sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 
 
 # (dirk-derivation)=
@@ -253,13 +244,13 @@ solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # 
 # The coefficients of a $k$th-order DIRK method are chosen to satisfy the [$B(k)$ and $C(\lfloor \frac{k}{2} \rfloor)$ order conditions](Bk_Ck_Dk_order_conditions) along with
 # 
-# ```{math}
+# :::{math}
 # :label: dirk-order-condition
 # 
 # \mathbf{b}^T A\mathbf{c}=\frac{1}{k!}
-# ```
+# :::
 # 
-# ````{admonition} Example 3.4
+# ::::{admonition} Example 3.4
 # :class: seealso
 # 
 # Derive a 2-stage third-order DIRK method.
@@ -268,18 +259,18 @@ solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # 
 # Since $k = 2$ and $a_{11} = c_1$ and $a_{12} = 0$ the $B(k)$ and $C(k)$ order conditions are
 # 
-# ```{math}
+# :::{math}
 # :label: dirk-order-conditions-1
 #     
 # b_1 + b_2  & = 1,\\
 # b_1 c_1 + b_2 c_2  & = \frac{1}{2},\\
 # b_1 c_1^2 + b_2 c_2^2  & = \frac{1}{3},\\
 # a_{21} + a_{22}  & = c_2.
-# ```
+# :::
 # 
 # We also have equation {eq}`dirk-order-condition` which is
 # 
-# ```{math}
+# :::{math}
 # :label: dirk-order-conditions-2
 # 
 # \begin{pmatrix} b_1 & b_2 \end{pmatrix}
@@ -287,7 +278,7 @@ solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} &= \frac{1}{6} \\
 # b_1 a_{11} c_1 + b_2(a_{21} c_1 + a_{22} c_2)  &= \frac{1}{6} \\
 # b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &= \frac{1}{6}
-# ```
+# :::
 # 
 # Equations {eq}`dirk-order-conditions-1` and {eq}`dirk-order-conditions-2` give a system of 5 equations in 6 unknowns. If we let $c_1 = a_{11} = \frac{1}{4}$ (this choice is arbitrary) then we can solve for the other coefficients which give
 # 
@@ -308,7 +299,7 @@ solve((eq1, eq2, eq3, eq4, eq5, eq6))
 #         & \frac{4}{7} & \frac{3}{7}
 #   \end{array}
 # \end{align*}
-# ````
+# ::::
 # 
 # (sdirk-derivation)=
 # ## SDIRK methods
@@ -328,7 +319,7 @@ solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # 
 # The advantage that SDIRK methods is that they can be [A-stable](A-stability-definition) for certain values of $c_i$. The derivation of an $k$th-order SDIRK method uses the [$B(k)$, $C(\lfloor \frac{k}{2} \rfloor)$ and $D(\lfloor \frac{k}{2} \rfloor)$ order conditions](Bk_Ck_Dk_order_conditions). 
 # 
-# ````{admonition} Example 3.5
+# ::::{admonition} Example 3.5
 # :class: seealso
 # :name: sdirk-derivation-example
 # 
@@ -366,4 +357,4 @@ solve((eq1, eq2, eq3, eq4, eq5, eq6))
 #   \end{array}
 # \end{align*}
 # 
-# ````
+# ::::

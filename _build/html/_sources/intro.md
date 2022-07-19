@@ -123,7 +123,7 @@ The exercises contained in this book have the solutions hidden from the reader b
 :align: left
 :::
 
-Dr Jon Shiach <br>
+[Dr Jon Shiach](https://jonshiach.github.io/)<br>
 Email: [j.shiach@mmu.ac.uk](mailto:j.shiach@mmu.ac.uk) <br>
 Tel: 0161 247 1515 <br>
 Office: E115b <br>

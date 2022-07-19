@@ -22,12 +22,12 @@
 # 
 # then the Taylor series becomes
 # 
-# ```{math}
+# :::{math}
 # :label: ode-taylor-equation
 # \begin{align*}
 #     y_{n+1} &= y_n + h f(t_n, y_n) + \frac{h^2}{2}(f_t(t_n, y_n) + f(t_n, y_n) f_y(t_n, y_n)) + O(h^3)
 # \end{align*}
-# ```
+# :::
 # 
 # This is the second-order Taylor series expansion for the ODE $y' = f(t,y)$. To be able to solve this ODE we need the Taylor series expansion of a Runge-Kutta method to be equivalent to equation {eq}`ode-taylor-equation`. Recall that the general form of a second-order explicit Runge-Kutta method is
 # 
@@ -51,14 +51,14 @@
 # 
 # Substituting $k_1$ and $k_2$ into the expression for $y_{n+1}$ gives
 # 
-# ```{math}
+# :::{math}
 # :label: bivariate-rk2-equation
 # 
 # \begin{align*}
 # y_{n+1} &= y_n + h (b_1 f(t_n, y_n) \\
 # & \qquad + b_2 (f(t_n, y_n) + c_2 h f_t(t_n, y_n) + h a_{21} f(t_n, y_n) f_y(t_n, y_n))) + O(h^3).
 # \end{align*}
-# ```
+# :::
 # 
 # We need equation {eq}`bivariate-rk2-equation` to be equal to {eq}`ode-taylor-equation`. Equating the coefficients of $f(t_n, y_n)$ we have
 # 
@@ -83,11 +83,11 @@
 # 
 # So we have three equations and four unknowns ($a_{21}$, $b_1$, $b_2$, $c_2$). Any set of values that satisfy these this system of equations give a valid second-order explicit Runge-Kutta method. These conditions are known as the **order conditions** for a method. Since we have an <a href="https://en.wikipedia.org/wiki/Underdetermined_system" target="_blank">underdetermined system</a> to get a unique solution we choose a value for one of the unknowns and solve for the others. 
 # 
-# ````{admonition} Definition: Order conditions for a second-order explicit Runge-Kutta method
+# ::::{admonition} Definition: Order conditions for a second-order explicit Runge-Kutta method
 # :class: note
 # :name: rk2-order-conditions-definition
 # 
-# ```{math}
+# :::{math}
 # :label: rk2-order-conditions-equation
 # 
 # \begin{align*}
@@ -95,10 +95,10 @@
 #     c_2 b_2 &=\frac{1}{2},\\
 #     a_{21} b_2 &=\frac{1}{2}
 # \end{align*}
-# ```
-# ````
+# :::
+# ::::
 # 
-# ````{admonition} Example 2.2
+# ::::{admonition} Example 2.2
 # :class: seealso
 # :name: rk2-derivation-example
 # 
@@ -126,17 +126,17 @@
 # 
 # This version of a second order Runge-Kutta method uses the simplest values for $a_{ij}$, $b_i$ and $c_i$ and is known as **the second-order Runge-Kutta method (RK2)**. 
 # 
-# ````
+# ::::
 # 
-# ```{note}
+# :::{note}
 # There are an infinite number of combinations for the values of $a_{ij}$, $b_i$ and $c_i$ which satisfy the order conditions for a Runge-Kutta method. All of the possible Runge-Kutta methods of a particular order will give similar solutions.
-# ```
+# :::
 
 # ## Using Python to solve the order conditions
 # 
-# The algebra used to solve the order conditions in the [example](#rk2-derivation-example) above is quite easy to perform but for higher order methods it can soon get more complicated (see the [derivation of a fourth-order explicit Runge-Kutta method](#rk4-derivation-example) for an example) and it is therefore useful to use software to help with the algebra. There is a Python library called [**SymPy**](https://www.sympy.org/en/index.html) (short for *symbolic Python*) that has functions that can solve algebraic equations. 
+# The algebra used to solve the order conditions in [example 2.2](#rk2-derivation-example) above is quite easy to perform but for higher order methods it can soon get more complicated (see the [derivation of a fourth-order explicit Runge-Kutta method](#rk4-derivation-example) for an example) and it is therefore useful to use software to help with the algebra. There is a Python library called [**SymPy**](https://www.sympy.org/en/index.html) (short for *symbolic Python*) that has functions that can solve algebraic equations. 
 # 
-# The code below derives the second-order explicit Runge-Kutta method from the [example](#rk2-derivation-example) above using SymPy. After importing SymPy we need to declare each of the coefficients $a_{21}$, $b_1$, $b_2$ and $c_2$ as **symbolic variables** using the `sp.symbols` command before setting $c_2=1$. Each order condition is then defined using the symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side from the left. We have also used the `sp.Rational(1,2)` command for the fraction $\frac{1}{2}$ so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations `eq1`, `eq2` and `eq3` is then solved using the `sp.solve` command.
+# The code below derives the second-order explicit Runge-Kutta method from [example 2.2](#rk2-derivation-example) using SymPy. After importing SymPy we need to declare each of the coefficients $a_{21}$, $b_1$, $b_2$ and $c_2$ as **symbolic variables** using the `sp.symbols` command before setting $c_2=1$. Each order condition is then defined using these symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side. We have also used the `sp.Rational(1,2)` command for the fraction $\frac{1}{2}$ so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations `eq1`, `eq2` and `eq3` is then solved using the `sp.solve` command.
 
 # In[1]:
 

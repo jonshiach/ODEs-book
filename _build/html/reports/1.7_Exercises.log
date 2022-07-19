@@ -1,0 +1,73 @@
+Traceback (most recent call last):
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+
+
+def rk2(f, tspan, y0, h):
+    nsteps = int((tspan[1] - tspan[0]) / h)
+    neq = len(y0)
+    t = np.arange(nsteps + 1) * h
+    y = np.zeros((nsteps + 1, neq))
+    y[0,:] = y0
+    print(r"\begin{align*}")
+    for n in range(nsteps):
+        k1 = f(t[n], y[n,:])
+        k2 = f(t[n] + h, y[n,:] + h * k1)
+        y[n+1,:] = y[n,:] + h / 2 * (k1 + k2)
+        print(rf"    k_1 &= f(t_{n}, y_{n}) = ({t[n]:0.1f}) + ({y[n,0]:0.6f}) = {y[n,0]:0.6f}, \\")
+        print(rf"    k_2 &= f(t_{n} + h, y_{n} + hk_1) = ({t[n]:0.1f} + {h}) + ({y[n,0]:0.6f} + {h}({k1[0]:0.6f})) \\")
+        print(rf"    &= {k2[0]:0.6f}, \\")
+        print(rf"    y_{n+1} &= y_{n} + \frac{{h}}{{2}}(k_1 + k_2) = {y[n,0]:0.6f} + {h/2}({k1[0]:0.6f} + {k2[0]:0.6f}) \\")
+        print(rf"    &= {y[n+1,0]:0.6f}", end="")
+        if n < nsteps - 1:
+            print(rf", \\ \\")
+        else:
+            print(rf".")
+
+    print(r"\end{align*}")
+    
+    return t, y
+
+
+def f(t, y):
+    return t + y
+
+
+# Define IVP
+tspan = [0, 2]  # boundaries of the t domain
+y0 = [2]        # solution at the lower boundary
+h = 0.4         # step length
+
+# Calculate the solution to the IVP
+t, y_euler = euler(f, tspan, y0, h)
+t, y_rk2 = rk2(f, tspan, y0, h)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-1-9251444fb7cb>[0m in [0;36m<module>[0;34m[0m
+[1;32m     38[0m [0;34m[0m[0m
+[1;32m     39[0m [0;31m# Calculate the solution to the IVP[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 40[0;31m [0mt[0m[0;34m,[0m [0my_euler[0m [0;34m=[0m [0meuler[0m[0;34m([0m[0mf[0m[0;34m,[0m [0mtspan[0m[0;34m,[0m [0my0[0m[0;34m,[0m [0mh[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     41[0m [0mt[0m[0;34m,[0m [0my_rk2[0m [0;34m=[0m [0mrk2[0m[0;34m([0m[0mf[0m[0;34m,[0m [0mtspan[0m[0;34m,[0m [0my0[0m[0;34m,[0m [0mh[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'euler' is not defined
+NameError: name 'euler' is not defined
+

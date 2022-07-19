@@ -143,7 +143,7 @@
 # 
 # This fourth-order explicit Runge-Kutta method derived above is often referred to as *the* Runge-Kutta method or **RK4** for short.
 # 
-# ````{admonition} Definition: Fourth-order explicit Runge-Kutta method (RK4)
+# ````{admonition} Definition: The fourth-order explicit Runge-Kutta method (RK4)
 # :class: note
 # :name: rk4-definition
 # 

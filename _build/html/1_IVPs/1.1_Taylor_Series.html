@@ -91,6 +91,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -627,18 +632,25 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-taylor-series">
 <span id="taylor-series-section"></span><h1>The Taylor Series<a class="headerlink" href="#the-taylor-series" title="Permalink to this headline">#</a></h1>
-<p>The <strong>Taylor series</strong> is a series expansion from which the Runge-Kutta methods for solving initial value problems are derived. Given a differentiable function <span class="math notranslate nohighlight">\(f(t)\)</span>, the value <span class="math notranslate nohighlight">\(f(t+h)\)</span> can be written using</p>
+<p>The <strong>Taylor series</strong> is a series expansion from which the Runge-Kutta methods for solving initial value problems are derived.</p>
 <div class="note admonition" id="taylor-series-definition">
 <p class="admonition-title">Definition: the Taylor series</p>
-<div class="math notranslate nohighlight" id="equation-taylor-series-equation">
-<span class="eqno">(2)<a class="headerlink" href="#equation-taylor-series-equation" title="Permalink to this equation">#</a></span>\[    f(t+h) = \sum_{n = 0}^\infty \frac{h^n}{n!}f^{(n)}(t) = f(t) + hf'(t) + \frac{h^2}{2!}f''(t) + \frac{h^3}{3!}f'''(t) + \cdots\]</div>
+<p>Let <span class="math notranslate nohighlight">\(f(t)\)</span> be a differentiable function of the variable <span class="math notranslate nohighlight">\(t\)</span> then the value <span class="math notranslate nohighlight">\(f(t+h)\)</span> where <span class="math notranslate nohighlight">\(h\)</span> is some small value can be written using the Taylor series</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    f(t+h) &amp;= \sum_{n = 0}^\infty \frac{h^n}{n!}f^{(n)}(t) \\
+    &amp;= f(t) + hf'(t) + \frac{h^2}{2!}f''(t) + \frac{h^3}{3!}f'''(t) + \cdots
+\end{align*}\]</div>
 </div>
-<p>where <span class="math notranslate nohighlight">\(h\)</span> is some (usually small) value known as the <strong>step length</strong>. We can use the Taylor series to approximate the value of <span class="math notranslate nohighlight">\(f(t)\)</span> where the smaller the value of <span class="math notranslate nohighlight">\(h\)</span>, the closer the approximation <span class="math notranslate nohighlight">\(f(t+h)\)</span> is to actual value <span class="math notranslate nohighlight">\(f(t)\)</span>. The problem with we have is that we cannot sum an infinite number of terms, so instead we only consider the first <span class="math notranslate nohighlight">\(n\)</span> terms in the summation</p>
+<p>We can use the Taylor series to approximate the value of <span class="math notranslate nohighlight">\(f(t)\)</span> where the smaller the value of <span class="math notranslate nohighlight">\(h\)</span> the closer the approximation <span class="math notranslate nohighlight">\(f(t+h)\)</span> is to actual value <span class="math notranslate nohighlight">\(f(t)\)</span>. The problem with we have is that we cannot sum an infinite number of terms so instead we only consider the first <span class="math notranslate nohighlight">\(n\)</span> terms in the summation</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    f(t+h) &amp;= \underbrace{f(t) + hf'(t) + \frac{h^2}{2!}f''(t) \cdots + \frac{h^n}{n!}f^{(n)}(t)}_{\mathrm{first }\,n\,\mathrm{ terms}} \\
+    &amp; \qquad + \underbrace{\frac{h^{n+1}}{(n+1)!}f^{(n+1)}(t) + \frac{h^{n+2}}{(n+2)!}f^{(n+2)}(t) + \cdots}_{\mathrm{Highter\,Order\,Terms \,(HOT)}}
+\end{align*}\]</div>
+<p>It is import to note that since we are omitting the higher order terms in the truncation of the Taylor series we have an <strong>approximation</strong> of <span class="math notranslate nohighlight">\(f(t+h)\)</span>. When we omit the Higher-Order Terms (HOT) from the Taylor series we say we have <strong>truncated</strong> the Taylor series. So if for example we omit all terms higher than fourth-order we have the <strong>fourth-order Taylor series expansion</strong> of <span class="math notranslate nohighlight">\(f(t+h)\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[f(t+h) = \underbrace{f(t) + hf'(t) + \cdots + \frac{h^n}{n!}f^{(n)}(t)}_{\mathrm{first }\,n\,\mathrm{ terms}} + \underbrace{\frac{h^{n+1}}{(n+1)!}f^{(n+1)}(t) + \frac{h^{n+2}}{(n+2)!}f^{(n+2)}(t) + \cdots}_{\mathrm{Highter\,Order\,Terms \,(H.O.T.)}}\]</div>
-<p>It is import to note that since we are omitting the higher order terms in the truncation of the Taylor series we have an <strong>approximation</strong> of <span class="math notranslate nohighlight">\(f(t+h)\)</span>. When we omit the Higher-Order Terms (H.O.T.) from the Taylor series we say we have <strong>truncated</strong> the Taylor series. So if for example we omit all terms higher than fourth-order we have the <em>fourth-order Taylor series expansion</em> of <span class="math notranslate nohighlight">\(f(t+h)\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[f(t+h) = f(t) + hf' (t)+\frac{h^2}{2}f'' (t) + \frac{h^3}{3!}f^{''')}(t) + \frac{h^4}{4!}f^{(4)} + \mathrm{H.O.T.}\]</div>
+\[f(t+h) = f(t) + hf' (t)+\frac{h^2}{2}f'' (t) + \frac{h^3}{3!}f^{''')}(t) + \frac{h^4}{4!}f^{(4)} + \mathrm{HOT}\]</div>
 <div class="seealso admonition" id="taylor-series-example">
 <p class="admonition-title">Example 1.1</p>
 <p>Use the first, second, third and fourth-order Taylor series expansions to calculate the value of <span class="math notranslate nohighlight">\(\cos\left(\frac{\pi}{3} + h\right)\)</span> where <span class="math notranslate nohighlight">\(h=0.2\)</span>.</p>
@@ -648,7 +660,8 @@ title="Print to PDF"
 \[\begin{align*}
     \cos(t + h) &amp;\approx \cos(t) - h \sin(t) \\
     \cos\left(\frac{\pi}{3} + 0.2 \right) &amp;\approx \cos\left(\frac{\pi}{3}\right) - 0.2 \sin\left(\frac{\pi}{3}\right)
-    = 0.5 - 0.173205 = 0.326795.
+    \\
+    &amp;= 0.5 - 0.173205 = 0.326795.
 \end{align*}\]</div>
 <p>We know that the exact value is <span class="math notranslate nohighlight">\(\cos(\frac{\pi}{3} + 0.2) = 0.317980\ldots\)</span> so the error in the first-order Taylor series approximation is <span class="math notranslate nohighlight">\(|0.317980 - 0.326795| = 0.008814\)</span>.</p>
 <p>The second derivative of <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> is <span class="math notranslate nohighlight">\(f''(t) = \dfrac{\mathrm{d}}{\mathrm{d}t}(-\sin(t)) = -\cos(t)\)</span> so the second-order expansion is</p>
@@ -659,9 +672,8 @@ title="Print to PDF"
 <p>The first two terms in the second-order expansion is the first-order expansion which we have already calculated so</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \cos\left(\frac{\pi}{3} + 0.2 \right) &amp;\approx 0.326795 - \frac{0.2^2}{2} \cos\left(\frac{\pi}{3}\right)
-    = 0.326795 - 0.010000 \\
-    &amp;= 0.316795.
+    \cos\left(\frac{\pi}{3} + 0.2 \right) &amp;\approx 0.326795 - \frac{0.2^2}{2} \cos\left(\frac{\pi}{3}\right) \\
+    &amp;= 0.326795 - 0.010000 = 0.316795.
 \end{align*}\]</div>
 <p>Doing similar for the third and fourth-order expansions</p>
 <div class="amsmath math notranslate nohighlight">
@@ -705,7 +717,7 @@ title="Print to PDF"
 </div>
 <div class="section" id="using-python-to-calculate-a-taylor-series-approximation">
 <h2>Using Python to calculate a Taylor series approximation<a class="headerlink" href="#using-python-to-calculate-a-taylor-series-approximation" title="Permalink to this headline">#</a></h2>
-<p>The code below calculates the Taylor series approximation of <span class="math notranslate nohighlight">\(\cos(t + h)\)</span> using the first <span class="math notranslate nohighlight">\(n\)</span> terms of the series. Note that since the derivative of <span class="math notranslate nohighlight">\(\cos(t) = -\sin(t)\)</span> then if <span class="math notranslate nohighlight">\(n\)</span> is even then <span class="math notranslate nohighlight">\(f(t) = \cos\)</span> and when <span class="math notranslate nohighlight">\(n\)</span> is odd <span class="math notranslate nohighlight">\(f(t) = \sin(t)\)</span>. This is dealt with by using an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement that checks whether the current value of <span class="math notranslate nohighlight">\(n\)</span> is even or odd and calculates the value <span class="math notranslate nohighlight">\(f(t)\)</span> accordingly (also the sign of the trigonometric function switches when <span class="math notranslate nohighlight">\(n\)</span> is odd).</p>
+<p>The code below calculates the Taylor series approximation of <span class="math notranslate nohighlight">\(\cos(t + h)\)</span> using the first <span class="math notranslate nohighlight">\(n\)</span> terms of the series. Note that since the derivative of <span class="math notranslate nohighlight">\(\cos(t)\)</span> is <span class="math notranslate nohighlight">\(-\sin(t)\)</span> so if <span class="math notranslate nohighlight">\(n\)</span> is even then <span class="math notranslate nohighlight">\(f^{(n)}(t) = \cos\)</span> and when <span class="math notranslate nohighlight">\(n\)</span> is odd <span class="math notranslate nohighlight">\(f^{(n)}(t) = \sin(t)\)</span>. To calculate this we can use an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement that checks whether the current value of <span class="math notranslate nohighlight">\(n\)</span> is even or odd and calculates the value <span class="math notranslate nohighlight">\(f(t)\)</span> accordingly and change the sign of <span class="math notranslate nohighlight">\(f^{(n)}(t)\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is odd.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
