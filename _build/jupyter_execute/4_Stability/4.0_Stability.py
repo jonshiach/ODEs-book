@@ -162,7 +162,9 @@ glue("stiff_solution_2", fig, display=False)
 # 
 # where $\Lambda$ is a diagonal matrix of the eigenvalues $\lambda_i$ (take care to make the distinction between $\Lambda$ which is the the uppercase $\lambda$ character and A). Multiplying both sides by $V^{-1}$ gives
 # 
-# $$V^{-1} A V = \Lambda,$$
+# \begin{align*}
+#     V^{-1} A V = \Lambda,
+# \end{align*}
 # 
 # which means that $V^{-1} A$ is a linear transformation that that **diagonalises** the matrix $A$. Let $\mathbf{u} = V^{-1} A \mathbf{y}$ then we have the transformed system $\mathbf{u}' = \Lambda \mathbf{u}$ which is
 # 

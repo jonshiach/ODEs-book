@@ -638,7 +638,7 @@ title="Print to PDF"
 \end{align*} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h = t_{n+1} - t_n\)</span>.</p>
 </div>
-<p>The derivation of the RK2 method is covered in <a class="reference internal" href="../2_ERKs/2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">Derivation of Explicit Runge-Kutta Methods</span></a>.</p>
+<p>The derivation of the RK2 method is covered in the <a class="reference internal" href="../2_ERKs/2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">derivation of Explicit Runge-Kutta Methods</span></a> section.</p>
 <div class="seealso admonition" id="rk2-example">
 <p class="admonition-title">Example 1.3</p>
 <p>Calculate the solution to the initial value problem from <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">example 1.2</span></a> using the RK2 method with a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span></p>
@@ -697,22 +697,22 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>The computed solutions to the initial value problem from <a class="reference internal" href="#rk2-example"><span class="std std-ref">example 1.3</span></a> using the Euler and RK2 methods and the exact solutions are plotted in <a class="reference internal" href="#rk2-example-figure"><span class="std std-numref">Fig. 4</span></a> below. Note that the RK2 method is significantly more accurate than the Euler method.</p>
+<p>The computed solutions to the initial value problem from <a class="reference internal" href="#rk2-example"><span class="std std-ref">example 1.3</span></a> using the Euler and RK2 methods and the exact solutions are plotted in <a class="reference internal" href="#rk2-example-figure"><span class="std std-numref">Fig. 6</span></a> below. Note that the RK2 method is significantly more accurate than the Euler method.</p>
 <div class="figure align-default" id="rk2-example-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.4_RK2_5_2.png" src="../_images/1.4_RK2_5_2.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler and RK2 methods with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#rk2-example-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler and RK2 methods with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#rk2-example-figure" title="Permalink to this image">#</a></p>
 </div>
 </div>
 <div class="section" id="analysing-the-accuracy-of-the-rk2-method">
 <h2>Analysing the accuracy of the RK2 method<a class="headerlink" href="#analysing-the-accuracy-of-the-rk2-method" title="Permalink to this headline">#</a></h2>
-<p>In order to analyse the accuracy of the RK2 method it has been applied to solve the initial value problem from the <a class="reference external" href="#rk2-example">example</a> above using a range of values of the step length starting at <span class="math notranslate nohighlight">\(0.2\)</span> and progressively halving it each time until <span class="math notranslate nohighlight">\(h=0.025\)</span>. The global truncation errors have been calculated for the solution at <span class="math notranslate nohighlight">\(t=1\)</span> and plotted against <span class="math notranslate nohighlight">\(h\)</span> in <a class="reference internal" href="#rk2-gte-figure"><span class="std std-numref">Fig. 5</span></a> below. The errors tend to zero as the step lengths decrease in a <strong>quadratic</strong> manner as expected of a second order method.</p>
+<p>In order to analyse the accuracy of the RK2 method it has been applied to solve the initial value problem from the <a class="reference external" href="#rk2-example">example</a> above using a range of values of the step length starting at <span class="math notranslate nohighlight">\(0.2\)</span> and progressively halving it each time until <span class="math notranslate nohighlight">\(h=0.025\)</span>. The global truncation errors have been calculated for the solution at <span class="math notranslate nohighlight">\(t=1\)</span> and plotted against <span class="math notranslate nohighlight">\(h\)</span> in <a class="reference internal" href="#rk2-gte-figure"><span class="std std-numref">Fig. 7</span></a> below. The errors tend to zero as the step lengths decrease in a <strong>quadratic</strong> manner as expected of a second order method.</p>
 <div class="figure align-default" id="rk2-gte-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.4_RK2_7_2.png" src="../_images/1.4_RK2_7_2.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The global truncation errors for the RK2 method solution of  <span class="math notranslate nohighlight">\(y'=t y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#rk2-gte-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">The global truncation errors for the RK2 method solution of  <span class="math notranslate nohighlight">\(y'=t y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#rk2-gte-figure" title="Permalink to this image">#</a></p>
 </div>
 <p>The Euler and RK2 methods have been used to solve the initial value problem from the <a class="reference external" href="#rk2-example">example</a> and the global truncation errors for the solution at <span class="math notranslate nohighlight">\(t=1\)</span> are tabulated below.</p>
 <table class="colwidths-auto table">
@@ -741,12 +741,12 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>We can see that the RK2 method has significantly smaller global truncation errors than the Euler method. A graphical comparison is shown in <a class="reference internal" href="#rk2-euler-gte-plot-figure"><span class="std std-numref">Fig. 6</span></a>, however, on this scale is is difficult to see the convergence behaviour of the RK2 method.</p>
+<p>We can see that the RK2 method has significantly smaller global truncation errors than the Euler method. A graphical comparison is shown in <a class="reference internal" href="#rk2-euler-gte-plot-figure"><span class="std std-numref">Fig. 8</span></a>, however, on this scale is is difficult to see the convergence behaviour of the RK2 method.</p>
 <div class="figure align-default" id="rk2-euler-gte-plot-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.4_RK2_7_4.png" src="../_images/1.4_RK2_7_4.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The global truncation errors for the RK2 method and the Euler method solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#rk2-euler-gte-plot-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">The global truncation errors for the RK2 method and the Euler method solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#rk2-euler-gte-plot-figure" title="Permalink to this image">#</a></p>
 </div>
 <p>We know that the value of the global truncation error of an <span class="math notranslate nohighlight">\(n\)</span>th order method as <span class="math notranslate nohighlight">\(h \to 0\)</span> should approximate the function <span class="math notranslate nohighlight">\(E = h^n\)</span>. Using logarithms we can write this as</p>
 <div class="math notranslate nohighlight">
@@ -754,12 +754,12 @@ title="Print to PDF"
 <p>This is a linear equation where the slope of <span class="math notranslate nohighlight">\(\log(E)\)</span> has a gradient of <span class="math notranslate nohighlight">\(n\)</span>. Therefore we can approximate the order of a method using</p>
 <div class="math notranslate nohighlight" id="equation-order-approximation-equation">
 <span class="eqno">(4)<a class="headerlink" href="#equation-order-approximation-equation" title="Permalink to this equation">#</a></span>\[n \approx \frac{\log(E(h_1)) - \log(E(h_2))}{\log(h_1) - \log(h_2)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(h_1 &gt; h_2\)</span> are different step lengths. The global truncation errors for the Euler method and the RK2 method have been plotted on a <a class="reference external" href="https://en.wikipedia.org/wiki/Log%E2%80%93log_plot">loglog</a> scale in <a class="reference internal" href="#rk2-euler-gte-loglog-plot-figure"><span class="std std-numref">Fig. 7</span></a>.</p>
+<p>where <span class="math notranslate nohighlight">\(h_1 &gt; h_2\)</span> are different step lengths. The global truncation errors for the Euler method and the RK2 method have been plotted on a <a class="reference external" href="https://en.wikipedia.org/wiki/Log%E2%80%93log_plot">loglog</a> scale in <a class="reference internal" href="#rk2-euler-gte-loglog-plot-figure"><span class="std std-numref">Fig. 9</span></a>.</p>
 <div class="figure align-default" id="rk2-euler-gte-loglog-plot-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.4_RK2_7_6.png" src="../_images/1.4_RK2_7_6.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">A loglog plot of the global truncation errors for the Euler and RK2 method solutions of <span class="math notranslate nohighlight">\(y'=t y\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#rk2-euler-gte-loglog-plot-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">A loglog plot of the global truncation errors for the Euler and RK2 method solutions of <span class="math notranslate nohighlight">\(y'=t y\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#rk2-euler-gte-loglog-plot-figure" title="Permalink to this image">#</a></p>
 </div>
 <p>If we calculate the gradients of <span class="math notranslate nohighlight">\(\log(E)\)</span> for the Euler and RK2 methods using equation <a class="reference internal" href="#equation-order-approximation-equation">(4)</a> we have</p>
 <div class="amsmath math notranslate nohighlight">

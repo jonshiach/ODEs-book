@@ -26,7 +26,7 @@
 # 
 # ::::
 # 
-# The derivation of the RK2 method is covered in [Derivation of Explicit Runge-Kutta Methods](rk2-derivation-section).
+# The derivation of the RK2 method is covered in the [derivation of Explicit Runge-Kutta Methods](rk2-derivation-section) section.
 # 
 # ::::{admonition} Example 1.3
 # :class: seealso
@@ -305,7 +305,7 @@ print(f"RK2:   {(np.log10(E_rk2[0]) - np.log10(E_rk2[-1])) / (np.log10(hvalues[0
 fig, ax = plt.subplots(figsize=(8, 6))
 plt.plot(hvalues, E_rk2, 'bo-')
 plt.xlabel("$h$", fontsize=16)
-plt.ylabel("$E$", fontsize=16)
+plt.ylabel("$e$", fontsize=16)
 plt.show()
 
 glue("rk2_gte_plot", fig, display=False)
@@ -315,7 +315,7 @@ fig, ax = plt.subplots(figsize=(8, 6))
 plt.plot(hvalues, E_rk2, "bo-", label="RK2")
 plt.plot(hvalues, E_euler, "ro-", label="Euler")
 plt.xlabel("$h$", fontsize=16)
-plt.ylabel("$E$", fontsize=16)
+plt.ylabel("$e$", fontsize=16)
 plt.legend()
 plt.show()
 
@@ -326,7 +326,7 @@ fig, ax = plt.subplots(figsize=(8, 6))
 plt.loglog(hvalues, E_rk2, "bo-", label="RK2")
 plt.loglog(hvalues, E_euler, "ro-", label="Euler")
 plt.xlabel("$\log(h)$", fontsize=16)
-plt.ylabel("$\log(E)$", fontsize=16)
+plt.ylabel("$\log(e)$", fontsize=16)
 plt.legend()
 plt.show()
 

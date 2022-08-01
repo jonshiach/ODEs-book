@@ -655,12 +655,12 @@ title="Print to PDF"
 \[\begin{align*}
     e_n = |y_n - \bar{y}_n|,
 \end{align*}\]</div>
-<p>where <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(\bar{y}_n\)</span> are the exact and numerical solutions. This is represented graphically in <a class="reference internal" href="#gte-figure"><span class="std std-numref">Fig. 1</span></a>.</p>
+<p>where <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(\bar{y}_n\)</span> are the exact and numerical solutions. This is represented graphically in <a class="reference internal" href="#gte-figure"><span class="std std-numref">Fig. 3</span></a>.</p>
 <div class="figure align-default" id="gte-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.3_Error_Analysis_1_1.png" src="../_images/1.3_Error_Analysis_1_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The global truncation error, <span class="math notranslate nohighlight">\(e_n\)</span>, is the difference between the exact solution, <span class="math notranslate nohighlight">\(y_n\)</span>, and the numerical solution, <span class="math notranslate nohighlight">\(\bar{y}_n\)</span>.</span><a class="headerlink" href="#gte-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The global truncation error, <span class="math notranslate nohighlight">\(e_n\)</span>, is the difference between the exact solution, <span class="math notranslate nohighlight">\(y_n\)</span>, and the numerical solution, <span class="math notranslate nohighlight">\(\bar{y}_n\)</span>.</span><a class="headerlink" href="#gte-figure" title="Permalink to this image">#</a></p>
 </div>
 <p>We can use the global and local truncations errors to analyse the accuracy of a method. Comparing the application of the Euler method using the exact and approximated solutions</p>
 <div class="amsmath math notranslate nohighlight">
@@ -695,19 +695,19 @@ title="Print to PDF"
 <p>The <strong>order</strong> of a numerical method is the order of the global truncation error for that method.</p>
 </div>
 <p>In practical terms, the order of a method tells us how quickly <span class="math notranslate nohighlight">\(E \to 0\)</span> as <span class="math notranslate nohighlight">\(h \to 0\)</span> so if a method is order 2, i.e., <span class="math notranslate nohighlight">\(e_n = O(h^2)\)</span>, then if <span class="math notranslate nohighlight">\(h\)</span> is halved then <span class="math notranslate nohighlight">\(e_n\)</span> decreases by a factor of <span class="math notranslate nohighlight">\((\frac{1}{2})^2 = \frac{1}{4}\)</span>.</p>
-<p>We can demonstrate this with the Euler method. The plot shown in <a class="reference internal" href="#euler-hvalues-figure"><span class="std std-numref">Fig. 2</span></a> below shows the solutions to the IVP from <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">the Euler method example</span></a> calculated using step lengths of <span class="math notranslate nohighlight">\(h=0.2\)</span>, <span class="math notranslate nohighlight">\(h=0.1\)</span>, <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.025\)</span>. As the step length decreases the numerical solution gets closer to the exact solution as expected.</p>
+<p>We can demonstrate this with the Euler method. The plot shown in <a class="reference internal" href="#euler-hvalues-figure"><span class="std std-numref">Fig. 4</span></a> below shows the solutions to the IVP from <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">the Euler method example</span></a> calculated using step lengths of <span class="math notranslate nohighlight">\(h=0.2\)</span>, <span class="math notranslate nohighlight">\(h=0.1\)</span>, <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.025\)</span>. As the step length decreases the numerical solution gets closer to the exact solution as expected.</p>
 <div class="figure align-default" id="euler-hvalues-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.3_Error_Analysis_3_1.png" src="../_images/1.3_Error_Analysis_3_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.025\)</span>.</span><a class="headerlink" href="#euler-hvalues-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.025\)</span>.</span><a class="headerlink" href="#euler-hvalues-figure" title="Permalink to this image">#</a></p>
 </div>
-<p>The global truncation errors for the solution to the IVP at <span class="math notranslate nohighlight">\(t=1\)</span> are plotted against the values of the step length in <a class="reference internal" href="#euler-gte-figure"><span class="std std-numref">Fig. 3</span></a> below. Note how the errors approximate a straight line which show that has <span class="math notranslate nohighlight">\(h\)</span> decreases, the errors also decrease in a linear fashion indicating that the Euler method is first-order.</p>
+<p>The global truncation errors for the solution to the IVP at <span class="math notranslate nohighlight">\(t=1\)</span> are plotted against the values of the step length in <a class="reference internal" href="#euler-gte-figure"><span class="std std-numref">Fig. 5</span></a> below. Note how the errors approximate a straight line which show that has <span class="math notranslate nohighlight">\(h\)</span> decreases, the errors also decrease in a linear fashion indicating that the Euler method is first-order.</p>
 <div class="figure align-default" id="euler-gte-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.3_Error_Analysis_5_1.png" src="../_images/1.3_Error_Analysis_5_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The global truncation errors for the Euler method solution of <span class="math notranslate nohighlight">\(y'=t y\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#euler-gte-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The global truncation errors for the Euler method solution of <span class="math notranslate nohighlight">\(y'=t y\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#euler-gte-figure" title="Permalink to this image">#</a></p>
 </div>
 </div>
 </div>

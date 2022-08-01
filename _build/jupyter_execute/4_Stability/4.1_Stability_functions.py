@@ -97,6 +97,19 @@ plt.ylabel("$\mathrm{Im}(z)$", fontsize=14)
 plt.show()
 
 
+# In[2]:
+
+
+from myst_nb import glue
+glue("euler_stability_region", fig, display=False)
+
+
+# :::{glue:figure} euler_stability_region
+# :name: euler-stability-region-figure
+# 
+# The region of absolute stability for the Euler method.
+# :::
+# 
 # (interval-of-absolute-stability-section)=
 # ## Interval of absolute stability
 # 
@@ -147,7 +160,7 @@ plt.show()
 # 
 # This is why the solution using $h=0.25$ was stable since $0.25 < 0.1\dot{3}$ and the solution using $h=0.125$ was unstable since $0.125 < 0.1\dot{3}$.
 
-# In[2]:
+# In[3]:
 
 
 # Plot stability region

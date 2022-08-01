@@ -182,4 +182,18 @@ plt.legend(fontsize=12)
 plt.show()
 
 
-# Note that the solution obtained using the Euler method deviates away from the exact solution as the value of $t$ increases.
+# In[6]:
+
+
+from myst_nb import glue
+glue("euler_plot", fig, display=False)
+
+
+# :::{glue:figure} euler_plot
+# :name: euler-figure
+# 
+# The solution to the IVP $y'=ty$, $t\in [0, 1]$, $y(0) = 1$ using the Euler method with $h=0.2$.
+# :::
+# 
+# 
+# Note that the solution obtained using the Euler method deviates away from the exact solution as the value of $t$ increases. We will see why this is the case in the next section on [error analysis](error-analysis-section).

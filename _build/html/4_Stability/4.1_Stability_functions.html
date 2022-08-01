@@ -680,7 +680,7 @@ title="Print to PDF"
 <div class="section" id="plotting-stability-regions">
 <span id="plot-stability-region-section"></span><h2>Plotting stability regions<a class="headerlink" href="#plotting-stability-regions" title="Permalink to this headline">#</a></h2>
 <p>We can plot the region of absolute stability by generate a set of points for <span class="math notranslate nohighlight">\(z\)</span> in the complex plane and plot the contour where <span class="math notranslate nohighlight">\(|R(z)| = 1\)</span> which is the boundary of the stability region. The code for producing a plot of the region of absolute stability of the Euler method using Python is shown below.</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -706,9 +706,12 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/4.1_Stability_functions_1_0.png" src="../_images/4.1_Stability_functions_1_0.png" />
 </div>
+<div class="figure align-default" id="euler-stability-region-figure">
+<div class="cell_output docutils container">
+<img alt="../_images/4.1_Stability_functions_2_0.png" src="../_images/4.1_Stability_functions_2_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">The region of absolute stability for the Euler method.</span><a class="headerlink" href="#euler-stability-region-figure" title="Permalink to this image">#</a></p>
 </div>
 </div>
 <div class="section" id="interval-of-absolute-stability">
@@ -722,12 +725,12 @@ title="Print to PDF"
     \{ z : z \in \mathbb{R}, |R(z)| \leq 1 \}
 \end{align*}\]</div>
 </div>
-<p>The interval of absolute stability for the Euler method can be seen in <a class="reference internal" href="#interval-of-absolute-stability-figure"><span class="std std-numref">Fig. 13</span></a>.</p>
+<p>The interval of absolute stability for the Euler method can be seen in <a class="reference internal" href="#interval-of-absolute-stability-figure"><span class="std std-numref">Fig. 16</span></a>.</p>
 <div class="figure align-default" id="interval-of-absolute-stability-figure">
 <div class="cell_output docutils container">
-<img alt="../_images/4.1_Stability_functions_3_1.png" src="../_images/4.1_Stability_functions_3_1.png" />
+<img alt="../_images/4.1_Stability_functions_4_1.png" src="../_images/4.1_Stability_functions_4_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Interval of absolute stability for the Euler method.</span><a class="headerlink" href="#interval-of-absolute-stability-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Interval of absolute stability for the Euler method.</span><a class="headerlink" href="#interval-of-absolute-stability-figure" title="Permalink to this image">#</a></p>
 </div>
 <p>The region of absolute stability for the Euler method shows that the interval of absolute stability for the test ODE <span class="math notranslate nohighlight">\(y'=\lambda y\)</span> is</p>
 <div class="amsmath math notranslate nohighlight">
@@ -744,7 +747,7 @@ title="Print to PDF"
 \[\begin{align*}
     h \leq -\frac{2}{\lambda}.
 \end{align*}\]</div>
-<p>We saw in <a class="reference internal" href="4.0_Stability.html#stiff-solution-1"><span class="std std-numref">Fig. 11</span></a> that solving the ODE <span class="math notranslate nohighlight">\(y' = -15y\)</span> using <span class="math notranslate nohighlight">\(h=0.25\)</span> resulted in an unstable solution whereas using <span class="math notranslate nohighlight">\(h=0.125\)</span> resulted in a stable (albeit inaccurate) solution. This is because for this ODE <span class="math notranslate nohighlight">\(\lambda = -15\)</span> and the step length for the Euler method must satisfy</p>
+<p>We saw in <a class="reference internal" href="4.0_Stability.html#stiff-solution-1"><span class="std std-numref">Fig. 13</span></a> that solving the ODE <span class="math notranslate nohighlight">\(y' = -15y\)</span> using <span class="math notranslate nohighlight">\(h=0.25\)</span> resulted in an unstable solution whereas using <span class="math notranslate nohighlight">\(h=0.125\)</span> resulted in a stable (albeit inaccurate) solution. This is because for this ODE <span class="math notranslate nohighlight">\(\lambda = -15\)</span> and the step length for the Euler method must satisfy</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     h \leq -\frac{2}{-15} = 0.1\dot{3}.

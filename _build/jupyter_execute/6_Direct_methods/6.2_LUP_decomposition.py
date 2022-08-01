@@ -35,13 +35,15 @@
 #         1 & 0 & 2\\
 #         3 & -2 & 2
 #     \end{pmatrix}
-#     \xrightarrow{R_1 \leftrightarrow R_3}
+#     \begin{array}{l} R_1 \leftrightarrow R_3 \\ \phantom{x} \\ \phantom{x} \end{array}
+#     \longrightarrow 
 #     \begin{pmatrix}
 #         3 & -2 & 2\\
 #         1 & 0 & 2\\
 #         0 & 1 & -2
 #     \end{pmatrix}
-#     \xrightarrow{R_2 \leftrightarrow R_3}
+#     \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array}
+#     \longrightarrow
 #     \begin{pmatrix}
 #         3 & -2 & 2\\
 #         0 & 1 & -2\\
@@ -57,13 +59,15 @@
 #         0 & 1 & 0 \\
 #         0 & 0 & 1
 #     \end{pmatrix}
-#     \xrightarrow{R_1 \leftrightarrow R_3}
+#     \begin{array}{l} R_1 \leftrightarrow R_3 \\ \phantom{x} \\ \phantom{x} \end{array}
+#     \longrightarrow 
 #     \begin{pmatrix}
 #         0 & 0 & 1 \\
 #         0 & 1 & 0 \\
 #         1 & 0 & 0
 #     \end{pmatrix}
-#     \xrightarrow{R_2 \leftrightarrow R_3}
+#     \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array}
+#     \longrightarrow
 #     \begin{pmatrix}
 #         0 & 0 & 1 \\
 #         1 & 0 & 0 \\
@@ -76,7 +80,7 @@
 #     0 & 0 & 1\\
 #     1 & 0 & 0\\
 #     0 & 1 & 0
-# \end{pmatrix}$. Note that $PA$ gives the matrix $A$ after partial pivoting has been applied i.e., 
+# \end{pmatrix}$. Note that pre-multiplying $A$ by $P$ gives the matrix $A$ after partial pivoting has been applied 
 # \begin{align*}
 #     \begin{pmatrix}
 #         0 & 0 & 1\\

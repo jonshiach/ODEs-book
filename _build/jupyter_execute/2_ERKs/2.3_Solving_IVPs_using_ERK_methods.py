@@ -256,7 +256,7 @@ glue("rk4_example_plot", fig, display=False)
 # A loglog plot of the global truncation errors for the solutions of $y'=ty$, $y(0)=1$ using the Euler, RK2 and RK4 methods solutions.
 # ```
 # 
-# Here we see that the fourth-order method is significantly more accurate than the second-order method and approximating the value of $n$ in $E = O(h^n)$ using the method given in equation {eq}`order-approximation-equation` gives $n = 4.09$ which indicates fourth-order convergence as expected.
+# Here we see that the fourth-order method is significantly more accurate than the second-order method and approximating the value of $n$ in $e = O(h^n)$ using the method given in equation {eq}`order-approximation-equation` gives $n = 4.09$ which indicates fourth-order convergence as expected.
 
 # In[4]:
 
@@ -324,8 +324,8 @@ fig, ax = plt.subplots(figsize=(8, 6))
 plt.loglog(hvalues, euler_errors, 'ro-', label="Euler")
 plt.loglog(hvalues, rk2_errors, 'go-', label="RK2")
 plt.loglog(hvalues, rk4_errors, 'bo-', label="RK4")
-plt.xlabel("$\\log(h)$", fontsize=16)
-plt.ylabel("$\\log(E)$", fontsize=16)
+plt.xlabel(r"$\log(h)$", fontsize=16)
+plt.ylabel(r"$\log(e)$", fontsize=16)
 plt.legend()
 
 glue("rk4_gte_plot", fig, display=False)

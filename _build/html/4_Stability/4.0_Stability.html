@@ -668,14 +668,14 @@ title="Print to PDF"
 \[\begin{align*}
     y' = -15y, \qquad t \in [0, 5], \qquad y(0) = 1.
 \end{align*}\]</div>
-<p>The exact solution is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <a class="reference internal" href="#stiff-solution-1"><span class="std std-numref">Fig. 11</span></a>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
+<p>The exact solution is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <a class="reference internal" href="#stiff-solution-1"><span class="std std-numref">Fig. 13</span></a>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
 <div class="figure align-default" id="stiff-solution-1">
 <div class="cell_output docutils container">
 <img alt="../_images/4.0_Stability_1_1.png" src="../_images/4.0_Stability_1_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Stable and unstable solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span>.</span><a class="headerlink" href="#stiff-solution-1" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Stable and unstable solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span>.</span><a class="headerlink" href="#stiff-solution-1" title="Permalink to this image">#</a></p>
 </div>
-<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution and the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#lte-definition"><span class="std std-ref">local truncation error</span></a>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#gte-definition"><span class="std std-ref">global truncation error</span></a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stiff-solution-1"><span class="std std-numref">Fig. 11</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
+<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution and the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#lte-definition"><span class="std std-ref">local truncation error</span></a>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#gte-definition"><span class="std std-ref">global truncation error</span></a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stiff-solution-1"><span class="std std-numref">Fig. 13</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
 <div class="note admonition" id="stability-definition">
 <p class="admonition-title">Definition: stability</p>
 <p>If <span class="math notranslate nohighlight">\(\tau_n\)</span> is the local truncation error of a numerical method defined by</p>
@@ -711,8 +711,10 @@ title="Print to PDF"
     AV = (\lambda_1 \mathbf{v}_1, \lambda_2 \mathbf{v}_2, \ldots, \lambda_n \mathbf{v}_n) = V \Lambda
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Lambda\)</span> is a diagonal matrix of the eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> (take care to make the distinction between <span class="math notranslate nohighlight">\(\Lambda\)</span> which is the the uppercase <span class="math notranslate nohighlight">\(\lambda\)</span> character and A). Multiplying both sides by <span class="math notranslate nohighlight">\(V^{-1}\)</span> gives</p>
-<div class="math notranslate nohighlight">
-\[V^{-1} A V = \Lambda,\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    V^{-1} A V = \Lambda,
+\end{align*}\]</div>
 <p>which means that <span class="math notranslate nohighlight">\(V^{-1} A\)</span> is a linear transformation that that <strong>diagonalises</strong> the matrix <span class="math notranslate nohighlight">\(A\)</span>. Let <span class="math notranslate nohighlight">\(\mathbf{u} = V^{-1} A \mathbf{y}\)</span> then we have the transformed system <span class="math notranslate nohighlight">\(\mathbf{u}' = \Lambda \mathbf{u}\)</span> which is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -768,12 +770,12 @@ title="Print to PDF"
 \[\begin{align*}
     y_{n+1} = y_n + h f(t_{n+1}, y_{n+1}),
 \end{align*}\]</div>
-<p>and the solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method and the implicit Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> are plotted in <a class="reference internal" href="#stiff-solution-2"><span class="std std-numref">Fig. 12</span></a>.</p>
+<p>and the solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method and the implicit Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> are plotted in <a class="reference internal" href="#stiff-solution-2"><span class="std std-numref">Fig. 14</span></a>.</p>
 <div class="figure align-default" id="stiff-solution-2">
 <div class="cell_output docutils container">
 <img alt="../_images/4.0_Stability_1_3.png" src="../_images/4.0_Stability_1_3.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler and implicit Euler method.</span><a class="headerlink" href="#stiff-solution-2" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler and implicit Euler method.</span><a class="headerlink" href="#stiff-solution-2" title="Permalink to this image">#</a></p>
 </div>
 <p>So if we were constrained with using a step length of <span class="math notranslate nohighlight">\(h=0.25\)</span> then we could choose the implicit Euler method to solve this initial value problem.</p>
 <div class="docutils container" id="id3">

@@ -19,7 +19,7 @@
 #    P_n (t)=\sum_{k=0}^n \binom{n}{k}\binom{n+k}{k}(t-1)^k,
 # \end{align}
 # 
-# where $\displaystyle\binom{n}{k}$ is the [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient).
+# where $\displaystyle\binom{n}{k}$ is the [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient).
 # ::::
 # 
 # The values of the $c_i$ coefficients in a Gauss-Legendre method are the roots of $P_s(t)$, the values of the $b_i$ coefficients are chosen to satisfy the $B(k)$ condition and the $a_{ij}$ coefficients are chosen to satisfy the $C(\lfloor \frac{k}{2} \rfloor)$ condition.
@@ -65,10 +65,12 @@
 # sp.init_printing()
 # 
 # # Define symbolic variables
-# t, a11, a12, a21, a22, b1, b2, c1, c2 = sp.symbols("t, a11, a12, a21, a22, b1, b2, c1, c2")
+# t, a11, a12, a21, a22, b1, b2, c1, c2 = \
+#     sp.symbols("t, a11, a12, a21, a22, b1, b2, c1, c2")
 # 
 # # Calculate c values
-# P = 1 + sp.binomial(2,1) * sp.binomial(3,1) * (t - 1) + sp.binomial(2,2) * sp.binomial(4,2) * (t - 1) ** 2
+# P = 1 + sp.binomial(2,1) * sp.binomial(3,1) * (t - 1) \
+#     + sp.binomial(2,2) * sp.binomial(4,2) * (t - 1) ** 2
 # c1, c2 = sp.solve(P)
 # display(sp.solve(P))
 # 
@@ -113,10 +115,12 @@ import sympy as sp
 sp.init_printing()
 
 # Define symbolic variables
-t, a11, a12, a21, a22, b1, b2, c1, c2 = sp.symbols("t, a11, a12, a21, a22, b1, b2, c1, c2")
+t, a11, a12, a21, a22, b1, b2, c1, c2 = \
+    sp.symbols("t, a11, a12, a21, a22, b1, b2, c1, c2")
 
 # Calculate c values
-P = 1 + sp.binomial(2,1) * sp.binomial(3,1) * (t - 1) + sp.binomial(2,2) * sp.binomial(4,2) * (t - 1) ** 2
+P = 1 + sp.binomial(2,1) * sp.binomial(3,1) * (t - 1) \
+    + sp.binomial(2,2) * sp.binomial(4,2) * (t - 1) ** 2
 c1, c2 = sp.solve(P)
 display(sp.solve(P))
 

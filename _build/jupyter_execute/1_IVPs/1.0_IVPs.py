@@ -44,16 +44,23 @@
 #     y &= e^{t + c},
 # \end{align*}
 # 
-# where $c = c_1 + c_2$ is some constant. The solution can be verified by differentiating $y$ and check that it satisfies the original ODE. This solution has been plotted for various values of the constant $c$. Note that there are an infinite number of solutions since $c$ can be any value. 
+# where $c = c_1 + c_2$ is some constant. The solution can be verified by differentiating $y$ and check that it satisfies the original ODE. This solution has been plotted for various values of the constant $c$ in {numref}`ode-plot-figure`. Note that there are an infinite number of solutions since $c$ can be any value. 
+# 
+# :::{glue:figure} ode_plot
+# :name: ode-plot-figure
+# 
+# Plots of some of the possible solution to the ODE $y' = y$.
+# :::
 
 # In[1]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
+from myst_nb import glue
 
 t = np.linspace(0, 1, 200)
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(8,6))
 for i in range(1, 8):
     if i == 4:
         continue
@@ -74,8 +81,10 @@ plt.xlabel("$t$", fontsize=14)
 plt.ylabel("$y$", fontsize=14)
 plt.show()
 
+glue("ode_plot", fig, display=False)
 
-# However, if we know that the value of the solution $y$ for some $t$ then we can calculate $c$. For example, if the solution to the ODE from equation {eq}`simple-ode` is known to be $y(0) = \alpha$ then
+
+# However, if we know that the value of the solution $y$ for some $t$ then we can calculate $c$. For example, if the solution to the ODE in equation {eq}`simple-ode` is known to be $y(0) = \alpha$ then
 # 
 # \begin{align*}
 #     \alpha &= e^{0 + c} = e^c \\
