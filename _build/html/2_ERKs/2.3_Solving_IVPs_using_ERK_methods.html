@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/2_ERKs/2.3_Solving_IVPs_using_ERK_methods.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Chapter Summary" href="2.4_ERK_Summary.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -635,8 +630,14 @@ title="Print to PDF"
     y'=ty, \qquad t\in [0,1], \qquad y(0)=1,
 \end{align*}\]</div>
 <p>and compare the computed solution to the exact solution which is <span class="math notranslate nohighlight">\(y = \exp\left(\dfrac{t^2}{2}\right)\)</span>.</p>
-<p><strong>Solution</strong></p>
-<p>The RK4 method is</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The RK4 method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{6}(k_1 + 2k_2 + 3k_3 + k_4), \\
@@ -645,13 +646,13 @@ title="Print to PDF"
     k_3 &amp;= f(t_n + \frac{1}{2}h, y_n + \frac{1}{2}hk_2), \\
     k_4 &amp;= f(t_n + h, y_n + hk_3).
 \end{align*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(t\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(h=0.2\)</span> then the number of steps required is</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(t\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(h=0.2\)</span> then the number of steps required is</p>
 <div class="math notranslate nohighlight">
 \[n = \operatorname{int}\left(\frac{1 - 0}{0.2}\right) = 5, \]</div>
-<p>and the <span class="math notranslate nohighlight">\(t\)</span> values are</p>
+<p class="sd-card-text">and the <span class="math notranslate nohighlight">\(t\)</span> values are</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{t} = (0, 0.2, 0.4, 0.6, 0.8, 1.0).\]</div>
-<p>The ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> and the initial value is <span class="math notranslate nohighlight">\(y_0 = 1\)</span> so using equation <a class="reference internal" href="2.2_RK4_Derivation.html#equation-rk4-equation">(14)</a></p>
+<p class="sd-card-text">The ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> and the initial value is <span class="math notranslate nohighlight">\(y_0 = 1\)</span> so using equation <a class="reference internal" href="2.2_RK4_Derivation.html#equation-rk4-equation">(15)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     k_1 &amp;= f(t_0, y_0) = (0.0)(1) = 0, \\
@@ -725,6 +726,7 @@ title="Print to PDF"
     &amp;= 1.648717.
 \end{align*}\]</div>
 </div>
+</details></div>
 <div class="section" id="python-code">
 <span id="rk4-python-code"></span><h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The Python code below defines a function called <code class="docutils literal notranslate"><span class="pre">rk4()</span></code> which computes the solution to an initial value problem using the RK4 method. Note that the function is very similar to the function for the <a class="reference internal" href="../1_IVPs/1.4_RK2.html#rk2-python-code"><span class="std std-ref">RK2 method</span></a>.</p>

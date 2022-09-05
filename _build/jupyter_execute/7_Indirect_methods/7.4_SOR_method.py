@@ -98,13 +98,13 @@
 # where $\rho(T_J)$ is the spectral radius of the iteration matrix of the [Jacobi method](jacobi-method-iteration-matrix-definition).
 # ````
 # 
-# ````{admonition} Example 7.4
+# `````{admonition} Example 7.4
 # :class: seealso
 # :name: optimum-relaxation-parameter-example
 # 
 # Determine the optimum relaxation parameter for the SOR method when applied to the system of linear equations from [example 7.1](jacobi-method-example) by calculating $\rho(T_{SOR})$ for a range of $\omega$ values and using equation {eq}`optimum-relaxation-parameter-equation` (if possible).
 # 
-# **Solution**
+# ````{dropdown} Solution
 # 
 # The coefficient matrix is
 # \begin{align*}
@@ -170,7 +170,9 @@
 # \begin{align*}
 #     \omega = 1 + \left( \frac{\frac{\sqrt{10}}{4}}{1 + \sqrt{1 - (\frac{\sqrt{10}}{4})^2}} \right)^2 = \frac{4}{5}(4 - \sqrt{6}) \approx 1.2404.
 # \end{align*}
+# 
 # ````
+# `````
 # 
 # ````{admonition} Example 7.5
 # :class: seealso
@@ -184,7 +186,8 @@
 #     -x_2 +4x_3 &=14.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
+# 
 # The SOR method for this system is
 # 
 # \begin{align*}
@@ -247,6 +250,7 @@
 # |   8 |  1.000267 | -2.000122 |  2.999944 |  0.000701 |
 # |   9 |  1.000050 | -2.000034 |  3.000003 |  0.000096 |
 # 
+# ```
 # ````
 
 # In[1]:

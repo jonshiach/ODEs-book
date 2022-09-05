@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # (jacobi-method-section)=
-# ## Jacobi method
+# # Jacobi method
 # 
 # The Jacobi method is the simplest indirect method. Splitting the coefficient matrix $A$ into the of elements from the lower triangular, diagonal and upper triangular parts of $A$ to form matrices $L$,$D$ and $U$ such that $A = L + D + U$, e.g., 
 # 
@@ -18,7 +18,7 @@
 #         0 & a_{22}  & \ddots  & \vdots \\
 #         \vdots  & \ddots  & \ddots  & 0\\
 #         0 & \cdots  & 0 & a_{nn} 
-#     \end{pmatrix}, \\
+#     \end{pmatrix}, \\ \\
 #     U&=\begin{pmatrix}
 #         0 & a_{12}  & \cdots  & a_{1n}  \\
 #         0 & 0 & \ddots  & \vdots  \\
@@ -125,7 +125,7 @@
 #     -x_2 +4x_3 &=14.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # The Jacobi method for this system is
 # 
@@ -186,6 +186,8 @@
 # |  49 |  0.999981 | -2.000000 |  3.000006 |  0.000076 |
 # 
 # So the Jacobi method took 48 iterations to converge to the solution $x_1 =1$, $x_2 =-2$ and $x_3 = 3$.
+# 
+# ```
 # ````
 # 
 # ## Python code

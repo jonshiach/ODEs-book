@@ -17,7 +17,7 @@
 # 
 # To apply the an explicit Runge-Kutta method to solve an initial value problem we calculate the stage values $k_1, k_2, \dots, k_s$ using the known values of $t_n$ and $y_n$ and the step length $h$. Then the solution over one step $y_{n+1}$ is then calculated using $k_1, k_2, \ldots, k_s$.
 # 
-# :::{admonition} Example 2.4
+# ````{admonition} Example 2.4
 # :class: seealso
 # :name: rk4-example
 # 
@@ -29,7 +29,7 @@
 # 
 # and compare the computed solution to the exact solution which is $y = \exp\left(\dfrac{t^2}{2}\right)$.
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # The RK4 method is
 # 
@@ -122,7 +122,8 @@
 #     &= 1.377126 + \frac{0.2}{6}(1.101701 + 2(1.338567) + 2(1.359885) + 1.649103) \\
 #     &= 1.648717.
 # \end{align*}
-# :::
+# ```
+# ````
 # 
 # (rk4-python-code)=
 # ## Python code

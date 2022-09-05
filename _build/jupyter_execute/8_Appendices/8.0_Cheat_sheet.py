@@ -7,6 +7,7 @@
 # 
 # 
 # ````{glossary}
+# 
 # Ordinary Differential Equation (ODE)
 #     An [ODE](ode-section) is an equation of the for 
 #     
@@ -63,6 +64,7 @@
 # ## Explicit Runge-Kutta methods
 # 
 # ````{glossary}
+# 
 # General form of a Runge-Kutta method
 #     The [general form of a Runge-Kutta method](general-form-of-a-RK-method-section) is
 #     
@@ -123,6 +125,7 @@
 # ## Implicit Runge-Kutta methods
 # 
 # ````{glossary}
+# 
 # Implicit Runge-Kutta methods (IRK)
 #     An [implicit Runge-Kutta method](irk-chapter) is where the stage values are implicit functions.
 #     
@@ -171,7 +174,7 @@
 #     A method is [stable](stability-definition) if the local truncation errors do not increase from one step to the next.
 #     
 # Stiffness
-#     An ODE is [stiff](stiffness-definition) if it requires a very small value of the step length $h$ in order for a method to remain stable.
+#     An ODE is [stiff](stiffness-section) if it requires a very small value of the step length $h$ in order for a method to remain stable.
 #     
 # Stiffness ratio
 #     The [stiffness ratio](stiffness-ratio-definition) gives a measure to whether an system of ODEs is stiff and is calculated using
@@ -235,6 +238,7 @@
 # ## Boundary Value Problems
 # 
 # ```{glossary}
+# 
 # Two point Boundary Value Problem (BVP)
 #     A [two point boundary value problem](bvp-section) is an ODE where the solutions at the lower and upper boundaries of the domain are known
 #     
@@ -273,6 +277,7 @@
 # ## Direct methods
 # 
 # ```{glossary}
+# 
 # System of linear equations
 #     A [system of linear equations](systems-of-linear-equations-section) is a set of linear equations of the form $A \mathbf{x} = \mathbf{b}$ where the solution vector $\mathbf{x}$ satisfies all equations in the system.
 #     
@@ -364,6 +369,7 @@
 # ## Indirect methods
 # 
 # ```{glossary}
+# 
 # Indirect method
 #     [Indirect methods](indirect-methods-chapter) is multiple applications of the method to calculate the solution to a system of linear equations. An estimate is made of the solution $\mathbf{x}^{(0)}$ and an indirect method is applied to calculate the improved estimate $\mathbf{x}^{(1)}$. The method is applied repeatedly until two successive estimates agree to some tolerance.
 #   

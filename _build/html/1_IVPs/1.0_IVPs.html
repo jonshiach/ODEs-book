@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/1_IVPs/1.0_IVPs.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The Taylor Series" href="1.1_Taylor_Series.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -576,8 +571,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ordinary-differential-equations-odes">
-   Ordinary Differential Equations (ODEs)
+  <a class="reference internal nav-link" href="#ordinary-differential-equations">
+   Ordinary Differential Equations
   </a>
  </li>
 </ul>
@@ -600,8 +595,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ordinary-differential-equations-odes">
-   Ordinary Differential Equations (ODEs)
+  <a class="reference internal nav-link" href="#ordinary-differential-equations">
+   Ordinary Differential Equations
   </a>
  </li>
 </ul>
@@ -626,8 +621,9 @@ title="Print to PDF"
 <li><p>apply an ODE solver to <a class="reference internal" href="1.5_Higher_Order_ODEs.html#solving-systems-of-odes-section"><span class="std std-ref">solve a system of ordinary differential equation</span></a>.</p></li>
 </ul>
 <hr class="docutils" />
-<div class="section" id="ordinary-differential-equations-odes">
-<span id="ode-section"></span><h2>Ordinary Differential Equations (ODEs)<a class="headerlink" href="#ordinary-differential-equations-odes" title="Permalink to this headline">#</a></h2>
+<div class="section" id="ordinary-differential-equations">
+<span id="ode-section"></span><h2>Ordinary Differential Equations<a class="headerlink" href="#ordinary-differential-equations" title="Permalink to this headline">#</a></h2>
+<p>An Ordinary Differential Equation (ODE) is an equation which contains the derivatives of a function e.g., <span class="math notranslate nohighlight">\(y(t)\)</span>, of a <strong>single</strong> independent variable <span class="math notranslate nohighlight">\(t\)</span>. ODEs occur in many different applications so it is important that we are able to solve them. Simple ODEs can be solved using <strong>analytical</strong> methods such as integration and Laplace transforms, however, the vast majority of ODEs used in the real world cannot be solved using analytical methods which is why we need a <strong>numerical</strong> approach.</p>
 <div class="note admonition" id="ode-definition">
 <p class="admonition-title">Definition: Ordinary Differential Equation</p>
 <p>An Ordinary Differential Equation (ODE) is an equation of the form</p>
@@ -635,7 +631,7 @@ title="Print to PDF"
 \[y^{(n)} = f(t, y, y', y'', \ldots, y^{(n-1)}),\]</div>
 <p>where <span class="math notranslate nohighlight">\(y = y(t)\)</span> is some function of the independent variable <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(y^{(n)}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>th derivative of <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is some function of <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and its derivatives.</p>
 </div>
-<p>The solution of an ODE is a function <span class="math notranslate nohighlight">\(y=y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
+<p>The solution of an ODE is a function <span class="math notranslate nohighlight">\(y = y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
 <div class="math notranslate nohighlight" id="equation-simple-ode">
 <span class="eqno">(1)<a class="headerlink" href="#equation-simple-ode" title="Permalink to this equation">#</a></span>\[ y' = y,\]</div>
 <p>where <span class="math notranslate nohighlight">\(t \in \mathbb{R}\)</span>. Rewriting this using Leibniz notation and integrating both sides we have</p>

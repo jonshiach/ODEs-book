@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/7_Indirect_methods/7.0_Indirect_methods.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Jacobi method" href="7.1_Jacobi_method.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -629,7 +624,7 @@ title="Print to PDF"
 <p>Indirect methods for solving systems of linear equations use an iterative approach to repeatedly update estimates of the exact solution to the linear system. They are called <strong>indirect methods</strong> since multiple applications of the method is required to calculate a solution unlike <a class="reference internal" href="../6_Direct_methods/6.0_Direct_methods.html#direct-methods-chapter"><span class="std std-ref">direct methods</span></a> such as Gaussian elimination and LU decomposition which require a single application to calculate the solution. However, direct methods are inefficient for large systems of equations for which we tend to use indirect methods instead.</p>
 <p>An indirect method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x}= \mathbf{b}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-iteration-matrix-equation">
-<span class="eqno">(35)<a class="headerlink" href="#equation-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} =T\mathbf{x}^{(k)} + \mathbf{c},\]</div>
+<span class="eqno">(36)<a class="headerlink" href="#equation-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} =T\mathbf{x}^{(k)} + \mathbf{c},\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> are the current and improved estimates of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(T\)</span> is an <strong>iteration matrix</strong> and <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> is some vector. This equation is iterated updating the values of the estimates such that <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)} \to \mathbf{x}\)</span> as <span class="math notranslate nohighlight">\(k\to \infty\)</span>. Note that unlike direct methods which will calculate the exact solution, indirect only calculate an estimate (albeit very close) of the exact solution.</p>
 </div>
 <div class="toctree-wrapper compound">

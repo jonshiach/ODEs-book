@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/6_Direct_methods/6.3_Cholesky_decomposition.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="QR decomposition" href="6.4_QR_decomposition.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -647,7 +642,7 @@ title="Print to PDF"
 </div>
 <div class="important admonition" id="determinant-test-for-positive-definte-matrix-theorem">
 <p class="admonition-title">Theorem: Determinant test for a positive definite matrix</p>
-<p>A square matrix <span class="math notranslate nohighlight">\(A\)</span> is positive definite if it is symmetric and the determinants of all <span class="math notranslate nohighlight">\(k \times k\)</span> upper-left submatrices are all positive.</p>
+<p>A square matrix <span class="math notranslate nohighlight">\(A\)</span> is positive definite if it is symmetric and the determinants of all <span class="math notranslate nohighlight">\(k \times k\)</span> upper-left sub-matrices are all positive.</p>
 </div>
 <div class="seealso admonition" id="positive-definite-example">
 <p class="admonition-title">Example 6.5</p>
@@ -660,8 +655,14 @@ title="Print to PDF"
         0 &amp; -1 &amp; 2
     \end{pmatrix}.
 \end{align*}\]</div>
-<p><strong>Solution</strong></p>
-<p>Matrix <span class="math notranslate nohighlight">\(A\)</span> is symmetric since <span class="math notranslate nohighlight">\(A=A^T\)</span>. Checking the determinants of the upper-left submatrices</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Matrix <span class="math notranslate nohighlight">\(A\)</span> is symmetric since <span class="math notranslate nohighlight">\(A=A^T\)</span>. Checking the determinants of the upper-left sub-matrices</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \det(2) &amp;= 2 &gt; 0, \\
@@ -673,8 +674,9 @@ title="Print to PDF"
     \end{pmatrix}
     &amp;= 6 - 2 + 0 = 4 &gt; 0 .
 \end{align*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(A\)</span> is a symmetric matrix and all the determinants of the upper-left submatrices are positive then <span class="math notranslate nohighlight">\(A\)</span> is a postive definite matrix.</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(A\)</span> is a symmetric matrix and all the determinants of the upper-left sub-matrices are positive then <span class="math notranslate nohighlight">\(A\)</span> is a positive definite matrix.</p>
 </div>
+</details></div>
 <p>Given a positive definite matrix <span class="math notranslate nohighlight">\(A\)</span> then Cholesky decomposition factorises <span class="math notranslate nohighlight">\(A\)</span> into the product of a lower triangular matrix <span class="math notranslate nohighlight">\(L\)</span> and its transpose, i.e.,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -720,7 +722,7 @@ title="Print to PDF"
 <p class="admonition-title">Definition: Cholesky decomposition</p>
 <p>The Cholesky decomposition of an <span class="math notranslate nohighlight">\(n \times n\)</span> positive-definite matrix <span class="math notranslate nohighlight">\(A\)</span> results in an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(A = LL^T\)</span>. The elements of <span class="math notranslate nohighlight">\(L\)</span> are calculated using</p>
 <div class="math notranslate nohighlight" id="equation-cholesky-equation">
-<span class="eqno">(33)<a class="headerlink" href="#equation-cholesky-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(34)<a class="headerlink" href="#equation-cholesky-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
     \ell_{jj} &amp;= \sqrt{a_{jj} - \sum_{k=1}^{j-1} \ell_{jk}^2 }, &amp; j &amp;= 1, \ldots, n,\\
     \ell_{ij} &amp;= \dfrac{1}{\ell_{jj} }\left(a_{ij} -\displaystyle \sum_{k=1}^{i-1} \ell_{ik} \ell_{jk} \right), &amp; i &amp;= j + 1,\ldots ,n.
 \end{align}\end{split}\]</div>
@@ -736,7 +738,14 @@ title="Print to PDF"
         -4 &amp; 5 &amp; 14
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>Stepping through the columns of <span class="math notranslate nohighlight">\(A\)</span> and using equation <a class="reference internal" href="#equation-cholesky-equation">(33)</a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Stepping through the columns of <span class="math notranslate nohighlight">\(A\)</span> and using equation <a class="reference internal" href="#equation-cholesky-equation">(34)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     j &amp;= 1: &amp; \ell_{11} &amp;= \sqrt{a_{11}} = \sqrt{4} = 2,\\
@@ -748,8 +757,8 @@ title="Print to PDF"
     \\
     j &amp;= 3: &amp; \ell_{33} &amp;= \sqrt{a_{33} - \ell_{31}^2 - \ell_{32}^2} = \sqrt{14 - (-2)^2 - 1^2} = \sqrt{9} = 3,
 \end{align*}\]</div>
-<p>therefore</p>
-<p><span class="math notranslate nohighlight">\(L=\begin{pmatrix} 2 &amp; 0 &amp; 0 \\ -1 &amp; 3 &amp; 0 \\ -2 &amp; 1 &amp; 3 \end{pmatrix}\)</span>. Checking that <span class="math notranslate nohighlight">\(A = LL^T\)</span></p>
+<p class="sd-card-text">therefore</p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(L=\begin{pmatrix} 2 &amp; 0 &amp; 0 \\ -1 &amp; 3 &amp; 0 \\ -2 &amp; 1 &amp; 3 \end{pmatrix}\)</span>. Checking that <span class="math notranslate nohighlight">\(A = LL^T\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -769,6 +778,7 @@ title="Print to PDF"
     \end{pmatrix}.
 \end{align*}\]</div>
 </div>
+</details></div>
 <div class="section" id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines the function called <code class="docutils literal notranslate"><span class="pre">cholesky()</span></code> which calculates the Cholesky decomposition of a square matrix <code class="docutils literal notranslate"><span class="pre">A</span></code>. If <code class="docutils literal notranslate"><span class="pre">A</span></code> is not positive-definite then it returns and error message.</p>
@@ -842,8 +852,15 @@ title="Print to PDF"
         x_1 \\ x_2 \\ x_3 \end{pmatrix} =
     \begin{pmatrix} -2 \\ 49 \\ 27 \end{pmatrix}.
 \end{align*}\]</div>
-<p>We saw in <a class="reference internal" href="#cholesky-example"><span class="std std-ref">example 6.6</span></a> that the Cholesky decomposition of the matrix <span class="math notranslate nohighlight">\(A\)</span> is</p>
-<p><span class="math notranslate nohighlight">\(L=\begin{pmatrix} 2 &amp; 0 &amp; 0 \\ -1 &amp; 3 &amp; 0 \\ -2 &amp; 1 &amp; 3 \end{pmatrix}\)</span>. Solving <span class="math notranslate nohighlight">\(L\mathbf{y}=\mathbf{b}\)</span> using forward substitution</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">We saw in <a class="reference internal" href="#cholesky-example"><span class="std std-ref">example 6.6</span></a> that the Cholesky decomposition of the matrix <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(L=\begin{pmatrix} 2 &amp; 0 &amp; 0 \\ -1 &amp; 3 &amp; 0 \\ -2 &amp; 1 &amp; 3 \end{pmatrix}\)</span>. Solving <span class="math notranslate nohighlight">\(L\mathbf{y}=\mathbf{b}\)</span> using forward substitution</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -854,14 +871,14 @@ title="Print to PDF"
     \begin{pmatrix} y_1 \\ y_2 \\ y_3 \end{pmatrix} =
     \begin{pmatrix} -2 \\ 49 \\ 27 \end{pmatrix},
 \end{align*}\]</div>
-<p>gives</p>
+<p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_1 &amp;=\frac{-2}{2}=-1,\\
     y_2 &amp;=\frac{1}{3}(49+y_1 )=\frac{1}{3}(49-1)=16,\\
     y_3 &amp;=\frac{1}{3}(27+2y_1 -y_2 )=\frac{1}{3}(27+2(-1)-16)=3.
 \end{align*}\]</div>
-<p>Solving <span class="math notranslate nohighlight">\(L^T \mathbf{x}=\mathbf{y}\)</span> using back substitution</p>
+<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(L^T \mathbf{x}=\mathbf{y}\)</span> using back substitution</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -872,15 +889,16 @@ title="Print to PDF"
     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} =
     \begin{pmatrix} -1 \\ 16 \\ 3 \end{pmatrix},
 \end{align*}\]</div>
-<p>gives</p>
+<p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_3 &amp;=\frac{3}{3}=1,\\
     x_2 &amp;=\frac{1}{3}(16-x_3 )=\frac{1}{3}(16-1)=5,\\
     x_1 &amp;=\frac{1}{2}(-1+x_2 +2x_3 )=\frac{1}{2}(-1+5+2(1))=3.
 \end{align*}\]</div>
-<p>So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(3,5,1)\)</span>.</p>
+<p class="sd-card-text">So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(3,5,1)\)</span>.</p>
 </div>
+</details></div>
 </div>
 <div class="section" id="id1">
 <h2>Python code<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>

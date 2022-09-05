@@ -20,7 +20,7 @@
 # :class: important
 # :name: determinant-test-for-positive-definte-matrix-theorem
 # 
-# A square matrix $A$ is positive definite if it is symmetric and the determinants of all $k \times k$ upper-left submatrices are all positive.
+# A square matrix $A$ is positive definite if it is symmetric and the determinants of all $k \times k$ upper-left sub-matrices are all positive.
 # ````
 # 
 # ````{admonition} Example 6.5
@@ -37,9 +37,9 @@
 #     \end{pmatrix}.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
-# Matrix $A$ is symmetric since $A=A^T$. Checking the determinants of the upper-left submatrices
+# Matrix $A$ is symmetric since $A=A^T$. Checking the determinants of the upper-left sub-matrices
 # 
 # \begin{align*}
 #     \det(2) &= 2 > 0, \\
@@ -52,7 +52,9 @@
 #     &= 6 - 2 + 0 = 4 > 0 .
 # \end{align*}
 # 
-# Since $A$ is a symmetric matrix and all the determinants of the upper-left submatrices are positive then $A$ is a postive definite matrix.
+# Since $A$ is a symmetric matrix and all the determinants of the upper-left sub-matrices are positive then $A$ is a positive definite matrix.
+# 
+# ```
 # ````
 # 
 # Given a positive definite matrix $A$ then Cholesky decomposition factorises $A$ into the product of a lower triangular matrix $L$ and its transpose, i.e.,
@@ -131,6 +133,8 @@
 #     \end{pmatrix}.
 # \end{align*}
 # 
+# ```{dropdown} Solution
+# 
 # Stepping through the columns of $A$ and using equation {eq}`cholesky-equation`
 # 
 # \begin{align*}
@@ -165,7 +169,10 @@
 #         -4 & 5 & 14
 #     \end{pmatrix}.
 # \end{align*}
+# 
+# ```
 # ````
+# 
 # ## Python code
 # 
 # The code below defines the function called `cholesky()` which calculates the Cholesky decomposition of a square matrix `A`. If `A` is not positive-definite then it returns and error message.
@@ -241,6 +248,8 @@ print(f"L = \n{L}\n")
 #     \begin{pmatrix} -2 \\ 49 \\ 27 \end{pmatrix}.
 # \end{align*}
 # 
+# ```{dropdown} Solution
+# 
 # We saw in [example 6.6](cholesky-example) that the Cholesky decomposition of the matrix $A$ is
 # 
 # $L=\begin{pmatrix} 2 & 0 & 0 \\ -1 & 3 & 0 \\ -2 & 1 & 3 \end{pmatrix}$. Solving $L\mathbf{y}=\mathbf{b}$ using forward substitution
@@ -284,6 +293,8 @@ print(f"L = \n{L}\n")
 # \end{align*}
 # 
 # So the solution is $\mathbf{x}=(3,5,1)$.
+# 
+# ```
 # ````
 # 
 # ## Python code

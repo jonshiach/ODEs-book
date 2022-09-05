@@ -16,7 +16,7 @@
 #     x_1 -x_2 +x_3 +3x_4 &=3.
 # \end{align*}
 # 
-# ````{dropdown} Solution (click to show)
+# ````{dropdown} Solution
 # The Jacobi method for this system is
 # 
 # \begin{align*}

@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/2_ERKs/2.0_ERKs.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Derivation of Explicit Runge-Kutta Methods" href="2.1_ERK_Derivation.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -730,15 +725,21 @@ title="Print to PDF"
     k_1 &amp;= f(t_n, y_n), \\
     k_2 &amp;= f\left( t_n + h, y_n + hk_1 \right).
 \end{align*}\end{split}\]</div>
-<p><strong>Solution</strong></p>
-<p>The general form of a two-stage Runge-Kutta method is</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The general form of a two-stage Runge-Kutta method is</p>
 <div class="math notranslate nohighlight" id="equation-butcher-tableau-example-equation-2">
 <span class="eqno">(7)<a class="headerlink" href="#equation-butcher-tableau-example-equation-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     y_{n+1} &amp;= y_n + h(b_1 k_1 + b_2 k_2), \\
     k_1 &amp;= f(t_n + c_1 h, y_n + h(a_{11}k_1 + a_{12}k_2)), \\
     k_2 &amp;= f(t_n + c_2 h, y_n + h(a_{21}k_1 + a_{22}k_2)). 
 \end{align*}\end{split}\]</div>
-<p>Comparing equations <a class="reference internal" href="#equation-butcher-tableau-example-equation-1">(6)</a> and <a class="reference internal" href="#equation-butcher-tableau-example-equation-2">(7)</a> we can see that <span class="math notranslate nohighlight">\(a_{11} = a_{12} = a_{22} = 0\)</span>, <span class="math notranslate nohighlight">\(b_1 = b_2 = 1\)</span>, <span class="math notranslate nohighlight">\(c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(c_2 = 1\)</span> therefore the Butcher tableau for this method is</p>
+<p class="sd-card-text">Comparing equations <a class="reference internal" href="#equation-butcher-tableau-example-equation-1">(6)</a> and <a class="reference internal" href="#equation-butcher-tableau-example-equation-2">(7)</a> we can see that <span class="math notranslate nohighlight">\(a_{11} = a_{12} = a_{22} = 0\)</span>, <span class="math notranslate nohighlight">\(b_1 = b_2 = 1\)</span>, <span class="math notranslate nohighlight">\(c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(c_2 = 1\)</span> therefore the Butcher tableau for this method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cc}
@@ -748,6 +749,7 @@ title="Print to PDF"
     \end{array}
 \end{align*}\]</div>
 </div>
+</details></div>
 </div>
 </div>
 <div class="section" id="explicit-and-implicit-runge-kutta-methods">
@@ -760,7 +762,7 @@ title="Print to PDF"
     &amp;\vdots \\
     k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s ).
 \end{align*}\]</div>
-<p>The first equation where we are calculating <span class="math notranslate nohighlight">\(k_1\)</span> includes <span class="math notranslate nohighlight">\(k_1\)</span> on the right-hand side and in the second equation where we are calculating <span class="math notranslate nohighlight">\(k_2\)</span> includes <span class="math notranslate nohighlight">\(k_2\)</span> on the right-hand side and so on. These are examples of <a class="reference external" href="https://en.wikipedia.org/wiki/Implicit_function"><strong>implicit functions</strong></a> and Runge-Kutta methods where the stage values are expressed using implicit functions are known as <strong>Implicit Runge-Kutta (IRK)</strong> methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations <a class="reference internal" href="../3_IRKs/3.0_IRKs.html#irk-chapter"><span class="std std-ref">see Implicit Runge-Kutta Methods</span></a>.</p>
+<p>The first equation where we are calculating <span class="math notranslate nohighlight">\(k_1\)</span> includes <span class="math notranslate nohighlight">\(k_1\)</span> on the right-hand side and in the second equation where we are calculating <span class="math notranslate nohighlight">\(k_2\)</span> includes <span class="math notranslate nohighlight">\(k_2\)</span> on the right-hand side and so on. These are examples of <a class="reference external" href="https://en.wikipedia.org/wiki/Implicit_function"><strong>implicit functions</strong></a> and Runge-Kutta methods where the stage values are expressed using implicit functions are known as <strong>Implicit Runge-Kutta (IRK)</strong> methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations (<a class="reference internal" href="../3_IRKs/3.0_IRKs.html#irk-chapter"><span class="std std-ref">see Implicit Runge-Kutta Methods</span></a>).</p>
 <p>If the summation in the stage value <span class="math notranslate nohighlight">\(k_i\)</span> in equation <a class="reference internal" href="#equation-rk-equation">(5)</a> is altered so the upper limit to the sum is <span class="math notranslate nohighlight">\(i-1\)</span>, i.e.,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}

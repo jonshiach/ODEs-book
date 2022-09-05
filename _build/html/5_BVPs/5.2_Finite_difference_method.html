@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/5_BVPs/5.2_Finite_difference_method.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Chapter summary" href="5.3_BVP_summary.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -712,12 +707,12 @@ title="Print to PDF"
     \begin{pmatrix} 
         b_1 &amp; c_1 \\
         a_2 &amp; b_2 &amp; c_2 \\
-        &amp; a_3 &amp; b_3 &amp; \ddots \\
-        &amp; &amp; \ddots &amp; \ddots &amp; c_{n-1} \\
+        &amp; \ddots &amp; \ddots &amp; \ddots \\
+        &amp; &amp; a_{n-1} &amp; b_{n-1} &amp; c_{n-1} \\
         &amp; &amp; &amp; a_n &amp; b_n
     \end{pmatrix}
-    \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n \end{pmatrix} =
-    \begin{pmatrix} d_1 \\ d_2 \\ d_3 \\ \vdots \\ d_n \end{pmatrix},
+    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix} =
+    \begin{pmatrix} d_1 \\ d_2 \\ \vdots \\ d_{n-1} \\ d_n \end{pmatrix},
 \end{align*}\]</div>
 <p>the solution can be found by performing a forward sweep on the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(d_i\)</span> coefficients</p>
 <div class="amsmath math notranslate nohighlight">
@@ -725,7 +720,7 @@ title="Print to PDF"
     b_i &amp;= b_i - c_{i-1} \left( \frac{a_i}{b_{i-1}} \right), &amp; i = 2, 3, \ldots, n, \\
     d_i &amp;= d_i - d_{i-1} \left( \frac{a_i}{b_{i-1}} \right), &amp; i = 2, 3, \ldots, n, 
 \end{align*}\]</div>
-<p>the solution is then found using back substitution</p>
+<p>and then calculate the values of <span class="math notranslate nohighlight">\(x_i\)</span> using back substitution</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_n &amp;= \frac{d_n}{b_n}, \\
@@ -739,18 +734,24 @@ title="Print to PDF"
 \[\begin{align*}
     y'' - y' - y = 0, \qquad y(0) = 0, \qquad y(1) = 2.
 \end{align*}\]</div>
-<p><strong>Solution</strong></p>
-<p>Using a forward difference to approximate <span class="math notranslate nohighlight">\(y'\)</span> and a symmetric difference to approximate <span class="math notranslate nohighlight">\(y''\)</span> we have</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Using a forward difference to approximate <span class="math notranslate nohighlight">\(y'\)</span> and a symmetric difference to approximate <span class="math notranslate nohighlight">\(y''\)</span> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \frac{y_{i-1} -2y_i +y_{i+1} }{h^2 }-\frac{y_{i+1} -y_i }{h}-y_i = 0,
 \end{align*}\]</div>
-<p>which can be simplified to</p>
+<p class="sd-card-text">which can be simplified to</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{i-1} +(h-h^2 -2)y_i +(1-h)y_{i+1} = 0.
 \end{align*}\]</div>
-<p>This gives the following system of linear equations</p>
+<p class="sd-card-text">This gives the following system of linear equations</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_0 &amp;= 0, \\
@@ -760,7 +761,7 @@ title="Print to PDF"
     y_{n-2} + (h - h^2 - 2) y_{n-1} + (1 - h) y_n &amp;= 0, \\
     y_n &amp;= 2.
 \end{align*}\]</div>
-<p>which we can write the linear system as the matrix equation</p>
+<p class="sd-card-text">which we can write the linear system as the matrix equation</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -773,12 +774,12 @@ title="Print to PDF"
     \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{n-1} \\ y_n \end{pmatrix}  =
     \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ 2  \end{pmatrix}.
 \end{align*}\]</div>
-<p>If we use a step length of <span class="math notranslate nohighlight">\(h=0.2\)</span> we have</p>
+<p class="sd-card-text">If we use a step length of <span class="math notranslate nohighlight">\(h=0.2\)</span> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{t} = (0, 0.2, 0.4, 0.6, 0.8, 1),
 \end{align*}\]</div>
-<p>and</p>
+<p class="sd-card-text">and</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -792,7 +793,7 @@ title="Print to PDF"
     \begin{pmatrix} y_0 \\ y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \end{pmatrix} = 
     \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 2 \end{pmatrix}.
 \end{align*}\]</div>
-<p>Performing the forward sweep of the Thomas algorithm</p>
+<p class="sd-card-text">Performing the forward sweep of the Thomas algorithm</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     b_1 &amp;= 1, \\ 
@@ -808,7 +809,7 @@ title="Print to PDF"
     d_5 &amp;= d_5 - d_4 \left( \frac{a_5}{b_4} \right) = 0 - 0 \left( \frac{1}{-1.270693} \right) = 0, \\
     d_6 &amp;= d_6 - d_5 \left( \frac{a_6}{b_5} \right) = 2 - 0 \left( \frac{0}{-1.270693} \right) = 2, \\
 \end{align*}\]</div>
-<p>Performing the back substitution</p>
+<p class="sd-card-text">Performing the back substitution</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_6 &amp;= \frac{d_6}{b_6} = \frac{2}{1} = 2, \\
@@ -818,49 +819,50 @@ title="Print to PDF"
     y_2 &amp;= \frac{d_2 - c_2 y_3}{b_2} = \frac{0 - 0.8(0.473782)}{-2.64} = 0.205992, \\
     y_1 &amp;= \frac{d_1 - c_1 y_2}{b_1} = \frac{0 - 0(0.205992)}{1} = 0, \\
 \end{align*}\]</div>
-<p>The solutions to this boundary value problem using the finite-difference method are tabulated below.</p>
+<p class="sd-card-text">The solutions to this boundary value problem using the finite-difference method are tabulated below.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(y\)</span></p></th>
-<th class="text-align:center head"><p>Exact</p></th>
-<th class="text-align:center head"><p>Error</p></th>
+<tr class="row-odd"><th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text">Exact</p></th>
+<th class="text-align:center head"><p class="sd-card-text">Error</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>0.00</p></td>
-<td class="text-align:center"><p>0.0000</p></td>
-<td class="text-align:center"><p>0.0000</p></td>
-<td class="text-align:center"><p>0.00e+00</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0.00</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.0000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.0000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.00e+00</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>0.20</p></td>
-<td class="text-align:center"><p>0.2060</p></td>
-<td class="text-align:center"><p>0.2213</p></td>
-<td class="text-align:center"><p>1.53e-02</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">0.20</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.2060</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.2213</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.53e-02</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>0.40</p></td>
-<td class="text-align:center"><p>0.4738</p></td>
-<td class="text-align:center"><p>0.5014</p></td>
-<td class="text-align:center"><p>2.76e-02</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0.40</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.4738</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.5014</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.76e-02</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>0.60</p></td>
-<td class="text-align:center"><p>0.8322</p></td>
-<td class="text-align:center"><p>0.8658</p></td>
-<td class="text-align:center"><p>3.36e-02</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">0.60</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.8322</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.8658</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.36e-02</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>0.80</p></td>
-<td class="text-align:center"><p>1.3219</p></td>
-<td class="text-align:center"><p>1.3494</p></td>
-<td class="text-align:center"><p>2.76e-02</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0.80</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.3219</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.3494</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.76e-02</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>1.00</p></td>
-<td class="text-align:center"><p>2.0000</p></td>
-<td class="text-align:center"><p>2.0000</p></td>
-<td class="text-align:center"><p>0.00e+00</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">1.00</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.0000</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.0000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.00e+00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</details></div>
 </div>
 <div class="section" id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>

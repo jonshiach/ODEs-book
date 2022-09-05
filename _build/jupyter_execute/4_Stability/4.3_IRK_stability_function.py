@@ -192,7 +192,7 @@ glue("euler_stability_region_plot", fig, display=False)
 # - $E(y)\geq 0$ for all $y\in \mathbb{R}$.
 # ````
 # 
-# ````{admonition} Example 4.3
+# `````{admonition} Example 4.3
 # :class: seealso
 # :name: a-stability-example
 # 
@@ -208,7 +208,7 @@ glue("euler_stability_region_plot", fig, display=False)
 # 
 # Determine whether this method is A-stable and plot the region of absolute stability.
 # 
-# **Solution**
+# ````{dropdown} Solution
 # 
 # Using equation {eq}`irk-stability-rz-equation`
 # 
@@ -241,7 +241,10 @@ glue("euler_stability_region_plot", fig, display=False)
 # 
 # ```{glue:figure} irk_stability_region_example_plot
 # :name: irk-stability-region-example-figure
+# ```
+# 
 # ````
+# `````
 # 
 # ## Python code
 # 
@@ -270,15 +273,15 @@ I = sp.eye(2)
 # Calculate R(z)
 z, y = sp.symbols('z, y')
 Rz = P(z) / Q(z)
-display(Math(f"R(z) = {sp.latex(sp.nsimplify(Rz))}"))
+print(f"R(z) = {sp.nsimplify(Rz)}")
 
 # Check roots of Q have positive real parts
 roots = sp.solve(Q(z) - 0)
-display(Math(f"\\text{{roots of }}Q(z): z = {sp.latex(roots)}"))
+print(f"Roots of Q(z) = {roots}")
 
 # Check E(y) >= 0
 E = Q(1j * y) * Q(-1j * y) - P(1j * y) * P(-1j * y)
-display(Math(f"E(y) = {sp.latex(sp.simplify(sp.nsimplify(E)))}"))
+print(f"E(y) = {sp.simplify(sp.nsimplify(E))}")
 
 
 # In[3]:

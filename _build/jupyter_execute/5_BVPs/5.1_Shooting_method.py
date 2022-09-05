@@ -17,7 +17,7 @@
 # 
 # Since we have let $y_1 = y$ we know that $y_1(a) = \alpha$ from the definition of the boundary value problem but we do not know the value of $y_2(a)$. To overcome this problem we simply guess this value and compute the solutions to the initial value problem and compare the solution of $y_1(b)$ to $\beta$ and then adjust the guess value accordingly. This method is called the **shooting method** because someone shooting at a target will adjust their next shot based where their previous shot landed.
 # 
-# ````{admonition} Example 5.2
+# `````{admonition} Example 5.2
 # :class: seealso
 # :name: shooting-example-1
 # 
@@ -27,7 +27,7 @@
 #     y'' - y' - y = 0, \qquad y(0) = 0, \qquad y(1) = 2.
 # \end{align*}
 # 
-# **Solution**
+# ````{dropdown} Solution
 # 
 # Rewriting this as a system of first-order ODEs gives
 # 
@@ -76,7 +76,9 @@
 # ```{glue:} shooting_example_plot_1
 # 
 # ```
+# 
 # ````
+# `````
 
 # In[1]:
 
@@ -163,13 +165,13 @@ glue("shooting_example_plot_1", fig, display=False)
 # 
 # Using the Secant method to find the root $g(s) = 0$ will give the value of $y'(0)$.
 # 
-# ````{admonition} Example 5.3
+# `````{admonition} Example 5.3
 # :class: seealso
 # :name: secant-method-example
 # 
 # Use the secant method to calculate the next guess value $s$ for the solution of the boundary value problem [example 5.2](shooting-example-1).
 # 
-# **Solution**
+# ````{dropdown} Solution
 # 
 # From [example 5.2](shooting-example-1) we have $s_1 = 2$ and $s_2 = 1.5$ which resulted in solutions at the upper boundary of $y_5(s = 1) = 1.5856$, $y_5(s = 2) = 3.1712$ and $y_5(s = 1.5) = 2.3784$. The values of $g(s_1)$ and $g(s_2)$ are
 # 
@@ -201,7 +203,9 @@ glue("shooting_example_plot_1", fig, display=False)
 # ```{glue:} shooting_example_plot_2
 # 
 # ```
+# 
 # ````
+# `````
 
 # ## Python code 
 # 

@@ -4,9 +4,9 @@
 # (taylor-series-section)=
 # # The Taylor Series
 # 
-# The **Taylor series** is a series expansion from which the Runge-Kutta methods for solving initial value problems are derived. 
+# The **Taylor series** named after English mathematician [Brook Taylor](https://en.wikipedia.org/wiki/Brook_Taylor) is a series expansion of a function.
 # 
-# ::::{admonition} Definition: the Taylor series
+# ````{admonition} Definition: The Taylor series
 # :class: note
 # :name: taylor-series-definition
 # 
@@ -16,7 +16,7 @@
 #     f(t+h) &= \sum_{n = 0}^\infty \frac{h^n}{n!}f^{(n)}(t) \\
 #     &= f(t) + hf'(t) + \frac{h^2}{2!}f''(t) + \frac{h^3}{3!}f'''(t) + \cdots
 # \end{align*}
-# ::::
+# ````
 # 
 # We can use the Taylor series to approximate the value of $f(t)$ where the smaller the value of $h$ the closer the approximation $f(t+h)$ is to actual value $f(t)$. The problem with we have is that we cannot sum an infinite number of terms so instead we only consider the first $n$ terms in the summation
 # 
@@ -25,17 +25,17 @@
 #     & \qquad + \underbrace{\frac{h^{n+1}}{(n+1)!}f^{(n+1)}(t) + \frac{h^{n+2}}{(n+2)!}f^{(n+2)}(t) + \cdots}_{\mathrm{Highter\,Order\,Terms \,(HOT)}}
 # \end{align*}
 # 
-# It is import to note that since we are omitting the higher order terms in the truncation of the Taylor series we have an **approximation** of $f(t+h)$. When we omit the Higher-Order Terms (HOT) from the Taylor series we say we have **truncated** the Taylor series. So if for example we omit all terms higher than fourth-order we have the **fourth-order Taylor series expansion** of $f(t+h)$.
+# It is important to note that since we are omitting the higher order terms in the truncation of the Taylor series we only have an **approximation** of $f(t+h)$. When we omit the Higher-Order Terms (HOT) from the Taylor series we say we have **truncated** the Taylor series. So if for example we omit all terms higher than fourth-order we have the **fourth-order Taylor series expansion** of $f(t+h)$.
 # 
-# $$f(t+h) = f(t) + hf' (t)+\frac{h^2}{2}f'' (t) + \frac{h^3}{3!}f^{''')}(t) + \frac{h^4}{4!}f^{(4)} + \mathrm{HOT}$$
+# $$f(t+h) = f(t) + hf' (t)+\frac{h^2}{2}f'' (t) + \frac{h^3}{3!}f^{''')}(t) + \frac{h^4}{4!}f^{(4)} + \mathrm{HOT}.$$
 # 
-# ::::{admonition} Example 1.1
+# ````{admonition} Example 1.1
 # :class: seealso
 # :name: taylor-series-example
 # 
 # Use the first, second, third and fourth-order Taylor series expansions to calculate the value of $\cos\left(\frac{\pi}{3} + h\right)$ where $h=0.2$.
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Here $t=\frac{\pi}{3}$, $h=0.2$, $f(t) = \cos(t)$ and $f'(t) = -\sin(t)$ so the first-order expansion is
 # 
@@ -79,11 +79,12 @@
 # |  2  |    0.316795   | 1.19e-03 |
 # |  3  |    0.317950   | 3.10e-05 |
 # |  4  |    0.317983   | 2.35e-06 |
-# ::::
+# ```
+# ````
 # 
 # ## Using Python to calculate a Taylor series approximation
 # 
-# The code below calculates the Taylor series approximation of $\cos(t + h)$ using the first $n$ terms of the series. Note that since the derivative of $\cos(t)$ is $-\sin(t)$ so if $n$ is even then $f^{(n)}(t) = \cos$ and when $n$ is odd $f^{(n)}(t) = \sin(t)$. To calculate this we can use an `if` statement that checks whether the current value of $n$ is even or odd and calculates the value $f(t)$ accordingly and change the sign of $f^{(n)}(t)$ when $n$ is odd. 
+# The code below calculates the Taylor series approximation of $\cos(t + h)$ using the first $n$ terms of the series. Note that since the derivative of $\cos(t)$ is $-\sin(t)$ so if $n$ is even then $f^{(n)}(t) = \pm \cos$ and when $n$ is odd $f^{(n)}(t) = \pm \sin(t)$. To calculate this we can use an `if` statement that checks whether the current value of $n$ is even or odd and calculates the value $f(t)$ accordingly and change the sign of $f^{(n)}(t)$ when $n$ is odd. 
 
 # In[1]:
 

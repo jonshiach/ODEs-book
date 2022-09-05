@@ -13,11 +13,11 @@
 # 
 # To help simplify the calculations we let 
 # 
-# :::{math}
+# ```{math}
 # :label: Yi-equation
 # 
 # Y_i = y_n +h \displaystyle\sum_{j=1}^s a_{ij} k_j
-# :::
+# ```
 # 
 # then we can write these equations as
 # 
@@ -28,7 +28,7 @@
 # 
 # Expanding the summation in equation {eq}`Yi-equation` for each stage gives
 # 
-# :::{math}
+# ```{math}
 # :label: irk-stage-values-equation
 # 
 # \begin{align*}
@@ -37,7 +37,7 @@
 #     & \vdots \\
 #     Y_s &= y_n + h(a_{s1} f(t_n + c_1 h, Y_1) + a_{s2} f(t_n + c_2 h, Y_2) + \cdots + a_{ss} f(t_n + c_s h, Y_s)), \\
 # \end{align*}
-# :::
+# ```
 # 
 # The values of $Y_1, Y_2, \ldots, Y_s$ are found by solving this system of equations. One way to do this is to estimate the values of $Y_i$ by assigning each a value and use the equations {eq}`irk-stage-values-equation` to calculate improved estimates. If we repeat this enough times then our estimations of $Y_i$ will be close to the actual values of $Y_i$. We cease iterations when the largest difference between two successive estimates is small
 # 
@@ -45,7 +45,7 @@
 # 
 # where $Y_i^{(k+1)}$ and $Y_i^{(k)}$ are the new and old estimates respectively and $tol$ is a **convergence tolerance**. The value of $tol$ is arbitrary but we need it to be small enough to give good estimates of $Y_i$ but not so small that we are spending too much time calculating the iterations. A common default value for the tolerance is $tol=10^{-6}$.
 # 
-# ::::{admonition} Example 3.6
+# ````{admonition} Example 3.6
 # :class: seealso
 # :name: irk-example-1
 # 
@@ -64,8 +64,8 @@
 # \begin{align*}
 #     y' = ty, \qquad t\in [0,1], \qquad y(0)=1.
 # \end{align*}
-#    
-# **Solution**
+#  
+# ```{dropdown} Solution
 # 
 # The stage values for the implicit method are
 # 
@@ -144,7 +144,8 @@
 # | 4 |     0.80 |   1.3773 |   1.3592 |   1.5524 |
 # | 5 |     1.00 |   1.6490 | - | - |
 # 
-# ::::
+# ```
+# ````
 # 
 # ## Python code
 # 
@@ -231,12 +232,12 @@ glue("irk_example_1_plot", fig, display=False)
 
 # The computed solutions using the implicit method are plotted in {numref}`irk-example-1-figure` below.
 # 
-# :::{glue:figure} irk_example_1_plot
+# ```{glue:figure} irk_example_1_plot
 # :name: irk-example-1-figure
 # 
 # Solution of the initial value problem $y'=ty$, $t\in[0,1]$, $y(0)=1$ using the implicit method from the [example](irk-example-1) with a step length $h=0.2$.
-# :::
+# ```
 # 
-# :::{note}
+# ```{note}
 # The method used to calculate the stage values $Y_i$ here is an iterative method known as the [Gauss-Seidel method](gauss-seidel-method-section). This is not the most efficient method available to estimate the stage values and in practice [Newtons method](https://en.wikipedia.org/wiki/Newton%27s_method) is preferred since it is more efficient. However this requires calculation of a matrix of derivatives of $f(t,y)$ known as a [Jacobian matrix](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant), and whilst not a particularly difficult to calculate, it can complicate the code somewhat especially when solving a system of ODEs. Therefore, here we only use the Gauss-Seidel method.
-# :::
+# ```

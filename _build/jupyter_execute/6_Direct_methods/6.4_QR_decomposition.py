@@ -45,7 +45,7 @@
 #     \end{pmatrix}.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Checking $A^T A=I$
 # 
@@ -65,6 +65,8 @@
 # \end{align*}
 # 
 # So $A$ is an orthogonal matrix.
+# 
+# ```
 # ````
 # 
 # (qr-gram-schmidt-section)=
@@ -152,6 +154,8 @@
 #     \end{pmatrix}.
 # \end{align*}
 # 
+# ```{dropdown} Solution
+# 
 # Column $j=1$:
 # 
 # \begin{align*}
@@ -206,6 +210,8 @@
 #         0 & 0 & 4
 #     \end{pmatrix}.
 # \end{align*}
+# 
+# ```
 # ````
 
 # ## Python code
@@ -285,6 +291,8 @@ print(f"Q = \n{Q}\n\nR = \n{R}")
 #     \begin{pmatrix} 1 \\ 19 \\ 13 \\ 31 \end{pmatrix}.
 # \end{align*}
 # 
+# ```{dropdown} Solution
+# 
 # We saw in [example 6.9](qr-gramschmidt-example) that the QR decomposition of the coefficient matrix is
 # \begin{align*}
 #     Q &= \begin{pmatrix}
@@ -327,6 +335,8 @@ print(f"Q = \n{Q}\n\nR = \n{R}")
 # \end{align*}
 # 
 # So the solution is $\mathbf{x}=(-2,4,3)$.
+# 
+# ```
 # ````
 
 # ## Python code
@@ -494,7 +504,7 @@ for i in range(len(x)):
 #         \end{pmatrix}
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Let $Q=I_4$ and $R=A$ and calculate Householder matrix for the first column of $R$
 # 
@@ -555,6 +565,8 @@ for i in range(len(x)):
 #     Q = Q H &= \left(\begin{matrix}- \frac{1}{2} & - \frac{1}{2} & - \frac{7}{10} & \frac{1}{10}\\\frac{1}{2} & - \frac{1}{2} & - \frac{1}{10} & - \frac{7}{10}\\- \frac{1}{2} & - \frac{1}{2} & \frac{7}{10} & - \frac{1}{10}\\\frac{1}{2} & - \frac{1}{2} & \frac{1}{10} & \frac{7}{10}\end{matrix}\right)\left(\begin{matrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\0 & 0 & - \frac{4}{5} & - \frac{3}{5}\\0 & 0 & - \frac{3}{5} & \frac{4}{5}\end{matrix}\right) \\
 #     &= \left(\begin{matrix}- \frac{1}{2} & - \frac{1}{2} & \frac{1}{2} & \frac{1}{2}\\\frac{1}{2} & - \frac{1}{2} & \frac{1}{2} & - \frac{1}{2}\\- \frac{1}{2} & - \frac{1}{2} & - \frac{1}{2} & - \frac{1}{2}\\\frac{1}{2} & - \frac{1}{2} & - \frac{1}{2} & \frac{1}{2}\end{matrix}\right).
 # \end{align*}
+# 
+# ```
 # ````
 # 
 # ## Python code

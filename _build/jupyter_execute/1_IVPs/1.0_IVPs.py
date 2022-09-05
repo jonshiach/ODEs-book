@@ -16,7 +16,9 @@
 # 
 # ---
 # (ode-section)=
-# ## Ordinary Differential Equations (ODEs)
+# ## Ordinary Differential Equations
+# 
+# An Ordinary Differential Equation (ODE) is an equation which contains the derivatives of a function e.g., $y(t)$, of a **single** independent variable $t$. ODEs occur in many different applications so it is important that we are able to solve them. Simple ODEs can be solved using **analytical** methods such as integration and Laplace transforms, however, the vast majority of ODEs used in the real world cannot be solved using analytical methods which is why we need a **numerical** approach.
 # 
 # ````{admonition} Definition: Ordinary Differential Equation
 # :class: note
@@ -29,7 +31,7 @@
 # where $y = y(t)$ is some function of the independent variable $t$, $y^{(n)}$ is the $n$th derivative of $y$ and $f$ is some function of $t$, $y$ and its derivatives.
 # ````
 # 
-# The solution of an ODE is a function $y=y(t)$ that satisfies the ODE over the domain of $t$. For example, consider the following ODE
+# The solution of an ODE is a function $y = y(t)$ that satisfies the ODE over the domain of $t$. For example, consider the following ODE
 # 
 # $$ y' = y,$$ (simple-ode)
 # 
@@ -46,11 +48,11 @@
 # 
 # where $c = c_1 + c_2$ is some constant. The solution can be verified by differentiating $y$ and check that it satisfies the original ODE. This solution has been plotted for various values of the constant $c$ in {numref}`ode-plot-figure`. Note that there are an infinite number of solutions since $c$ can be any value. 
 # 
-# :::{glue:figure} ode_plot
+# ```{glue:figure} ode_plot
 # :name: ode-plot-figure
 # 
 # Plots of some of the possible solution to the ODE $y' = y$.
-# :::
+# ```
 
 # In[1]:
 

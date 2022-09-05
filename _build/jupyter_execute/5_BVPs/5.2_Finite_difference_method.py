@@ -72,12 +72,12 @@
 #     \begin{pmatrix} 
 #         b_1 & c_1 \\
 #         a_2 & b_2 & c_2 \\
-#         & a_3 & b_3 & \ddots \\
-#         & & \ddots & \ddots & c_{n-1} \\
+#         & \ddots & \ddots & \ddots \\
+#         & & a_{n-1} & b_{n-1} & c_{n-1} \\
 #         & & & a_n & b_n
 #     \end{pmatrix}
-#     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n \end{pmatrix} =
-#     \begin{pmatrix} d_1 \\ d_2 \\ d_3 \\ \vdots \\ d_n \end{pmatrix},
+#     \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix} =
+#     \begin{pmatrix} d_1 \\ d_2 \\ \vdots \\ d_{n-1} \\ d_n \end{pmatrix},
 # \end{align*}
 # 
 # the solution can be found by performing a forward sweep on the $b_i$ and $d_i$ coefficients
@@ -87,7 +87,7 @@
 #     d_i &= d_i - d_{i-1} \left( \frac{a_i}{b_{i-1}} \right), & i = 2, 3, \ldots, n, 
 # \end{align*}
 # 
-# the solution is then found using back substitution
+# and then calculate the values of $x_i$ using back substitution
 # 
 # \begin{align*}
 #     x_n &= \frac{d_n}{b_n}, \\
@@ -105,7 +105,7 @@
 #     y'' - y' - y = 0, \qquad y(0) = 0, \qquad y(1) = 2.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Using a forward difference to approximate $y'$ and a symmetric difference to approximate $y''$ we have
 # 
@@ -205,6 +205,7 @@
 # | 0.80 | 1.3219 | 1.3494 | 2.76e-02 |
 # | 1.00 | 2.0000 | 2.0000 | 0.00e+00 |
 # 
+# ```
 # ````
 # 
 # ## Python code

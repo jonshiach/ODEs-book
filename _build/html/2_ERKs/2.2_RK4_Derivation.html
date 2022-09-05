@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/2_ERKs/2.2_RK4_Derivation.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Solving initial value problems using explicit Runge-Kutta methods" href="2.3_Solving_IVPs_using_ERK_methods.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -620,7 +615,7 @@ title="Print to PDF"
 <div class="note admonition" id="rk4-order-conditions-definition">
 <p class="admonition-title">Definition: Order conditions for a fourth-order explicit Runge-Kutta method</p>
 <div class="math notranslate nohighlight" id="equation-rk4-order-conditions-equation">
-<span class="eqno">(11)<a class="headerlink" href="#equation-rk4-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(12)<a class="headerlink" href="#equation-rk4-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
     b_1 + b_2 + b_3 + b_4 &amp;= 1,\\
     b_2 c_2 + b_3 c_3 + b_4 c_4 &amp;=  \frac{1}{2},\\
     b_2 c_2^2 + b_3 c_3^2 + b_4 c_4^2 &amp;= \frac{1}{3},\\
@@ -634,20 +629,20 @@ title="Print to PDF"
 <p>In addition to these, another condition that is placed on Runge-Kutta methods is the <strong>row sum condition</strong>.</p>
 <div class="note admonition" id="row-sum-condition">
 <p class="admonition-title">Definition: Row sum condition</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4d12b4f1-ee63-4e08-80d4-ed2b64f7d304">
-<span class="eqno">(12)<a class="headerlink" href="#equation-4d12b4f1-ee63-4e08-80d4-ed2b64f7d304" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-089ff539-b337-4289-85e8-0c62ff339609">
+<span class="eqno">(13)<a class="headerlink" href="#equation-089ff539-b337-4289-85e8-0c62ff339609" title="Permalink to this equation">#</a></span>\[\begin{align}
     c_i =\sum_{j=1}^{s} a_{ij},
 \end{align}\]</div>
 <p>i.e., the value of <span class="math notranslate nohighlight">\(c_i\)</span> is equal to the sum of row <span class="math notranslate nohighlight">\(i\)</span> of the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </div>
 <p>Since we have an explicit method we know that <span class="math notranslate nohighlight">\(c_1 = 0\)</span> then the row sum conditions for a fourth-order explicit method are</p>
 <div class="math notranslate nohighlight" id="equation-rk4-row-sum-conditions-equation">
-<span class="eqno">(13)<a class="headerlink" href="#equation-rk4-row-sum-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(14)<a class="headerlink" href="#equation-rk4-row-sum-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     c_2 &amp;=a_{21} ,\\
     c_3 &amp;=a_{31} + a_{32} ,\\
     c_4 &amp;=a_{41} + a_{42} + a_{43} .
 \end{align*}\end{split}\]</div>
-<p>Combining the conditions in equations <a class="reference internal" href="#equation-rk4-order-conditions-equation">(11)</a> and <a class="reference internal" href="#equation-rk4-row-sum-conditions-equation">(13)</a> then we have a total of 11 order conditions expressed in 13 unknowns  which can be expressed in the Butcher tableau</p>
+<p>Combining the conditions in equations <a class="reference internal" href="#equation-rk4-order-conditions-equation">(12)</a> and <a class="reference internal" href="#equation-rk4-row-sum-conditions-equation">(14)</a> then we have a total of 11 order conditions expressed in 13 unknowns  which can be expressed in the Butcher tableau</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cccc}
@@ -662,49 +657,55 @@ title="Print to PDF"
 <div class="seealso admonition" id="rk4-derivation-example">
 <p class="admonition-title">Example 2.3</p>
 <p>Derive a fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = c_3 = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(c_4 =1\)</span> and <span class="math notranslate nohighlight">\(b_2 = \frac{1}{3}\)</span>.</p>
-<p><strong>Solution</strong></p>
-<p>Substituting the known values of <span class="math notranslate nohighlight">\(c_2\)</span>, <span class="math notranslate nohighlight">\(c_3\)</span>, <span class="math notranslate nohighlight">\(c_4\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> into the <a class="reference internal" href="#rk4-order-conditions-definition"><span class="std std-ref">first three order conditions</span></a> (we only need the first three to solve for <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span>) we have</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Substituting the known values of <span class="math notranslate nohighlight">\(c_2\)</span>, <span class="math notranslate nohighlight">\(c_3\)</span>, <span class="math notranslate nohighlight">\(c_4\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> into the first three order conditions in equation <a class="reference internal" href="#equation-rk4-order-conditions-equation">(12)</a> (we only need the first three to solve for <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span>) we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     b_1 + b_3 + b_4 &amp;= \frac{2}{3}, \\
     \frac{1}{2}b_3 + b_4 &amp;= \frac{1}{3}, \\
     \frac{1}{4}b_3 + b_4 &amp;= \frac{1}{4}.
 \end{align*}\]</div>
-<p>Subtracting the third order condition from the second gives</p>
+<p class="sd-card-text">Subtracting the third order condition from the second gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \frac{1}{4}b_3 = \frac{1}{12},
 \end{align*}\]</div>
-<p>therefore <span class="math notranslate nohighlight">\(b_3 = \frac{1}{3}\)</span> and from the third order condition we have <span class="math notranslate nohighlight">\(b_4 = \frac{1}{6}\)</span>. Substituting <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span> into the first order condition gives <span class="math notranslate nohighlight">\(b_1 = \frac{1}{3}\)</span>. Substituting the known values of <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(c_3\)</span> into the seventh order condition gives</p>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(b_3 = \frac{1}{3}\)</span> and from the third order condition we have <span class="math notranslate nohighlight">\(b_4 = \frac{1}{6}\)</span>. Substituting <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span> into the first order condition gives <span class="math notranslate nohighlight">\(b_1 = \frac{1}{3}\)</span>. Substituting the known values of <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(c_3\)</span> into the seventh order condition gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \frac{1}{6}a_{43} &amp;= \frac{1}{3}(1 - \frac{1}{2}) = \frac{1}{6},
+    \frac{1}{6}a_{43} &amp;= \frac{1}{3}\left(1 - \frac{1}{2}\right) = \frac{1}{6},
 \end{align*}\]</div>
-<p>so <span class="math notranslate nohighlight">\(a_{43} = 1\)</span>. Substituting the known values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> into the sixth order condtion gives</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{43} = 1\)</span>. Substituting the known values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> into the sixth order condtion gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \left( \frac{1}{3} \right) \left( \frac{1}{2} \right) \left( \frac{1}{2} \right) a_{32} + \frac{1}{6} \left( \frac{1}{2} a_{42} + \frac{1}{2} \right) &amp;= \frac{1}{8}, \\
     \left( \frac{1}{3} \right) a_{32} + \left( \frac{1}{6} \right) a_{42} &amp;= \frac{1}{3} \left( 1 - \frac{1}{2} \right),
 \end{align*}\]</div>
-<p>so we have the system</p>
+<p class="sd-card-text">so we have the system</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \frac{1}{12}a_{32} + \frac{1}{12}a_{42} &amp;= \frac{1}{24}, \\
     \frac{1}{3}a_{32} + \frac{1}{6}a_{42} &amp;= \frac{1}{6}.
 \end{align*}\]</div>
-<p>Subtracting 2 times the first equation from the second</p>
+<p class="sd-card-text">Subtracting 2 times the first equation from the second</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \frac{1}{6}a_{32} &amp;= \frac{1}{12}
 \end{align*}\]</div>
-<p>so <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{42} = 0\)</span>. Substituting these into the <a class="reference internal" href="#row-sum-condition"><span class="std std-ref">row sum condition</span></a> we have</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{42} = 0\)</span>. Substituting these into the <a class="reference internal" href="#row-sum-condition"><span class="std std-ref">row sum condition</span></a> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \frac{1}{2} &amp;= a_{21}, \\
     \frac{1}{2} &amp;= a_{31} + \frac{1}{2}, \\
     1 &amp;= a_{41} + 1,
 \end{align*}\]</div>
-<p>so <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(a_{31} = 0\)</span> and <span class="math notranslate nohighlight">\(a_{41} = 0\)</span>. We now have the values of all of the coefficients so this fourth-order explicit Runge-Kutta method is</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(a_{31} = 0\)</span> and <span class="math notranslate nohighlight">\(a_{41} = 0\)</span>. We now have the values of all of the coefficients so this fourth-order explicit Runge-Kutta method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;=y_n +\frac{h}{6}(k_1 +2 k_2 +2k_3 +k_4 ),\\
@@ -713,7 +714,7 @@ title="Print to PDF"
     k_3 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_2 ),\\
     k_4 &amp;=f(t_n +h,y_n +hk_3 ),
 \end{align*}\]</div>
-<p>which has the Butcher tableau</p>
+<p class="sd-card-text">which has the Butcher tableau</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cccc}
@@ -725,11 +726,12 @@ title="Print to PDF"
     \end{array}
 \end{align*}\]</div>
 </div>
+</details></div>
 <p>This fourth-order explicit Runge-Kutta method derived above is often referred to as <em>the</em> Runge-Kutta method or <strong>RK4</strong> for short.</p>
 <div class="note admonition" id="rk4-definition">
 <p class="admonition-title">Definition: The fourth-order explicit Runge-Kutta method (RK4)</p>
 <div class="math notranslate nohighlight" id="equation-rk4-equation">
-<span class="eqno">(14)<a class="headerlink" href="#equation-rk4-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(15)<a class="headerlink" href="#equation-rk4-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{6}(k_1 + 2 k_2 + 2 k_3 + k_4), \\
     k_1 &amp;= f(t_n, y_n), \\
     k_2 &amp;= f(t_n + \tfrac{1}{2} h, y_n + \tfrac{1}{2} h k_1), \\

@@ -68,9 +68,9 @@
 # 
 # Derive a fourth-order Runge-Kutta method where $c_2 = c_3 = \frac{1}{2}$, $c_4 =1$ and $b_2 = \frac{1}{3}$.
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
-# Substituting the known values of $c_2$, $c_3$, $c_4$ and $b_2$ into the [first three order conditions](rk4-order-conditions-definition) (we only need the first three to solve for $b_1$, $b_3$ and $b_4$) we have
+# Substituting the known values of $c_2$, $c_3$, $c_4$ and $b_2$ into the first three order conditions in equation {eq}`rk4-order-conditions-equation` (we only need the first three to solve for $b_1$, $b_3$ and $b_4$) we have
 # 
 # \begin{align*}
 #     b_1 + b_3 + b_4 &= \frac{2}{3}, \\
@@ -87,7 +87,7 @@
 # therefore $b_3 = \frac{1}{3}$ and from the third order condition we have $b_4 = \frac{1}{6}$. Substituting $b_3$ and $b_4$ into the first order condition gives $b_1 = \frac{1}{3}$. Substituting the known values of $b_3$ and $c_3$ into the seventh order condition gives
 #     
 # \begin{align*}
-#     \frac{1}{6}a_{43} &= \frac{1}{3}(1 - \frac{1}{2}) = \frac{1}{6},
+#     \frac{1}{6}a_{43} &= \frac{1}{3}\left(1 - \frac{1}{2}\right) = \frac{1}{6},
 # \end{align*}
 # 
 # so $a_{43} = 1$. Substituting the known values of $b_i$ and $c_i$ into the sixth order condtion gives
@@ -139,6 +139,7 @@
 #         & \frac{1}{6} & \frac{1}{3} & \frac{1}{3} & \frac{1}{6}
 #     \end{array}
 # \end{align*}
+# ```
 # ````
 # 
 # This fourth-order explicit Runge-Kutta method derived above is often referred to as *the* Runge-Kutta method or **RK4** for short.

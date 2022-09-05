@@ -91,6 +91,8 @@
 #     \end{array}
 # \end{align*}
 # 
+# ```{dropdown} Solution
+# 
 # Checking the $B(k)$ order condition:
 # 
 # \begin{align*}
@@ -121,5 +123,5 @@
 # \end{align*}
 # 
 # So the $D(k)$ order condition is satisfied up to $k=2$. Therefore since $B(2)$, $C(1)$ and $D(1)$ are all satisfied this IRK method is order 2.
-#    
+# ``` 
 # ````

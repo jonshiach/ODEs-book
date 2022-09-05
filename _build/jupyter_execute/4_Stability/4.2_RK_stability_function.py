@@ -185,7 +185,7 @@ glue("erk-stability-regions-plot", fig, display=False)
 fig.savefig("../Images/ERK_stability.png", dpi=fig.dpi)
 
 
-# ````{admonition} Example 4.2
+# `````{admonition} Example 4.2
 # :class: seealso
 # :name: erk-stability-example
 # 
@@ -202,13 +202,9 @@ fig.savefig("../Images/ERK_stability.png", dpi=fig.dpi)
 # 
 # (i) Determine the stability function for this Runge-Kutta method and hence find its order;
 # 
-# (ii) plot the region of absolute stability and that of an explicit method of the same order on the same set of axes;
+# ````{dropdown} Solution
 # 
-# (iii) comment on the region of absolute stability of the two methods.
-# 
-# **Solution**
-# 
-# (i) Here we have
+# Here we have
 # \begin{align*}
 #     A &= \begin{pmatrix}
 #         0 & 0 & 0 & 0 \\
@@ -270,14 +266,49 @@ fig.savefig("../Images/ERK_stability.png", dpi=fig.dpi)
 # \end{align*}
 # 
 # which agrees to the series expansion of $e^z$ from equation {eq}`erk-stability-exp(z)-equation` up to and including the $z^2$ term. Therefore this method is of order 2.
+# ````
+# (ii) plot the region of absolute stability and that of an explicit method on the same order on the same set of axes;
 # 
-# (ii) The region of absolute stability for this method and the RK2 method is plotted below.
+# ````{dropdown} Solution
+# 
+# ```python
+# import numpy as np
+# import matplotlib.pyplot as plt
+# 
+# # Generate z values
+# X, Y = np.meshgrid(np.linspace(-5, 5, 100), np.linspace(-5, 5, 100))
+# Z = X + Y * 1j
+# 
+# # Define stability function
+# ERK = 1 + Z + Z ** 2 / 2 + 3 * Z ** 3 / 16 + Z ** 4 / 48 
+# RK2 = 1 + Z + Z ** 2 / 2
+# 
+# # Plot stability region
+# fig = plt.figure(figsize=(8, 6))
+# plt.contourf(X, Y, abs(ERK), levels=[0, 1], colors="#99ccff")
+# plt.contour(X, Y, abs(ERK), colors= "k", levels=[0, 1])
+# plt.contourf(X, Y, abs(RK2), levels=[0, 1], colors="#ffcccc")
+# plt.contour(X, Y, abs(RK2), colors= "k", levels=[0, 1])
+# plt.axhline(0, color="k", linewidth=2)
+# plt.axvline(0, color="k", linewidth=2)
+# plt.axis([-5, 2, -3.5, 3.5])
+# plt.xlabel("$\mathrm{Re}(z)$", fontsize=14)
+# plt.ylabel("$\mathrm{Im}(z)$", fontsize=14)
+# plt.show()
+# ```
 # 
 # ```{glue:} erk-stability-regions-example-plot
 # ```
 # 
-# (iii) The interval of absolute stability for this method is $[-3,0]$ whereas for the second-order method we have $[-2,0]$. This means that this method is stable for larger values of $h$ so we can use fewer steps than the second-order method to calculate the solution to the same accuracy, although it does require the calculation of two additional stage values.
 # ````
+# 
+# (iii) comment on the region of absolute stability of the two methods.
+# 
+# ````{dropdown} Solution
+# The interval of absolute stability for this method is $[-3,0]$ whereas for the second-order method we have $[-2,0]$. This means that this method is stable for larger values of $h$ so we can use fewer steps than the second-order method to calculate the solution to the same accuracy, although it does require the calculation of two additional stage values.
+# ````
+# 
+# `````
 
 # In[2]:
 

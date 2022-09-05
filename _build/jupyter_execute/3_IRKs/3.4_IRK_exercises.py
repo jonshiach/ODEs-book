@@ -17,7 +17,7 @@
 #     \end{array}
 # \end{align*}
 # 
-# ````{dropdown} Solution (click to show)
+# ````{dropdown} Solution
 # 
 # $B(k)$:
 # \begin{align*}

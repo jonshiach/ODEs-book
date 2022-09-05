@@ -29,7 +29,7 @@
 #     y''' + yy'' -2y' + ty'' - 10 = 0.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # First rearrange the ODE so that the highest derivative is the subject
 # 
@@ -37,13 +37,14 @@
 #     y''' = -yy'' + 2y' - ty'' + 10,
 # \end{align*}
 # 
-# then let $y_1 = y$, $y_2 = y'$, $y_3 = y''$ then we can rewrite this ODE using
+# then let $y_1 = y$, $y_2 = y'$, $y_3 = y''$ then we can rewrite this ODE as
 # 
 # \begin{align*}
 #     y_1' &= y_2, \\
 #     y_2' &= y_3, \\
 #     y_3' &= - y_1 y_3 + 2y_2 - t y_3 + 10. 
 # \end{align*}
+# ```
 # ````
 # 
 # (solving-systems-of-odes-section)=
@@ -80,7 +81,7 @@
 # 
 # Initial value problems that are defined using systems of ODEs we need to know the initial solution for each of the individual ODEs, i.e., $y_1(a), y_2(a), \ldots$, in order to be able to obtain a unique solution. 
 # 
-# ````{admonition} Example 7.5
+# `````{admonition} Example 7.5
 # :class: seealso
 # :name: higher-order-ode-ivp-example
 # 
@@ -92,7 +93,7 @@
 # 
 # and compare the computed solution to the exact solution which is $y = 2\cos(t)$.
 # 
-# **Solution**
+# ````{dropdown} Solution
 # 
 # First we need to rewrite the second-order ODE as two first-order ODEs. Let $y_1 = y$ and $y_2 = y'$ then
 # 
@@ -140,8 +141,8 @@
 # 
 # ```{glue:figure} higher_order_ode_fig
 # ```
-# 
 # ````
+# `````
 
 # In[1]:
 

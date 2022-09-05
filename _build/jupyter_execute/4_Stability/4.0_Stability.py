@@ -199,7 +199,7 @@ glue("stiff_solution_2", fig, display=False)
 # 
 # $$ y'' + 1001 y' + 1000 y = 0.$$
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Rewriting the second-order ODE as a system of two first-order ODEs
 # 
@@ -228,6 +228,7 @@ glue("stiff_solution_2", fig, display=False)
 # $$S = \frac{|-1000|}{|-1|} = 1000.$$
 # 
 # Since $S = 1000$ is large then this system is considered to be stiff. 
+# ```
 # ````
 # 
 # ### Solving stiff systems

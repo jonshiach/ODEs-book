@@ -19,19 +19,19 @@
 # 
 # Runge-Methods are the most popular family of methods used to solve Ordinary Differential Equations (ODEs). They are known as **single step methods** because they update the solution for the next step $y_{n+1}$ using information from the single step $y_n$. The other type of method for solving ODEs are [**linear multistep methods**](https://en.wikipedia.org/wiki/Linear_multistep_method) that calculate $y_{n+1}$ using information from multiple steps $y_n ,y_{n-1} ,y_{n-2} ,\ldots $
 #    
-# ::::{admonition} Definition: General form of a Runge-Kutta method
+# ````{admonition} Definition: General form of a Runge-Kutta method
 # :class: note
 # :name: rk-definition
 # 
 # The general form of a Runge-Kutta method for solving the initial value problem $y' =f(t,y)$, $t \in [a, b]$, $y_0 = y(a)$ is
 # 
-# :::{math}
+# ```{math}
 # :label: rk-equation
 # \begin{align}
 #     y_{n+1} &=y_n +h\sum_{i=1}^s b_i k_i,\\
 #     k_i &=f(t_n +c_i h,y_n +h\sum_{j=1}^s a_{ij} k_j ),
 # \end{align}
-# :::
+# ```
 # 
 # where
 # - $t_n$ is some value of the independent variable $t$;
@@ -41,14 +41,14 @@
 # - $k_i$ are intermediate **stage values** used to calculate $y_{n+1}$;
 # - $a_{ij}$, $b_i$ and $c_i$ are coefficients that defined a particular Runge-Kutta method.
 # 
-# ::::
+# ````
 # 
 # (butcher-tableau-section)=
 # ### Butcher tableau
 # 
 # Runge-Kutta methods are often summarised in a **Butcher tableau** named after the New Zealand mathematician [John Butcher](https://en.wikipedia.org/wiki/John_C._Butcher).
 # 
-# ::::{admonition} Definition: Butcher Tableau
+# ````{admonition} Definition: Butcher Tableau
 # :class: note
 # :name: butcher-tableau-definition
 # 
@@ -85,15 +85,15 @@
 #         & b_1  & b_2  & \cdots  & b_s 
 #     \end{array}
 # \end{align*}
-# ::::
+# ````
 # 
-# :::::{admonition} Example 2.1
+# `````{admonition} Example 2.1
 # :class: seealso
 # :name: butcher-tableau-example
 # 
 # Express the second-order Runge-Kutta method given below as a Butcher tableau
 # 
-# ::::{math}
+# ````{math}
 # :label: butcher-tableau-example-equation-1
 # 
 # \begin{align*}
@@ -101,12 +101,13 @@
 #     k_1 &= f(t_n, y_n), \\
 #     k_2 &= f\left( t_n + h, y_n + hk_1 \right).
 # \end{align*}
-# ::::
-# **Solution**
+# ````
+# 
+# ````{dropdown} Solution
 # 
 # The general form of a two-stage Runge-Kutta method is
 # 
-# ::::{math}
+# ```{math}
 # :label: butcher-tableau-example-equation-2
 # 
 # \begin{align*}
@@ -114,9 +115,10 @@
 #     k_1 &= f(t_n + c_1 h, y_n + h(a_{11}k_1 + a_{12}k_2)), \\
 #     k_2 &= f(t_n + c_2 h, y_n + h(a_{21}k_1 + a_{22}k_2)). 
 # \end{align*}
-# ::::
+# ```
 # 
 # Comparing equations {eq}`butcher-tableau-example-equation-1` and {eq}`butcher-tableau-example-equation-2` we can see that $a_{11} = a_{12} = a_{22} = 0$, $b_1 = b_2 = 1$, $c_1 = 0$ and $c_2 = 1$ therefore the Butcher tableau for this method is
+# 
 # \begin{align*}
 #     \begin{array}{c|cc}
 #         0 & 0 & 0 \\
@@ -124,7 +126,8 @@
 #         & \frac{1}{2} & \frac{1}{2}
 #     \end{array}
 # \end{align*}
-# :::::
+# ````
+# `````
 # 
 # (explicit-and-implicit-rk-methods-section)=
 # ## Explicit and implicit Runge-Kutta methods
@@ -138,7 +141,7 @@
 #     k_s &=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s ).
 # \end{align*} 
 # 
-# The first equation where we are calculating $k_1$ includes $k_1$ on the right-hand side and in the second equation where we are calculating $k_2$ includes $k_2$ on the right-hand side and so on. These are examples of [**implicit functions**](https://en.wikipedia.org/wiki/Implicit_function) and Runge-Kutta methods where the stage values are expressed using implicit functions are known as **Implicit Runge-Kutta (IRK)** methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations [see Implicit Runge-Kutta Methods](irk-chapter).
+# The first equation where we are calculating $k_1$ includes $k_1$ on the right-hand side and in the second equation where we are calculating $k_2$ includes $k_2$ on the right-hand side and so on. These are examples of [**implicit functions**](https://en.wikipedia.org/wiki/Implicit_function) and Runge-Kutta methods where the stage values are expressed using implicit functions are known as **Implicit Runge-Kutta (IRK)** methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations ([see Implicit Runge-Kutta Methods](irk-chapter)).
 # 
 # If the summation in the stage value $k_i$ in equation {eq}`rk-equation` is altered so the upper limit to the sum is $i-1$, i.e.,
 # 
@@ -162,10 +165,10 @@
 # 
 # Explicit and implicit Runge-Kutta methods can be easily distinguished by looking at their Butcher tableaux. The $A$ matrix in the top right region of a Butcher tableau for an explicit method is lower-triangular whereas for an implicit method the main-diagonal and upper triangular elements are non-zero.
 # 
-# ::::{grid}
+# ````{grid}
 # :gutter: 3
 # 
-# :::{grid-item-card} Explicit Runge-Kutta method
+# ```{grid-item-card} Explicit Runge-Kutta method
 # \begin{align*}
 #     \begin{array}{c|ccccc}
 #         0 &  &  &  &  & \\
@@ -177,9 +180,9 @@
 #     \end{array}
 # \end{align*}
 # 
-# :::
+# ```
 # 
-# :::{grid-item-card} Implicit Runge-Kutta method
+# ```{grid-item-card} Implicit Runge-Kutta method
 # \begin{align*}
 #     \begin{array}{c|ccccc}
 #         c_1  & a_{11}  & a_{12}  & a_{13}  & \cdots  & a_{1s} \\
@@ -190,6 +193,6 @@
 #          & b_1  & b_2  & b_3  & \cdots  & b_s 
 #     \end{array}
 # \end{align*}
-# :::
+# ```
 # 
-# ::::
+# ````

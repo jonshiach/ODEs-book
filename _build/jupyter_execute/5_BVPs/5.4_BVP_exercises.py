@@ -11,7 +11,7 @@
 # 
 # (a)  $y'' = - \dfrac{4}{t} y' + \dfrac{2}{t^2 } y - \dfrac{2\ln (t)}{t^3 }, \qquad y(1) = 1/2, \qquad y(2) = \ln (2)$;
 # 
-# ````{dropdown} Solution (click to show)
+# ````{dropdown} Solution
 # $p(t) = -\dfrac{4}{t}$, $q(t) = \dfrac{2}{t^2}$ and $r(t) = \dfrac{2\ln(t)}{t^3}$ are all continuous and $q(t) > 0$ for $t \in [1, 2]$ so this boundary value problem has a unique solution.
 # ````
 # 

@@ -22,17 +22,24 @@
 # 
 # then the Taylor series becomes
 # 
-# :::{math}
+# ```{math}
 # :label: ode-taylor-equation
 # \begin{align*}
 #     y_{n+1} &= y_n + h f(t_n, y_n) + \frac{h^2}{2}(f_t(t_n, y_n) + f(t_n, y_n) f_y(t_n, y_n)) + O(h^3)
 # \end{align*}
-# :::
+# ```
 # 
 # This is the second-order Taylor series expansion for the ODE $y' = f(t,y)$. To be able to solve this ODE we need the Taylor series expansion of a Runge-Kutta method to be equivalent to equation {eq}`ode-taylor-equation`. Recall that the general form of a second-order explicit Runge-Kutta method is
 # 
+# ```{math}
+# :label: general-rk2-equation
+# 
+# y_{n+1} = y_n + h(b_1 k_1 + b_2 k_2),
+# ```
+# 
+# with the stage values
+# 
 # \begin{align*}
-#     y_{n+1} &= y_n + h(b_1 k_1 + b_2 k_2), \\
 #     k_1 &= f(t_n, y_n), \\
 #     k_2 &= f(t_n + c_2 h, y_n + h a_{21} k_1)
 # \end{align*}
@@ -49,16 +56,16 @@
 #     k_2 &= f(t_n, y_n) + c_2 h f_t(t_n, y_n) + h a_{21} f(t_n, y_n) f_y(t_n, y_n).
 # \end{align*}
 # 
-# Substituting $k_1$ and $k_2$ into the expression for $y_{n+1}$ gives
+# Substituting $k_1$ and $k_2$ into equation {eq}`general-rk2-equation` gives
 # 
-# :::{math}
+# ```{math}
 # :label: bivariate-rk2-equation
 # 
 # \begin{align*}
 # y_{n+1} &= y_n + h (b_1 f(t_n, y_n) \\
 # & \qquad + b_2 (f(t_n, y_n) + c_2 h f_t(t_n, y_n) + h a_{21} f(t_n, y_n) f_y(t_n, y_n))) + O(h^3).
 # \end{align*}
-# :::
+# ```
 # 
 # We need equation {eq}`bivariate-rk2-equation` to be equal to {eq}`ode-taylor-equation`. Equating the coefficients of $f(t_n, y_n)$ we have
 # 
@@ -83,11 +90,11 @@
 # 
 # So we have three equations and four unknowns ($a_{21}$, $b_1$, $b_2$, $c_2$). Any set of values that satisfy these this system of equations give a valid second-order explicit Runge-Kutta method. These conditions are known as the **order conditions** for a method. Since we have an <a href="https://en.wikipedia.org/wiki/Underdetermined_system" target="_blank">underdetermined system</a> to get a unique solution we choose a value for one of the unknowns and solve for the others. 
 # 
-# ::::{admonition} Definition: Order conditions for a second-order explicit Runge-Kutta method
+# ````{admonition} Definition: Order conditions for a second-order explicit Runge-Kutta method
 # :class: note
 # :name: rk2-order-conditions-definition
 # 
-# :::{math}
+# ```{math}
 # :label: rk2-order-conditions-equation
 # 
 # \begin{align*}
@@ -95,18 +102,18 @@
 #     c_2 b_2 &=\frac{1}{2},\\
 #     a_{21} b_2 &=\frac{1}{2}
 # \end{align*}
-# :::
-# ::::
+# ```
+# ````
 # 
-# ::::{admonition} Example 2.2
+# ````{admonition} Example 2.2
 # :class: seealso
 # :name: rk2-derivation-example
 # 
 # Derive a second-order Runge-Kutta method where $c_2 = 1$.
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
-# Substituting $c_2 = 1$ into the [order conditions for a second-order explicit Runge-Kutta method](rk2-order-conditions-definition), the second order condition gives $b_2 = \frac{1}{2}$ so from the first order condition we know that $b_1 = \frac{1}{2}$ and from the third order condition we know that $a_{21} = 1$. So this second-order explicit Runge-Kutta method is
+# Substituting $c_2 = 1$ into equation {eq}`rk2-order-conditions-equation` the second order condition gives $b_2 = \frac{1}{2}$ so from the first order condition we know that $b_1 = \frac{1}{2}$ and from the third order condition we know that $a_{21} = 1$. So this second-order explicit Runge-Kutta method is
 # 
 # \begin{align*}
 #     y_{n+1} &=y_n +\frac{h}{2}(k_1 +k_2 ),\\
@@ -125,12 +132,12 @@
 # \end{align*}
 # 
 # This version of a second order Runge-Kutta method uses the simplest values for $a_{ij}$, $b_i$ and $c_i$ and is known as **the second-order Runge-Kutta method (RK2)**. 
+# ```
+# ````
 # 
-# ::::
-# 
-# :::{note}
-# There are an infinite number of combinations for the values of $a_{ij}$, $b_i$ and $c_i$ which satisfy the order conditions for a Runge-Kutta method. All of the possible Runge-Kutta methods of a particular order will give similar solutions.
-# :::
+# ```{note}
+# There are an infinite number of combinations for the values of $a_{ij}$, $b_i$ and $c_i$ which satisfy the order conditions for a Runge-Kutta method. All of the possible Runge-Kutta methods of a particular order will the same solutions (computational rounding permitted).
+# ```
 
 # ## Using Python to solve the order conditions
 # 

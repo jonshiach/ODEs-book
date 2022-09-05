@@ -4,7 +4,7 @@ These are the lecture notes that accompany the teaching of Runge-Kutta methods a
 
 ## Runge-Kutta methods
 
-The content for this half of the unit is split into two main topic areas. The first deals with Runge-Kutta methods which are the most common method used to solve ordinary differential equations. 
+The content for this half of the unit is split into two main topic areas. The first deals with Runge-Kutta methods which are the most common methods used to solve ordinary differential equations. 
 
 :::::{grid} 1 1 2 3
 :class-container: text-center

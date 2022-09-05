@@ -1,0 +1,83 @@
+Traceback (most recent call last):
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from myst_nb import glue
+
+def euler(f, tspan, y0, h):
+    nsteps = int((tspan[1] - tspan[0]) / h)
+    neq = len(y0)
+    t = np.arange(nsteps + 1) * h
+    y = np.zeros((len(t), len(y0)))
+    y[0,:] = y0
+    for n in range(nsteps):
+        y[n+1,:] = y[n,:] + h * f(t[n], y[n,:])
+        
+    return t, y 
+
+def f(t, y):
+    return t * y
+
+def exact(t):
+    return np.exp(t ** 2 / 2)
+
+# Define IVP
+tspan = [0, 1]  # boundaries of the t domain
+y0 = [1]        # solution at the lower boundary
+h = 0.2         # step length
+
+# Calculate the solution to the IVP
+t, y = euler(f, tspan, y0, h)
+    
+# Plot solution
+t1 = np.linspace(tspan[0], tspan[1], 200)
+y1 = exact(t1)
+fig, ax = plt.subplots(figsize=(8, 6))
+plt.plot(t1, y1, "r-", label="Exact")
+plt.plot(t, exact(t), "ro")
+plt.plot(t, y, "bo-", label="Euler")
+for i in range(len(t)):
+    plt.text(t[i], y[i,0] - 0.05, rf"$\tilde{{y}}_{i}$", fontsize=14, ha="center")
+    plt.text(t[i], exact(t[i])+0.025, f"$y_{i}$", fontsize=14, ha="center")
+    if i > 2:
+        plt.text(t[i]+0.005, y[i,0]/2 + exact(t[i])/2, f"$e_{i}$", fontsize=14)
+        plt.annotate(text='', xy=(t[i],y[i]), xytext=(t[i],exact(t[i])), arrowprops=dict(arrowstyle='<->'))
+
+plt.ylim([0.9, 1.8])
+plt.xlabel("$t$", fontsize=14)
+plt.ylabel("$y$", fontsize=14)
+plt.legend(loc="upper left", fontsize=12)
+plt.show()
+
+glue("gte_fig", fig, display=False)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-1-ba402e8daf15>[0m in [0;36m<module>[0;34m[0m
+[1;32m     40[0m     [0;32mif[0m [0mi[0m [0;34m>[0m [0;36m2[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     41[0m         [0mplt[0m[0;34m.[0m[0mtext[0m[0;34m([0m[0mt[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m+[0m[0;36m0.005[0m[0;34m,[0m [0my[0m[0;34m[[0m[0mi[0m[0;34m,[0m[0;36m0[0m[0;34m][0m[0;34m/[0m[0;36m2[0m [0;34m+[0m [0mexact[0m[0;34m([0m[0mt[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m)[0m[0;34m/[0m[0;36m2[0m[0;34m,[0m [0;34mf"$e_{i}$"[0m[0;34m,[0m [0mfontsize[0m[0;34m=[0m[0;36m14[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 42[0;31m         [0mplt[0m[0;34m.[0m[0mannotate[0m[0;34m([0m[0mtext[0m[0;34m=[0m[0;34m''[0m[0;34m,[0m [0mxy[0m[0;34m=[0m[0;34m([0m[0mt[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m,[0m[0my[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m)[0m[0;34m,[0m [0mxytext[0m[0;34m=[0m[0;34m([0m[0mt[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m,[0m[0mexact[0m[0;34m([0m[0mt[0m[0;34m[[0m[0mi[0m[0;34m][0m[0;34m)[0m[0;34m)[0m[0;34m,[0m [0marrowprops[0m[0;34m=[0m[0mdict[0m[0;34m([0m[0marrowstyle[0m[0;34m=[0m[0;34m'<->'[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     43[0m [0;34m[0m[0m
+[1;32m     44[0m [0mplt[0m[0;34m.[0m[0mylim[0m[0;34m([0m[0;34m[[0m[0;36m0.9[0m[0;34m,[0m [0;36m1.8[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mTypeError[0m: annotate() missing 1 required positional argument: 's'
+TypeError: annotate() missing 1 required positional argument: 's'
+

@@ -19,7 +19,7 @@
 #     \end{array}
 # \end{align*}
 # 
-# ````{dropdown} Solution (click to show)
+# ````{dropdown} Solution
 # 
 # \begin{align*}
 #     \mathbf{b} A^0 \mathbf{e} &= 

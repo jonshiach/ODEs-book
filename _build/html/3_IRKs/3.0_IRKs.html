@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/3_IRKs/3.0_IRKs.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Deriving implicit Runge-Kutta methods" href="3.1_Deriving_IRK_methods.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -705,7 +700,14 @@ title="Print to PDF"
           &amp; \frac{1}{2} &amp; \frac{1}{2}
     \end{array}
 \end{align*}\]</div>
-<p>Checking the <span class="math notranslate nohighlight">\(B(k)\)</span> order condition:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Checking the <span class="math notranslate nohighlight">\(B(k)\)</span> order condition:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   j &amp;=1: &amp; LHS &amp;= b_1 c_1^0 + b_2 c_2^0 = \frac{1}{2}(1)+\frac{1}{2}(1)=1, \\
@@ -715,7 +717,7 @@ title="Print to PDF"
   j &amp;=3: &amp; LHS &amp;= b_1 c_1^2 + b_2 c_2^2 = \frac{1}{2}{\left(\frac{1}{4}\right)}^2 +\frac{1}{2}{\left(\frac{3}{4}\right)}^2 = \frac{5}{16}, \\
   &amp;&amp; RHS &amp;= \frac{1}{3}.
 \end{align*}\]</div>
-<p>So since <span class="math notranslate nohighlight">\(LHS=RHS\)</span> up to <span class="math notranslate nohighlight">\(j=2\)</span> the <span class="math notranslate nohighlight">\(B(2)\)</span> condition is satisfied. Now we need to check whether <span class="math notranslate nohighlight">\(C(\lfloor \frac{2}{2} \rfloor)=C(1)\)</span> order condition is satisfied. Note that here <span class="math notranslate nohighlight">\(\ell=1\)</span> so we only need to check <span class="math notranslate nohighlight">\(i = 1\)</span> and <span class="math notranslate nohighlight">\(2\)</span> but if <span class="math notranslate nohighlight">\(k \geq 2\)</span> then we would need to check <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, s\)</span> for each <span class="math notranslate nohighlight">\(\ell = 1, 2, \ldots\)</span>.</p>
+<p class="sd-card-text">So since <span class="math notranslate nohighlight">\(LHS=RHS\)</span> up to <span class="math notranslate nohighlight">\(j=2\)</span> the <span class="math notranslate nohighlight">\(B(2)\)</span> condition is satisfied. Now we need to check whether <span class="math notranslate nohighlight">\(C(\lfloor \frac{2}{2} \rfloor)=C(1)\)</span> order condition is satisfied. Note that here <span class="math notranslate nohighlight">\(\ell=1\)</span> so we only need to check <span class="math notranslate nohighlight">\(i = 1\)</span> and <span class="math notranslate nohighlight">\(2\)</span> but if <span class="math notranslate nohighlight">\(k \geq 2\)</span> then we would need to check <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, s\)</span> for each <span class="math notranslate nohighlight">\(\ell = 1, 2, \ldots\)</span>.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   i &amp;= 1, &amp; LHS&amp;=a_{11} c_1^0 + a_{12} c_2^0 =\frac{1}{4}(1)+0(1)=\frac{1}{4}, \\
@@ -723,7 +725,7 @@ title="Print to PDF"
   i &amp;= 2, &amp; LHS&amp;=a_{21} c_1^0 + a_{22} c_2^0 =\frac{1}{2}(1)+\frac{1}{4}(1)=\frac{3}{4}, \\
   &amp;&amp; RHS &amp;= \frac{1}{\ell}c_2^{\ell} =\frac{3}{4}.
 \end{align*}\]</div>
-<p>So the <span class="math notranslate nohighlight">\(C(1)\)</span> order condition is satisfied. Now we need to check whether the <span class="math notranslate nohighlight">\(D(1)\)</span> order condition is satisfied</p>
+<p class="sd-card-text">So the <span class="math notranslate nohighlight">\(C(1)\)</span> order condition is satisfied. Now we need to check whether the <span class="math notranslate nohighlight">\(D(1)\)</span> order condition is satisfied</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   j &amp;= 1, &amp; LHS &amp;= b_1 c_1^0 a_{11} +b_2 c_2^0 a_{21} =\frac{1}{2}(1)\left(\frac{1}{4}\right)+\frac{1}{2}(1)\left(\frac{1}{2}\right)=\frac{3}{8},\\
@@ -731,8 +733,9 @@ title="Print to PDF"
   j&amp;=2, &amp; LHS&amp;=b_1 c_1^0 a_{12} +b_2 c_2^0 a_{22} =\frac{1}{2}(1)(0)+\frac{1}{2}(1)\left(\frac{1}{4}\right)=\frac{1}{8},\\
   &amp;&amp; RHS&amp;=\frac{1}{\ell }b_2 (1 - c_2^{\ell})=\frac{1}{2}\left(1-\frac{3}{4}\right)=\frac{1}{8}.
 \end{align*}\]</div>
-<p>So the <span class="math notranslate nohighlight">\(D(k)\)</span> order condition is satisfied up to <span class="math notranslate nohighlight">\(k=2\)</span>. Therefore since <span class="math notranslate nohighlight">\(B(2)\)</span>, <span class="math notranslate nohighlight">\(C(1)\)</span> and <span class="math notranslate nohighlight">\(D(1)\)</span> are all satisfied this IRK method is order 2.</p>
+<p class="sd-card-text">So the <span class="math notranslate nohighlight">\(D(k)\)</span> order condition is satisfied up to <span class="math notranslate nohighlight">\(k=2\)</span>. Therefore since <span class="math notranslate nohighlight">\(B(2)\)</span>, <span class="math notranslate nohighlight">\(C(1)\)</span> and <span class="math notranslate nohighlight">\(D(1)\)</span> are all satisfied this IRK method is order 2.</p>
 </div>
+</details></div>
 </div>
 <div class="toctree-wrapper compound">
 </div>

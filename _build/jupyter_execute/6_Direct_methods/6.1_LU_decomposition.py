@@ -99,7 +99,7 @@
 #     \end{pmatrix}.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Stepping through the columns of $A$
 # 
@@ -151,6 +151,8 @@
 #         -3 & 1 & 2
 #     \end{pmatrix}.
 # \end{align*}
+# 
+# ```
 # ````
 # 
 # ## Python Code
@@ -235,7 +237,7 @@ print(f"U = \n{U}\n")
 #     \begin{pmatrix} -7 \\ 11 \\ 1 \end{pmatrix}.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # We saw in the [example 6.1](lu-example) above that the LU decomposition of the coefficient matrix is
 # 
@@ -294,6 +296,8 @@ print(f"U = \n{U}\n")
 # \end{align*}
 # 
 # So the solution is $\mathbf{x}=(2,-3,5)$.
+# 
+# ```
 # ````
 # 
 # ## Python code

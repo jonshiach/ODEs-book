@@ -41,11 +41,11 @@
 # 
 # To apply the Euler method we first calculate the number of steps of the method that are required to calculate the solution over the $t$ domain from $t_0 = a$ up to $t_n = b$. If we are using a constant value for the step length than the number of steps required is
 # 
-# $$n = \operatorname{int}\left(\frac{b - a}{h}\right),$$
+# $$n = \left\lfloor \frac{b - a}{h} \right\rfloor,$$
 # 
-# where $\operatorname{int}(x)$ rounds the number $x$ to the integer below. If $h$ divides $b - a$ exactly then the last value of $t_n = b$. If $h$ does not divide $b - a$ exactly then $t_n < b$, in these cases we can use a smaller step length for the last step or leave it as it is (here we will use a constant value of $h$).
+# where $\lfloor x \rfloor$ rounds the number $x$ to the integer below. If $h$ divides $b - a$ exactly then the last value of $t_n = b$. If $h$ does not divide $b - a$ exactly then $t_n < b$, in these cases we can use a smaller step length for the last step or leave it as it is (here we will use a constant value of $h$).
 # 
-# To solve an initial value problem using the Euler method we first initialise the $t_0 = a$ and $y_0 = \alpha$ and then calculate the value of $y_1$ using equation {eq}`euler-method-equation` and $t_1 = t_0 + h$. Then we use $t_1$ and $y_1$ to calculate the value of $y_2$ and $t_2 = t_1 + h$. We continue in this way until we have calculated up to $y_n$ and $t_n$. The Euler method is an example of a **single step method** since it only requires information from a single step of the solution to calculate the next step.
+# To solve an initial value problem using the Euler method we first initialise the $t_0 = a$ and $y_0 = \alpha$ and then calculate the value of $y_1$ using equation {eq}`euler-method-equation` and $t_1 = t_0 + h$. Then we use $t_1$ and $y_1$ to calculate the value of $y_2$ and $t_2 = t_1 + h$. We continue in this way until we have calculated up to $y_n$ and $t_n$. The Euler method is an example of a **single step method** since it only requires information from a single step of the solution to calculate the next step. The other type of numerical method for solving ODEs is the [**linear multistep method**](https://en.wikipedia.org/wiki/Linear_multistep_method) that requires information from multiple previous steps. 
 # 
 # ````{admonition} Example 1.2
 # :class: seealso
@@ -57,7 +57,7 @@
 # 
 # and compare the computed solution to the exact solution which is $y = \exp\left(\dfrac{t^2}{2}\right)$.
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Since $t\in[0,1]$ and $h=0.2$ then the number of steps required is
 # 
@@ -87,7 +87,7 @@
 # | 0.60 |  1.123200 |  1.197217 | 7.40e-02 |
 # | 0.80 |  1.257984 |  1.377128 | 1.19e-01 |
 # | 1.00 |  1.459261 |  1.648721 | 1.89e-01 |
-#   
+# ```
 # ````
 # 
 # (py:euler)=
@@ -126,11 +126,11 @@ def euler(f, tspan, y0, h):
 # - `y0` - an array of values containing the solution of the ODE at the initial value $t=a$
 # - `h` - the step length used
 # 
-# The function first determines the number of steps required and the number of ODEs being solved and stores these in `nsteps` and `neq` respectively. In the example here we are only solving for one equation but [later](solving-systems-of-odes-section) we will need to be able to solve multiple ODEs at the same time. It then calculates two arrays called `t` and `y`. The array `t` array contains the values of $t_n$ for which the Euler method calculates the solution and is determined by `h` and `nsteps`[^1]. The `y` array has `nsteps + 1` rows and `neq` columns will contain the solutions of the ODE(s) where each row contains the solution at each step of the Euler method and the first row of `y` is set to `y0` since it contains the initial solution. A `for` loop is used to loop through each of the steps and calculate the solution using the Euler method. The arrays `t` and `y` containing the solution to the IVP are returned.
+# The function first determines the number of steps required and the number of ODEs being solved and stores these in `nsteps` and `neq` respectively. In the example here we are only solving for one equation we will need to be able to [solve multiple ODEs at the same time](solving-systems-of-odes-section). It then calculates two arrays called `t` and `y`. The array `t` array contains the values of $t_n$ for which the Euler method calculates the solution and is determined by `h` and `nsteps`[^1]. The `y` array has `nsteps + 1` rows and `neq` columns (short for the *number of equations*) will contain the solutions of the ODE(s) where each row contains the solution at each step of the Euler method and the first row of `y` is set to `y0` since it contains the initial solution. A `for` loop is used to loop through each of the steps and calculate the solution using the Euler method. The arrays `t` and `y` containing the solution to the IVP are returned.
 # 
 # [^1]: This assumes that we are using a constant step length. Some methods use [adaptive step size](https://en.wikipedia.org/wiki/Adaptive_step_size) where the value of $h$ is modified at each step to optimise the accuracy. These methods are outside the scope of this unit so will not be considered here)
 # 
-# The code below defines the functions `f(t, y)` and `exact(t)` which calculate the ODE function and exact solution to the IVP (this is usually not known). 
+# The code below defines the functions `f(t, y)` and `exact(t)` which calculate the ODE function and exact solution to the IVP. In most practical cases the exact solution will not be known, if it was we wouldn't need a numerical method to solve the ODE, however we often use ODEs with known exact solutions to assess the effectiveness of the numerical methods used to solve the ODEs. 
 
 # In[3]:
 
@@ -182,18 +182,17 @@ plt.legend(fontsize=12)
 plt.show()
 
 
+# ```{glue:figure} euler_plot
+# :name: euler-figure
+# 
+# The solution to the IVP $y'=ty$, $t\in [0, 1]$, $y(0) = 1$ using the Euler method with $h=0.2$.
+# ```
+# 
+# Note that the solution obtained using the Euler method deviates away from the exact solution as the value of $t$ increases. We will see why this is the case in the next section on [error analysis](error-analysis-section).
+
 # In[6]:
 
 
 from myst_nb import glue
 glue("euler_plot", fig, display=False)
 
-
-# :::{glue:figure} euler_plot
-# :name: euler-figure
-# 
-# The solution to the IVP $y'=ty$, $t\in [0, 1]$, $y(0) = 1$ using the Euler method with $h=0.2$.
-# :::
-# 
-# 
-# Note that the solution obtained using the Euler method deviates away from the exact solution as the value of $t$ increases. We will see why this is the case in the next section on [error analysis](error-analysis-section).

@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/4_Stability/4.0_Stability.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Stability functions" href="4.1_Stability_functions.html" />
@@ -93,11 +93,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -685,7 +680,7 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_n\)</span> is the exact solution and <span class="math notranslate nohighlight">\(\bar{y}_n\)</span> the numerical approximation then the method is considered <strong>stable</strong> if</p>
 <div class="math notranslate nohighlight" id="equation-stability-equation">
-<span class="eqno">(21)<a class="headerlink" href="#equation-stability-equation" title="Permalink to this equation">#</a></span>\[|\tau_{n+1} - \tau_n | \leq 1,\]</div>
+<span class="eqno">(22)<a class="headerlink" href="#equation-stability-equation" title="Permalink to this equation">#</a></span>\[|\tau_{n+1} - \tau_n | \leq 1,\]</div>
 <p>for all steps of the method. If a method is not stable then it is <strong>unstable</strong>.</p>
 </div>
 </div>
@@ -737,31 +732,38 @@ title="Print to PDF"
 <p>Determine the stiffness ration of the following ODE</p>
 <div class="math notranslate nohighlight">
 \[ y'' + 1001 y' + 1000 y = 0.\]</div>
-<p><strong>Solution</strong></p>
-<p>Rewriting the second-order ODE as a system of two first-order ODEs</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Rewriting the second-order ODE as a system of two first-order ODEs</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_1' &amp;= y_2, \\
     y_2' &amp;= -1000 y_1 - 1001 y_2.
 \end{align*}\]</div>
-<p>which can be written as the matrix equation</p>
+<p class="sd-card-text">which can be written as the matrix equation</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix} y_1' \\ y_2' \end{pmatrix} =
     \begin{pmatrix} 0 &amp; 1 \\ -1000 &amp; -1001 \end{pmatrix}
     \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}.
 \end{align*}\]</div>
-<p>Calculating the eigenvalues of the coefficient matrix</p>
+<p class="sd-card-text">Calculating the eigenvalues of the coefficient matrix</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     0 &amp;= \begin{vmatrix} -\lambda &amp; 1 \\ -1000 &amp; -1001 - \lambda \end{vmatrix} 
     = \lambda^2 + 1001 \lambda + 1000 = (\lambda + 1000) (\lambda + 1),
 \end{align*}\]</div>
-<p>so the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = -1000\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = -1\)</span>. The stiffness ratio is</p>
+<p class="sd-card-text">so the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = -1000\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = -1\)</span>. The stiffness ratio is</p>
 <div class="math notranslate nohighlight">
 \[S = \frac{|-1000|}{|-1|} = 1000.\]</div>
-<p>Since <span class="math notranslate nohighlight">\(S = 1000\)</span> is large then this system is considered to be stiff.</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(S = 1000\)</span> is large then this system is considered to be stiff.</p>
 </div>
+</details></div>
 </div>
 <div class="section" id="solving-stiff-systems">
 <h3>Solving stiff systems<a class="headerlink" href="#solving-stiff-systems" title="Permalink to this headline">#</a></h3>

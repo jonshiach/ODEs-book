@@ -73,7 +73,7 @@
 # 
 # Show that the Jacobi and Gauss-Seidel methods are convergent of the system of linear equations from [example 7.1](jacobi-method-example).
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # The coefficient matrix for this linear system is
 # 
@@ -108,6 +108,9 @@
 # \end{align*}
 # 
 # Calculating the spectral radius for these iteration matrices gives $\rho(T_J )=0.7906$ and $\rho (T_{GS})=0.625$ which are both less than 1 so both of these methods are convergent for this system. Furthermore, the Gauss-Seidel method will converge faster than the Jacobi method since it has a smaller spectral radius.
+# 
+# ```
+# ````
 
 # In[1]:
 

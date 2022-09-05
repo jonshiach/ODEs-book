@@ -25,12 +25,12 @@
 #     \end{pmatrix}.
 # \end{align*}
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Using elementary row operations
 # 
 # \begin{align*}
-#     \begin{pmatrix}
+#     &\begin{pmatrix}
 #         0 & 1 & -2\\
 #         1 & 0 & 2\\
 #         3 & -2 & 2
@@ -42,9 +42,9 @@
 #         1 & 0 & 2\\
 #         0 & 1 & -2
 #     \end{pmatrix}
-#     \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array}
+#     \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array} \\ \\
 #     \longrightarrow
-#     \begin{pmatrix}
+#     &\begin{pmatrix}
 #         3 & -2 & 2\\
 #         0 & 1 & -2\\
 #         1 & 0 & 2
@@ -54,7 +54,7 @@
 # Apply the same row operations to the identity matrix
 # 
 # \begin{align*}
-#     \begin{pmatrix}
+#     &\begin{pmatrix}
 #         1 & 0 & 0 \\
 #         0 & 1 & 0 \\
 #         0 & 0 & 1
@@ -66,9 +66,9 @@
 #         0 & 1 & 0 \\
 #         1 & 0 & 0
 #     \end{pmatrix}
-#     \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array}
+#     \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array} \\ \\
 #     \longrightarrow
-#     \begin{pmatrix}
+#     &\begin{pmatrix}
 #         0 & 0 & 1 \\
 #         1 & 0 & 0 \\
 #         0 & 1 & 0
@@ -98,6 +98,8 @@
 #         1 & 0 & 2
 #     \end{pmatrix}.
 # \end{align*}
+# 
+# ```
 # ````
 # 
 # ## Python code
@@ -181,6 +183,9 @@ print(f"A = \n{A}\n\nP = \n{P}")
 #     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} =
 #     \begin{pmatrix} 10 \\ -4 \\ -8 \end{pmatrix}.
 # \end{align*}
+# 
+# 
+# ```{dropdown} Solution
 # 
 # We have seen from the [example 6.3](pivoting-example) above that applying partial pivoting to the coefficient matrix results in
 # 
@@ -275,6 +280,8 @@ print(f"A = \n{A}\n\nP = \n{P}")
 # \end{align*}
 # 
 # So the solution is $\mathbf{x}=(2,4,-3)$.
+# 
+# ```
 # ````
 # 
 # ## Python code 

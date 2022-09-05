@@ -127,6 +127,8 @@
 #     y'' = (t^3 +5)y + \sin (t), \qquad t \in [0,1], \qquad y(0) = 0, \qquad y(1) = 1.
 # \end{align*}
 # 
+# ```{dropdown} Solution
+# 
 # Comparing this boundary value problem to equation {eq}`bvp-uniqueness-equation` we have
 # 
 # \begin{align*}
@@ -136,4 +138,6 @@
 # \end{align*}
 # 
 # which are all continuous on $[0,1]$ and $q(t)\geq $ for all $t\in [0,1]$ so this boundary value problem has a unique solution.
+# ```
+# 
 # ````

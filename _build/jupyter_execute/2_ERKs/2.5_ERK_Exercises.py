@@ -3,7 +3,6 @@
 
 # # Explicit Runge-Kutta Methods Exercises
 # 
-# 
 # :::::{admonition} Exercise 2.1
 # :class: note
 # :name: ex2.1

@@ -16,7 +16,7 @@
 #             3 x_2 + 2 x_3 &= 11.
 # \end{align*}                
 # 
-# ````{dropdown} Solution (click to show)
+# ````{dropdown} Solution
 # Calculate LU decomposition of the $A$ matrix
 # 
 # \begin{align*}

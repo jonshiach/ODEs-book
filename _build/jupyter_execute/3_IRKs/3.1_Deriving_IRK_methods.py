@@ -11,7 +11,7 @@
 # 
 # Gauss-Legendre methods are a family of methods that are derived using [Gauss-Legendre quadrature](https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature). An $s$-stage Gauss-Legendre method has order $k=2s$. They are derived using [Legendre polynomials](https://en.wikipedia.org/wiki/Legendre_polynomials) which are are a system of orthogonal polynomials.
 # 
-# ::::{admonition} Definition: Legendre polynomials
+# ````{admonition} Definition: Legendre polynomials
 # :class: note
 # :name: legendre-polynomials-definition
 # 
@@ -20,17 +20,17 @@
 # \end{align}
 # 
 # where $\displaystyle\binom{n}{k}$ is the [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient).
-# ::::
+# ````
 # 
 # The values of the $c_i$ coefficients in a Gauss-Legendre method are the roots of $P_s(t)$, the values of the $b_i$ coefficients are chosen to satisfy the $B(k)$ condition and the $a_{ij}$ coefficients are chosen to satisfy the $C(\lfloor \frac{k}{2} \rfloor)$ condition.
 # 
-# ::::{admonition} Example 3.2
+# `````{admonition} Example 3.2
 # :class: seealso
 # :name: fourth-order-Gauss-Legendre-method-example
 # 
 # Derive a fourth-order Gauss-Legendre method.
 # 
-# **Solution**
+# ````{dropdown} Solution
 # 
 # A fourth-order Gauss-Legendre method will have $s = \frac{k}{2} = \frac{4}{2} = 2$ stages and the $c_i$ coefficients are chosen to satisfy $0=P_2(t)$
 # 
@@ -60,7 +60,7 @@
 # 
 # Using SymPy to solve the order conditions
 # 
-# :::python
+# ```python
 # import sympy as sp
 # sp.init_printing()
 # 
@@ -84,7 +84,7 @@
 # 
 # # Solve order conditions
 # sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
-# :::
+# ```
 # 
 # Gives the solution
 # 
@@ -106,7 +106,8 @@
 #         & \frac{1}{2} & \frac{1}{2}
 #     \end{array}
 # \end{align*}   
-# ::::
+# ````
+# `````
 
 # In[1]:
 
@@ -145,13 +146,13 @@ sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # 
 # - For a **Radau IIA** method the $c_i$ values are the roots of $0 = P_s(t) - P_{s-1}(t)$ and the values of $a_{ij}$ and $b_i$ satisfy the [$C(k)$ order condition](Bk_Ck_Dk_order_conditions).
 # 
-# ::::{admonition} Example 3.3
+# ````{admonition} Example 3.3
 # :class: seealso
 # :name: radau-derivation-example
 # 
 # Derive a third-order Radau IA method.
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # An order $k=3$ Radau IA method will have $s=\frac{k + 1}{2} = \frac{3 + 1}{4} = 2$ stages. The values of $c_1$ and $c_2$ are the roots of $0=P_2(t)+P_1(t)$
 #    
@@ -181,7 +182,8 @@ sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 #         & \tfrac{1}{4} & \tfrac{3}{4}
 #     \end{array}
 # \end{align*}
-# ::::
+# ```
+# ````
 
 # In[2]:
 
@@ -248,33 +250,33 @@ sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # 
 # The coefficients of a $k$th-order DIRK method are chosen to satisfy the [$B(k)$ and $C(\lfloor \frac{k}{2} \rfloor)$ order conditions](Bk_Ck_Dk_order_conditions) along with
 # 
-# :::{math}
+# ```{math}
 # :label: dirk-order-condition
 # 
 # \mathbf{b}^T A\mathbf{c}=\frac{1}{k!}
-# :::
+# ```
 # 
-# ::::{admonition} Example 3.4
+# `````{admonition} Example 3.4
 # :class: seealso
 # 
 # Derive a 2-stage third-order DIRK method.
 # 
-# **Solution**
+# ````{dropdown} Solution
 # 
 # Since $k = 2$ and $a_{11} = c_1$ and $a_{12} = 0$ the $B(k)$ and $C(k)$ order conditions are
 # 
-# :::{math}
+# ```{math}
 # :label: dirk-order-conditions-1
 #     
 # b_1 + b_2  & = 1,\\
 # b_1 c_1 + b_2 c_2  & = \frac{1}{2},\\
 # b_1 c_1^2 + b_2 c_2^2  & = \frac{1}{3},\\
 # a_{21} + a_{22}  & = c_2.
-# :::
+# ```
 # 
 # We also have equation {eq}`dirk-order-condition` which is
 # 
-# :::{math}
+# ```{math}
 # :label: dirk-order-conditions-2
 # 
 # \begin{pmatrix} b_1 & b_2 \end{pmatrix}
@@ -282,14 +284,14 @@ sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} &= \frac{1}{6} \\
 # b_1 a_{11} c_1 + b_2(a_{21} c_1 + a_{22} c_2)  &= \frac{1}{6} \\
 # b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &= \frac{1}{6}
-# :::
+# ```
 # 
 # Equations {eq}`dirk-order-conditions-1` and {eq}`dirk-order-conditions-2` give a system of 5 equations in 6 unknowns. If we let $c_1 = a_{11} = \frac{1}{4}$ (this choice is arbitrary) then we can solve for the other coefficients which give
 # 
 # \begin{align*}
 #   a_{21} &= \frac{2}{3}, &
 #   a_{22} &= \frac{1}{6}, &
-#   b_1 &= \frac{4}{7}, &
+#   b_1 &= \frac{4}{7}, \\
 #   b_2 &= \frac{3}{7}, &
 #   c_2 &= \frac{5}{6},
 # \end{align*}
@@ -303,7 +305,8 @@ sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 #         & \frac{4}{7} & \frac{3}{7}
 #   \end{array}
 # \end{align*}
-# ::::
+# ````
+# `````
 # 
 # (sdirk-derivation)=
 # ## SDIRK methods
@@ -323,13 +326,13 @@ sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # 
 # The advantage that SDIRK methods is that they can be [A-stable](A-stability-definition) for certain values of $c_i$. The derivation of an $k$th-order SDIRK method uses the [$B(k)$, $C(\lfloor \frac{k}{2} \rfloor)$ and $D(\lfloor \frac{k}{2} \rfloor)$ order conditions](Bk_Ck_Dk_order_conditions). 
 # 
-# ::::{admonition} Example 3.5
+# ````{admonition} Example 3.5
 # :class: seealso
 # :name: sdirk-derivation-example
 # 
 # Derive a 2-stage third-order SDIRK method.
 # 
-# **Solution**
+# ```{dropdown} Solution
 # 
 # Since $a_{11} = a_{22} = c_1$ the order conditions are
 # 
@@ -345,9 +348,9 @@ sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # 
 # \begin{align*}
 #   a_{11} &= \frac{1}{2} \mp \frac{\sqrt{3}}{6}, &
-#   a_{21} &= \pm \frac{\sqrt{3}}{3}, &
-#   b_1 &= \frac{1}{2}, &
-#   b_2 &= \frac{1}{2}, &
+#   a_{21} &= \pm \frac{\sqrt{3}}{3},  &
+#   b_1 &= \frac{1}{2}, \\
+#   b_2 &= \frac{1}{2},  &
 #   c_2 &= \frac{1}{2} \pm \frac{\sqrt{3}}{6}.
 # \end{align*}
 # 
@@ -360,5 +363,5 @@ sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
 #      & \frac{1}{2} & \frac{1}{2}
 #   \end{array}
 # \end{align*}
-# 
-# ::::
+# ```
+# ````

@@ -4,15 +4,15 @@
 # (rk2-section)=
 # # The Second-Order Runge-Kutta Method
 # 
-# We have seen in previous sections on the [Euler method](euler-method-section) and [error analysis](error-analysis-section) that the Euler method gives a poor approximation of the exact solution. This is because the Euler method is only first-order and we can obtain a more accurate approximation of the solution using a second-order method such as the second-order Runge-Kutta method (RK2).
+# We have seen in previous sections on the [Euler method](euler-method-section) and [error analysis](error-analysis-section) that the Euler method gives a poor approximation of the exact solution. This is because the Euler method is only first-order accurate and we can obtain a more accurate approximation of the solution using a second-order method such as the second-order Runge-Kutta method (RK2).
 # 
-# ::::{admonition} Definition: The second-order Runge-Kutta method (RK2)
+# ````{admonition} Definition: The second-order Runge-Kutta method (RK2)
 # :class: note
 # :name: rk2-definition
 # 
 # The RK2 method for solving the initial value problem $y' = f(t, y)$, $t \in [a, b]$, $y_0 = y(a)$ is 
 # 
-# :::{math}
+# ```{math}
 # :label: rk2-equation
 # \begin{align*}
 #     y_{n+1} &= y_n + \frac{h}{2}(k_1 + k_2),\\
@@ -20,15 +20,14 @@
 #     k_2 &= f(t_n + h, y_n + h k_1).
 # \end{align*} 
 # 
-# :::
+# ```
 # 
 # where $h = t_{n+1} - t_n$.
+# ````
 # 
-# ::::
+# The derivation of the RK2 method is covered in the [derivation of Explicit Runge-Kutta Methods](rk2-derivation-section).
 # 
-# The derivation of the RK2 method is covered in the [derivation of Explicit Runge-Kutta Methods](rk2-derivation-section) section.
-# 
-# ::::{admonition} Example 1.3
+# ````{admonition} Example 1.3
 # :class: seealso
 # :name: rk2-example
 # 
@@ -40,8 +39,7 @@
 # 
 # and compare the computed solution to the exact solution which is $y = \exp\left(\dfrac{t^2}{2}\right)$.
 # 
-# **Solution**
-# 
+# ```{dropdown} Solution
 # From [example 1.2](euler-example) we know that the number of steps is 5 and $\mathbf{t} = (0, 0.2, 0.4, 0.6, 0.8, 1.0).$ The ODE function is $f(t, y) = t y$ and initial value is $y_0 = 1$ so using equation {eq}`rk2-equation`
 # 
 # \begin{align*}
@@ -69,8 +67,8 @@
 #     y_5 &= y_4 + \frac{h}{2}(k_1 + k_2) = 1.375281 + 0.1(1.100225 + 1.595326) \\
 #     &= 1.644836.
 # \end{align*}
-# 
-# ::::
+# ```
+# ````
 
 # In[1]:
 
@@ -135,11 +133,11 @@ def rk2(f, tspan, y0, h):
 
 # The computed solutions to the initial value problem from [example 1.3](rk2-example) using the Euler and RK2 methods and the exact solutions are plotted in {numref}`rk2-example-figure` below. Note that the RK2 method is significantly more accurate than the Euler method.
 # 
-# :::{glue:figure} rk2_example_plot 
+# ```{glue:figure} rk2_example_plot 
 # :name: rk2-example-figure
 # 
 # The solutions to the IVP $y'=ty$, $t\in[0,1]$, $y(0)=1$ using the Euler and RK2 methods with $h=0.2$.
-# :::
+# ```
 
 # In[3]:
 
@@ -207,11 +205,11 @@ glue("rk2_example_plot", fig, display=False)
 # 
 # In order to analyse the accuracy of the RK2 method it has been applied to solve the initial value problem from the [example](#rk2-example) above using a range of values of the step length starting at $0.2$ and progressively halving it each time until $h=0.025$. The global truncation errors have been calculated for the solution at $t=1$ and plotted against $h$ in {numref}`rk2-gte-figure` below. The errors tend to zero as the step lengths decrease in a **quadratic** manner as expected of a second order method.
 # 
-# :::{glue:figure} rk2_gte_plot
+# ```{glue:figure} rk2_gte_plot
 # :name: rk2-gte-figure
 # 
-# The global truncation errors for the RK2 method solution of  $y'=t y$, $t\in [0, 1]$ and $y(0)=1$ at $t=1$.
-# :::
+# The global truncation errors for the RK2 method solution of  $y' = t y$, $t\in [0, 1]$ and $y(0)=1$ at $t=1$.
+# ```
 # 
 # The Euler and RK2 methods have been used to solve the initial value problem from the [example](#rk2-example) and the global truncation errors for the solution at $t=1$ are tabulated below. 
 # 
@@ -224,33 +222,33 @@ glue("rk2_example_plot", fig, display=False)
 # 
 # We can see that the RK2 method has significantly smaller global truncation errors than the Euler method. A graphical comparison is shown in {numref}`rk2-euler-gte-plot-figure`, however, on this scale is is difficult to see the convergence behaviour of the RK2 method.
 # 
-# :::{glue:figure} rk2_euler_gte_plot
+# ```{glue:figure} rk2_euler_gte_plot
 # :name: rk2-euler-gte-plot-figure
 # 
-# The global truncation errors for the RK2 method and the Euler method solutions to the IVP $y'=ty$, $t\in[0,1]$, $y(0)=1$ at $t=1$.
-# :::
+# The global truncation errors for the RK2 method and the Euler method solutions to the IVP $y'=ty$, $t\in[0,1]$, $y(0) = 1$ at $t = 1$.
+# ```
 # 
-# We know that the value of the global truncation error of an $n$th order method as $h \to 0$ should approximate the function $E = h^n$. Using logarithms we can write this as
+# We know that the value of the global truncation error of an $n$th order method as $h \to 0$ should approximate the function $e(h) = h^n$. Using logarithms we can write this as
 # 
-# $$\log(E) = n \log(h).$$
+# $$\log(e(h)) = n \log(h).$$
 # 
-# This is a linear equation where the slope of $\log(E)$ has a gradient of $n$. Therefore we can approximate the order of a method using
+# This is a linear equation where the slope of $\log(e(h))$ has a gradient of $n$. Therefore we can approximate the order of a method using
 # 
-# :::{math}
+# ```{math}
 # :label: order-approximation-equation
 # 
-# n \approx \frac{\log(E(h_1)) - \log(E(h_2))}{\log(h_1) - \log(h_2)}
-# :::
+# n \approx \frac{\log(e(h_1)) - \log(e(h_2))}{\log(h_1) - \log(h_2)}
+# ```
 # 
 # where $h_1 > h_2$ are different step lengths. The global truncation errors for the Euler method and the RK2 method have been plotted on a [loglog](https://en.wikipedia.org/wiki/Log%E2%80%93log_plot) scale in {numref}`rk2-euler-gte-loglog-plot-figure`.
 # 
-# :::{glue:figure} rk2_euler_gte_loglog_plot
+# ```{glue:figure} rk2_euler_gte_loglog_plot
 # :name: rk2-euler-gte-loglog-plot-figure
 # 
-# A loglog plot of the global truncation errors for the Euler and RK2 method solutions of $y'=t y$, $y(0)=1$ at $t=1$.
-# :::
+# A loglog plot of the global truncation errors for the Euler and RK2 method solutions of $y' = t y$, $y(0) = 1$ at $t = 1$.
+# ```
 # 
-# If we calculate the gradients of $\log(E)$ for the Euler and RK2 methods using equation {eq}`order-approximation-equation` we have
+# If we calculate the gradients of $\log(e)$ for the Euler and RK2 methods using equation {eq}`order-approximation-equation` we have
 # 
 # \begin{align*}
 #     &\mathsf{Euler\, method}: & n &\approx \frac{\log(0.189460) - \log(0.026921)}{\log(0.2) - \log(0.025)} = 0.94, \\
@@ -305,7 +303,7 @@ print(f"RK2:   {(np.log10(E_rk2[0]) - np.log10(E_rk2[-1])) / (np.log10(hvalues[0
 fig, ax = plt.subplots(figsize=(8, 6))
 plt.plot(hvalues, E_rk2, 'bo-')
 plt.xlabel("$h$", fontsize=16)
-plt.ylabel("$e$", fontsize=16)
+plt.ylabel("$e(h)$", fontsize=16)
 plt.show()
 
 glue("rk2_gte_plot", fig, display=False)
@@ -315,7 +313,7 @@ fig, ax = plt.subplots(figsize=(8, 6))
 plt.plot(hvalues, E_rk2, "bo-", label="RK2")
 plt.plot(hvalues, E_euler, "ro-", label="Euler")
 plt.xlabel("$h$", fontsize=16)
-plt.ylabel("$e$", fontsize=16)
+plt.ylabel("$e(h)$", fontsize=16)
 plt.legend()
 plt.show()
 
@@ -326,7 +324,7 @@ fig, ax = plt.subplots(figsize=(8, 6))
 plt.loglog(hvalues, E_rk2, "bo-", label="RK2")
 plt.loglog(hvalues, E_euler, "ro-", label="Euler")
 plt.xlabel("$\log(h)$", fontsize=16)
-plt.ylabel("$\log(e)$", fontsize=16)
+plt.ylabel("$\log(e(h))$", fontsize=16)
 plt.legend()
 plt.show()
 
