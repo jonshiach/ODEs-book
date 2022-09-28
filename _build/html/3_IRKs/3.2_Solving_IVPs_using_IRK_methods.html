@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Solving initial value problems using implicit Runge-Kutta methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,28 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -609,7 +632,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="solving-initial-value-problems-using-implicit-runge-kutta-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="solving-initial-value-problems-using-implicit-runge-kutta-methods">
 <span id="solving-ivps-using-irk-methods-section"></span><h1>Solving initial value problems using implicit Runge-Kutta methods<a class="headerlink" href="#solving-initial-value-problems-using-implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h1>
 <p>Recall that the <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#rk-definition"><span class="std std-ref">general form of a Runge-Kutta method</span></a> is</p>
 <div class="amsmath math notranslate nohighlight">
@@ -768,7 +791,7 @@ Solution<div class="sd-summary-down docutils">
 </table>
 </div>
 </details></div>
-<div class="section" id="python-code">
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines the function <code class="docutils literal notranslate"><span class="pre">radauIA()</span></code> which calculates the third-order Radua IA solution to an initial value problem.</p>
 <div class="cell docutils container">
@@ -805,18 +828,20 @@ Solution<div class="sd-summary-down docutils">
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">Y1</span></code>, <code class="docutils literal notranslate"><span class="pre">Y2</span></code>, <code class="docutils literal notranslate"><span class="pre">Y1o</span></code> and <code class="docutils literal notranslate"><span class="pre">Y2o</span></code> are current and old estimates of the stage values <span class="math notranslate nohighlight">\(Y_1\)</span> and <span class="math notranslate nohighlight">\(Y_2\)</span> which are calculated by iterating the stage value functions until either the maximum difference between the current and old values is less than <code class="docutils literal notranslate"><span class="pre">tol</span></code> or 100 iterations have been calculated.</p>
 <p>The computed solutions using the implicit method are plotted in <a class="reference internal" href="#irk-example-1-figure"><span class="std std-numref">Fig. 12</span></a> below.</p>
-<div class="figure align-default" id="irk-example-1-figure">
+<figure class="align-default" id="irk-example-1-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/3.2_Solving_IVPs_using_IRK_methods_5_0.png" src="../_images/3.2_Solving_IVPs_using_IRK_methods_5_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Solution of the initial value problem <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the implicit method from the <a class="reference internal" href="#irk-example-1"><span class="std std-ref">example</span></a> with a step length <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#irk-example-1-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Solution of the initial value problem <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the implicit method from the <a class="reference internal" href="#irk-example-1"><span class="std std-ref">example</span></a> with a step length <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#irk-example-1-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The method used to calculate the stage values <span class="math notranslate nohighlight">\(Y_i\)</span> here is an iterative method known as the <a class="reference internal" href="../7_Indirect_methods/7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel method</span></a>. This is not the most efficient method available to estimate the stage values and in practice <a class="reference external" href="https://en.wikipedia.org/wiki/Newton%27s_method">Newtons method</a> is preferred since it is more efficient. However this requires calculation of a matrix of derivatives of <span class="math notranslate nohighlight">\(f(t,y)\)</span> known as a <a class="reference external" href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant">Jacobian matrix</a>, and whilst not a particularly difficult to calculate, it can complicate the code somewhat especially when solving a system of ODEs. Therefore, here we only use the Gauss-Seidel method.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>LUP decomposition &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -639,9 +652,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lup-decomposition">
+  <section class="tex2jax_ignore mathjax_ignore" id="lup-decomposition">
 <span id="lup-section"></span><h1>LUP decomposition<a class="headerlink" href="#lup-decomposition" title="Permalink to this headline">#</a></h1>
-<div class="section" id="partial-pivoting">
+<section id="partial-pivoting">
 <span id="partial-pivoting-section"></span><h2>Partial pivoting<a class="headerlink" href="#partial-pivoting" title="Permalink to this headline">#</a></h2>
 <p>A problem that can be encountered with <a class="reference internal" href="6.1_LU_decomposition.html#lu-definition"><span class="std std-ref">LU decomposition</span></a> is that if the value of <span class="math notranslate nohighlight">\(u_{jj}\)</span> in the expression for <a class="reference internal" href="6.1_LU_decomposition.html#lu-definition"><span class="std std-ref"><span class="math notranslate nohighlight">\(\ell_{ij}\)</span></span></a> is zero or some small number it will mean that it is undefined or prone to computational rounding errors due to the value of <span class="math notranslate nohighlight">\(\ell_{ij}\)</span> being very large, this is known as an <a class="reference external" href="https://en.wikipedia.org/wiki/Condition_number"><strong>ill-conditioned system</strong></a>.</p>
 <p>This problem can be overcome by using <strong>partial pivoting</strong> where rows of the coefficient matrix are permuted (swapped) so that the pivot element <span class="math notranslate nohighlight">\(a_{jj}\)</span> has a larger absolute value than the elements in the column beneath it. Note that swapping two rows of the coefficient matrix does not change the solution to the system as long as the same swap is applied to the constant vector. The permutations applied to the coefficient matrix are recorded in a matrix <span class="math notranslate nohighlight">\(P\)</span> which is determined by applying the same permutations to the identity matrix.</p>
@@ -735,8 +748,8 @@ Solution<div class="sd-summary-down docutils">
 \end{align*}\]</div>
 </div>
 </details></div>
-</div>
-<div class="section" id="python-code">
+</section>
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">partial_pivot()</span></code> which performs partial pivoting on the matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> and returns the pivoted matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> and the permutation matrix <code class="docutils literal notranslate"><span class="pre">P</span></code>.</p>
 <div class="cell docutils container">
@@ -786,8 +799,8 @@ P =
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="lu-decomposition-with-partial-pivoting">
+</section>
+<section id="lu-decomposition-with-partial-pivoting">
 <span id="lup-decomposition-section"></span><h2>LU decomposition with partial pivoting<a class="headerlink" href="#lu-decomposition-with-partial-pivoting" title="Permalink to this headline">#</a></h2>
 <p>To calculate <strong>LU decomposition with partial pivoting</strong> (also known as <strong>LUP decomposition</strong>) we use the same process as in <a class="reference internal" href="6.1_LU_decomposition.html#lu-definition"><span class="std std-ref">LU decomposition</span></a> with the exception that the coefficient matrix has partial pivoting applied prior to the calculation of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span>, i.e.,</p>
 <div class="amsmath math notranslate nohighlight">
@@ -914,8 +927,8 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(2,4,-3)\)</span>.</p>
 </div>
 </details></div>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2>Python code<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>The code below calculates the solution to the system of linear equations from <a class="reference internal" href="#lup-example"><span class="std std-ref">example 6.4</span></a> using Crout’s method with LUP decomposition. The <code class="docutils literal notranslate"><span class="pre">np.dot(A,</span> <span class="pre">B)</span></code> command calculates the matrix multiplication <span class="math notranslate nohighlight">\(AB\)</span></p>
 <div class="cell docutils container">
@@ -966,8 +979,8 @@ x3 = -3.0
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

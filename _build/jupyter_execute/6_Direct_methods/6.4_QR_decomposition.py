@@ -28,7 +28,7 @@
 # An **orthogonal matrix** is a matrix where the columns are a set of orthonormal vectors. If $A$ is an orthogonal matrix if
 # 
 # \begin{align*}
-#     A^T A=I.
+#     A\mathrm{T} A=I.
 # \end{align*}
 # ````
 # 
@@ -47,10 +47,10 @@
 # 
 # ```{dropdown} Solution
 # 
-# Checking $A^T A=I$
+# Checking $A\mathrm{T} A=I$
 # 
 # \begin{align*}
-#     A^T A=\begin{pmatrix}
+#     A\mathrm{T} A=\begin{pmatrix}
 #         0.8 & 0.6\\
 #         -0.6 & 0.8
 #     \end{pmatrix}
@@ -160,39 +160,39 @@
 # 
 # \begin{align*}
 #     r_{11} &=\|\mathbf{a}_1 \|=2,\\
-#     \mathbf{q}_1 &=\frac{\mathbf{a}_1 }{r_{11}} = \frac{(-1, 1, -1, 1)^T}{2} = (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T.
+#     \mathbf{q}_1 &=\frac{\mathbf{a}_1 }{r_{11}} = \frac{(-1, 1, -1, 1)\mathrm{T}}{2} = (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
 # \end{align*}
 # 
 # Column $j=2$:
 # 
 # \begin{align*}
 #     r_{12} &=\mathbf{q}_1 \cdot \mathbf{a}_2 =
-#     ( -\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T \cdot 
-#     (-1, 3, -1, 3)^T = 4, \\
-#     \mathbf{u}_2 &=\mathbf{a}_2 -r_{12} \mathbf{q}_1 = (-1, 3, -1, 3)^T - 4
-#     (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T = 
-#     (1, 1, 1, 1)^T,\\
+#     ( -\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot 
+#     (-1, 3, -1, 3)\mathrm{T} = 4, \\
+#     \mathbf{u}_2 &=\mathbf{a}_2 -r_{12} \mathbf{q}_1 = (-1, 3, -1, 3)\mathrm{T} - 4
+#     (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} = 
+#     (1, 1, 1, 1)\mathrm{T},\\
 #     r_{22} &=\|\mathbf{u}_2 \| = 2,\\
-#     \mathbf{q}_2 &=\frac{\mathbf{u}_2 }{r_{22}} = \frac{(1, 1, 1, 1)^T}{2} = 
-#     (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^T.
+#     \mathbf{q}_2 &=\frac{\mathbf{u}_2 }{r_{22}} = \frac{(1, 1, 1, 1)\mathrm{T}}{2} = 
+#     (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
 # \end{align*}
 # 
 # Column $j=3$:
 # 
 # \begin{align*}
 #     r_{13} &=\mathbf{q}_1 \cdot \mathbf{a}_3 =
-#     (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T \cdot 
-#     (1, 3, 5, 7)^T = 2,\\
+#     (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot 
+#     (1, 3, 5, 7)\mathrm{T} = 2,\\
 #     r_{23} &=\mathbf{q}_2 \cdot \mathbf{a}_3 =
-#     (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^T \cdot
-#     (1, 3, 5, 7)^T = 8,\\
+#     (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot
+#     (1, 3, 5, 7)\mathrm{T} = 8,\\
 #     \mathbf{u}_3 &= \mathbf{a}_3 - r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2 =
-#     (1, 3, 5, 7)^T - 2 (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T - 8
-#     (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^T \\
-#     &= (-2, -2, 2, 2)^T,\\
+#     (1, 3, 5, 7)\mathrm{T} - 2 (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} - 8
+#     (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \\
+#     &= (-2, -2, 2, 2)\mathrm{T},\\
 #     r_{33} &= \|\mathbf{u}_3 \| = 4,\\
-#     \mathbf{q}_3 &= \frac{\mathbf{u}_3 }{r_{33}} = \frac{(-2, -2, 2, 2)^T}{4} = 
-#     (-\tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^T.
+#     \mathbf{q}_3 &= \frac{\mathbf{u}_3 }{r_{33}} = \frac{(-2, -2, 2, 2)\mathrm{T}}{4} = 
+#     (-\tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
 # \end{align*}
 # 
 # Therefore the QR decomposition of $A$ is
@@ -224,7 +224,7 @@
 import numpy as np
 
 
-# In[2]:
+# In[7]:
 
 
 def qr_gramschmidt(A):
@@ -244,7 +244,7 @@ def qr_gramschmidt(A):
 
 # The code below calculates the QR decomposition of the matrix from [example 6.9](qr-gramschmidt-example) using the `qr-gramschmidt()` function.
 
-# In[3]:
+# In[1]:
 
 
 # Define matrix
@@ -266,10 +266,10 @@ print(f"Q = \n{Q}\n\nR = \n{R}")
 #     R\mathbf{x} &= Q^{-1} \mathbf{b},
 # \end{align*}
 # 
-# and because $Q$ is orthogonal then $Q^{-1}=Q^T$ so
+# and because $Q$ is orthogonal then $Q^{-1}=Q\mathrm{T}$ so
 # 
 # \begin{align*}
-#     R\mathbf{x} = Q^T \mathbf{b}.
+#     R\mathbf{x} = Q\mathrm{T} \mathbf{b}.
 # \end{align*}
 # 
 # $R$ is upper triangular so the solution of $\mathbf{x}$ can be obtained through back substitution.
@@ -308,7 +308,7 @@ print(f"Q = \n{Q}\n\nR = \n{R}")
 #     \end{pmatrix}.
 # \end{align*}
 # 
-# Solving $R\mathbf{x}=Q^T \mathbf{b}$
+# Solving $R\mathbf{x}=Q\mathrm{T} \mathbf{b}$
 # 
 # \begin{align*}
 #     \begin{pmatrix}
@@ -343,7 +343,7 @@ print(f"Q = \n{Q}\n\nR = \n{R}")
 # 
 # The code below calculates the solution to the system of linear equations from [example 6.10](qr-crout-example) using QR decomposition.
 
-# In[4]:
+# In[ ]:
 
 
 def back_substitution(U, b):
@@ -358,7 +358,7 @@ def back_substitution(U, b):
     return x
 
 
-# In[5]:
+# In[2]:
 
 
 # Define linear system
@@ -392,7 +392,7 @@ for i in range(len(x)):
 # 
 # ```{math}
 # :label: householder-equation
-# H = I - 2 \mathbf{v} \mathbf{v}^T,
+# H = I - 2 \mathbf{v} \mathbf{v}\mathrm{T},
 # ```
 # where
 # 
@@ -441,7 +441,7 @@ for i in range(len(x)):
 # and then we calculate the Householder matrix $H$ using equation {eq}`householder-equation`
 # 
 # \begin{align*}
-#     H_1 &= I_m - 2 \mathbf{v} \mathbf{v}^T,
+#     H_1 &= I_m - 2 \mathbf{v} \mathbf{v}\mathrm{T},
 # \end{align*}
 # 
 # and apply the Householder transformation to $R$ and $Q$
@@ -462,13 +462,13 @@ for i in range(len(x)):
 # \begin{align*}
 #     H &= \begin{pmatrix} 
 #         I_{j-1} & 0 \\
-#         0 & I_{m+j-1} - 2 \mathbf{v} \mathbf{v}^T
+#         0 & I_{m+j-1} - 2 \mathbf{v} \mathbf{v}\mathrm{T}
 #     \end{pmatrix}.
 # \end{align*}
 # 
 # We repeat this process for the columns in $R$ at which point $R$ is an upper triangular matrix. The $Q$ matrix is the product of all of the individual Householder transformations so by definition it is an orthonormal matrix.
 # 
-# ````{admonition} Definition: QR decomposution using Householder transformations
+# ````{admonition} Definition: QR decomposition using Householder transformations
 # :class: note
 # :name: qr-householder-definition
 # 
@@ -476,13 +476,13 @@ for i in range(len(x)):
 # 
 # For $j = 1, \ldots, n$
 # 
-# - $\mathbf{e} = (1, \underbrace{0, \ldots, 0}_{m-j})^T$;
-# - $\mathbf{u} = (r_{jj}, r_{j+1,j}, \ldots, r_{m,j})^T$;
+# - $\mathbf{e} = (1, \underbrace{0, \ldots, 0}_{m-j})\mathrm{T}$;
+# - $\mathbf{u} = (r_{jj}, r_{j+1,j}, \ldots, r_{m,j})\mathrm{T}$;
 # - $\mathbf{u} = \mathbf{u} + \operatorname{sign}(r_{jj})\|\mathbf{u}\|\mathbf{e}$;
 # - $\mathbf{v} = \dfrac{\mathbf{u}}{\| \mathbf{u} \|}$;
 # - $H = \begin{pmatrix}
 #         I_{j-1} & 0 \\
-#         0 & I_{m-j+1} - 2 \mathbf{v}\mathbf{v}^T
+#         0 & I_{m-j+1} - 2 \mathbf{v}\mathbf{v}\mathrm{T}
 #     \end{pmatrix}$;
 # - $R = H R$;
 # - $Q = Q H$.
@@ -510,10 +510,10 @@ for i in range(len(x)):
 # 
 # Column $j = 1$:
 # \begin{align*}
-#     \mathbf{u} &= \mathbf{r}_{1} + \operatorname{sign}(r_{11}) \| \mathbf{r}_{1} \| \mathbf{e} = \left(\begin{matrix}-1 & 1 & -1 & 1\end{matrix}\right)^T - 2 \left(\begin{matrix}1 & 0 & 0 & 0\end{matrix}\right)^T \\
-#     &= \left(\begin{matrix}-3 & 1 & -1 & 1\end{matrix}\right)^T, \\
-#     \mathbf{v} &= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}-3 & 1 & -1 & 1\end{matrix}\right)^T}{2 \sqrt{3}}, \\
-#     H &= I_4 - 2\mathbf{vv}^T = I_4 - \frac{2}{12}\left(\begin{matrix}- \frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{6}\\- \frac{\sqrt{3}}{6}\\\frac{\sqrt{3}}{6}\end{matrix}\right)\left(\begin{matrix}- \frac{\sqrt{3}}{2} & \frac{\sqrt{3}}{6} & - \frac{\sqrt{3}}{6} & \frac{\sqrt{3}}{6}\end{matrix}\right) \\
+#     \mathbf{u} &= \mathbf{r}_{1} + \operatorname{sign}(r_{11}) \| \mathbf{r}_{1} \| \mathbf{e} = \left(\begin{matrix}-1 & 1 & -1 & 1\end{matrix}\right)\mathrm{T} - 2 \left(\begin{matrix}1 & 0 & 0 & 0\end{matrix}\right)\mathrm{T} \\
+#     &= \left(\begin{matrix}-3 & 1 & -1 & 1\end{matrix}\right)\mathrm{T}, \\
+#     \mathbf{v} &= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}-3 & 1 & -1 & 1\end{matrix}\right)\mathrm{T}}{2 \sqrt{3}}, \\
+#     H &= I_4 - 2\mathbf{vv}\mathrm{T} = I_4 - \frac{2}{12}\left(\begin{matrix}- \frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{6}\\- \frac{\sqrt{3}}{6}\\\frac{\sqrt{3}}{6}\end{matrix}\right)\left(\begin{matrix}- \frac{\sqrt{3}}{2} & \frac{\sqrt{3}}{6} & - \frac{\sqrt{3}}{6} & \frac{\sqrt{3}}{6}\end{matrix}\right) \\
 #       &= I_4 - \frac{1}{6}\left(\begin{matrix}\frac{3}{4} & - \frac{1}{4} & \frac{1}{4} & - \frac{1}{4}\\- \frac{1}{4} & \frac{1}{12} & - \frac{1}{12} & \frac{1}{12}\\\frac{1}{4} & - \frac{1}{12} & \frac{1}{12} & - \frac{1}{12}\\- \frac{1}{4} & \frac{1}{12} & - \frac{1}{12} & \frac{1}{12}\end{matrix}\right) = \left(\begin{matrix}- \frac{1}{2} & \frac{1}{2} & - \frac{1}{2} & \frac{1}{2}\\\frac{1}{2} & \frac{5}{6} & \frac{1}{6} & - \frac{1}{6}\\- \frac{1}{2} & \frac{1}{6} & \frac{5}{6} & \frac{1}{6}\\\frac{1}{2} & - \frac{1}{6} & \frac{1}{6} & \frac{5}{6}\end{matrix}\right),
 # \end{align*}
 # 
@@ -526,9 +526,9 @@ for i in range(len(x)):
 # 
 # Column $j = 2$:
 # \begin{align*}
-#     \mathbf{u} &= \mathbf{r}_{2} + \operatorname{sign}(r_{22}) \| \mathbf{r}_{2} \| \mathbf{e} = \left(\begin{matrix}\frac{4}{3} & \frac{2}{3} & \frac{4}{3}\end{matrix}\right)^T + 2 \left(\begin{matrix}1 & 0 & 0\end{matrix}\right)^T = \left(\begin{matrix}\frac{10}{3} & \frac{2}{3} & \frac{4}{3}\end{matrix}\right)^T, \\
-#     \mathbf{v} &= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{10}{3} & \frac{2}{3} & \frac{4}{3}\end{matrix}\right)^T}{\frac{2 \sqrt{30}}{3}}, \\
-#     H &= I_3 - 2\mathbf{vv}^T = I_3 - \frac{2}{\frac{40}{3}}\left(\begin{matrix}\frac{\sqrt{30}}{6}\\\frac{\sqrt{30}}{30}\\\frac{\sqrt{30}}{15}\end{matrix}\right)\left(\begin{matrix}\frac{\sqrt{30}}{6} & \frac{\sqrt{30}}{30} & \frac{\sqrt{30}}{15}\end{matrix}\right) \\
+#     \mathbf{u} &= \mathbf{r}_{2} + \operatorname{sign}(r_{22}) \| \mathbf{r}_{2} \| \mathbf{e} = \left(\begin{matrix}\frac{4}{3} & \frac{2}{3} & \frac{4}{3}\end{matrix}\right)\mathrm{T} + 2 \left(\begin{matrix}1 & 0 & 0\end{matrix}\right)\mathrm{T} = \left(\begin{matrix}\frac{10}{3} & \frac{2}{3} & \frac{4}{3}\end{matrix}\right)\mathrm{T}, \\
+#     \mathbf{v} &= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{10}{3} & \frac{2}{3} & \frac{4}{3}\end{matrix}\right)\mathrm{T}}{\frac{2 \sqrt{30}}{3}}, \\
+#     H &= I_3 - 2\mathbf{vv}\mathrm{T} = I_3 - \frac{2}{\frac{40}{3}}\left(\begin{matrix}\frac{\sqrt{30}}{6}\\\frac{\sqrt{30}}{30}\\\frac{\sqrt{30}}{15}\end{matrix}\right)\left(\begin{matrix}\frac{\sqrt{30}}{6} & \frac{\sqrt{30}}{30} & \frac{\sqrt{30}}{15}\end{matrix}\right) \\
 #       &= I_3 - \frac{3}{20}\left(\begin{matrix}\frac{5}{6} & \frac{1}{6} & \frac{1}{3}\\\frac{1}{6} & \frac{1}{30} & \frac{1}{15}\\\frac{1}{3} & \frac{1}{15} & \frac{2}{15}\end{matrix}\right) = \left(\begin{matrix}- \frac{2}{3} & - \frac{1}{3} & - \frac{2}{3}\\- \frac{1}{3} & \frac{14}{15} & - \frac{2}{15}\\- \frac{2}{3} & - \frac{2}{15} & \frac{11}{15}\end{matrix}\right),
 # \end{align*}
 # 
@@ -547,9 +547,9 @@ for i in range(len(x)):
 # 
 # Column $j = 3$:
 # \begin{align*}
-#     \mathbf{u} &= \mathbf{r}_{3} + \operatorname{sign}(r_{33}) \| \mathbf{r}_{3} \| \mathbf{e} = \left(\begin{matrix}\frac{16}{5} & \frac{12}{5}\end{matrix}\right)^T + 4 \left(\begin{matrix}1 & 0\end{matrix}\right)^T = \left(\begin{matrix}\frac{36}{5} & \frac{12}{5}\end{matrix}\right)^T, \\
-#     \mathbf{v} &= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{36}{5} & \frac{12}{5}\end{matrix}\right)^T}{\frac{12 \sqrt{10}}{5}}, \\
-#     H &= I_2 - 2\mathbf{vv}^T = I_2 - \frac{2}{\frac{288}{5}}\left(\begin{matrix}\frac{3 \sqrt{10}}{10}\\\frac{\sqrt{10}}{10}\end{matrix}\right)\left(\begin{matrix}\frac{3 \sqrt{10}}{10} & \frac{\sqrt{10}}{10}\end{matrix}\right) \\
+#     \mathbf{u} &= \mathbf{r}_{3} + \operatorname{sign}(r_{33}) \| \mathbf{r}_{3} \| \mathbf{e} = \left(\begin{matrix}\frac{16}{5} & \frac{12}{5}\end{matrix}\right)\mathrm{T} + 4 \left(\begin{matrix}1 & 0\end{matrix}\right)\mathrm{T} = \left(\begin{matrix}\frac{36}{5} & \frac{12}{5}\end{matrix}\right)\mathrm{T}, \\
+#     \mathbf{v} &= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{36}{5} & \frac{12}{5}\end{matrix}\right)\mathrm{T}}{\frac{12 \sqrt{10}}{5}}, \\
+#     H &= I_2 - 2\mathbf{vv}\mathrm{T} = I_2 - \frac{2}{\frac{288}{5}}\left(\begin{matrix}\frac{3 \sqrt{10}}{10}\\\frac{\sqrt{10}}{10}\end{matrix}\right)\left(\begin{matrix}\frac{3 \sqrt{10}}{10} & \frac{\sqrt{10}}{10}\end{matrix}\right) \\
 #       &= I_2 - \frac{5}{144}\left(\begin{matrix}\frac{9}{10} & \frac{3}{10}\\\frac{3}{10} & \frac{1}{10}\end{matrix}\right) = \left(\begin{matrix}- \frac{4}{5} & - \frac{3}{5}\\- \frac{3}{5} & \frac{4}{5}\end{matrix}\right),
 # \end{align*}
 # 
@@ -573,13 +573,13 @@ for i in range(len(x)):
 # 
 # The code below defines a function called `qr_householder()` that calculates the QR decomposition of an $m\times n$ matrix $A$ using Householder transformations.
 
-# In[6]:
+# In[8]:
 
 
 import numpy as np
 
 
-# In[7]:
+# In[9]:
 
 
 def qr_householder(A):
@@ -600,7 +600,7 @@ def qr_householder(A):
 
 # The code below calculates the QR decomposition of the matrix from [example 6.11](qr-householder-example) using the `qr_householder()` function. Note that the `R` matrix that is returned can have very small values instead of zeros due to computational rounding errors. Any element with an absolute value of less than $10^{-10}$ are set to zero for the sake of printing the output.
 
-# In[8]:
+# In[10]:
 
 
 # Define A matrix
@@ -625,7 +625,7 @@ print(f"Q = \n{Q}\n\nR = \n{R}")
 # 
 # then non-zero values of $E_j$ indicates that we have lost some orthogonality due to computational rounding errors. The code below calculates orthogonality errors for the QR decomposition of a random $100 \times 100$ matrix using the Gram-Schmidt process and Householder transformations and plots them. 
 
-# In[9]:
+# In[6]:
 
 
 import matplotlib.pyplot as plt

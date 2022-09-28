@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The Taylor Series &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -609,7 +622,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-taylor-series">
+  <section class="tex2jax_ignore mathjax_ignore" id="the-taylor-series">
 <span id="taylor-series-section"></span><h1>The Taylor Series<a class="headerlink" href="#the-taylor-series" title="Permalink to this headline">#</a></h1>
 <p>The <strong>Taylor series</strong> named after English mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/Brook_Taylor">Brook Taylor</a> is a series expansion of a function.</p>
 <div class="note admonition" id="taylor-series-definition">
@@ -701,7 +714,7 @@ Solution<div class="sd-summary-down docutils">
 </table>
 </div>
 </details></div>
-<div class="section" id="using-python-to-calculate-a-taylor-series-approximation">
+<section id="using-python-to-calculate-a-taylor-series-approximation">
 <h2>Using Python to calculate a Taylor series approximation<a class="headerlink" href="#using-python-to-calculate-a-taylor-series-approximation" title="Permalink to this headline">#</a></h2>
 <p>The code below calculates the Taylor series approximation of <span class="math notranslate nohighlight">\(\cos(t + h)\)</span> using the first <span class="math notranslate nohighlight">\(n\)</span> terms of the series. Note that since the derivative of <span class="math notranslate nohighlight">\(\cos(t)\)</span> is <span class="math notranslate nohighlight">\(-\sin(t)\)</span> so if <span class="math notranslate nohighlight">\(n\)</span> is even then <span class="math notranslate nohighlight">\(f^{(n)}(t) = \pm \cos\)</span> and when <span class="math notranslate nohighlight">\(n\)</span> is odd <span class="math notranslate nohighlight">\(f^{(n)}(t) = \pm \sin(t)\)</span>. To calculate this we can use an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement that checks whether the current value of <span class="math notranslate nohighlight">\(n\)</span> is even or odd and calculates the value <span class="math notranslate nohighlight">\(f(t)\)</span> accordingly and change the sign of <span class="math notranslate nohighlight">\(f^{(n)}(t)\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is odd.</p>
 <div class="cell docutils container">
@@ -729,19 +742,20 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|  n  | approximation |  error   |
-|:---:|:-------------:|:--------:|
-|  0  |    0.500000   | 1.82e-01 |
-|  1  |    0.326795   | 8.81e-03 |
-|  2  |    0.316795   | 1.19e-03 |
-|  3  |    0.317950   | 3.10e-05 |
-|  4  |    0.317983   | 2.35e-06 |
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span>  <span class="c1"># variable</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">h</span> <span class="o">=</span> <span class="mf">0.2</span>        <span class="c1"># step length</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

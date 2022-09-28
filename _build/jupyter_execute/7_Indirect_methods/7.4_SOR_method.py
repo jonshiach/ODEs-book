@@ -287,7 +287,7 @@ from myst_nb import glue
 glue("optimum_omega_plot", fig, display=False)
 
 
-# In[2]:
+# In[15]:
 
 
 import numpy as np
@@ -415,7 +415,7 @@ omega = 1.24
 sor_latex(A, b, omega)
 
 
-# In[3]:
+# In[14]:
 
 
 import numpy as np
@@ -476,7 +476,7 @@ x = sor_with_table(A, b, omega, tol=1e-4)
 # 
 # The code below defines a function called `sor()` which solves a linear system of equations of the for $A \mathbf{x} = \mathbf{b}$ using the Gauss-Seidel method with a relaxation parameter $\omega$.
 
-# In[4]:
+# In[ ]:
 
 
 def sor(A, b, omega, tol=1e-6):

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Derivation of a fourth-order explicit Runge-Kutta method &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -609,7 +627,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="derivation-of-a-fourth-order-explicit-runge-kutta-method">
+  <section class="tex2jax_ignore mathjax_ignore" id="derivation-of-a-fourth-order-explicit-runge-kutta-method">
 <span id="derivation-of-rk4-section"></span><h1>Derivation of a fourth-order explicit Runge-Kutta method<a class="headerlink" href="#derivation-of-a-fourth-order-explicit-runge-kutta-method" title="Permalink to this headline">#</a></h1>
 <p>We saw in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a> that we obtain a set of order conditions by comparing the Taylor series expansions of the ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> to that of the general form for an <a class="reference internal" href="2.0_ERKs.html#explicit-and-implicit-rk-methods-section"><span class="std std-ref">explicit Runge-Kutta method</span></a>. If we do this using a fourth-order Taylor series expansion then we get the following order conditions (you will not be expected to remember or derive these order conditions).</p>
 <div class="note admonition" id="rk4-order-conditions-definition">
@@ -629,8 +647,8 @@ title="Print to PDF"
 <p>In addition to these, another condition that is placed on Runge-Kutta methods is the <strong>row sum condition</strong>.</p>
 <div class="note admonition" id="row-sum-condition">
 <p class="admonition-title">Definition: Row sum condition</p>
-<div class="amsmath math notranslate nohighlight" id="equation-089ff539-b337-4289-85e8-0c62ff339609">
-<span class="eqno">(13)<a class="headerlink" href="#equation-089ff539-b337-4289-85e8-0c62ff339609" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d3ed77d9-5ecb-4a20-8c7d-7e26b9895c4f">
+<span class="eqno">(13)<a class="headerlink" href="#equation-d3ed77d9-5ecb-4a20-8c7d-7e26b9895c4f" title="Permalink to this equation">#</a></span>\[\begin{align}
     c_i =\sum_{j=1}^{s} a_{ij},
 \end{align}\]</div>
 <p>i.e., the value of <span class="math notranslate nohighlight">\(c_i\)</span> is equal to the sum of row <span class="math notranslate nohighlight">\(i\)</span> of the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
@@ -739,7 +757,7 @@ Solution<div class="sd-summary-down docutils">
     k_4 &amp;= f(t_n + h, y_n + h k_3).
 \end{align*} \end{split}\]</div>
 </div>
-<div class="section" id="using-python-to-solve-the-order-conditions">
+<section id="using-python-to-solve-the-order-conditions">
 <h2>Using Python to solve the order conditions<a class="headerlink" href="#using-python-to-solve-the-order-conditions" title="Permalink to this headline">#</a></h2>
 <p>The code below derives the fourth-order explicit Runge-Kutta method from the <a class="reference external" href="#rk4-derivation-example">example</a> above using SymPy.</p>
 <div class="cell docutils container">
@@ -774,11 +792,118 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2.2_RK4_Derivation_2_0.png" src="../_images/2.2_RK4_Derivation_2_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">26</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">eq11</span> <span class="o">=</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">a41</span><span class="o">-</span> <span class="n">a42</span> <span class="o">-</span> <span class="n">a43</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="c1"># Solve order conditions</span>
+<span class="ne">---&gt; </span><span class="mi">26</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">))</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\IPython\core\displayhook.py:262,</span> in <span class="ni">DisplayHook.__call__</span><span class="nt">(self, result)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_displayhook</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_output_prompt</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">262</span> <span class="n">format_dict</span><span class="p">,</span> <span class="n">md_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_format_data</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_user_ns</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span> <span class="bp">self</span><span class="o">.</span><span class="n">fill_exec_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\IPython\core\displayhook.py:151,</span> in <span class="ni">DisplayHook.compute_format_data</span><span class="nt">(self, result)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="k">def</span> <span class="nf">compute_format_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="sd">&quot;&quot;&quot;Compute format data of the object to be displayed.</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span><span class="sd">     The format data is a generalization of the :func:`repr` of an object.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">151</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">display_formatter</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\IPython\core\formatters.py:178,</span> in <span class="ni">DisplayFormatter.format</span><span class="nt">(self, obj, include, exclude)</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="n">md</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">178</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span> <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="c1"># FIXME: log the exception</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="k">raise</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\decorator.py:232,</span> in <span class="ni">decorate.&lt;locals&gt;.fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span> <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\IPython\core\formatters.py:222,</span> in <span class="ni">catch_format_error</span><span class="nt">(method, self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span> <span class="sd">&quot;&quot;&quot;show traceback on failed format call&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">222</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span> <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="c1"># don&#39;t warn on NotImplementedErrors</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_return</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\IPython\core\formatters.py:339,</span> in <span class="ni">BaseFormatter.__call__</span><span class="nt">(self, obj)</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="k">pass</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">339</span>     <span class="k">return</span> <span class="n">printer</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span> <span class="c1"># Finally look for special method names</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span> <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\sympy\interactive\printing.py:178,</span> in <span class="ni">_init_ipython_printing.&lt;locals&gt;._print_latex_png</span><span class="nt">(o)</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span>     <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">displaystyle </span><span class="si">%s</span><span class="s1">$&#39;</span> <span class="o">%</span> <span class="n">s</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">178</span>     <span class="k">return</span> <span class="n">_preview_wrapper</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span> <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="n">debug</span><span class="p">(</span><span class="s1">&#39;preview failed with:&#39;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>           <span class="s1">&#39; Falling back to matplotlib backend&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\sympy\interactive\printing.py:89,</span> in <span class="ni">_init_ipython_printing.&lt;locals&gt;._preview_wrapper</span><span class="nt">(o)</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span> <span class="n">exprbuffer</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">89</span>     <span class="n">preview</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;BytesIO&#39;</span><span class="p">,</span> <span class="n">euler</span><span class="o">=</span><span class="n">euler</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>             <span class="n">outputbuffer</span><span class="o">=</span><span class="n">exprbuffer</span><span class="p">,</span> <span class="n">extra_preamble</span><span class="o">=</span><span class="n">extra_preamble</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>             <span class="n">dvioptions</span><span class="o">=</span><span class="n">dvioptions</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="c1"># IPython swallows exceptions</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;png printing:&quot;</span><span class="p">,</span> <span class="s2">&quot;_preview_wrapper exception raised:&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>           <span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\sympy\printing\preview.py:369,</span> in <span class="ni">preview</span><span class="nt">(expr, output, viewer, euler, packages, filename, outputbuffer, preamble, dvioptions, outputTexFile, extra_preamble, fontsize, **latex_settings)</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span> <span class="n">cmd</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">commandend</span><span class="p">[</span><span class="n">cmd_variant</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">368</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">369</span>     <span class="n">_check_output_no_window</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">workdir</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">STDOUT</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span> <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">371</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span>         <span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39; exited abnormally with the following output:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">    </span><span class="mi">373</span>         <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">e</span><span class="o">.</span><span class="n">output</span><span class="p">))</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\sympy\printing\preview.py:25,</span> in <span class="ni">_check_output_no_window</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">creation_flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Default value</span>
+<span class="ne">---&gt; </span><span class="mi">25</span> <span class="k">return</span> <span class="n">check_output</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">creationflags</span><span class="o">=</span><span class="n">creation_flag</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.3568.0_x64__qbz5n2kfra8p0\lib\subprocess.py:424,</span> in <span class="ni">check_output</span><span class="nt">(timeout, *popenargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span>         <span class="n">empty</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">empty</span>
+<span class="ne">--&gt; </span><span class="mi">424</span> <span class="k">return</span> <span class="n">run</span><span class="p">(</span><span class="o">*</span><span class="n">popenargs</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span>            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span>
+
+<span class="nn">File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.3568.0_x64__qbz5n2kfra8p0\lib\subprocess.py:507,</span> in <span class="ni">run</span><span class="nt">(input, capture_output, timeout, check, *popenargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span> <span class="k">with</span> <span class="n">Popen</span><span class="p">(</span><span class="o">*</span><span class="n">popenargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">as</span> <span class="n">process</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">507</span>         <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span>     <span class="k">except</span> <span class="n">TimeoutExpired</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">509</span>         <span class="n">process</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span>
+
+<span class="nn">File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.3568.0_x64__qbz5n2kfra8p0\lib\subprocess.py:1121,</span> in <span class="ni">Popen.communicate</span><span class="nt">(self, input, timeout)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_stdin_write</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1120</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1121</span>     <span class="n">stdout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1122</span>     <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1123</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
 </div>
 </div>
 </div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

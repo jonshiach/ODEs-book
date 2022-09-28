@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Direct Methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -609,7 +637,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="direct-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="direct-methods">
 <span id="direct-methods-chapter"></span><h1>Direct Methods<a class="headerlink" href="#direct-methods" title="Permalink to this headline">#</a></h1>
 <p><strong>Learning outcomes</strong></p>
 <p>On successful completion of this chapter readers will be able to:</p>
@@ -623,7 +651,7 @@ title="Print to PDF"
 <li><p>Solve a <a class="reference internal" href="6.4_QR_decomposition.html#qr-crout-section"><span class="std std-ref">system of linear equations using QR decomposition</span></a>.</p></li>
 </ul>
 <hr class="docutils" />
-<div class="section" id="systems-of-linear-equations">
+<section id="systems-of-linear-equations">
 <span id="systems-of-linear-equations-section"></span><h2>Systems of linear equations<a class="headerlink" href="#systems-of-linear-equations" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/System_of_linear_equations">Systems of linear equations</a> appear often in the topics of numerical analysis and numerical solutions to differential equations. Examples include the solution of the <a class="reference internal" href="../3_IRKs/3.2_Solving_IVPs_using_IRK_methods.html#solving-ivps-using-irk-methods-section"><span class="std std-ref">stage values of an implicit Runge-Kutta method</span></a> and the solution to a boundary value problem using the <a class="reference internal" href="../5_BVPs/5.2_Finite_difference_method.html#finite-difference-method-section"><span class="std std-ref">finite-difference method</span></a>. The methods that are applied to solve systems of linear equations fall into one of two categories: <strong>direct methods</strong> that use an algebraic approach and <a class="reference internal" href="../7_Indirect_methods/7.0_Indirect_methods.html#indirect-methods-chapter"><span class="std std-ref"><strong>indirect methods</strong></span></a> that use an iterative approach. On this chapter we will look at some common direct methods.</p>
 <p>A system of linear equations with <span class="math notranslate nohighlight">\(m\)</span> equations and <span class="math notranslate nohighlight">\(n\)</span> unknowns is expressed as</p>
@@ -657,10 +685,10 @@ title="Print to PDF"
 <li><p>The system has a single unique solution.</p></li>
 <li><p>The system has no solution. This usually occurs where one equation in the system contradicts another such that not value of the variables could satisfy both.</p></li>
 </ul>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

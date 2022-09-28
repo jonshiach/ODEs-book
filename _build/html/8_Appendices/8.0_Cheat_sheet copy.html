@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Cheat Sheet &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/8_Appendices/8.0_Cheat_sheet copy.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -778,59 +779,59 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cheat-sheet">
+  <section class="tex2jax_ignore mathjax_ignore" id="cheat-sheet">
 <h1>Cheat Sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this headline">#</a></h1>
-<div class="section" id="initial-value-problems">
+<section id="initial-value-problems">
 <h2>Initial value problems<a class="headerlink" href="#initial-value-problems" title="Permalink to this headline">#</a></h2>
-<div class="section" id="ordinary-differential-equation-ode">
+<section id="ordinary-differential-equation-ode">
 <h3>Ordinary Differential Equation (ODE)<a class="headerlink" href="#ordinary-differential-equation-ode" title="Permalink to this headline">#</a></h3>
 <p>An <a class="reference internal" href="../1_IVPs/1.0_IVPs.html#ode-section"><span class="std std-ref">ODE</span></a> is an equation of the for</p>
 <div class="math notranslate nohighlight">
 \[y^{(n)} = f(t, y, y', y'', \ldots, y^{(n-1)}),\]</div>
 <p>where <span class="math notranslate nohighlight">\(y(t)\)</span> is a function of the independent variable <span class="math notranslate nohighlight">\(t\)</span>.</p>
-</div>
-<div class="section" id="initial-value-problem-ivp">
+</section>
+<section id="initial-value-problem-ivp">
 <h3>Initial Value Problem (IVP)<a class="headerlink" href="#initial-value-problem-ivp" title="Permalink to this headline">#</a></h3>
 <p>An <a class="reference internal" href="../1_IVPs/1.0_IVPs.html#ivp-definition"><span class="std std-ref">initial value problem</span></a> is an ODE where the solution at some initial state is known</p>
 <div class="math notranslate nohighlight">
 \[y' = f(t, y), \qquad t \in [a, b], \qquad y(a) = \alpha.\]</div>
-</div>
-<div class="section" id="the-taylor-series">
+</section>
+<section id="the-taylor-series">
 <h3>The Taylor series<a class="headerlink" href="#the-taylor-series" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference internal" href="../1_IVPs/1.1_Taylor_Series.html#taylor-series-section"><span class="std std-ref">Taylor series</span></a> is a series expansion of a function <span class="math notranslate nohighlight">\(f(t)\)</span></p>
 <div class="math notranslate nohighlight">
 \[f(t + h) = \sum_{n=0}^\infty \frac{h^n}{n!}f^{(n)}(t).\]</div>
-</div>
-<div class="section" id="truncating-the-taylor-series">
+</section>
+<section id="truncating-the-taylor-series">
 <h3>Truncating the Taylor series<a class="headerlink" href="#truncating-the-taylor-series" title="Permalink to this headline">#</a></h3>
 <p><a class="reference internal" href="../1_IVPs/1.1_Taylor_Series.html#taylor-series-section"><span class="std std-ref">Truncating the Taylor series</span></a> is where all terms after the <span class="math notranslate nohighlight">\(n\)</span>th derivative in the Taylor series are omitted.</p>
 <div class="math notranslate nohighlight">
 \[f(t + h) \approx f(t) + hf'(t) + \frac{h^2}{2!} f''(t) + \cdots + \frac{h^n}{n!} f^{(n)}(t).\]</div>
-</div>
-<div class="section" id="the-euler-method">
+</section>
+<section id="the-euler-method">
 <h3>The Euler method<a class="headerlink" href="#the-euler-method" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference internal" href="../1_IVPs/1.2_Euler_Method.html#euler-method-section"><span class="std std-ref">Euler method</span></a> is a first-order accurate numerical method for solving an initial value problem of the form <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, <span class="math notranslate nohighlight">\(t\in [a, b]\)</span>, <span class="math notranslate nohighlight">\(t_0 = \alpha\)</span></p>
 <div class="math notranslate nohighlight">
 \[y_{n+1} = y_n + h f(t_n, y_n),\]</div>
 <p><span class="math notranslate nohighlight">\(t_n\)</span> is a value of <span class="math notranslate nohighlight">\(t\)</span> at step <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(y_n = y(t_n)\)</span> and <span class="math notranslate nohighlight">\(h = t_{n+1} - t_n\)</span> is the step length.</p>
-</div>
-<div class="section" id="local-truncation-error-lte">
+</section>
+<section id="local-truncation-error-lte">
 <h3>Local Truncation Error (LTE)<a class="headerlink" href="#local-truncation-error-lte" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#local-truncation-error-section"><span class="std std-ref">local truncation error</span></a> is the error in the calculation of a single step of a numerical method assuming that the previous values are exact.</p>
-</div>
-<div class="section" id="global-truncation-error-gte">
+</section>
+<section id="global-truncation-error-gte">
 <h3>Global Truncation Error (GTE)<a class="headerlink" href="#global-truncation-error-gte" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#global-truncation-error-section"><span class="std std-ref">global truncation error</span></a> is the error that has accumulated over all previous steps of a numerical method assuming the initial solution was known to be exact.</p>
-</div>
-<div class="section" id="big-o-notation">
+</section>
+<section id="big-o-notation">
 <h3>Big-O notation<a class="headerlink" href="#big-o-notation" title="Permalink to this headline">#</a></h3>
 <p><span class="math notranslate nohighlight">\(f(h) = O(h^n)\)</span> means that as <span class="math notranslate nohighlight">\(h \to 0\)</span> then <span class="math notranslate nohighlight">\(f(h) \to 0\)</span> at least as fast as <span class="math notranslate nohighlight">\(h^n \to 0\)</span>.</p>
-</div>
-<div class="section" id="order-of-a-method">
+</section>
+<section id="order-of-a-method">
 <h3>Order of a method<a class="headerlink" href="#order-of-a-method" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference internal" href="../1_IVPs/1.3_Error_Analysis.html#global-truncation-error-section"><span class="std std-ref">order</span></a> of a method is the degree of <span class="math notranslate nohighlight">\(O(h^n)\)</span> for the global truncation error of the method.</p>
-</div>
-<div class="section" id="reducing-higher-order-ode-to-first-order-odes">
+</section>
+<section id="reducing-higher-order-ode-to-first-order-odes">
 <h3>Reducing higher order ODE to first-order ODEs<a class="headerlink" href="#reducing-higher-order-ode-to-first-order-odes" title="Permalink to this headline">#</a></h3>
 <p>An <span class="math notranslate nohighlight">\(n\)</span>th order ODE <span class="math notranslate nohighlight">\(y^{(n)} = f(t, y, y', y'', \ldots, y^{(n-1)}\)</span> can be written as a system of <span class="math notranslate nohighlight">\(n\)</span> first order ODES such that</p>
 <div class="amsmath math notranslate nohighlight">
@@ -840,10 +841,10 @@ title="Print to PDF"
     &amp; \vdots \\
     y_n' &amp;= f(t, y_1, y_2, \ldots, y_n).
 \end{align*}\]</div>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="explicit-runge-kutta-methods">
+<section id="explicit-runge-kutta-methods">
 <h2>Explicit Runge-Kutta methods<a class="headerlink" href="#explicit-runge-kutta-methods" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-General-form-of-a-Runge-Kutta-method">General form of a Runge-Kutta method<a class="headerlink" href="#term-General-form-of-a-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#general-form-of-a-rk-method-section"><span class="std std-ref">general form of a Runge-Kutta method</span></a> is</p>
@@ -893,9 +894,9 @@ title="Print to PDF"
 \end{align*}\]</div>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="implicit-runge-kutta-methods">
+<section id="implicit-runge-kutta-methods">
 <h2>Implicit Runge-Kutta methods<a class="headerlink" href="#implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Implicit-Runge-Kutta-methods-IRK">Implicit Runge-Kutta methods (IRK)<a class="headerlink" href="#term-Implicit-Runge-Kutta-methods-IRK" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../3_IRKs/3.0_IRKs.html#irk-chapter"><span class="std std-ref">implicit Runge-Kutta method</span></a> is where the stage values are implicit functions.</p>
@@ -927,9 +928,9 @@ title="Print to PDF"
 <dt id="term-Computing-the-stage-values-of-an-implicit-Runge-Kutta-method">Computing the stage values of an implicit Runge-Kutta method<a class="headerlink" href="#term-Computing-the-stage-values-of-an-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../3_IRKs/3.2_Solving_IVPs_using_IRK_methods.html#solving-ivps-using-irk-methods-section"><span class="std std-ref">Computing the stage values</span></a> of an implicit Runge-Kutta method requires the solution to a system of nonlinear equations. This is typically done using Newton’s method but can also be done using the Gauss-Seidel method.</p>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="stability">
+<section id="stability">
 <h2>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Stability">Stability<a class="headerlink" href="#term-Stability" title="Permalink to this term">#</a></dt><dd><p>A method is <a class="reference internal" href="../4_Stability/4.0_Stability.html#stability-definition"><span class="std std-ref">stable</span></a> if the local truncation errors do not increase from one step to the next.</p>
@@ -982,9 +983,9 @@ title="Print to PDF"
 </ul>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="boundary-value-problems">
+<section id="boundary-value-problems">
 <h2>Boundary Value Problems<a class="headerlink" href="#boundary-value-problems" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Two-point-Boundary-Value-Problem-BVP">Two point Boundary Value Problem (BVP)<a class="headerlink" href="#term-Two-point-Boundary-Value-Problem-BVP" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../5_BVPs/5.0_BVPs.html#bvp-section"><span class="std std-ref">two point boundary value problem</span></a> is an ODE where the solutions at the lower and upper boundaries of the domain are known</p>
@@ -1013,9 +1014,9 @@ title="Print to PDF"
 <dt id="term-The-Thomas-algorithm">The Thomas algorithm<a class="headerlink" href="#term-The-Thomas-algorithm" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_BVPs/5.2_Finite_difference_method.html#thomas-algorithm-section"><span class="std std-ref">Thomas algorithm</span></a> is an efficient method for solving tridiagonal systems of linear equations.</p>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="direct-methods">
+<section id="direct-methods">
 <h2>Direct methods<a class="headerlink" href="#direct-methods" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-System-of-linear-equations">System of linear equations<a class="headerlink" href="#term-System-of-linear-equations" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../6_Direct_methods/6.0_Direct_methods.html#systems-of-linear-equations-section"><span class="std std-ref">system of linear equations</span></a> is a set of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> where the solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> satisfies all equations in the system.</p>
@@ -1088,9 +1089,9 @@ title="Print to PDF"
 </ul>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="indirect-methods">
+<section id="indirect-methods">
 <h2>Indirect methods<a class="headerlink" href="#indirect-methods" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Indirect-method">Indirect method<a class="headerlink" href="#term-Indirect-method" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../7_Indirect_methods/7.0_Indirect_methods.html#indirect-methods-chapter"><span class="std std-ref">Indirect methods</span></a> is multiple applications of the method to calculate the solution to a system of linear equations. An estimate is made of the solution <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)}\)</span> and an indirect method is applied to calculate the improved estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(1)}\)</span>. The method is applied repeatedly until two successive estimates agree to some tolerance.</p>
@@ -1135,8 +1136,8 @@ title="Print to PDF"
 <p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the Jacobi method iteration matrix.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

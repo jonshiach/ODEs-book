@@ -71,14 +71,14 @@ glue("euler_stability_region_plot", fig, display=False)
 # To determine the stability function for an implicit Runge-Kutta method we consider the stability function of a general Runge-Kutta method given in equations {eq}`rk-stability-Y-equation` and {eq}`rk-stability-yn+1-equation`
 # 
 # \begin{align*}
-#     y_{n+1} & = y_n + z \mathbf{b}^T Y, \\
+#     y_{n+1} & = y_n + z \mathbf{b}^\mathrm{T} Y, \\
 #     Y &= \mathbf{e} y_n + z A Y.
 # \end{align*}
 # 
 # Rewriting these gives 
 # 
 # \begin{align*}
-#     y_{n+1} - z \mathbf{b}^T Y &= y_n \\
+#     y_{n+1} - z \mathbf{b}^\mathrm{T} Y &= y_n \\
 #     (I - z A) Y &= \mathbf{e}y_n. 
 # \end{align*}
 # 
@@ -131,14 +131,14 @@ glue("euler_stability_region_plot", fig, display=False)
 # ```{math}
 # :label: irk-stability-rz-equation
 # 
-# R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^T)}{\det(I - zA)}.
+# R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathrm{T})}{\det(I - zA)}.
 # ```
 # ````
 # 
-# $\mathbf{e}\mathbf{b}^T$ is a diagonal matrix with the elements of $\mathbf{b}$ on the main diagonal
+# $\mathbf{e}\mathbf{b}^\mathrm{T}$ is a diagonal matrix with the elements of $\mathbf{b}$ on the main diagonal
 # 
 # \begin{align*}
-#     \mathbf{e}\mathbf{b}^T = 
+#     \mathbf{e}\mathbf{b}^\mathrm{T} = 
 #     \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix}
 #     \begin{pmatrix} b_1 & b_2 & \cdots & b_s \end{pmatrix} 
 #     = \begin{pmatrix}
@@ -250,7 +250,7 @@ glue("euler_stability_region_plot", fig, display=False)
 # 
 # The code below uses SymPy to determine the stability function of an implicit method and checks the two conditions for A-stability.
 
-# In[2]:
+# In[14]:
 
 
 import sympy as sp

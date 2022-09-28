@@ -350,7 +350,7 @@ glue("bvp_fdm_plot", fig, display=False)
 # Solutions to the boundary value problem $y'' + 3ty' + 7y = \cos (2t)$, $t \in [0,3]$, $y(0) = 1$, $y(3) = 0$ using first-order and second-order finite-difference approximations with $h=0.05$ and $h=0.005$.
 # ```
 
-# In[3]:
+# In[27]:
 
 
 # Define BVP parameters

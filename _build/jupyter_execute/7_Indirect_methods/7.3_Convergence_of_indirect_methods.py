@@ -45,7 +45,7 @@
 # :class: note
 # :name: spectral-radius-definition
 # 
-# Let $\lambda_1, \lambda_2, \ldots, \lambda_n$ be the eigenvalues of a matrix $A$ then the spectral radius of $A$ denoted by $\rho(A)$ is
+# The spectral radius of $A$ denoted by $\rho(A)$ is
 # 
 # ```{math}
 # :label: spectral-radius-equation
@@ -54,6 +54,7 @@
 #     \rho(A) = \max_i(|\lambda_i|).
 # \end{align*}
 # ```
+# where $\lambda_i$ are the eigenvalues of $A$.
 # ````
 # 
 # ```{admonition} Theorem: Convergence criteria for an indirect method
@@ -64,7 +65,6 @@
 # 
 # - If $\rho (T) > 1$ then the errors will increase over each iteration, therefore for an indirect method to converge to the solution we require $\rho (T)< 1$.
 # - The smaller the value of $\rho (T)$ the faster the errors will tend to zero.
-# \end{itemize}
 # ```
 # 
 # ````{admonition} Example 7.3
@@ -140,7 +140,7 @@ print(np.linalg.eigvals(T_J))
 print(np.linalg.eigvals(T_GS))
 
 
-# In[2]:
+# In[22]:
 
 
 from sympy import *

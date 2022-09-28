@@ -191,7 +191,7 @@ def radauIA(f, tspan, y0, h, tol=1e-6):
 # 
 # `Y1`, `Y2`, `Y1o` and `Y2o` are current and old estimates of the stage values $Y_1$ and $Y_2$ which are calculated by iterating the stage value functions until either the maximum difference between the current and old values is less than `tol` or 100 iterations have been calculated.
 
-# In[3]:
+# In[1]:
 
 
 def f(t, y):
@@ -223,7 +223,7 @@ plt.legend(fontsize=12)
 plt.show()
 
 
-# In[4]:
+# In[2]:
 
 
 from myst_nb import glue

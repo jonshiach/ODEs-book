@@ -39,7 +39,7 @@
 # - $h=t_{n+1}-t_n$ is the **step length**;
 # - $s$ is the number of **stages** of the method;
 # - $k_i$ are intermediate **stage values** used to calculate $y_{n+1}$;
-# - $a_{ij}$, $b_i$ and $c_i$ are coefficients that defined a particular Runge-Kutta method.
+# - $a_{ij}$, $b_i$ and $c_i$ are coefficients that define a particular Runge-Kutta method.
 # 
 # ````
 # 

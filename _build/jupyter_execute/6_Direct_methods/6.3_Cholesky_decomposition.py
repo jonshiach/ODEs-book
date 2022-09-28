@@ -183,7 +183,7 @@
 import numpy as np
 
 
-# In[2]:
+# In[5]:
 
 
 def cholesky(A):
@@ -209,7 +209,7 @@ def cholesky(A):
 
 # The code below calculates the Cholesky decomposition of the matrix from [example 6.6](cholesky-example).
 
-# In[3]:
+# In[6]:
 
 
 # Define matrix
@@ -301,7 +301,7 @@ print(f"L = \n{L}\n")
 # 
 # The code below solves the system of linear equations from [example 6.7](cholesky-crout-example) using the Cholesky-Crout method.
 
-# In[4]:
+# In[ ]:
 
 
 def forward_substitution(L, b):
@@ -328,7 +328,7 @@ def back_substitution(U, b):
     return x
 
 
-# In[5]:
+# In[2]:
 
 
 # Define linear system

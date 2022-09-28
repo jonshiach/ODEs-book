@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The Successive Over Relaxation (SOR) method &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -619,7 +632,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-successive-over-relaxation-sor-method">
+  <section class="tex2jax_ignore mathjax_ignore" id="the-successive-over-relaxation-sor-method">
 <span id="sor-method-section"></span><h1>The Successive Over Relaxation (SOR) method<a class="headerlink" href="#the-successive-over-relaxation-sor-method" title="Permalink to this headline">#</a></h1>
 <p>The <strong>Successive Over Relaxation (SOR)</strong> method improves on the convergence rate of the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-definition"><span class="std std-ref">Gauss-Seidel</span></a> method by applying a weighting factor to the updated estimates to adjust the extent of the change. Let <span class="math notranslate nohighlight">\(\omega\)</span> be a <strong>relaxation parameter</strong> in the range <span class="math notranslate nohighlight">\([0,2]\)</span> then the SOR method is</p>
 <div class="note admonition" id="sor-method-definition">
@@ -654,23 +667,26 @@ title="Print to PDF"
 <span class="eqno">(45)<a class="headerlink" href="#equation-sor-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_{SOR} =(D+\omega L)^{-1} ((1-\omega )D-\omega U).\]</div>
 </div>
 <p>The value of <span class="math notranslate nohighlight">\(\omega\)</span> affects the rate of convergence of the SOR method and is determined by how the Gauss-Seidel method converges to the exact solution. Consider the diagrams in <a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 25</span></a> and <a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 26</span></a> below that shows the two types of convergence of the Gauss-Seidel method. When we have <a class="reference external" href="https://en.wikipedia.org/wiki/Monotonic_function">monotonic</a> convergence where each successive iteration approaches the exact solution from a single side (<a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 25</span></a>), the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &gt; 1\)</span> so that the change in subsequent approximations is increased. When we have oscillatory convergence where successive iterations overshoot the exact solution (<a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 26</span></a>) the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &lt; 1\)</span> so that the change in the subsequent approximation is decreased.</p>
-<div class="figure align-default" id="over-relaxation-figure">
+<figure class="align-default" id="over-relaxation-figure">
 <img alt="../_images/sor_1.png" src="../_images/sor_1.png" />
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">The estimated solution approaches the exact solution monotonically.</span><a class="headerlink" href="#over-relaxation-figure" title="Permalink to this image">#</a></p>
-</div>
-<div class="figure align-default" id="under-relaxation-figure">
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">The estimated solution approaches the exact solution monotonically.</span><a class="headerlink" href="#over-relaxation-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="under-relaxation-figure">
 <img alt="../_images/sor_2.png" src="../_images/sor_2.png" />
-<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">The estimated solution oscillates about the exact solution.</span><a class="headerlink" href="#under-relaxation-figure" title="Permalink to this image">#</a></p>
-</div>
-<div class="section" id="optimum-value-of-the-relaxation-parameter">
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">The estimated solution oscillates about the exact solution.</span><a class="headerlink" href="#under-relaxation-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="optimum-value-of-the-relaxation-parameter">
 <span id="optimum-relaxation-parameter-section"></span><h2>Optimum value of the relaxation parameter<a class="headerlink" href="#optimum-value-of-the-relaxation-parameter" title="Permalink to this headline">#</a></h2>
 <p>The optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> will be the one that minimises the spectral radius of the iteration matrix. The <a class="reference internal" href="#sor-method-iteration-matrix-definition"><span class="std std-ref">iteration matrix</span></a> will depend on the value of <span class="math notranslate nohighlight">\(\omega\)</span>. One way to estimate the optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> is to calculate <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for values in the range <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span> and choose the value of <span class="math notranslate nohighlight">\(\omega\)</span> which minimises this value. This has been done for the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a> and the plot is shown in <a class="reference internal" href="#optimum-relaxation-parameter-figure"><span class="std std-numref">Fig. 27</span></a>.</p>
-<div class="figure align-default" id="optimum-relaxation-parameter-figure">
-<div class="cell_output docutils container">
-<img alt="../_images/7.4_SOR_method_1_1.png" src="../_images/7.4_SOR_method_1_1.png" />
-</div>
-<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Plot of the spectral radius <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> of the iteration matrix for the SOR method when used to solve the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a>.</span><a class="headerlink" href="#optimum-relaxation-parameter-figure" title="Permalink to this image">#</a></p>
-</div>
+<figure class="align-default" id="optimum-relaxation-parameter-figure">
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Plot of the spectral radius <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> of the iteration matrix for the SOR method when used to solve the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a>.</span><a class="headerlink" href="#optimum-relaxation-parameter-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>So an estimation of the optimum value of the relaxation parameters is <span class="math notranslate nohighlight">\(\omega = 1.25\)</span>.</p>
 <p>If the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> has real eigenvalues we can use the following theorem to calculate the exact value of <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
 <div class="important admonition" id="optimum-relaxation-parameter-theorem">
@@ -700,9 +716,6 @@ Solution<div class="sd-summary-down docutils">
     \end{pmatrix}.
 \end{align*}\]</div>
 <p class="sd-card-text">The plot below shows the value of <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for a range of <span class="math notranslate nohighlight">\(\omega\)</span> values. The minimum value of <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> corresponds to <span class="math notranslate nohighlight">\(\omega = 1.2405\)</span>.</p>
-<div class="cell_output docutils container">
-<img alt="../_images/7.4_SOR_method_1_1.png" src="../_images/7.4_SOR_method_1_1.png" />
-</div>
 <p class="sd-card-text">The eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -885,8 +898,8 @@ Solution<div class="sd-summary-down docutils">
 </table>
 </div>
 </details></div>
-</div>
-<div class="section" id="python-code">
+</section>
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">sor()</span></code> which solves a linear system of equations of the for <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> using the Gauss-Seidel method with a relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
 <div class="cell docutils container">
@@ -913,8 +926,8 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

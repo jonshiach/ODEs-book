@@ -19,7 +19,6 @@
 #     k_1 &= f(t_n, y_n), \\
 #     k_2 &= f(t_n + h, y_n + h k_1).
 # \end{align*} 
-# 
 # ```
 # 
 # where $h = t_{n+1} - t_n$.

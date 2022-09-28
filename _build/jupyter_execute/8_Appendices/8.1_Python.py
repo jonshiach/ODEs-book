@@ -29,7 +29,7 @@ from IPython.display import Math
 # 
 # ### The Euler method
 
-# In[2]:
+# In[29]:
 
 
 def euler(f, tspan, y0, h):
@@ -50,7 +50,7 @@ def euler(f, tspan, y0, h):
 # 
 # $$y' = ty, \qquad t \in[0, 1], \qquad y(0) = 1.$$
 
-# In[3]:
+# In[30]:
 
 
 def f(t, y):
@@ -79,7 +79,7 @@ for n in range(len(t)):
 # 
 # The following code uses matplotlib functions to plot the solution.
 
-# In[4]:
+# In[31]:
 
 
 # Calculate exact solution
@@ -108,7 +108,7 @@ plt.show()
 #     \end{array}
 # \end{align*}
 
-# In[5]:
+# In[32]:
 
 
 def rk2(f, tspan, y0, h):
@@ -139,7 +139,7 @@ def rk2(f, tspan, y0, h):
 #     \end{array}
 # \end{align*}
 
-# In[6]:
+# In[33]:
 
 
 def rk4(f, tspan, y0, h):
@@ -170,7 +170,7 @@ def rk4(f, tspan, y0, h):
 #     \end{array}
 # \end{align*}
 
-# In[7]:
+# In[34]:
 
 
 def radauIA(f, tspan, y0, h, tol=1e-6):
@@ -203,7 +203,7 @@ def radauIA(f, tspan, y0, h, tol=1e-6):
 #     a_{21} b_2 &= \frac{1}{2}.
 # \end{align*}
 
-# In[8]:
+# In[35]:
 
 
 import sympy as sp
@@ -228,7 +228,7 @@ sp.solve((eq1, eq2, eq3))
 # 
 # The following code plots the region of absolute stability for the Euler method.
 
-# In[9]:
+# In[36]:
 
 
 # Generate z values
@@ -264,7 +264,7 @@ plt.show()
 # & \frac{7}{24} & \frac{1}{4} & \frac{1}{3} & \frac{1}{8}
 # \end{array}\end{align*}
 
-# In[10]:
+# In[37]:
 
 
 # Define ERK method
@@ -297,7 +297,7 @@ display(Math(string))
 # \end{align*}
 # 
 
-# In[11]:
+# In[42]:
 
 
 # Define numerator and denominator functions
@@ -329,7 +329,7 @@ display(Math(f"R(z) = {sp.latex(sp.nsimplify(Rz))}"))
 # 
 # where the stability function for the method is $R(z) = \dfrac{P(z)}{Q(z)}$.
 
-# In[12]:
+# In[50]:
 
 
 # Check roots of Q have positive real parts
@@ -347,7 +347,7 @@ display(Math(f"E(y) = {sp.latex(sp.simplify(sp.nsimplify(E)))}"))
 # 
 # The following code defines the function `lu()` which calculates the LU decomposition of a square matrix $A$ and returns the lower and upper triangular matrices $L$ and $U$ such that $A = LU$. 
 
-# In[13]:
+# In[52]:
 
 
 def lu(A):
@@ -379,7 +379,7 @@ def lu(A):
 #     \end{pmatrix}
 # \end{align*}
 
-# In[14]:
+# In[54]:
 
 
 # Define matrix
@@ -396,7 +396,7 @@ print(f"U = \n{U}\n")
 # 
 # The following code defines the functions `forward_substitution()` and `back_substitution()` which perform forward and back substitution.
 
-# In[15]:
+# In[55]:
 
 
 def forward_substitution(L, b):
@@ -437,7 +437,7 @@ def back_substitution(U, b):
 #     = \begin{pmatrix} -7 \\ 11 \\ 1 \end{pmatrix}
 # \end{align*}
 
-# In[16]:
+# In[57]:
 
 
 # Define linear system
@@ -461,7 +461,7 @@ for i in range(len(x)):
 # 
 # The following code defines the function `partial_pivot()` that performs partial pivoting on a matrix and outputs the matrix and the permutation matrix.
 
-# In[17]:
+# In[58]:
 
 
 def partial_pivot(A):
@@ -483,7 +483,7 @@ def partial_pivot(A):
 # 
 # The following code defines the function `cholesky()` which performs Cholesky decomposition on a matrix $A$ and outputs the lower triangular matrix $L$ such that $A = LL^\mathrm{T}$. 
 
-# In[18]:
+# In[59]:
 
 
 def cholesky(A):
@@ -511,7 +511,7 @@ def cholesky(A):
 # 
 # The following code defines the function `qr_gramschidt()` which performs QR decomposition using the Gram-Schmidt process on a matrix $A$ and outputs the orthogonal matrix $Q$ and upper triangular matrix $R$ such that $A = QR$.
 
-# In[19]:
+# In[60]:
 
 
 def qr_gramschmidt(A):
@@ -533,7 +533,7 @@ def qr_gramschmidt(A):
 # 
 # The following code defines the function `qr_householder()` which performs QR decomposition using the Gram-Schmidt process on a matrix $A$ and outputs the orthogonal matrix $Q$ and upper triangular matrix $R$ such that $A = QR$.
 
-# In[20]:
+# In[61]:
 
 
 def qr_householder(A):
@@ -560,7 +560,7 @@ def qr_householder(A):
 # 
 # 
 
-# In[21]:
+# In[62]:
 
 
 def jacobi(A, b, tol=1e-6):
@@ -586,7 +586,7 @@ def jacobi(A, b, tol=1e-6):
 
 # ### The Gauss-Seidel method
 
-# In[22]:
+# In[63]:
 
 
 def gauss_seidel(A, b, tol=1e-6):
@@ -611,7 +611,7 @@ def gauss_seidel(A, b, tol=1e-6):
 
 # ### The SOR method
 
-# In[23]:
+# In[65]:
 
 
 def sor(A, b, omega, tol=1e-6):
@@ -647,7 +647,7 @@ def sor(A, b, omega, tol=1e-6):
 # \end{align*}
 # 
 
-# In[24]:
+# In[72]:
 
 
 # Define coefficient matrix
@@ -667,7 +667,7 @@ print(f"TJ = \n{TJ}")
 # 
 # The following code calculates the spectral radius of the matrix `TJ` from above.
 
-# In[25]:
+# In[76]:
 
 
 rho_TJ = max(abs(np.linalg.eigvals(TJ)))

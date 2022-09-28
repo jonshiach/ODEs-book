@@ -62,8 +62,6 @@
 # \begin{align*}
 #     \{ z:z\in \mathbb{C},|R(z)|\leq 1 \} 
 # \end{align*}
-# 
-# In other words all of the values of $z$ for which the method is absolutely stable.
 # ````
 # 
 # (plot-stability-region-section)=
@@ -97,7 +95,7 @@ plt.ylabel("$\mathrm{Im}(z)$", fontsize=14)
 plt.show()
 
 
-# In[2]:
+# In[ ]:
 
 
 from myst_nb import glue
@@ -160,7 +158,7 @@ glue("euler_stability_region", fig, display=False)
 # 
 # This is why the solution using $h=0.25$ was stable since $0.25 < 0.1\dot{3}$ and the solution using $h=0.125$ was unstable since $0.125 < 0.1\dot{3}$.
 
-# In[3]:
+# In[11]:
 
 
 # Plot stability region

@@ -19,7 +19,7 @@
 # 
 # Now we have a system of $n$ first-order ODEs so we can apply our numerical methods for solving ODEs to each equation in the system to give an equivalent solution to the $n$th order ODE.
 # 
-# ````{admonition} Example 7.4
+# ````{admonition} Example 1.4
 # :class: seealso
 # :name: higher-order-odes-example
 # 
@@ -81,7 +81,7 @@
 # 
 # Initial value problems that are defined using systems of ODEs we need to know the initial solution for each of the individual ODEs, i.e., $y_1(a), y_2(a), \ldots$, in order to be able to obtain a unique solution. 
 # 
-# `````{admonition} Example 7.5
+# `````{admonition} Example 1.5
 # :class: seealso
 # :name: higher-order-ode-ivp-example
 # 

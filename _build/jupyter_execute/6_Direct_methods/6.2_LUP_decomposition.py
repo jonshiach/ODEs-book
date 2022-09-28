@@ -112,7 +112,7 @@
 import numpy as np
 
 
-# In[2]:
+# In[26]:
 
 
 def partial_pivot(A):
@@ -132,7 +132,7 @@ def partial_pivot(A):
 
 # The code below applies the function `partial_pivot()` to calculate the permutation matrix for the matrix from [example 6.3](pivoting-example).
 
-# In[3]:
+# In[29]:
 
 
 # Define linear system
@@ -183,7 +183,6 @@ print(f"A = \n{A}\n\nP = \n{P}")
 #     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} =
 #     \begin{pmatrix} 10 \\ -4 \\ -8 \end{pmatrix}.
 # \end{align*}
-# 
 # 
 # ```{dropdown} Solution
 # 
@@ -288,7 +287,7 @@ print(f"A = \n{A}\n\nP = \n{P}")
 # 
 # The code below calculates the solution to the system of linear equations from [example 6.4](lup-example) using Crout's method with LUP decomposition. The `np.dot(A, B)` command calculates the matrix multiplication $AB$
 
-# In[4]:
+# In[ ]:
 
 
 import numpy as np
@@ -350,7 +349,7 @@ def partial_pivot(A):
     return A, P
 
 
-# In[5]:
+# In[28]:
 
 
 # Define linear system

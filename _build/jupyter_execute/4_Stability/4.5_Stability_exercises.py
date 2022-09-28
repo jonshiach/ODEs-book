@@ -254,7 +254,7 @@ display(simplify(nsimplify(E)))
 # 
 # `````
 
-# In[3]:
+# In[10]:
 
 
 import numpy as np

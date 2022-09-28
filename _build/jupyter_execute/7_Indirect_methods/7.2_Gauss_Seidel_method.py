@@ -16,6 +16,8 @@
 # ````{admonition} Definition: The Gauss-Seidel method
 # :class: note
 # :name: gauss-seidel-method-definition
+#     
+# The Gauss-Seidel method for solving a system of linear equations of the form $A \mathbf{x} = \mathbf{b}$ is
 # 
 # ```{math}
 # :label: gauss-seidel-method-equation
@@ -44,8 +46,9 @@
 # 
 # ```{math}
 # :label: gauss-seidel-method-iteration-matrix-equation
-# T_{GS} =-(L+D)^{-1} U.
+# T_{GS} =-(L+D)^{-1} U,
 # ```
+# where $A = L + D + U$ such that $L$, $D$ and $U$ are lower triangular, diagonal and upper triangular matrices respectively.
 # ````
 # 
 # ````{admonition} Example 7.2

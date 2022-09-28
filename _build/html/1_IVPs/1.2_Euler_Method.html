@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The Euler method &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -609,7 +622,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-euler-method">
+  <section class="tex2jax_ignore mathjax_ignore" id="the-euler-method">
 <span id="euler-method-section"></span><h1>The Euler method<a class="headerlink" href="#the-euler-method" title="Permalink to this headline">#</a></h1>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_method"><strong>Euler method</strong></a> is the simplest numerical method used to solve ODEs can be derived very easily by truncating equation the Taylor series after the first-order term</p>
 <div class="math notranslate nohighlight">
@@ -637,7 +650,7 @@ y_{n+1} = y_n + h f(t_n ,y_n),
 <div class="math notranslate nohighlight">
 \[n = \left\lfloor \frac{b - a}{h} \right\rfloor,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\lfloor x \rfloor\)</span> rounds the number <span class="math notranslate nohighlight">\(x\)</span> to the integer below. If <span class="math notranslate nohighlight">\(h\)</span> divides <span class="math notranslate nohighlight">\(b - a\)</span> exactly then the last value of <span class="math notranslate nohighlight">\(t_n = b\)</span>. If <span class="math notranslate nohighlight">\(h\)</span> does not divide <span class="math notranslate nohighlight">\(b - a\)</span> exactly then <span class="math notranslate nohighlight">\(t_n &lt; b\)</span>, in these cases we can use a smaller step length for the last step or leave it as it is (here we will use a constant value of <span class="math notranslate nohighlight">\(h\)</span>).</p>
-<p>To solve an initial value problem using the Euler method we first initialise the <span class="math notranslate nohighlight">\(t_0 = a\)</span> and <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and then calculate the value of <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="#equation-euler-method-equation">(2)</a> and <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span>. Then we use <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the value of <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(t_2 = t_1 + h\)</span>. We continue in this way until we have calculated up to <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step. The other type of numerical method for solving ODEs is the <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_multistep_method"><strong>linear multistep method</strong></a> that requires information from multiple previous steps.</p>
+<p>To solve an initial value problem using the Euler method we first initialise the <span class="math notranslate nohighlight">\(t_0 = a\)</span> and <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and then calculate the value of <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html#equation-euler-method-equation">(47)</a> and <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span>. Then we use <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the value of <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(t_2 = t_1 + h\)</span>. We continue in this way until we have calculated up to <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step. The other type of numerical method for solving ODEs is the <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_multistep_method"><strong>linear multistep method</strong></a> that requires information from multiple previous steps.</p>
 <div class="seealso admonition" id="euler-example">
 <p class="admonition-title">Example 1.2</p>
 <p>Calculate the solution to the following initial value problem using the Euler method with <span class="math notranslate nohighlight">\(h = 0.2\)</span></p>
@@ -657,7 +670,7 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">therefore the <span class="math notranslate nohighlight">\(t\)</span> values are</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{t} = (0, 0.2, 0.4, 0.6, 0.8, 1.0).\]</div>
-<p class="sd-card-text">We know the ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> and initial value is <span class="math notranslate nohighlight">\(y_0 = 1\)</span> so using equation <a class="reference internal" href="#equation-euler-method-equation">(2)</a> we have</p>
+<p class="sd-card-text">We know the ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> and initial value is <span class="math notranslate nohighlight">\(y_0 = 1\)</span> so using equation <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html#equation-euler-method-equation">(47)</a> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_1 &amp;= y_0 + h f(t_0, y_0) = 1 + 0.2(0)(1) = 1,  \\
@@ -710,13 +723,24 @@ Solution<div class="sd-summary-down docutils">
 </table>
 </div>
 </details></div>
-<div class="section" id="python-code">
+<section id="python-code">
 <span id="py-euler"></span><h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>You may have noticed that calculating the solution to an initial value problem using a numerical method using a pen, paper and calculator is a tedious exercise requiring lots of repeated calculations. This is way we use computers to do this work for us. First we import the <a class="reference external" href="https://numpy.org/">NumPy</a> and <a class="reference external" href="https://matplotlib.org/">matplotlib</a> libraries so that we can perform numerical calculations and produce plots of the solutions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
 </pre></div>
 </div>
 </div>
@@ -810,12 +834,14 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 </div>
-<div class="figure align-default" id="euler-figure">
+<figure class="align-default" id="euler-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.2_Euler_Method_11_0.png" src="../_images/1.2_Euler_Method_11_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The solution to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#euler-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The solution to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#euler-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Note that the solution obtained using the Euler method deviates away from the exact solution as the value of <span class="math notranslate nohighlight">\(t\)</span> increases. We will see why this is the case in the next section on <a class="reference internal" href="1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a>.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
@@ -823,8 +849,8 @@ Solution<div class="sd-summary-down docutils">
 <dd><p>This assumes that we are using a constant step length. Some methods use <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_step_size">adaptive step size</a> where the value of <span class="math notranslate nohighlight">\(h\)</span> is modified at each step to optimise the accuracy. These methods are outside the scope of this unit so will not be considered here)</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

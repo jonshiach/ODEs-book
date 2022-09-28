@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Implicit Runge-Kutta Methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -619,7 +647,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="implicit-runge-kutta-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="implicit-runge-kutta-methods">
 <span id="irk-chapter"></span><h1>Implicit Runge-Kutta Methods<a class="headerlink" href="#implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h1>
 <p><strong>Learning outcomes</strong></p>
 <p>On successful completion of this chapter readers will be able to:</p>
@@ -629,7 +657,7 @@ title="Print to PDF"
 <li><p>apply <a class="reference internal" href="3.2_Solving_IVPs_using_IRK_methods.html#solving-ivps-using-irk-methods-section"><span class="std std-ref">implicit Runge-Kutta methods to solve initial value problems</span></a>.</p></li>
 </ul>
 <hr class="docutils" />
-<div class="section" id="id1">
+<section id="id1">
 <h2>Implicit Runge-Kutta methods<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>Runge-Kutta methods can be either an explicit or implicit methods depending on the functions used to calculate the stage values. We have seen in the <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#erk-chapter"><span class="std std-ref">previous chapter on explicit methods</span></a> that they are straightforward to apply, however they are not always suitable for solving ODEs that are <a class="reference internal" href="../4_Stability/4.0_Stability.html#stiffness-section"><span class="std std-ref"><strong>stiff</strong></span></a>. This is why we need to also consider implicit methods.</p>
 <p>Recall that the <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#rk-definition"><span class="std std-ref">general form of a Runge-Kutta method</span></a> to solve a first-order ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> is</p>
@@ -658,8 +686,8 @@ title="Print to PDF"
       \end{array}
 \end{align*}\]</div>
 <p>Note that the <span class="math notranslate nohighlight">\(A\)</span> matrix in the upper right-hand region of an implicit method can have non-zero elements in them main diagonal and upper triangular region whereas the <span class="math notranslate nohighlight">\(A\)</span> matrix for an explicit method has non-zero elements in the lower triangular region only.</p>
-</div>
-<div class="section" id="determining-the-order-of-an-implicit-runge-kutta-method">
+</section>
+<section id="determining-the-order-of-an-implicit-runge-kutta-method">
 <span id="order-of-irk-section"></span><h2>Determining the order of an implicit Runge-Kutta method<a class="headerlink" href="#determining-the-order-of-an-implicit-runge-kutta-method" title="Permalink to this headline">#</a></h2>
 <p>One of the differences between implicit and explicit methods is that an implicit method can achieve the same accuracy as an explicit method but using fewer stages. To determine the order of an implicit method we need to consider the <strong>order conditions</strong> that govern the values of <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span>.</p>
 <div class="note admonition" id="bk-ck-dk-order-conditions">
@@ -736,10 +764,10 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">So the <span class="math notranslate nohighlight">\(D(k)\)</span> order condition is satisfied up to <span class="math notranslate nohighlight">\(k=2\)</span>. Therefore since <span class="math notranslate nohighlight">\(B(2)\)</span>, <span class="math notranslate nohighlight">\(C(1)\)</span> and <span class="math notranslate nohighlight">\(D(1)\)</span> are all satisfied this IRK method is order 2.</p>
 </div>
 </details></div>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

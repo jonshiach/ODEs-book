@@ -29,7 +29,6 @@
 # ```
 # 
 # where $h = t_{n+1} - t_n$.
-# 
 # ````
 # 
 # The solution of the initial value problem using the Euler method will result in two vectors containing the values of $t$ and $y$

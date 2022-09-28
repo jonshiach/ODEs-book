@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Initial Value Problems Exercises &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -572,7 +585,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="initial-value-problems-exercises">
+  <section class="tex2jax_ignore mathjax_ignore" id="initial-value-problems-exercises">
 <h1>Initial Value Problems Exercises<a class="headerlink" href="#initial-value-problems-exercises" title="Permalink to this headline">#</a></h1>
 <div class="note admonition" id="ex1-1">
 <p class="admonition-title">Exercise 1.1</p>
@@ -757,9 +770,9 @@ Solution<div class="sd-summary-down docutils">
     \theta'' + \frac{g}{L} \sin(\theta) = 0,
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between the pendulum and the vertical, <span class="math notranslate nohighlight">\(L\)</span> is the length of the pendulum and <span class="math notranslate nohighlight">\(g=9.81\)</span> ms<span class="math notranslate nohighlight">\(^{-2}\)</span> is the acceleration due to gravity.</p>
-<div class="figure align-center">
+<figure class="align-center">
 <img alt="../_images/pendulum.png" src="../_images/pendulum.png" />
-</div>
+</figure>
 <p>Write a Python program that uses the RK2 method with <span class="math notranslate nohighlight">\(h=0.1\)</span> to calculate the solution for <span class="math notranslate nohighlight">\(\theta\)</span> over the interval <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> for a pendulum of length <span class="math notranslate nohighlight">\(L = 1\)</span> set at an initial angle <span class="math notranslate nohighlight">\(\theta = \frac{\pi}{2}\)</span>. Produce a plot of the displacement angle <span class="math notranslate nohighlight">\(\theta\)</span> against <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -770,7 +783,6 @@ Solution<div class="sd-summary-down docutils">
 </summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
 
 <span class="k">def</span> <span class="nf">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
     <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
@@ -787,40 +799,24 @@ Solution<div class="sd-summary-down docutils">
 
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">t</span> <span class="o">+</span> <span class="n">y</span>
-
-
-<span class="k">def</span> <span class="nf">exact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">g</span> <span class="o">/</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
 
 
 <span class="c1"># Define IVP</span>
-<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
-<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>        <span class="c1"># solution at the lower boundary</span>
-<span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span>         <span class="c1"># step length</span>
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>      <span class="c1"># boundaries of the t domain</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># solution at the lower boundary</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.1</span>             <span class="c1"># step length</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>            <span class="c1"># acceleration due to gravity</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>               <span class="c1"># pendulum length</span>
 
 <span class="c1"># Calculate the solution to the IVP</span>
-<span class="n">t</span><span class="p">,</span> <span class="n">y_euler</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-<span class="n">t</span><span class="p">,</span> <span class="n">y_rk2</span> <span class="o">=</span> <span class="n">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-
-<span class="c1"># Output table of solutions</span>
-<span class="n">yexact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|   t   |   Euler   |    RK2    |&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|:-----:|:---------:|:---------:|&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y_euler</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">9.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y_rk2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">9.6f</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
-
+<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
 <span class="c1"># Plot solution</span>
-<span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">y_exact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_euler</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Euler&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_rk2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;ro-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;bo-&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\theta$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -829,7 +825,7 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

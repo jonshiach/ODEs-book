@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Boundary Value Problems &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -619,7 +647,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="boundary-value-problems">
+  <section class="tex2jax_ignore mathjax_ignore" id="boundary-value-problems">
 <span id="bvp-chapter"></span><h1>Boundary Value Problems<a class="headerlink" href="#boundary-value-problems" title="Permalink to this headline">#</a></h1>
 <p><strong>Learning outcomes</strong></p>
 <p>On successful completion of this chapter readers will be able to:</p>
@@ -631,7 +659,7 @@ title="Print to PDF"
 <li><p>implement the <a class="reference internal" href="5.2_Finite_difference_method.html#thomas-method-definition"><span class="std std-ref">Thomas algorithm</span></a> to solve a tridiagonal system of linear equations.</p></li>
 </ul>
 <hr class="docutils" />
-<div class="section" id="general-two-point-boundary-value-problem">
+<section id="general-two-point-boundary-value-problem">
 <span id="bvp-section"></span><h2>General two-point boundary value problem<a class="headerlink" href="#general-two-point-boundary-value-problem" title="Permalink to this headline">#</a></h2>
 <p>A <strong>Boundary Value Problem (BVP)</strong> is an ODE where the solutions at the boundaries of the domain are known.</p>
 <div class="note admonition" id="bvp-definition">
@@ -641,8 +669,8 @@ title="Print to PDF"
 <span class="eqno">(30)<a class="headerlink" href="#equation-bvp-equation" title="Permalink to this equation">#</a></span>\[y'' = f(t,y),\qquad  t\in [a, b],\qquad y(a) = \alpha ,\qquad y(b) = \beta,\]</div>
 <p>for some known values <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
 </div>
-</div>
-<div class="section" id="existence-and-uniqueness-of-solutions-to-boundary-value-problems">
+</section>
+<section id="existence-and-uniqueness-of-solutions-to-boundary-value-problems">
 <span id="existence-and-uniqueness-of-bvp-solutions-section"></span><h2>Existence and uniqueness of solutions to boundary value problems<a class="headerlink" href="#existence-and-uniqueness-of-solutions-to-boundary-value-problems" title="Permalink to this headline">#</a></h2>
 <p>If an initial value problem has a solution it will be unique for a particular initial value. This is not true for boundary value problems which can have a unique solution, no solution or an infinite number of solutions. Consider the following boundary value problem</p>
 <div class="amsmath math notranslate nohighlight">
@@ -728,10 +756,10 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">which are all continuous on <span class="math notranslate nohighlight">\([0,1]\)</span> and <span class="math notranslate nohighlight">\(q(t)\geq \)</span> for all <span class="math notranslate nohighlight">\(t\in [0,1]\)</span> so this boundary value problem has a unique solution.</p>
 </div>
 </details></div>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

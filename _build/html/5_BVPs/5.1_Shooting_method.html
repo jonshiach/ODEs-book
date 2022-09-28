@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The shooting method &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -629,7 +642,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-shooting-method">
+  <section class="tex2jax_ignore mathjax_ignore" id="the-shooting-method">
 <span id="shooting-method-section"></span><h1>The shooting method<a class="headerlink" href="#the-shooting-method" title="Permalink to this headline">#</a></h1>
 <p>Consider the two-point boundary value problem</p>
 <div class="math notranslate nohighlight">
@@ -768,12 +781,9 @@ Solution<div class="sd-summary-down docutils">
 </tbody>
 </table>
 <p class="sd-card-text">The solutions using the three guess values of <span class="math notranslate nohighlight">\(s=1\)</span>, <span class="math notranslate nohighlight">\(s=2\)</span> and <span class="math notranslate nohighlight">\(s=1.5\)</span> are plotted below.</p>
-<div class="cell_output docutils container">
-<img alt="../_images/5.1_Shooting_method_1_2.png" src="../_images/5.1_Shooting_method_1_2.png" />
-</div>
 </div>
 </details></div>
-<div class="section" id="improving-the-guess-value-using-the-secant-method">
+<section id="improving-the-guess-value-using-the-secant-method">
 <span id="secant-method-section"></span><h2>Improving the guess value using the secant method<a class="headerlink" href="#improving-the-guess-value-using-the-secant-method" title="Permalink to this headline">#</a></h2>
 <p>In the <a class="reference internal" href="#shooting-example-1"><span class="std std-ref">example</span></a> we saw that by adjusting the guess value of <span class="math notranslate nohighlight">\(y'(0)\)</span> we obtained solutions at the upper boundary that were closer to the target value at the upper boundary <span class="math notranslate nohighlight">\(\beta\)</span>. We could continue in this way by increasing or decreasing our guess value halfway towards the previous guess value depending on whether the solution at the upper boundary was higher or lower than the target (this method is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Bisection_method">bisection method</a>), however a more efficient approach is to use the <a class="reference external" href="https://en.wikipedia.org/wiki/Secant_method">Secant method</a>. The Secant method is a root finding algorithm that calculates the value of <span class="math notranslate nohighlight">\(s\)</span> where <span class="math notranslate nohighlight">\(g(s)=0\)</span> for some function <span class="math notranslate nohighlight">\(g\)</span></p>
 <div class="math notranslate nohighlight" id="equation-secant-method-equation">
@@ -786,7 +796,7 @@ Solution<div class="sd-summary-down docutils">
 <p>Using the Secant method to find the root <span class="math notranslate nohighlight">\(g(s) = 0\)</span> will give the value of <span class="math notranslate nohighlight">\(y'(0)\)</span>.</p>
 <div class="seealso admonition" id="secant-method-example">
 <p class="admonition-title">Example 5.3</p>
-<p>Use the secant method to calculate the next guess value <span class="math notranslate nohighlight">\(s\)</span> for the solution of the boundary value problem <a class="reference internal" href="#shooting-example-1"><span class="std std-ref">example 5.2</span></a>.</p>
+<p>Use the secant method to calculate the next guess value <span class="math notranslate nohighlight">\(s\)</span> for the solution of the boundary value problem <a class="reference internal" href="#shooting-example-1"><span class="std std-ref">example 5.2</span></a> and calculate the solution to the BVP using this guess value.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -847,8 +857,8 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></div>
-</div>
-<div class="section" id="python-code">
+</section>
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">shooting_method()</span></code> that calculates the solution to a boundary value problem using the shooting method.</p>
 <div class="cell docutils container">
@@ -877,8 +887,8 @@ Solution<div class="sd-summary-down docutils">
 <li><p><code class="docutils literal notranslate"><span class="pre">tol</span></code> - the convergence tolerance for the Secant method (optional, default is <span class="math notranslate nohighlight">\(tol=10^{-6}\)</span>).</p></li>
 </ul>
 <p>The variables <code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">so</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code> and <code class="docutils literal notranslate"><span class="pre">go</span></code> are the current and old values of the guess value <span class="math notranslate nohighlight">\(s\)</span> and function <span class="math notranslate nohighlight">\(g(s)\)</span> which are intialised to ensure that at least two iterations of the Secant method are performed. The function calculates the solution to the initial value problem with the initial solution <code class="docutils literal notranslate"><span class="pre">[bvals[0],</span> <span class="pre">s]</span></code> and uses the last solution for <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the next guess value using the Secant method. The iterations cease when the difference between two successive guess values are less than <code class="docutils literal notranslate"><span class="pre">tol</span></code></p>
-</div>
-<div class="section" id="a-note-about-accuracy">
+</section>
+<section id="a-note-about-accuracy">
 <h2>A note about accuracy<a class="headerlink" href="#a-note-about-accuracy" title="Permalink to this headline">#</a></h2>
 <p>In <a class="reference internal" href="#secant-method-example"><span class="std std-ref">example 5.3</span></a> we iterated the Secant method until convergence and got a very accurate solution for the value of <span class="math notranslate nohighlight">\(y(b)\)</span>. We must be careful not to forget that this solution was obtained using the Euler method which being only first-order so expect it to be relatively inaccurate for the other values in the domain.</p>
 <p>The exact solution to the boundary value problem used here is</p>
@@ -942,15 +952,17 @@ Solution<div class="sd-summary-down docutils">
 </tr>
 </tbody>
 </table>
-<div class="figure align-default" id="bvp-euler-rk4-figure">
+<figure class="align-default" id="bvp-euler-rk4-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/5.1_Shooting_method_8_2.png" src="../_images/5.1_Shooting_method_8_2.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using the Euler and RK4 methods with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#bvp-euler-rk4-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using the Euler and RK4 methods with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#bvp-euler-rk4-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>So despite the Secant method giving a guess value that gives an accurate solution at the upper boundary, the use of the Euler method does not give an accurate solution across the domain. The solution using the second-order Runge-Kutta method in comparison gives much more accurate solutions over the domain.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

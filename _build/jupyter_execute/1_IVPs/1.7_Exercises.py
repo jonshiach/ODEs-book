@@ -355,13 +355,11 @@ glue("ex1.4_plot", fig, display=False)
 # 
 # Write a Python program that uses the RK2 method with $h=0.1$ to calculate the solution for $\theta$ over the interval $t\in [0, 5]$ for a pendulum of length $L = 1$ set at an initial angle $\theta = \frac{\pi}{2}$. Produce a plot of the displacement angle $\theta$ against $t$.
 # 
-# 
 # ````{dropdown} Solution
 # 
 # ```python
 # import numpy as np
 # import matplotlib.pyplot as plt
-# 
 # 
 # def rk2(f, tspan, y0, h):
 #     nsteps = int((tspan[1] - tspan[0]) / h)
@@ -378,40 +376,24 @@ glue("ex1.4_plot", fig, display=False)
 # 
 # 
 # def f(t, y):
-#     return t + y
-# 
-# 
-# def exact(t):
-#     return 3 * np.exp(t) - t - 1
+#     return np.array([y[1], -g / L * np.sin(y[0])])
 # 
 # 
 # # Define IVP
-# tspan = [0, 2]  # boundaries of the t domain
-# y0 = [2]        # solution at the lower boundary
-# h = 0.4         # step length
+# tspan = [0, 5]      # boundaries of the t domain
+# y0 = [np.pi / 2, 0] # solution at the lower boundary
+# h = 0.1             # step length
+# g = 9.81            # acceleration due to gravity
+# L = 1               # pendulum length
 # 
 # # Calculate the solution to the IVP
-# t, y_euler = euler(f, tspan, y0, h)
-# t, y_rk2 = rk2(f, tspan, y0, h)
-# 
-# # Output table of solutions
-# yexact = exact(t)
-# print("|   t   |   Euler   |    RK2    |")
-# print("|:-----:|:---------:|:---------:|")
-# for i in range(len(t)):
-#     print(f"| {t[i]:5.2f} | {y_euler[i,0]:9.6f} | {y_rk2[i,0]:9.6f} |")
-# 
+# t, y = rk2(f, tspan, y0, h)
 # 
 # # Plot solution
-# t_exact = np.linspace(tspan[0], tspan[1], 200)
-# y_exact = exact(t_exact)
 # fig, ax = plt.subplots(figsize=(8, 6))
-# plt.plot(t_exact, y_exact, "k", label="Exact")
-# plt.plot(t, y_euler[:,0], "bo-", label="Euler")
-# plt.plot(t, y_rk2[:,0], "ro-", label="RK2")
+# plt.plot(t, y[:,0], "bo-")
 # plt.xlabel("$t$", fontsize=14)
-# plt.ylabel("$y$", fontsize=14)
-# plt.legend(fontsize=12)
+# plt.ylabel(r"$\theta$", fontsize=14)
 # plt.show()
 # ```
 # 
@@ -421,12 +403,12 @@ glue("ex1.4_plot", fig, display=False)
 # ````
 # `````
 
-# In[5]:
+# In[7]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+from myst_nb import glue
 
 def rk2(f, tspan, y0, h):
     nsteps = int((tspan[1] - tspan[0]) / h)
@@ -446,27 +428,22 @@ def f(t, y):
     return np.array([y[1], -g / L * np.sin(y[0])])
 
 
-def exact(t):
-    return 3 * np.exp(t) - t - 1
-
-
 # Define IVP
-tspan = [0, 5]       # boundaries of the t domain
-y0 = [np.pi / 2, 0]  # solution at the lower boundary
-h = 0.1              # step length
-L = 1                # length
-g = 9.91             # gravity
+tspan = [0, 5]      # boundaries of the t domain
+y0 = [np.pi / 2, 0] # solution at the lower boundary
+h = 0.1             # step length
+g = 9.81            # acceleration due to gravity
+L = 1               # pendulum length
 
 # Calculate the solution to the IVP
 t, y = rk2(f, tspan, y0, h)
 
 # Plot solution
 fig, ax = plt.subplots(figsize=(8, 6))
-plt.plot(t, y[:,0], "bo-", label="RK2")
+plt.plot(t, y[:,0], "bo-")
 plt.xlabel("$t$", fontsize=14)
 plt.ylabel(r"$\theta$", fontsize=14)
 plt.show()
 
-from myst_nb import glue
 glue("ex1.5_plot", fig, display=False)
 

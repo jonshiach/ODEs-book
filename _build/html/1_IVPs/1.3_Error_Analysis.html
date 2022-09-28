@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Error analysis &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -629,10 +642,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="error-analysis">
+  <section class="tex2jax_ignore mathjax_ignore" id="error-analysis">
 <span id="error-analysis-section"></span><h1>Error analysis<a class="headerlink" href="#error-analysis" title="Permalink to this headline">#</a></h1>
-<p>We have seen in the previous section that the <a class="reference internal" href="1.2_Euler_Method.html#euler-figure"><span class="std std-ref">Euler method solution</span></a> of the initial value problem  in <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">example 1.2</span></a> deviates from the exact solution. This is because we have truncated the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to <span class="math notranslate nohighlight">\(f(t+h)\)</span> and we have introduced an error. It is important that we study this error and the effect that the errors have on our solutions.</p>
-<div class="section" id="big-o-notation">
+<p>We have seen in the previous section that the <a class="reference internal" href="1.2_Euler_Method.html#euler-figure"><span class="std std-ref">Euler method solution</span></a> of the initial value problem  in <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">example 1.2</span></a> deviates from the exact solution. This is because we have truncated the <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to <span class="math notranslate nohighlight">\(f(t+h)\)</span> and we have introduced an error. It is important that we study this error and the effect that the errors have on our solutions.</p>
+<section id="big-o-notation">
 <span id="big-o-notation-section"></span><h2>Big-O notation<a class="headerlink" href="#big-o-notation" title="Permalink to this headline">#</a></h2>
 <p>Analyising the error of numerical method is challenging since we do not know what the exact solution is (if we did we wouldn’t need a numerical method). Also, if we did know the exact solution the value of the difference between the numerical solution and the exact solution would only apply to that specific problem. So instead we look at the behaviour of the error. Recall the <a class="reference internal" href="1.2_Euler_Method.html#euler-method-section"><span class="std std-ref">Euler method</span></a> which is</p>
 <div class="math notranslate nohighlight">
@@ -652,14 +665,14 @@ title="Print to PDF"
 <p class="admonition-title">Definition: Order of a method</p>
 <p>If the error of a numerical method is <span class="math notranslate nohighlight">\(O(h^n)\)</span> then the method is said to be of order <span class="math notranslate nohighlight">\(n\)</span>.</p>
 </div>
-</div>
-<div class="section" id="local-truncation-error">
+</section>
+<section id="local-truncation-error">
 <span id="local-truncation-error-section"></span><h2>Local truncation error<a class="headerlink" href="#local-truncation-error" title="Permalink to this headline">#</a></h2>
 <div class="note admonition" id="lte-definition">
 <p class="admonition-title">Definition: Local Truncation Error</p>
 <p>The Local Truncation Error (LTE), <span class="math notranslate nohighlight">\(\tau_n\)</span>, is the error in the calculation of a single step of a numerical method assuming that the previous values used are exact.</p>
 </div>
-<p>Writing the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> expansion for <span class="math notranslate nohighlight">\(y(t)\)</span> and if <span class="math notranslate nohighlight">\(y'(t) = f(t, y)\)</span> then</p>
+<p>Writing the <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> expansion for <span class="math notranslate nohighlight">\(y(t)\)</span> and if <span class="math notranslate nohighlight">\(y'(t) = f(t, y)\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[y(t + h) = y(t) + hf(t, y) + \frac{h^2}{2!}f'(t, y) + \frac{h^3}{3!}f''(t, y) + \frac{h^4}{4!}f'''(t, y) + \cdots \]</div>
 <p>Since when deriving the Euler method we truncated the Taylor series to first-order then</p>
@@ -669,8 +682,8 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[ \tau_n = \frac{h^2}{2!}f'(t_n, y_n) + \frac{h^3}{3!}f''(t_n, y_n) + \frac{h^4}{4!}f'''(t_n, y_n) + \cdots \]</div>
 <p>The value of the first term is larger than that of all of the other terms so we can say that <span class="math notranslate nohighlight">\(\tau = O(h^2)\)</span>.</p>
-</div>
-<div class="section" id="global-truncation-error">
+</section>
+<section id="global-truncation-error">
 <span id="global-truncation-error-section"></span><h2>Global truncation error<a class="headerlink" href="#global-truncation-error" title="Permalink to this headline">#</a></h2>
 <div class="note admonition" id="gte-definition">
 <p class="admonition-title">Definition: Global Truncation Error</p>
@@ -682,12 +695,11 @@ title="Print to PDF"
     e_n = |y_n - \tilde{y}_n |,
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(\tilde{y}_n\)</span> are the exact and numerical solutions. This is represented graphically in <a class="reference internal" href="#gte-figure"><span class="std std-numref">Fig. 3</span></a>.</p>
-<div class="figure align-default" id="gte-figure">
-<div class="cell_output docutils container">
-<img alt="../_images/1.3_Error_Analysis_1_1.png" src="../_images/1.3_Error_Analysis_1_1.png" />
-</div>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The global truncation error, <span class="math notranslate nohighlight">\(e_n\)</span>, is the difference between the exact solution, <span class="math notranslate nohighlight">\(y_n\)</span>, and the numerical solution, <span class="math notranslate nohighlight">\(\tilde{y}_n\)</span>.</span><a class="headerlink" href="#gte-figure" title="Permalink to this image">#</a></p>
-</div>
+<figure class="align-default" id="gte-figure">
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">The global truncation error, <span class="math notranslate nohighlight">\(e_n\)</span>, is the difference between the exact solution, <span class="math notranslate nohighlight">\(y_n\)</span>, and the numerical solution, <span class="math notranslate nohighlight">\(\tilde{y}_n\)</span>.</span><a class="headerlink" href="#gte-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>We can use the global and local truncations errors to analyse the accuracy of a method. Comparing the application of the Euler method using the exact and approximated solutions</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -716,21 +728,25 @@ title="Print to PDF"
     |e_n| \leq C\frac{O(h^2)}{h} = O(h).
 \end{align*}\]</div>
 <p>We can demonstrate this with the Euler method. The plot shown in <a class="reference internal" href="#euler-hvalues-figure"><span class="std std-numref">Fig. 4</span></a> below shows the solutions to the IVP from <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">the Euler method example</span></a> calculated using step lengths of <span class="math notranslate nohighlight">\(h=0.2\)</span>, <span class="math notranslate nohighlight">\(h=0.1\)</span>, <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.025\)</span>. As the step length decreases the numerical solution gets closer to the exact solution as expected.</p>
-<div class="figure align-default" id="euler-hvalues-figure">
+<figure class="align-default" id="euler-hvalues-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.3_Error_Analysis_3_1.png" src="../_images/1.3_Error_Analysis_3_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.025\)</span>.</span><a class="headerlink" href="#euler-hvalues-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.025\)</span>.</span><a class="headerlink" href="#euler-hvalues-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The global truncation errors for the solution to the IVP at <span class="math notranslate nohighlight">\(t=1\)</span> are plotted against the values of the step length in <a class="reference internal" href="#euler-gte-figure"><span class="std std-numref">Fig. 5</span></a> below. Note how the errors approximate a straight line which show that has <span class="math notranslate nohighlight">\(h\)</span> decreases, the errors also decrease in a linear fashion indicating that the Euler method is a first-order method.</p>
-<div class="figure align-default" id="euler-gte-figure">
+<figure class="align-default" id="euler-gte-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.3_Error_Analysis_5_1.png" src="../_images/1.3_Error_Analysis_5_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The global truncation errors for the Euler method solution of <span class="math notranslate nohighlight">\(y'=t y\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#euler-gte-figure" title="Permalink to this image">#</a></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">The global truncation errors for the Euler method solution of <span class="math notranslate nohighlight">\(y'=t y\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#euler-gte-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

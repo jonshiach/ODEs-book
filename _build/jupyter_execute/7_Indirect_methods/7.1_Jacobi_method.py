@@ -322,7 +322,7 @@ b = np.array([-2, -8, 14])
 jacobi_latex(A, b)
 
 
-# In[2]:
+# In[41]:
 
 
 import numpy as np
@@ -379,7 +379,7 @@ b = np.array([-2, -8, 14])
 x = jacobi_with_table(A, b, tol=1e-4)
 
 
-# In[3]:
+# In[14]:
 
 
 import numpy as np
@@ -413,7 +413,7 @@ def jacobi(A, b, tol=1e-6):
 # 
 # An $n$ element array `x` is initialised to all zeros and will contain the solution vector $\mathbf{x}$ for the system of linear equations. The Jacobi method is calculated until the maximum absolute residual value is less than `tol` or 100 iterations have been calculated, whichever comes first. Since the Jacobi method only uses previous estimates to calculate the next estimates we store the old values in `xo`.
 
-# In[4]:
+# In[13]:
 
 
 # Define linear system

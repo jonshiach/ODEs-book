@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Stability functions of implicit methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -20,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -428,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -629,7 +657,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="stability-functions-of-implicit-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="stability-functions-of-implicit-methods">
 <span id="implicit-rz-section"></span><h1>Stability functions of implicit methods<a class="headerlink" href="#stability-functions-of-implicit-methods" title="Permalink to this headline">#</a></h1>
 <p>The simplest implicit method for solving ODEs is the implicit Euler method (also known as the backward Euler method) which is</p>
 <div class="amsmath math notranslate nohighlight">
@@ -654,24 +682,23 @@ title="Print to PDF"
     R(z) = \frac{P(z)}{Q(z)}.
 \end{align*}\]</div>
 <p>The region of absolute stability of the implicit Euler method has been plotted in <a class="reference internal" href="#euler-stability-region-figure"><span class="std std-numref">Fig. 18</span></a>. Note that the region of absolute stability includes all of the complex plane with the exception of the unshaded region which means the interval of absolute stability is <span class="math notranslate nohighlight">\(h\lambda \in [-\infty, 0]\)</span> so the method is stable for all values of <span class="math notranslate nohighlight">\(h\)</span> when solving the test equation <span class="math notranslate nohighlight">\(y'= \lambda y\)</span> (this is known as <a class="reference internal" href="#a-stability-definition"><span class="std std-ref">A-stability</span></a>).</p>
-<div class="figure align-default" id="euler-stability-region-figure">
-<div class="cell_output docutils container">
-<img alt="../_images/4.3_IRK_stability_function_1_1.png" src="../_images/4.3_IRK_stability_function_1_1.png" />
-</div>
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Region of absolute stability for the implicit Euler method.</span><a class="headerlink" href="#euler-stability-region-figure" title="Permalink to this image">#</a></p>
-</div>
-<div class="section" id="stability-functions-for-an-implicit-runge-kutta-method">
+<figure class="align-default" id="euler-stability-region-figure">
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Region of absolute stability for the implicit Euler method.</span><a class="headerlink" href="#euler-stability-region-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="stability-functions-for-an-implicit-runge-kutta-method">
 <h2>Stability functions for an implicit Runge-Kutta method<a class="headerlink" href="#stability-functions-for-an-implicit-runge-kutta-method" title="Permalink to this headline">#</a></h2>
 <p>To determine the stability function for an implicit Runge-Kutta method we consider the stability function of a general Runge-Kutta method given in equations <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-y-equation">(24)</a> and <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-yn-1-equation">(25)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    y_{n+1} &amp; = y_n + z \mathbf{b}^T Y, \\
+    y_{n+1} &amp; = y_n + z \mathbf{b}^\mathrm{T} Y, \\
     Y &amp;= \mathbf{e} y_n + z A Y.
 \end{align*}\]</div>
 <p>Rewriting these gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    y_{n+1} - z \mathbf{b}^T Y &amp;= y_n \\
+    y_{n+1} - z \mathbf{b}^\mathrm{T} Y &amp;= y_n \\
     (I - z A) Y &amp;= \mathbf{e}y_n. 
 \end{align*}\]</div>
 <p>We can write these as a matrix equation</p>
@@ -715,12 +742,12 @@ title="Print to PDF"
 <div class="note admonition" id="irk-rz-definition">
 <p class="admonition-title">Definition: Stability function of an implicit Runge-Kutta method</p>
 <div class="math notranslate nohighlight" id="equation-irk-stability-rz-equation">
-<span class="eqno">(28)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^T)}{\det(I - zA)}.\]</div>
+<span class="eqno">(28)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathrm{T})}{\det(I - zA)}.\]</div>
 </div>
-<p><span class="math notranslate nohighlight">\(\mathbf{e}\mathbf{b}^T\)</span> is a diagonal matrix with the elements of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> on the main diagonal</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{e}\mathbf{b}^\mathrm{T}\)</span> is a diagonal matrix with the elements of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> on the main diagonal</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{e}\mathbf{b}^T = 
+    \mathbf{e}\mathbf{b}^\mathrm{T} = 
     \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix}
     \begin{pmatrix} b_1 &amp; b_2 &amp; \cdots &amp; b_s \end{pmatrix} 
     = \begin{pmatrix}
@@ -730,8 +757,8 @@ title="Print to PDF"
         0 &amp; 0 &amp; \cdots &amp; b_s
     \end{pmatrix}.
 \end{align*}\]</div>
-</div>
-<div class="section" id="a-stability">
+</section>
+<section id="a-stability">
 <span id="id1"></span><h2>A-stability<a class="headerlink" href="#a-stability" title="Permalink to this headline">#</a></h2>
 <p>As we saw in the plot of the <a class="reference internal" href="#euler-stability-region-figure"><span class="std std-ref">region of absolute stability of the backwards Euler method</span></a>, implicit methods have a much greater stability region than explicit methods and are very useful for solving stiff ODEs where the stability constraints placed on an explicit method means the step length <span class="math notranslate nohighlight">\(h\)</span> is too small to be of practical use. A desirable property of some implicit methods is that there is no limit placed on the value of <span class="math notranslate nohighlight">\(h\)</span> for which will result in an unstable method, this is known as .</p>
 <div class="note admonition" id="a-stability-definition">
@@ -803,15 +830,15 @@ Solution<div class="sd-summary-down docutils">
 \end{align*}\]</div>
 <p class="sd-card-text">Since <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(y_4\)</span> are positive for all <span class="math notranslate nohighlight">\(y\)</span> then <span class="math notranslate nohighlight">\(E(y)&gt;0\)</span> and the <a class="reference internal" href="#a-stability-theorem"><span class="std std-ref">second condition</span></a> for A-stability is satisfied. Since both conditions are satisfied then we can say that this is an A-stable method.</p>
 <p class="sd-card-text">The region of absolute stability for this method has been plotted below. Note that the interval of absolute stability is <span class="math notranslate nohighlight">\([-\infty, 0]\)</span>.</p>
-<div class="figure align-default" id="irk-stability-region-example-figure">
+<figure class="align-default" id="irk-stability-region-example-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/4.3_IRK_stability_function_4_1.png" src="../_images/4.3_IRK_stability_function_4_1.png" />
 </div>
-</div>
+</figure>
 </div>
 </details></div>
-</div>
-<div class="section" id="python-code">
+</section>
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below uses SymPy to determine the stability function of an implicit method and checks the two conditions for A-stability.</p>
 <div class="cell docutils container">
@@ -851,15 +878,13 @@ Solution<div class="sd-summary-down docutils">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R(z) = (z**2/16 + z/3 + 1)/(z**2/6 - 2*z/3 + 1)
 Roots of Q(z) = [2 - sqrt(2)*I, 2 + sqrt(2)*I]
+E(y) = y**2*(55*y**2 + 288)/2304
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E(y) = y**2*(55*y**2 + 288)/2304
-</pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

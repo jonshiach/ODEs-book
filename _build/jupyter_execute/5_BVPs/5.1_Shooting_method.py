@@ -169,7 +169,7 @@ glue("shooting_example_plot_1", fig, display=False)
 # :class: seealso
 # :name: secant-method-example
 # 
-# Use the secant method to calculate the next guess value $s$ for the solution of the boundary value problem [example 5.2](shooting-example-1).
+# Use the secant method to calculate the next guess value $s$ for the solution of the boundary value problem [example 5.2](shooting-example-1) and calculate the solution to the BVP using this guess value.
 # 
 # ````{dropdown} Solution
 # 
@@ -211,7 +211,7 @@ glue("shooting_example_plot_1", fig, display=False)
 # 
 # The code below defines a function called `shooting_method()` that calculates the solution to a boundary value problem using the shooting method. 
 
-# In[2]:
+# In[8]:
 
 
 def shooting_method(solver, f, tspan, bvals, h, tol=1e-6):
@@ -237,7 +237,7 @@ def shooting_method(solver, f, tspan, bvals, h, tol=1e-6):
 # 
 # The variables `s`, `so`, `g` and `go` are the current and old values of the guess value $s$ and function $g(s)$ which are intialised to ensure that at least two iterations of the Secant method are performed. The function calculates the solution to the initial value problem with the initial solution `[bvals[0], s]` and uses the last solution for $y_1$ to calculate the next guess value using the Secant method. The iterations cease when the difference between two successive guess values are less than `tol`
 
-# In[3]:
+# In[2]:
 
 
 import numpy as np
