@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Convergence of indirect methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/7_Indirect_methods/7.3_Convergence_of_indirect_methods.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The Successive Over Relaxation (SOR) method" href="7.4_SOR_method.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -577,7 +600,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="convergence-of-indirect-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="convergence-of-indirect-methods">
 <span id="convergence-of-indirect-methods-section"></span><h1>Convergence of indirect methods<a class="headerlink" href="#convergence-of-indirect-methods" title="Permalink to this headline">#</a></h1>
 <p>We have seen that both the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">Jacobi</span></a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel</span></a> methods are iterated until the estimates of the solution converge to a given tolerance. In <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a> required 49 iterations to converge to the solution of a system of linear equations whereas in <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example"><span class="std std-ref">example 7.2</span></a> only required 20 iterations to converge to the solution for the same system.</p>
 <p>Not all indirect methods will converge for a given system of linear equations, we can establish whether a method will be convergent using the theorem below. Let <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)} = |\mathbf{x} - \mathbf{x}^{(k)}|\)</span> be the error between the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span>. The error from one estimate to the next is updated using the iteration matrix for the method</p>
@@ -611,38 +634,44 @@ title="Print to PDF"
 <p>This means that as the number of iterations increases, the error varies by a factor of <span class="math notranslate nohighlight">\(\lambda_1^{k+1}\)</span> where <span class="math notranslate nohighlight">\(\lambda_1\)</span> is the largest eigenvalue of <span class="math notranslate nohighlight">\(T\)</span> which is known as the <strong>spectral radius</strong>.</p>
 <div class="note admonition" id="spectral-radius-definition">
 <p class="admonition-title">Definition: Spectral radius</p>
-<p>Let <span class="math notranslate nohighlight">\(\lambda_1, \lambda_2, \ldots, \lambda_n\)</span> be the eigenvalues of a matrix <span class="math notranslate nohighlight">\(A\)</span> then the spectral radius of <span class="math notranslate nohighlight">\(A\)</span> denoted by <span class="math notranslate nohighlight">\(\rho(A)\)</span> is</p>
+<p>The spectral radius of <span class="math notranslate nohighlight">\(A\)</span> denoted by <span class="math notranslate nohighlight">\(\rho(A)\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-spectral-radius-equation">
-<span class="eqno">(42)<a class="headerlink" href="#equation-spectral-radius-equation" title="Permalink to this equation">#</a></span>\[\begin{align*}
+<span class="eqno">(43)<a class="headerlink" href="#equation-spectral-radius-equation" title="Permalink to this equation">#</a></span>\[\begin{align*}
     \rho(A) = \max_i(|\lambda_i|).
 \end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda_i\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </div>
 <div class="important admonition" id="indirect-methods-convergence-criteria-theorem">
 <p class="admonition-title">Theorem: Convergence criteria for an indirect method</p>
 <p>The spectral radius of <span class="math notranslate nohighlight">\(T\)</span> gives us the following information about an indirect method</p>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(\rho (T) &gt; 1\)</span> then the errors will increase over each iteration, therefore for an indirect method to converge to the solution we require <span class="math notranslate nohighlight">\(\rho (T)&lt; 1\)</span>.</p></li>
-<li><p>The smaller the value of <span class="math notranslate nohighlight">\(\rho (T)\)</span> the faster the errors will tend to zero.
-\end{itemize}</p></li>
+<li><p>The smaller the value of <span class="math notranslate nohighlight">\(\rho (T)\)</span> the faster the errors will tend to zero.</p></li>
 </ul>
 </div>
 <div class="seealso admonition" id="convergence-example">
 <p class="admonition-title">Example 7.3</p>
 <p>Show that the Jacobi and Gauss-Seidel methods are convergent of the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a>.</p>
-<p><strong>Solution</strong></p>
-<p>The coefficient matrix for this linear system is</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The coefficient matrix for this linear system is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     A = \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}.
 \end{align*}\]</div>
-<p>so</p>
+<p class="sd-card-text">so</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     L &amp;= \begin{pmatrix} 0 &amp; 0 &amp; 0 \\ 3 &amp; 0 &amp; 0 \\ 0 &amp; -1 &amp; 0 \end{pmatrix}, &amp;
     D &amp;= \begin{pmatrix} 4 &amp; 0 &amp; 0 \\ 0 &amp; 4 &amp; 0 \\ 0 &amp; 0 &amp; 4 \end{pmatrix}, \\
     U &amp;= \begin{pmatrix} 0 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; -1 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}.
 \end{align*}\]</div>
-<p>The iteration matrices for the Jacobi and Gauss-Seidel methods are given in equations <a class="reference internal" href="7.1_Jacobi_method.html#equation-jacobi-method-iteration-matrix-equation">(38)</a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#equation-gauss-seidel-method-iteration-matrix-equation">(41)</a> which for this system are</p>
+<p class="sd-card-text">The iteration matrices for the Jacobi and Gauss-Seidel methods are given in equations <a class="reference internal" href="7.1_Jacobi_method.html#equation-jacobi-method-iteration-matrix-equation">(39)</a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#equation-gauss-seidel-method-iteration-matrix-equation">(42)</a> which for this system are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     T_J &amp;= -D ( L + U) 
@@ -659,9 +688,10 @@ title="Print to PDF"
     \begin{pmatrix} 0 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; -1 \\ 0 &amp; 0 &amp; 0 \end{pmatrix} =
     \begin{pmatrix} 0 &amp; -\frac{3}{4} &amp; 0 \\ 0 &amp; \frac{9}{16} &amp; \frac{1}{4} \\ 0 &amp; \frac{9}{64} &amp; \frac{1}{16} \end{pmatrix}
 \end{align*}\]</div>
-<p>Calculating the spectral radius for these iteration matrices gives <span class="math notranslate nohighlight">\(\rho(T_J )=0.7906\)</span> and <span class="math notranslate nohighlight">\(\rho (T_{GS})=0.625\)</span> which are both less than 1 so both of these methods are convergent for this system. Furthermore, the Gauss-Seidel method will converge faster than the Jacobi method since it has a smaller spectral radius.</p>
+<p class="sd-card-text">Calculating the spectral radius for these iteration matrices gives <span class="math notranslate nohighlight">\(\rho(T_J )=0.7906\)</span> and <span class="math notranslate nohighlight">\(\rho (T_{GS})=0.625\)</span> which are both less than 1 so both of these methods are convergent for this system. Furthermore, the Gauss-Seidel method will converge faster than the Jacobi method since it has a smaller spectral radius.</p>
 </div>
-</div>
+</details></div>
+</section>
 
     <script type="text/x-thebe-config">
     {

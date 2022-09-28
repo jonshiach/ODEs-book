@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Higher-order Ordinary Differential Equations &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/1_IVPs/1.5_Higher_Order_ODEs.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Initial Value Problems Chapter Summary" href="1.6_IVP_Summary.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -614,7 +637,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="higher-order-ordinary-differential-equations">
+  <section class="tex2jax_ignore mathjax_ignore" id="higher-order-ordinary-differential-equations">
 <span id="higher-order-odes-section"></span><h1>Higher-order Ordinary Differential Equations<a class="headerlink" href="#higher-order-ordinary-differential-equations" title="Permalink to this headline">#</a></h1>
 <p>The numerical methods that we have looked at are applied to calculate the solutions to ODEs can only be applied to first-order ODEs. To apply them to higher-order ODEs we first need to rewrite them as a system of first-order ODEs. Consider the <span class="math notranslate nohighlight">\(n\)</span>th-order ODE</p>
 <div class="math notranslate nohighlight">
@@ -629,19 +652,25 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>Now we have a system of <span class="math notranslate nohighlight">\(n\)</span> first-order ODEs so we can apply our numerical methods for solving ODEs to each equation in the system to give an equivalent solution to the <span class="math notranslate nohighlight">\(n\)</span>th order ODE.</p>
 <div class="seealso admonition" id="higher-order-odes-example">
-<p class="admonition-title">Example 7.4</p>
+<p class="admonition-title">Example 1.4</p>
 <p>Rewrite the following ODE as a system of first-order ODEs</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y''' + yy'' -2y' + ty'' - 10 = 0.
 \end{align*}\]</div>
-<p><strong>Solution</strong></p>
-<p>First rearrange the ODE so that the highest derivative is the subject</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">First rearrange the ODE so that the highest derivative is the subject</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y''' = -yy'' + 2y' - ty'' + 10,
 \end{align*}\]</div>
-<p>then let <span class="math notranslate nohighlight">\(y_1 = y\)</span>, <span class="math notranslate nohighlight">\(y_2 = y'\)</span>, <span class="math notranslate nohighlight">\(y_3 = y''\)</span> then we can rewrite this ODE using</p>
+<p class="sd-card-text">then let <span class="math notranslate nohighlight">\(y_1 = y\)</span>, <span class="math notranslate nohighlight">\(y_2 = y'\)</span>, <span class="math notranslate nohighlight">\(y_3 = y''\)</span> then we can rewrite this ODE as</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_1' &amp;= y_2, \\
@@ -649,7 +678,8 @@ title="Print to PDF"
     y_3' &amp;= - y_1 y_3 + 2y_2 - t y_3 + 10. 
 \end{align*}\]</div>
 </div>
-<div class="section" id="solving-systems-of-ordinary-differential-equations">
+</details></div>
+<section id="solving-systems-of-ordinary-differential-equations">
 <span id="solving-systems-of-odes-section"></span><h2>Solving systems of ordinary differential equations<a class="headerlink" href="#solving-systems-of-ordinary-differential-equations" title="Permalink to this headline">#</a></h2>
 <p>Consider a system of <span class="math notranslate nohighlight">\(n\)</span> first-order ODEs written in the form</p>
 <div class="amsmath math notranslate nohighlight">
@@ -678,27 +708,33 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>Initial value problems that are defined using systems of ODEs we need to know the initial solution for each of the individual ODEs, i.e., <span class="math notranslate nohighlight">\(y_1(a), y_2(a), \ldots\)</span>, in order to be able to obtain a unique solution.</p>
 <div class="seealso admonition" id="higher-order-ode-ivp-example">
-<p class="admonition-title">Example 7.5</p>
+<p class="admonition-title">Example 1.5</p>
 <p>Calculate solution to the following initial value problem using the Euler method with <span class="math notranslate nohighlight">\(h=0.2\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y'' + y = 0, \qquad t \in [0,10], \qquad y(0) = 2, \qquad y'(0) = 0
 \end{align*}\]</div>
 <p>and compare the computed solution to the exact solution which is <span class="math notranslate nohighlight">\(y = 2\cos(t)\)</span>.</p>
-<p><strong>Solution</strong></p>
-<p>First we need to rewrite the second-order ODE as two first-order ODEs. Let <span class="math notranslate nohighlight">\(y_1 = y\)</span> and <span class="math notranslate nohighlight">\(y_2 = y'\)</span> then</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">First we need to rewrite the second-order ODE as two first-order ODEs. Let <span class="math notranslate nohighlight">\(y_1 = y\)</span> and <span class="math notranslate nohighlight">\(y_2 = y'\)</span> then</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_1' &amp;= y_2, &amp; y_1(0) &amp;= 2,\\
     y_2' &amp;= -y_1, &amp; y_2(0) &amp;= 0,
 \end{align*}\]</div>
-<p>so</p>
+<p class="sd-card-text">so</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{y} &amp;= \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}, &amp;
     \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} y_2 \\ -y_1 \end{pmatrix}.
 \end{align*}\]</div>
-<p>Calculating the first few steps of the <a class="reference internal" href="1.2_Euler_Method.html#euler-method-definition"><span class="std std-ref">Euler method</span></a></p>
+<p class="sd-card-text">Calculating the first few steps of the <a class="reference internal" href="1.2_Euler_Method.html#euler-method-definition"><span class="std std-ref">Euler method</span></a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{y}_1 &amp;= \mathbf{y}_0 + h \mathbf{f}(t_0, \mathbf{y}_0) 
@@ -712,76 +748,77 @@ title="Print to PDF"
     = \begin{pmatrix} 1.76 \\ -1.184 \end{pmatrix}, \\
     &amp;\vdots
 \end{align*}\]</div>
-<p>The exact solution to this IVP is <span class="math notranslate nohighlight">\(y(t) = 2 \cos(t)\)</span>. The Euler method solution has been calculated over the whole domain and a selection of the domain is tabulated below. Note that the solution <span class="math notranslate nohighlight">\(y(t)\)</span> is contained in the <span class="math notranslate nohighlight">\(y_1\)</span> column and the <span class="math notranslate nohighlight">\(y_2\)</span> column is the first derivative <span class="math notranslate nohighlight">\(y'(t)\)</span>.</p>
+<p class="sd-card-text">The exact solution to this IVP is <span class="math notranslate nohighlight">\(y(t) = 2 \cos(t)\)</span>. The Euler method solution has been calculated over the whole domain and a selection of the domain is tabulated below. Note that the solution <span class="math notranslate nohighlight">\(y(t)\)</span> is contained in the <span class="math notranslate nohighlight">\(y_1\)</span> column and the <span class="math notranslate nohighlight">\(y_2\)</span> column is the first derivative <span class="math notranslate nohighlight">\(y'(t)\)</span>.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(y_1\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(y_2\)</span></p></th>
-<th class="text-align:center head"><p>Exact</p></th>
-<th class="text-align:center head"><p>Error</p></th>
+<tr class="row-odd"><th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_1\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_2\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text">Exact</p></th>
+<th class="text-align:center head"><p class="sd-card-text">Error</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>0.00</p></td>
-<td class="text-align:center"><p>2.000000</p></td>
-<td class="text-align:center"><p>0.000000</p></td>
-<td class="text-align:center"><p>2.000000</p></td>
-<td class="text-align:center"><p>0.00e+00</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0.00</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.00e+00</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>0.20</p></td>
-<td class="text-align:center"><p>2.000000</p></td>
-<td class="text-align:center"><p>-0.400000</p></td>
-<td class="text-align:center"><p>1.960133</p></td>
-<td class="text-align:center"><p>3.99e-02</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">0.20</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-0.400000</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.960133</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.99e-02</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>0.40</p></td>
-<td class="text-align:center"><p>1.920000</p></td>
-<td class="text-align:center"><p>-0.800000</p></td>
-<td class="text-align:center"><p>1.842122</p></td>
-<td class="text-align:center"><p>7.79e-02</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0.40</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.920000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-0.800000</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.842122</p></td>
+<td class="text-align:center"><p class="sd-card-text">7.79e-02</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>0.60</p></td>
-<td class="text-align:center"><p>1.760000</p></td>
-<td class="text-align:center"><p>-1.184000</p></td>
-<td class="text-align:center"><p>1.650671</p></td>
-<td class="text-align:center"><p>1.09e-01</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">0.60</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.760000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-1.184000</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.650671</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.09e-01</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>0.80</p></td>
-<td class="text-align:center"><p>1.523200</p></td>
-<td class="text-align:center"><p>-1.536000</p></td>
-<td class="text-align:center"><p>1.393413</p></td>
-<td class="text-align:center"><p>1.30e-01</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0.80</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.523200</p></td>
+<td class="text-align:center"><p class="sd-card-text">-1.536000</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.393413</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.30e-01</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>1.00</p></td>
-<td class="text-align:center"><p>1.216000</p></td>
-<td class="text-align:center"><p>-1.840640</p></td>
-<td class="text-align:center"><p>1.080605</p></td>
-<td class="text-align:center"><p>1.35e-01</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">1.00</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.216000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-1.840640</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.080605</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.35e-01</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>10.00</p></td>
-<td class="text-align:center"><p>-4.812425</p></td>
-<td class="text-align:center"><p>2.295061</p></td>
-<td class="text-align:center"><p>-1.678143</p></td>
-<td class="text-align:center"><p>3.13e+00</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">10.00</p></td>
+<td class="text-align:center"><p class="sd-card-text">-4.812425</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.295061</p></td>
+<td class="text-align:center"><p class="sd-card-text">-1.678143</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.13e+00</p></td>
 </tr>
 </tbody>
 </table>
-<p>The solution using the Euler and RK2 methods is plotted below. The Euler method solution is very inaccurate since it is a first-order method.</p>
-<div class="figure align-default">
+<p class="sd-card-text">The solution using the Euler and RK2 methods is plotted below. The Euler method solution is very inaccurate since it is a first-order method.</p>
+<figure class="align-default">
 <div class="cell_output docutils container">
 <img alt="../_images/1.5_Higher_Order_ODEs_1_2.png" src="../_images/1.5_Higher_Order_ODEs_1_2.png" />
 </div>
+</figure>
 </div>
-</div>
-</div>
-</div>
+</details></div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

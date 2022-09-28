@@ -1,0 +1,104 @@
+Traceback (most recent call last):
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
+    executenb(
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.3568.0_x64__qbz5n2kfra8p0\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+
+def euler(f, tspan, y0, h):
+    nsteps, neq = int((tspan[1] - tspan[0]) / h), len(y0)
+    t = np.arange(nsteps + 1) * h
+    y = np.zeros((nsteps + 1, neq))
+    y[0,:] = y0
+    for n in range(nsteps):
+        y[n+1,:] = y[n,:] + h * f(t[n], y[n,:])
+        
+    return t, y 
+
+
+def implicit_euler(f, tspan, y0, h):
+    nsteps, neq = int((tspan[1] - tspan[0]) / h), len(y0)
+    t = np.arange(nsteps + 1) * h
+    y = np.ones((nsteps + 1, neq))
+    y[0,:] = y0
+    for n in range(nsteps):
+        y[n+1,:] = y[n,:] / (1 + 15 * h)
+        
+    return t, y 
+
+      
+def f(t, y):
+    return -15 * y
+
+
+def exact(t):
+    return np.exp(-15 * t)
+
+
+# Define IVP parameters
+tspan = [0, 1]  # boundaries of the t domain
+y0 = [1]        # solution at the lower boundary
+h = 0.7         # step length
+tol = 1e-6      # convergence tolerance
+
+# Calculate the solution to the IVP
+t_euler1, y_euler1 = euler(f, tspan, y0, 0.25)
+t_euler2, y_euler2 = euler(f, tspan, y0, 0.125)
+t_euler3, y_euler3 = implicit_euler(f, tspan, y0, 0.25)
+
+# Plot solution
+t_exact = np.linspace(tspan[0], tspan[1], 200)
+y_exact = exact(t_exact)
+fig, ax = plt.subplots(figsize=(8, 6))
+plt.plot(t_exact, y_exact, "k", label="Exact")
+plt.plot(t_euler1, y_euler1, "bo-", label="Euler, h = 0.25")
+plt.plot(t_euler2, y_euler2, "ro-", label="Euler, h = 0.125")
+plt.ylim([-3, 3])
+plt.xlabel("$t$", fontsize=14)
+plt.ylabel("$y$", fontsize=14)
+plt.legend(fontsize=12)
+plt.show()
+
+from myst_nb import glue
+glue("stiff_solution_1", fig, display=False)
+
+# Plot solution
+fig, ax = plt.subplots(figsize=(8, 6))
+plt.plot(t_exact, y_exact, "k", label="Exact")
+plt.plot(t_euler1, y_euler1, "bo-", label="Euler, h = 0.25")
+plt.plot(t_euler3, y_euler3, "ro-", label="Implicit Euler, h = 0.25")
+plt.ylim([-3, 3])
+plt.xlabel("$t$", fontsize=14)
+plt.ylabel("$y$", fontsize=14)
+plt.legend(fontsize=12)
+plt.show()
+
+from myst_nb import glue
+glue("stiff_solution_2", fig, display=False)
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn [1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[0;32m      4[0m [38;5;28;01mdef[39;00m [38;5;21meuler[39m(f, tspan, y0, h):
+
+[1;31mModuleNotFoundError[0m: No module named 'numpy'
+ModuleNotFoundError: No module named 'numpy'
+

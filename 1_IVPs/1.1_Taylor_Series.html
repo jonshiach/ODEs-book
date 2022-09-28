@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The Taylor Series &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/1_IVPs/1.1_Taylor_Series.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The Euler method" href="1.2_Euler_Method.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -614,11 +637,11 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-taylor-series">
+  <section class="tex2jax_ignore mathjax_ignore" id="the-taylor-series">
 <span id="taylor-series-section"></span><h1>The Taylor Series<a class="headerlink" href="#the-taylor-series" title="Permalink to this headline">#</a></h1>
-<p>The <strong>Taylor series</strong> is a series expansion from which the Runge-Kutta methods for solving initial value problems are derived.</p>
+<p>The <strong>Taylor series</strong> named after English mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/Brook_Taylor">Brook Taylor</a> is a series expansion of a function.</p>
 <div class="note admonition" id="taylor-series-definition">
-<p class="admonition-title">Definition: the Taylor series</p>
+<p class="admonition-title">Definition: The Taylor series</p>
 <p>Let <span class="math notranslate nohighlight">\(f(t)\)</span> be a differentiable function of the variable <span class="math notranslate nohighlight">\(t\)</span> then the value <span class="math notranslate nohighlight">\(f(t+h)\)</span> where <span class="math notranslate nohighlight">\(h\)</span> is some small value can be written using the Taylor series</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -632,14 +655,20 @@ title="Print to PDF"
     f(t+h) &amp;= \underbrace{f(t) + hf'(t) + \frac{h^2}{2!}f''(t) \cdots + \frac{h^n}{n!}f^{(n)}(t)}_{\mathrm{first }\,n\,\mathrm{ terms}} \\
     &amp; \qquad + \underbrace{\frac{h^{n+1}}{(n+1)!}f^{(n+1)}(t) + \frac{h^{n+2}}{(n+2)!}f^{(n+2)}(t) + \cdots}_{\mathrm{Highter\,Order\,Terms \,(HOT)}}
 \end{align*}\]</div>
-<p>It is import to note that since we are omitting the higher order terms in the truncation of the Taylor series we have an <strong>approximation</strong> of <span class="math notranslate nohighlight">\(f(t+h)\)</span>. When we omit the Higher-Order Terms (HOT) from the Taylor series we say we have <strong>truncated</strong> the Taylor series. So if for example we omit all terms higher than fourth-order we have the <strong>fourth-order Taylor series expansion</strong> of <span class="math notranslate nohighlight">\(f(t+h)\)</span>.</p>
+<p>It is important to note that since we are omitting the higher order terms in the truncation of the Taylor series we only have an <strong>approximation</strong> of <span class="math notranslate nohighlight">\(f(t+h)\)</span>. When we omit the Higher-Order Terms (HOT) from the Taylor series we say we have <strong>truncated</strong> the Taylor series. So if for example we omit all terms higher than fourth-order we have the <strong>fourth-order Taylor series expansion</strong> of <span class="math notranslate nohighlight">\(f(t+h)\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[f(t+h) = f(t) + hf' (t)+\frac{h^2}{2}f'' (t) + \frac{h^3}{3!}f^{''')}(t) + \frac{h^4}{4!}f^{(4)} + \mathrm{HOT}\]</div>
+\[f(t+h) = f(t) + hf' (t)+\frac{h^2}{2}f'' (t) + \frac{h^3}{3!}f^{''')}(t) + \frac{h^4}{4!}f^{(4)} + \mathrm{HOT}.\]</div>
 <div class="seealso admonition" id="taylor-series-example">
 <p class="admonition-title">Example 1.1</p>
 <p>Use the first, second, third and fourth-order Taylor series expansions to calculate the value of <span class="math notranslate nohighlight">\(\cos\left(\frac{\pi}{3} + h\right)\)</span> where <span class="math notranslate nohighlight">\(h=0.2\)</span>.</p>
-<p><strong>Solution</strong></p>
-<p>Here <span class="math notranslate nohighlight">\(t=\frac{\pi}{3}\)</span>, <span class="math notranslate nohighlight">\(h=0.2\)</span>, <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> and <span class="math notranslate nohighlight">\(f'(t) = -\sin(t)\)</span> so the first-order expansion is</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Here <span class="math notranslate nohighlight">\(t=\frac{\pi}{3}\)</span>, <span class="math notranslate nohighlight">\(h=0.2\)</span>, <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> and <span class="math notranslate nohighlight">\(f'(t) = -\sin(t)\)</span> so the first-order expansion is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \cos(t + h) &amp;\approx \cos(t) - h \sin(t) \\
@@ -647,19 +676,19 @@ title="Print to PDF"
     \\
     &amp;= 0.5 - 0.173205 = 0.326795.
 \end{align*}\]</div>
-<p>We know that the exact value is <span class="math notranslate nohighlight">\(\cos(\frac{\pi}{3} + 0.2) = 0.317980\ldots\)</span> so the error in the first-order Taylor series approximation is <span class="math notranslate nohighlight">\(|0.317980 - 0.326795| = 0.008814\)</span>.</p>
-<p>The second derivative of <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> is <span class="math notranslate nohighlight">\(f''(t) = \dfrac{\mathrm{d}}{\mathrm{d}t}(-\sin(t)) = -\cos(t)\)</span> so the second-order expansion is</p>
+<p class="sd-card-text">We know that the exact value is <span class="math notranslate nohighlight">\(\cos(\frac{\pi}{3} + 0.2) = 0.317980\ldots\)</span> so the error in the first-order Taylor series approximation is <span class="math notranslate nohighlight">\(|0.317980 - 0.326795| = 0.008814\)</span>.</p>
+<p class="sd-card-text">The second derivative of <span class="math notranslate nohighlight">\(f(t) = \cos(t)\)</span> is <span class="math notranslate nohighlight">\(f''(t) = \dfrac{\mathrm{d}}{\mathrm{d}t}(-\sin(t)) = -\cos(t)\)</span> so the second-order expansion is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \cos(t + h) &amp;\approx \underbrace{\cos(t) - h \sin(t)}_{\mathrm{first\,order\,expansion}} - \frac{h^2}{2!} \cos(t).
 \end{align*}\]</div>
-<p>The first two terms in the second-order expansion is the first-order expansion which we have already calculated so</p>
+<p class="sd-card-text">The first two terms in the second-order expansion is the first-order expansion which we have already calculated so</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \cos\left(\frac{\pi}{3} + 0.2 \right) &amp;\approx 0.326795 - \frac{0.2^2}{2} \cos\left(\frac{\pi}{3}\right) \\
     &amp;= 0.326795 - 0.010000 = 0.316795.
 \end{align*}\]</div>
-<p>Doing similar for the third and fourth-order expansions</p>
+<p class="sd-card-text">Doing similar for the third and fourth-order expansions</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathrm{3rd\,order}: &amp;&amp; \cos\left(\frac{\pi}{3} + 0.2 \right) &amp;\approx 0.316795 + \frac{0.2^3}{6} \sin\left(\frac{\pi}{3}\right) \\
@@ -667,41 +696,42 @@ title="Print to PDF"
     \mathrm{4th\,order}: &amp;&amp; \cos(\left(\frac{\pi}{3} + 0.2 \right) &amp;\approx 0.317950 + \frac{0.2^4}{6} \cos\left(\frac{\pi}{3}\right) \\
     &amp;&amp;&amp; = 0.317950 + 0.000033 = 0.317983.
 \end{align*}\]</div>
-<p>The Taylor series approximations and the errors have been tabulated below. Note that as we include more terms in the Taylor series expansion the error tends to zero.</p>
+<p class="sd-card-text">The Taylor series approximations and the errors have been tabulated below. Note that as we include more terms in the Taylor series expansion the error tends to zero.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
-<th class="text-align:center head"><p>Taylor series approximation</p></th>
-<th class="text-align:center head"><p>error</p></th>
+<tr class="row-odd"><th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text">Taylor series approximation</p></th>
+<th class="text-align:center head"><p class="sd-card-text">error</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p>0.500000</p></td>
-<td class="text-align:center"><p>1.82e-01</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.500000</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.82e-01</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
-<td class="text-align:center"><p>0.326795</p></td>
-<td class="text-align:center"><p>8.81e-03</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">1</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.326795</p></td>
+<td class="text-align:center"><p class="sd-card-text">8.81e-03</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>2</p></td>
-<td class="text-align:center"><p>0.316795</p></td>
-<td class="text-align:center"><p>1.19e-03</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">2</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.316795</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.19e-03</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>3</p></td>
-<td class="text-align:center"><p>0.317950</p></td>
-<td class="text-align:center"><p>3.10e-05</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">3</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.317950</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.10e-05</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>4</p></td>
-<td class="text-align:center"><p>0.317983</p></td>
-<td class="text-align:center"><p>2.35e-06</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">4</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.317983</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.35e-06</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="using-python-to-calculate-a-taylor-series-approximation">
+</details></div>
+<section id="using-python-to-calculate-a-taylor-series-approximation">
 <h2>Using Python to calculate a Taylor series approximation<a class="headerlink" href="#using-python-to-calculate-a-taylor-series-approximation" title="Permalink to this headline">#</a></h2>
-<p>The code below calculates the Taylor series approximation of <span class="math notranslate nohighlight">\(\cos(t + h)\)</span> using the first <span class="math notranslate nohighlight">\(n\)</span> terms of the series. Note that since the derivative of <span class="math notranslate nohighlight">\(\cos(t)\)</span> is <span class="math notranslate nohighlight">\(-\sin(t)\)</span> so if <span class="math notranslate nohighlight">\(n\)</span> is even then <span class="math notranslate nohighlight">\(f^{(n)}(t) = \cos\)</span> and when <span class="math notranslate nohighlight">\(n\)</span> is odd <span class="math notranslate nohighlight">\(f^{(n)}(t) = \sin(t)\)</span>. To calculate this we can use an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement that checks whether the current value of <span class="math notranslate nohighlight">\(n\)</span> is even or odd and calculates the value <span class="math notranslate nohighlight">\(f(t)\)</span> accordingly and change the sign of <span class="math notranslate nohighlight">\(f^{(n)}(t)\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is odd.</p>
+<p>The code below calculates the Taylor series approximation of <span class="math notranslate nohighlight">\(\cos(t + h)\)</span> using the first <span class="math notranslate nohighlight">\(n\)</span> terms of the series. Note that since the derivative of <span class="math notranslate nohighlight">\(\cos(t)\)</span> is <span class="math notranslate nohighlight">\(-\sin(t)\)</span> so if <span class="math notranslate nohighlight">\(n\)</span> is even then <span class="math notranslate nohighlight">\(f^{(n)}(t) = \pm \cos\)</span> and when <span class="math notranslate nohighlight">\(n\)</span> is odd <span class="math notranslate nohighlight">\(f^{(n)}(t) = \pm \sin(t)\)</span>. To calculate this we can use an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement that checks whether the current value of <span class="math notranslate nohighlight">\(n\)</span> is even or odd and calculates the value <span class="math notranslate nohighlight">\(f(t)\)</span> accordingly and change the sign of <span class="math notranslate nohighlight">\(f^{(n)}(t)\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is odd.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -738,8 +768,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

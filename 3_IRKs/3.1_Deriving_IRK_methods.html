@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Deriving implicit Runge-Kutta methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/3_IRKs/3.1_Deriving_IRK_methods.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Solving initial value problems using implicit Runge-Kutta methods" href="3.2_Solving_IVPs_using_IRK_methods.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -644,16 +667,16 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="deriving-implicit-runge-kutta-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="deriving-implicit-runge-kutta-methods">
 <span id="deriving-irk-methods-section"></span><h1>Deriving implicit Runge-Kutta methods<a class="headerlink" href="#deriving-implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h1>
 <p>There are several types of implicit Runge-Kutta methods which are derived using the <a class="reference internal" href="3.0_IRKs.html#bk-ck-dk-order-conditions"><span class="std std-ref"><span class="math notranslate nohighlight">\(B(k)\)</span>, <span class="math notranslate nohighlight">\(C(k)\)</span> and <span class="math notranslate nohighlight">\(D(k)\)</span> order conditions</span></a> along with the <a class="reference internal" href="../2_ERKs/2.2_RK4_Derivation.html#row-sum-condition"><span class="std std-ref">row sum condition</span></a>.</p>
-<div class="section" id="gauss-legendre-methods">
+<section id="gauss-legendre-methods">
 <span id="gauss-legendre-derivation"></span><h2>Gauss-Legendre methods<a class="headerlink" href="#gauss-legendre-methods" title="Permalink to this headline">#</a></h2>
 <p>Gauss-Legendre methods are a family of methods that are derived using <a class="reference external" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature">Gauss-Legendre quadrature</a>. An <span class="math notranslate nohighlight">\(s\)</span>-stage Gauss-Legendre method has order <span class="math notranslate nohighlight">\(k=2s\)</span>. They are derived using <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre_polynomials">Legendre polynomials</a> which are are a system of orthogonal polynomials.</p>
 <div class="note admonition" id="legendre-polynomials-definition">
 <p class="admonition-title">Definition: Legendre polynomials</p>
-<div class="amsmath math notranslate nohighlight" id="equation-00f256bb-bc14-4f4f-9f47-0d0b7082709a">
-<span class="eqno">(15)<a class="headerlink" href="#equation-00f256bb-bc14-4f4f-9f47-0d0b7082709a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e74d4353-c358-4216-8e79-e65f0c5a10e5">
+<span class="eqno">(16)<a class="headerlink" href="#equation-e74d4353-c358-4216-8e79-e65f0c5a10e5" title="Permalink to this equation">#</a></span>\[\begin{align}
    P_n (t)=\sum_{k=0}^n \binom{n}{k}\binom{n+k}{k}(t-1)^k,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\displaystyle\binom{n}{k}\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a>.</p>
@@ -662,21 +685,27 @@ title="Print to PDF"
 <div class="seealso admonition" id="fourth-order-gauss-legendre-method-example">
 <p class="admonition-title">Example 3.2</p>
 <p>Derive a fourth-order Gauss-Legendre method.</p>
-<p><strong>Solution</strong></p>
-<p>A fourth-order Gauss-Legendre method will have <span class="math notranslate nohighlight">\(s = \frac{k}{2} = \frac{4}{2} = 2\)</span> stages and the <span class="math notranslate nohighlight">\(c_i\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(0=P_2(t)\)</span></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">A fourth-order Gauss-Legendre method will have <span class="math notranslate nohighlight">\(s = \frac{k}{2} = \frac{4}{2} = 2\)</span> stages and the <span class="math notranslate nohighlight">\(c_i\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(0=P_2(t)\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     0&amp;=\binom{2}{0}\binom{2}{0}(t-1)^0 +\binom{2}{1}\binom{3}{1}(t-1)^1 +\binom{2}{2}\binom{4}{2}(t-1)^2 \\
     &amp;=1 + 6t - 6 + 6t^2 - 12t + 6\\
     &amp;=6t^2 - 6t+1,
 \end{align*}\]</div>
-<p>therefore</p>
+<p class="sd-card-text">therefore</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*} 
     c_1 &amp;= \frac{1}{2} - \frac{\sqrt{3}}{6}, \\
     c_2 &amp;= \frac{1}{2} + \frac{\sqrt{3}}{6}.
 \end{align*}\]</div>
-<p>The <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients are chosen to satisfy the <span class="math notranslate nohighlight">\(B(4)\)</span> and <span class="math notranslate nohighlight">\(C(2)\)</span> order conditions respectively</p>
+<p class="sd-card-text">The <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients are chosen to satisfy the <span class="math notranslate nohighlight">\(B(4)\)</span> and <span class="math notranslate nohighlight">\(C(2)\)</span> order conditions respectively</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     b_1 + b_2 = &amp; 1,\\
@@ -686,7 +715,7 @@ title="Print to PDF"
     a_{11} c_1 + a_{12} c_2 = &amp; \frac{1}{2}c_1^2 ,\\
     a_{21} c_1 + a_{22} c_2 = &amp; \frac{1}{2}c_2^2 .
 \end{align*}\]</div>
-<p>Using SymPy to solve the order conditions</p>
+<p class="sd-card-text">Using SymPy to solve the order conditions</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
 
@@ -712,7 +741,7 @@ title="Print to PDF"
 <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Gives the solution</p>
+<p class="sd-card-text">Gives the solution</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     a_{11} &amp;= \frac{1}{4}, &amp;
@@ -722,7 +751,7 @@ title="Print to PDF"
     b_1 &amp;= \frac{1}{2}, &amp;
     b_2 &amp;= \frac{1}{2},
 \end{align*}\]</div>
-<p>so the fourth-order Gauss-Legendre method is</p>
+<p class="sd-card-text">so the fourth-order Gauss-Legendre method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cc}
@@ -732,8 +761,9 @@ title="Print to PDF"
     \end{array}
 \end{align*}\]</div>
 </div>
-</div>
-<div class="section" id="radau-methods">
+</details></div>
+</section>
+<section id="radau-methods">
 <span id="radau-derivation"></span><h2>Radau methods<a class="headerlink" href="#radau-methods" title="Permalink to this headline">#</a></h2>
 <p>Gauss-Legendre methods give us maximal order for the number of stages, however sometimes it is better the sacrifice order to gain better stability properties. An <span class="math notranslate nohighlight">\(s\)</span>-stage Radau method has order <span class="math notranslate nohighlight">\(k=2s-1\)</span> and is A-stable (see <a class="reference internal" href="../4_Stability/4.3_IRK_stability_function.html#a-stability-definition"><span class="std std-ref">A-stability</span></a>. There are two types of Radau methods: Radau IA and Radau IIA.</p>
 <ul class="simple">
@@ -743,13 +773,19 @@ title="Print to PDF"
 <div class="seealso admonition" id="radau-derivation-example">
 <p class="admonition-title">Example 3.3</p>
 <p>Derive a third-order Radau IA method.</p>
-<p><strong>Solution</strong></p>
-<p>An order <span class="math notranslate nohighlight">\(k=3\)</span> Radau IA method will have <span class="math notranslate nohighlight">\(s=\frac{k + 1}{2} = \frac{3 + 1}{4} = 2\)</span> stages. The values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the roots of <span class="math notranslate nohighlight">\(0=P_2(t)+P_1(t)\)</span></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">An order <span class="math notranslate nohighlight">\(k=3\)</span> Radau IA method will have <span class="math notranslate nohighlight">\(s=\frac{k + 1}{2} = \frac{3 + 1}{4} = 2\)</span> stages. The values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the roots of <span class="math notranslate nohighlight">\(0=P_2(t)+P_1(t)\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     0 = (6t^2 -6t+1)+(2t-1) = 6t^2 -4t = 2t(3t - 2),
 \end{align*}\]</div>
-<p>so <span class="math notranslate nohighlight">\(c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(c_2 = \frac{2}{3}\)</span>. The values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> need to satisfy the <span class="math notranslate nohighlight">\(B(4)\)</span> and <span class="math notranslate nohighlight">\(D(2)\)</span> order conditions respectively. Substituting the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> give</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(c_2 = \frac{2}{3}\)</span>. The values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> need to satisfy the <span class="math notranslate nohighlight">\(B(4)\)</span> and <span class="math notranslate nohighlight">\(D(2)\)</span> order conditions respectively. Substituting the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> give</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     b_1 + b_2 &amp;= 1, \\
@@ -759,8 +795,8 @@ title="Print to PDF"
     \tfrac{2}{3} b_2 a_{21} &amp;= \tfrac{1}{2} b_1 (1 - 0^2), \\
     \tfrac{2}{3} b_2 a_{22} &amp;= \tfrac{1}{2} b_2 (1 - (\tfrac{2}{3})^2).
 \end{align*}\]</div>
-<p>From the second equation we have <span class="math notranslate nohighlight">\(b_2 = \frac{3}{4}\)</span> and from the first we have <span class="math notranslate nohighlight">\(b_1 = \frac{1}{4}\)</span>. The fifth equation is now <span class="math notranslate nohighlight">\(\frac{1}{2} a_{21} = \frac{1}{8}\)</span> so <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{4}\)</span> and the sixth equation is <span class="math notranslate nohighlight">\(\frac{1}{2} a_{22} = \frac{5}{25}\)</span> so <span class="math notranslate nohighlight">\(a_{22} = \frac{5}{12}\)</span>. The third equation is now <span class="math notranslate nohighlight">\(\frac{1}{4} a_{11} + \frac{3}{4} (\frac{1}{4}) = \frac{1}{4}\)</span> so <span class="math notranslate nohighlight">\(a_{11} = \frac{1}{4}\)</span> and the fourth equation is <span class="math notranslate nohighlight">\(\frac{1}{4} a_{12} + \frac{3}{4}(\frac{5}{12}) = \frac{3}{4} (\frac{1}{3}) = -\frac{1}{4}\)</span>.</p>
-<p>So the third-order Radau IA method is</p>
+<p class="sd-card-text">From the second equation we have <span class="math notranslate nohighlight">\(b_2 = \frac{3}{4}\)</span> and from the first we have <span class="math notranslate nohighlight">\(b_1 = \frac{1}{4}\)</span>. The fifth equation is now <span class="math notranslate nohighlight">\(\frac{1}{2} a_{21} = \frac{1}{8}\)</span> so <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{4}\)</span> and the sixth equation is <span class="math notranslate nohighlight">\(\frac{1}{2} a_{22} = \frac{5}{25}\)</span> so <span class="math notranslate nohighlight">\(a_{22} = \frac{5}{12}\)</span>. The third equation is now <span class="math notranslate nohighlight">\(\frac{1}{4} a_{11} + \frac{3}{4} (\frac{1}{4}) = \frac{1}{4}\)</span> so <span class="math notranslate nohighlight">\(a_{11} = \frac{1}{4}\)</span> and the fourth equation is <span class="math notranslate nohighlight">\(\frac{1}{4} a_{12} + \frac{3}{4}(\frac{5}{12}) = \frac{3}{4} (\frac{1}{3}) = -\frac{1}{4}\)</span>.</p>
+<p class="sd-card-text">So the third-order Radau IA method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cc}
@@ -770,8 +806,9 @@ title="Print to PDF"
     \end{array}
 \end{align*}\]</div>
 </div>
-</div>
-<div class="section" id="dirk-methods">
+</details></div>
+</section>
+<section id="dirk-methods">
 <span id="dirk-derivation"></span><h2>DIRK methods<a class="headerlink" href="#dirk-methods" title="Permalink to this headline">#</a></h2>
 <p><strong>Diagonally Implicit Runge-Kutta (DIRK)</strong> methods have an <span class="math notranslate nohighlight">\(A\)</span> matrix that is lower triangular with non-zero elements on the main diagonal</p>
 <div class="amsmath math notranslate nohighlight">
@@ -797,34 +834,40 @@ title="Print to PDF"
 <p>we see that whilst these are still implicit equations, there is only one unknown in each one, i.e., the equation for <span class="math notranslate nohighlight">\(k_i\)</span> does not include <span class="math notranslate nohighlight">\(k_{i+1} \dots k_s\)</span>. So the advantage of DIRK methods is that the solutions to these can be obtained sequentially and is more computationally efficient than non-DIRK methods.</p>
 <p>The coefficients of a <span class="math notranslate nohighlight">\(k\)</span>th-order DIRK method are chosen to satisfy the <a class="reference internal" href="3.0_IRKs.html#bk-ck-dk-order-conditions"><span class="std std-ref"><span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> order conditions</span></a> along with</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-condition">
-<span class="eqno">(16)<a class="headerlink" href="#equation-dirk-order-condition" title="Permalink to this equation">#</a></span>\[\mathbf{b}^T A\mathbf{c}=\frac{1}{k!}\]</div>
+<span class="eqno">(17)<a class="headerlink" href="#equation-dirk-order-condition" title="Permalink to this equation">#</a></span>\[\mathbf{b}^T A\mathbf{c}=\frac{1}{k!}\]</div>
 <div class="seealso admonition">
 <p class="admonition-title">Example 3.4</p>
 <p>Derive a 2-stage third-order DIRK method.</p>
-<p><strong>Solution</strong></p>
-<p>Since <span class="math notranslate nohighlight">\(k = 2\)</span> and <span class="math notranslate nohighlight">\(a_{11} = c_1\)</span> and <span class="math notranslate nohighlight">\(a_{12} = 0\)</span> the <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions are</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(k = 2\)</span> and <span class="math notranslate nohighlight">\(a_{11} = c_1\)</span> and <span class="math notranslate nohighlight">\(a_{12} = 0\)</span> the <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions are</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-conditions-1">
-<span class="eqno">(17)<a class="headerlink" href="#equation-dirk-order-conditions-1" title="Permalink to this equation">#</a></span>\[\begin{split}b_1 + b_2  &amp; = 1,\\
+<span class="eqno">(18)<a class="headerlink" href="#equation-dirk-order-conditions-1" title="Permalink to this equation">#</a></span>\[\begin{split}b_1 + b_2  &amp; = 1,\\
 b_1 c_1 + b_2 c_2  &amp; = \frac{1}{2},\\
 b_1 c_1^2 + b_2 c_2^2  &amp; = \frac{1}{3},\\
 a_{21} + a_{22}  &amp; = c_2.\end{split}\]</div>
-<p>We also have equation <a class="reference internal" href="#equation-dirk-order-condition">(16)</a> which is</p>
+<p class="sd-card-text">We also have equation <a class="reference internal" href="#equation-dirk-order-condition">(17)</a> which is</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-conditions-2">
-<span class="eqno">(18)<a class="headerlink" href="#equation-dirk-order-conditions-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{pmatrix} b_1 &amp; b_2 \end{pmatrix}
+<span class="eqno">(19)<a class="headerlink" href="#equation-dirk-order-conditions-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{pmatrix} b_1 &amp; b_2 \end{pmatrix}
 \begin{pmatrix} a_{11} &amp; 0 \\ a_{21} &amp; a_{22} \end{pmatrix} 
 \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} &amp;= \frac{1}{6} \\
 b_1 a_{11} c_1 + b_2(a_{21} c_1 + a_{22} c_2)  &amp;= \frac{1}{6} \\
 b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &amp;= \frac{1}{6}\end{split}\]</div>
-<p>Equations <a class="reference internal" href="#equation-dirk-order-conditions-1">(17)</a> and <a class="reference internal" href="#equation-dirk-order-conditions-2">(18)</a> give a system of 5 equations in 6 unknowns. If we let <span class="math notranslate nohighlight">\(c_1 = a_{11} = \frac{1}{4}\)</span> (this choice is arbitrary) then we can solve for the other coefficients which give</p>
+<p class="sd-card-text">Equations <a class="reference internal" href="#equation-dirk-order-conditions-1">(18)</a> and <a class="reference internal" href="#equation-dirk-order-conditions-2">(19)</a> give a system of 5 equations in 6 unknowns. If we let <span class="math notranslate nohighlight">\(c_1 = a_{11} = \frac{1}{4}\)</span> (this choice is arbitrary) then we can solve for the other coefficients which give</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   a_{21} &amp;= \frac{2}{3}, &amp;
   a_{22} &amp;= \frac{1}{6}, &amp;
-  b_1 &amp;= \frac{4}{7}, &amp;
+  b_1 &amp;= \frac{4}{7}, \\
   b_2 &amp;= \frac{3}{7}, &amp;
   c_2 &amp;= \frac{5}{6},
 \end{align*}\]</div>
-<p>so the DIRK method is</p>
+<p class="sd-card-text">so the DIRK method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   \begin{array}{c|cc}
@@ -834,8 +877,9 @@ b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &amp;= \frac{1}{6}\end{split}\]</div>
   \end{array}
 \end{align*}\]</div>
 </div>
-</div>
-<div class="section" id="sdirk-methods">
+</details></div>
+</section>
+<section id="sdirk-methods">
 <span id="sdirk-derivation"></span><h2>SDIRK methods<a class="headerlink" href="#sdirk-methods" title="Permalink to this headline">#</a></h2>
 <p><strong>Singly Diagonally Implicit Runge-Kutta (SDIRK)</strong> methods are a variation on DIRK method with the additional condition that the elements on the main diagonal have the same value (i.e., <span class="math notranslate nohighlight">\(a_{ii} = c_1\)</span>)</p>
 <div class="amsmath math notranslate nohighlight">
@@ -853,8 +897,14 @@ b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &amp;= \frac{1}{6}\end{split}\]</div>
 <div class="seealso admonition" id="sdirk-derivation-example">
 <p class="admonition-title">Example 3.5</p>
 <p>Derive a 2-stage third-order SDIRK method.</p>
-<p><strong>Solution</strong></p>
-<p>Since <span class="math notranslate nohighlight">\(a_{11} = a_{22} = c_1\)</span> the order conditions are</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(a_{11} = a_{22} = c_1\)</span> the order conditions are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     b_1 +b_2  &amp; =1,\\
@@ -863,16 +913,16 @@ b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &amp;= \frac{1}{6}\end{split}\]</div>
     a_{21} +c_1  &amp; =c_2 ,\\
     b_1 c_1^2 +b_2 (a_{21} c_1 +c_1 c_2 ) &amp; =\frac{1}{6}.
 \end{align*}\]</div>
-<p>Here we have 5 equations in 5 unknowns. Solving these give</p>
+<p class="sd-card-text">Here we have 5 equations in 5 unknowns. Solving these give</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   a_{11} &amp;= \frac{1}{2} \mp \frac{\sqrt{3}}{6}, &amp;
-  a_{21} &amp;= \pm \frac{\sqrt{3}}{3}, &amp;
-  b_1 &amp;= \frac{1}{2}, &amp;
-  b_2 &amp;= \frac{1}{2}, &amp;
+  a_{21} &amp;= \pm \frac{\sqrt{3}}{3},  &amp;
+  b_1 &amp;= \frac{1}{2}, \\
+  b_2 &amp;= \frac{1}{2},  &amp;
   c_2 &amp;= \frac{1}{2} \pm \frac{\sqrt{3}}{6}.
 \end{align*}\]</div>
-<p>Note that here we have two equivalent SDIRK methods alternating the sign of the <span class="math notranslate nohighlight">\(\sqrt{3}\)</span> term</p>
+<p class="sd-card-text">Note that here we have two equivalent SDIRK methods alternating the sign of the <span class="math notranslate nohighlight">\(\sqrt{3}\)</span> term</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   \begin{array}{c|cc}
@@ -882,8 +932,9 @@ b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &amp;= \frac{1}{6}\end{split}\]</div>
   \end{array}
 \end{align*}\]</div>
 </div>
-</div>
-</div>
+</details></div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Cheat Sheet &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/8_Appendices/8.0_Cheat_sheet.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python code" href="8.1_Python.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -674,9 +697,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cheat-sheet">
+  <section class="tex2jax_ignore mathjax_ignore" id="cheat-sheet">
 <h1>Cheat Sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this headline">#</a></h1>
-<div class="section" id="initial-value-problems">
+<section id="initial-value-problems">
 <h2>Initial value problems<a class="headerlink" href="#initial-value-problems" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Ordinary-Differential-Equation-ODE">Ordinary Differential Equation (ODE)<a class="headerlink" href="#term-Ordinary-Differential-Equation-ODE" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../1_IVPs/1.0_IVPs.html#ode-section"><span class="std std-ref">ODE</span></a> is an equation of the for</p>
@@ -719,9 +742,9 @@ title="Print to PDF"
 \end{align*}\]</div>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="explicit-runge-kutta-methods">
+<section id="explicit-runge-kutta-methods">
 <h2>Explicit Runge-Kutta methods<a class="headerlink" href="#explicit-runge-kutta-methods" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-General-form-of-a-Runge-Kutta-method">General form of a Runge-Kutta method<a class="headerlink" href="#term-General-form-of-a-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#general-form-of-a-rk-method-section"><span class="std std-ref">general form of a Runge-Kutta method</span></a> is</p>
@@ -748,7 +771,7 @@ title="Print to PDF"
 </dd>
 <dt id="term-The-row-sum-condition">The row sum condition<a class="headerlink" href="#term-The-row-sum-condition" title="Permalink to this term">#</a></dt><dd><p>The values of <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> must satisfy the <a class="reference internal" href="../2_ERKs/2.2_RK4_Derivation.html#row-sum-condition"><span class="std std-ref">row sum condition</span></a> which is <span class="math notranslate nohighlight">\(c_i = \displaystyle_{j=1}^s a_{ij}\)</span>.</p>
 </dd>
-<dt id="term-The-second-order-explicit-Runge-Kutta-method-RK2">The second-order explicit Runge-Kutta method (RK2)<a class="headerlink" href="#term-The-second-order-explicit-Runge-Kutta-method-RK2" title="Permalink to this term">#</a></dt><dd><p><em>The</em> <a class="reference internal" href="../2_ERKs/2.1_ERK_Derivation.html#rk2-derivation-example"><span class="std std-ref">second-order explicit Runge-Kutta method</span></a> has the Butcher tableau</p>
+<dt id="term-The-second-order-explicit-Runge-Kutta-method-RK2">The second-order explicit Runge-Kutta method (RK2)<a class="headerlink" href="#term-The-second-order-explicit-Runge-Kutta-method-RK2" title="Permalink to this term">#</a></dt><dd><p><em>The</em> <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html#rk2-derivation-example"><span class="std std-ref">second-order explicit Runge-Kutta method</span></a> has the Butcher tableau</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cc}
@@ -771,9 +794,9 @@ title="Print to PDF"
 \end{align*}\]</div>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="implicit-runge-kutta-methods">
+<section id="implicit-runge-kutta-methods">
 <h2>Implicit Runge-Kutta methods<a class="headerlink" href="#implicit-runge-kutta-methods" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Implicit-Runge-Kutta-methods-IRK">Implicit Runge-Kutta methods (IRK)<a class="headerlink" href="#term-Implicit-Runge-Kutta-methods-IRK" title="Permalink to this term">#</a></dt><dd><p>An <a class="reference internal" href="../3_IRKs/3.0_IRKs.html#irk-chapter"><span class="std std-ref">implicit Runge-Kutta method</span></a> is where the stage values are implicit functions.</p>
@@ -805,14 +828,14 @@ title="Print to PDF"
 <dt id="term-Computing-the-stage-values-of-an-implicit-Runge-Kutta-method">Computing the stage values of an implicit Runge-Kutta method<a class="headerlink" href="#term-Computing-the-stage-values-of-an-implicit-Runge-Kutta-method" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../3_IRKs/3.2_Solving_IVPs_using_IRK_methods.html#solving-ivps-using-irk-methods-section"><span class="std std-ref">Computing the stage values</span></a> of an implicit Runge-Kutta method requires the solution to a system of nonlinear equations. This is typically done using Newton’s method but can also be done using the Gauss-Seidel method.</p>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="stability">
+<section id="stability">
 <h2>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Stability">Stability<a class="headerlink" href="#term-Stability" title="Permalink to this term">#</a></dt><dd><p>A method is <a class="reference internal" href="../4_Stability/4.0_Stability.html#stability-definition"><span class="std std-ref">stable</span></a> if the local truncation errors do not increase from one step to the next.</p>
 </dd>
-<dt id="term-Stiffness">Stiffness<a class="headerlink" href="#term-Stiffness" title="Permalink to this term">#</a></dt><dd><p>An ODE is <span class="xref myst">stiff</span> if it requires a very small value of the step length <span class="math notranslate nohighlight">\(h\)</span> in order for a method to remain stable.</p>
+<dt id="term-Stiffness">Stiffness<a class="headerlink" href="#term-Stiffness" title="Permalink to this term">#</a></dt><dd><p>An ODE is <a class="reference internal" href="../4_Stability/4.0_Stability.html#stiffness-section"><span class="std std-ref">stiff</span></a> if it requires a very small value of the step length <span class="math notranslate nohighlight">\(h\)</span> in order for a method to remain stable.</p>
 </dd>
 <dt id="term-Stiffness-ratio">Stiffness ratio<a class="headerlink" href="#term-Stiffness-ratio" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../4_Stability/4.0_Stability.html#stiffness-ratio-definition"><span class="std std-ref">stiffness ratio</span></a> gives a measure to whether an system of ODEs is stiff and is calculated using</p>
 <div class="amsmath math notranslate nohighlight">
@@ -860,9 +883,9 @@ title="Print to PDF"
 </ul>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="boundary-value-problems">
+<section id="boundary-value-problems">
 <h2>Boundary Value Problems<a class="headerlink" href="#boundary-value-problems" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Two-point-Boundary-Value-Problem-BVP">Two point Boundary Value Problem (BVP)<a class="headerlink" href="#term-Two-point-Boundary-Value-Problem-BVP" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../5_BVPs/5.0_BVPs.html#bvp-section"><span class="std std-ref">two point boundary value problem</span></a> is an ODE where the solutions at the lower and upper boundaries of the domain are known</p>
@@ -891,9 +914,9 @@ title="Print to PDF"
 <dt id="term-The-Thomas-algorithm">The Thomas algorithm<a class="headerlink" href="#term-The-Thomas-algorithm" title="Permalink to this term">#</a></dt><dd><p>The <a class="reference internal" href="../5_BVPs/5.2_Finite_difference_method.html#thomas-algorithm-section"><span class="std std-ref">Thomas algorithm</span></a> is an efficient method for solving tridiagonal systems of linear equations.</p>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="direct-methods">
+<section id="direct-methods">
 <h2>Direct methods<a class="headerlink" href="#direct-methods" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-System-of-linear-equations">System of linear equations<a class="headerlink" href="#term-System-of-linear-equations" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="../6_Direct_methods/6.0_Direct_methods.html#systems-of-linear-equations-section"><span class="std std-ref">system of linear equations</span></a> is a set of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> where the solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> satisfies all equations in the system.</p>
@@ -966,9 +989,9 @@ title="Print to PDF"
 </ul>
 </dd>
 </dl>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="indirect-methods">
+<section id="indirect-methods">
 <h2>Indirect methods<a class="headerlink" href="#indirect-methods" title="Permalink to this headline">#</a></h2>
 <dl class="glossary">
 <dt id="term-Indirect-method">Indirect method<a class="headerlink" href="#term-Indirect-method" title="Permalink to this term">#</a></dt><dd><p><a class="reference internal" href="../7_Indirect_methods/7.0_Indirect_methods.html#indirect-methods-chapter"><span class="std std-ref">Indirect methods</span></a> is multiple applications of the method to calculate the solution to a system of linear equations. An estimate is made of the solution <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)}\)</span> and an indirect method is applied to calculate the improved estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(1)}\)</span>. The method is applied repeatedly until two successive estimates agree to some tolerance.</p>
@@ -1013,8 +1036,8 @@ title="Print to PDF"
 <p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the Jacobi method iteration matrix.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

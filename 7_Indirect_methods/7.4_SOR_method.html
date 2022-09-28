@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The Successive Over Relaxation (SOR) method &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/7_Indirect_methods/7.4_SOR_method.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Chapter summary" href="7.5_Indirect_methods_summary.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -624,14 +647,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-successive-over-relaxation-sor-method">
+  <section class="tex2jax_ignore mathjax_ignore" id="the-successive-over-relaxation-sor-method">
 <span id="sor-method-section"></span><h1>The Successive Over Relaxation (SOR) method<a class="headerlink" href="#the-successive-over-relaxation-sor-method" title="Permalink to this headline">#</a></h1>
 <p>The <strong>Successive Over Relaxation (SOR)</strong> method improves on the convergence rate of the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-definition"><span class="std std-ref">Gauss-Seidel</span></a> method by applying a weighting factor to the updated estimates to adjust the extent of the change. Let <span class="math notranslate nohighlight">\(\omega\)</span> be a <strong>relaxation parameter</strong> in the range <span class="math notranslate nohighlight">\([0,2]\)</span> then the SOR method is</p>
 <div class="note admonition" id="sor-method-definition">
 <p class="admonition-title">Definition: The Successive Over Relaxation (SOR) method</p>
 <p>The SOR method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-sor-method-equation">
-<span class="eqno">(43)<a class="headerlink" href="#equation-sor-method-equation" title="Permalink to this equation">#</a></span>\[x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n.\]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-sor-method-equation" title="Permalink to this equation">#</a></span>\[x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n.\]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span>.</p>
 </div>
 <p>The iteration matrix for the SOR method is derived by writing the coefficient matrix of the linear system <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> using</p>
@@ -656,40 +679,52 @@ title="Print to PDF"
 <div class="note admonition" id="sor-method-iteration-matrix-definition">
 <p class="admonition-title">Definition: Iteration matrix for the SOR method</p>
 <div class="math notranslate nohighlight" id="equation-sor-method-iteration-matrix-equation">
-<span class="eqno">(44)<a class="headerlink" href="#equation-sor-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_{SOR} =(D+\omega L)^{-1} ((1-\omega )D-\omega U).\]</div>
+<span class="eqno">(45)<a class="headerlink" href="#equation-sor-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_{SOR} =(D+\omega L)^{-1} ((1-\omega )D-\omega U).\]</div>
 </div>
 <p>The value of <span class="math notranslate nohighlight">\(\omega\)</span> affects the rate of convergence of the SOR method and is determined by how the Gauss-Seidel method converges to the exact solution. Consider the diagrams in <a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 25</span></a> and <a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 26</span></a> below that shows the two types of convergence of the Gauss-Seidel method. When we have <a class="reference external" href="https://en.wikipedia.org/wiki/Monotonic_function">monotonic</a> convergence where each successive iteration approaches the exact solution from a single side (<a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 25</span></a>), the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &gt; 1\)</span> so that the change in subsequent approximations is increased. When we have oscillatory convergence where successive iterations overshoot the exact solution (<a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 26</span></a>) the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &lt; 1\)</span> so that the change in the subsequent approximation is decreased.</p>
-<div class="figure align-default" id="over-relaxation-figure">
+<figure class="align-default" id="over-relaxation-figure">
 <img alt="../_images/sor_1.png" src="../_images/sor_1.png" />
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">The estimated solution approaches the exact solution monotonically.</span><a class="headerlink" href="#over-relaxation-figure" title="Permalink to this image">#</a></p>
-</div>
-<div class="figure align-default" id="under-relaxation-figure">
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">The estimated solution approaches the exact solution monotonically.</span><a class="headerlink" href="#over-relaxation-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="under-relaxation-figure">
 <img alt="../_images/sor_2.png" src="../_images/sor_2.png" />
-<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">The estimated solution oscillates about the exact solution.</span><a class="headerlink" href="#under-relaxation-figure" title="Permalink to this image">#</a></p>
-</div>
-<div class="section" id="optimum-value-of-the-relaxation-parameter">
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">The estimated solution oscillates about the exact solution.</span><a class="headerlink" href="#under-relaxation-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="optimum-value-of-the-relaxation-parameter">
 <span id="optimum-relaxation-parameter-section"></span><h2>Optimum value of the relaxation parameter<a class="headerlink" href="#optimum-value-of-the-relaxation-parameter" title="Permalink to this headline">#</a></h2>
 <p>The optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> will be the one that minimises the spectral radius of the iteration matrix. The <a class="reference internal" href="#sor-method-iteration-matrix-definition"><span class="std std-ref">iteration matrix</span></a> will depend on the value of <span class="math notranslate nohighlight">\(\omega\)</span>. One way to estimate the optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> is to calculate <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for values in the range <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span> and choose the value of <span class="math notranslate nohighlight">\(\omega\)</span> which minimises this value. This has been done for the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a> and the plot is shown in <a class="reference internal" href="#optimum-relaxation-parameter-figure"><span class="std std-numref">Fig. 27</span></a>.</p>
-<div class="figure align-default" id="optimum-relaxation-parameter-figure">
+<figure class="align-default" id="optimum-relaxation-parameter-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/7.4_SOR_method_1_1.png" src="../_images/7.4_SOR_method_1_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Plot of the spectral radius <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> of the iteration matrix for the SOR method when used to solve the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a>.</span><a class="headerlink" href="#optimum-relaxation-parameter-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Plot of the spectral radius <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> of the iteration matrix for the SOR method when used to solve the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a>.</span><a class="headerlink" href="#optimum-relaxation-parameter-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>So an estimation of the optimum value of the relaxation parameters is <span class="math notranslate nohighlight">\(\omega = 1.25\)</span>.</p>
 <p>If the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> has real eigenvalues we can use the following theorem to calculate the exact value of <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
 <div class="important admonition" id="optimum-relaxation-parameter-theorem">
 <p class="admonition-title">Theorem: Optimum relaxation parameter</p>
 <p>If a system of linear equations of the form <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> has a coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> with all real eigenvalues then the optimum relaxation parameter for the SOR method can be calculated using</p>
 <div class="math notranslate nohighlight" id="equation-optimum-relaxation-parameter-equation">
-<span class="eqno">(45)<a class="headerlink" href="#equation-optimum-relaxation-parameter-equation" title="Permalink to this equation">#</a></span>\[\omega_{opt} = 1+{\left(\frac{\rho (T_J )}{1+\sqrt{1-\rho (T_J )^2 }}\right)}^2,\]</div>
+<span class="eqno">(46)<a class="headerlink" href="#equation-optimum-relaxation-parameter-equation" title="Permalink to this equation">#</a></span>\[\omega_{opt} = 1+{\left(\frac{\rho (T_J )}{1+\sqrt{1-\rho (T_J )^2 }}\right)}^2,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the iteration matrix of the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-iteration-matrix-definition"><span class="std std-ref">Jacobi method</span></a>.</p>
 </div>
 <div class="seealso admonition" id="optimum-relaxation-parameter-example">
 <p class="admonition-title">Example 7.4</p>
-<p>Determine the optimum relaxation parameter for the SOR method when applied to the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a> by calculating <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for a range of <span class="math notranslate nohighlight">\(\omega\)</span> values and using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(45)</a> (if possible).</p>
-<p><strong>Solution</strong></p>
-<p>The coefficient matrix is</p>
+<p>Determine the optimum relaxation parameter for the SOR method when applied to the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a> by calculating <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for a range of <span class="math notranslate nohighlight">\(\omega\)</span> values and using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(46)</a> (if possible).</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The coefficient matrix is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     A = \begin{pmatrix}
@@ -698,11 +733,11 @@ title="Print to PDF"
         0 &amp; -1 &amp; 4
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>The plot below shows the value of <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for a range of <span class="math notranslate nohighlight">\(\omega\)</span> values. The minimum value of <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> corresponds to <span class="math notranslate nohighlight">\(\omega = 1.2405\)</span>.</p>
+<p class="sd-card-text">The plot below shows the value of <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for a range of <span class="math notranslate nohighlight">\(\omega\)</span> values. The minimum value of <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> corresponds to <span class="math notranslate nohighlight">\(\omega = 1.2405\)</span>.</p>
 <div class="cell_output docutils container">
 <img alt="../_images/7.4_SOR_method_1_1.png" src="../_images/7.4_SOR_method_1_1.png" />
 </div>
-<p>The eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are</p>
+<p class="sd-card-text">The eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     0 &amp;= \begin{vmatrix}
@@ -713,7 +748,7 @@ title="Print to PDF"
     = (4 - \lambda)(\lambda^2 - 7\lambda + 6), \\
     \therefore \lambda &amp;= 4, 4 \pm \sqrt{10},
 \end{align*}\]</div>
-<p>so <span class="math notranslate nohighlight">\(A\)</span> has real eigenvalues. The iteration matrix for the Jacobi method applied to this system is</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(A\)</span> has real eigenvalues. The iteration matrix for the Jacobi method applied to this system is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     T_J &amp;= -D^{-1}(L + U)
@@ -733,7 +768,7 @@ title="Print to PDF"
         0 &amp; \frac{1}{4} &amp; 0
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>Calculating <span class="math notranslate nohighlight">\(\rho(T_J)\)</span></p>
+<p class="sd-card-text">Calculating <span class="math notranslate nohighlight">\(\rho(T_J)\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     0 &amp;= \begin{vmatrix}
@@ -744,12 +779,13 @@ title="Print to PDF"
     -\lambda \left( \lambda^2 + \frac{5}{8} \right), \\
     \therefore \lambda &amp;= 0, \pm \frac{\sqrt{10}}{4}
 \end{align*}\]</div>
-<p>so <span class="math notranslate nohighlight">\(\rho(T_J) = \frac{\sqrt{10}}{4}\)</span>. Using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(45)</a></p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(\rho(T_J) = \frac{\sqrt{10}}{4}\)</span>. Using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(46)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \omega = 1 + \left( \frac{\frac{\sqrt{10}}{4}}{1 + \sqrt{1 - (\frac{\sqrt{10}}{4})^2}} \right)^2 = \frac{4}{5}(4 - \sqrt{6}) \approx 1.2404.
 \end{align*}\]</div>
 </div>
+</details></div>
 <div class="seealso admonition" id="sor-method-example">
 <p class="admonition-title">Example 7.5</p>
 <p>Use the SOR method with <span class="math notranslate nohighlight">\(\omega = 1.24\)</span> to solve the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a></p>
@@ -759,22 +795,28 @@ title="Print to PDF"
     3x_1 +4x_2 -x_3 &amp;=-8,\\
     -x_2 +4x_3 &amp;=14.
 \end{align*}\]</div>
-<p><strong>Solution</strong>
-The SOR method for this system is</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The SOR method for this system is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_{1}^{(k+1)} &amp;= (1 - \omega)x_{1}^{(k)} + \frac{\omega}{4} \left( -2 - 3 x_{2}^{(k)} \right), \\
     x_{2}^{(k+1)} &amp;= (1 - \omega)x_{2}^{(k)} + \frac{\omega}{4} \left( -8 - 3 x_{1}^{(k+1)} + x_{3}^{(k)} \right), \\
     x_{3}^{(k+1)} &amp;= (1 - \omega)x_{3}^{(k)} + \frac{\omega}{4} \left( 14 + x_{2}^{(k+1)} \right).
 \end{align*}\]</div>
-<p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_{1}^{(1)} &amp;= (1 - 1.24)(-0.5) \frac{1.24}{4} \left( -2 - 3 (-1.625) \right) = -0.5, \\
     x_{2}^{(1)} &amp;= (1 - 1.24)(-1.625) \frac{1.24}{4} \left( -8 - 3 (-0.5) + -3.09375 \right) = -1.625, \\
     x_{3}^{(1)} &amp;= (1 - 1.24)(3.09375) \frac{1.24}{4} \left( 14 + 1.625 \right) = 3.09375.
 \end{align*}\]</div>
-<p>Calculate the residual</p>
+<p class="sd-card-text">Calculate the residual</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{r}^{(1)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
@@ -784,7 +826,7 @@ The SOR method for this system is</p>
     &amp;=
     \begin{pmatrix} 4.875 \\ 3.09375 \\ 0.0 \end{pmatrix}.
 \end{align*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_{1}^{(2)} &amp;= (1 - 1.24)(0.71875) \frac{1.24}{4} \left( -2 - 3 (-1.765625) \right) = 0.71875, \\
@@ -792,7 +834,7 @@ The SOR method for this system is</p>
     &amp;= -1.765625, \\
     x_{3}^{(2)} &amp;= (1 - 1.24)(3.05859375) \frac{1.24}{4} \left( 14 + 1.765625 \right) = 3.05859375.
 \end{align*}\]</div>
-<p>Calculate the residual</p>
+<p class="sd-card-text">Calculate the residual</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{r}^{(2)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
@@ -802,82 +844,83 @@ The SOR method for this system is</p>
     &amp;=
     \begin{pmatrix} 0.421875 \\ -0.03515625 \\ 0.0 \end{pmatrix}.
 \end{align*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The SOR method was iterated until <span class="math notranslate nohighlight">\(|\mathbf{r}| &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">Jacobi method</span></a> took 49 iterations and the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example"><span class="std std-ref">Gauss-Seidel method</span></a> took 19 iterations to achieve the same accuracy.</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The SOR method was iterated until <span class="math notranslate nohighlight">\(|\mathbf{r}| &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">Jacobi method</span></a> took 49 iterations and the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example"><span class="std std-ref">Gauss-Seidel method</span></a> took 19 iterations to achieve the same accuracy.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(x_{0}\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\max(\mathbf{r})\)</span></p></th>
+<tr class="row-odd"><th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{0}\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\max(\mathbf{r})\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p>0.000000</p></td>
-<td class="text-align:center"><p>0.000000</p></td>
-<td class="text-align:center"><p>0.000000</p></td>
-<td class="text-align:center"><p>14.000000</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">14.000000</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
-<td class="text-align:center"><p>-0.620000</p></td>
-<td class="text-align:center"><p>-1.903400</p></td>
-<td class="text-align:center"><p>3.749946</p></td>
-<td class="text-align:center"><p>6.190200</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">1</p></td>
+<td class="text-align:center"><p class="sd-card-text">-0.620000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-1.903400</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.749946</p></td>
+<td class="text-align:center"><p class="sd-card-text">6.190200</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>2</p></td>
-<td class="text-align:center"><p>1.298962</p></td>
-<td class="text-align:center"><p>-2.068735</p></td>
-<td class="text-align:center"><p>2.798705</p></td>
-<td class="text-align:center"><p>0.989642</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">2</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.298962</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.068735</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.798705</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.989642</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>3</p></td>
-<td class="text-align:center"><p>0.992173</p></td>
-<td class="text-align:center"><p>-2.038626</p></td>
-<td class="text-align:center"><p>3.036337</p></td>
-<td class="text-align:center"><p>0.214321</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">3</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.992173</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.038626</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.036337</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.214321</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>4</p></td>
-<td class="text-align:center"><p>1.037801</p></td>
-<td class="text-align:center"><p>-2.014620</p></td>
-<td class="text-align:center"><p>2.986747</p></td>
-<td class="text-align:center"><p>0.107343</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">4</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.037801</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.014620</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.986747</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.107343</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>5</p></td>
-<td class="text-align:center"><p>1.004524</p></td>
-<td class="text-align:center"><p>-2.004807</p></td>
-<td class="text-align:center"><p>3.001690</p></td>
-<td class="text-align:center"><p>0.011569</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">5</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.004524</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.004807</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.001690</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.011569</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>6</p></td>
-<td class="text-align:center"><p>1.003385</p></td>
-<td class="text-align:center"><p>-2.001470</p></td>
-<td class="text-align:center"><p>2.999139</p></td>
-<td class="text-align:center"><p>0.009129</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">6</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.003385</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.001470</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.999139</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.009129</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>7</p></td>
-<td class="text-align:center"><p>1.000555</p></td>
-<td class="text-align:center"><p>-2.000430</p></td>
-<td class="text-align:center"><p>3.000073</p></td>
-<td class="text-align:center"><p>0.000929</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">7</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.000555</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.000430</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.000073</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000929</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>8</p></td>
-<td class="text-align:center"><p>1.000267</p></td>
-<td class="text-align:center"><p>-2.000122</p></td>
-<td class="text-align:center"><p>2.999944</p></td>
-<td class="text-align:center"><p>0.000701</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">8</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.000267</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.000122</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.999944</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000701</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>9</p></td>
-<td class="text-align:center"><p>1.000050</p></td>
-<td class="text-align:center"><p>-2.000034</p></td>
-<td class="text-align:center"><p>3.000003</p></td>
-<td class="text-align:center"><p>0.000096</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">9</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.000050</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.000034</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.000003</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000096</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="python-code">
+</details></div>
+</section>
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">sor()</span></code> which solves a linear system of equations of the for <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> using the Gauss-Seidel method with a relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
 <div class="cell docutils container">
@@ -904,8 +947,8 @@ The SOR method for this system is</p>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

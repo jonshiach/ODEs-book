@@ -1,24 +1,28 @@
 Traceback (most recent call last):
-  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
     executenb(
-  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 1204, in execute
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\client.py", line 1204, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\util.py", line 84, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\util.py", line 62, in just_run
     return loop.run_until_complete(coro)
-  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.3568.0_x64__qbz5n2kfra8p0\lib\asyncio\base_events.py", line 647, in run_until_complete
     return future.result()
-  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 663, in async_execute
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 965, in async_execute_cell
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\client.py", line 965, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Volumes/DataHD/jon/opt/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+  File "C:\Users\jonsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 import numpy as np
 import matplotlib.pyplot as plt
+
+
+def f(t, y):
+    return t * y
 
 # Define IVP
 tspan = [0, 1]  # boundaries of the t domain
@@ -36,7 +40,7 @@ for n in range(nsteps):
     k1 = f(t[n], y[n,:])
     k2 = f(t[n] + h, y[n,:] + h * k1)
     y[n+1,:] = y[n,:] + h / 2 * (k1 + k2)
-    print(rf"    k_1 &= f(t_{n}, y_{n}) = ({t[n]:0.1f})({y[n,0]:0.6f}), \\")
+    print(rf"    k_1 &= f(t_{n}, y_{n}) = ({t[n]:0.1f})({y[n,0]:0.6f}) = {k1[0]:0.6f}, \\")
     print(rf"    k_2 &= f(t_{n} + h, y_{n} + hk_1) = ({t[n]:0.1f} + {h})({y[n,0]:0.6f} + {h}({k1[0]:0.6f})) \\")
     print(rf"    &= {k2[0]:0.6f}, \\")
     print(rf"    y_{n+1} &= y_{n} + \frac{{h}}{{2}}(k_1 + k_2) = {y[n,0]:0.6f} + {h/2}({k1[0]:0.6f} + {k2[0]:0.6f}) \\")
@@ -49,15 +53,13 @@ for n in range(nsteps):
 print(r"\end{align*}")
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m<ipython-input-1-b0631b5ac938>[0m in [0;36m<module>[0;34m[0m
-[1;32m     15[0m [0mprint[0m[0;34m([0m[0;34mr"\begin{align*}"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     16[0m [0;32mfor[0m [0mn[0m [0;32min[0m [0mrange[0m[0;34m([0m[0mnsteps[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 17[0;31m     [0mk1[0m [0;34m=[0m [0mf[0m[0;34m([0m[0mt[0m[0;34m[[0m[0mn[0m[0;34m][0m[0;34m,[0m [0my[0m[0;34m[[0m[0mn[0m[0;34m,[0m[0;34m:[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     18[0m     [0mk2[0m [0;34m=[0m [0mf[0m[0;34m([0m[0mt[0m[0;34m[[0m[0mn[0m[0;34m][0m [0;34m+[0m [0mh[0m[0;34m,[0m [0my[0m[0;34m[[0m[0mn[0m[0;34m,[0m[0;34m:[0m[0;34m][0m [0;34m+[0m [0mh[0m [0;34m*[0m [0mk1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     19[0m     [0my[0m[0;34m[[0m[0mn[0m[0;34m+[0m[0;36m1[0m[0;34m,[0m[0;34m:[0m[0;34m][0m [0;34m=[0m [0my[0m[0;34m[[0m[0mn[0m[0;34m,[0m[0;34m:[0m[0;34m][0m [0;34m+[0m [0mh[0m [0;34m/[0m [0;36m2[0m [0;34m*[0m [0;34m([0m[0mk1[0m [0;34m+[0m [0mk2[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn [1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[0;32m      5[0m [38;5;28;01mdef[39;00m [38;5;21mf[39m(t, y):
 
-[0;31mNameError[0m: name 'f' is not defined
-NameError: name 'f' is not defined
+[1;31mModuleNotFoundError[0m: No module named 'numpy'
+ModuleNotFoundError: No module named 'numpy'
 

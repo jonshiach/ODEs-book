@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>LUP decomposition &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/6_Direct_methods/6.2_LUP_decomposition.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Cholesky decomposition" href="6.3_Cholesky_decomposition.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -644,9 +667,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lup-decomposition">
+  <section class="tex2jax_ignore mathjax_ignore" id="lup-decomposition">
 <span id="lup-section"></span><h1>LUP decomposition<a class="headerlink" href="#lup-decomposition" title="Permalink to this headline">#</a></h1>
-<div class="section" id="partial-pivoting">
+<section id="partial-pivoting">
 <span id="partial-pivoting-section"></span><h2>Partial pivoting<a class="headerlink" href="#partial-pivoting" title="Permalink to this headline">#</a></h2>
 <p>A problem that can be encountered with <a class="reference internal" href="6.1_LU_decomposition.html#lu-definition"><span class="std std-ref">LU decomposition</span></a> is that if the value of <span class="math notranslate nohighlight">\(u_{jj}\)</span> in the expression for <a class="reference internal" href="6.1_LU_decomposition.html#lu-definition"><span class="std std-ref"><span class="math notranslate nohighlight">\(\ell_{ij}\)</span></span></a> is zero or some small number it will mean that it is undefined or prone to computational rounding errors due to the value of <span class="math notranslate nohighlight">\(\ell_{ij}\)</span> being very large, this is known as an <a class="reference external" href="https://en.wikipedia.org/wiki/Condition_number"><strong>ill-conditioned system</strong></a>.</p>
 <p>This problem can be overcome by using <strong>partial pivoting</strong> where rows of the coefficient matrix are permuted (swapped) so that the pivot element <span class="math notranslate nohighlight">\(a_{jj}\)</span> has a larger absolute value than the elements in the column beneath it. Note that swapping two rows of the coefficient matrix does not change the solution to the system as long as the same swap is applied to the constant vector. The permutations applied to the coefficient matrix are recorded in a matrix <span class="math notranslate nohighlight">\(P\)</span> which is determined by applying the same permutations to the identity matrix.</p>
@@ -661,11 +684,17 @@ title="Print to PDF"
         3 &amp; -2 &amp; 2
     \end{pmatrix}.
 \end{align*}\]</div>
-<p><strong>Solution</strong></p>
-<p>Using elementary row operations</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Using elementary row operations</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \begin{pmatrix}
+    &amp;\begin{pmatrix}
         0 &amp; 1 &amp; -2\\
         1 &amp; 0 &amp; 2\\
         3 &amp; -2 &amp; 2
@@ -677,18 +706,18 @@ title="Print to PDF"
         1 &amp; 0 &amp; 2\\
         0 &amp; 1 &amp; -2
     \end{pmatrix}
-    \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array}
+    \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array} \\ \\
     \longrightarrow
-    \begin{pmatrix}
+    &amp;\begin{pmatrix}
         3 &amp; -2 &amp; 2\\
         0 &amp; 1 &amp; -2\\
         1 &amp; 0 &amp; 2
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>Apply the same row operations to the identity matrix</p>
+<p class="sd-card-text">Apply the same row operations to the identity matrix</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \begin{pmatrix}
+    &amp;\begin{pmatrix}
         1 &amp; 0 &amp; 0 \\
         0 &amp; 1 &amp; 0 \\
         0 &amp; 0 &amp; 1
@@ -700,15 +729,15 @@ title="Print to PDF"
         0 &amp; 1 &amp; 0 \\
         1 &amp; 0 &amp; 0
     \end{pmatrix}
-    \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array}
+    \begin{array}{l} \phantom{x} \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{array} \\ \\
     \longrightarrow
-    \begin{pmatrix}
+    &amp;\begin{pmatrix}
         0 &amp; 0 &amp; 1 \\
         1 &amp; 0 &amp; 0 \\
         0 &amp; 1 &amp; 0
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>So
+<p class="sd-card-text">So
 <span class="math notranslate nohighlight">\(P=\begin{pmatrix}
     0 &amp; 0 &amp; 1\\
     1 &amp; 0 &amp; 0\\
@@ -733,8 +762,9 @@ title="Print to PDF"
     \end{pmatrix}.
 \end{align*}\]</div>
 </div>
-</div>
-<div class="section" id="python-code">
+</details></div>
+</section>
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">partial_pivot()</span></code> which performs partial pivoting on the matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> and returns the pivoted matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> and the permutation matrix <code class="docutils literal notranslate"><span class="pre">P</span></code>.</p>
 <div class="cell docutils container">
@@ -784,8 +814,8 @@ P =
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="lu-decomposition-with-partial-pivoting">
+</section>
+<section id="lu-decomposition-with-partial-pivoting">
 <span id="lup-decomposition-section"></span><h2>LU decomposition with partial pivoting<a class="headerlink" href="#lu-decomposition-with-partial-pivoting" title="Permalink to this headline">#</a></h2>
 <p>To calculate <strong>LU decomposition with partial pivoting</strong> (also known as <strong>LUP decomposition</strong>) we use the same process as in <a class="reference internal" href="6.1_LU_decomposition.html#lu-definition"><span class="std std-ref">LU decomposition</span></a> with the exception that the coefficient matrix has partial pivoting applied prior to the calculation of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span>, i.e.,</p>
 <div class="amsmath math notranslate nohighlight">
@@ -817,7 +847,14 @@ P =
     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} =
     \begin{pmatrix} 10 \\ -4 \\ -8 \end{pmatrix}.
 \end{align*}\]</div>
-<p>We have seen from the <a class="reference internal" href="#pivoting-example"><span class="std std-ref">example 6.3</span></a> above that applying partial pivoting to the coefficient matrix results in</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">We have seen from the <a class="reference internal" href="#pivoting-example"><span class="std std-ref">example 6.3</span></a> above that applying partial pivoting to the coefficient matrix results in</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     PA &amp;= \begin{pmatrix}
@@ -831,7 +868,7 @@ P =
         0 &amp; 1 &amp; 0
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>Calculating the LU decomposition of <span class="math notranslate nohighlight">\(PA\)</span> using <a class="reference internal" href="6.1_LU_decomposition.html#equation-lu-equation">(32)</a></p>
+<p class="sd-card-text">Calculating the LU decomposition of <span class="math notranslate nohighlight">\(PA\)</span> using <a class="reference internal" href="6.1_LU_decomposition.html#equation-lu-equation">(33)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     j &amp;= 1: &amp; u_{11} &amp;=a_{11} =3, \\
@@ -846,7 +883,7 @@ P =
     &amp; &amp; u_{23} &amp;= a_{23} -\ell_{21} u_{13} = -2 - 0(-2) = -2, \\
     &amp; &amp; u_{33} &amp;= a_{33} -\ell_{31} u_{13} -\ell_{32} u_{23} = 2 - \frac{1}{3}(2)- \frac{2}{3}(-2) = \frac{8}{3}.
 \end{align*}\]</div>
-<p>Therefore</p>
+<p class="sd-card-text">Therefore</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     L &amp;= \begin{pmatrix}
@@ -860,7 +897,7 @@ P =
         0 &amp; 0 &amp; \frac{8}{3}
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>Solving <span class="math notranslate nohighlight">\(L \mathbf{y} = P \mathbf{b}\)</span> using forward substitution</p>
+<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(L \mathbf{y} = P \mathbf{b}\)</span> using forward substitution</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -877,14 +914,14 @@ P =
     \begin{pmatrix} 10 \\ -4 \\ -8 \end{pmatrix} =
     \begin{pmatrix} -8 \\ 10 \\ -4 \end{pmatrix},
 \end{align*}\]</div>
-<p>gives</p>
+<p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_1 &amp;= -8, \\
     y_2 &amp;= 10 - 0(8)=10, \\
     y_3 &amp;= -4 - \frac{1}{3}(8) + \frac{2}{3}(10) = -8.
 \end{align*}\]</div>
-<p>Solving <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span> using back substitution</p>
+<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span> using back substitution</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -895,17 +932,18 @@ P =
     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = 
     \begin{pmatrix} -8 \\ 10 \\ -8 \end{pmatrix},
 \end{align*}\]</div>
-<p>gives</p>
+<p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_3 &amp;= \frac{3}{8}(-8) = -3, \\
     x_2 &amp;= \frac{1}{1}(10+2(-3)) = 4, \\
     x_1 &amp;= \frac{1}{3}(-8+2(4)-2(-3)) = 2.
 \end{align*}\]</div>
-<p>So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(2,4,-3)\)</span>.</p>
+<p class="sd-card-text">So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(2,4,-3)\)</span>.</p>
 </div>
-</div>
-<div class="section" id="id1">
+</details></div>
+</section>
+<section id="id1">
 <h2>Python code<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>The code below calculates the solution to the system of linear equations from <a class="reference internal" href="#lup-example"><span class="std std-ref">example 6.4</span></a> using Crout’s method with LUP decomposition. The <code class="docutils literal notranslate"><span class="pre">np.dot(A,</span> <span class="pre">B)</span></code> command calculates the matrix multiplication <span class="math notranslate nohighlight">\(AB\)</span></p>
 <div class="cell docutils container">
@@ -956,8 +994,8 @@ x3 = -3.0
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

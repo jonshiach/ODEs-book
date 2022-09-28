@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Initial Value Problems &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/1_IVPs/1.0_IVPs.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The Taylor Series" href="1.1_Taylor_Series.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -576,8 +599,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ordinary-differential-equations-odes">
-   Ordinary Differential Equations (ODEs)
+  <a class="reference internal nav-link" href="#ordinary-differential-equations">
+   Ordinary Differential Equations
   </a>
  </li>
 </ul>
@@ -600,8 +623,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ordinary-differential-equations-odes">
-   Ordinary Differential Equations (ODEs)
+  <a class="reference internal nav-link" href="#ordinary-differential-equations">
+   Ordinary Differential Equations
   </a>
  </li>
 </ul>
@@ -614,7 +637,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="initial-value-problems">
+  <section class="tex2jax_ignore mathjax_ignore" id="initial-value-problems">
 <span id="ivp-chapter"></span><h1>Initial Value Problems<a class="headerlink" href="#initial-value-problems" title="Permalink to this headline">#</a></h1>
 <p><strong>Learning Outcomes</strong></p>
 <p>On successful completion of this chapter readers will be able to:</p>
@@ -626,8 +649,9 @@ title="Print to PDF"
 <li><p>apply an ODE solver to <a class="reference internal" href="1.5_Higher_Order_ODEs.html#solving-systems-of-odes-section"><span class="std std-ref">solve a system of ordinary differential equation</span></a>.</p></li>
 </ul>
 <hr class="docutils" />
-<div class="section" id="ordinary-differential-equations-odes">
-<span id="ode-section"></span><h2>Ordinary Differential Equations (ODEs)<a class="headerlink" href="#ordinary-differential-equations-odes" title="Permalink to this headline">#</a></h2>
+<section id="ordinary-differential-equations">
+<span id="ode-section"></span><h2>Ordinary Differential Equations<a class="headerlink" href="#ordinary-differential-equations" title="Permalink to this headline">#</a></h2>
+<p>An Ordinary Differential Equation (ODE) is an equation which contains the derivatives of a function e.g., <span class="math notranslate nohighlight">\(y(t)\)</span>, of a <strong>single</strong> independent variable <span class="math notranslate nohighlight">\(t\)</span>. ODEs occur in many different applications so it is important that we are able to solve them. Simple ODEs can be solved using <strong>analytical</strong> methods such as integration and Laplace transforms, however, the vast majority of ODEs used in the real world cannot be solved using analytical methods which is why we need a <strong>numerical</strong> approach.</p>
 <div class="note admonition" id="ode-definition">
 <p class="admonition-title">Definition: Ordinary Differential Equation</p>
 <p>An Ordinary Differential Equation (ODE) is an equation of the form</p>
@@ -635,7 +659,7 @@ title="Print to PDF"
 \[y^{(n)} = f(t, y, y', y'', \ldots, y^{(n-1)}),\]</div>
 <p>where <span class="math notranslate nohighlight">\(y = y(t)\)</span> is some function of the independent variable <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(y^{(n)}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>th derivative of <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is some function of <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and its derivatives.</p>
 </div>
-<p>The solution of an ODE is a function <span class="math notranslate nohighlight">\(y=y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
+<p>The solution of an ODE is a function <span class="math notranslate nohighlight">\(y = y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
 <div class="math notranslate nohighlight" id="equation-simple-ode">
 <span class="eqno">(1)<a class="headerlink" href="#equation-simple-ode" title="Permalink to this equation">#</a></span>\[ y' = y,\]</div>
 <p>where <span class="math notranslate nohighlight">\(t \in \mathbb{R}\)</span>. Rewriting this using Leibniz notation and integrating both sides we have</p>
@@ -649,12 +673,14 @@ title="Print to PDF"
     y &amp;= e^{t + c},
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(c = c_1 + c_2\)</span> is some constant. The solution can be verified by differentiating <span class="math notranslate nohighlight">\(y\)</span> and check that it satisfies the original ODE. This solution has been plotted for various values of the constant <span class="math notranslate nohighlight">\(c\)</span> in <a class="reference internal" href="#ode-plot-figure"><span class="std std-numref">Fig. 1</span></a>. Note that there are an infinite number of solutions since <span class="math notranslate nohighlight">\(c\)</span> can be any value.</p>
-<div class="figure align-default" id="ode-plot-figure">
+<figure class="align-default" id="ode-plot-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.0_IVPs_1_1.png" src="../_images/1.0_IVPs_1_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Plots of some of the possible solution to the ODE <span class="math notranslate nohighlight">\(y' = y\)</span>.</span><a class="headerlink" href="#ode-plot-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Plots of some of the possible solution to the ODE <span class="math notranslate nohighlight">\(y' = y\)</span>.</span><a class="headerlink" href="#ode-plot-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>However, if we know that the value of the solution <span class="math notranslate nohighlight">\(y\)</span> for some <span class="math notranslate nohighlight">\(t\)</span> then we can calculate <span class="math notranslate nohighlight">\(c\)</span>. For example, if the solution to the ODE in equation <a class="reference internal" href="#equation-simple-ode">(1)</a> is known to be <span class="math notranslate nohighlight">\(y(0) = \alpha\)</span> then</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -677,10 +703,10 @@ title="Print to PDF"
 <p>Here a first-order ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> is defined over the domain <span class="math notranslate nohighlight">\(t\in [a ,b]\)</span> and the initial solution <span class="math notranslate nohighlight">\(y(a)\)</span> is the known value <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 </div>
 <p>Unfortunately, for most real world practical applications initial value problems cannot be solved using analytical methods so instead we use numerical methods to approximate the solution.</p>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

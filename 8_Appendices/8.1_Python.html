@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Python code &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,12 +50,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/8_Appendices/8.1_Python.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Initial Value Problems" href="../9_Handouts/1_IVPs_handout.html" />
     <link rel="prev" title="Cheat Sheet" href="8.0_Cheat_sheet.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -92,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -429,6 +426,33 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Python code
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
   </a>
  </li>
 </ul>
@@ -899,10 +923,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="python-code">
+  <section class="tex2jax_ignore mathjax_ignore" id="python-code">
 <h1>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h1>
 <p>The Python code used in this book is given here for reference.</p>
-<div class="section" id="importing-libraries">
+<section id="importing-libraries">
 <h2>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this headline">#</a></h2>
 <p>The following code is used to import the libraries that we will use here.</p>
 <ul class="simple">
@@ -921,11 +945,11 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="ode-solvers">
+</section>
+<section id="ode-solvers">
 <h2>ODE solvers<a class="headerlink" href="#ode-solvers" title="Permalink to this headline">#</a></h2>
 <p>The ODE solver functions all solve an initial value problem of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, \mathbf{y})\)</span>, <span class="math notranslate nohighlight">\(t \in [a, b]\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}_0 = \mathbf{\alpha}\)</span> using a step length of <span class="math notranslate nohighlight">\(h\)</span>. The functions return arrays containing the values of <span class="math notranslate nohighlight">\(t_n\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> for the solution domain.</p>
-<div class="section" id="the-euler-method">
+<section id="the-euler-method">
 <h3>The Euler method<a class="headerlink" href="#the-euler-method" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -943,8 +967,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="defining-and-solving-an-ivp">
+</section>
+<section id="defining-and-solving-an-ivp">
 <h3>Defining and solving an IVP<a class="headerlink" href="#defining-and-solving-an-ivp" title="Permalink to this headline">#</a></h3>
 <p>The following code defines the following ODE and uses the <code class="docutils literal notranslate"><span class="pre">euler()</span></code> function with a step length of <span class="math notranslate nohighlight">\(h=0.2\)</span> to compute the solution</p>
 <div class="math notranslate nohighlight">
@@ -987,8 +1011,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="ploting-the-solution">
+</section>
+<section id="ploting-the-solution">
 <h3>Ploting the solution<a class="headerlink" href="#ploting-the-solution" title="Permalink to this headline">#</a></h3>
 <p>The following code uses matplotlib functions to plot the solution.</p>
 <div class="cell docutils container">
@@ -1012,8 +1036,8 @@ title="Print to PDF"
 <img alt="../_images/8.1_Python_7_0.png" src="../_images/8.1_Python_7_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="the-rk2-method">
+</section>
+<section id="the-rk2-method">
 <h3>The RK2 Method<a class="headerlink" href="#the-rk2-method" title="Permalink to this headline">#</a></h3>
 <p>The RK2 method (second-order Runge-Kutta method) is defined by the following Butcher tableau.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1042,8 +1066,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-rk4-method">
+</section>
+<section id="the-rk4-method">
 <h3>The RK4 method<a class="headerlink" href="#the-rk4-method" title="Permalink to this headline">#</a></h3>
 <p>The RK4 methods (fourth-order Runge-Kutta method) is defined by the following Butcher tableau.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1076,8 +1100,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-third-order-radau-ia-implicit-runge-kutta-method">
+</section>
+<section id="the-third-order-radau-ia-implicit-runge-kutta-method">
 <h3>The third-order Radau IA implicit Runge-Kutta method<a class="headerlink" href="#the-third-order-radau-ia-implicit-runge-kutta-method" title="Permalink to this headline">#</a></h3>
 <p>The third-order Radau IA implicit Runge-Kutta method is defined by the following Butcher tableau.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1112,9 +1136,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="using-sympy-to-solve-order-conditions">
+</section>
+</section>
+<section id="using-sympy-to-solve-order-conditions">
 <h2>Using SymPy to solve order conditions<a class="headerlink" href="#using-sympy-to-solve-order-conditions" title="Permalink to this headline">#</a></h2>
 <p>The following code uses SymPy commands to solve the following order conditions where <span class="math notranslate nohighlight">\(c_1 = 1\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -1146,10 +1170,10 @@ title="Print to PDF"
 <img alt="../_images/8.1_Python_15_0.png" src="../_images/8.1_Python_15_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="stability">
+</section>
+<section id="stability">
 <h2>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">#</a></h2>
-<div class="section" id="plotting-stability-regions">
+<section id="plotting-stability-regions">
 <h3>Plotting stability regions<a class="headerlink" href="#plotting-stability-regions" title="Permalink to this headline">#</a></h3>
 <p>The following code plots the region of absolute stability for the Euler method.</p>
 <div class="cell docutils container">
@@ -1179,8 +1203,8 @@ title="Print to PDF"
 <img alt="../_images/8.1_Python_17_0.png" src="../_images/8.1_Python_17_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="stability-function-for-explicit-methods">
+</section>
+<section id="stability-function-for-explicit-methods">
 <h3>Stability function for explicit methods<a class="headerlink" href="#stability-function-for-explicit-methods" title="Permalink to this headline">#</a></h3>
 <p>The following code calculates the stability function for an explicit Runge-Kutta method defined by the following Butcher tableau.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1217,8 +1241,8 @@ title="Print to PDF"
 \[\displaystyle R(z) = 1 + 1 z^1 + \frac{1}{2} z^2 + \frac{3}{16} z^3 + \frac{1}{48} z^4\]</div>
 </div>
 </div>
-</div>
-<div class="section" id="stability-function-for-implicit-methods">
+</section>
+<section id="stability-function-for-implicit-methods">
 <h3>Stability function for implicit methods<a class="headerlink" href="#stability-function-for-implicit-methods" title="Permalink to this headline">#</a></h3>
 <p>The following code calculates the stability function for an explicit Runge-Kutta method defined by the following Butcher tableau.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1257,8 +1281,8 @@ title="Print to PDF"
 \[\displaystyle R(z) = \frac{\frac{z^{2}}{16} + \frac{z}{3} + 1}{\frac{z^{2}}{6} - \frac{2 z}{3} + 1}\]</div>
 </div>
 </div>
-</div>
-<div class="section" id="checking-if-an-implicit-method-is-a-stable">
+</section>
+<section id="checking-if-an-implicit-method-is-a-stable">
 <h3>Checking if an implicit method is A-stable<a class="headerlink" href="#checking-if-an-implicit-method-is-a-stable" title="Permalink to this headline">#</a></h3>
 <p>The following code outputs the following conditions for A-stability</p>
 <ul class="simple">
@@ -1285,11 +1309,11 @@ title="Print to PDF"
 \[\displaystyle E(y) = \frac{y^{2} \left(55 y^{2} + 288\right)}{2304}\]</div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="direct-methods">
+</section>
+</section>
+<section id="direct-methods">
 <h2>Direct methods<a class="headerlink" href="#direct-methods" title="Permalink to this headline">#</a></h2>
-<div class="section" id="lu-decomposition">
+<section id="lu-decomposition">
 <h3>LU decomposition<a class="headerlink" href="#lu-decomposition" title="Permalink to this headline">#</a></h3>
 <p>The following code defines the function <code class="docutils literal notranslate"><span class="pre">lu()</span></code> which calculates the LU decomposition of a square matrix <span class="math notranslate nohighlight">\(A\)</span> and returns the lower and upper triangular matrices <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> such that <span class="math notranslate nohighlight">\(A = LU\)</span>.</p>
 <div class="cell docutils container">
@@ -1351,8 +1375,8 @@ U =
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="forward-and-back-substitution">
+</section>
+<section id="forward-and-back-substitution">
 <h3>Forward and back substitution<a class="headerlink" href="#forward-and-back-substitution" title="Permalink to this headline">#</a></h3>
 <p>The following code defines the functions <code class="docutils literal notranslate"><span class="pre">forward_substitution()</span></code> and <code class="docutils literal notranslate"><span class="pre">back_substitution()</span></code> which perform forward and back substitution.</p>
 <div class="cell docutils container">
@@ -1383,8 +1407,8 @@ U =
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="crout-s-method">
+</section>
+<section id="crout-s-method">
 <h3>Crout’s method<a class="headerlink" href="#crout-s-method" title="Permalink to this headline">#</a></h3>
 <p>The following code calculates the solution to the following system of linear equations using Crout’s method.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1435,8 +1459,8 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="partial-pivoting">
+</section>
+<section id="partial-pivoting">
 <h3>Partial pivoting<a class="headerlink" href="#partial-pivoting" title="Permalink to this headline">#</a></h3>
 <p>The following code defines the function <code class="docutils literal notranslate"><span class="pre">partial_pivot()</span></code> that performs partial pivoting on a matrix and outputs the matrix and the permutation matrix.</p>
 <div class="cell docutils container">
@@ -1458,8 +1482,8 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="cholesky-decomposition">
+</section>
+<section id="cholesky-decomposition">
 <h3>Cholesky decomposition<a class="headerlink" href="#cholesky-decomposition" title="Permalink to this headline">#</a></h3>
 <p>The following code defines the function <code class="docutils literal notranslate"><span class="pre">cholesky()</span></code> which performs Cholesky decomposition on a matrix <span class="math notranslate nohighlight">\(A\)</span> and outputs the lower triangular matrix <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(A = LL^\mathrm{T}\)</span>.</p>
 <div class="cell docutils container">
@@ -1487,8 +1511,8 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="qr-decomposition-using-the-gram-schmidt-process">
+</section>
+<section id="qr-decomposition-using-the-gram-schmidt-process">
 <h3>QR decomposition using the Gram-Schmidt process<a class="headerlink" href="#qr-decomposition-using-the-gram-schmidt-process" title="Permalink to this headline">#</a></h3>
 <p>The following code defines the function <code class="docutils literal notranslate"><span class="pre">qr_gramschidt()</span></code> which performs QR decomposition using the Gram-Schmidt process on a matrix <span class="math notranslate nohighlight">\(A\)</span> and outputs the orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
 <div class="cell docutils container">
@@ -1510,8 +1534,8 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="qr-decomposition-using-the-householder-transformations">
+</section>
+<section id="qr-decomposition-using-the-householder-transformations">
 <h3>QR decomposition using the Householder transformations<a class="headerlink" href="#qr-decomposition-using-the-householder-transformations" title="Permalink to this headline">#</a></h3>
 <p>The following code defines the function <code class="docutils literal notranslate"><span class="pre">qr_householder()</span></code> which performs QR decomposition using the Gram-Schmidt process on a matrix <span class="math notranslate nohighlight">\(A\)</span> and outputs the orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
 <div class="cell docutils container">
@@ -1534,12 +1558,12 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="indirect-methods">
+</section>
+</section>
+<section id="indirect-methods">
 <h2>Indirect methods<a class="headerlink" href="#indirect-methods" title="Permalink to this headline">#</a></h2>
 <p>The following methods calculate the solutions to the system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> ceasing iterations when the largest value of the residual is less than <code class="docutils literal notranslate"><span class="pre">tol</span></code>.</p>
-<div class="section" id="the-jacobi-method">
+<section id="the-jacobi-method">
 <h3>The Jacobi method<a class="headerlink" href="#the-jacobi-method" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1566,8 +1590,8 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-gauss-seidel-method">
+</section>
+<section id="the-gauss-seidel-method">
 <h3>The Gauss-Seidel method<a class="headerlink" href="#the-gauss-seidel-method" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1593,8 +1617,8 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-sor-method">
+</section>
+<section id="the-sor-method">
 <h3>The SOR method<a class="headerlink" href="#the-sor-method" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1620,8 +1644,8 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculating-an-iteration-matrix">
+</section>
+<section id="calculating-an-iteration-matrix">
 <h3>Calculating an iteration matrix<a class="headerlink" href="#calculating-an-iteration-matrix" title="Permalink to this headline">#</a></h3>
 <p>The following code calculates the iteration matrix for the Jacobi method give the following coefficient matrix</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1657,8 +1681,8 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculating-the-spectral-radius-of-a-matrix">
+</section>
+<section id="calculating-the-spectral-radius-of-a-matrix">
 <h3>Calculating the spectral radius of a matrix<a class="headerlink" href="#calculating-the-spectral-radius-of-a-matrix" title="Permalink to this headline">#</a></h3>
 <p>The following code calculates the spectral radius of the matrix <code class="docutils literal notranslate"><span class="pre">TJ</span></code> from above.</p>
 <div class="cell docutils container">
@@ -1674,9 +1698,9 @@ x3 = 5.0
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1711,6 +1735,13 @@ x3 = 5.0
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Cheat Sheet</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../9_Handouts/1_IVPs_handout.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Initial Value Problems</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

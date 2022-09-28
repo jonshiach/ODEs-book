@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Solving initial value problems using explicit Runge-Kutta methods &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/2_ERKs/2.3_Solving_IVPs_using_ERK_methods.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Chapter Summary" href="2.4_ERK_Summary.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -614,7 +637,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="solving-initial-value-problems-using-explicit-runge-kutta-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="solving-initial-value-problems-using-explicit-runge-kutta-methods">
 <span id="applying-erk-methods-to-solve-ivps-section"></span><h1>Solving initial value problems using explicit Runge-Kutta methods<a class="headerlink" href="#solving-initial-value-problems-using-explicit-runge-kutta-methods" title="Permalink to this headline">#</a></h1>
 <p>Recall that the <a class="reference internal" href="2.0_ERKs.html#general-form-of-a-rk-method-section"><span class="std std-ref">general form of an explicit Runge-Kutta method</span></a> is</p>
 <div class="amsmath math notranslate nohighlight">
@@ -635,8 +658,14 @@ title="Print to PDF"
     y'=ty, \qquad t\in [0,1], \qquad y(0)=1,
 \end{align*}\]</div>
 <p>and compare the computed solution to the exact solution which is <span class="math notranslate nohighlight">\(y = \exp\left(\dfrac{t^2}{2}\right)\)</span>.</p>
-<p><strong>Solution</strong></p>
-<p>The RK4 method is</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The RK4 method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{6}(k_1 + 2k_2 + 3k_3 + k_4), \\
@@ -645,13 +674,13 @@ title="Print to PDF"
     k_3 &amp;= f(t_n + \frac{1}{2}h, y_n + \frac{1}{2}hk_2), \\
     k_4 &amp;= f(t_n + h, y_n + hk_3).
 \end{align*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(t\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(h=0.2\)</span> then the number of steps required is</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(t\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(h=0.2\)</span> then the number of steps required is</p>
 <div class="math notranslate nohighlight">
 \[n = \operatorname{int}\left(\frac{1 - 0}{0.2}\right) = 5, \]</div>
-<p>and the <span class="math notranslate nohighlight">\(t\)</span> values are</p>
+<p class="sd-card-text">and the <span class="math notranslate nohighlight">\(t\)</span> values are</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{t} = (0, 0.2, 0.4, 0.6, 0.8, 1.0).\]</div>
-<p>The ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> and the initial value is <span class="math notranslate nohighlight">\(y_0 = 1\)</span> so using equation <a class="reference internal" href="2.2_RK4_Derivation.html#equation-rk4-equation">(14)</a></p>
+<p class="sd-card-text">The ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> and the initial value is <span class="math notranslate nohighlight">\(y_0 = 1\)</span> so using equation <a class="reference internal" href="2.2_RK4_Derivation.html#equation-rk4-equation">(15)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     k_1 &amp;= f(t_0, y_0) = (0.0)(1) = 0, \\
@@ -725,7 +754,8 @@ title="Print to PDF"
     &amp;= 1.648717.
 \end{align*}\]</div>
 </div>
-<div class="section" id="python-code">
+</details></div>
+<section id="python-code">
 <span id="rk4-python-code"></span><h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The Python code below defines a function called <code class="docutils literal notranslate"><span class="pre">rk4()</span></code> which computes the solution to an initial value problem using the RK4 method. Note that the function is very similar to the function for the <a class="reference internal" href="../1_IVPs/1.4_RK2.html#rk2-python-code"><span class="std std-ref">RK2 method</span></a>.</p>
 <div class="cell docutils container">
@@ -749,22 +779,26 @@ title="Print to PDF"
 </div>
 </div>
 <p>The computed solutions using the fourth-order explicit Runge-Kutta are plotted in <a class="reference internal" href="#rk4-example-figure"><span class="std std-numref">Fig. 10</span></a> below.</p>
-<div class="figure align-default" id="rk4-example-figure">
+<figure class="align-default" id="rk4-example-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/2.3_Solving_IVPs_using_ERK_methods_4_1.png" src="../_images/2.3_Solving_IVPs_using_ERK_methods_4_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">The solutions to the initial value problem <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the RK4 method with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#rk4-example-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">The solutions to the initial value problem <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the RK4 method with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#rk4-example-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Doing a visual comparison of the solutions using the <a class="reference internal" href="../1_IVPs/1.4_RK2.html#rk2-definition"><span class="std std-ref">RK2</span></a> (<a class="reference internal" href="../1_IVPs/1.4_RK2.html#rk2-example-figure"><span class="std std-numref">Fig. 6</span></a>) and <a class="reference internal" href="2.2_RK4_Derivation.html#rk4-definition"><span class="std std-ref">RK4</span></a> (<a class="reference internal" href="#rk4-example-figure"><span class="std std-numref">Fig. 10</span></a>) methods it appears that the two solutions are very similar. A loglog plot of the global truncation errors for these methods and the Euler methods is shown in <a class="reference internal" href="#rk4-gte-plot-figure"><span class="std std-numref">Fig. 11</span></a>.</p>
-<div class="figure align-default" id="rk4-gte-plot-figure">
+<figure class="align-default" id="rk4-gte-plot-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/2.3_Solving_IVPs_using_ERK_methods_6_1.png" src="../_images/2.3_Solving_IVPs_using_ERK_methods_6_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">A loglog plot of the global truncation errors for the solutions of <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler, RK2 and RK4 methods solutions.</span><a class="headerlink" href="#rk4-gte-plot-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">A loglog plot of the global truncation errors for the solutions of <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler, RK2 and RK4 methods solutions.</span><a class="headerlink" href="#rk4-gte-plot-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Here we see that the fourth-order method is significantly more accurate than the second-order method and approximating the value of <span class="math notranslate nohighlight">\(n\)</span> in <span class="math notranslate nohighlight">\(e = O(h^n)\)</span> using the method given in equation <a class="reference internal" href="../1_IVPs/1.4_RK2.html#equation-order-approximation-equation">(4)</a> gives <span class="math notranslate nohighlight">\(n = 4.09\)</span> which indicates fourth-order convergence as expected.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

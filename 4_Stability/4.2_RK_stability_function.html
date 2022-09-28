@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Stability function of a Runge-Kutta method &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/4_Stability/4.2_RK_stability_function.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Stability functions of implicit methods" href="4.3_IRK_stability_function.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -624,7 +647,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="stability-function-of-a-runge-kutta-method">
+  <section class="tex2jax_ignore mathjax_ignore" id="stability-function-of-a-runge-kutta-method">
 <h1>Stability function of a Runge-Kutta method<a class="headerlink" href="#stability-function-of-a-runge-kutta-method" title="Permalink to this headline">#</a></h1>
 <p>Recall that the <a class="reference internal" href="../2_ERKs/2.0_ERKs.html#rk-definition"><span class="std std-ref">general form of a Runge-Kutta method</span></a> is</p>
 <div class="amsmath math notranslate nohighlight">
@@ -662,7 +685,7 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(Y=(Y_1 ,Y_2 ,\dots ,Y_s )^T\)</span> and <span class="math notranslate nohighlight">\(\mathbf{e}=(1,1,\dots ,1)^T\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-rk-stability-y-equation">
-<span class="eqno">(23)<a class="headerlink" href="#equation-rk-stability-y-equation" title="Permalink to this equation">#</a></span>\[Y = \mathbf{e} y_n + z A Y.\]</div>
+<span class="eqno">(24)<a class="headerlink" href="#equation-rk-stability-y-equation" title="Permalink to this equation">#</a></span>\[Y = \mathbf{e} y_n + z A Y.\]</div>
 <p>Expanding the summation in the equation for updating the solution over a single step and using <span class="math notranslate nohighlight">\(z = h \lambda\)</span> gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -681,18 +704,18 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is a column vector then the vector form of a Runge-Kutta method for solving the test equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-rk-stability-yn-1-equation">
-<span class="eqno">(24)<a class="headerlink" href="#equation-rk-stability-yn-1-equation" title="Permalink to this equation">#</a></span>\[y_{n+1} =y_n + z \mathbf{b}^T Y.\]</div>
+<span class="eqno">(25)<a class="headerlink" href="#equation-rk-stability-yn-1-equation" title="Permalink to this equation">#</a></span>\[y_{n+1} =y_n + z \mathbf{b}^T Y.\]</div>
 <p>The stability functions for explicit and implicit Runge-Kutta methods are derived using different approaches.</p>
-<div class="section" id="stability-function-of-an-explicit-runge-kutta-method">
+<section id="stability-function-of-an-explicit-runge-kutta-method">
 <span id="erk-rz-section"></span><h2>Stability function of an explicit Runge-Kutta method<a class="headerlink" href="#stability-function-of-an-explicit-runge-kutta-method" title="Permalink to this headline">#</a></h2>
-<p>To derive the stability function of an explicit Runge-Kutta method we rearrange equation <a class="reference internal" href="#equation-rk-stability-y-equation">(23)</a></p>
+<p>To derive the stability function of an explicit Runge-Kutta method we rearrange equation <a class="reference internal" href="#equation-rk-stability-y-equation">(24)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     Y - zAY &amp;= \mathbf{e}y_n \\
     (I - zA)Y &amp;= \mathbf{e}y_n\\
     Y&amp;= (I-zA)^{-1} \mathbf{e}y_n,
 \end{align*}\]</div>
-<p>and substituting into <a class="reference internal" href="#equation-rk-stability-yn-1-equation">(24)</a> gives</p>
+<p>and substituting into <a class="reference internal" href="#equation-rk-stability-yn-1-equation">(25)</a> gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;= y_n +z\mathbf{b}^T (I-zA)^{-1} \mathbf{e} y_n \\
@@ -712,23 +735,25 @@ title="Print to PDF"
 <div class="note admonition" id="erk-rz-definition">
 <p class="admonition-title">Definition: Stability function of an explicit Runge-Kutta method</p>
 <div class="math notranslate nohighlight" id="equation-erk-stability-rz-equation">
-<span class="eqno">(25)<a class="headerlink" href="#equation-erk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z)=1+\sum_{k=0}^{\infty} \mathbf{b}^T A^k \mathbf{e}\,z^{k+1} =1+\mathbf{b}^T \mathbf{e}\,z+\mathbf{b}^T A\mathbf{e}\,z^2 +\mathbf{b}^T A^2 \mathbf{e}\,z^3 + \cdots\]</div>
+<span class="eqno">(26)<a class="headerlink" href="#equation-erk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z)=1+\sum_{k=0}^{\infty} \mathbf{b}^T A^k \mathbf{e}\,z^{k+1} =1+\mathbf{b}^T \mathbf{e}\,z+\mathbf{b}^T A\mathbf{e}\,z^2 +\mathbf{b}^T A^2 \mathbf{e}\,z^3 + \cdots\]</div>
 </div>
 <p>Since the solution to the test equation is <span class="math notranslate nohighlight">\(y=e^{\lambda t}\)</span>, over one step of an explicit Runge-Kutta method we would expect the local truncation errors to change at a rate of <span class="math notranslate nohighlight">\(e^z\)</span>. The series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-erk-stability-exp-z-equation">
-<span class="eqno">(26)<a class="headerlink" href="#equation-erk-stability-exp-z-equation" title="Permalink to this equation">#</a></span>\[e^z = \sum_{k=0}^{\infty} \frac{1}{k!} z^k = 1 + z + \frac{1}{2!}z^2 + \frac{1}{3!}z^3 + \frac{1}{4!}z^4 + \cdots\]</div>
-<p>Comparing the coefficients of <span class="math notranslate nohighlight">\(z^k\)</span> in equations <a class="reference internal" href="#equation-erk-stability-rz-equation">(25)</a> and <a class="reference internal" href="#equation-erk-stability-exp-z-equation">(26)</a> we have</p>
+<span class="eqno">(27)<a class="headerlink" href="#equation-erk-stability-exp-z-equation" title="Permalink to this equation">#</a></span>\[e^z = \sum_{k=0}^{\infty} \frac{1}{k!} z^k = 1 + z + \frac{1}{2!}z^2 + \frac{1}{3!}z^3 + \frac{1}{4!}z^4 + \cdots\]</div>
+<p>Comparing the coefficients of <span class="math notranslate nohighlight">\(z^k\)</span> in equations <a class="reference internal" href="#equation-erk-stability-rz-equation">(26)</a> and <a class="reference internal" href="#equation-erk-stability-exp-z-equation">(27)</a> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \frac{1}{k!}= \mathbf{b}^T A^{k-1} \mathbf{e},
 \end{align*}\]</div>
 <p>which must be satisfied up to the <span class="math notranslate nohighlight">\(k\)</span>th term for an order <span class="math notranslate nohighlight">\(k\)</span> explicit method to be stable. The stability functions for the explicit Runge-Kutta methods or order 1 – 4 have been plotted in <a class="reference internal" href="#erk-stability-regions-figure"><span class="std std-numref">Fig. 17</span></a>.</p>
-<div class="figure align-default" id="erk-stability-regions-figure">
+<figure class="align-default" id="erk-stability-regions-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/4.2_RK_stability_function_1_1.png" src="../_images/4.2_RK_stability_function_1_1.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Regions of absolute stability for explicit Runge-Kutta methods of order 1 to 4.</span><a class="headerlink" href="#erk-stability-regions-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Regions of absolute stability for explicit Runge-Kutta methods of order 1 to 4.</span><a class="headerlink" href="#erk-stability-regions-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="seealso admonition" id="erk-stability-example">
 <p class="admonition-title">Example 4.2</p>
 <p>An explicit Runge-Kutta method is defined by the following Butcher tableau</p>
@@ -742,10 +767,14 @@ title="Print to PDF"
 &amp; \frac{7}{24} &amp; \frac{1}{4} &amp; \frac{1}{3} &amp; \frac{1}{8}
 \end{array}\end{align*}\]</div>
 <p>(i) Determine the stability function for this Runge-Kutta method and hence find its order;</p>
-<p>(ii) plot the region of absolute stability and that of an explicit method of the same order on the same set of axes;</p>
-<p>(iii) comment on the region of absolute stability of the two methods.</p>
-<p><strong>Solution</strong></p>
-<p>(i) Here we have</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Here we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     A &amp;= \begin{pmatrix}
@@ -756,7 +785,7 @@ title="Print to PDF"
     \end{pmatrix}, &amp;
     \mathbf{b} &amp;= \begin{pmatrix} \frac{7}{24} \\ \frac{1}{4} \\ \frac{1}{3} \\ \frac{1}{8} \end{pmatrix}.
 \end{align*}\]</div>
-<p>Calculating <span class="math notranslate nohighlight">\(\mathbf{b}^TA^{k - 1}\mathbf{e}\)</span> for <span class="math notranslate nohighlight">\(h = 1 \ldots 4\)</span></p>
+<p class="sd-card-text">Calculating <span class="math notranslate nohighlight">\(\mathbf{b}^TA^{k - 1}\mathbf{e}\)</span> for <span class="math notranslate nohighlight">\(h = 1 \ldots 4\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     k &amp;= 1, &amp; \mathbf{b}^TA^0 \mathbf{e} &amp;= 
@@ -799,22 +828,65 @@ title="Print to PDF"
     \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} 
     = \frac{1}{48}.
 \end{align*}\]</div>
-<p>So the stability function is</p>
+<p class="sd-card-text">So the stability function is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     R(z) = 1 + z + \frac{1}{2} z^2 + \frac{3}{16} z^3 + \frac{1}{48} z^4,
 \end{align*}\]</div>
-<p>which agrees to the series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> from equation <a class="reference internal" href="#equation-erk-stability-exp-z-equation">(26)</a> up to and including the <span class="math notranslate nohighlight">\(z^2\)</span> term. Therefore this method is of order 2.</p>
-<p>(ii) The region of absolute stability for this method and the RK2 method is plotted below.</p>
+<p class="sd-card-text">which agrees to the series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> from equation <a class="reference internal" href="#equation-erk-stability-exp-z-equation">(27)</a> up to and including the <span class="math notranslate nohighlight">\(z^2\)</span> term. Therefore this method is of order 2.</p>
+</div>
+</details><p>(ii) plot the region of absolute stability and that of an explicit method on the same order on the same set of axes;</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Generate z values</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+
+<span class="c1"># Define stability function</span>
+<span class="n">ERK</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">Z</span> <span class="o">+</span> <span class="n">Z</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">Z</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">16</span> <span class="o">+</span> <span class="n">Z</span> <span class="o">**</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">48</span> 
+<span class="n">RK2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">Z</span> <span class="o">+</span> <span class="n">Z</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Plot stability region</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ERK</span><span class="p">),</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;#99ccff&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ERK</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">RK2</span><span class="p">),</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;#ffcccc&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">RK2</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\mathrm</span><span class="si">{Re}</span><span class="s2">(z)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\mathrm</span><span class="si">{Im}</span><span class="s2">(z)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="cell_output docutils container">
 <img alt="../_images/4.2_RK_stability_function_3_1.png" src="../_images/4.2_RK_stability_function_3_1.png" />
 </div>
-<p>(iii) The interval of absolute stability for this method is <span class="math notranslate nohighlight">\([-3,0]\)</span> whereas for the second-order method we have <span class="math notranslate nohighlight">\([-2,0]\)</span>. This means that this method is stable for larger values of <span class="math notranslate nohighlight">\(h\)</span> so we can use fewer steps than the second-order method to calculate the solution to the same accuracy, although it does require the calculation of two additional stage values.</p>
 </div>
+</details><p>(iii) comment on the region of absolute stability of the two methods.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The interval of absolute stability for this method is <span class="math notranslate nohighlight">\([-3,0]\)</span> whereas for the second-order method we have <span class="math notranslate nohighlight">\([-2,0]\)</span>. This means that this method is stable for larger values of <span class="math notranslate nohighlight">\(h\)</span> so we can use fewer steps than the second-order method to calculate the solution to the same accuracy, although it does require the calculation of two additional stage values.</p>
 </div>
-<div class="section" id="python-code">
+</details></div>
+</section>
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
-<p>The code below calculates the coefficients of the stability function for the explicit Runge-Kutta method from <a class="reference internal" href="#erk-stability-example"><span class="std std-ref">example  4.2</span></a>.</p>
+<p>The code below calculates the coefficients of the stability function for the explicit Runge-Kutta method from <a class="reference internal" href="../9_Handouts/4_Stability_handout.html#erk-stability-example"><span class="std std-ref">example  4.2</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
@@ -843,8 +915,8 @@ title="Print to PDF"
 \[\displaystyle R(z) = 1 + 1 z^1 + \frac{1}{2} z^2 + \frac{3}{16} z^3 + \frac{1}{48} z^4\]</div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>QR decomposition &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/6_Direct_methods/6.4_QR_decomposition.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Chapter summary" href="6.5_Direct_methods_summary.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -674,7 +697,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="qr-decomposition">
+  <section class="tex2jax_ignore mathjax_ignore" id="qr-decomposition">
 <span id="qr-section"></span><h1>QR decomposition<a class="headerlink" href="#qr-decomposition" title="Permalink to this headline">#</a></h1>
 <p>The methods of LU and Cholesky decomposition can be used to solve a system of linear equations where the number of equations is the same as the number of unknowns so it has a single unique solution. QR factorisation can be used to solve an <a class="reference external" href="https://en.wikipedia.org/wiki/Overdetermined_system"><strong>overdetermined system</strong></a> where the number of equations is greater than the number of unknowns. Overdetermined systems rarely have a unique solution but we can calculate an approximation that most closely satisfies all equations in the system.</p>
 <p>The <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is factorised into the product of two matrices such that</p>
@@ -692,7 +715,7 @@ title="Print to PDF"
 <p>An <strong>orthogonal matrix</strong> is a matrix where the columns are a set of orthonormal vectors. If <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix if</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    A^T A=I.
+    A\mathrm{T} A=I.
 \end{align*}\]</div>
 </div>
 <div class="seealso admonition" id="orthogonal-matrix-example">
@@ -705,11 +728,17 @@ title="Print to PDF"
         0.6 &amp; 0.8
     \end{pmatrix}.
 \end{align*}\]</div>
-<p><strong>Solution</strong></p>
-<p>Checking <span class="math notranslate nohighlight">\(A^T A=I\)</span></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Checking <span class="math notranslate nohighlight">\(A\mathrm{T} A=I\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    A^T A=\begin{pmatrix}
+    A\mathrm{T} A=\begin{pmatrix}
         0.8 &amp; 0.6\\
         -0.6 &amp; 0.8
     \end{pmatrix}
@@ -722,15 +751,18 @@ title="Print to PDF"
         0 &amp; 1
     \end{pmatrix}=I.
 \end{align*}\]</div>
-<p>So <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix.</p>
+<p class="sd-card-text">So <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix.</p>
 </div>
-<div class="section" id="qr-decomposition-using-the-gram-schmidt-process">
+</details></div>
+<section id="qr-decomposition-using-the-gram-schmidt-process">
 <span id="qr-gram-schmidt-section"></span><h2>QR decomposition using the Gram-Schmidt process<a class="headerlink" href="#qr-decomposition-using-the-gram-schmidt-process" title="Permalink to this headline">#</a></h2>
 <p>The calculation of the orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> can be achieved by using the <strong>Gram-Schmidt process</strong>. Given a ordered set of <span class="math notranslate nohighlight">\(n\)</span> linearly independent column vectors <span class="math notranslate nohighlight">\((\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)\)</span> we wish to find a set that consists of <span class="math notranslate nohighlight">\(n\)</span> orthogonal vectors <span class="math notranslate nohighlight">\((\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)\)</span> where the span of <span class="math notranslate nohighlight">\((\mathbf{a}_1 ,\mathbf{a}_2 ,\dots ,\mathbf{a}_n)\)</span> is that same as the span of <span class="math notranslate nohighlight">\((\mathbf{u}_1 ,\mathbf{u}_2 ,\dots ,\mathbf{u}_n)\)</span>.</p>
-<div class="figure align-default" id="gram-schmidt-figure">
+<figure class="align-default" id="gram-schmidt-figure">
 <img alt="../_images/gram_schmidt.png" src="../_images/gram_schmidt.png" />
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">The Gram-Schmidt process</span><a class="headerlink" href="#gram-schmidt-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">The Gram-Schmidt process</span><a class="headerlink" href="#gram-schmidt-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Consider the diagram in <a class="reference internal" href="#gram-schmidt-figure"><span class="std std-numref">Fig. 22</span></a> where we have vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>. Let <span class="math notranslate nohighlight">\(\mathbf{u}_1 = \mathbf{a}_1\)</span> then the vector that is orthogonal to <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u}_2\)</span>, can be found by subtracting the <a class="reference external" href="https://en.wikipedia.org/wiki/Vector_projection"><strong>vector projection</strong></a> of <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -794,43 +826,50 @@ title="Print to PDF"
         1 &amp; 3 &amp; 7
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>Column <span class="math notranslate nohighlight">\(j=1\)</span>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j=1\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{11} &amp;=\|\mathbf{a}_1 \|=2,\\
-    \mathbf{q}_1 &amp;=\frac{\mathbf{a}_1 }{r_{11}} = \frac{(-1, 1, -1, 1)^T}{2} = (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T.
+    \mathbf{q}_1 &amp;=\frac{\mathbf{a}_1 }{r_{11}} = \frac{(-1, 1, -1, 1)\mathrm{T}}{2} = (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
 \end{align*}\]</div>
-<p>Column <span class="math notranslate nohighlight">\(j=2\)</span>:</p>
+<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j=2\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{12} &amp;=\mathbf{q}_1 \cdot \mathbf{a}_2 =
-    ( -\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T \cdot 
-    (-1, 3, -1, 3)^T = 4, \\
-    \mathbf{u}_2 &amp;=\mathbf{a}_2 -r_{12} \mathbf{q}_1 = (-1, 3, -1, 3)^T - 4
-    (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T = 
-    (1, 1, 1, 1)^T,\\
+    ( -\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot 
+    (-1, 3, -1, 3)\mathrm{T} = 4, \\
+    \mathbf{u}_2 &amp;=\mathbf{a}_2 -r_{12} \mathbf{q}_1 = (-1, 3, -1, 3)\mathrm{T} - 4
+    (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} = 
+    (1, 1, 1, 1)\mathrm{T},\\
     r_{22} &amp;=\|\mathbf{u}_2 \| = 2,\\
-    \mathbf{q}_2 &amp;=\frac{\mathbf{u}_2 }{r_{22}} = \frac{(1, 1, 1, 1)^T}{2} = 
-    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^T.
+    \mathbf{q}_2 &amp;=\frac{\mathbf{u}_2 }{r_{22}} = \frac{(1, 1, 1, 1)\mathrm{T}}{2} = 
+    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
 \end{align*}\]</div>
-<p>Column <span class="math notranslate nohighlight">\(j=3\)</span>:</p>
+<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j=3\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{13} &amp;=\mathbf{q}_1 \cdot \mathbf{a}_3 =
-    (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T \cdot 
-    (1, 3, 5, 7)^T = 2,\\
+    (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot 
+    (1, 3, 5, 7)\mathrm{T} = 2,\\
     r_{23} &amp;=\mathbf{q}_2 \cdot \mathbf{a}_3 =
-    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^T \cdot
-    (1, 3, 5, 7)^T = 8,\\
+    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot
+    (1, 3, 5, 7)\mathrm{T} = 8,\\
     \mathbf{u}_3 &amp;= \mathbf{a}_3 - r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2 =
-    (1, 3, 5, 7)^T - 2 (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^T - 8
-    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^T \\
-    &amp;= (-2, -2, 2, 2)^T,\\
+    (1, 3, 5, 7)\mathrm{T} - 2 (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} - 8
+    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \\
+    &amp;= (-2, -2, 2, 2)\mathrm{T},\\
     r_{33} &amp;= \|\mathbf{u}_3 \| = 4,\\
-    \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3 }{r_{33}} = \frac{(-2, -2, 2, 2)^T}{4} = 
-    (-\tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^T.
+    \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3 }{r_{33}} = \frac{(-2, -2, 2, 2)\mathrm{T}}{4} = 
+    (-\tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
 \end{align*}\]</div>
-<p>Therefore the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<p class="sd-card-text">Therefore the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span> is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     Q &amp;= \begin{pmatrix}
@@ -846,8 +885,9 @@ title="Print to PDF"
     \end{pmatrix}.
 \end{align*}\]</div>
 </div>
-</div>
-<div class="section" id="python-code">
+</details></div>
+</section>
+<section id="python-code">
 <h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">qr_gramschmidt()</span></code> which calculates the QR decomposition of a matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> using the Gram-Schmidt process.</p>
 <div class="cell docutils container">
@@ -897,8 +937,8 @@ R =
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="solving-systems-of-linear-equations-using-qr-decomposition">
+</section>
+<section id="solving-systems-of-linear-equations-using-qr-decomposition">
 <span id="qr-crout-section"></span><h2>Solving systems of linear equations using QR decomposition<a class="headerlink" href="#solving-systems-of-linear-equations-using-qr-decomposition" title="Permalink to this headline">#</a></h2>
 <p>Given a system of linear equations of the form <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> then the solution can be calculated using the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span>. Since <span class="math notranslate nohighlight">\(A=QR\)</span> then</p>
 <div class="amsmath math notranslate nohighlight">
@@ -906,10 +946,10 @@ R =
     QR\mathbf{x} &amp;= \mathbf{b}\\
     R\mathbf{x} &amp;= Q^{-1} \mathbf{b},
 \end{align*}\]</div>
-<p>and because <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal then <span class="math notranslate nohighlight">\(Q^{-1}=Q^T\)</span> so</p>
+<p>and because <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal then <span class="math notranslate nohighlight">\(Q^{-1}=Q\mathrm{T}\)</span> so</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    R\mathbf{x} = Q^T \mathbf{b}.
+    R\mathbf{x} = Q\mathrm{T} \mathbf{b}.
 \end{align*}\]</div>
 <p><span class="math notranslate nohighlight">\(R\)</span> is upper triangular so the solution of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> can be obtained through back substitution.</p>
 <div class="seealso admonition" id="qr-crout-example">
@@ -926,7 +966,14 @@ R =
     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} =
     \begin{pmatrix} 1 \\ 19 \\ 13 \\ 31 \end{pmatrix}.
 \end{align*}\]</div>
-<p>We saw in <a class="reference internal" href="#qr-gramschmidt-example"><span class="std std-ref">example 6.9</span></a> that the QR decomposition of the coefficient matrix is</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">We saw in <a class="reference internal" href="#qr-gramschmidt-example"><span class="std std-ref">example 6.9</span></a> that the QR decomposition of the coefficient matrix is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     Q &amp;= \begin{pmatrix}
@@ -941,7 +988,7 @@ R =
         0 &amp; 0 &amp; 4
     \end{pmatrix}.
 \end{align*}\]</div>
-<p>Solving <span class="math notranslate nohighlight">\(R\mathbf{x}=Q^T \mathbf{b}\)</span></p>
+<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(R\mathbf{x}=Q\mathrm{T} \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -958,17 +1005,18 @@ R =
     \begin{pmatrix} 1 \\ 19 \\ 13 \\ 31 \end{pmatrix} = 
     \begin{pmatrix} 18 \\ 32 \\ 12 \end{pmatrix}.
 \end{align*}\]</div>
-<p>gives</p>
+<p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_3 &amp;=\frac{12}{4}=3,\\
     x_2 &amp;=\frac{1}{2}(32-8(3))=4,\\
     x_1 &amp;=\frac{1}{2}(18-4(4)-2(3))=-2.
 \end{align*}\]</div>
-<p>So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(-2,4,3)\)</span>.</p>
+<p class="sd-card-text">So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(-2,4,3)\)</span>.</p>
 </div>
-</div>
-<div class="section" id="id1">
+</details></div>
+</section>
+<section id="id1">
 <h2>Python code<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>The code below calculates the solution to the system of linear equations from <a class="reference internal" href="#qr-crout-example"><span class="std std-ref">example 6.10</span></a> using QR decomposition.</p>
 <div class="cell docutils container">
@@ -996,19 +1044,21 @@ x3 = 3.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="qr-decomposition-using-householder-transformations">
+</section>
+<section id="qr-decomposition-using-householder-transformations">
 <span id="qr-householder-section"></span><h2>QR decomposition using Householder transformations<a class="headerlink" href="#qr-decomposition-using-householder-transformations" title="Permalink to this headline">#</a></h2>
 <p>Another method we can use to calculate the QR decomposition of a matrix is by the use of Householder transformations. Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 23</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane represented by the dashed line so that it is parallel to the basis vector<span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</p>
-<div class="figure align-default" id="householder-1-figure">
+<figure class="align-default" id="householder-1-figure">
 <img alt="../_images/householder_1.png" src="../_images/householder_1.png" />
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Householder transformation: the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Householder transformation: the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The Householder matrix is an orthogonal matrix that performs the Householder transformation reflection</p>
 <div class="admonition-definition-householder-matrix admonition">
 <p class="admonition-title">Definition: Householder matrix</p>
 <div class="math notranslate nohighlight" id="equation-householder-equation">
-<span class="eqno">(34)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[H = I - 2 \mathbf{v} \mathbf{v}^T,\]</div>
+<span class="eqno">(35)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[H = I - 2 \mathbf{v} \mathbf{v}\mathrm{T},\]</div>
 <p>where</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1016,11 +1066,13 @@ x3 = 3.0
     \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|}.
 \end{align*}\]</div>
 </div>
-<p>If <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is nearly parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then the denominator in equation <a class="reference internal" href="#equation-householder-equation">(34)</a> is close to zero and computational rounding errors can occur. However, we can choose to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead.</p>
-<div class="figure align-default" id="householder-2-figure">
+<p>If <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is nearly parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then the denominator in equation <a class="reference internal" href="#equation-householder-equation">(35)</a> is close to zero and computational rounding errors can occur. However, we can choose to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead.</p>
+<figure class="align-default" id="householder-2-figure">
 <img alt="../_images/householder_2.png" src="../_images/householder_2.png" />
-<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Householder transformation: the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> to avoid computational rounding errors.</span><a class="headerlink" href="#householder-2-figure" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Householder transformation: the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> to avoid computational rounding errors.</span><a class="headerlink" href="#householder-2-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>In <a class="reference internal" href="#householder-2-figure"><span class="std std-numref">Fig. 24</span></a> above, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is to be transformed to <span class="math notranslate nohighlight">\(-\|\mathbf{x}\|\mathbf{e}_1\)</span> then</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1045,10 +1097,10 @@ x3 = 3.0
     \mathbf{u} &amp;= \mathbf{r}_1 + \operatorname{sign}(r_{11})\| \mathbf{r}_1 \|\mathbf{e}_1 , \\
     \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|},
 \end{align*}\]</div>
-<p>and then we calculate the Householder matrix <span class="math notranslate nohighlight">\(H\)</span> using equation <a class="reference internal" href="#equation-householder-equation">(34)</a></p>
+<p>and then we calculate the Householder matrix <span class="math notranslate nohighlight">\(H\)</span> using equation <a class="reference internal" href="#equation-householder-equation">(35)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    H_1 &amp;= I_m - 2 \mathbf{v} \mathbf{v}^T,
+    H_1 &amp;= I_m - 2 \mathbf{v} \mathbf{v}\mathrm{T},
 \end{align*}\]</div>
 <p>and apply the Householder transformation to <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -1067,22 +1119,22 @@ x3 = 3.0
 \[\begin{align*}
     H &amp;= \begin{pmatrix} 
         I_{j-1} &amp; 0 \\
-        0 &amp; I_{m+j-1} - 2 \mathbf{v} \mathbf{v}^T
+        0 &amp; I_{m+j-1} - 2 \mathbf{v} \mathbf{v}\mathrm{T}
     \end{pmatrix}.
 \end{align*}\]</div>
 <p>We repeat this process for the columns in <span class="math notranslate nohighlight">\(R\)</span> at which point <span class="math notranslate nohighlight">\(R\)</span> is an upper triangular matrix. The <span class="math notranslate nohighlight">\(Q\)</span> matrix is the product of all of the individual Householder transformations so by definition it is an orthonormal matrix.</p>
 <div class="note admonition" id="qr-householder-definition">
-<p class="admonition-title">Definition: QR decomposution using Householder transformations</p>
+<p class="admonition-title">Definition: QR decomposition using Householder transformations</p>
 <p>The QR decomposition of an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> results in an <span class="math notranslate nohighlight">\(m\times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and an <span class="math notranslate nohighlight">\(m\times n\)</span> upper-triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>. . The elements of <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span> can be calculated using Householder transformations using:</p>
 <p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathbf{e} = (1, \underbrace{0, \ldots, 0}_{m-j})^T\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{u} = (r_{jj}, r_{j+1,j}, \ldots, r_{m,j})^T\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{e} = (1, \underbrace{0, \ldots, 0}_{m-j})\mathrm{T}\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u} = (r_{jj}, r_{j+1,j}, \ldots, r_{m,j})\mathrm{T}\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{u} + \operatorname{sign}(r_{jj})\|\mathbf{u}\|\mathbf{e}\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{v} = \dfrac{\mathbf{u}}{\| \mathbf{u} \|}\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(H = \begin{pmatrix}
       I_{j-1} &amp; 0 \\
-      0 &amp; I_{m-j+1} - 2 \mathbf{v}\mathbf{v}^T
+      0 &amp; I_{m-j+1} - 2 \mathbf{v}\mathbf{v}\mathrm{T}
   \end{pmatrix}\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(R = H R\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(Q = Q H\)</span>.</p></li>
@@ -1100,58 +1152,64 @@ x3 = 3.0
         1 &amp; 3 &amp; 7
         \end{pmatrix}
 \end{align*}\]</div>
-<p><strong>Solution</strong></p>
-<p>Let <span class="math notranslate nohighlight">\(Q=I_4\)</span> and <span class="math notranslate nohighlight">\(R=A\)</span> and calculate Householder matrix for the first column of <span class="math notranslate nohighlight">\(R\)</span></p>
-<p>Column <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(Q=I_4\)</span> and <span class="math notranslate nohighlight">\(R=A\)</span> and calculate Householder matrix for the first column of <span class="math notranslate nohighlight">\(R\)</span></p>
+<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{1} + \operatorname{sign}(r_{11}) \| \mathbf{r}_{1} \| \mathbf{e} = \left(\begin{matrix}-1 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)^T - 2 \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\end{matrix}\right)^T \\
-    &amp;= \left(\begin{matrix}-3 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)^T, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}-3 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)^T}{2 \sqrt{3}}, \\
-    H &amp;= I_4 - 2\mathbf{vv}^T = I_4 - \frac{2}{12}\left(\begin{matrix}- \frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{6}\\- \frac{\sqrt{3}}{6}\\\frac{\sqrt{3}}{6}\end{matrix}\right)\left(\begin{matrix}- \frac{\sqrt{3}}{2} &amp; \frac{\sqrt{3}}{6} &amp; - \frac{\sqrt{3}}{6} &amp; \frac{\sqrt{3}}{6}\end{matrix}\right) \\
+    \mathbf{u} &amp;= \mathbf{r}_{1} + \operatorname{sign}(r_{11}) \| \mathbf{r}_{1} \| \mathbf{e} = \left(\begin{matrix}-1 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)\mathrm{T} - 2 \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\end{matrix}\right)\mathrm{T} \\
+    &amp;= \left(\begin{matrix}-3 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)\mathrm{T}, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}-3 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)\mathrm{T}}{2 \sqrt{3}}, \\
+    H &amp;= I_4 - 2\mathbf{vv}\mathrm{T} = I_4 - \frac{2}{12}\left(\begin{matrix}- \frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{6}\\- \frac{\sqrt{3}}{6}\\\frac{\sqrt{3}}{6}\end{matrix}\right)\left(\begin{matrix}- \frac{\sqrt{3}}{2} &amp; \frac{\sqrt{3}}{6} &amp; - \frac{\sqrt{3}}{6} &amp; \frac{\sqrt{3}}{6}\end{matrix}\right) \\
       &amp;= I_4 - \frac{1}{6}\left(\begin{matrix}\frac{3}{4} &amp; - \frac{1}{4} &amp; \frac{1}{4} &amp; - \frac{1}{4}\\- \frac{1}{4} &amp; \frac{1}{12} &amp; - \frac{1}{12} &amp; \frac{1}{12}\\\frac{1}{4} &amp; - \frac{1}{12} &amp; \frac{1}{12} &amp; - \frac{1}{12}\\- \frac{1}{4} &amp; \frac{1}{12} &amp; - \frac{1}{12} &amp; \frac{1}{12}\end{matrix}\right) = \left(\begin{matrix}- \frac{1}{2} &amp; \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{2} &amp; \frac{5}{6} &amp; \frac{1}{6} &amp; - \frac{1}{6}\\- \frac{1}{2} &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; \frac{1}{6}\\\frac{1}{2} &amp; - \frac{1}{6} &amp; \frac{1}{6} &amp; \frac{5}{6}\end{matrix}\right),
 \end{align*}\]</div>
-<p>Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
+<p class="sd-card-text">Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     R = H R &amp;= \left(\begin{matrix}- \frac{1}{2} &amp; \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{2} &amp; \frac{5}{6} &amp; \frac{1}{6} &amp; - \frac{1}{6}\\- \frac{1}{2} &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; \frac{1}{6}\\\frac{1}{2} &amp; - \frac{1}{6} &amp; \frac{1}{6} &amp; \frac{5}{6}\end{matrix}\right)\left(\begin{matrix}-1 &amp; -1 &amp; 1\\1 &amp; 3 &amp; 3\\-1 &amp; -1 &amp; 5\\1 &amp; 3 &amp; 7\end{matrix}\right) = \left(\begin{matrix}2 &amp; 4 &amp; 2\\0 &amp; \frac{4}{3} &amp; \frac{8}{3}\\0 &amp; \frac{2}{3} &amp; \frac{16}{3}\\0 &amp; \frac{4}{3} &amp; \frac{20}{3}\end{matrix}\right), \\
     Q = Q H &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)\left(\begin{matrix}- \frac{1}{2} &amp; \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{2} &amp; \frac{5}{6} &amp; \frac{1}{6} &amp; - \frac{1}{6}\\- \frac{1}{2} &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; \frac{1}{6}\\\frac{1}{2} &amp; - \frac{1}{6} &amp; \frac{1}{6} &amp; \frac{5}{6}\end{matrix}\right) \\
     &amp; = \left(\begin{matrix}- \frac{1}{2} &amp; \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{2} &amp; \frac{5}{6} &amp; \frac{1}{6} &amp; - \frac{1}{6}\\- \frac{1}{2} &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; \frac{1}{6}\\\frac{1}{2} &amp; - \frac{1}{6} &amp; \frac{1}{6} &amp; \frac{5}{6}\end{matrix}\right).
 \end{align*}\]</div>
-<p>Column <span class="math notranslate nohighlight">\(j = 2\)</span>:</p>
+<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 2\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{2} + \operatorname{sign}(r_{22}) \| \mathbf{r}_{2} \| \mathbf{e} = \left(\begin{matrix}\frac{4}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)^T + 2 \left(\begin{matrix}1 &amp; 0 &amp; 0\end{matrix}\right)^T = \left(\begin{matrix}\frac{10}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)^T, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{10}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)^T}{\frac{2 \sqrt{30}}{3}}, \\
-    H &amp;= I_3 - 2\mathbf{vv}^T = I_3 - \frac{2}{\frac{40}{3}}\left(\begin{matrix}\frac{\sqrt{30}}{6}\\\frac{\sqrt{30}}{30}\\\frac{\sqrt{30}}{15}\end{matrix}\right)\left(\begin{matrix}\frac{\sqrt{30}}{6} &amp; \frac{\sqrt{30}}{30} &amp; \frac{\sqrt{30}}{15}\end{matrix}\right) \\
+    \mathbf{u} &amp;= \mathbf{r}_{2} + \operatorname{sign}(r_{22}) \| \mathbf{r}_{2} \| \mathbf{e} = \left(\begin{matrix}\frac{4}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)\mathrm{T} + 2 \left(\begin{matrix}1 &amp; 0 &amp; 0\end{matrix}\right)\mathrm{T} = \left(\begin{matrix}\frac{10}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)\mathrm{T}, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{10}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)\mathrm{T}}{\frac{2 \sqrt{30}}{3}}, \\
+    H &amp;= I_3 - 2\mathbf{vv}\mathrm{T} = I_3 - \frac{2}{\frac{40}{3}}\left(\begin{matrix}\frac{\sqrt{30}}{6}\\\frac{\sqrt{30}}{30}\\\frac{\sqrt{30}}{15}\end{matrix}\right)\left(\begin{matrix}\frac{\sqrt{30}}{6} &amp; \frac{\sqrt{30}}{30} &amp; \frac{\sqrt{30}}{15}\end{matrix}\right) \\
       &amp;= I_3 - \frac{3}{20}\left(\begin{matrix}\frac{5}{6} &amp; \frac{1}{6} &amp; \frac{1}{3}\\\frac{1}{6} &amp; \frac{1}{30} &amp; \frac{1}{15}\\\frac{1}{3} &amp; \frac{1}{15} &amp; \frac{2}{15}\end{matrix}\right) = \left(\begin{matrix}- \frac{2}{3} &amp; - \frac{1}{3} &amp; - \frac{2}{3}\\- \frac{1}{3} &amp; \frac{14}{15} &amp; - \frac{2}{15}\\- \frac{2}{3} &amp; - \frac{2}{15} &amp; \frac{11}{15}\end{matrix}\right),
 \end{align*}\]</div>
-<p>Adding the first 1 rows and columns of the identity matrix to <span class="math notranslate nohighlight">\(H\)</span></p>
+<p class="sd-card-text">Adding the first 1 rows and columns of the identity matrix to <span class="math notranslate nohighlight">\(H\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     H &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; - \frac{2}{3} &amp; - \frac{1}{3} &amp; - \frac{2}{3}\\0 &amp; - \frac{1}{3} &amp; \frac{14}{15} &amp; - \frac{2}{15}\\0 &amp; - \frac{2}{3} &amp; - \frac{2}{15} &amp; \frac{11}{15}\end{matrix}\right).
 \end{align*}\]</div>
-<p>Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
+<p class="sd-card-text">Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     R = H R &amp; = \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; - \frac{2}{3} &amp; - \frac{1}{3} &amp; - \frac{2}{3}\\0 &amp; - \frac{1}{3} &amp; \frac{14}{15} &amp; - \frac{2}{15}\\0 &amp; - \frac{2}{3} &amp; - \frac{2}{15} &amp; \frac{11}{15}\end{matrix}\right)\left(\begin{matrix}2 &amp; 4 &amp; 2\\0 &amp; \frac{4}{3} &amp; \frac{8}{3}\\0 &amp; \frac{2}{3} &amp; \frac{16}{3}\\0 &amp; \frac{4}{3} &amp; \frac{20}{3}\end{matrix}\right) = \left(\begin{matrix}2 &amp; 4 &amp; 2\\0 &amp; -2 &amp; -8\\0 &amp; 0 &amp; \frac{16}{5}\\0 &amp; 0 &amp; \frac{12}{5}\end{matrix}\right), \\
     Q = Q H &amp;= \left(\begin{matrix}- \frac{1}{2} &amp; \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{2} &amp; \frac{5}{6} &amp; \frac{1}{6} &amp; - \frac{1}{6}\\- \frac{1}{2} &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; \frac{1}{6}\\\frac{1}{2} &amp; - \frac{1}{6} &amp; \frac{1}{6} &amp; \frac{5}{6}\end{matrix}\right)\left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; - \frac{2}{3} &amp; - \frac{1}{3} &amp; - \frac{2}{3}\\0 &amp; - \frac{1}{3} &amp; \frac{14}{15} &amp; - \frac{2}{15}\\0 &amp; - \frac{2}{3} &amp; - \frac{2}{15} &amp; \frac{11}{15}\end{matrix}\right) \\
     &amp;= \left(\begin{matrix}- \frac{1}{2} &amp; - \frac{1}{2} &amp; - \frac{7}{10} &amp; \frac{1}{10}\\\frac{1}{2} &amp; - \frac{1}{2} &amp; - \frac{1}{10} &amp; - \frac{7}{10}\\- \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{7}{10} &amp; - \frac{1}{10}\\\frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{10} &amp; \frac{7}{10}\end{matrix}\right).
 \end{align*}\]</div>
-<p>Column <span class="math notranslate nohighlight">\(j = 3\)</span>:</p>
+<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 3\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{3} + \operatorname{sign}(r_{33}) \| \mathbf{r}_{3} \| \mathbf{e} = \left(\begin{matrix}\frac{16}{5} &amp; \frac{12}{5}\end{matrix}\right)^T + 4 \left(\begin{matrix}1 &amp; 0\end{matrix}\right)^T = \left(\begin{matrix}\frac{36}{5} &amp; \frac{12}{5}\end{matrix}\right)^T, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{36}{5} &amp; \frac{12}{5}\end{matrix}\right)^T}{\frac{12 \sqrt{10}}{5}}, \\
-    H &amp;= I_2 - 2\mathbf{vv}^T = I_2 - \frac{2}{\frac{288}{5}}\left(\begin{matrix}\frac{3 \sqrt{10}}{10}\\\frac{\sqrt{10}}{10}\end{matrix}\right)\left(\begin{matrix}\frac{3 \sqrt{10}}{10} &amp; \frac{\sqrt{10}}{10}\end{matrix}\right) \\
+    \mathbf{u} &amp;= \mathbf{r}_{3} + \operatorname{sign}(r_{33}) \| \mathbf{r}_{3} \| \mathbf{e} = \left(\begin{matrix}\frac{16}{5} &amp; \frac{12}{5}\end{matrix}\right)\mathrm{T} + 4 \left(\begin{matrix}1 &amp; 0\end{matrix}\right)\mathrm{T} = \left(\begin{matrix}\frac{36}{5} &amp; \frac{12}{5}\end{matrix}\right)\mathrm{T}, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{36}{5} &amp; \frac{12}{5}\end{matrix}\right)\mathrm{T}}{\frac{12 \sqrt{10}}{5}}, \\
+    H &amp;= I_2 - 2\mathbf{vv}\mathrm{T} = I_2 - \frac{2}{\frac{288}{5}}\left(\begin{matrix}\frac{3 \sqrt{10}}{10}\\\frac{\sqrt{10}}{10}\end{matrix}\right)\left(\begin{matrix}\frac{3 \sqrt{10}}{10} &amp; \frac{\sqrt{10}}{10}\end{matrix}\right) \\
       &amp;= I_2 - \frac{5}{144}\left(\begin{matrix}\frac{9}{10} &amp; \frac{3}{10}\\\frac{3}{10} &amp; \frac{1}{10}\end{matrix}\right) = \left(\begin{matrix}- \frac{4}{5} &amp; - \frac{3}{5}\\- \frac{3}{5} &amp; \frac{4}{5}\end{matrix}\right),
 \end{align*}\]</div>
-<p>Adding the first 2 rows and columns of the identity matrix to <span class="math notranslate nohighlight">\(H\)</span></p>
+<p class="sd-card-text">Adding the first 2 rows and columns of the identity matrix to <span class="math notranslate nohighlight">\(H\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     H &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; - \frac{4}{5} &amp; - \frac{3}{5}\\0 &amp; 0 &amp; - \frac{3}{5} &amp; \frac{4}{5}\end{matrix}\right).
 \end{align*}\]</div>
-<p>Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
+<p class="sd-card-text">Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     R = H R &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; - \frac{4}{5} &amp; - \frac{3}{5}\\0 &amp; 0 &amp; - \frac{3}{5} &amp; \frac{4}{5}\end{matrix}\right)\left(\begin{matrix}2 &amp; 4 &amp; 2\\0 &amp; -2 &amp; -8\\0 &amp; 0 &amp; \frac{16}{5}\\0 &amp; 0 &amp; \frac{12}{5}\end{matrix}\right) = \left(\begin{matrix}2 &amp; 4 &amp; 2\\0 &amp; -2 &amp; -8\\0 &amp; 0 &amp; -4\\0 &amp; 0 &amp; 0\end{matrix}\right), \\
@@ -1159,8 +1217,9 @@ x3 = 3.0
     &amp;= \left(\begin{matrix}- \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2} &amp; - \frac{1}{2}\\- \frac{1}{2} &amp; - \frac{1}{2} &amp; - \frac{1}{2} &amp; - \frac{1}{2}\\\frac{1}{2} &amp; - \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2}\end{matrix}\right).
 \end{align*}\]</div>
 </div>
-</div>
-<div class="section" id="id2">
+</details></div>
+</section>
+<section id="id2">
 <h2>Python code<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">qr_householder()</span></code> that calculates the QR decomposition of an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> using Householder transformations.</p>
 <div class="cell docutils container">
@@ -1213,8 +1272,8 @@ R =
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="orthogonality-errors">
+</section>
+<section id="orthogonality-errors">
 <h2>Orthogonality errors<a class="headerlink" href="#orthogonality-errors" title="Permalink to this headline">#</a></h2>
 <p>As with all numerical techniques, the two QR decomposition methods shown here are prone to computational rounding errors, especially since they both use square root calculations. The matrix <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal so the dot product of each column of <span class="math notranslate nohighlight">\(Q\)</span> with all other columns should be equal to zero. We can use this to check the <strong>loss of orthogonality</strong> in our results.</p>
 <p>Defining an orthogonality error <span class="math notranslate nohighlight">\(E_j\)</span> for a column vector <span class="math notranslate nohighlight">\(\mathbf{q}_j\)</span> from <span class="math notranslate nohighlight">\(Q\)</span> such that</p>
@@ -1266,8 +1325,8 @@ R =
 </div>
 </div>
 <p>We can clearly see that as the column number increases the orthogonality errors for the Gram-Schmidt process increases whereas thr Householder remain relatively constant.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

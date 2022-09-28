@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Jacobi method &#8212; Runge-Kutta Methods and Linear Algebra</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -49,10 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/7_Indirect_methods/7.1_Jacobi_method.html" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Gauss-Seidel method" href="7.2_Gauss_Seidel_method.html" />
@@ -93,11 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/MMU_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Runge-Kutta Methods and Linear Algebra</h1>
@@ -433,6 +429,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
+   Initial Value Problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
+   Explicit Runge-Kutta Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
+   Implicit Runge-Kutta (IRK) Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
+   Stability
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -575,12 +598,7 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Jacobi method
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-code">
    Python code
   </a>
@@ -604,12 +622,7 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Jacobi method
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-code">
    Python code
   </a>
@@ -624,8 +637,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="jacobi-method">
-<h1>Jacobi method<a class="headerlink" href="#jacobi-method" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="jacobi-method">
+<span id="jacobi-method-section"></span><h1>Jacobi method<a class="headerlink" href="#jacobi-method" title="Permalink to this headline">#</a></h1>
 <p>The Jacobi method is the simplest indirect method. Splitting the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> into the of elements from the lower triangular, diagonal and upper triangular parts of <span class="math notranslate nohighlight">\(A\)</span> to form matrices <span class="math notranslate nohighlight">\(L\)</span>,<span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(U\)</span> such that <span class="math notranslate nohighlight">\(A = L + D + U\)</span>, e.g.,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -640,7 +653,7 @@ title="Print to PDF"
         0 &amp; a_{22}  &amp; \ddots  &amp; \vdots \\
         \vdots  &amp; \ddots  &amp; \ddots  &amp; 0\\
         0 &amp; \cdots  &amp; 0 &amp; a_{nn} 
-    \end{pmatrix}, \\
+    \end{pmatrix}, \\ \\
     U&amp;=\begin{pmatrix}
         0 &amp; a_{12}  &amp; \cdots  &amp; a_{1n}  \\
         0 &amp; 0 &amp; \ddots  &amp; \vdots  \\
@@ -658,30 +671,30 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>Let the <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> on the left-hand side be <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> and the <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> on the right-hand side be <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-matrix-form-of-the-jacobi-method-equation">
-<span class="eqno">(36)<a class="headerlink" href="#equation-matrix-form-of-the-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} = D^{-1} (\mathbf{b} - (L + U)\mathbf{x}^{(k)}),\]</div>
+<span class="eqno">(37)<a class="headerlink" href="#equation-matrix-form-of-the-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} = D^{-1} (\mathbf{b} - (L + U)\mathbf{x}^{(k)}),\]</div>
 <p>and writing this out for each element gives the Jacobi method gives the following definition of the Jacobi method.</p>
 <div class="note admonition" id="jacobi-method-definition">
 <p class="admonition-title">Definition: The Jacobi method</p>
 <p>The Jacobi method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-jacobi-method-equation">
-<span class="eqno">(37)<a class="headerlink" href="#equation-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[    x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j = 1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j = i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots ,n.\]</div>
+<span class="eqno">(38)<a class="headerlink" href="#equation-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[    x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j = 1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j = i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots ,n.\]</div>
 </div>
-<p>The iteration matrix for the Jacobi method can be determined by rearranging equation <a class="reference internal" href="#equation-matrix-form-of-the-jacobi-method-equation">(36)</a></p>
+<p>The iteration matrix for the Jacobi method can be determined by rearranging equation <a class="reference internal" href="#equation-matrix-form-of-the-jacobi-method-equation">(37)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{x}^{(k+1)} &amp;= D^{-1}(\mathbf{b} - (L + U) \mathbf{x}^{(k)}) \\
     &amp;= - D^{-1}(L + U) \mathbf{x}^{(k)} + D^{-1}\mathbf{b},
 \end{align*}\]</div>
-<p>and comparing to equation <a class="reference internal" href="7.0_Indirect_methods.html#equation-iteration-matrix-equation">(35)</a> we have</p>
+<p>and comparing to equation <a class="reference internal" href="7.0_Indirect_methods.html#equation-iteration-matrix-equation">(36)</a> we have</p>
 <div class="note admonition" id="jacobi-method-iteration-matrix-definition">
 <p class="admonition-title">Definition: Iteration matrix for the Jacobi method</p>
 <p>The iteration matrix for the Jacobi method is</p>
 <div class="math notranslate nohighlight" id="equation-jacobi-method-iteration-matrix-equation">
-<span class="eqno">(38)<a class="headerlink" href="#equation-jacobi-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_J = - D^{-1}(L + U),\]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-jacobi-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_J = - D^{-1}(L + U),\]</div>
 <p>where <span class="math notranslate nohighlight">\(A = L + D + U\)</span> such that <span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are lower triangular, diagonal and upper triangular matrices respectively.</p>
 </div>
 <p>The iteration matrix is used to analyse the convergence properties of the method.</p>
-<p>The Jacobi method is applied by iterating equation <a class="reference internal" href="#equation-jacobi-method-equation">(37)</a> until the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> is accurate enough for our needs. Since we do not know what the exact solution is, we need a way to estimate the error in our approximations. Since <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> is an approximation of the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> then if <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)}\)</span> is the error of the <span class="math notranslate nohighlight">\(k\)</span>th iteration we have <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{x}^{(k)} + \mathbf{e}^{(k)}\)</span>. Substituting this into the linear system <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> and rearranging gives</p>
+<p>The Jacobi method is applied by iterating equation <a class="reference internal" href="#equation-jacobi-method-equation">(38)</a> until the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> is accurate enough for our needs. Since we do not know what the exact solution is, we need a way to estimate the error in our approximations. Since <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> is an approximation of the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> then if <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)}\)</span> is the error of the <span class="math notranslate nohighlight">\(k\)</span>th iteration we have <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{x}^{(k)} + \mathbf{e}^{(k)}\)</span>. Substituting this into the linear system <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> and rearranging gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     A (\mathbf{x}^{(k)} +\mathbf{e}^{(k)}) &amp;= \mathbf{b} \\
@@ -691,7 +704,7 @@ title="Print to PDF"
 <div class="note admonition" id="residual-definition">
 <p class="admonition-title">Definition: The residual</p>
 <div class="math notranslate nohighlight" id="equation-residual-equation">
-<span class="eqno">(39)<a class="headerlink" href="#equation-residual-equation" title="Permalink to this equation">#</a></span>\[\mathbf{r}  = \mathbf{b} - A \mathbf{x}^{(k)}.\]</div>
+<span class="eqno">(40)<a class="headerlink" href="#equation-residual-equation" title="Permalink to this equation">#</a></span>\[\mathbf{r}  = \mathbf{b} - A \mathbf{x}^{(k)}.\]</div>
 </div>
 <p>As <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)} \to \mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{r} \to 0\)</span> so we can use the following convergence criteria</p>
 <div class="amsmath math notranslate nohighlight">
@@ -708,22 +721,28 @@ title="Print to PDF"
     3x_1 +4x_2 -x_3 &amp;=-8, \\
     -x_2 +4x_3 &amp;=14.
 \end{align*}\]</div>
-<p><strong>Solution</strong></p>
-<p>The Jacobi method for this system is</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The Jacobi method for this system is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_{1}^{(k+1)} &amp;= \frac{1}{4} \left( -2 - 3 x_{2}^{(k)} \right), \\
     x_{2}^{(k+1)} &amp;= \frac{1}{4} \left( -8 - 3 x_{1}^{(k)} + x_{3}^{(k)} \right), \\
     x_{3}^{(k+1)} &amp;= \frac{1}{4} \left( 14 + x_{2}^{(k)} \right).
 \end{align*}\]</div>
-<p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_{1}^{(1)} &amp;= \frac{1}{4} \left( -2 - 3 (-2.0) \right) = -0.5, \\
     x_{2}^{(1)} &amp;= \frac{1}{4} \left( -8 - 3 (-0.5) + -3.5 \right) = -2.0, \\
     x_{3}^{(1)} &amp;= \frac{1}{4} \left( 14 + 2.0 \right) = 3.5.
 \end{align*}\]</div>
-<p>Calculate the residual</p>
+<p class="sd-card-text">Calculate the residual</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{r}^{(1)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
@@ -732,14 +751,14 @@ title="Print to PDF"
     \begin{pmatrix} -0.5 \\ -2.0 \\ 3.5 \end{pmatrix} =
     \begin{pmatrix} 6.0 \\ 5.0 \\ -2.0 \end{pmatrix}.
 \end{align*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 6.0 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 6.0 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     x_{1}^{(2)} &amp;= \frac{1}{4} \left( -2 - 3 (-0.75) \right) = 1.0, \\
     x_{2}^{(2)} &amp;= \frac{1}{4} \left( -8 - 3 (1.0) + -3.0 \right) = -0.75, \\
     x_{3}^{(2)} &amp;= \frac{1}{4} \left( 14 + 0.75 \right) = 3.0.
 \end{align*}\]</div>
-<p>Calculate the residual</p>
+<p class="sd-card-text">Calculate the residual</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
@@ -748,78 +767,78 @@ title="Print to PDF"
     \begin{pmatrix} 1.0 \\ -0.75 \\ 3.0 \end{pmatrix} =
     \begin{pmatrix} -3.75 \\ -5.0 \\ 1.25 \end{pmatrix}.
 \end{align*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 5.0 &gt; 10^{-4}\)</span> we continue iterating. The Jacobi method was iterated until <span class="math notranslate nohighlight">\(\max(|\mathbf{r}|) &lt; 10^{-4}\)</span> and a selection of the iteration values are given in the table below.</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 5.0 &gt; 10^{-4}\)</span> we continue iterating. The Jacobi method was iterated until <span class="math notranslate nohighlight">\(\max(|\mathbf{r}|) &lt; 10^{-4}\)</span> and a selection of the iteration values are given in the table below.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(x_{0}\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\max(\mathbf{r})\)</span></p></th>
+<tr class="row-odd"><th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{0}\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
+<th class="text-align:center head"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\max(\mathbf{r})\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p>0.000000</p></td>
-<td class="text-align:center"><p>0.000000</p></td>
-<td class="text-align:center"><p>0.000000</p></td>
-<td class="text-align:center"><p>14.000000</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">0</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">14.000000</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
-<td class="text-align:center"><p>-0.500000</p></td>
-<td class="text-align:center"><p>-2.000000</p></td>
-<td class="text-align:center"><p>3.500000</p></td>
-<td class="text-align:center"><p>6.000000</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">1</p></td>
+<td class="text-align:center"><p class="sd-card-text">-0.500000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.500000</p></td>
+<td class="text-align:center"><p class="sd-card-text">6.000000</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>2</p></td>
-<td class="text-align:center"><p>1.000000</p></td>
-<td class="text-align:center"><p>-0.750000</p></td>
-<td class="text-align:center"><p>3.000000</p></td>
-<td class="text-align:center"><p>5.000000</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">2</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-0.750000</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">5.000000</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>3</p></td>
-<td class="text-align:center"><p>0.062500</p></td>
-<td class="text-align:center"><p>-2.000000</p></td>
-<td class="text-align:center"><p>3.312500</p></td>
-<td class="text-align:center"><p>3.750000</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">3</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.062500</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.312500</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.750000</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>4</p></td>
-<td class="text-align:center"><p>1.000000</p></td>
-<td class="text-align:center"><p>-1.218750</p></td>
-<td class="text-align:center"><p>3.000000</p></td>
-<td class="text-align:center"><p>3.125000</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">4</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-1.218750</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.125000</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>5</p></td>
-<td class="text-align:center"><p>0.414062</p></td>
-<td class="text-align:center"><p>-2.000000</p></td>
-<td class="text-align:center"><p>3.195312</p></td>
-<td class="text-align:center"><p>2.343750</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">5</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.414062</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.195312</p></td>
+<td class="text-align:center"><p class="sd-card-text">2.343750</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-align:center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>48</p></td>
-<td class="text-align:center"><p>1.000000</p></td>
-<td class="text-align:center"><p>-1.999975</p></td>
-<td class="text-align:center"><p>3.000000</p></td>
-<td class="text-align:center"><p>0.000101</p></td>
+<tr class="row-odd"><td class="text-align:center"><p class="sd-card-text">48</p></td>
+<td class="text-align:center"><p class="sd-card-text">1.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">-1.999975</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000101</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>49</p></td>
-<td class="text-align:center"><p>0.999981</p></td>
-<td class="text-align:center"><p>-2.000000</p></td>
-<td class="text-align:center"><p>3.000006</p></td>
-<td class="text-align:center"><p>0.000076</p></td>
+<tr class="row-even"><td class="text-align:center"><p class="sd-card-text">49</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.999981</p></td>
+<td class="text-align:center"><p class="sd-card-text">-2.000000</p></td>
+<td class="text-align:center"><p class="sd-card-text">3.000006</p></td>
+<td class="text-align:center"><p class="sd-card-text">0.000076</p></td>
 </tr>
 </tbody>
 </table>
-<p>So the Jacobi method took 48 iterations to converge to the solution <span class="math notranslate nohighlight">\(x_1 =1\)</span>, <span class="math notranslate nohighlight">\(x_2 =-2\)</span> and <span class="math notranslate nohighlight">\(x_3 = 3\)</span>.</p>
+<p class="sd-card-text">So the Jacobi method took 48 iterations to converge to the solution <span class="math notranslate nohighlight">\(x_1 =1\)</span>, <span class="math notranslate nohighlight">\(x_2 =-2\)</span> and <span class="math notranslate nohighlight">\(x_3 = 3\)</span>.</p>
 </div>
-</div>
-<div class="section" id="python-code">
-<h1>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h1>
+</details></div>
+<section id="python-code">
+<h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
 <p>The code below defines the function called <code class="docutils literal notranslate"><span class="pre">jacobi()</span></code> which solves a linear system of equations of the form <span class="math notranslate nohighlight">\(A \mathbf{b} = \mathbf{x}\)</span> using the Jacobi method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,7 +896,8 @@ x3 = 3.000006
 </div>
 </div>
 </div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
