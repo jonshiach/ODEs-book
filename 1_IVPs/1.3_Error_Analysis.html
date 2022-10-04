@@ -429,33 +429,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
-   Explicit Runge-Kutta Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
-   Implicit Runge-Kutta (IRK) Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
-   Stability
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -659,7 +632,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="error-analysis">
 <span id="error-analysis-section"></span><h1>Error analysis<a class="headerlink" href="#error-analysis" title="Permalink to this headline">#</a></h1>
-<p>We have seen in the previous section that the <a class="reference internal" href="1.2_Euler_Method.html#euler-figure"><span class="std std-ref">Euler method solution</span></a> of the initial value problem  in <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html#euler-example"><span class="std std-ref">example 1.2</span></a> deviates from the exact solution. This is because we have truncated the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to <span class="math notranslate nohighlight">\(f(t+h)\)</span> and we have introduced an error. It is important that we study this error and the effect that the errors have on our solutions.</p>
+<p>We have seen in the previous section that the <a class="reference internal" href="1.2_Euler_Method.html#euler-figure"><span class="std std-ref">Euler method solution</span></a> of the initial value problem  in <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">example 1.2</span></a> deviates from the exact solution. This is because we have truncated the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to <span class="math notranslate nohighlight">\(f(t+h)\)</span> and we have introduced an error. It is important that we study this error and the effect that the errors have on our solutions.</p>
 <section id="big-o-notation">
 <span id="big-o-notation-section"></span><h2>Big-O notation<a class="headerlink" href="#big-o-notation" title="Permalink to this headline">#</a></h2>
 <p>Analyising the error of numerical method is challenging since we do not know what the exact solution is (if we did we wouldn’t need a numerical method). Also, if we did know the exact solution the value of the difference between the numerical solution and the exact solution would only apply to that specific problem. So instead we look at the behaviour of the error. Recall the <a class="reference internal" href="1.2_Euler_Method.html#euler-method-section"><span class="std std-ref">Euler method</span></a> which is</p>
@@ -745,7 +718,7 @@ title="Print to PDF"
 \[\begin{align*}
     |e_n| \leq C\frac{O(h^2)}{h} = O(h).
 \end{align*}\]</div>
-<p>We can demonstrate this with the Euler method. The plot shown in <a class="reference internal" href="#euler-hvalues-figure"><span class="std std-numref">Fig. 4</span></a> below shows the solutions to the IVP from <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html#euler-example"><span class="std std-ref">the Euler method example</span></a> calculated using step lengths of <span class="math notranslate nohighlight">\(h=0.2\)</span>, <span class="math notranslate nohighlight">\(h=0.1\)</span>, <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.025\)</span>. As the step length decreases the numerical solution gets closer to the exact solution as expected.</p>
+<p>We can demonstrate this with the Euler method. The plot shown in <a class="reference internal" href="#euler-hvalues-figure"><span class="std std-numref">Fig. 4</span></a> below shows the solutions to the IVP from <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">the Euler method example</span></a> calculated using step lengths of <span class="math notranslate nohighlight">\(h=0.2\)</span>, <span class="math notranslate nohighlight">\(h=0.1\)</span>, <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.025\)</span>. As the step length decreases the numerical solution gets closer to the exact solution as expected.</p>
 <figure class="align-default" id="euler-hvalues-figure">
 <div class="cell_output docutils container">
 <img alt="../_images/1.3_Error_Analysis_3_1.png" src="../_images/1.3_Error_Analysis_3_1.png" />
