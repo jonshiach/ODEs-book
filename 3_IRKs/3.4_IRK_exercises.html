@@ -575,6 +575,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="implicit-runge-kutta-methods-exercises">
 <h1>Implicit Runge-Kutta Methods Exercises<a class="headerlink" href="#implicit-runge-kutta-methods-exercises" title="Permalink to this headline">#</a></h1>
+<div class="full-width docutils">
 <div class="note admonition" id="ex3-1">
 <p class="admonition-title">Exercise 3.1</p>
 <p>Show that the Radau IA below is a third-order method.</p>
@@ -738,26 +739,19 @@ Solution<div class="sd-summary-down docutils">
         &amp; \frac{3}{4} &amp; \frac{!}{4}
     \end{array}
 \end{align*}\]</div>
-<p class="sd-card-text">Python code</p>
+<p class="sd-card-text">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">init_printing</span><span class="p">()</span>
-
-<span class="c1"># Define Legendre polynomial</span>
-<span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
-    <span class="n">P</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">P</span> <span class="o">+=</span> <span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">binomial</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="n">k</span>
-
-    <span class="k">return</span> <span class="n">P</span>
-
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="s1">&#39;mathjax&#39;</span><span class="p">)</span>
 
 <span class="c1"># Define symbolic variables</span>
-<span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a11, a12, a21, a22, b1, b2, c1, c2&quot;</span><span class="p">)</span>
+<span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a11, a12, a21, a22, b1, b2, c1, c2, t&quot;</span><span class="p">)</span>
 
 <span class="c1"># Calculate c values</span>
-<span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">P</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">P</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">P2</span> <span class="o">-</span> <span class="n">P1</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">P2</span> <span class="o">-</span> <span class="n">P1</span><span class="p">))</span>
 
 <span class="c1"># Define order conditions</span>
 <span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">-</span> <span class="mi">1</span>
@@ -769,6 +763,29 @@ Solution<div class="sd-summary-down docutils">
 
 <span class="c1"># Solve order conditions</span>
 <span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sd-card-text">MATLAB</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Define</span> <span class="n">symbolic</span> <span class="n">variables</span>
+<span class="n">syms</span> <span class="n">a11</span> <span class="n">a12</span> <span class="n">a21</span> <span class="n">a22</span> <span class="n">b1</span> <span class="n">b2</span> <span class="n">c1</span> <span class="n">c2</span> <span class="n">t</span>
+
+<span class="o">%</span> <span class="n">Calculate</span> <span class="n">c</span> <span class="n">values</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">nchoosek</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">nchoosek</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">nchoosek</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">nchoosek</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">nchoosek</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">nchoosek</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">P2</span> <span class="o">-</span> <span class="n">P1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">order</span> <span class="n">conditions</span>
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">+</span> <span class="n">a12</span> <span class="o">==</span> <span class="n">c1</span><span class="p">;</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">+</span> <span class="n">a22</span> <span class="o">==</span> <span class="n">c2</span><span class="p">;</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">a12</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">^</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">a22</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">^</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Solve</span> <span class="n">the</span> <span class="n">order</span> <span class="n">conditions</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sd-card-text">Output:</p>
@@ -857,7 +874,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Code</p>
+<p class="sd-card-text">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -916,6 +933,71 @@ Solution<div class="sd-summary-down docutils">
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p class="sd-card-text">MATLAB</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Define</span> <span class="n">ODE</span>
+<span class="n">f</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">t</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">exact</span> <span class="n">solution</span>
+<span class="n">exact</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">IVP</span>
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Solve</span> <span class="n">IVP</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">raduaIIA</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">);</span>
+
+
+<span class="o">%</span> <span class="n">Output</span> <span class="n">solution</span>
+<span class="n">table</span> <span class="o">=</span> <span class="s2">&quot;|  t  |    IRK    |   Exact   |   Error   |</span><span class="se">\n</span><span class="s2">|:---:|:---------:|:---------:|:---------:|</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;| </span><span class="si">%3.1f</span><span class="s2"> | </span><span class="si">%9.6f</span><span class="s2"> | </span><span class="si">%9.6f</span><span class="s2"> | </span><span class="si">%9.2e</span><span class="s2"> |</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="o">...</span>
+        <span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">exact</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">exact</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)))));</span>
+<span class="n">end</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="n">Plot</span> <span class="n">solution</span>
+<span class="n">t_exact</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">200</span><span class="p">);</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">on</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;b-o&quot;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">MarkerFaceColor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">off</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">Interpreter</span><span class="o">=</span><span class="s2">&quot;latex&quot;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">Interpreter</span><span class="o">=</span><span class="s2">&quot;latex&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="s2">&quot;Exact&quot;</span><span class="p">,</span> <span class="s2">&quot;Radau IIA&quot;</span><span class="p">,</span> <span class="n">Location</span><span class="o">=</span><span class="s2">&quot;northwest&quot;</span><span class="p">)</span>
+
+<span class="o">%%</span> <span class="o">--------------------------------------------------------------------</span>
+<span class="n">function</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">raduaIIA</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="k">global</span> <span class="n">tol</span>
+<span class="n">nsteps</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span><span class="p">);</span>
+<span class="n">neq</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="n">nsteps</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">neq</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">:)</span> <span class="o">=</span> <span class="n">y0</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">nsteps</span>
+    <span class="n">Y1</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">neq</span><span class="p">);</span>
+    <span class="n">Y2</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">neq</span><span class="p">);</span>
+    <span class="n">Y1o</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">neq</span><span class="p">);</span>
+    <span class="n">Y2o</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">neq</span><span class="p">);</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">10</span>
+        <span class="n">Y1</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mi">12</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y2</span><span class="p">));</span>
+        <span class="n">Y2</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y2</span><span class="p">));</span>
+        <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Y1</span> <span class="o">-</span> <span class="n">Y1o</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">Y2</span> <span class="o">-</span> <span class="n">Y2o</span><span class="p">))))</span> <span class="o">&lt;</span> <span class="n">tol</span>
+            <span class="k">break</span>
+        <span class="n">end</span>
+        <span class="n">Y1o</span> <span class="o">=</span> <span class="n">Y1</span><span class="p">;</span>
+        <span class="n">Y2o</span> <span class="o">=</span> <span class="n">Y2</span><span class="p">;</span>
+        <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y2</span><span class="p">));</span>
+    <span class="n">end</span>
+<span class="n">end</span>
+
+<span class="n">end</span>
+</pre></div>
+</div>
 <p class="sd-card-text">Output</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>  <span class="n">t</span>  <span class="o">|</span>    <span class="n">IRK</span>    <span class="o">|</span>   <span class="n">Exact</span>   <span class="o">|</span>   <span class="n">Error</span>   <span class="o">|</span>
 <span class="o">|</span><span class="p">:</span><span class="o">---</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">---------</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">---------</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">---------</span><span class="p">:</span><span class="o">|</span>
@@ -930,11 +1012,12 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Plot</p>
 <figure class="align-default">
 <div class="cell_output docutils container">
-<img alt="../_images/3.4_IRK_exercises_5_0.png" src="../_images/3.4_IRK_exercises_5_0.png" />
+<img alt="../_images/3.4_IRK_exercises_3_0.png" src="../_images/3.4_IRK_exercises_3_0.png" />
 </div>
 </figure>
 </div>
 </details></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
