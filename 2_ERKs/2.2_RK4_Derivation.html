@@ -616,7 +616,7 @@ title="Print to PDF"
 <div class="note admonition" id="rk4-order-conditions-definition">
 <p class="admonition-title">Definition: Order conditions for a fourth-order explicit Runge-Kutta method</p>
 <div class="math notranslate nohighlight" id="equation-rk4-order-conditions-equation">
-<span class="eqno">(12)<a class="headerlink" href="#equation-rk4-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(15)<a class="headerlink" href="#equation-rk4-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
     b_1 + b_2 + b_3 + b_4 &amp;= 1,\\
     b_2 c_2 + b_3 c_3 + b_4 c_4 &amp;=  \frac{1}{2},\\
     b_2 c_2^2 + b_3 c_3^2 + b_4 c_4^2 &amp;= \frac{1}{3},\\
@@ -630,20 +630,20 @@ title="Print to PDF"
 <p>In addition to these, another condition that is placed on Runge-Kutta methods is the <strong>row sum condition</strong>.</p>
 <div class="note admonition" id="row-sum-condition">
 <p class="admonition-title">Definition: Row sum condition</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d0708a4-f324-4d9b-8a8c-93b452404cb7">
-<span class="eqno">(13)<a class="headerlink" href="#equation-3d0708a4-f324-4d9b-8a8c-93b452404cb7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f9dcd0ba-0e0d-4ca7-a3af-788736120b21">
+<span class="eqno">(16)<a class="headerlink" href="#equation-f9dcd0ba-0e0d-4ca7-a3af-788736120b21" title="Permalink to this equation">#</a></span>\[\begin{align}
     c_i =\sum_{j=1}^{s} a_{ij},
 \end{align}\]</div>
 <p>i.e., the value of <span class="math notranslate nohighlight">\(c_i\)</span> is equal to the sum of row <span class="math notranslate nohighlight">\(i\)</span> of the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </div>
 <p>Since we have an explicit method we know that <span class="math notranslate nohighlight">\(c_1 = 0\)</span> then the row sum conditions for a fourth-order explicit method are</p>
 <div class="math notranslate nohighlight" id="equation-rk4-row-sum-conditions-equation">
-<span class="eqno">(14)<a class="headerlink" href="#equation-rk4-row-sum-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(17)<a class="headerlink" href="#equation-rk4-row-sum-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     c_2 &amp;=a_{21} ,\\
     c_3 &amp;=a_{31} + a_{32} ,\\
     c_4 &amp;=a_{41} + a_{42} + a_{43} .
 \end{align*}\end{split}\]</div>
-<p>Combining the conditions in equations <a class="reference internal" href="#equation-rk4-order-conditions-equation">(12)</a> and <a class="reference internal" href="#equation-rk4-row-sum-conditions-equation">(14)</a> then we have a total of 11 order conditions expressed in 13 unknowns  which can be expressed in the Butcher tableau</p>
+<p>Combining the conditions in equations <a class="reference internal" href="#equation-rk4-order-conditions-equation">(15)</a> and <a class="reference internal" href="#equation-rk4-row-sum-conditions-equation">(17)</a> then we have a total of 11 order conditions expressed in 13 unknowns  which can be expressed in the Butcher tableau</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cccc}
@@ -657,7 +657,7 @@ title="Print to PDF"
 <p>To determine a unique solution we choose values for some of the unknowns and solve the order conditions for the remaining unknowns.</p>
 <div class="seealso admonition" id="rk4-derivation-example">
 <p class="admonition-title">Example 2.3</p>
-<p>Derive a fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = c_3 = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(c_4 =1\)</span> and <span class="math notranslate nohighlight">\(b_2 = \frac{1}{3}\)</span>.</p>
+<p>Derive a fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = c_3 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(b_2 = \frac{1}{3}\)</span>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -665,7 +665,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Substituting the known values of <span class="math notranslate nohighlight">\(c_2\)</span>, <span class="math notranslate nohighlight">\(c_3\)</span>, <span class="math notranslate nohighlight">\(c_4\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> into the first three order conditions in equation <a class="reference internal" href="#equation-rk4-order-conditions-equation">(12)</a> (we only need the first three to solve for <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span>) we have</p>
+<p class="sd-card-text">Substituting the known values of <span class="math notranslate nohighlight">\(c_2\)</span>, <span class="math notranslate nohighlight">\(c_3\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> into the first three order conditions in equation <a class="reference internal" href="#equation-rk4-order-conditions-equation">(15)</a> (we only need the first three to solve for <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span>) we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     b_1 + b_3 + b_4 &amp;= \frac{2}{3}, \\
@@ -677,18 +677,25 @@ Solution<div class="sd-summary-down docutils">
 \[\begin{align*}
     \frac{1}{4}b_3 = \frac{1}{12},
 \end{align*}\]</div>
-<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(b_3 = \frac{1}{3}\)</span> and from the third order condition we have <span class="math notranslate nohighlight">\(b_4 = \frac{1}{6}\)</span>. Substituting <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span> into the first order condition gives <span class="math notranslate nohighlight">\(b_1 = \frac{1}{3}\)</span>. Substituting the known values of <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(c_3\)</span> into the seventh order condition gives</p>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(b_3 = \frac{1}{3}\)</span> and from the third order condition we have <span class="math notranslate nohighlight">\(b_4 = \frac{1}{6}\)</span>. Substituting <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span> into the first order condition gives <span class="math notranslate nohighlight">\(b_1 = \frac{1}{3}\)</span>. Substituting the values of <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_4\)</span> and <span class="math notranslate nohighlight">\(c_3\)</span> into the seventh and eigth order condition from <a class="reference internal" href="#equation-rk4-order-conditions-equation">(15)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \frac{1}{6}a_{43} &amp;= \frac{1}{3}\left(1 - \frac{1}{2}\right) = \frac{1}{6},
+    \frac{1}{6}a_{43} &amp;= \frac{1}{3}\left(1 - \frac{1}{2}\right) = \frac{1}{6},\\
+    0 &amp;= \frac{1}{6}(1 - c_4),
 \end{align*}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{43} = 1\)</span>. Substituting the known values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> into the sixth order condtion gives</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{43} = 1\)</span> and <span class="math notranslate nohighlight">\(c_4 = 1\)</span>. So we now have all of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> values as well as <span class="math notranslate nohighlight">\(a_{43}\)</span>, substituting these into the fifth order condtion from <a class="reference internal" href="#equation-rk4-order-conditions-equation">(15)</a> gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \left( \frac{1}{3} \right) \left( \frac{1}{2} \right) \left( \frac{1}{2} \right) a_{32} + \frac{1}{6} \left( \frac{1}{2} a_{42} + \frac{1}{2} \right) &amp;= \frac{1}{8}, \\
-    \left( \frac{1}{3} \right) a_{32} + \left( \frac{1}{6} \right) a_{42} &amp;= \frac{1}{3} \left( 1 - \frac{1}{2} \right),
+    \frac{1}{3} \cdot \frac{1}{2} \cdot \frac{1}{2} a_{32} + \frac{1}{6} \left( \frac{1}{2} a_{42} + \frac{1}{2} \right) &amp;= \frac{1}{8} \\
+    \frac{1}{12} a_{32} + \frac{1}{12} a_{42} &amp;= \frac{1}{24}
 \end{align*}\]</div>
-<p class="sd-card-text">so we have the system</p>
+<p class="sd-card-text">and doing the same for the sixth order condition</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \frac{1}{3} a_{32} +  \frac{1}{6} a_{42} &amp;= \frac{1}{3} \left( 1 - \frac{1}{2} \right) \\
+    \frac{1}{3} a_{32} + \frac{1}{6} a_{42} &amp;= \frac{1}{6}.
+\end{align*}\]</div>
+<p class="sd-card-text">So we have the system</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \frac{1}{12}a_{32} + \frac{1}{12}a_{42} &amp;= \frac{1}{24}, \\
@@ -732,7 +739,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="note admonition" id="rk4-definition">
 <p class="admonition-title">Definition: The fourth-order explicit Runge-Kutta method (RK4)</p>
 <div class="math notranslate nohighlight" id="equation-rk4-equation">
-<span class="eqno">(15)<a class="headerlink" href="#equation-rk4-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(18)<a class="headerlink" href="#equation-rk4-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{6}(k_1 + 2 k_2 + 2 k_3 + k_4), \\
     k_1 &amp;= f(t_n, y_n), \\
     k_2 &amp;= f(t_n + \tfrac{1}{2} h, y_n + \tfrac{1}{2} h k_1), \\
@@ -754,7 +761,7 @@ Solution<div class="sd-summary-down docutils">
 <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;c2, c3, c4&#39;</span><span class="p">)</span>
 
 <span class="c1"># Choose 4 values for the unkowns</span>
-<span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># Define order conditions</span>
 <span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">-</span> <span class="mi">1</span>

@@ -778,7 +778,7 @@ Solution<div class="sd-summary-down docutils">
 <span id="secant-method-section"></span><h2>Improving the guess value using the secant method<a class="headerlink" href="#improving-the-guess-value-using-the-secant-method" title="Permalink to this headline">#</a></h2>
 <p>In the <a class="reference internal" href="#shooting-example-1"><span class="std std-ref">example</span></a> we saw that by adjusting the guess value of <span class="math notranslate nohighlight">\(y'(0)\)</span> we obtained solutions at the upper boundary that were closer to the target value at the upper boundary <span class="math notranslate nohighlight">\(\beta\)</span>. We could continue in this way by increasing or decreasing our guess value halfway towards the previous guess value depending on whether the solution at the upper boundary was higher or lower than the target (this method is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Bisection_method">bisection method</a>), however a more efficient approach is to use the <a class="reference external" href="https://en.wikipedia.org/wiki/Secant_method">Secant method</a>. The Secant method is a root finding algorithm that calculates the value of <span class="math notranslate nohighlight">\(s\)</span> where <span class="math notranslate nohighlight">\(g(s)=0\)</span> for some function <span class="math notranslate nohighlight">\(g\)</span></p>
 <div class="math notranslate nohighlight" id="equation-secant-method-equation">
-<span class="eqno">(32)<a class="headerlink" href="#equation-secant-method-equation" title="Permalink to this equation">#</a></span>\[s_{i+1} = s_i - g(s_i)\frac{s_i - s_{i-1}}{g(s_i) - g(s_{i-1})}.\]</div>
+<span class="eqno">(35)<a class="headerlink" href="#equation-secant-method-equation" title="Permalink to this equation">#</a></span>\[s_{i+1} = s_i - g(s_i)\frac{s_i - s_{i-1}}{g(s_i) - g(s_{i-1})}.\]</div>
 <p>This expression is iterated until two successive values of <span class="math notranslate nohighlight">\(s\)</span> are less than some small number, i.e., <span class="math notranslate nohighlight">\(|s_i - s_{i-1}| &lt; tol\)</span>. Since we want the solution of <span class="math notranslate nohighlight">\(y'(a)\)</span> to be equal to the upper boundary value <span class="math notranslate nohighlight">\(\beta\)</span> we can define the function</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -801,7 +801,7 @@ Solution<div class="sd-summary-down docutils">
         g(s_1) &amp;= 2 - 3.1712 = -1.1712, \\
         g(s_2) &amp;= 2 - 2.3784 = -0.3784, 
 \end{align*}\]</div>
-<p class="sd-card-text">therefore using equation <a class="reference internal" href="#equation-secant-method-equation">(32)</a> the next guess value calculated using the secant method is</p>
+<p class="sd-card-text">therefore using equation <a class="reference internal" href="#equation-secant-method-equation">(35)</a> the next guess value calculated using the secant method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     s_3 &amp;= s_2 - g(s_2) \left( \frac{s_2 - s_1}{g(s_2) - g(s_1)} \right) \\

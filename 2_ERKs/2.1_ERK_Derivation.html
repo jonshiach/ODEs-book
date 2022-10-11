@@ -650,32 +650,32 @@ title="Print to PDF"
 <p>Substituting <span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> into equation <a class="reference internal" href="#equation-general-rk2-equation">(9)</a> gives</p>
 <div class="math notranslate nohighlight" id="equation-bivariate-rk2-equation">
 <span class="eqno">(10)<a class="headerlink" href="#equation-bivariate-rk2-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
-y_{n+1} &amp;= y_n + h (b_1 f(t_n, y_n) \\
-&amp; \qquad + b_2 (f(t_n, y_n) + c_2 h f_t(t_n, y_n) + h a_{21} f(t_n, y_n) f_y(t_n, y_n))) + O(h^3).
+y_{n+1} &amp;= y_n + h (b_1 f(t_n, y_n) + b_2 f(t_n, y_n))\\
+&amp; \qquad + h b_2 (h c_2 f_t(t_n, y_n) + h a_{21} f(t_n, y_n) f_y(t_n, y_n))) + O(h^3).
 \end{align*}\end{split}\]</div>
 <p>We need equation <a class="reference internal" href="#equation-bivariate-rk2-equation">(10)</a> to be equal to <a class="reference internal" href="#equation-ode-taylor-equation">(8)</a>. Equating the coefficients of <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span> we have</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight" id="equation-rk2-order-condition-1">
+<span class="eqno">(11)<a class="headerlink" href="#equation-rk2-order-condition-1" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     h b_1 + h b_2 &amp;= h \\
     \therefore b_1 + b_2 &amp;= 1.
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 <p>Equating the coefficients of <span class="math notranslate nohighlight">\(f_t(t_n, y_n)\)</span> we have</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight" id="equation-rk2-order-condition-2">
+<span class="eqno">(12)<a class="headerlink" href="#equation-rk2-order-condition-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     h^2 b_2 c_2 &amp;= \frac{h^2}{2}\\
     \therefore b_2c_2 &amp;= \frac{1}{2},
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
 <p>and equating the coefficients of <span class="math notranslate nohighlight">\(f(t_n, y_n) f_y(t_n, y_n)\)</span> we have</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight" id="equation-rk2-order-condition-3">
+<span class="eqno">(13)<a class="headerlink" href="#equation-rk2-order-condition-3" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     h^2 b_2 a_{21} &amp;= \frac{h^2}{2} \\
     \therefore a_{21}b_2 &amp;= \frac{1}{2}.
-\end{align*}\]</div>
-<p>So we have three equations and four unknowns (<span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(c_2\)</span>). Any set of values that satisfy these this system of equations give a valid second-order explicit Runge-Kutta method. These conditions are known as the <strong>order conditions</strong> for a method. Since we have an <a href="https://en.wikipedia.org/wiki/Underdetermined_system" target="_blank">underdetermined system</a> to get a unique solution we choose a value for one of the unknowns and solve for the others.</p>
+\end{align*}\end{split}\]</div>
+<p>So we have the three equations <a class="reference internal" href="#equation-rk2-order-condition-1">(11)</a>, <a class="reference internal" href="#equation-rk2-order-condition-2">(12)</a> and <a class="reference internal" href="#equation-rk2-order-condition-3">(13)</a> in four unknowns (<span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(c_2\)</span>). Any set of values that satisfy these this system of equations give a valid second-order explicit Runge-Kutta method. These conditions are known as the <strong>order conditions</strong> for a method. Since we have an <a href="https://en.wikipedia.org/wiki/Underdetermined_system" target="_blank">underdetermined system</a> to get a unique solution we choose a value for one of the unknowns and solve for the others.</p>
 <div class="note admonition" id="rk2-order-conditions-definition">
 <p class="admonition-title">Definition: Order conditions for a second-order explicit Runge-Kutta method</p>
 <div class="math notranslate nohighlight" id="equation-rk2-order-conditions-equation">
-<span class="eqno">(11)<a class="headerlink" href="#equation-rk2-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(14)<a class="headerlink" href="#equation-rk2-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     b_1 +b_2 &amp;=1,\\
     c_2 b_2 &amp;=\frac{1}{2},\\
     a_{21} b_2 &amp;=\frac{1}{2}
@@ -691,7 +691,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Substituting <span class="math notranslate nohighlight">\(c_2 = 1\)</span> into equation <a class="reference internal" href="#equation-rk2-order-conditions-equation">(11)</a> the second order condition gives <span class="math notranslate nohighlight">\(b_2 = \frac{1}{2}\)</span> so from the first order condition we know that <span class="math notranslate nohighlight">\(b_1 = \frac{1}{2}\)</span> and from the third order condition we know that <span class="math notranslate nohighlight">\(a_{21} = 1\)</span>. So this second-order explicit Runge-Kutta method is</p>
+<p class="sd-card-text">Substituting <span class="math notranslate nohighlight">\(c_2 = 1\)</span> into equation <a class="reference internal" href="#equation-rk2-order-conditions-equation">(14)</a> the second order condition gives <span class="math notranslate nohighlight">\(b_2 = \frac{1}{2}\)</span> so from the first order condition we know that <span class="math notranslate nohighlight">\(b_1 = \frac{1}{2}\)</span> and from the third order condition we know that <span class="math notranslate nohighlight">\(a_{21} = 1\)</span>. So this second-order explicit Runge-Kutta method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;=y_n +\frac{h}{2}(k_1 +k_2 ),\\

@@ -665,7 +665,7 @@ title="Print to PDF"
 </figure>
 <section id="stability-functions-for-an-implicit-runge-kutta-method">
 <h2>Stability functions for an implicit Runge-Kutta method<a class="headerlink" href="#stability-functions-for-an-implicit-runge-kutta-method" title="Permalink to this headline">#</a></h2>
-<p>To determine the stability function for an implicit Runge-Kutta method we consider the stability function of a general Runge-Kutta method given in equations <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-y-equation">(24)</a> and <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-yn-1-equation">(25)</a></p>
+<p>To determine the stability function for an implicit Runge-Kutta method we consider the stability function of a general Runge-Kutta method given in equations <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-y-equation">(27)</a> and <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-yn-1-equation">(28)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp; = y_n + z \mathbf{b}^\mathrm{T} Y, \\
@@ -718,7 +718,7 @@ title="Print to PDF"
 <div class="note admonition" id="irk-rz-definition">
 <p class="admonition-title">Definition: Stability function of an implicit Runge-Kutta method</p>
 <div class="math notranslate nohighlight" id="equation-irk-stability-rz-equation">
-<span class="eqno">(28)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathrm{T})}{\det(I - zA)}.\]</div>
+<span class="eqno">(31)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathrm{T})}{\det(I - zA)}.\]</div>
 </div>
 <p><span class="math notranslate nohighlight">\(\mathbf{e}\mathbf{b}^\mathrm{T}\)</span> is a diagonal matrix with the elements of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> on the main diagonal</p>
 <div class="amsmath math notranslate nohighlight">
@@ -755,7 +755,7 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>and define a polynomial function</p>
 <div class="math notranslate nohighlight" id="equation-ey-definition">
-<span class="eqno">(29)<a class="headerlink" href="#equation-ey-definition" title="Permalink to this equation">#</a></span>\[E(y)=Q(iy)Q(-iy)-P(iy)P(-iy),\]</div>
+<span class="eqno">(32)<a class="headerlink" href="#equation-ey-definition" title="Permalink to this equation">#</a></span>\[E(y)=Q(iy)Q(-iy)-P(iy)P(-iy),\]</div>
 <p>then the method is A-stable if and only if the following are satisfied</p>
 <ul class="simple">
 <li><p>All roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> have positive real parts;</p></li>
@@ -781,7 +781,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Using equation <a class="reference internal" href="#equation-irk-stability-rz-equation">(28)</a></p>
+<p class="sd-card-text">Using equation <a class="reference internal" href="#equation-irk-stability-rz-equation">(31)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     R(z) &amp;= \frac{\det \left(
@@ -794,7 +794,7 @@ Solution<div class="sd-summary-down docutils">
     {\det \begin{pmatrix} 1 - \frac{5}{12}z &amp; \frac{1}{12}z \\ -\frac{3}{4}z &amp; 1 - \frac{1}{4}z \end{pmatrix}} 
     = \frac{1 + \frac{1}{3}z + \frac{1}{16}z^2}{1 - \frac{2}{3}z + \frac{1}{6}z^2}.
 \end{align*}\]</div>
-<p class="sd-card-text">Here <span class="math notranslate nohighlight">\(Q(z) = 1 - \frac{2}{3}z + \frac{1}{6}z^2\)</span> which has roots at <span class="math notranslate nohighlight">\(z = 2 \pm \sqrt{2}\)</span> which both have positive real parts so the <a class="reference internal" href="#a-stability-theorem"><span class="std std-ref">first condition</span></a> for A-stability is satisfied. Using equation <a class="reference internal" href="#equation-ey-definition">(29)</a></p>
+<p class="sd-card-text">Here <span class="math notranslate nohighlight">\(Q(z) = 1 - \frac{2}{3}z + \frac{1}{6}z^2\)</span> which has roots at <span class="math notranslate nohighlight">\(z = 2 \pm \sqrt{2}\)</span> which both have positive real parts so the <a class="reference internal" href="#a-stability-theorem"><span class="std std-ref">first condition</span></a> for A-stability is satisfied. Using equation <a class="reference internal" href="#equation-ey-definition">(32)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     E(y) &amp;= \left( 1 - \frac{2}{3} i y - \frac{1}{6}y^2 \right) \left( 1 + \frac{2}{3} i y - \frac{1}{6}y^2 \right) \\

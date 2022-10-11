@@ -644,30 +644,30 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>Let the <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> on the left-hand side be <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> and the <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> on the right-hand side be <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-matrix-form-of-the-jacobi-method-equation">
-<span class="eqno">(37)<a class="headerlink" href="#equation-matrix-form-of-the-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} = D^{-1} (\mathbf{b} - (L + U)\mathbf{x}^{(k)}),\]</div>
+<span class="eqno">(40)<a class="headerlink" href="#equation-matrix-form-of-the-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} = D^{-1} (\mathbf{b} - (L + U)\mathbf{x}^{(k)}),\]</div>
 <p>and writing this out for each element gives the Jacobi method gives the following definition of the Jacobi method.</p>
 <div class="note admonition" id="jacobi-method-definition">
 <p class="admonition-title">Definition: The Jacobi method</p>
 <p>The Jacobi method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-jacobi-method-equation">
-<span class="eqno">(38)<a class="headerlink" href="#equation-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[    x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j = 1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j = i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots ,n.\]</div>
+<span class="eqno">(41)<a class="headerlink" href="#equation-jacobi-method-equation" title="Permalink to this equation">#</a></span>\[    x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j = 1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j = i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots ,n.\]</div>
 </div>
-<p>The iteration matrix for the Jacobi method can be determined by rearranging equation <a class="reference internal" href="#equation-matrix-form-of-the-jacobi-method-equation">(37)</a></p>
+<p>The iteration matrix for the Jacobi method can be determined by rearranging equation <a class="reference internal" href="#equation-matrix-form-of-the-jacobi-method-equation">(40)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \mathbf{x}^{(k+1)} &amp;= D^{-1}(\mathbf{b} - (L + U) \mathbf{x}^{(k)}) \\
     &amp;= - D^{-1}(L + U) \mathbf{x}^{(k)} + D^{-1}\mathbf{b},
 \end{align*}\]</div>
-<p>and comparing to equation <a class="reference internal" href="7.0_Indirect_methods.html#equation-iteration-matrix-equation">(36)</a> we have</p>
+<p>and comparing to equation <a class="reference internal" href="7.0_Indirect_methods.html#equation-iteration-matrix-equation">(39)</a> we have</p>
 <div class="note admonition" id="jacobi-method-iteration-matrix-definition">
 <p class="admonition-title">Definition: Iteration matrix for the Jacobi method</p>
 <p>The iteration matrix for the Jacobi method is</p>
 <div class="math notranslate nohighlight" id="equation-jacobi-method-iteration-matrix-equation">
-<span class="eqno">(39)<a class="headerlink" href="#equation-jacobi-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_J = - D^{-1}(L + U),\]</div>
+<span class="eqno">(42)<a class="headerlink" href="#equation-jacobi-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_J = - D^{-1}(L + U),\]</div>
 <p>where <span class="math notranslate nohighlight">\(A = L + D + U\)</span> such that <span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are lower triangular, diagonal and upper triangular matrices respectively.</p>
 </div>
 <p>The iteration matrix is used to analyse the convergence properties of the method.</p>
-<p>The Jacobi method is applied by iterating equation <a class="reference internal" href="#equation-jacobi-method-equation">(38)</a> until the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> is accurate enough for our needs. Since we do not know what the exact solution is, we need a way to estimate the error in our approximations. Since <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> is an approximation of the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> then if <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)}\)</span> is the error of the <span class="math notranslate nohighlight">\(k\)</span>th iteration we have <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{x}^{(k)} + \mathbf{e}^{(k)}\)</span>. Substituting this into the linear system <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> and rearranging gives</p>
+<p>The Jacobi method is applied by iterating equation <a class="reference internal" href="#equation-jacobi-method-equation">(41)</a> until the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> is accurate enough for our needs. Since we do not know what the exact solution is, we need a way to estimate the error in our approximations. Since <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> is an approximation of the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> then if <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)}\)</span> is the error of the <span class="math notranslate nohighlight">\(k\)</span>th iteration we have <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{x}^{(k)} + \mathbf{e}^{(k)}\)</span>. Substituting this into the linear system <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> and rearranging gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     A (\mathbf{x}^{(k)} +\mathbf{e}^{(k)}) &amp;= \mathbf{b} \\
@@ -677,7 +677,7 @@ title="Print to PDF"
 <div class="note admonition" id="residual-definition">
 <p class="admonition-title">Definition: The residual</p>
 <div class="math notranslate nohighlight" id="equation-residual-equation">
-<span class="eqno">(40)<a class="headerlink" href="#equation-residual-equation" title="Permalink to this equation">#</a></span>\[\mathbf{r}  = \mathbf{b} - A \mathbf{x}^{(k)}.\]</div>
+<span class="eqno">(43)<a class="headerlink" href="#equation-residual-equation" title="Permalink to this equation">#</a></span>\[\mathbf{r}  = \mathbf{b} - A \mathbf{x}^{(k)}.\]</div>
 </div>
 <p>As <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)} \to \mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{r} \to 0\)</span> so we can use the following convergence criteria</p>
 <div class="amsmath math notranslate nohighlight">

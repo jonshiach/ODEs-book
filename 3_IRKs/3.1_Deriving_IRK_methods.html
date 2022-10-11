@@ -649,7 +649,7 @@ title="Print to PDF"
 <div class="note admonition" id="legendre-polynomials-definition">
 <p class="admonition-title">Definition: Legendre polynomials</p>
 <div class="amsmath math notranslate nohighlight" id="equation-59f48fc6-60e5-4ec1-a129-ddeb0c54f598">
-<span class="eqno">(16)<a class="headerlink" href="#equation-59f48fc6-60e5-4ec1-a129-ddeb0c54f598" title="Permalink to this equation">#</a></span>\[\begin{align}
+<span class="eqno">(19)<a class="headerlink" href="#equation-59f48fc6-60e5-4ec1-a129-ddeb0c54f598" title="Permalink to this equation">#</a></span>\[\begin{align}
    P_n (t)=\sum_{k=0}^n \binom{n}{k}\binom{n+k}{k}(t-1)^k,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\displaystyle\binom{n}{k}\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a>.</p>
@@ -807,7 +807,7 @@ Solution<div class="sd-summary-down docutils">
 <p>we see that whilst these are still implicit equations, there is only one unknown in each one, i.e., the equation for <span class="math notranslate nohighlight">\(k_i\)</span> does not include <span class="math notranslate nohighlight">\(k_{i+1} \dots k_s\)</span>. So the advantage of DIRK methods is that the solutions to these can be obtained sequentially and is more computationally efficient than non-DIRK methods.</p>
 <p>The coefficients of a <span class="math notranslate nohighlight">\(k\)</span>th-order DIRK method are chosen to satisfy the <a class="reference internal" href="3.0_IRKs.html#bk-ck-dk-order-conditions"><span class="std std-ref"><span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(\lfloor \frac{k}{2} \rfloor)\)</span> order conditions</span></a> along with</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-condition">
-<span class="eqno">(17)<a class="headerlink" href="#equation-dirk-order-condition" title="Permalink to this equation">#</a></span>\[\mathbf{b}^T A\mathbf{c}=\frac{1}{k!}\]</div>
+<span class="eqno">(20)<a class="headerlink" href="#equation-dirk-order-condition" title="Permalink to this equation">#</a></span>\[\mathbf{b}^T A\mathbf{c}=\frac{1}{k!}\]</div>
 <div class="seealso admonition">
 <p class="admonition-title">Example 3.4</p>
 <p>Derive a 2-stage third-order DIRK method.</p>
@@ -820,18 +820,18 @@ Solution<div class="sd-summary-down docutils">
 </summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Since <span class="math notranslate nohighlight">\(k = 2\)</span> and <span class="math notranslate nohighlight">\(a_{11} = c_1\)</span> and <span class="math notranslate nohighlight">\(a_{12} = 0\)</span> the <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions are</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-conditions-1">
-<span class="eqno">(18)<a class="headerlink" href="#equation-dirk-order-conditions-1" title="Permalink to this equation">#</a></span>\[\begin{split}b_1 + b_2  &amp; = 1,\\
+<span class="eqno">(21)<a class="headerlink" href="#equation-dirk-order-conditions-1" title="Permalink to this equation">#</a></span>\[\begin{split}b_1 + b_2  &amp; = 1,\\
 b_1 c_1 + b_2 c_2  &amp; = \frac{1}{2},\\
 b_1 c_1^2 + b_2 c_2^2  &amp; = \frac{1}{3},\\
 a_{21} + a_{22}  &amp; = c_2.\end{split}\]</div>
-<p class="sd-card-text">We also have equation <a class="reference internal" href="#equation-dirk-order-condition">(17)</a> which is</p>
+<p class="sd-card-text">We also have equation <a class="reference internal" href="#equation-dirk-order-condition">(20)</a> which is</p>
 <div class="math notranslate nohighlight" id="equation-dirk-order-conditions-2">
-<span class="eqno">(19)<a class="headerlink" href="#equation-dirk-order-conditions-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{pmatrix} b_1 &amp; b_2 \end{pmatrix}
+<span class="eqno">(22)<a class="headerlink" href="#equation-dirk-order-conditions-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{pmatrix} b_1 &amp; b_2 \end{pmatrix}
 \begin{pmatrix} a_{11} &amp; 0 \\ a_{21} &amp; a_{22} \end{pmatrix} 
 \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} &amp;= \frac{1}{6} \\
 b_1 a_{11} c_1 + b_2(a_{21} c_1 + a_{22} c_2)  &amp;= \frac{1}{6} \\
 b_1 c_1^2 + b_2(a_{21} c_1 + a_{22} c_2) &amp;= \frac{1}{6}\end{split}\]</div>
-<p class="sd-card-text">Equations <a class="reference internal" href="#equation-dirk-order-conditions-1">(18)</a> and <a class="reference internal" href="#equation-dirk-order-conditions-2">(19)</a> give a system of 5 equations in 6 unknowns. If we let <span class="math notranslate nohighlight">\(c_1 = a_{11} = \frac{1}{4}\)</span> (this choice is arbitrary) then we can solve for the other coefficients which give</p>
+<p class="sd-card-text">Equations <a class="reference internal" href="#equation-dirk-order-conditions-1">(21)</a> and <a class="reference internal" href="#equation-dirk-order-conditions-2">(22)</a> give a system of 5 equations in 6 unknowns. If we let <span class="math notranslate nohighlight">\(c_1 = a_{11} = \frac{1}{4}\)</span> (this choice is arbitrary) then we can solve for the other coefficients which give</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   a_{21} &amp;= \frac{2}{3}, &amp;

@@ -627,7 +627,7 @@ title="Print to PDF"
 <p class="admonition-title">Definition: The Successive Over Relaxation (SOR) method</p>
 <p>The SOR method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-sor-method-equation">
-<span class="eqno">(44)<a class="headerlink" href="#equation-sor-method-equation" title="Permalink to this equation">#</a></span>\[x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n.\]</div>
+<span class="eqno">(47)<a class="headerlink" href="#equation-sor-method-equation" title="Permalink to this equation">#</a></span>\[x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n.\]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span>.</p>
 </div>
 <p>The iteration matrix for the SOR method is derived by writing the coefficient matrix of the linear system <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> using</p>
@@ -652,7 +652,7 @@ title="Print to PDF"
 <div class="note admonition" id="sor-method-iteration-matrix-definition">
 <p class="admonition-title">Definition: Iteration matrix for the SOR method</p>
 <div class="math notranslate nohighlight" id="equation-sor-method-iteration-matrix-equation">
-<span class="eqno">(45)<a class="headerlink" href="#equation-sor-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_{SOR} =(D+\omega L)^{-1} ((1-\omega )D-\omega U).\]</div>
+<span class="eqno">(48)<a class="headerlink" href="#equation-sor-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[T_{SOR} =(D+\omega L)^{-1} ((1-\omega )D-\omega U).\]</div>
 </div>
 <p>The value of <span class="math notranslate nohighlight">\(\omega\)</span> affects the rate of convergence of the SOR method and is determined by how the Gauss-Seidel method converges to the exact solution. Consider the diagrams in <a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 25</span></a> and <a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 26</span></a> below that shows the two types of convergence of the Gauss-Seidel method. When we have <a class="reference external" href="https://en.wikipedia.org/wiki/Monotonic_function">monotonic</a> convergence where each successive iteration approaches the exact solution from a single side (<a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 25</span></a>), the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &gt; 1\)</span> so that the change in subsequent approximations is increased. When we have oscillatory convergence where successive iterations overshoot the exact solution (<a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 26</span></a>) the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &lt; 1\)</span> so that the change in the subsequent approximation is decreased.</p>
 <figure class="align-default" id="over-relaxation-figure">
@@ -684,12 +684,12 @@ title="Print to PDF"
 <p class="admonition-title">Theorem: Optimum relaxation parameter</p>
 <p>If a system of linear equations of the form <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> has a coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> with all real eigenvalues then the optimum relaxation parameter for the SOR method can be calculated using</p>
 <div class="math notranslate nohighlight" id="equation-optimum-relaxation-parameter-equation">
-<span class="eqno">(46)<a class="headerlink" href="#equation-optimum-relaxation-parameter-equation" title="Permalink to this equation">#</a></span>\[\omega_{opt} = 1+{\left(\frac{\rho (T_J )}{1+\sqrt{1-\rho (T_J )^2 }}\right)}^2,\]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-optimum-relaxation-parameter-equation" title="Permalink to this equation">#</a></span>\[\omega_{opt} = 1+{\left(\frac{\rho (T_J )}{1+\sqrt{1-\rho (T_J )^2 }}\right)}^2,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the iteration matrix of the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-iteration-matrix-definition"><span class="std std-ref">Jacobi method</span></a>.</p>
 </div>
 <div class="seealso admonition" id="optimum-relaxation-parameter-example">
 <p class="admonition-title">Example 7.4</p>
-<p>Determine the optimum relaxation parameter for the SOR method when applied to the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a> by calculating <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for a range of <span class="math notranslate nohighlight">\(\omega\)</span> values and using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(46)</a> (if possible).</p>
+<p>Determine the optimum relaxation parameter for the SOR method when applied to the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example"><span class="std std-ref">example 7.1</span></a> by calculating <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for a range of <span class="math notranslate nohighlight">\(\omega\)</span> values and using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(49)</a> (if possible).</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -752,7 +752,7 @@ Solution<div class="sd-summary-down docutils">
     -\lambda \left( \lambda^2 + \frac{5}{8} \right), \\
     \therefore \lambda &amp;= 0, \pm \frac{\sqrt{10}}{4}
 \end{align*}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(\rho(T_J) = \frac{\sqrt{10}}{4}\)</span>. Using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(46)</a></p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(\rho(T_J) = \frac{\sqrt{10}}{4}\)</span>. Using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(49)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \omega = 1 + \left( \frac{\frac{\sqrt{10}}{4}}{1 + \sqrt{1 - (\frac{\sqrt{10}}{4})^2}} \right)^2 = \frac{4}{5}(4 - \sqrt{6}) \approx 1.2404.
