@@ -758,10 +758,10 @@ Solution<div class="sd-summary-down docutils">
 <p>Expanding out the stage values from equation <a class="reference internal" href="#equation-rk-equation">(5)</a> we see that the stage values of a general Runge-Kutta method are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    k_1 &amp;=f(t_n +c_1 h,y_n +h(a_{11} k_1 +a_{12} k_2 +\cdots +a_{1s} k_s ),\\
-    k_2 &amp;=f(t_n +c_2 h,y_n +h(a_{21} k_1 +a_{22} k_2 +\cdots +a_{2s} k_s ),\\
+    k_1 &amp;=f(t_n +c_1 h,y_n +h(a_{11} k_1 +a_{12} k_2 +\cdots +a_{1s} k_s )),\\
+    k_2 &amp;=f(t_n +c_2 h,y_n +h(a_{21} k_1 +a_{22} k_2 +\cdots +a_{2s} k_s )),\\
     &amp;\vdots \\
-    k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s ).
+    k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s )).
 \end{align*}\]</div>
 <p>The first equation where we are calculating <span class="math notranslate nohighlight">\(k_1\)</span> includes <span class="math notranslate nohighlight">\(k_1\)</span> on the right-hand side and in the second equation where we are calculating <span class="math notranslate nohighlight">\(k_2\)</span> includes <span class="math notranslate nohighlight">\(k_2\)</span> on the right-hand side and so on. These are examples of <a class="reference external" href="https://en.wikipedia.org/wiki/Implicit_function"><strong>implicit functions</strong></a> and Runge-Kutta methods where the stage values are expressed using implicit functions are known as <strong>Implicit Runge-Kutta (IRK)</strong> methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations (<a class="reference internal" href="../3_IRKs/3.0_IRKs.html#irk-chapter"><span class="std std-ref">see Implicit Runge-Kutta Methods</span></a>).</p>
 <p>If the summation in the stage value <span class="math notranslate nohighlight">\(k_i\)</span> in equation <a class="reference internal" href="#equation-rk-equation">(5)</a> is altered so the upper limit to the sum is <span class="math notranslate nohighlight">\(i-1\)</span>, i.e.,</p>
