@@ -207,7 +207,7 @@ def rk4(f, tspan, y0, h):
     return t, y 
 
 
-# The computed solutions using the fourth-order explicit Runge-Kutta are plotted in {numref}`rk4-example-figure` below. 
+# The computed solutions to [example 2.3](rk4-example) using the RK4 method are plotted in {numref}`rk4-example-figure` below. 
 # 
 # ```{glue:figure} rk4_example_plot 
 # :name: rk4-example-figure

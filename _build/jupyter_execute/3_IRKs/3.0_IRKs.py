@@ -66,7 +66,7 @@
 # 
 # If $G(k)$ represents the fact that a given implicit method has order $k$ then it can be shown that 
 # 
-# $$B(k)\; \mathsf{and} \; C(\lfloor \frac{k}{2} \rfloor ) \; \mathsf{and} \; D(\lfloor \frac{k}{2} \rfloor ) \Longrightarrow G(k)$$
+# $$B(k)\; \mathsf{and} \; C\left( \left\lfloor \frac{k}{2} \right\rfloor \right) \; \mathsf{and} \; D \left( \left\lfloor \frac{k}{2} \right\rfloor \right) \Longrightarrow G(k)$$
 # 
 # So to determine the order of an IRK method we need to do the following
 # 

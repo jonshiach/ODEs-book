@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/5_BVPs/5.0_BVPs.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -429,33 +429,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
-   Explicit Runge-Kutta Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
-   Implicit Runge-Kutta (IRK) Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
-   Stability
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -666,7 +639,7 @@ title="Print to PDF"
 <p class="admonition-title">Definition: General two-point boundary value problem</p>
 <p>A two-point boundary value problem is a second-order ODE where the solutions at the lower and upper boundaries of the domain are known</p>
 <div class="math notranslate nohighlight" id="equation-bvp-equation">
-<span class="eqno">(30)<a class="headerlink" href="#equation-bvp-equation" title="Permalink to this equation">#</a></span>\[y'' = f(t,y),\qquad  t\in [a, b],\qquad y(a) = \alpha ,\qquad y(b) = \beta,\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-bvp-equation" title="Permalink to this equation">#</a></span>\[y'' = f(t,y),\qquad  t\in [a, b],\qquad y(a) = \alpha ,\qquad y(b) = \beta,\]</div>
 <p>for some known values <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
 </div>
 </section>
@@ -725,7 +698,7 @@ title="Print to PDF"
 <p class="admonition-title">Theroem: Uniqueness of the solution to boundary value problems</p>
 <p>A linear boundary value problem of the form</p>
 <div class="math notranslate nohighlight" id="equation-bvp-uniqueness-equation">
-<span class="eqno">(31)<a class="headerlink" href="#equation-bvp-uniqueness-equation" title="Permalink to this equation">#</a></span>\[y'' = p(t)y' + q(t)y + r(t), \qquad t \in [a,b], \qquad y(a) = \alpha , \qquad y(b) = \beta ,\]</div>
+<span class="eqno">(34)<a class="headerlink" href="#equation-bvp-uniqueness-equation" title="Permalink to this equation">#</a></span>\[y'' = p(t)y' + q(t)y + r(t), \qquad t \in [a,b], \qquad y(a) = \alpha , \qquad y(b) = \beta ,\]</div>
 <p>where <span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are some functions of <span class="math notranslate nohighlight">\(t\)</span> then it has a unique solution if the following are satisfied</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are continuous on <span class="math notranslate nohighlight">\([a, b]\)</span>;</p></li>
@@ -746,7 +719,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Comparing this boundary value problem to equation <a class="reference internal" href="#equation-bvp-uniqueness-equation">(31)</a> we have</p>
+<p class="sd-card-text">Comparing this boundary value problem to equation <a class="reference internal" href="#equation-bvp-uniqueness-equation">(34)</a> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     p(t) &amp;= 0,\\

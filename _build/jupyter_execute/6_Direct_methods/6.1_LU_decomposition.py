@@ -165,7 +165,7 @@
 import numpy as np
 
 
-# In[35]:
+# In[2]:
 
 
 def lu(A):
@@ -189,7 +189,7 @@ def lu(A):
 
 # The code below applies the function `lu()` to calculate the LU decomposition of the matrix from [example 6.1](lu-example).
 
-# In[25]:
+# In[3]:
 
 
 # Define matrix
@@ -304,7 +304,7 @@ print(f"U = \n{U}\n")
 # 
 # The Python code below defines two functions called `forward_substitution()` and `back_substitution()` that perform forward and back substitution.
 
-# In[36]:
+# In[4]:
 
 
 def forward_substitution(L, b):
@@ -333,7 +333,7 @@ def back_substitution(U, b):
 
 # The code below uses the function `forward_substitution()` and `back_substitution()` to calculate the solution to the linear system from [example 6.2](crout-example) using Crout's method with LU decomposition.
 
-# In[34]:
+# In[5]:
 
 
 # Define linear system

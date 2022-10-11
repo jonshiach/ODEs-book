@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/4_Stability/4.0_Stability.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -429,33 +429,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
-   Explicit Runge-Kutta Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
-   Implicit Runge-Kutta (IRK) Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
-   Stability
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -693,6 +666,9 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>The exact solution is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <a class="reference internal" href="#stiff-solution-1"><span class="std std-numref">Fig. 13</span></a>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
 <figure class="align-default" id="stiff-solution-1">
+<div class="cell_output docutils container">
+<img alt="../_images/4.0_Stability_1_1.png" src="../_images/4.0_Stability_1_1.png" />
+</div>
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Stable and unstable solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span>.</span><a class="headerlink" href="#stiff-solution-1" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -707,7 +683,7 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_n\)</span> is the exact solution and <span class="math notranslate nohighlight">\(\bar{y}_n\)</span> the numerical approximation then the method is considered <strong>stable</strong> if</p>
 <div class="math notranslate nohighlight" id="equation-stability-equation">
-<span class="eqno">(22)<a class="headerlink" href="#equation-stability-equation" title="Permalink to this equation">#</a></span>\[|\tau_{n+1} - \tau_n | \leq 1,\]</div>
+<span class="eqno">(25)<a class="headerlink" href="#equation-stability-equation" title="Permalink to this equation">#</a></span>\[|\tau_{n+1} - \tau_n | \leq 1,\]</div>
 <p>for all steps of the method. If a method is not stable then it is <strong>unstable</strong>.</p>
 </div>
 </section>
@@ -801,6 +777,9 @@ Solution<div class="sd-summary-down docutils">
 \end{align*}\]</div>
 <p>and the solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method and the implicit Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> are plotted in <a class="reference internal" href="#stiff-solution-2"><span class="std std-numref">Fig. 14</span></a>.</p>
 <figure class="align-default" id="stiff-solution-2">
+<div class="cell_output docutils container">
+<img alt="../_images/4.0_Stability_1_3.png" src="../_images/4.0_Stability_1_3.png" />
+</div>
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler and implicit Euler method.</span><a class="headerlink" href="#stiff-solution-2" title="Permalink to this image">#</a></p>
 </figcaption>

@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/6_Direct_methods/6.4_QR_decomposition.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -426,18 +426,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../8_Appendices/8.1_Python.html">
    Python code
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
   </a>
  </li>
 </ul>
@@ -1043,7 +1031,7 @@ x3 = 3.0
 <div class="admonition-definition-householder-matrix admonition">
 <p class="admonition-title">Definition: Householder matrix</p>
 <div class="math notranslate nohighlight" id="equation-householder-equation">
-<span class="eqno">(35)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[H = I - 2 \mathbf{v} \mathbf{v}\mathrm{T},\]</div>
+<span class="eqno">(38)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[H = I - 2 \mathbf{v} \mathbf{v}\mathrm{T},\]</div>
 <p>where</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1051,7 +1039,7 @@ x3 = 3.0
     \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|}.
 \end{align*}\]</div>
 </div>
-<p>If <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is nearly parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then the denominator in equation <a class="reference internal" href="#equation-householder-equation">(35)</a> is close to zero and computational rounding errors can occur. However, we can choose to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead.</p>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is nearly parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then the denominator in equation <a class="reference internal" href="#equation-householder-equation">(38)</a> is close to zero and computational rounding errors can occur. However, we can choose to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead.</p>
 <figure class="align-default" id="householder-2-figure">
 <img alt="../_images/householder_2.png" src="../_images/householder_2.png" />
 <figcaption>
@@ -1082,7 +1070,7 @@ x3 = 3.0
     \mathbf{u} &amp;= \mathbf{r}_1 + \operatorname{sign}(r_{11})\| \mathbf{r}_1 \|\mathbf{e}_1 , \\
     \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|},
 \end{align*}\]</div>
-<p>and then we calculate the Householder matrix <span class="math notranslate nohighlight">\(H\)</span> using equation <a class="reference internal" href="#equation-householder-equation">(35)</a></p>
+<p>and then we calculate the Householder matrix <span class="math notranslate nohighlight">\(H\)</span> using equation <a class="reference internal" href="#equation-householder-equation">(38)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     H_1 &amp;= I_m - 2 \mathbf{v} \mathbf{v}\mathrm{T},

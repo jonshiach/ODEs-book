@@ -135,10 +135,10 @@
 # Expanding out the stage values from equation {eq}`rk-equation` we see that the stage values of a general Runge-Kutta method are
 # 
 # \begin{align*}
-#     k_1 &=f(t_n +c_1 h,y_n +h(a_{11} k_1 +a_{12} k_2 +\cdots +a_{1s} k_s ),\\
-#     k_2 &=f(t_n +c_2 h,y_n +h(a_{21} k_1 +a_{22} k_2 +\cdots +a_{2s} k_s ),\\
+#     k_1 &=f(t_n +c_1 h,y_n +h(a_{11} k_1 +a_{12} k_2 +\cdots +a_{1s} k_s )),\\
+#     k_2 &=f(t_n +c_2 h,y_n +h(a_{21} k_1 +a_{22} k_2 +\cdots +a_{2s} k_s )),\\
 #     &\vdots \\
-#     k_s &=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s ).
+#     k_s &=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s )).
 # \end{align*} 
 # 
 # The first equation where we are calculating $k_1$ includes $k_1$ on the right-hand side and in the second equation where we are calculating $k_2$ includes $k_2$ on the right-hand side and so on. These are examples of [**implicit functions**](https://en.wikipedia.org/wiki/Implicit_function) and Runge-Kutta methods where the stage values are expressed using implicit functions are known as **Implicit Runge-Kutta (IRK)** methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations ([see Implicit Runge-Kutta Methods](irk-chapter)).

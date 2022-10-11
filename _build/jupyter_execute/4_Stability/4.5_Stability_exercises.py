@@ -3,6 +3,8 @@
 
 # # Stability Exercises
 # 
+# ``````{div} full-width
+# 
 # `````{admonition} Exercise 4.1
 # :class: note
 # :name: ex4.1
@@ -80,28 +82,46 @@
 # \end{align*}
 # 
 # So the stability function is $R(z) = 1 + z + \frac{1}{2} z^2 + \frac{1}{6} z^3 + \frac{1}{24} z^4$
+# 
+# Python
+# 
+# ```python
+# from sympy import *
+# init_printing()
+# 
+# A = Matrix([[0, 0, 0, 0, 0], 
+#             [Rational(1,4), 0, 0, 0, 0], 
+#             [Rational(1,2), 0, 0, 0, 0], 
+#             [0, Rational(1,2), Rational(1,4), 0, 0], 
+#             [0, Rational(1,6), -Rational(1,3), Rational(1,6), 0]])
+# b = Matrix([[-1], [Rational(2,3)], [-Rational(1,3)], [Rational(2,3)], [1]])
+# e = ones(5, 1)
+# 
+# # Calculate coefficients
+# for k in range(1, len(b) + 1):
+#     print((b.T * A ** (k - 1) * e)[0])
+# ```
+# 
+# MATLAB
+# 
+# ```
+# A = [0, 0, 0, 0, 0 ; 
+#     1/4, 0, 0, 0, 0 ; 
+#     1/2, 0, 0, 0, 0 ;
+#     0, 1/2, 1/4, 0, 0 ;
+#     0, 1/6, -1/3, 1/6, 0];
+# b = [-1 ; 2/3 ; -1/3 ; 2/3 ; 1];
+# e = ones(5, 1);
+# 
+# % Calculate coefficients
+# for k = 1 : length(b)
+#     sym(b' * A ^ (k - 1) * e)
+# end
+# ```
+# 
 # ````
 # `````
-
-# In[1]:
-
-
-from sympy import *
-init_printing()
-
-A = Matrix([[0, 0, 0, 0, 0], 
-            [Rational(1,4), 0, 0, 0, 0], 
-            [Rational(1,2), 0, 0, 0, 0], 
-            [0, Rational(1,2), Rational(1,4), 0, 0], 
-            [0, Rational(1,6), -Rational(1,3), Rational(1,6), 0]])
-b = Matrix([[-1], [Rational(2,3)], [-Rational(1,3)], [Rational(2,3)], [1]])
-e = ones(5, 1)
-
-# Calculate coefficents
-for k in range(1, len(b) + 1):
-    pprint(b.T * A ** (k - 1) * e)
-
-
+# 
 # `````{admonition} Exercise 4.2
 # :class: note
 # :name: ex4.2
@@ -149,47 +169,66 @@ for k in range(1, len(b) + 1):
 # 
 # so $E(y) \geq 0$ and the second condition for A-stability is satisfied. Since both conditions are satisfied then this method is A-stable
 # 
+# Python
+# 
+# ```python
+# from sympy import *
+# init_printing(use_latex="mathjax")
+# 
+# # Define RK method
+# A = Matrix([[Rational(7,24), -Rational(1,24)], [Rational(13,24), Rational(5,24)]])
+# ebT = Matrix([[Rational(1,2), 0], [0, Rational(1,2)]])
+# I = eye(2)
+# 
+# # Calculate R(z)
+# z, y = symbols('z, y')
+# 
+# def P(z):
+#     return (I - z * A + z * ebT).det()
+# 
+# def Q(z):
+#     return (I - z * A).det()
+# 
+# Rz = P(z) / Q(z)
+# print("R(z) = ")
+# display(nsimplify(Rz))
+# 
+# # Check roots of Q have positive real parts
+# print('roots of Q(z) = ')
+# display(solve(Q(z) - 0))
+# 
+# # Check E(y) >= 0
+# E = Q(1j * y) * Q(-1j * y) - P(1j * y) * P(-1j * y)
+# print('E(y) = ')
+# display(simplify(nsimplify(E)))
+# ```
+# 
+# MATLAB
+# 
+# ```
+# A = [7/24, -1/24 ; 13/24, 5/24];
+# ebT = [1/2, 0 ; 0, 1/2];
+# I = eye(2);
+# 
+# % Calculate R(z)
+# syms z y
+# 
+# P = @(z) det(I - z * A + z * ebT);
+# Q = @(z) det(I - z * A);
+# 
+# Rz = P(z) / Q(z)
+# 
+# % Check roots of Q have positive real parts
+# solve(Q(z) == 0)
+# 
+# % Check E(y) >= 0
+# E = Q(1i * y) * Q(-1i * y) - P(1i * y) * P(-1i * y)
+# ```
+# 
 # ````
 # 
 # `````
-
-# In[2]:
-
-
-from sympy import *
-init_printing()
-
-# Define RK method
-A = Matrix([[Rational(7,24), -Rational(1,24)],
-            [Rational(13,24), Rational(5,24)]])
-ebT = Matrix([[Rational(1,2), 0], [0, Rational(1,2)]])
-I = eye(2)
-
-z = Symbol('z')
-
-# Calculate R(z)
-z, y = symbols('z, y')
-
-def P(z):
-    return (I - z * A + z * ebT).det()
-
-def Q(z):
-    return (I - z * A).det()
-
-Rz = P(z) / Q(z)
-print("R(z) = ")
-display(nsimplify(Rz))
-
-# Check roots of Q have positive real parts
-print('roots of Q(z) = ')
-display(solve(Q(z) - 0))
-
-# Check E(y) >= 0
-E = Q(1j * y) * Q(-1j * y) - P(1j * y) * P(-1j * y)
-print('E(y) = ')
-display(simplify(nsimplify(E)))
-
-
+# 
 # `````{admonition} Exercise 4.3
 # :class: note
 # :name: ex4.3
@@ -225,14 +264,24 @@ display(simplify(nsimplify(E)))
 # ```{glue:} ex4.3_plot
 # ```
 # 
-# Code 
+# Python
 # 
 # ```python
 # import numpy as np
 # import matplotlib.pyplot as plt
 # 
+# # Define RK method
+# A = Matrix([[Rational(1,3), 0], [1, 0]])
+# ebT = Matrix([[Rational(3,4), 0], [0, Rational(1,4)]])
+# I = eye(2)
+# 
+# # Calculate R(z)
+# Rz = P(z) / Q(z)
+# print("R(z) = ")
+# display(nsimplify(Rz))
+# 
 # # Generate z values
-# X, Y = np.meshgrid(np.linspace(-10, 10, 100), np.linspace(-10, 10, 100))
+# X, Y = np.meshgrid(np.linspace(-10, 10, 200), np.linspace(-10, 10, 200))
 # Z = X + Y * 1j
 # 
 # # Define stability function
@@ -245,65 +294,48 @@ display(simplify(nsimplify(E)))
 # plt.axhline(0, color="k", linewidth=2)
 # plt.axvline(0, color="k", linewidth=2)
 # plt.axis("equal")
-# plt.axis([-15, 5, -1.5, 1.5])
+# plt.axis([-15, 5, -7, 7])
 # plt.xlabel("$\mathrm{Re}(z)$", fontsize=14)
 # plt.ylabel("$\mathrm{Im}(z)$", fontsize=14)
 # plt.show()
 # ```
+# 
+# MATLAB
+# 
+# ```
+# A = [1/3, 0 ; 1, 0];
+# ebT = [3/4, 0 ; 0, 1/4];
+# I = eye(2);
+# 
+# % Calculate R(z)
+# syms z y
+# 
+# P = @(z) det(I - z * A + z * ebT);
+# Q = @(z) det(I - z * A);
+# 
+# Rz = P(z) / Q(z)
+# 
+# % Generate z values
+# [X, Y] = meshgrid(linspace(-10, 10, 200), linspace(-10, 10, 200));
+# Z = X + Y * 1i;
+# 
+# % Define stability function
+# R = (1 + 2 / 3 * Z + 5 / 48 * Z .^ 2) ./ (1 - 1 / 3 * Z);
+# 
+# % Plot stability region
+# contourf(X, Y, abs(R), [0, 1], LineWidth=2)
+# xline(0, LineWidth=2)
+# yline(0, LineWidth=2)
+# colormap([153, 204, 255 ; 255, 255, 255] / 255)
+# axis equal
+# axis([-15, 5, -7, 7])
+# xlabel("$\mathrm{Re}(z)$", FontSize=12, Interpreter="latex")
+# ylabel("$\mathrm{Im}(z)$", FontSize=12, Interpreter="latex")
+# ```
 # ````
 # 
 # `````
-
-# In[10]:
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-from sympy import *
-init_printing()
-
-# Define RK method
-A = Matrix([[Rational(1,3), 0],
-            [1, 0]])
-ebT = Matrix([[Rational(3,4), 0], [0, Rational(1,4)]])
-I = eye(2)
-
-# Calculate R(z)
-z, y = symbols('z, y')
-
-def P(z):
-    return (I - z * A + z * ebT).det()
-
-def Q(z):
-    return (I - z * A).det()
-
-Rz = P(z) / Q(z)
-print("R(z) = ")
-display(nsimplify(Rz))
-
-# Generate z values
-X, Y = np.meshgrid(np.linspace(-10, 10, 100), np.linspace(-10, 10, 100))
-Z = X + Y * 1j
-
-# Define stability function
-R = (1 + 2 / 3 * Z + 5 / 48 * Z ** 2) / (1 - 1 / 3 * Z)
-
-# Plot stability region
-fig = plt.figure(figsize=(8, 6))
-plt.contourf(X, Y, abs(R), levels=[0, 1], colors="#99ccff")
-plt.contour(X, Y, abs(R), colors= "k", levels=[0, 1])
-plt.axhline(0, color="k", linewidth=2)
-plt.axvline(0, color="k", linewidth=2)
-plt.axis("equal")
-plt.axis([-15, 5, -1.5, 1.5])
-plt.xlabel("$\mathrm{Re}(z)$", fontsize=14)
-plt.ylabel("$\mathrm{Im}(z)$", fontsize=14)
-plt.show()
-
-from myst_nb import glue
-glue("ex4.3_plot", fig, display=False)
-
-
+# 
 # `````{admonition} Exercise 4.4
 # :class: note
 # :name: ex4.4
@@ -332,3 +364,97 @@ glue("ex4.3_plot", fig, display=False)
 # $$h = \frac{-2}{\min(-200, -1)} = \frac{-2}{-200} = 0.01.$$
 # ````
 # `````
+# 
+# ``````
+
+# In[1]:
+
+
+from sympy import *
+init_printing()
+
+A = Matrix([[0, 0, 0, 0, 0], 
+            [Rational(1,4), 0, 0, 0, 0], 
+            [Rational(1,2), 0, 0, 0, 0], 
+            [0, Rational(1,2), Rational(1,4), 0, 0], 
+            [0, Rational(1,6), -Rational(1,3), Rational(1,6), 0]])
+b = Matrix([[-1], [Rational(2,3)], [-Rational(1,3)], [Rational(2,3)], [1]])
+e = ones(5, 1)
+
+# Calculate coefficients
+for k in range(1, len(b) + 1):
+    print((b.T * A ** (k - 1) * e)[0])
+
+
+# In[2]:
+
+
+from sympy import *
+init_printing(use_latex="mathjax")
+
+# Define RK method
+A = Matrix([[Rational(7,24), -Rational(1,24)], [Rational(13,24), Rational(5,24)]])
+ebT = Matrix([[Rational(1,2), 0], [0, Rational(1,2)]])
+I = eye(2)
+
+# Calculate R(z)
+z, y = symbols('z, y')
+
+def P(z):
+    return (I - z * A + z * ebT).det()
+
+def Q(z):
+    return (I - z * A).det()
+
+Rz = P(z) / Q(z)
+print("R(z) = ")
+display(nsimplify(Rz))
+
+# Check roots of Q have positive real parts
+print('roots of Q(z) = ')
+display(solve(Q(z) - 0))
+
+# Check E(y) >= 0
+E = Q(1j * y) * Q(-1j * y) - P(1j * y) * P(-1j * y)
+print('E(y) = ')
+display(simplify(nsimplify(E)))
+
+
+# In[3]:
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define RK method
+A = Matrix([[Rational(1,3), 0], [1, 0]])
+ebT = Matrix([[Rational(3,4), 0], [0, Rational(1,4)]])
+I = eye(2)
+
+# Calculate R(z)
+Rz = P(z) / Q(z)
+print("R(z) = ")
+display(nsimplify(Rz))
+
+# Generate z values
+X, Y = np.meshgrid(np.linspace(-10, 10, 200), np.linspace(-10, 10, 200))
+Z = X + Y * 1j
+
+# Define stability function
+R = (1 + 2 / 3 * Z + 5 / 48 * Z ** 2) / (1 - 1 / 3 * Z)
+
+# Plot stability region
+fig = plt.figure(figsize=(8, 6))
+plt.contourf(X, Y, abs(R), levels=[0, 1], colors="#99ccff")
+plt.contour(X, Y, abs(R), colors= "k", levels=[0, 1])
+plt.axhline(0, color="k", linewidth=2)
+plt.axvline(0, color="k", linewidth=2)
+plt.axis("equal")
+plt.axis([-15, 5, -7, 7])
+plt.xlabel("$\mathrm{Re}(z)$", fontsize=14)
+plt.ylabel("$\mathrm{Im}(z)$", fontsize=14)
+plt.show()
+
+from myst_nb import glue
+glue("ex4.3_plot", fig, display=False)
+

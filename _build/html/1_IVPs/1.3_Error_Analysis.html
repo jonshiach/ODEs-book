@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/1_IVPs/1.3_Error_Analysis.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -429,18 +429,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -644,7 +632,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="error-analysis">
 <span id="error-analysis-section"></span><h1>Error analysis<a class="headerlink" href="#error-analysis" title="Permalink to this headline">#</a></h1>
-<p>We have seen in the previous section that the <a class="reference internal" href="1.2_Euler_Method.html#euler-figure"><span class="std std-ref">Euler method solution</span></a> of the initial value problem  in <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">example 1.2</span></a> deviates from the exact solution. This is because we have truncated the <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to <span class="math notranslate nohighlight">\(f(t+h)\)</span> and we have introduced an error. It is important that we study this error and the effect that the errors have on our solutions.</p>
+<p>We have seen in the previous section that the <a class="reference internal" href="1.2_Euler_Method.html#euler-figure"><span class="std std-ref">Euler method solution</span></a> of the initial value problem  in <a class="reference internal" href="1.2_Euler_Method.html#euler-example"><span class="std std-ref">example 1.2</span></a> deviates from the exact solution. This is because we have truncated the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to <span class="math notranslate nohighlight">\(f(t+h)\)</span> and we have introduced an error. It is important that we study this error and the effect that the errors have on our solutions.</p>
 <section id="big-o-notation">
 <span id="big-o-notation-section"></span><h2>Big-O notation<a class="headerlink" href="#big-o-notation" title="Permalink to this headline">#</a></h2>
 <p>Analyising the error of numerical method is challenging since we do not know what the exact solution is (if we did we wouldn’t need a numerical method). Also, if we did know the exact solution the value of the difference between the numerical solution and the exact solution would only apply to that specific problem. So instead we look at the behaviour of the error. Recall the <a class="reference internal" href="1.2_Euler_Method.html#euler-method-section"><span class="std std-ref">Euler method</span></a> which is</p>
@@ -672,7 +660,7 @@ title="Print to PDF"
 <p class="admonition-title">Definition: Local Truncation Error</p>
 <p>The Local Truncation Error (LTE), <span class="math notranslate nohighlight">\(\tau_n\)</span>, is the error in the calculation of a single step of a numerical method assuming that the previous values used are exact.</p>
 </div>
-<p>Writing the <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> expansion for <span class="math notranslate nohighlight">\(y(t)\)</span> and if <span class="math notranslate nohighlight">\(y'(t) = f(t, y)\)</span> then</p>
+<p>Writing the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition"><span class="std std-ref">Taylor series</span></a> expansion for <span class="math notranslate nohighlight">\(y(t)\)</span> and if <span class="math notranslate nohighlight">\(y'(t) = f(t, y)\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[y(t + h) = y(t) + hf(t, y) + \frac{h^2}{2!}f'(t, y) + \frac{h^3}{3!}f''(t, y) + \frac{h^4}{4!}f'''(t, y) + \cdots \]</div>
 <p>Since when deriving the Euler method we truncated the Taylor series to first-order then</p>
@@ -696,6 +684,9 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(\tilde{y}_n\)</span> are the exact and numerical solutions. This is represented graphically in <a class="reference internal" href="#gte-figure"><span class="std std-numref">Fig. 3</span></a>.</p>
 <figure class="align-default" id="gte-figure">
+<div class="cell_output docutils container">
+<img alt="../_images/1.3_Error_Analysis_1_1.png" src="../_images/1.3_Error_Analysis_1_1.png" />
+</div>
 <figcaption>
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">The global truncation error, <span class="math notranslate nohighlight">\(e_n\)</span>, is the difference between the exact solution, <span class="math notranslate nohighlight">\(y_n\)</span>, and the numerical solution, <span class="math notranslate nohighlight">\(\tilde{y}_n\)</span>.</span><a class="headerlink" href="#gte-figure" title="Permalink to this image">#</a></p>
 </figcaption>

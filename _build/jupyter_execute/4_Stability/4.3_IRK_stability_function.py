@@ -250,7 +250,7 @@ glue("euler_stability_region_plot", fig, display=False)
 # 
 # The code below uses SymPy to determine the stability function of an implicit method and checks the two conditions for A-stability.
 
-# In[14]:
+# In[2]:
 
 
 import sympy as sp

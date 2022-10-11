@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/3_IRKs/3.2_Solving_IVPs_using_IRK_methods.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -429,28 +429,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/2_ERK_methods.html">
-   Explicit Runge-Kutta Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/3_IRK_methods.html">
-   Implicit Runge-Kutta (IRK) Methods
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -642,22 +620,22 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>To help simplify the calculations we let</p>
 <div class="math notranslate nohighlight" id="equation-yi-equation">
-<span class="eqno">(20)<a class="headerlink" href="#equation-yi-equation" title="Permalink to this equation">#</a></span>\[Y_i = y_n +h \displaystyle\sum_{j=1}^s a_{ij} k_j\]</div>
+<span class="eqno">(23)<a class="headerlink" href="#equation-yi-equation" title="Permalink to this equation">#</a></span>\[Y_i = y_n +h \displaystyle\sum_{j=1}^s a_{ij} k_j\]</div>
 <p>then we can write these equations as</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
    y_{n+1} &amp;= y_n + h \sum_{i=1}^s b_i f(t_n + c_i h, Y_i),\\
    Y_i &amp;= y_n + h \sum_{j=1}^s a_{ij} f(t_n + c_j h, Y_j).
 \end{align*}\]</div>
-<p>Expanding the summation in equation <a class="reference internal" href="#equation-yi-equation">(20)</a> for each stage gives</p>
+<p>Expanding the summation in equation <a class="reference internal" href="#equation-yi-equation">(23)</a> for each stage gives</p>
 <div class="math notranslate nohighlight" id="equation-irk-stage-values-equation">
-<span class="eqno">(21)<a class="headerlink" href="#equation-irk-stage-values-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(24)<a class="headerlink" href="#equation-irk-stage-values-equation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
     Y_1 &amp;= y_n + h(a_{11} f(t_n + c_1 h, Y_1) + a_{12} f(t_n + c_2 h, Y_2) + \cdots + a_{1s} f(t_n + c_s h, Y_s)), \\
     Y_2 &amp;= y_n + h(a_{21} f(t_n + c_1 h, Y_1) + a_{22} f(t_n + c_2 h, Y_2) + \cdots + a_{2s} f(t_n + c_s h, Y_s)), \\
     &amp; \vdots \\
     Y_s &amp;= y_n + h(a_{s1} f(t_n + c_1 h, Y_1) + a_{s2} f(t_n + c_2 h, Y_2) + \cdots + a_{ss} f(t_n + c_s h, Y_s)), \\
 \end{align*}\end{split}\]</div>
-<p>The values of <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots, Y_s\)</span> are found by solving this system of equations. One way to do this is to estimate the values of <span class="math notranslate nohighlight">\(Y_i\)</span> by assigning each a value and use the equations <a class="reference internal" href="#equation-irk-stage-values-equation">(21)</a> to calculate improved estimates. If we repeat this enough times then our estimations of <span class="math notranslate nohighlight">\(Y_i\)</span> will be close to the actual values of <span class="math notranslate nohighlight">\(Y_i\)</span>. We cease iterations when the largest difference between two successive estimates is small</p>
+<p>The values of <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots, Y_s\)</span> are found by solving this system of equations. One way to do this is to estimate the values of <span class="math notranslate nohighlight">\(Y_i\)</span> by assigning each a value and use the equations <a class="reference internal" href="#equation-irk-stage-values-equation">(24)</a> to calculate improved estimates. If we repeat this enough times then our estimations of <span class="math notranslate nohighlight">\(Y_i\)</span> will be close to the actual values of <span class="math notranslate nohighlight">\(Y_i\)</span>. We cease iterations when the largest difference between two successive estimates is small</p>
 <div class="math notranslate nohighlight">
 \[\max_i| Y_i^{(k+1)} - Y_i^{(k)}| &lt; tol\]</div>
 <p>where <span class="math notranslate nohighlight">\(Y_i^{(k+1)}\)</span> and <span class="math notranslate nohighlight">\(Y_i^{(k)}\)</span> are the new and old estimates respectively and <span class="math notranslate nohighlight">\(tol\)</span> is a <strong>convergence tolerance</strong>. The value of <span class="math notranslate nohighlight">\(tol\)</span> is arbitrary but we need it to be small enough to give good estimates of <span class="math notranslate nohighlight">\(Y_i\)</span> but not so small that we are spending too much time calculating the iterations. A common default value for the tolerance is <span class="math notranslate nohighlight">\(tol=10^{-6}\)</span>.</p>

@@ -62,15 +62,15 @@
 # 
 # To determine a unique solution we choose values for some of the unknowns and solve the order conditions for the remaining unknowns.
 # 
-# (rk4-derivation-example)=
 # ````{admonition} Example 2.3
 # :class: seealso
+# :name: rk4-derivation-example
 # 
-# Derive a fourth-order Runge-Kutta method where $c_2 = c_3 = \frac{1}{2}$, $c_4 =1$ and $b_2 = \frac{1}{3}$.
+# Derive a fourth-order Runge-Kutta method where $c_2 = c_3 = \frac{1}{2}$ and $b_2 = \frac{1}{3}$.
 # 
 # ```{dropdown} Solution
 # 
-# Substituting the known values of $c_2$, $c_3$, $c_4$ and $b_2$ into the first three order conditions in equation {eq}`rk4-order-conditions-equation` (we only need the first three to solve for $b_1$, $b_3$ and $b_4$) we have
+# Substituting the known values of $c_2$, $c_3$ and $b_2$ into the first three order conditions in equation {eq}`rk4-order-conditions-equation` (we only need the first three to solve for $b_1$, $b_3$ and $b_4$) we have
 # 
 # \begin{align*}
 #     b_1 + b_3 + b_4 &= \frac{2}{3}, \\
@@ -84,20 +84,28 @@
 #     \frac{1}{4}b_3 = \frac{1}{12},
 # \end{align*}
 # 
-# therefore $b_3 = \frac{1}{3}$ and from the third order condition we have $b_4 = \frac{1}{6}$. Substituting $b_3$ and $b_4$ into the first order condition gives $b_1 = \frac{1}{3}$. Substituting the known values of $b_3$ and $c_3$ into the seventh order condition gives
-#     
-# \begin{align*}
-#     \frac{1}{6}a_{43} &= \frac{1}{3}\left(1 - \frac{1}{2}\right) = \frac{1}{6},
-# \end{align*}
-# 
-# so $a_{43} = 1$. Substituting the known values of $b_i$ and $c_i$ into the sixth order condtion gives
+# therefore $b_3 = \frac{1}{3}$ and from the third order condition we have $b_4 = \frac{1}{6}$. Substituting $b_3$ and $b_4$ into the first order condition gives $b_1 = \frac{1}{3}$. Substituting the values of $b_3$, $b_4$ and $c_3$ into the seventh and eigth order condition from {eq}`rk4-order-conditions-equation`
 # 
 # \begin{align*}
-#     \left( \frac{1}{3} \right) \left( \frac{1}{2} \right) \left( \frac{1}{2} \right) a_{32} + \frac{1}{6} \left( \frac{1}{2} a_{42} + \frac{1}{2} \right) &= \frac{1}{8}, \\
-#     \left( \frac{1}{3} \right) a_{32} + \left( \frac{1}{6} \right) a_{42} &= \frac{1}{3} \left( 1 - \frac{1}{2} \right),
+#     \frac{1}{6}a_{43} &= \frac{1}{3}\left(1 - \frac{1}{2}\right) = \frac{1}{6},\\
+#     0 &= \frac{1}{6}(1 - c_4),
 # \end{align*}
 # 
-# so we have the system 
+# so $a_{43} = 1$ and $c_4 = 1$. So we now have all of $b_i$ and $c_i$ values as well as $a_{43}$, substituting these into the fifth order condtion from {eq}`rk4-order-conditions-equation` gives
+# 
+# \begin{align*}
+#     \frac{1}{3} \cdot \frac{1}{2} \cdot \frac{1}{2} a_{32} + \frac{1}{6} \left( \frac{1}{2} a_{42} + \frac{1}{2} \right) &= \frac{1}{8} \\
+#     \frac{1}{12} a_{32} + \frac{1}{12} a_{42} &= \frac{1}{24}
+# \end{align*}
+# 
+# and doing the same for the sixth order condition
+# 
+# \begin{align*}
+#     \frac{1}{3} a_{32} +  \frac{1}{6} a_{42} &= \frac{1}{3} \left( 1 - \frac{1}{2} \right) \\
+#     \frac{1}{3} a_{32} + \frac{1}{6} a_{42} &= \frac{1}{6}.
+# \end{align*}
+# 
+# So we have the system 
 # 
 # \begin{align*}
 #     \frac{1}{12}a_{32} + \frac{1}{12}a_{42} &= \frac{1}{24}, \\
@@ -162,7 +170,7 @@
 
 # ## Using Python to solve the order conditions
 # 
-# The code below derives the fourth-order explicit Runge-Kutta method from the [example](#rk4-derivation-example) above using SymPy.
+# The code below derives the fourth-order explicit Runge-Kutta method from [example 2.3](#rk4-derivation-example) above using SymPy.
 
 # In[1]:
 
@@ -176,7 +184,7 @@ b1, b2, b3, b4 = sp.symbols('b1, b2, b3, b4')
 c2, c3, c4 = sp.symbols('c2, c3, c4')
 
 # Choose 4 values for the unkowns
-c2, c3, c4, b2 = sp.Rational(1,2), sp.Rational(1,2), 1, sp.Rational(1,3)
+c2, c3, b2 = sp.Rational(1,2), sp.Rational(1,2), sp.Rational(1,3)
 
 # Define order conditions
 eq1 = b1 + b2 + b3 + b4 - 1

@@ -95,7 +95,7 @@ plt.ylabel("$\mathrm{Im}(z)$", fontsize=14)
 plt.show()
 
 
-# In[ ]:
+# In[2]:
 
 
 from myst_nb import glue
@@ -158,7 +158,7 @@ glue("euler_stability_region", fig, display=False)
 # 
 # This is why the solution using $h=0.25$ was stable since $0.25 < 0.1\dot{3}$ and the solution using $h=0.125$ was unstable since $0.125 < 0.1\dot{3}$.
 
-# In[11]:
+# In[3]:
 
 
 # Plot stability region

@@ -3,6 +3,8 @@
 
 # # Implicit Runge-Kutta Methods Exercises
 # 
+# ``````{div} full-width
+# 
 # `````{admonition} Exercise 3.1
 # :class: note
 # :name: ex3.1
@@ -123,7 +125,6 @@
 # 
 # Since $B(4)$, $C(2)$ and $D(2)$ are satisfied then this is a fourth-order method. 
 # ````
-# 
 # `````
 # 
 # `````{admonition} Exercise 3.3
@@ -168,28 +169,21 @@
 #     \end{array}
 # \end{align*}
 # 
-# Python code
+# Python
 # 
 # ```python
 # from sympy import *
-# init_printing()
-# 
-# # Define Legendre polynomial
-# def P(n):
-#     t = Symbol("t")
-#     P = 0
-#     for k in range(n + 1):
-#         P += binomial(n, k) * binomial(n + k, k) * (t - 1) ** k
-# 
-#     return P
-# 
+# from myst_nb import glue
+# init_printing(use_latex='mathjax')
 # 
 # # Define symbolic variables
-# a11, a12, a21, a22, b1, b2, c1, c2 = symbols("a11, a12, a21, a22, b1, b2, c1, c2")
+# a11, a12, a21, a22, b1, b2, c1, c2, t = symbols("a11, a12, a21, a22, b1, b2, c1, c2, t")
 # 
 # # Calculate c values
-# c1, c2 = solve(P(2) - P(1))
-# display(solve(P(2) - P(1)))
+# P2 = 1 + binomial(2, 1) * binomial(3, 1) * (t - 1) + binomial(2, 2) * binomial(4, 2) * (t - 1) ** 2
+# P1 = 1 + binomial(1, 1) * binomial(2, 1) * (t - 1)
+# c1, c2 = solve(P2 - P1)
+# display(solve(P2 - P1))
 # 
 # # Define order conditions
 # eq1 = b1 + b2 - 1
@@ -203,6 +197,31 @@
 # solve((eq1, eq2, eq3, eq4, eq5, eq6))
 # ```
 # 
+# MATLAB
+# 
+# ```
+# % Define symbolic variables
+# syms a11 a12 a21 a22 b1 b2 c1 c2 t
+# 
+# % Calculate c values
+# P2 = 1 + nchoosek(2, 1) * nchoosek(3, 1) * (t - 1) ^ 1 + nchoosek(2, 2) * nchoosek(4, 2) * (t - 1) ^ 2;
+# P1 = 1 + nchoosek(1, 1) * nchoosek(2, 1) * (t - 1);
+# c = solve(P2 - P1 == 0);
+# c1 = c(1);
+# c2 = c(2);
+# 
+# % Define order conditions
+# eq1 = b1 + b2 == 1;
+# eq2 = b1 * c1 + b2 * c2 == 1 / 2;
+# eq3 = a11 + a12 == c1;
+# eq4 = a21 + a22 == c2;
+# eq5 = a11 * c1 + a12 * c2 == 1 / 2 * c1 ^ 2;
+# eq6 = a21 * c1 + a22 * c2 == 1 / 2 * c2 ^ 2;
+# 
+# % Solve the order conditions
+# solve(eq1, eq2, eq3, eq4, eq5, eq6)
+# ```
+# 
 # Output:
 # 
 # ```{glue:math} ex3.3_output_1
@@ -212,50 +231,9 @@
 # ```{glue:math} ex3.3_output_2
 # :label: ex3.3-output-2
 # ```
-# 
 # ````
-# 
 # `````
-
-# In[1]:
-
-
-from sympy import *
-from myst_nb import glue
-init_printing()
-
-# Define Legendre polynomial
-def P(n):
-    t = Symbol("t")
-    P = 0
-    for k in range(n + 1):
-        P += binomial(n, k) * binomial(n + k, k) * (t - 1) ** k
-
-    return P
-
-
-# Define symbolic variables
-a11, a12, a21, a22, b1, b2, c1, c2 = symbols("a11, a12, a21, a22, b1, b2, c1, c2")
-
-# Calculate c values
-c1, c2 = solve(P(2) - P(1))
-display(solve(P(2) - P(1)))
-
-# Define order conditions
-eq1 = b1 + b2 - 1
-eq2 = b1 * c1 + b2 * c2 - Rational(1,2)
-eq3 = a11 + a12 - c1
-eq4 = a21 + a22 - c2
-eq5 = a11 * c1 + a12 * c2 - Rational(1,2) * c1 ** 2
-eq6 = a21 * c1 + a22 * c2 - Rational(1,2) * c2 ** 2
-
-# Solve order conditions
-solve((eq1, eq2, eq3, eq4, eq5, eq6))
-
-glue("ex3.3_output_1", solve(P(2) - P(1)), display=False)
-glue("ex3.3_output_2", solve((eq1, eq2, eq3, eq4, eq5, eq6)))
-
-
+# 
 # `````{admonition} Exercise 3.4
 # :class: note
 # :name: ex3.4
@@ -324,9 +302,8 @@ glue("ex3.3_output_2", solve((eq1, eq2, eq3, eq4, eq5, eq6)))
 #     &= 1 + 0.4 (\tfrac{3}{4} (0 + \frac{1}{3}(0.4) - 0.885909) + \frac{1}{4} (0 + 0.4 - 0.740205)), \\
 #     &= 0.740207.
 # \end{align*}
-# 
 # `````
-
+# 
 # `````{admonition} Exercise 3.5
 # :class: note
 # :name: ex3.5
@@ -334,7 +311,8 @@ glue("ex3.3_output_2", solve((eq1, eq2, eq3, eq4, eq5, eq6)))
 # The exact solution to the IVP in [exercise 3.4](ex3.4) is $y = t + 2e^{-t} - 1$. Write a program to this initial value problem over the full domain and produce a table comparing the numerical and exact solutions. Plot the numerical solutions and exact solutions on the same set of axes.
 # 
 # ````{dropdown} Solution
-# Code
+# 
+# Python
 # 
 # ```python
 # import numpy as np
@@ -395,6 +373,73 @@ glue("ex3.3_output_2", solve((eq1, eq2, eq3, eq4, eq5, eq6)))
 # plt.show()
 # ```
 # 
+# MATLAB
+# 
+# ```
+# % Define ODE
+# f = @(t, y) t - y;
+# 
+# % Define exact solution
+# exact = @(t) t + 2 * exp(-t) - 1;
+# 
+# % Define IVP
+# tspan = [0, 2];
+# y0 = [1];
+# h = 0.4;
+# tol = 1e-4;
+# 
+# % Solve IVP
+# [t, y] = raduaIIA(f, tspan, y0, h);
+# 
+# 
+# % Output solution
+# table = "|  t  |    IRK    |   Exact   |   Error   |\n|:---:|:---------:|:---------:|:---------:|\n";
+# for n = 1 : length(t)
+#     table = append(table, sprintf("| %3.1f | %9.6f | %9.6f | %9.2e |\n", ...
+#         t(n), y(n,1), exact(t(n)), abs(y(n,1) - exact(t(n)))));
+# end
+# fprintf(table)
+# 
+# % Plot solution
+# t_exact = linspace(tspan(1), tspan(2), 200);
+# y_exact = exact(t_exact);
+# plot(t_exact, y_exact, "k", LineWidth=2)
+# hold on
+# plot(t, y, "b-o", LineWidth=2, MarkerFaceColor="b")
+# hold off
+# xlabel("$t$", FontSize=14, Interpreter="latex")
+# ylabel("$y$", FontSize=14, Interpreter="latex")
+# legend("Exact", "Radau IIA", Location="northwest")
+# 
+# %% --------------------------------------------------------------------
+# function [t, y] = raduaIIA(f, tspan, y0, h)
+# 
+# global tol
+# nsteps = floor((tspan(2) - tspan(1)) / h);
+# neq = length(y0);
+# t = (0 : nsteps) * h;
+# y = zeros(nsteps + 1, neq);
+# y(1, :) = y0;
+# for n = 1 : nsteps
+#     Y1 = ones(neq);
+#     Y2 = ones(neq);
+#     Y1o = ones(neq);
+#     Y2o = ones(neq);
+#     for k = 1 : 10
+#         Y1 = y(n,:) + h * (5/12 * f(t(n) + 1/3 * h, Y1) - 1/12 * f(t(n) + h, Y2));
+#         Y2 = y(n,:) + h * (3/4 * f(t(n) + 1/3 * h, Y1) + 1/4 * f(t(n) + h, Y2));
+#         if max(max(abs(Y1 - Y1o), max(abs(Y2 - Y2o)))) < tol
+#             break
+#         end
+#         Y1o = Y1;
+#         Y2o = Y2;
+#         y(n+1,:) = y(n,:) + h * (3/4 * f(t(n) + 1/3 * h, Y1) + 1/4 * f(t(n) + h, Y2));
+#     end
+# end
+# 
+# end
+# ```
+# 
 # Output
 # 
 # ```
@@ -415,6 +460,38 @@ glue("ex3.3_output_2", solve((eq1, eq2, eq3, eq4, eq5, eq6)))
 # 
 # ````
 # `````
+# ``````
+
+# In[1]:
+
+
+from sympy import *
+from myst_nb import glue
+init_printing(use_latex='mathjax')
+
+# Define symbolic variables
+a11, a12, a21, a22, b1, b2, c1, c2, t = symbols("a11, a12, a21, a22, b1, b2, c1, c2, t")
+
+# Calculate c values
+P2 = 1 + binomial(2, 1) * binomial(3, 1) * (t - 1) + binomial(2, 2) * binomial(4, 2) * (t - 1) ** 2
+P1 = 1 + binomial(1, 1) * binomial(2, 1) * (t - 1)
+c1, c2 = solve(P2 - P1)
+display(solve(P2 - P1))
+
+# Define order conditions
+eq1 = b1 + b2 - 1
+eq2 = b1 * c1 + b2 * c2 - Rational(1,2)
+eq3 = a11 + a12 - c1
+eq4 = a21 + a22 - c2
+eq5 = a11 * c1 + a12 * c2 - Rational(1,2) * c1 ** 2
+eq6 = a21 * c1 + a22 * c2 - Rational(1,2) * c2 ** 2
+
+# Solve order conditions
+solve((eq1, eq2, eq3, eq4, eq5, eq6))
+
+glue("ex3.3_output_1", solve(P2 - P1), display=False)
+glue("ex3.3_output_2", solve((eq1, eq2, eq3, eq4, eq5, eq6)))
+
 
 # In[2]:
 
@@ -456,7 +533,7 @@ y0 = [1]        # solution at the lower boundary
 h = 0.4         # step length
 tol = 1e-4      # convergence tolerance
 
-# Solve IVP using the Radau IIA method
+# Solve IVP
 t, y = radauIIA(f, tspan, y0, h)
 
 # Output solution table
@@ -470,7 +547,7 @@ t_exact = np.linspace(tspan[0], tspan[1], 200)
 y_exact = exact(t_exact)
 fig, ax = plt.subplots(figsize=(8, 6))
 plt.plot(t_exact, y_exact, "k", label="Exact")
-plt.plot(t, y, "bo-", label="Radua IIA")
+plt.plot(t, y, "bo-", label="Radau IIA")
 plt.xlabel("$t$", fontsize=14)
 plt.ylabel("$y$", fontsize=14)
 plt.legend(fontsize=12)

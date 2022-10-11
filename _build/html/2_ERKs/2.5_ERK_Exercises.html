@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/2_ERKs/2.5_ERK_Exercises.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -429,23 +429,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/2_ERK_methods.html">
-   Explicit Runge-Kutta Methods
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -592,6 +575,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="explicit-runge-kutta-methods-exercises">
 <h1>Explicit Runge-Kutta Methods Exercises<a class="headerlink" href="#explicit-runge-kutta-methods-exercises" title="Permalink to this headline">#</a></h1>
+<div class="full-width docutils">
 <div class="note admonition" id="ex2-1">
 <p class="admonition-title">Exercise 2.1</p>
 <p>Write the following Runge-Kutta method in a Butcher tableau.</p>
@@ -687,7 +671,7 @@ Solution<div class="sd-summary-down docutils">
 </details></div>
 <div class="note admonition" id="ex2-4">
 <p class="admonition-title">Exercise 2.4</p>
-<p>Repeat <a class="reference internal" href="#ex2-3"><span class="std std-ref">exercise 2.3</span></a> using Python to solve the order conditions.</p>
+<p>Repeat <a class="reference internal" href="#ex2-3"><span class="std std-ref">exercise 2.3</span></a> using Python or MATLAB to solve the order conditions.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -695,7 +679,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Code:</p>
+<p class="sd-card-text">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_printing</span><span class="p">()</span>
 
@@ -712,7 +696,23 @@ Solution<div class="sd-summary-down docutils">
 <span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">))</span>
 </pre></div>
 </div>
+<p class="sd-card-text">MATLAB</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Declare</span> <span class="n">symbolic</span> <span class="n">variables</span>
+<span class="n">syms</span> <span class="n">a21</span> <span class="n">b1</span> <span class="n">b2</span> <span class="n">c2</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">order</span> <span class="n">conditions</span>
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">*</span> <span class="n">b2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Solve</span> <span class="n">order</span> <span class="n">conditions</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">)</span>
+</pre></div>
+</div>
 <p class="sd-card-text">Output:</p>
+<div class="pasted-math math notranslate nohighlight" id="equation-ex2-4-glue">
+<span class="eqno">()<a class="headerlink" href="#equation-ex2-4-glue" title="Permalink to this equation">#</a></span>\[\displaystyle \left[ \left\{ a_{21} : \frac{3}{4}, \  b_{2} : \frac{2}{3}, \  c_{2} : \frac{3}{4}\right\}\right]\]</div>
 </div>
 </details></div>
 <div class="note admonition" id="ex2-5">
@@ -725,7 +725,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Code</p>
+<p class="sd-card-text">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">init_printing</span><span class="p">()</span>
 
@@ -754,9 +754,34 @@ Solution<div class="sd-summary-down docutils">
 <span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">))</span>
 </pre></div>
 </div>
+<p class="sd-card-text">MATLAB</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Declare</span> <span class="n">symbolic</span> <span class="n">variables</span>
+<span class="n">syms</span> <span class="n">a21</span> <span class="n">a31</span> <span class="n">a32</span> <span class="n">a41</span> <span class="n">a42</span> <span class="n">a43</span> <span class="n">b1</span> <span class="n">b2</span> <span class="n">b3</span> <span class="n">b4</span> <span class="n">c2</span> <span class="n">c3</span> <span class="n">c4</span>
+
+<span class="o">%</span> <span class="n">Choose</span> <span class="n">values</span> <span class="k">for</span> <span class="n">the</span> <span class="n">unknowns</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">order</span> <span class="n">conditions</span>
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">^</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">^</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">^</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">^</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">*</span> <span class="p">(</span><span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">8</span><span class="p">;</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">==</span> <span class="n">b2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c2</span><span class="p">);</span>
+<span class="n">eq7</span> <span class="o">=</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">==</span> <span class="n">b3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c3</span><span class="p">);</span>
+<span class="n">eq8</span> <span class="o">=</span> <span class="n">b4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">eq9</span> <span class="o">=</span> <span class="n">c2</span> <span class="o">==</span> <span class="n">a21</span><span class="p">;</span>
+<span class="n">eq10</span> <span class="o">=</span> <span class="n">c3</span> <span class="o">==</span> <span class="n">a31</span> <span class="o">+</span> <span class="n">a32</span><span class="p">;</span>
+<span class="n">eq11</span> <span class="o">=</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">a41</span> <span class="o">-</span> <span class="n">a42</span> <span class="o">-</span> <span class="n">a43</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Solve</span> <span class="n">order</span> <span class="n">conditions</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">)</span>
+</pre></div>
+</div>
 <p class="sd-card-text">Output:</p>
 <div class="pasted-math math notranslate nohighlight" id="equation-ex2-5-glue">
-<span class="eqno">()<a class="headerlink" href="#equation-ex2-5-glue" title="Permalink to this equation">#</a></span>\[\displaystyle \left[ \left\{ a_{21} : \frac{1}{5}, \  a_{31} : - \frac{31}{32}, \  a_{32} : \frac{55}{32}, \  a_{41} : 9, \  a_{42} : - \frac{120}{11}, \  a_{43} : \frac{32}{11}, \  b_{2} : \frac{125}{264}, \  b_{3} : \frac{16}{33}, \  b_{4} : \frac{1}{24}, \  c_{3} : \frac{3}{4}, \  c_{4} : 1\right\}\right]\]</div>
+<span class="eqno">()<a class="headerlink" href="#equation-ex2-5-glue" title="Permalink to this equation">#</a></span>\[\displaystyle \left\{ a_{21} : \frac{1}{5}, \  a_{31} : - \frac{31}{32}, \  a_{32} : \frac{55}{32}, \  a_{41} : 9, \  a_{42} : - \frac{120}{11}, \  a_{43} : \frac{32}{11}, \  b_{2} : \frac{125}{264}, \  b_{3} : \frac{16}{33}, \  b_{4} : \frac{1}{24}, \  c_{3} : \frac{3}{4}, \  c_{4} : 1\right\}\]</div>
 <p class="sd-card-text">So the method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -841,7 +866,7 @@ Solution<div class="sd-summary-down docutils">
 </details></div>
 <div class="note admonition" id="ex2-7">
 <p class="admonition-title">Exercise 2.7</p>
-<p>Define a Python function called <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code> which uses the method from derived in <a class="reference internal" href="#ex2-3"><span class="std std-ref">exercise 2.3</span></a> to solve an initial value problem. Use your function to solve the initial value problem in <a class="reference internal" href="#ex2-6"><span class="std std-ref">exercise 2.6</span></a> and produce a table of the solutions.</p>
+<p>Define a Python or MATLAB function called <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code> which uses the method from derived in <a class="reference internal" href="#ex2-3"><span class="std std-ref">exercise 2.3</span></a> to solve an initial value problem. Use your function to solve the initial value problem in <a class="reference internal" href="#ex2-6"><span class="std std-ref">exercise 2.6</span></a> and produce a table of the solutions.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -849,7 +874,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Code</p>
+<p class="sd-card-text">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
@@ -883,6 +908,43 @@ Solution<div class="sd-summary-down docutils">
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|:---:|:-------:|&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">3.1f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">7.4f</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">MATLAB</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Define</span> <span class="n">ODE</span>
+<span class="n">f</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">t</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">IVP</span> 
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Solve</span> <span class="n">IVP</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">Output</span> <span class="n">solution</span>
+<span class="n">table</span> <span class="o">=</span> <span class="s2">&quot;| t   |    y    |</span><span class="se">\n</span><span class="s2">|:---:|:-------:|</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;| </span><span class="si">%1.1f</span><span class="s2"> | </span><span class="si">%7.4f</span><span class="s2"> |</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="o">...</span>
+        <span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)));</span>
+<span class="n">end</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+<span class="o">%%</span> <span class="o">----------------------------------------------------------------------------</span>
+<span class="n">function</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="n">nsteps</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span><span class="p">);</span>
+<span class="n">neq</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="n">nsteps</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">neq</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">y0</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">nsteps</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:));</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">);</span>
+    <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span><span class="p">);</span>
+<span class="n">end</span>
+
+<span class="n">end</span>
 </pre></div>
 </div>
 <p class="sd-card-text">Output</p>
@@ -1069,7 +1131,7 @@ Solution<div class="sd-summary-down docutils">
 </details></div>
 <div class="note admonition" id="ex2-10">
 <p class="admonition-title">Exercise 2.10</p>
-<p>Define a Python function called <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> which uses the method from <a class="reference internal" href="#ex2-5"><span class="std std-ref">exercise 2.5</span></a> to solve an initial value problem. Use your function to solve the initial value problem in <a class="reference internal" href="#ex2-6"><span class="std std-ref">exercise 2.6</span></a>. The exact solution is <span class="math notranslate nohighlight">\(y = t + 2e^{-t} - 1\)</span>, produce a plot comparing your numerical solutions using the <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code> from <a class="reference internal" href="#ex2-7"><span class="std std-ref">exercise 2.7</span></a> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> functions and the exact solutions on the same set of axes.</p>
+<p>Define a Python or MATLAB function called <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> which uses the method from <a class="reference internal" href="#ex2-5"><span class="std std-ref">exercise 2.5</span></a> to solve an initial value problem. Use your function to solve the initial value problem in <a class="reference internal" href="#ex2-6"><span class="std std-ref">exercise 2.6</span></a>. The exact solution is <span class="math notranslate nohighlight">\(y = t + 2e^{-t} - 1\)</span>, produce a plot comparing your numerical solutions using the <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code> from <a class="reference internal" href="#ex2-7"><span class="std std-ref">exercise 2.7</span></a> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> functions and the exact solutions on the same set of axes.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -1077,9 +1139,10 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Code</p>
+<p class="sd-card-text">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 
 <span class="k">def</span> <span class="nf">myrk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
     <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
@@ -1089,8 +1152,8 @@ Solution<div class="sd-summary-down docutils">
     <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
         <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
-        <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
-        <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.75</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">31</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">55</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="n">k2</span><span class="p">))</span>
+        <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+        <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">31</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">55</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="n">k2</span><span class="p">))</span>
         <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">-</span> <span class="mi">120</span><span class="o">/</span><span class="mi">11</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">32</span><span class="o">/</span><span class="mi">11</span> <span class="o">*</span> <span class="n">k3</span><span class="p">))</span>
         <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">125</span><span class="o">/</span><span class="mi">264</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">16</span><span class="o">/</span><span class="mi">33</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span> <span class="o">*</span> <span class="n">k4</span><span class="p">)</span>
         
@@ -1110,24 +1173,91 @@ Solution<div class="sd-summary-down docutils">
 <span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>        <span class="c1"># solution at the lower boundary</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span>         <span class="c1"># step length</span>
 
-<span class="c1"># Calculate the solution to the IVP</span>
-<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">myrk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-
+<span class="c1"># Calculate the solutions to the IVP</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y_myrk2</span> <span class="o">=</span> <span class="n">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y_myrk4</span> <span class="o">=</span> <span class="n">myrk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    
 <span class="c1"># Plot solutions</span>
 <span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">y_exact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk2</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk4</span><span class="p">,</span> <span class="s2">&quot;ro-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK4&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p class="sd-card-text">MATLAB</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Define</span> <span class="n">ODE</span>
+<span class="n">f</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">t</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">exact</span> <span class="n">solution</span>
+<span class="n">exact</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">IVP</span> 
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span>
+
+<span class="o">%</span> <span class="n">Solve</span> <span class="n">IVP</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk4</span><span class="p">]</span> <span class="o">=</span> <span class="n">myrk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">);</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk2</span><span class="p">]</span> <span class="o">=</span> <span class="n">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">Calculate</span> <span class="n">exact</span> <span class="n">solutions</span>
+<span class="n">t_exact</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">200</span><span class="p">);</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">Plot</span> <span class="n">solutions</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">on</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk2</span><span class="p">,</span> <span class="s2">&quot;b-o&quot;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">MarkerFaceColor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk4</span><span class="p">,</span> <span class="s2">&quot;r-o&quot;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">MarkerFaceColor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">off</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">Interpreter</span><span class="o">=</span><span class="s2">&quot;latex&quot;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">Interpreter</span><span class="o">=</span><span class="s2">&quot;latex&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="s2">&quot;Exact&quot;</span><span class="p">,</span> <span class="s2">&quot;myRK2&quot;</span><span class="p">,</span> <span class="s2">&quot;myRK4&quot;</span><span class="p">,</span> <span class="n">Location</span><span class="o">=</span><span class="s2">&quot;northwest&quot;</span><span class="p">,</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="o">%%</span> <span class="o">--------------------------------------------------------------------</span>
+<span class="n">function</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="n">nsteps</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span><span class="p">);</span>
+<span class="n">neq</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="n">nsteps</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">neq</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">y0</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">nsteps</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:));</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">);</span>
+    <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span><span class="p">);</span>
+<span class="n">end</span>
+
+<span class="n">end</span>
+
+<span class="o">%%</span> <span class="o">--------------------------------------------------------------------</span>
+<span class="n">function</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">myrk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="n">nsteps</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span><span class="p">);</span>
+<span class="n">neq</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="n">nsteps</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">neq</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">y0</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">nsteps</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:));</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">);</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">31</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">55</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="n">k2</span><span class="p">));</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">-</span> <span class="mi">120</span><span class="o">/</span><span class="mi">11</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">32</span><span class="o">/</span><span class="mi">11</span> <span class="o">*</span> <span class="n">k3</span><span class="p">));</span>
+    <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">125</span><span class="o">/</span><span class="mi">264</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">16</span><span class="o">/</span><span class="mi">33</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span> <span class="o">*</span> <span class="n">k4</span><span class="p">);</span>
+<span class="n">end</span>
+
+<span class="n">end</span>
+</pre></div>
+</div>
 <p class="sd-card-text">Plot</p>
 <div class="cell_output docutils container">
-<img alt="../_images/2.5_ERK_Exercises_17_0.png" src="../_images/2.5_ERK_Exercises_17_0.png" />
+<img alt="../_images/2.5_ERK_Exercises_8_0.png" src="../_images/2.5_ERK_Exercises_8_0.png" />
 </div>
 </div>
 </details></div>
@@ -1141,8 +1271,8 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Code</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate solution for decreasing step lengths and plot the solution</span>
+<p class="sd-card-text">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate solution for decreasing step lengths</span>
 <span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)):</span>
@@ -1169,13 +1299,44 @@ Solution<div class="sd-summary-down docutils">
     
 <span class="c1"># Estimate the order of the methods</span>
 <span class="n">order</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;myRK2 order: </span><span class="si">{</span><span class="n">order</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;myRK4 order: </span><span class="si">{</span><span class="n">order</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;myRK2 order: </span><span class="si">{</span><span class="n">order</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="se">\n</span><span class="s2">myRK4 order: </span><span class="si">{</span><span class="n">order</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">MATLAB</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Calculate</span> <span class="n">solution</span> <span class="k">for</span> <span class="n">decreasing</span> <span class="n">step</span> <span class="n">lengths</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">];</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">length</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+    <span class="n">e</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_exact</span><span class="p">(</span><span class="n">end</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span>
+    <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">myrk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+    <span class="n">e</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y_exact</span><span class="p">(</span><span class="n">end</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">end</span>
+
+<span class="o">%</span> <span class="n">Plot</span> <span class="n">errors</span>
+<span class="n">loglog</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">e</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;b-o&quot;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">MarkerFaceColor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">on</span>
+<span class="n">loglog</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">e</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;r-o&quot;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">MarkerFaceColor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">off</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\log(h)$&quot;</span><span class="p">,</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">Interpreter</span><span class="o">=</span><span class="s2">&quot;latex&quot;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\log(e_n)$&quot;</span><span class="p">,</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">Interpreter</span><span class="o">=</span><span class="s2">&quot;latex&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="s2">&quot;myRK2&quot;</span><span class="p">,</span> <span class="s2">&quot;myRK4&quot;</span><span class="p">,</span> <span class="n">Location</span><span class="o">=</span><span class="s2">&quot;northwest&quot;</span><span class="p">,</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="n">Output</span> <span class="n">table</span> <span class="n">of</span> <span class="n">errors</span>
+<span class="n">table</span> <span class="o">=</span> <span class="s2">&quot;|   h   | myRK2 error | myRK4 error |</span><span class="se">\n</span><span class="s2">|:-----:|:-----------:|:-----------:|</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">length</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;| </span><span class="si">%5.3f</span><span class="s2"> | </span><span class="si">%10.2e</span><span class="s2">  | </span><span class="si">%10.2e</span><span class="s2">  |</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">e</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">:)));</span>
+<span class="n">end</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="n">Estimate</span> <span class="n">the</span> <span class="n">order</span> <span class="n">of</span> <span class="n">the</span> <span class="n">methods</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">:))</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="p">:)))</span> <span class="o">./</span> <span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">end</span><span class="p">)));</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="s2">&quot;myRK2 order: </span><span class="si">%1.2f</span><span class="se">\n</span><span class="s2">myRK4 order: </span><span class="si">%1.2f</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sd-card-text">Output</p>
 <div class="cell_output docutils container">
-<img alt="../_images/2.5_ERK_Exercises_20_0.png" src="../_images/2.5_ERK_Exercises_20_0.png" />
+<img alt="../_images/2.5_ERK_Exercises_10_0.png" src="../_images/2.5_ERK_Exercises_10_0.png" />
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>   <span class="n">h</span>   <span class="o">|</span> <span class="n">myRK2</span> <span class="n">error</span> <span class="o">|</span> <span class="n">myRK4</span> <span class="n">error</span> <span class="o">|</span>
 <span class="o">|</span><span class="p">:</span><span class="o">-----</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">-----------</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">-----------</span><span class="p">:</span><span class="o">|</span>
@@ -1190,6 +1351,7 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

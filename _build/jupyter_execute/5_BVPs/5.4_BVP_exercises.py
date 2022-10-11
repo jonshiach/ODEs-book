@@ -3,6 +3,8 @@
 
 # # Boundary value problems exercises
 # 
+# ``````{div} full-width
+# 
 # `````{admonition} Exercise 5.1
 # :class: note
 # :name: ex5.1
@@ -99,7 +101,7 @@
 # ````
 # 
 # `````
-
+# 
 # `````{admonition} Exercise 5.3
 # :class: note
 # :name: ex5.3
@@ -150,7 +152,7 @@
 # ````
 # 
 # `````
-
+# 
 # `````{admonition} Exercise 5.4
 # :class: note
 # :name: ex5.4
@@ -236,65 +238,16 @@
 # ````
 # 
 # `````
-
-# In[1]:
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-def euler(f, tspan, y0, h):
-    nsteps = int((tspan[1] - tspan[0]) / h)
-    neq = len(y0)
-    t = np.arange(nsteps + 1) * h
-    y = np.zeros((nsteps + 1, neq))
-    y[0,:] = y0
-    for n in range(nsteps):
-        y[n+1,:] = y[n,:] + h * f(t[n], y[n,:])
-        
-    return t, y 
-
-
-def f(t, y):
-    return np.array([y[1], 2 * t])
-
-# Define BVP parameters
-tspan = [0, 2]  # boundaries of the t domain
-bvals = [1, 3]  # boundary values
-h = 0.4         # step length
-svals = [1, -1]
-
-# Solve IVP
-ysols = []
-for s in svals:
-    t, y = euler(f, tspan, [bvals[0], s], h)
-    ysols.append(y)
-    
-    print("\n|  t   |   y1    |   y2    |")
-    print("|:----:|:-------:|:-------:|")
-    for n in range(len(t)):
-        print(f"| {t[n]:4.2f} | {y[n,0]:7.4f} | {y[n,1]:7.4f} |")
-        
-# Calculate next guess
-s = svals[-1] - (bvals[1] - ysols[-1][-1,0]) * (svals[-1] - svals[-2]) / ((bvals[1] - ysols[-1][-1,0]) - (bvals[1] - ysols[-2][-1,0]))
-
-# Solve IVP
-t, y = euler(f, tspan, [bvals[0], s], h)
-
-print("\n|  t   |   y1    |   y2    |")
-print("|:----:|:-------:|:-------:|")
-for n in range(len(t)):
-    print(f"| {t[n]:4.2f} | {y[n,0]:7.4f} | {y[n,1]:7.4f} |")
-
-
+# 
 # `````{admonition} Exercise 5.5
 # :class: note
 # :name: ex5.5
 # 
-# The exact solution to the boundary value problem in [exercise 5.2](ex5.2) is $y = \frac{1}{3} t^3 - \frac{1}{3} t + 1$. Write a Python program to perform the numerical calculations for exercises [5.3](ex5.3) and [5.4](ex5.4) and produce a plot of the numerical solutions and the exact solutions on the same set of axes. Comment on your plot.
+# The exact solution to the boundary value problem in [exercise 5.2](ex5.2) is $y = \frac{1}{3} t^3 - \frac{1}{3} t + 1$. Write a Python or MATLAB program to perform the numerical calculations for exercises [5.3](ex5.3) and [5.4](ex5.4) and produce a plot of the numerical solutions and the exact solutions on the same set of axes. Comment on your plot.
 # 
 # ````{dropdown} Solution
-# Code
+# 
+# Python
 # 
 # ```python
 # import numpy as np
@@ -382,9 +335,108 @@ for n in range(len(t)):
 # plt.ylabel("$y$", fontsize=14)
 # plt.legend()
 # plt.show()
+# ```
 # 
-# from myst_nb import glue
-# glue("ex5.5_plot", fig, display=False)
+# MATLAB
+# 
+# ```
+# % Define ODE
+# f = @(t, y) [y(2), 2 * t];
+# 
+# % Define exact solution
+# exact = @(t) 1 / 3 * t .^ 3 - 1 / 3 * t + 1;
+# 
+# % Define BVP
+# tspan = [0, 2];
+# bvals = [1, 3];
+# h = 0.4;
+# 
+# % Solve BVP using the shooting method
+# [t, y_euler] = shooting_method(@euler, f, tspan, bvals, h, 1e-4);
+# 
+# % Solve BVP using finite-difference method
+# n = floor((tspan(2) - tspan(1)) / h) + 1;
+# t = (0 : n - 1) * h;
+# a = zeros(n, 1);
+# b = zeros(n, 1);
+# c = zeros(n, 1);
+# d = zeros(n, 1);
+# b([1, end]) = 1;
+# d([1, end]) = bvals;
+# for i = 2 : n - 1
+#     a(i) = 1;
+#     b(i) = -2;
+#     c(i) = 1;
+#     d(i) = 2 * h ^ 2 * t(i);
+# end
+# y_fdm = tridiagonal_solver(a, b, c, d);
+# 
+# % Calculate exact solution
+# t_exact = linspace(tspan(1), tspan(2), 200);
+# y_exact = exact(t_exact);
+# 
+# % Plot solutions
+# plot(t_exact, y_exact, "k", LineWidth=2)
+# hold on
+# plot(t, y_euler(:, 1), "b-o", LineWidth=2, MarkerFaceColor="b")
+# plot(t, y_fdm, "r-o", LineWidth=2, MarkerFaceColor="r")
+# hold off
+# axis padded
+# xlabel("$t$", FontSize=14, Interpreter="latex")
+# ylabel("$y$", FontSize=14, Interpreter="latex")
+# legend("Exact", "Euler method", "Finite-difference method", Location="northwest")
+# 
+# %% ----------------------------------------------------------------------------
+# function [t, y] = euler(f, tspan, y0, h)
+# 
+# nsteps = floor((tspan(2) - tspan(1)) / h);
+# neq = length(y0);
+# t = (0 : nsteps) * h;
+# y = zeros(nsteps + 1, neq);
+# y(1, :) = y0;
+# for n = 1 : nsteps
+#     y(n+1, :) = y(n, :) + h * f(t(n), y(n, :));
+# end
+# 
+# end
+# 
+# %% ----------------------------------------------------------------------------
+# function [t, y] = shooting_method(solver, f, tspan, bvals, h, tol)
+# 
+# s = 1;
+# so = 2;
+# go = 1;
+# for i = 1 : 10
+#     [t, y] = solver(f, tspan, [bvals(1), s], h);
+#     g = bvals(2) - y(end,1);
+#     temp = s;
+#     s = s - g * (s - so) / (g - go);
+#     so = temp;
+#     go = g;
+#     if abs(s - so) < tol
+#         break
+#     end
+# end
+# 
+# end
+# 
+# %% ----------------------------------------------------------------------------
+# function x = tridiagonal_solver(a, b, c, d)
+# 
+# n = length(b);
+# for i = 2 : n
+#     w = a(i) / b(i-1);
+#     b(i) = b(i) - w * c(i-1);
+#     d(i) = d(i) - w * d(i-1);
+# end
+# 
+# x = zeros(n, 1);
+# x(n) = d(n) / b(n);
+# for i = n - 1 : -1 : 1
+#     x(i) = (d(i) - c(i) * x(i+1)) / b(i);
+# end
+# 
+# end
 # ```
 # 
 # Plot
@@ -395,8 +447,59 @@ for n in range(len(t)):
 # The finite-difference method gives significantly more accurate solutions than the Euler method. This is because the finite-difference used a second-order approximation whereas the Euler method is only first-order. We would expect a more accurate method such as the RK2 method to give similar solutions to the finite-difference method.
 # 
 # ````
+# ``````
 
-# In[27]:
+# In[1]:
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def euler(f, tspan, y0, h):
+    nsteps = int((tspan[1] - tspan[0]) / h)
+    neq = len(y0)
+    t = np.arange(nsteps + 1) * h
+    y = np.zeros((nsteps + 1, neq))
+    y[0,:] = y0
+    for n in range(nsteps):
+        y[n+1,:] = y[n,:] + h * f(t[n], y[n,:])
+        
+    return t, y 
+
+
+def f(t, y):
+    return np.array([y[1], 2 * t])
+
+# Define BVP parameters
+tspan = [0, 2]  # boundaries of the t domain
+bvals = [1, 3]  # boundary values
+h = 0.4         # step length
+svals = [1, -1]
+
+# Solve IVP
+ysols = []
+for s in svals:
+    t, y = euler(f, tspan, [bvals[0], s], h)
+    ysols.append(y)
+    
+    print("\n|  t   |   y1    |   y2    |")
+    print("|:----:|:-------:|:-------:|")
+    for n in range(len(t)):
+        print(f"| {t[n]:4.2f} | {y[n,0]:7.4f} | {y[n,1]:7.4f} |")
+        
+# Calculate next guess
+s = svals[-1] - (bvals[1] - ysols[-1][-1,0]) * (svals[-1] - svals[-2]) / ((bvals[1] - ysols[-1][-1,0]) - (bvals[1] - ysols[-2][-1,0]))
+
+# Solve IVP
+t, y = euler(f, tspan, [bvals[0], s], h)
+
+print("\n|  t   |   y1    |   y2    |")
+print("|:----:|:-------:|:-------:|")
+for n in range(len(t)):
+    print(f"| {t[n]:4.2f} | {y[n,0]:7.4f} | {y[n,1]:7.4f} |")
+
+
+# In[2]:
 
 
 import numpy as np

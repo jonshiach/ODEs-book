@@ -224,7 +224,7 @@
 import numpy as np
 
 
-# In[7]:
+# In[2]:
 
 
 def qr_gramschmidt(A):
@@ -244,7 +244,7 @@ def qr_gramschmidt(A):
 
 # The code below calculates the QR decomposition of the matrix from [example 6.9](qr-gramschmidt-example) using the `qr-gramschmidt()` function.
 
-# In[1]:
+# In[3]:
 
 
 # Define matrix
@@ -343,7 +343,7 @@ print(f"Q = \n{Q}\n\nR = \n{R}")
 # 
 # The code below calculates the solution to the system of linear equations from [example 6.10](qr-crout-example) using QR decomposition.
 
-# In[ ]:
+# In[4]:
 
 
 def back_substitution(U, b):
@@ -358,7 +358,7 @@ def back_substitution(U, b):
     return x
 
 
-# In[2]:
+# In[5]:
 
 
 # Define linear system
@@ -573,13 +573,13 @@ for i in range(len(x)):
 # 
 # The code below defines a function called `qr_householder()` that calculates the QR decomposition of an $m\times n$ matrix $A$ using Householder transformations.
 
-# In[8]:
+# In[6]:
 
 
 import numpy as np
 
 
-# In[9]:
+# In[7]:
 
 
 def qr_householder(A):
@@ -600,7 +600,7 @@ def qr_householder(A):
 
 # The code below calculates the QR decomposition of the matrix from [example 6.11](qr-householder-example) using the `qr_householder()` function. Note that the `R` matrix that is returned can have very small values instead of zeros due to computational rounding errors. Any element with an absolute value of less than $10^{-10}$ are set to zero for the sake of printing the output.
 
-# In[10]:
+# In[8]:
 
 
 # Define A matrix
@@ -625,7 +625,7 @@ print(f"Q = \n{Q}\n\nR = \n{R}")
 # 
 # then non-zero values of $E_j$ indicates that we have lost some orthogonality due to computational rounding errors. The code below calculates orthogonality errors for the QR decomposition of a random $100 \times 100$ matrix using the Gram-Schmidt process and Householder transformations and plots them. 
 
-# In[6]:
+# In[9]:
 
 
 import matplotlib.pyplot as plt

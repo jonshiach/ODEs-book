@@ -3,6 +3,8 @@
 
 # # Indirect methods exercises
 # 
+# ``````{div} full-width
+# 
 # `````{admonition} Exercise 7.1
 # :class: note
 # :name: ex7.1
@@ -69,7 +71,7 @@
 # ````
 # 
 # `````
-
+# 
 # `````{admonition} Exercise 7.2
 # :class: note
 # :name: ex7.2
@@ -129,7 +131,7 @@
 # Since $\max(| \mathbf{r}^{(2)} |) = 1.07893 > 10^{-4}$ we continue iterating. 
 # ````
 # `````
-
+# 
 # `````{admonition} Exercise 7.3
 # :class: note
 # :name: ex7.3
@@ -220,7 +222,7 @@
 # Since $\max(| \mathbf{r}^{(2)} |) = 1.078933 > 10^{-4}$ we continue iterating. 
 # 
 # `````
-
+# 
 # `````{admonition} Exercise 7.4
 # :class: note
 # :name: ex7.4
@@ -249,17 +251,17 @@
 # ````
 # 
 # `````
-
+# 
 # `````{admonition} Exercise 7.5
 # :class: note
 # :name: ex7.5
 # 
 # 
-# Write a Python program to calculate the solution to [exercise 7.1](ex7.1), [exercise 7.2](ex7.2) and [exercise 7.3](ex7.2) using a convergence tolerance of $tol=10^{-6}$. How many iterations did each of the three methods take to converge to the solution?
+# Write a Python or MATLAB program to calculate the solution to [exercise 7.1](ex7.1), [exercise 7.2](ex7.2) and [exercise 7.3](ex7.2) using a convergence tolerance of $tol=10^{-6}$. How many iterations did each of the three methods take to converge to the solution?
 # 
 # ````{dropdown} Solution
 # 
-# Code
+# Python
 # 
 # ```python
 # import numpy as np
@@ -282,7 +284,7 @@
 #         if max(abs(r)) < tol:
 #             break
 #     
-#     return x, k
+#     return x, k + 1
 # 
 # 
 # def gauss_seidel(A, b, tol=1e-6):
@@ -302,7 +304,7 @@
 #         if max(abs(r)) < tol:
 #             break
 #     
-#     return x, k
+#     return x, k + 1
 # 
 # 
 # def sor(A, b, omega, tol=1e-6):
@@ -322,7 +324,7 @@
 #         if max(abs(r)) < tol:
 #             break
 #     
-#     return x, k
+#     return x, k + 1
 # 
 # 
 # # Define linear system
@@ -344,11 +346,106 @@
 #     print(f"    x{i+1} = {x[i]:9.6f}")
 # ```
 # 
+# MATLAB 
+# 
+# ```
+# % Define linear system
+# A = [5, 1, -1, 1 ; 1, 4, -1, -1, ; -1, -1, 5, 1 ; 1, -1, 1 3];
+# b = [14, ; 10 ; -15 ; 3];
+# 
+# % Solve linear system
+# [x, iterations] = jacobi(A, b, 1e-6);
+# fprintf("Jacobi method:       %3i iterations", iterations)
+# 
+# [x, iterations] = gauss_seidel(A, b, 1e-6);
+# fprintf("Gauss-Seidel method: %3i iterations", iterations)
+# 
+# [x, iterations] =sor(A, b, 1.094573, 1e-6);
+# fprintf("Gauss-Seidel method: %3i iterations", iterations)
+# 
+# for i = 1 : length(x)
+#     fprintf("x%1i = %9.6f\n", i, x(i))
+# end
+# 
+# 
+# function [x, k] = jacobi(A, b, tol)
+# 
+# n = length(b);
+# x = zeros(size(b));
+# maxiter = 100;
+# for k = 1 : maxiter
+#     xo = x;
+#     for i = 1 : n
+#         s = b(i);
+#         for j = 1 : n
+#             if i ~= j
+#                 s = s - A(i,j) * xo(j);
+#             end
+#         end
+#         x(i) = s / A(i,i);
+#     end
+#     r = b - A * x;
+#     if max(abs(r)) < tol
+#         break
+#     end
+# end
+# 
+# end
+# 
+# 
+# function [x, k] = gauss_seidel(A, b, tol)
+# 
+# n = length(b);
+# x = zeros(size(b));
+# maxiter = 100;
+# for k = 1 : maxiter
+#     for i = 1 : n
+#         s = b(i);
+#         for j = 1 : n
+#             if i ~= j
+#                 s = s - A(i,j) * x(j);
+#             end
+#         end
+#         x(i) = s / A(i,i);
+#     end
+#     r = b - A * x;
+#     if max(abs(r)) < tol
+#         break
+#     end
+# end
+# 
+# end
+# 
+# 
+# function [x, k] = sor(A, b, omega, tol)
+# 
+# n = length(b);
+# x = zeros(size(b));
+# maxiter = 100;
+# for k = 1 : maxiter
+#     for i = 1 : n
+#         s = b(i);
+#         for j = 1 : n
+#             if i ~= j
+#                 s = s - A(i,j) * x(j);
+#             end
+#         end
+#         x(i) = (1 - omega) * x(i) + omega * s / A(i,i);
+#     end
+#     r = b - A * x;
+#     if max(abs(r)) < tol
+#         break
+#     end
+# end
+# 
+# end
+# ```
+# 
 # Output
 # ```
-# Jacobi method:        26 iterations
-# Gauss-Seidel method:  13 iterations
-# SOR method:            9 iterations
+# Jacobi method:        27 iterations
+# Gauss-Seidel method:  14 iterations
+# SOR method:           10 iterations
 # 
 # Solution:
 #     x1 =  1.438776
@@ -359,92 +456,7 @@
 # ````
 # 
 # `````
-
-# In[1]:
-
-
-import numpy as np
-
-def jacobi(A, b, tol=1e-6):
-    n = len(b)
-    x = np.zeros(n)
-    maxiter = 100
-    for k in range(maxiter):
-        xo = np.copy(x)
-        for i in range(n):
-            s = b[i]
-            for j in range(n):
-                if i != j:
-                    s -= A[i,j] * xo[j]
-        
-            x[i] = s / A[i,i]
-            
-        r = b - np.dot(A, x)   
-        if max(abs(r)) < tol:
-            break
-    
-    return x, k
-
-
-def gauss_seidel(A, b, tol=1e-6):
-    n = len(b)
-    x = np.zeros(n)
-    maxiter = 100
-    for k in range(maxiter):
-        for i in range(n):
-            s = b[i]
-            for j in range(n):
-                if i != j:
-                    s -= A[i,j] * x[j]
-        
-            x[i] = s / A[i,i]
-            
-        r = b - np.dot(A, x)   
-        if max(abs(r)) < tol:
-            break
-    
-    return x, k
-
-
-def sor(A, b, omega, tol=1e-6):
-    n = len(b)
-    x = np.zeros(n)
-    maxiter = 100
-    for k in range(maxiter):
-        for i in range(n):
-            s = b[i]
-            for j in range(n):
-                if i != j:
-                    s -= A[i,j] * x[j]
-        
-            x[i] = (1 - omega) * x[i] + omega / A[i,i] * s
-            
-        r = b - np.dot(A, x)   
-        if max(abs(r)) < tol:
-            break
-    
-    return x, k
-
-
-# Define linear system
-A = np.array([[5, 1, -1, 1], [1, 4, -1, -1], [-1, -1, 5, 1], [1, -1, 1, 3]])
-b = np.array([14, 10, -15, 3])
-
-# Solve linear system
-x, iterations = jacobi(A, b)
-print(f"Jacobi method:       {iterations:3d} iterations")
-
-x, iterations = gauss_seidel(A, b)
-print(f"Gauss-Seidel method: {iterations:3d} iterations")
-
-x, iterations = sor(A, b, 1.094573)
-print(f"SOR method:          {iterations:3d} iterations")
-
-print("\nSolution:")
-for i in range(len(x)):
-    print(f"    x{i+1} = {x[i]:9.6f}")
-
-
+# 
 # `````{admonition} Exercise 7.6
 # :class: note
 # :name: ex7.6
@@ -479,5 +491,91 @@ for i in range(len(x)):
 # 
 # For a method to converge $\rho(T) < 1$ so $\frac{1}{2} \sqrt{\alpha} < 1$ therefore $\alpha < 4$.
 # ````
-# 
 # `````
+# 
+# ``````
+
+# In[1]:
+
+
+import numpy as np
+
+def jacobi(A, b, tol=1e-6):
+    n = len(b)
+    x = np.zeros(n)
+    maxiter = 100
+    for k in range(maxiter):
+        xo = np.copy(x)
+        for i in range(n):
+            s = b[i]
+            for j in range(n):
+                if i != j:
+                    s -= A[i,j] * xo[j]
+        
+            x[i] = s / A[i,i]
+            
+        r = b - np.dot(A, x)   
+        if max(abs(r)) < tol:
+            break
+    
+    return x, k + 1
+
+
+def gauss_seidel(A, b, tol=1e-6):
+    n = len(b)
+    x = np.zeros(n)
+    maxiter = 100
+    for k in range(maxiter):
+        for i in range(n):
+            s = b[i]
+            for j in range(n):
+                if i != j:
+                    s -= A[i,j] * x[j]
+        
+            x[i] = s / A[i,i]
+            
+        r = b - np.dot(A, x)   
+        if max(abs(r)) < tol:
+            break
+    
+    return x, k + 1
+
+
+def sor(A, b, omega, tol=1e-6):
+    n = len(b)
+    x = np.zeros(n)
+    maxiter = 100
+    for k in range(maxiter):
+        for i in range(n):
+            s = b[i]
+            for j in range(n):
+                if i != j:
+                    s -= A[i,j] * x[j]
+        
+            x[i] = (1 - omega) * x[i] + omega / A[i,i] * s
+            
+        r = b - np.dot(A, x)   
+        if max(abs(r)) < tol:
+            break
+    
+    return x, k + 1
+
+
+# Define linear system
+A = np.array([[5, 1, -1, 1], [1, 4, -1, -1], [-1, -1, 5, 1], [1, -1, 1, 3]])
+b = np.array([14, 10, -15, 3])
+
+# Solve linear system
+x, iterations = jacobi(A, b)
+print(f"Jacobi method:       {iterations:3d} iterations")
+
+x, iterations = gauss_seidel(A, b)
+print(f"Gauss-Seidel method: {iterations:3d} iterations")
+
+x, iterations = sor(A, b, 1.094573)
+print(f"SOR method:          {iterations:3d} iterations")
+
+print("\nSolution:")
+for i in range(len(x)):
+    print(f"    x{i+1} = {x[i]:9.6f}")
+

@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/6_Direct_methods/6.6_Direct_methods_exercises.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -429,18 +429,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -587,6 +575,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="direct-methods-exercises">
 <h1>Direct methods exercises<a class="headerlink" href="#direct-methods-exercises" title="Permalink to this headline">#</a></h1>
+<div class="full-width docutils">
 <div class="note admonition" id="ex6-1">
 <p class="admonition-title">Exercise 6.1</p>
 <p>Using pen and paper, solve the following systems of linear equations using <a class="reference internal" href="6.1_LU_decomposition.html#lu-definition"><span class="std std-ref">LU decomposition</span></a>.</p>
@@ -619,8 +608,8 @@ Solution<div class="sd-summary-down docutils">
     u_{23} &amp;= a_{23} - \ell_{21} u_{13} = -1 - 2\left(-1\right) = 1, \\
     u_{33} &amp;= a_{33} - \ell_{31} u_{13} - \ell_{32} u_{23} = 2 - \left(0\right)\left(-1\right) - 1\left(1\right) = 1, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0\\2 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 1\end{matrix}\right], \qquad
-    U = \left[\begin{matrix}2 &amp; 3 &amp; -1\\0 &amp; 3 &amp; 1\\0 &amp; 0 &amp; 1\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0\\2 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 1\end{matrix}\right), \qquad
+    U = \left(\begin{matrix}2 &amp; 3 &amp; -1\\0 &amp; 3 &amp; 1\\0 &amp; 0 &amp; 1\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{{y}} = \mathbf{{b}}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -666,8 +655,8 @@ Solution<div class="sd-summary-down docutils">
     u_{23} &amp;= a_{23} - \ell_{21} u_{13} = 2 - \frac{1}{3}\left(5\right) = \frac{1}{3}, \\
     u_{33} &amp;= a_{33} - \ell_{31} u_{13} - \ell_{32} u_{23} = 5 - \frac{2}{3}\left(5\right) - 2\left(\frac{1}{3}\right) = 1, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0\\\frac{1}{3} &amp; 1 &amp; 0\\\frac{2}{3} &amp; 2 &amp; 1\end{matrix}\right], \qquad
-    U = \left[\begin{matrix}3 &amp; 9 &amp; 5\\0 &amp; -1 &amp; \frac{1}{3}\\0 &amp; 0 &amp; 1\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0\\\frac{1}{3} &amp; 1 &amp; 0\\\frac{2}{3} &amp; 2 &amp; 1\end{matrix}\right), \qquad
+    U = \left(\begin{matrix}3 &amp; 9 &amp; 5\\0 &amp; -1 &amp; \frac{1}{3}\\0 &amp; 0 &amp; 1\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{{y}} = \mathbf{{b}}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -722,8 +711,8 @@ Solution<div class="sd-summary-down docutils">
     u_{34} &amp;= a_{34} - \ell_{31} u_{14} - \ell_{32} u_{24} = -3 - 4\left(2\right) - \frac{1}{2}\left(-5\right) = - \frac{17}{2}, \\
     u_{44} &amp;= a_{44} - \ell_{41} u_{14} - \ell_{42} u_{24} - \ell_{43} u_{34} = 3 - \left(0\right)\left(2\right) - \left(-1\right)\left(-5\right) - \frac{1}{3}\left(- \frac{17}{2}\right) = \frac{5}{6}, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\3 &amp; 1 &amp; 0 &amp; 0\\4 &amp; \frac{1}{2} &amp; 1 &amp; 0\\0 &amp; -1 &amp; \frac{1}{3} &amp; 1\end{matrix}\right], \qquad
-    U = \left[\begin{matrix}1 &amp; 0 &amp; 3 &amp; 2\\0 &amp; -2 &amp; -4 &amp; -5\\0 &amp; 0 &amp; -12 &amp; - \frac{17}{2}\\0 &amp; 0 &amp; 0 &amp; \frac{5}{6}\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\3 &amp; 1 &amp; 0 &amp; 0\\4 &amp; \frac{1}{2} &amp; 1 &amp; 0\\0 &amp; -1 &amp; \frac{1}{3} &amp; 1\end{matrix}\right), \qquad
+    U = \left(\begin{matrix}1 &amp; 0 &amp; 3 &amp; 2\\0 &amp; -2 &amp; -4 &amp; -5\\0 &amp; 0 &amp; -12 &amp; - \frac{17}{2}\\0 &amp; 0 &amp; 0 &amp; \frac{5}{6}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{{y}} = \mathbf{{b}}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -780,8 +769,8 @@ Solution<div class="sd-summary-down docutils">
     u_{34} &amp;= a_{34} - \ell_{31} u_{14} - \ell_{32} u_{24} = -1 - 3\left(2\right) - \left(- \frac{7}{3}\right)\left(4\right) = \frac{7}{3}, \\
     u_{44} &amp;= a_{44} - \ell_{41} u_{14} - \ell_{42} u_{24} - \ell_{43} u_{34} = -1 - \left(-3\right)\left(2\right) - 2\left(4\right) - \left(- \frac{1}{3}\right)\left(\frac{7}{3}\right) = - \frac{20}{9}, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\-2 &amp; 1 &amp; 0 &amp; 0\\3 &amp; - \frac{7}{3} &amp; 1 &amp; 0\\-3 &amp; 2 &amp; - \frac{1}{3} &amp; 1\end{matrix}\right], \qquad
-    U = \left[\begin{matrix}1 &amp; 5 &amp; 2 &amp; 2\\0 &amp; 6 &amp; 6 &amp; 4\\0 &amp; 0 &amp; 6 &amp; \frac{7}{3}\\0 &amp; 0 &amp; 0 &amp; - \frac{20}{9}\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\-2 &amp; 1 &amp; 0 &amp; 0\\3 &amp; - \frac{7}{3} &amp; 1 &amp; 0\\-3 &amp; 2 &amp; - \frac{1}{3} &amp; 1\end{matrix}\right), \qquad
+    U = \left(\begin{matrix}1 &amp; 5 &amp; 2 &amp; 2\\0 &amp; 6 &amp; 6 &amp; 4\\0 &amp; 0 &amp; 6 &amp; \frac{7}{3}\\0 &amp; 0 &amp; 0 &amp; - \frac{20}{9}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{{y}} = \mathbf{{b}}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -815,23 +804,23 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Perform partial pivoting on the <span class="math notranslate nohighlight">\(A\)</span> matrix</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    &amp; \left[\begin{matrix}1 &amp; 5 &amp; 2 &amp; 2\\-2 &amp; -4 &amp; 2 &amp; 0\\3 &amp; 1 &amp; -2 &amp; -1\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right]
+    &amp; \left(\begin{matrix}1 &amp; 5 &amp; 2 &amp; 2\\-2 &amp; -4 &amp; 2 &amp; 0\\3 &amp; 1 &amp; -2 &amp; -1\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right)
     \xrightarrow{R_{1} \leftrightarrow R_{3}}
-    \left[\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\-2 &amp; -4 &amp; 2 &amp; 0\\1 &amp; 5 &amp; 2 &amp; 2\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right]
+    \left(\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\-2 &amp; -4 &amp; 2 &amp; 0\\1 &amp; 5 &amp; 2 &amp; 2\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right)
     \xrightarrow{R_{2} \leftrightarrow R_{3}}\\
     &amp;
-    \left[\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\1 &amp; 5 &amp; 2 &amp; 2\\-2 &amp; -4 &amp; 2 &amp; 0\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right]
+    \left(\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\1 &amp; 5 &amp; 2 &amp; 2\\-2 &amp; -4 &amp; 2 &amp; 0\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right)
     \xrightarrow{R_{3} \leftrightarrow R_{4}}
-    \left[\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\1 &amp; 5 &amp; 2 &amp; 2\\-3 &amp; -3 &amp; 4 &amp; -1\\-2 &amp; -4 &amp; 2 &amp; 0\end{matrix}\right]
+    \left(\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\1 &amp; 5 &amp; 2 &amp; 2\\-3 &amp; -3 &amp; 4 &amp; -1\\-2 &amp; -4 &amp; 2 &amp; 0\end{matrix}\right)
     , \\
-    &amp; \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right]
+    &amp; \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)
     \xrightarrow{R_{1} \leftrightarrow R_{3}}
-    \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right]\\
+    \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)\\
     &amp;
     \xrightarrow{R_{2} \leftrightarrow R_{3}}
-    \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right]
+    \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)
     \xrightarrow{R_{3} \leftrightarrow R_{4}}
-    \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0 &amp; 0\end{matrix}\right]
+    \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0 &amp; 0\end{matrix}\right)
 .
 \end{align*}\]</div>
 <p class="sd-card-text">Calculate LU decomposition of the <span class="math notranslate nohighlight">\(A\)</span> matrix</p>
@@ -849,13 +838,13 @@ Solution<div class="sd-summary-down docutils">
     u_{23} &amp;= a_{23} - \ell_{21} u_{13} = -1 - \frac{1}{2}\left(-1\right) = - \frac{1}{2}, \\
     u_{33} &amp;= a_{33} - \ell_{31} u_{13} - \ell_{32} u_{23} = 2 - \left(0\right)\left(-1\right) - \left(-2\right)\left(- \frac{1}{2}\right) = 1, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0\\\frac{1}{2} &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right], \qquad
-    U = \left[\begin{matrix}4 &amp; 9 &amp; -1\\0 &amp; - \frac{3}{2} &amp; - \frac{1}{2}\\0 &amp; 0 &amp; 1\end{matrix}\right], \qquad
-    P = \left[\begin{matrix}0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0\\\frac{1}{2} &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right), \qquad
+    U = \left(\begin{matrix}4 &amp; 9 &amp; -1\\0 &amp; - \frac{3}{2} &amp; - \frac{1}{2}\\0 &amp; 0 &amp; 1\end{matrix}\right), \qquad
+    P = \left(\begin{matrix}0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = P \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{align*} \left[\begin{matrix}1 &amp; 0 &amp; 0\\\frac{1}{2} &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right] \mathbf{y} = \left[\begin{matrix}0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right] \left[\begin{matrix}4\\18\\11\end{matrix}\right] = \left[\begin{matrix}18\\4\\11\end{matrix}\right]. \end{align*}\]</div>
+\[\begin{align*} \left(\begin{matrix}1 &amp; 0 &amp; 0\\\frac{1}{2} &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right) \mathbf{y} = \left(\begin{matrix}0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right) \left(\begin{matrix}4\\18\\11\end{matrix}\right) = \left(\begin{matrix}18\\4\\11\end{matrix}\right). \end{align*}\]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{1} &amp;= 18, \\
@@ -881,13 +870,13 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Perform partial pivoting on the <span class="math notranslate nohighlight">\(A\)</span> matrix</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    &amp; \left[\begin{matrix}3 &amp; 9 &amp; 5\\1 &amp; 2 &amp; 2\\2 &amp; 4 &amp; 5\end{matrix}\right]
+    &amp; \left(\begin{matrix}3 &amp; 9 &amp; 5\\1 &amp; 2 &amp; 2\\2 &amp; 4 &amp; 5\end{matrix}\right)
     \xrightarrow{R_{2} \leftrightarrow R_{3}}
-    \left[\begin{matrix}3 &amp; 9 &amp; 5\\2 &amp; 4 &amp; 5\\1 &amp; 2 &amp; 2\end{matrix}\right]
+    \left(\begin{matrix}3 &amp; 9 &amp; 5\\2 &amp; 4 &amp; 5\\1 &amp; 2 &amp; 2\end{matrix}\right)
     , \\
-    &amp; \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]
+    &amp; \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right)
     \xrightarrow{R_{2} \leftrightarrow R_{3}}
-    \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0\end{matrix}\right]
+    \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0\end{matrix}\right)
 .
 \end{align*}\]</div>
 <p class="sd-card-text">Calculate LU decomposition of the <span class="math notranslate nohighlight">\(A\)</span> matrix</p>
@@ -905,13 +894,13 @@ Solution<div class="sd-summary-down docutils">
     u_{23} &amp;= a_{23} - \ell_{21} u_{13} = 5 - \frac{2}{3}\left(5\right) = \frac{5}{3}, \\
     u_{33} &amp;= a_{33} - \ell_{31} u_{13} - \ell_{32} u_{23} = 2 - \frac{1}{3}\left(5\right) - \frac{1}{2}\left(\frac{5}{3}\right) = - \frac{1}{2}, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0\\\frac{2}{3} &amp; 1 &amp; 0\\\frac{1}{3} &amp; \frac{1}{2} &amp; 1\end{matrix}\right], \qquad
-    U = \left[\begin{matrix}3 &amp; 9 &amp; 5\\0 &amp; -2 &amp; \frac{5}{3}\\0 &amp; 0 &amp; - \frac{1}{2}\end{matrix}\right], \qquad
-    P = \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0\\\frac{2}{3} &amp; 1 &amp; 0\\\frac{1}{3} &amp; \frac{1}{2} &amp; 1\end{matrix}\right), \qquad
+    U = \left(\begin{matrix}3 &amp; 9 &amp; 5\\0 &amp; -2 &amp; \frac{5}{3}\\0 &amp; 0 &amp; - \frac{1}{2}\end{matrix}\right), \qquad
+    P = \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = P \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{align*} \left[\begin{matrix}1 &amp; 0 &amp; 0\\\frac{2}{3} &amp; 1 &amp; 0\\\frac{1}{3} &amp; \frac{1}{2} &amp; 1\end{matrix}\right] \mathbf{y} = \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0\end{matrix}\right] \left[\begin{matrix}20\\3\\4\end{matrix}\right] = \left[\begin{matrix}20\\4\\3\end{matrix}\right]. \end{align*}\]</div>
+\[\begin{align*} \left(\begin{matrix}1 &amp; 0 &amp; 0\\\frac{2}{3} &amp; 1 &amp; 0\\\frac{1}{3} &amp; \frac{1}{2} &amp; 1\end{matrix}\right) \mathbf{y} = \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0\end{matrix}\right) \left(\begin{matrix}20\\3\\4\end{matrix}\right) = \left(\begin{matrix}20\\4\\3\end{matrix}\right). \end{align*}\]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{1} &amp;= 20, \\
@@ -937,13 +926,13 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Perform partial pivoting on the <span class="math notranslate nohighlight">\(A\)</span> matrix</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    &amp; \left[\begin{matrix}1 &amp; 0 &amp; 3 &amp; 2\\3 &amp; -2 &amp; 5 &amp; 1\\4 &amp; -1 &amp; -2 &amp; -3\\0 &amp; 2 &amp; 0 &amp; 3\end{matrix}\right]
+    &amp; \left(\begin{matrix}1 &amp; 0 &amp; 3 &amp; 2\\3 &amp; -2 &amp; 5 &amp; 1\\4 &amp; -1 &amp; -2 &amp; -3\\0 &amp; 2 &amp; 0 &amp; 3\end{matrix}\right)
     \xrightarrow{R_{1} \leftrightarrow R_{3}}
-    \left[\begin{matrix}4 &amp; -1 &amp; -2 &amp; -3\\3 &amp; -2 &amp; 5 &amp; 1\\1 &amp; 0 &amp; 3 &amp; 2\\0 &amp; 2 &amp; 0 &amp; 3\end{matrix}\right]
+    \left(\begin{matrix}4 &amp; -1 &amp; -2 &amp; -3\\3 &amp; -2 &amp; 5 &amp; 1\\1 &amp; 0 &amp; 3 &amp; 2\\0 &amp; 2 &amp; 0 &amp; 3\end{matrix}\right)
     , \\
-    &amp; \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right]
+    &amp; \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)
     \xrightarrow{R_{1} \leftrightarrow R_{3}}
-    \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right]
+    \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)
 .
 \end{align*}\]</div>
 <p class="sd-card-text">Calculate LU decomposition of the <span class="math notranslate nohighlight">\(A\)</span> matrix</p>
@@ -971,13 +960,13 @@ Solution<div class="sd-summary-down docutils">
     u_{44} &amp;= a_{44} - \ell_{41} u_{14} - \ell_{42} u_{24} - \ell_{43} u_{34} \\
     &amp;= 3 - \left(0\right)\left(-3\right) - \left(- \frac{8}{5}\right)\left(\frac{13}{4}\right) - \frac{13}{6}\left(\frac{17}{5}\right) = \frac{5}{6}, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\\frac{3}{4} &amp; 1 &amp; 0 &amp; 0\\\frac{1}{4} &amp; - \frac{1}{5} &amp; 1 &amp; 0\\0 &amp; - \frac{8}{5} &amp; \frac{13}{6} &amp; 1\end{matrix}\right], \qquad
-    U = \left[\begin{matrix}4 &amp; -1 &amp; -2 &amp; -3\\0 &amp; - \frac{5}{4} &amp; \frac{13}{2} &amp; \frac{13}{4}\\0 &amp; 0 &amp; \frac{24}{5} &amp; \frac{17}{5}\\0 &amp; 0 &amp; 0 &amp; \frac{5}{6}\end{matrix}\right], \\
-    P &amp;= \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\\frac{3}{4} &amp; 1 &amp; 0 &amp; 0\\\frac{1}{4} &amp; - \frac{1}{5} &amp; 1 &amp; 0\\0 &amp; - \frac{8}{5} &amp; \frac{13}{6} &amp; 1\end{matrix}\right), \qquad
+    U = \left(\begin{matrix}4 &amp; -1 &amp; -2 &amp; -3\\0 &amp; - \frac{5}{4} &amp; \frac{13}{2} &amp; \frac{13}{4}\\0 &amp; 0 &amp; \frac{24}{5} &amp; \frac{17}{5}\\0 &amp; 0 &amp; 0 &amp; \frac{5}{6}\end{matrix}\right), \\
+    P &amp;= \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = P \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{align*} \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\\frac{3}{4} &amp; 1 &amp; 0 &amp; 0\\\frac{1}{4} &amp; - \frac{1}{5} &amp; 1 &amp; 0\\0 &amp; - \frac{8}{5} &amp; \frac{13}{6} &amp; 1\end{matrix}\right] \mathbf{y} = \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right] \left[\begin{matrix}21\\28\\-12\\13\end{matrix}\right] = \left[\begin{matrix}-12\\28\\21\\13\end{matrix}\right]. \end{align*}\]</div>
+\[\begin{align*} \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\\frac{3}{4} &amp; 1 &amp; 0 &amp; 0\\\frac{1}{4} &amp; - \frac{1}{5} &amp; 1 &amp; 0\\0 &amp; - \frac{8}{5} &amp; \frac{13}{6} &amp; 1\end{matrix}\right) \mathbf{y} = \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right) \left(\begin{matrix}21\\28\\-12\\13\end{matrix}\right) = \left(\begin{matrix}-12\\28\\21\\13\end{matrix}\right). \end{align*}\]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{1} &amp;= -12, \\
@@ -1005,23 +994,23 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Perform partial pivoting on the <span class="math notranslate nohighlight">\(A\)</span> matrix</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    &amp; \left[\begin{matrix}1 &amp; 5 &amp; 2 &amp; 2\\-2 &amp; -4 &amp; 2 &amp; 0\\3 &amp; 1 &amp; -2 &amp; -1\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right]
+    &amp; \left(\begin{matrix}1 &amp; 5 &amp; 2 &amp; 2\\-2 &amp; -4 &amp; 2 &amp; 0\\3 &amp; 1 &amp; -2 &amp; -1\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right)
     \xrightarrow{R_{1} \leftrightarrow R_{3}}
-    \left[\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\-2 &amp; -4 &amp; 2 &amp; 0\\1 &amp; 5 &amp; 2 &amp; 2\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right] 
+    \left(\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\-2 &amp; -4 &amp; 2 &amp; 0\\1 &amp; 5 &amp; 2 &amp; 2\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right) 
     \xrightarrow{R_{2} \leftrightarrow R_{3}}\\
     &amp;
-    \left[\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\1 &amp; 5 &amp; 2 &amp; 2\\-2 &amp; -4 &amp; 2 &amp; 0\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right]
+    \left(\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\1 &amp; 5 &amp; 2 &amp; 2\\-2 &amp; -4 &amp; 2 &amp; 0\\-3 &amp; -3 &amp; 4 &amp; -1\end{matrix}\right)
     \xrightarrow{R_{3} \leftrightarrow R_{4}}
-    \left[\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\1 &amp; 5 &amp; 2 &amp; 2\\-3 &amp; -3 &amp; 4 &amp; -1\\-2 &amp; -4 &amp; 2 &amp; 0\end{matrix}\right]
+    \left(\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\1 &amp; 5 &amp; 2 &amp; 2\\-3 &amp; -3 &amp; 4 &amp; -1\\-2 &amp; -4 &amp; 2 &amp; 0\end{matrix}\right)
     , \\
-    &amp; \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right]
+    &amp; \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)
     \xrightarrow{R_{1} \leftrightarrow R_{3}}
-    \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right]
+    \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)
     \xrightarrow{R_{2} \leftrightarrow R_{3}}\\
     &amp;
-    \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right]
+    \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\end{matrix}\right)
     \xrightarrow{R_{3} \leftrightarrow R_{4}}
-    \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0 &amp; 0\end{matrix}\right]
+    \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0 &amp; 0\end{matrix}\right)
 .
 \end{align*}\]</div>
 <p class="sd-card-text">Calculate LU decomposition of the <span class="math notranslate nohighlight">\(A\)</span> matrix</p>
@@ -1049,13 +1038,13 @@ Solution<div class="sd-summary-down docutils">
     u_{44} &amp;= a_{44} - \ell_{41} u_{14} - \ell_{42} u_{24} - \ell_{43} u_{34} \\
     &amp;= 0 - \left(- \frac{2}{3}\right)\left(-1\right) - \left(- \frac{5}{7}\right)\left(\frac{7}{3}\right) - \frac{9}{11}\left(-1\right) = \frac{20}{11}, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\\frac{1}{3} &amp; 1 &amp; 0 &amp; 0\\-1 &amp; - \frac{3}{7} &amp; 1 &amp; 0\\- \frac{2}{3} &amp; - \frac{5}{7} &amp; \frac{9}{11} &amp; 1\end{matrix}\right], \qquad
-    U = \left[\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\0 &amp; \frac{14}{3} &amp; \frac{8}{3} &amp; \frac{7}{3}\\0 &amp; 0 &amp; \frac{22}{7} &amp; -1\\0 &amp; 0 &amp; 0 &amp; \frac{20}{11}\end{matrix}\right], \\
-    &amp; P = \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0 &amp; 0\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\\frac{1}{3} &amp; 1 &amp; 0 &amp; 0\\-1 &amp; - \frac{3}{7} &amp; 1 &amp; 0\\- \frac{2}{3} &amp; - \frac{5}{7} &amp; \frac{9}{11} &amp; 1\end{matrix}\right), \qquad
+    U = \left(\begin{matrix}3 &amp; 1 &amp; -2 &amp; -1\\0 &amp; \frac{14}{3} &amp; \frac{8}{3} &amp; \frac{7}{3}\\0 &amp; 0 &amp; \frac{22}{7} &amp; -1\\0 &amp; 0 &amp; 0 &amp; \frac{20}{11}\end{matrix}\right), \\
+    &amp; P = \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0 &amp; 0\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = P \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{align*} \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\\frac{1}{3} &amp; 1 &amp; 0 &amp; 0\\-1 &amp; - \frac{3}{7} &amp; 1 &amp; 0\\- \frac{2}{3} &amp; - \frac{5}{7} &amp; \frac{9}{11} &amp; 1\end{matrix}\right] \mathbf{y} = \left[\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0 &amp; 0\end{matrix}\right] \left[\begin{matrix}-10\\10\\-2\\4\end{matrix}\right] = \left[\begin{matrix}-2\\-10\\4\\10\end{matrix}\right]. \end{align*}\]</div>
+\[\begin{align*} \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\\frac{1}{3} &amp; 1 &amp; 0 &amp; 0\\-1 &amp; - \frac{3}{7} &amp; 1 &amp; 0\\- \frac{2}{3} &amp; - \frac{5}{7} &amp; \frac{9}{11} &amp; 1\end{matrix}\right) \mathbf{y} = \left(\begin{matrix}0 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 0 &amp; 0\end{matrix}\right) \left(\begin{matrix}-10\\10\\-2\\4\end{matrix}\right) = \left(\begin{matrix}-2\\-10\\4\\10\end{matrix}\right). \end{align*}\]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{1} &amp;= -2, \\
@@ -1102,7 +1091,7 @@ Solution<div class="sd-summary-down docutils">
     \\
     \ell_{33} &amp;= \sqrt{ a_{33} - \ell_{31}^2 - \ell_{32}^2 } = \sqrt{ 6 - 1^2 - 2^2 } = \sqrt{ 1 } = 1, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}4 &amp; 0 &amp; 0\\4 &amp; 3 &amp; 0\\1 &amp; 2 &amp; 1\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}4 &amp; 0 &amp; 0\\4 &amp; 3 &amp; 0\\1 &amp; 2 &amp; 1\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -1145,7 +1134,7 @@ Solution<div class="sd-summary-down docutils">
     \\
     \ell_{33} &amp;= \sqrt{ a_{33} - \ell_{31}^2 - \ell_{32}^2 } = \sqrt{ 41 - 4^2 - 4^2 } = \sqrt{ 9 } = 3, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}2 &amp; 0 &amp; 0\\1 &amp; 4 &amp; 0\\4 &amp; 4 &amp; 3\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}2 &amp; 0 &amp; 0\\1 &amp; 4 &amp; 0\\4 &amp; 4 &amp; 3\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -1194,7 +1183,7 @@ Solution<div class="sd-summary-down docutils">
     \\
     \ell_{44} &amp;= \sqrt{ a_{44} - \ell_{41}^2 - \ell_{42}^2 - \ell_{43}^2 } = \sqrt{ 33 - -2^2 - -4^2 - 3^2 } = \sqrt{ 4 } = 2, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}3 &amp; 0 &amp; 0 &amp; 0\\-3 &amp; 4 &amp; 0 &amp; 0\\0 &amp; 2 &amp; 2 &amp; 0\\-2 &amp; -4 &amp; 3 &amp; 2\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}3 &amp; 0 &amp; 0 &amp; 0\\-3 &amp; 4 &amp; 0 &amp; 0\\0 &amp; 2 &amp; 2 &amp; 0\\-2 &amp; -4 &amp; 3 &amp; 2\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -1245,7 +1234,7 @@ Solution<div class="sd-summary-down docutils">
     \\
     \ell_{44} &amp;= \sqrt{ a_{44} - \ell_{41}^2 - \ell_{42}^2 - \ell_{43}^2 } = \sqrt{ 39 - 2^2 - 1^2 - -3^2 } = \sqrt{ 25 } = 5, \\
     \\
-    \therefore L &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\5 &amp; 2 &amp; 0 &amp; 0\\-1 &amp; 4 &amp; 5 &amp; 0\\2 &amp; 1 &amp; -3 &amp; 5\end{matrix}\right].
+    \therefore L &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\\5 &amp; 2 &amp; 0 &amp; 0\\-1 &amp; 4 &amp; 5 &amp; 0\\2 &amp; 1 &amp; -3 &amp; 5\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -1284,29 +1273,29 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u}_{1} &amp;= \mathbf{a}_{1} = \left[\begin{matrix}1 &amp; -1\end{matrix}\right]^T, \\
+    \mathbf{u}_{1} &amp;= \mathbf{a}_{1} = \left(\begin{matrix}1 &amp; -1\end{matrix}\right)^T, \\
     r_{11} &amp;= \| \mathbf{u}_{1} \| = \sqrt{2}, \\
-    \mathbf{q}_{1} &amp;= \frac{\mathbf{u}_{1}}{r_{11}} = \frac{\left[\begin{matrix}1 &amp; -1\end{matrix}\right]^T}{\sqrt{2}} = \left[\begin{matrix}\frac{\sqrt{2}}{2} &amp; - \frac{\sqrt{2}}{2}\end{matrix}\right]^T, \\
+    \mathbf{q}_{1} &amp;= \frac{\mathbf{u}_{1}}{r_{11}} = \frac{\left(\begin{matrix}1 &amp; -1\end{matrix}\right)^T}{\sqrt{2}} = \left(\begin{matrix}\frac{\sqrt{2}}{2} &amp; - \frac{\sqrt{2}}{2}\end{matrix}\right)^T, \\
      \\
 \end{align*}\]</div>
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(j = 2\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{12} &amp;= \mathbf{q}_{1} \cdot \mathbf{a}_{2} = \frac{\sqrt{2}}{2}, \\
-    \mathbf{u}_{2} &amp;= \mathbf{a}_{2} - r_{12} \mathbf{q}_{1} = \left[\begin{matrix}\frac{1}{2} &amp; \frac{1}{2}\end{matrix}\right]^T, \\
+    \mathbf{u}_{2} &amp;= \mathbf{a}_{2} - r_{12} \mathbf{q}_{1} = \left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{2}\end{matrix}\right)^T, \\
     r_{22} &amp;= \| \mathbf{u}_{2} \| = \frac{\sqrt{2}}{2}, \\
-    \mathbf{q}_{2} &amp;= \frac{\mathbf{u}_{2}}{r_{22}} = \frac{\left[\begin{matrix}\frac{1}{2} &amp; \frac{1}{2}\end{matrix}\right]^T}{\frac{\sqrt{2}}{2}} = \left[\begin{matrix}\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right]^T, \\
+    \mathbf{q}_{2} &amp;= \frac{\mathbf{u}_{2}}{r_{22}} = \frac{\left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{2}\end{matrix}\right)^T}{\frac{\sqrt{2}}{2}} = \left(\begin{matrix}\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right)^T, \\
      \\
 \end{align*}\]</div>
 <p class="sd-card-text">therefore</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    Q &amp;= \left[\begin{matrix}\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\\- \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right], \qquad R = \left[\begin{matrix}\sqrt{2} &amp; \frac{\sqrt{2}}{2}\\0 &amp; \frac{\sqrt{2}}{2}\end{matrix}\right].
+    Q &amp;= \left(\begin{matrix}\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\\- \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right), \qquad R = \left(\begin{matrix}\sqrt{2} &amp; \frac{\sqrt{2}}{2}\\0 &amp; \frac{\sqrt{2}}{2}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(R \mathbf{{x}} = Q^T \mathbf{{b}}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \left[\begin{matrix}\sqrt{2} &amp; \frac{\sqrt{2}}{2}\\0 &amp; \frac{\sqrt{2}}{2}\end{matrix}\right] \mathbf{x} = \left[\begin{matrix}\frac{\sqrt{2}}{2} &amp; - \frac{\sqrt{2}}{2}\\\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right]\left[\begin{matrix}9\\-5\end{matrix}\right] = \left[\begin{matrix}7 \sqrt{2}\\2 \sqrt{2}\end{matrix}\right],
+    \left(\begin{matrix}\sqrt{2} &amp; \frac{\sqrt{2}}{2}\\0 &amp; \frac{\sqrt{2}}{2}\end{matrix}\right) \mathbf{x} = \left(\begin{matrix}\frac{\sqrt{2}}{2} &amp; - \frac{\sqrt{2}}{2}\\\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right)\left(\begin{matrix}9\\-5\end{matrix}\right) = \left(\begin{matrix}7 \sqrt{2}\\2 \sqrt{2}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1332,18 +1321,18 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u}_{1} &amp;= \mathbf{a}_{1} = \left[\begin{matrix}6 &amp; 3 &amp; 2\end{matrix}\right]^T, \\
+    \mathbf{u}_{1} &amp;= \mathbf{a}_{1} = \left(\begin{matrix}6 &amp; 3 &amp; 2\end{matrix}\right)^T, \\
     r_{11} &amp;= \| \mathbf{u}_{1} \| = 7, \\
-    \mathbf{q}_{1} &amp;= \frac{\mathbf{u}_{1}}{r_{11}} = \frac{\left[\begin{matrix}6 &amp; 3 &amp; 2\end{matrix}\right]^T}{7} = \left[\begin{matrix}\frac{6}{7} &amp; \frac{3}{7} &amp; \frac{2}{7}\end{matrix}\right]^T, \\
+    \mathbf{q}_{1} &amp;= \frac{\mathbf{u}_{1}}{r_{11}} = \frac{\left(\begin{matrix}6 &amp; 3 &amp; 2\end{matrix}\right)^T}{7} = \left(\begin{matrix}\frac{6}{7} &amp; \frac{3}{7} &amp; \frac{2}{7}\end{matrix}\right)^T, \\
      \\
 \end{align*}\]</div>
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(j = 2\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{12} &amp;= \mathbf{q}_{1} \cdot \mathbf{a}_{2} = 8, \\
-    \mathbf{u}_{2} &amp;= \mathbf{a}_{2} - r_{12} \mathbf{q}_{1} = \left[\begin{matrix}- \frac{6}{7} &amp; \frac{18}{7} &amp; - \frac{9}{7}\end{matrix}\right]^T, \\
+    \mathbf{u}_{2} &amp;= \mathbf{a}_{2} - r_{12} \mathbf{q}_{1} = \left(\begin{matrix}- \frac{6}{7} &amp; \frac{18}{7} &amp; - \frac{9}{7}\end{matrix}\right)^T, \\
     r_{22} &amp;= \| \mathbf{u}_{2} \| = 3, \\
-    \mathbf{q}_{2} &amp;= \frac{\mathbf{u}_{2}}{r_{22}} = \frac{\left[\begin{matrix}- \frac{6}{7} &amp; \frac{18}{7} &amp; - \frac{9}{7}\end{matrix}\right]^T}{3} = \left[\begin{matrix}- \frac{2}{7} &amp; \frac{6}{7} &amp; - \frac{3}{7}\end{matrix}\right]^T, \\
+    \mathbf{q}_{2} &amp;= \frac{\mathbf{u}_{2}}{r_{22}} = \frac{\left(\begin{matrix}- \frac{6}{7} &amp; \frac{18}{7} &amp; - \frac{9}{7}\end{matrix}\right)^T}{3} = \left(\begin{matrix}- \frac{2}{7} &amp; \frac{6}{7} &amp; - \frac{3}{7}\end{matrix}\right)^T, \\
      \\
 \end{align*}\]</div>
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(j = 3\)</span>:</p>
@@ -1351,20 +1340,20 @@ Solution<div class="sd-summary-down docutils">
 \[\begin{align*}
     r_{13} &amp;= \mathbf{q}_{1} \cdot \mathbf{a}_{3} = \frac{11}{7}, \\
     r_{23} &amp;= \mathbf{q}_{2} \cdot \mathbf{a}_{3} = \frac{1}{7}, \\
-    \mathbf{u}_{3} &amp;= \mathbf{a}_{3} - r_{13} \mathbf{q}_{1} - r_{23} \mathbf{q}_{2} = \left[\begin{matrix}- \frac{15}{49} &amp; \frac{10}{49} &amp; \frac{30}{49}\end{matrix}\right]^T, \\
+    \mathbf{u}_{3} &amp;= \mathbf{a}_{3} - r_{13} \mathbf{q}_{1} - r_{23} \mathbf{q}_{2} = \left(\begin{matrix}- \frac{15}{49} &amp; \frac{10}{49} &amp; \frac{30}{49}\end{matrix}\right)^T, \\
     r_{33} &amp;= \| \mathbf{u}_{3} \| = \frac{5}{7}, \\
-    \mathbf{q}_{3} &amp;= \frac{\mathbf{u}_{3}}{r_{33}} = \frac{\left[\begin{matrix}- \frac{15}{49} &amp; \frac{10}{49} &amp; \frac{30}{49}\end{matrix}\right]^T}{\frac{5}{7}} = \left[\begin{matrix}- \frac{3}{7} &amp; \frac{2}{7} &amp; \frac{6}{7}\end{matrix}\right]^T, \\
+    \mathbf{q}_{3} &amp;= \frac{\mathbf{u}_{3}}{r_{33}} = \frac{\left(\begin{matrix}- \frac{15}{49} &amp; \frac{10}{49} &amp; \frac{30}{49}\end{matrix}\right)^T}{\frac{5}{7}} = \left(\begin{matrix}- \frac{3}{7} &amp; \frac{2}{7} &amp; \frac{6}{7}\end{matrix}\right)^T, \\
      \\
 \end{align*}\]</div>
 <p class="sd-card-text">therefore</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    Q &amp;= \left[\begin{matrix}\frac{6}{7} &amp; - \frac{2}{7} &amp; - \frac{3}{7}\\\frac{3}{7} &amp; \frac{6}{7} &amp; \frac{2}{7}\\\frac{2}{7} &amp; - \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right], \qquad R = \left[\begin{matrix}7 &amp; 8 &amp; \frac{11}{7}\\0 &amp; 3 &amp; \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right].
+    Q &amp;= \left(\begin{matrix}\frac{6}{7} &amp; - \frac{2}{7} &amp; - \frac{3}{7}\\\frac{3}{7} &amp; \frac{6}{7} &amp; \frac{2}{7}\\\frac{2}{7} &amp; - \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right), \qquad R = \left(\begin{matrix}7 &amp; 8 &amp; \frac{11}{7}\\0 &amp; 3 &amp; \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(R \mathbf{{x}} = Q^T \mathbf{{b}}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \left[\begin{matrix}7 &amp; 8 &amp; \frac{11}{7}\\0 &amp; 3 &amp; \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right] \mathbf{x} = \left[\begin{matrix}\frac{6}{7} &amp; \frac{3}{7} &amp; \frac{2}{7}\\- \frac{2}{7} &amp; \frac{6}{7} &amp; - \frac{3}{7}\\- \frac{3}{7} &amp; \frac{2}{7} &amp; \frac{6}{7}\end{matrix}\right]\left[\begin{matrix}3\\0\\4\end{matrix}\right] = \left[\begin{matrix}\frac{26}{7}\\- \frac{18}{7}\\\frac{15}{7}\end{matrix}\right],
+    \left(\begin{matrix}7 &amp; 8 &amp; \frac{11}{7}\\0 &amp; 3 &amp; \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right) \mathbf{x} = \left(\begin{matrix}\frac{6}{7} &amp; \frac{3}{7} &amp; \frac{2}{7}\\- \frac{2}{7} &amp; \frac{6}{7} &amp; - \frac{3}{7}\\- \frac{3}{7} &amp; \frac{2}{7} &amp; \frac{6}{7}\end{matrix}\right)\left(\begin{matrix}3\\0\\4\end{matrix}\right) = \left(\begin{matrix}\frac{26}{7}\\- \frac{18}{7}\\\frac{15}{7}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1392,18 +1381,18 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u}_{1} &amp;= \mathbf{a}_{1} = \left[\begin{matrix}1 &amp; 1 &amp; 1 &amp; 1\end{matrix}\right]^T, \\
+    \mathbf{u}_{1} &amp;= \mathbf{a}_{1} = \left(\begin{matrix}1 &amp; 1 &amp; 1 &amp; 1\end{matrix}\right)^T, \\
     r_{11} &amp;= \| \mathbf{u}_{1} \| = 2, \\
-    \mathbf{q}_{1} &amp;= \frac{\mathbf{u}_{1}}{r_{11}} = \frac{\left[\begin{matrix}1 &amp; 1 &amp; 1 &amp; 1\end{matrix}\right]^T}{2} = \left[\begin{matrix}\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}\end{matrix}\right]^T, \\
+    \mathbf{q}_{1} &amp;= \frac{\mathbf{u}_{1}}{r_{11}} = \frac{\left(\begin{matrix}1 &amp; 1 &amp; 1 &amp; 1\end{matrix}\right)^T}{2} = \left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}\end{matrix}\right)^T, \\
      \\
 \end{align*}\]</div>
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(j = 2\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{12} &amp;= \mathbf{q}_{1} \cdot \mathbf{a}_{2} = 2, \\
-    \mathbf{u}_{2} &amp;= \mathbf{a}_{2} - r_{12} \mathbf{q}_{1} = \left[\begin{matrix}1 &amp; 3 &amp; -5 &amp; 1\end{matrix}\right]^T, \\
+    \mathbf{u}_{2} &amp;= \mathbf{a}_{2} - r_{12} \mathbf{q}_{1} = \left(\begin{matrix}1 &amp; 3 &amp; -5 &amp; 1\end{matrix}\right)^T, \\
     r_{22} &amp;= \| \mathbf{u}_{2} \| = 6, \\
-    \mathbf{q}_{2} &amp;= \frac{\mathbf{u}_{2}}{r_{22}} = \frac{\left[\begin{matrix}1 &amp; 3 &amp; -5 &amp; 1\end{matrix}\right]^T}{6} = \left[\begin{matrix}\frac{1}{6} &amp; \frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{1}{6}\end{matrix}\right]^T, \\
+    \mathbf{q}_{2} &amp;= \frac{\mathbf{u}_{2}}{r_{22}} = \frac{\left(\begin{matrix}1 &amp; 3 &amp; -5 &amp; 1\end{matrix}\right)^T}{6} = \left(\begin{matrix}\frac{1}{6} &amp; \frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{1}{6}\end{matrix}\right)^T, \\
      \\
 \end{align*}\]</div>
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(j = 3\)</span>:</p>
@@ -1411,21 +1400,21 @@ Solution<div class="sd-summary-down docutils">
 \[\begin{align*}
     r_{13} &amp;= \mathbf{q}_{1} \cdot \mathbf{a}_{3} = \frac{11}{2}, \\
     r_{23} &amp;= \mathbf{q}_{2} \cdot \mathbf{a}_{3} = - \frac{19}{6}, \\
-    \mathbf{u}_{3} &amp;= \mathbf{a}_{3} - r_{13} \mathbf{q}_{1} - r_{23} \mathbf{q}_{2} = \left[\begin{matrix}- \frac{11}{9} &amp; \frac{11}{6} &amp; \frac{11}{18} &amp; - \frac{11}{9}\end{matrix}\right]^T, \\
+    \mathbf{u}_{3} &amp;= \mathbf{a}_{3} - r_{13} \mathbf{q}_{1} - r_{23} \mathbf{q}_{2} = \left(\begin{matrix}- \frac{11}{9} &amp; \frac{11}{6} &amp; \frac{11}{18} &amp; - \frac{11}{9}\end{matrix}\right)^T, \\
     r_{33} &amp;= \| \mathbf{u}_{3} \| = \frac{11 \sqrt{2}}{6}, \\
-    \mathbf{q}_{3} &amp;= \frac{\mathbf{u}_{3}}{r_{33}} = \frac{\left[\begin{matrix}- \frac{11}{9} &amp; \frac{11}{6} &amp; \frac{11}{18} &amp; - \frac{11}{9}\end{matrix}\right]^T}{\frac{11 \sqrt{2}}{6}} \\
-    &amp;= \left[\begin{matrix}- \frac{\sqrt{2}}{3} &amp; \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right]^T, \\
+    \mathbf{q}_{3} &amp;= \frac{\mathbf{u}_{3}}{r_{33}} = \frac{\left(\begin{matrix}- \frac{11}{9} &amp; \frac{11}{6} &amp; \frac{11}{18} &amp; - \frac{11}{9}\end{matrix}\right)^T}{\frac{11 \sqrt{2}}{6}} \\
+    &amp;= \left(\begin{matrix}- \frac{\sqrt{2}}{3} &amp; \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right)^T, \\
      \\
 \end{align*}\]</div>
 <p class="sd-card-text">therefore</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    Q &amp;= \left[\begin{matrix}\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\\\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{\sqrt{2}}{2}\\\frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{\sqrt{2}}{6}\\\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right], \qquad R = \left[\begin{matrix}2 &amp; 2 &amp; \frac{11}{2}\\0 &amp; 6 &amp; - \frac{19}{6}\\0 &amp; 0 &amp; \frac{11 \sqrt{2}}{6}\end{matrix}\right].
+    Q &amp;= \left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\\\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{\sqrt{2}}{2}\\\frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{\sqrt{2}}{6}\\\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right), \qquad R = \left(\begin{matrix}2 &amp; 2 &amp; \frac{11}{2}\\0 &amp; 6 &amp; - \frac{19}{6}\\0 &amp; 0 &amp; \frac{11 \sqrt{2}}{6}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(R \mathbf{{x}} = Q^T \mathbf{{b}}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \left[\begin{matrix}2 &amp; 2 &amp; \frac{11}{2}\\0 &amp; 6 &amp; - \frac{19}{6}\\0 &amp; 0 &amp; \frac{11 \sqrt{2}}{6}\end{matrix}\right] \mathbf{x} = \left[\begin{matrix}\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{6} &amp; \frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{1}{6}\\- \frac{\sqrt{2}}{3} &amp; \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right]\left[\begin{matrix}3\\9\\29\\3\end{matrix}\right] = \left[\begin{matrix}22\\- \frac{56}{3}\\\frac{22 \sqrt{2}}{3}\end{matrix}\right],
+    \left(\begin{matrix}2 &amp; 2 &amp; \frac{11}{2}\\0 &amp; 6 &amp; - \frac{19}{6}\\0 &amp; 0 &amp; \frac{11 \sqrt{2}}{6}\end{matrix}\right) \mathbf{x} = \left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{6} &amp; \frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{1}{6}\\- \frac{\sqrt{2}}{3} &amp; \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right)\left(\begin{matrix}3\\9\\29\\3\end{matrix}\right) = \left(\begin{matrix}22\\- \frac{56}{3}\\\frac{22 \sqrt{2}}{3}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1449,62 +1438,62 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{1} + \operatorname{sign}(r_{11}) \| \mathbf{r}_{1} \| \mathbf{e} = \left[\begin{matrix}6 &amp; 3 &amp; 2\end{matrix}\right]^T + 7 \left[\begin{matrix}1 &amp; 0 &amp; 0\end{matrix}\right]^T \\
-    &amp;= \left[\begin{matrix}13 &amp; 3 &amp; 2\end{matrix}\right]^T, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left[\begin{matrix}13 &amp; 3 &amp; 2\end{matrix}\right]^T}{\sqrt{182}}, \\
-    H &amp;= I_3 - 2\mathbf{vv}^T = I_3 - \frac{2}{182}\left[\begin{matrix}\frac{\sqrt{182}}{14}\\\frac{3 \sqrt{182}}{182}\\\frac{\sqrt{182}}{91}\end{matrix}\right]\left[\begin{matrix}\frac{\sqrt{182}}{14} &amp; \frac{3 \sqrt{182}}{182} &amp; \frac{\sqrt{182}}{91}\end{matrix}\right] \\
-      &amp;= I_3 - \frac{1}{91}\left[\begin{matrix}\frac{13}{14} &amp; \frac{3}{14} &amp; \frac{1}{7}\\\frac{3}{14} &amp; \frac{9}{182} &amp; \frac{3}{91}\\\frac{1}{7} &amp; \frac{3}{91} &amp; \frac{2}{91}\end{matrix}\right] = \left[\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right],
+    \mathbf{u} &amp;= \mathbf{r}_{1} + \operatorname{sign}(r_{11}) \| \mathbf{r}_{1} \| \mathbf{e} = \left(\begin{matrix}6 &amp; 3 &amp; 2\end{matrix}\right)^T + 7 \left(\begin{matrix}1 &amp; 0 &amp; 0\end{matrix}\right)^T \\
+    &amp;= \left(\begin{matrix}13 &amp; 3 &amp; 2\end{matrix}\right)^T, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}13 &amp; 3 &amp; 2\end{matrix}\right)^T}{\sqrt{182}}, \\
+    H &amp;= I_3 - 2\mathbf{vv}^T = I_3 - \frac{2}{182}\left(\begin{matrix}\frac{\sqrt{182}}{14}\\\frac{3 \sqrt{182}}{182}\\\frac{\sqrt{182}}{91}\end{matrix}\right)\left(\begin{matrix}\frac{\sqrt{182}}{14} &amp; \frac{3 \sqrt{182}}{182} &amp; \frac{\sqrt{182}}{91}\end{matrix}\right) \\
+      &amp;= I_3 - \frac{1}{91}\left(\begin{matrix}\frac{13}{14} &amp; \frac{3}{14} &amp; \frac{1}{7}\\\frac{3}{14} &amp; \frac{9}{182} &amp; \frac{3}{91}\\\frac{1}{7} &amp; \frac{3}{91} &amp; \frac{2}{91}\end{matrix}\right) = \left(\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    R &amp;= H R = \left[\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right]\left[\begin{matrix}6 &amp; 6 &amp; 1\\3 &amp; 6 &amp; 1\\2 &amp; 1 &amp; 1\end{matrix}\right] = \left[\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; \frac{36}{13} &amp; \frac{37}{91}\\0 &amp; - \frac{15}{13} &amp; \frac{55}{91}\end{matrix}\right], \\
-    Q &amp;= Q H = \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right] = \left[\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right].
+    R &amp;= H R = \left(\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right)\left(\begin{matrix}6 &amp; 6 &amp; 1\\3 &amp; 6 &amp; 1\\2 &amp; 1 &amp; 1\end{matrix}\right) = \left(\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; \frac{36}{13} &amp; \frac{37}{91}\\0 &amp; - \frac{15}{13} &amp; \frac{55}{91}\end{matrix}\right), \\
+    Q &amp;= Q H = \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right)\left(\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right) = \left(\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 2\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{2} + \operatorname{sign}(r_{22}) \| \mathbf{r}_{2} \| \mathbf{e} = \left[\begin{matrix}\frac{36}{13} &amp; - \frac{15}{13}\end{matrix}\right]^T + 3 \left[\begin{matrix}1 &amp; 0\end{matrix}\right]^T = \left[\begin{matrix}\frac{75}{13} &amp; - \frac{15}{13}\end{matrix}\right]^T, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left[\begin{matrix}\frac{75}{13} &amp; - \frac{15}{13}\end{matrix}\right]^T}{\frac{15 \sqrt{26}}{13}}, \\
-    H &amp;= I_2 - 2\mathbf{vv}^T = I_2 - \frac{2}{\frac{450}{13}}\left[\begin{matrix}\frac{5 \sqrt{26}}{26}\\- \frac{\sqrt{26}}{26}\end{matrix}\right]\left[\begin{matrix}\frac{5 \sqrt{26}}{26} &amp; - \frac{\sqrt{26}}{26}\end{matrix}\right] \\
-      &amp;= I_2 - \frac{13}{225}\left[\begin{matrix}\frac{25}{26} &amp; - \frac{5}{26}\\- \frac{5}{26} &amp; \frac{1}{26}\end{matrix}\right] = \left[\begin{matrix}- \frac{12}{13} &amp; \frac{5}{13}\\\frac{5}{13} &amp; \frac{12}{13}\end{matrix}\right],
+    \mathbf{u} &amp;= \mathbf{r}_{2} + \operatorname{sign}(r_{22}) \| \mathbf{r}_{2} \| \mathbf{e} = \left(\begin{matrix}\frac{36}{13} &amp; - \frac{15}{13}\end{matrix}\right)^T + 3 \left(\begin{matrix}1 &amp; 0\end{matrix}\right)^T = \left(\begin{matrix}\frac{75}{13} &amp; - \frac{15}{13}\end{matrix}\right)^T, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{75}{13} &amp; - \frac{15}{13}\end{matrix}\right)^T}{\frac{15 \sqrt{26}}{13}}, \\
+    H &amp;= I_2 - 2\mathbf{vv}^T = I_2 - \frac{2}{\frac{450}{13}}\left(\begin{matrix}\frac{5 \sqrt{26}}{26}\\- \frac{\sqrt{26}}{26}\end{matrix}\right)\left(\begin{matrix}\frac{5 \sqrt{26}}{26} &amp; - \frac{\sqrt{26}}{26}\end{matrix}\right) \\
+      &amp;= I_2 - \frac{13}{225}\left(\begin{matrix}\frac{25}{26} &amp; - \frac{5}{26}\\- \frac{5}{26} &amp; \frac{1}{26}\end{matrix}\right) = \left(\begin{matrix}- \frac{12}{13} &amp; \frac{5}{13}\\\frac{5}{13} &amp; \frac{12}{13}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">Adding the first 1 rows and columns of the identity matrix to <span class="math notranslate nohighlight">\(H\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    H &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; - \frac{12}{13} &amp; \frac{5}{13}\\0 &amp; \frac{5}{13} &amp; \frac{12}{13}\end{matrix}\right].
+    H &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; - \frac{12}{13} &amp; \frac{5}{13}\\0 &amp; \frac{5}{13} &amp; \frac{12}{13}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    R = H R &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; - \frac{12}{13} &amp; \frac{5}{13}\\0 &amp; \frac{5}{13} &amp; \frac{12}{13}\end{matrix}\right]\left[\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; \frac{36}{13} &amp; \frac{37}{91}\\0 &amp; - \frac{15}{13} &amp; \frac{55}{91}\end{matrix}\right] \\
-    &amp;= \left[\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; -3 &amp; - \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right], \\
-    Q = Q H &amp;= \left[\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; - \frac{12}{13} &amp; \frac{5}{13}\\0 &amp; \frac{5}{13} &amp; \frac{12}{13}\end{matrix}\right] \\
-    &amp;= \left[\begin{matrix}- \frac{6}{7} &amp; \frac{2}{7} &amp; - \frac{3}{7}\\- \frac{3}{7} &amp; - \frac{6}{7} &amp; \frac{2}{7}\\- \frac{2}{7} &amp; \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right].
+    R = H R &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; - \frac{12}{13} &amp; \frac{5}{13}\\0 &amp; \frac{5}{13} &amp; \frac{12}{13}\end{matrix}\right)\left(\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; \frac{36}{13} &amp; \frac{37}{91}\\0 &amp; - \frac{15}{13} &amp; \frac{55}{91}\end{matrix}\right) \\
+    &amp;= \left(\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; -3 &amp; - \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right), \\
+    Q = Q H &amp;= \left(\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\- \frac{3}{7} &amp; \frac{82}{91} &amp; - \frac{6}{91}\\- \frac{2}{7} &amp; - \frac{6}{91} &amp; \frac{87}{91}\end{matrix}\right)\left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; - \frac{12}{13} &amp; \frac{5}{13}\\0 &amp; \frac{5}{13} &amp; \frac{12}{13}\end{matrix}\right) \\
+    &amp;= \left(\begin{matrix}- \frac{6}{7} &amp; \frac{2}{7} &amp; - \frac{3}{7}\\- \frac{3}{7} &amp; - \frac{6}{7} &amp; \frac{2}{7}\\- \frac{2}{7} &amp; \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 3\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{3} + \operatorname{sign}(r_{33}) \| \mathbf{r}_{3} \| \mathbf{e} = \left[\begin{matrix}\frac{5}{7}\end{matrix}\right]^T + \frac{5}{7} \left[\begin{matrix}1\end{matrix}\right]^T = \left[\begin{matrix}\frac{10}{7}\end{matrix}\right]^T, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left[\begin{matrix}\frac{10}{7}\end{matrix}\right]^T}{\frac{10}{7}}, \\
-    H &amp;= I_1 - 2\mathbf{vv}^T = I_1 - \frac{2}{\frac{100}{49}}\left[\begin{matrix}1\end{matrix}\right]\left[\begin{matrix}1\end{matrix}\right] \\
-      &amp;= I_1 - \frac{49}{50}\left[\begin{matrix}1\end{matrix}\right] = \left[\begin{matrix}-1\end{matrix}\right],
+    \mathbf{u} &amp;= \mathbf{r}_{3} + \operatorname{sign}(r_{33}) \| \mathbf{r}_{3} \| \mathbf{e} = \left(\begin{matrix}\frac{5}{7}\end{matrix}\right)^T + \frac{5}{7} \left(\begin{matrix}1\end{matrix}\right)^T = \left(\begin{matrix}\frac{10}{7}\end{matrix}\right)^T, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{10}{7}\end{matrix}\right)^T}{\frac{10}{7}}, \\
+    H &amp;= I_1 - 2\mathbf{vv}^T = I_1 - \frac{2}{\frac{100}{49}}\left(\begin{matrix}1\end{matrix}\right)\left(\begin{matrix}1\end{matrix}\right) \\
+      &amp;= I_1 - \frac{49}{50}\left(\begin{matrix}1\end{matrix}\right) = \left(\begin{matrix}-1\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">Adding the first 2 rows and columns of the identity matrix to <span class="math notranslate nohighlight">\(H\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    H &amp;= \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1\end{matrix}\right].
+    H &amp;= \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    R &amp;= H R = \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1\end{matrix}\right]\left[\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; -3 &amp; - \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right] = \left[\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; -3 &amp; - \frac{1}{7}\\0 &amp; 0 &amp; - \frac{5}{7}\end{matrix}\right], \\
-    Q &amp;= Q H = \left[\begin{matrix}- \frac{6}{7} &amp; \frac{2}{7} &amp; - \frac{3}{7}\\- \frac{3}{7} &amp; - \frac{6}{7} &amp; \frac{2}{7}\\- \frac{2}{7} &amp; \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1\end{matrix}\right] = \left[\begin{matrix}- \frac{6}{7} &amp; \frac{2}{7} &amp; \frac{3}{7}\\- \frac{3}{7} &amp; - \frac{6}{7} &amp; - \frac{2}{7}\\- \frac{2}{7} &amp; \frac{3}{7} &amp; - \frac{6}{7}\end{matrix}\right].
+    R &amp;= H R = \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1\end{matrix}\right)\left(\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; -3 &amp; - \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right) = \left(\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; -3 &amp; - \frac{1}{7}\\0 &amp; 0 &amp; - \frac{5}{7}\end{matrix}\right), \\
+    Q &amp;= Q H = \left(\begin{matrix}- \frac{6}{7} &amp; \frac{2}{7} &amp; - \frac{3}{7}\\- \frac{3}{7} &amp; - \frac{6}{7} &amp; \frac{2}{7}\\- \frac{2}{7} &amp; \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right)\left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1\end{matrix}\right) = \left(\begin{matrix}- \frac{6}{7} &amp; \frac{2}{7} &amp; \frac{3}{7}\\- \frac{3}{7} &amp; - \frac{6}{7} &amp; - \frac{2}{7}\\- \frac{2}{7} &amp; \frac{3}{7} &amp; - \frac{6}{7}\end{matrix}\right).
 \end{align*}\]</div>
 <p class="sd-card-text">Solve <span class="math notranslate nohighlight">\(R \mathbf{{x}} = Q^T \mathbf{{b}}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \left[\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; -3 &amp; - \frac{1}{7}\\0 &amp; 0 &amp; - \frac{5}{7}\end{matrix}\right] \mathbf{x} = \left[\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\\frac{2}{7} &amp; - \frac{6}{7} &amp; \frac{3}{7}\\\frac{3}{7} &amp; - \frac{2}{7} &amp; - \frac{6}{7}\end{matrix}\right]\left[\begin{matrix}3\\0\\4\end{matrix}\right] = \left[\begin{matrix}- \frac{26}{7}\\\frac{18}{7}\\- \frac{15}{7}\end{matrix}\right],
+    \left(\begin{matrix}-7 &amp; -8 &amp; - \frac{11}{7}\\0 &amp; -3 &amp; - \frac{1}{7}\\0 &amp; 0 &amp; - \frac{5}{7}\end{matrix}\right) \mathbf{x} = \left(\begin{matrix}- \frac{6}{7} &amp; - \frac{3}{7} &amp; - \frac{2}{7}\\\frac{2}{7} &amp; - \frac{6}{7} &amp; \frac{3}{7}\\\frac{3}{7} &amp; - \frac{2}{7} &amp; - \frac{6}{7}\end{matrix}\right)\left(\begin{matrix}3\\0\\4\end{matrix}\right) = \left(\begin{matrix}- \frac{26}{7}\\\frac{18}{7}\\- \frac{15}{7}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">gives</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1515,6 +1504,7 @@ Solution<div class="sd-summary-down docutils">
 \end{align*}\]</div>
 </div>
 </details></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

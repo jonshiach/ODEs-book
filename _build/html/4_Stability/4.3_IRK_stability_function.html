@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/4_Stability/4.3_IRK_stability_function.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -429,33 +429,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Handouts
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/1_IVPs_handout.html">
-   Initial Value Problems
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/2_ERK_methods_handout.html">
-   Explicit Runge-Kutta Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/3_IRK_methods_handout.html">
-   Implicit Runge-Kutta (IRK) Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../9_Handouts/4_Stability_handout.html">
-   Stability
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -683,13 +656,16 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>The region of absolute stability of the implicit Euler method has been plotted in <a class="reference internal" href="#euler-stability-region-figure"><span class="std std-numref">Fig. 18</span></a>. Note that the region of absolute stability includes all of the complex plane with the exception of the unshaded region which means the interval of absolute stability is <span class="math notranslate nohighlight">\(h\lambda \in [-\infty, 0]\)</span> so the method is stable for all values of <span class="math notranslate nohighlight">\(h\)</span> when solving the test equation <span class="math notranslate nohighlight">\(y'= \lambda y\)</span> (this is known as <a class="reference internal" href="#a-stability-definition"><span class="std std-ref">A-stability</span></a>).</p>
 <figure class="align-default" id="euler-stability-region-figure">
+<div class="cell_output docutils container">
+<img alt="../_images/4.3_IRK_stability_function_1_1.png" src="../_images/4.3_IRK_stability_function_1_1.png" />
+</div>
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Region of absolute stability for the implicit Euler method.</span><a class="headerlink" href="#euler-stability-region-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="stability-functions-for-an-implicit-runge-kutta-method">
 <h2>Stability functions for an implicit Runge-Kutta method<a class="headerlink" href="#stability-functions-for-an-implicit-runge-kutta-method" title="Permalink to this headline">#</a></h2>
-<p>To determine the stability function for an implicit Runge-Kutta method we consider the stability function of a general Runge-Kutta method given in equations <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-y-equation">(24)</a> and <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-yn-1-equation">(25)</a></p>
+<p>To determine the stability function for an implicit Runge-Kutta method we consider the stability function of a general Runge-Kutta method given in equations <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-y-equation">(27)</a> and <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-yn-1-equation">(28)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp; = y_n + z \mathbf{b}^\mathrm{T} Y, \\
@@ -742,7 +718,7 @@ title="Print to PDF"
 <div class="note admonition" id="irk-rz-definition">
 <p class="admonition-title">Definition: Stability function of an implicit Runge-Kutta method</p>
 <div class="math notranslate nohighlight" id="equation-irk-stability-rz-equation">
-<span class="eqno">(28)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathrm{T})}{\det(I - zA)}.\]</div>
+<span class="eqno">(31)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathrm{T})}{\det(I - zA)}.\]</div>
 </div>
 <p><span class="math notranslate nohighlight">\(\mathbf{e}\mathbf{b}^\mathrm{T}\)</span> is a diagonal matrix with the elements of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> on the main diagonal</p>
 <div class="amsmath math notranslate nohighlight">
@@ -779,7 +755,7 @@ title="Print to PDF"
 \end{align*}\]</div>
 <p>and define a polynomial function</p>
 <div class="math notranslate nohighlight" id="equation-ey-definition">
-<span class="eqno">(29)<a class="headerlink" href="#equation-ey-definition" title="Permalink to this equation">#</a></span>\[E(y)=Q(iy)Q(-iy)-P(iy)P(-iy),\]</div>
+<span class="eqno">(32)<a class="headerlink" href="#equation-ey-definition" title="Permalink to this equation">#</a></span>\[E(y)=Q(iy)Q(-iy)-P(iy)P(-iy),\]</div>
 <p>then the method is A-stable if and only if the following are satisfied</p>
 <ul class="simple">
 <li><p>All roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> have positive real parts;</p></li>
@@ -805,7 +781,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Using equation <a class="reference internal" href="#equation-irk-stability-rz-equation">(28)</a></p>
+<p class="sd-card-text">Using equation <a class="reference internal" href="#equation-irk-stability-rz-equation">(31)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     R(z) &amp;= \frac{\det \left(
@@ -818,7 +794,7 @@ Solution<div class="sd-summary-down docutils">
     {\det \begin{pmatrix} 1 - \frac{5}{12}z &amp; \frac{1}{12}z \\ -\frac{3}{4}z &amp; 1 - \frac{1}{4}z \end{pmatrix}} 
     = \frac{1 + \frac{1}{3}z + \frac{1}{16}z^2}{1 - \frac{2}{3}z + \frac{1}{6}z^2}.
 \end{align*}\]</div>
-<p class="sd-card-text">Here <span class="math notranslate nohighlight">\(Q(z) = 1 - \frac{2}{3}z + \frac{1}{6}z^2\)</span> which has roots at <span class="math notranslate nohighlight">\(z = 2 \pm \sqrt{2}\)</span> which both have positive real parts so the <a class="reference internal" href="#a-stability-theorem"><span class="std std-ref">first condition</span></a> for A-stability is satisfied. Using equation <a class="reference internal" href="#equation-ey-definition">(29)</a></p>
+<p class="sd-card-text">Here <span class="math notranslate nohighlight">\(Q(z) = 1 - \frac{2}{3}z + \frac{1}{6}z^2\)</span> which has roots at <span class="math notranslate nohighlight">\(z = 2 \pm \sqrt{2}\)</span> which both have positive real parts so the <a class="reference internal" href="#a-stability-theorem"><span class="std std-ref">first condition</span></a> for A-stability is satisfied. Using equation <a class="reference internal" href="#equation-ey-definition">(32)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     E(y) &amp;= \left( 1 - \frac{2}{3} i y - \frac{1}{6}y^2 \right) \left( 1 + \frac{2}{3} i y - \frac{1}{6}y^2 \right) \\
@@ -878,7 +854,9 @@ Solution<div class="sd-summary-down docutils">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R(z) = (z**2/16 + z/3 + 1)/(z**2/6 - 2*z/3 + 1)
 Roots of Q(z) = [2 - sqrt(2)*I, 2 + sqrt(2)*I]
-E(y) = y**2*(55*y**2 + 288)/2304
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E(y) = y**2*(55*y**2 + 288)/2304
 </pre></div>
 </div>
 </div>
