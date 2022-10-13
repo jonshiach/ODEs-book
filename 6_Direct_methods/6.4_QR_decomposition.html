@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/6_Direct_methods/6.4_QR_decomposition.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -688,7 +688,7 @@ title="Print to PDF"
 <p>An <strong>orthogonal matrix</strong> is a matrix where the columns are a set of orthonormal vectors. If <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix if</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    A\mathrm{T} A=I.
+    A^\mathrm{T} A=I.
 \end{align*}\]</div>
 </div>
 <div class="seealso admonition" id="orthogonal-matrix-example">
@@ -708,10 +708,10 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Checking <span class="math notranslate nohighlight">\(A\mathrm{T} A=I\)</span></p>
+<p class="sd-card-text">Checking <span class="math notranslate nohighlight">\(A^\mathrm{T} A=I\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    A\mathrm{T} A=\begin{pmatrix}
+    A^\mathrm{T} A=\begin{pmatrix}
         0.8 &amp; 0.6\\
         -0.6 &amp; 0.8
     \end{pmatrix}
@@ -810,37 +810,37 @@ Solution<div class="sd-summary-down docutils">
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{11} &amp;=\|\mathbf{a}_1 \|=2,\\
-    \mathbf{q}_1 &amp;=\frac{\mathbf{a}_1 }{r_{11}} = \frac{(-1, 1, -1, 1)\mathrm{T}}{2} = (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
+    \mathbf{q}_1 &amp;=\frac{\mathbf{a}_1 }{r_{11}} = \frac{(-1, 1, -1, 1)^\mathrm{T}}{2} = (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T}.
 \end{align*}\]</div>
 <p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j=2\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{12} &amp;=\mathbf{q}_1 \cdot \mathbf{a}_2 =
-    ( -\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot 
-    (-1, 3, -1, 3)\mathrm{T} = 4, \\
-    \mathbf{u}_2 &amp;=\mathbf{a}_2 -r_{12} \mathbf{q}_1 = (-1, 3, -1, 3)\mathrm{T} - 4
-    (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} = 
-    (1, 1, 1, 1)\mathrm{T},\\
+    ( -\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T} \cdot 
+    (-1, 3, -1, 3)^\mathrm{T} = 4, \\
+    \mathbf{u}_2 &amp;=\mathbf{a}_2 -r_{12} \mathbf{q}_1 = (-1, 3, -1, 3)^\mathrm{T} - 4
+    (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T} = 
+    (1, 1, 1, 1)^\mathrm{T},\\
     r_{22} &amp;=\|\mathbf{u}_2 \| = 2,\\
-    \mathbf{q}_2 &amp;=\frac{\mathbf{u}_2 }{r_{22}} = \frac{(1, 1, 1, 1)\mathrm{T}}{2} = 
-    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
+    \mathbf{q}_2 &amp;=\frac{\mathbf{u}_2 }{r_{22}} = \frac{(1, 1, 1, 1)^\mathrm{T}}{2} = 
+    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T}.
 \end{align*}\]</div>
 <p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j=3\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     r_{13} &amp;=\mathbf{q}_1 \cdot \mathbf{a}_3 =
-    (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot 
-    (1, 3, 5, 7)\mathrm{T} = 2,\\
+    (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T} \cdot 
+    (1, 3, 5, 7)^\mathrm{T} = 2,\\
     r_{23} &amp;=\mathbf{q}_2 \cdot \mathbf{a}_3 =
-    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \cdot
-    (1, 3, 5, 7)\mathrm{T} = 8,\\
+    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T} \cdot
+    (1, 3, 5, 7)^\mathrm{T} = 8,\\
     \mathbf{u}_3 &amp;= \mathbf{a}_3 - r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2 =
-    (1, 3, 5, 7)\mathrm{T} - 2 (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} - 8
-    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T} \\
-    &amp;= (-2, -2, 2, 2)\mathrm{T},\\
+    (1, 3, 5, 7)^\mathrm{T} - 2 (-\tfrac{1}{2}, \tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T} - 8
+    (\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T} \\
+    &amp;= (-2, -2, 2, 2)^\mathrm{T},\\
     r_{33} &amp;= \|\mathbf{u}_3 \| = 4,\\
-    \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3 }{r_{33}} = \frac{(-2, -2, 2, 2)\mathrm{T}}{4} = 
-    (-\tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})\mathrm{T}.
+    \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3 }{r_{33}} = \frac{(-2, -2, 2, 2)^\mathrm{T}}{4} = 
+    (-\tfrac{1}{2}, -\tfrac{1}{2}, \tfrac{1}{2}, \tfrac{1}{2})^\mathrm{T}.
 \end{align*}\]</div>
 <p class="sd-card-text">Therefore the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span> is</p>
 <div class="amsmath math notranslate nohighlight">
@@ -919,10 +919,10 @@ R =
     QR\mathbf{x} &amp;= \mathbf{b}\\
     R\mathbf{x} &amp;= Q^{-1} \mathbf{b},
 \end{align*}\]</div>
-<p>and because <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal then <span class="math notranslate nohighlight">\(Q^{-1}=Q\mathrm{T}\)</span> so</p>
+<p>and because <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal then <span class="math notranslate nohighlight">\(Q^{-1}=Q^\mathrm{T}\)</span> so</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    R\mathbf{x} = Q\mathrm{T} \mathbf{b}.
+    R\mathbf{x} = Q^\mathrm{T} \mathbf{b}.
 \end{align*}\]</div>
 <p><span class="math notranslate nohighlight">\(R\)</span> is upper triangular so the solution of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> can be obtained through back substitution.</p>
 <div class="seealso admonition" id="qr-crout-example">
@@ -961,7 +961,7 @@ Solution<div class="sd-summary-down docutils">
         0 &amp; 0 &amp; 4
     \end{pmatrix}.
 \end{align*}\]</div>
-<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(R\mathbf{x}=Q\mathrm{T} \mathbf{b}\)</span></p>
+<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(R\mathbf{x}=Q^\mathrm{T} \mathbf{b}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix}
@@ -1031,7 +1031,7 @@ x3 = 3.0
 <div class="admonition-definition-householder-matrix admonition">
 <p class="admonition-title">Definition: Householder matrix</p>
 <div class="math notranslate nohighlight" id="equation-householder-equation">
-<span class="eqno">(38)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[H = I - 2 \mathbf{v} \mathbf{v}\mathrm{T},\]</div>
+<span class="eqno">(38)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[H = I - 2 \mathbf{v} \mathbf{v}^\mathrm{T},\]</div>
 <p>where</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1073,7 +1073,7 @@ x3 = 3.0
 <p>and then we calculate the Householder matrix <span class="math notranslate nohighlight">\(H\)</span> using equation <a class="reference internal" href="#equation-householder-equation">(38)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    H_1 &amp;= I_m - 2 \mathbf{v} \mathbf{v}\mathrm{T},
+    H_1 &amp;= I_m - 2 \mathbf{v} \mathbf{v}^\mathrm{T},
 \end{align*}\]</div>
 <p>and apply the Householder transformation to <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -1092,7 +1092,7 @@ x3 = 3.0
 \[\begin{align*}
     H &amp;= \begin{pmatrix} 
         I_{j-1} &amp; 0 \\
-        0 &amp; I_{m+j-1} - 2 \mathbf{v} \mathbf{v}\mathrm{T}
+        0 &amp; I_{m+j-1} - 2 \mathbf{v} \mathbf{v}^\mathrm{T}
     \end{pmatrix}.
 \end{align*}\]</div>
 <p>We repeat this process for the columns in <span class="math notranslate nohighlight">\(R\)</span> at which point <span class="math notranslate nohighlight">\(R\)</span> is an upper triangular matrix. The <span class="math notranslate nohighlight">\(Q\)</span> matrix is the product of all of the individual Householder transformations so by definition it is an orthonormal matrix.</p>
@@ -1101,13 +1101,13 @@ x3 = 3.0
 <p>The QR decomposition of an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> results in an <span class="math notranslate nohighlight">\(m\times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and an <span class="math notranslate nohighlight">\(m\times n\)</span> upper-triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>. . The elements of <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span> can be calculated using Householder transformations using:</p>
 <p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathbf{e} = (1, \underbrace{0, \ldots, 0}_{m-j})\mathrm{T}\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{u} = (r_{jj}, r_{j+1,j}, \ldots, r_{m,j})\mathrm{T}\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{e} = (1, \underbrace{0, \ldots, 0}_{m-j})^\mathrm{T}\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u} = (r_{jj}, r_{j+1,j}, \ldots, r_{m,j})^\mathrm{T}\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{u} + \operatorname{sign}(r_{jj})\|\mathbf{u}\|\mathbf{e}\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{v} = \dfrac{\mathbf{u}}{\| \mathbf{u} \|}\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(H = \begin{pmatrix}
       I_{j-1} &amp; 0 \\
-      0 &amp; I_{m-j+1} - 2 \mathbf{v}\mathbf{v}\mathrm{T}
+      0 &amp; I_{m-j+1} - 2 \mathbf{v}\mathbf{v}^\mathrm{T}
   \end{pmatrix}\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(R = H R\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(Q = Q H\)</span>.</p></li>
@@ -1136,10 +1136,10 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{1} + \operatorname{sign}(r_{11}) \| \mathbf{r}_{1} \| \mathbf{e} = \left(\begin{matrix}-1 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)\mathrm{T} - 2 \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\end{matrix}\right)\mathrm{T} \\
-    &amp;= \left(\begin{matrix}-3 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)\mathrm{T}, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}-3 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)\mathrm{T}}{2 \sqrt{3}}, \\
-    H &amp;= I_4 - 2\mathbf{vv}\mathrm{T} = I_4 - \frac{2}{12}\left(\begin{matrix}- \frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{6}\\- \frac{\sqrt{3}}{6}\\\frac{\sqrt{3}}{6}\end{matrix}\right)\left(\begin{matrix}- \frac{\sqrt{3}}{2} &amp; \frac{\sqrt{3}}{6} &amp; - \frac{\sqrt{3}}{6} &amp; \frac{\sqrt{3}}{6}\end{matrix}\right) \\
+    \mathbf{u} &amp;= \mathbf{r}_{1} + \operatorname{sign}(r_{11}) \| \mathbf{r}_{1} \| \mathbf{e} = \left(\begin{matrix}-1 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)^\mathrm{T} - 2 \left(\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0\end{matrix}\right)^\mathrm{T} \\
+    &amp;= \left(\begin{matrix}-3 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)^\mathrm{T}, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}-3 &amp; 1 &amp; -1 &amp; 1\end{matrix}\right)^\mathrm{T}}{2 \sqrt{3}}, \\
+    H &amp;= I_4 - 2\mathbf{vv}^\mathrm{T} = I_4 - \frac{2}{12}\left(\begin{matrix}- \frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{6}\\- \frac{\sqrt{3}}{6}\\\frac{\sqrt{3}}{6}\end{matrix}\right)\left(\begin{matrix}- \frac{\sqrt{3}}{2} &amp; \frac{\sqrt{3}}{6} &amp; - \frac{\sqrt{3}}{6} &amp; \frac{\sqrt{3}}{6}\end{matrix}\right) \\
       &amp;= I_4 - \frac{1}{6}\left(\begin{matrix}\frac{3}{4} &amp; - \frac{1}{4} &amp; \frac{1}{4} &amp; - \frac{1}{4}\\- \frac{1}{4} &amp; \frac{1}{12} &amp; - \frac{1}{12} &amp; \frac{1}{12}\\\frac{1}{4} &amp; - \frac{1}{12} &amp; \frac{1}{12} &amp; - \frac{1}{12}\\- \frac{1}{4} &amp; \frac{1}{12} &amp; - \frac{1}{12} &amp; \frac{1}{12}\end{matrix}\right) = \left(\begin{matrix}- \frac{1}{2} &amp; \frac{1}{2} &amp; - \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{2} &amp; \frac{5}{6} &amp; \frac{1}{6} &amp; - \frac{1}{6}\\- \frac{1}{2} &amp; \frac{1}{6} &amp; \frac{5}{6} &amp; \frac{1}{6}\\\frac{1}{2} &amp; - \frac{1}{6} &amp; \frac{1}{6} &amp; \frac{5}{6}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">Updating <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p>
@@ -1152,9 +1152,9 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 2\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{2} + \operatorname{sign}(r_{22}) \| \mathbf{r}_{2} \| \mathbf{e} = \left(\begin{matrix}\frac{4}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)\mathrm{T} + 2 \left(\begin{matrix}1 &amp; 0 &amp; 0\end{matrix}\right)\mathrm{T} = \left(\begin{matrix}\frac{10}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)\mathrm{T}, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{10}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)\mathrm{T}}{\frac{2 \sqrt{30}}{3}}, \\
-    H &amp;= I_3 - 2\mathbf{vv}\mathrm{T} = I_3 - \frac{2}{\frac{40}{3}}\left(\begin{matrix}\frac{\sqrt{30}}{6}\\\frac{\sqrt{30}}{30}\\\frac{\sqrt{30}}{15}\end{matrix}\right)\left(\begin{matrix}\frac{\sqrt{30}}{6} &amp; \frac{\sqrt{30}}{30} &amp; \frac{\sqrt{30}}{15}\end{matrix}\right) \\
+    \mathbf{u} &amp;= \mathbf{r}_{2} + \operatorname{sign}(r_{22}) \| \mathbf{r}_{2} \| \mathbf{e} = \left(\begin{matrix}\frac{4}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)^\mathrm{T} + 2 \left(\begin{matrix}1 &amp; 0 &amp; 0\end{matrix}\right)^\mathrm{T} = \left(\begin{matrix}\frac{10}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)^\mathrm{T}, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{10}{3} &amp; \frac{2}{3} &amp; \frac{4}{3}\end{matrix}\right)^\mathrm{T}}{\frac{2 \sqrt{30}}{3}}, \\
+    H &amp;= I_3 - 2\mathbf{vv}^\mathrm{T} = I_3 - \frac{2}{\frac{40}{3}}\left(\begin{matrix}\frac{\sqrt{30}}{6}\\\frac{\sqrt{30}}{30}\\\frac{\sqrt{30}}{15}\end{matrix}\right)\left(\begin{matrix}\frac{\sqrt{30}}{6} &amp; \frac{\sqrt{30}}{30} &amp; \frac{\sqrt{30}}{15}\end{matrix}\right) \\
       &amp;= I_3 - \frac{3}{20}\left(\begin{matrix}\frac{5}{6} &amp; \frac{1}{6} &amp; \frac{1}{3}\\\frac{1}{6} &amp; \frac{1}{30} &amp; \frac{1}{15}\\\frac{1}{3} &amp; \frac{1}{15} &amp; \frac{2}{15}\end{matrix}\right) = \left(\begin{matrix}- \frac{2}{3} &amp; - \frac{1}{3} &amp; - \frac{2}{3}\\- \frac{1}{3} &amp; \frac{14}{15} &amp; - \frac{2}{15}\\- \frac{2}{3} &amp; - \frac{2}{15} &amp; \frac{11}{15}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">Adding the first 1 rows and columns of the identity matrix to <span class="math notranslate nohighlight">\(H\)</span></p>
@@ -1172,9 +1172,9 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 3\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \mathbf{u} &amp;= \mathbf{r}_{3} + \operatorname{sign}(r_{33}) \| \mathbf{r}_{3} \| \mathbf{e} = \left(\begin{matrix}\frac{16}{5} &amp; \frac{12}{5}\end{matrix}\right)\mathrm{T} + 4 \left(\begin{matrix}1 &amp; 0\end{matrix}\right)\mathrm{T} = \left(\begin{matrix}\frac{36}{5} &amp; \frac{12}{5}\end{matrix}\right)\mathrm{T}, \\
-    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{36}{5} &amp; \frac{12}{5}\end{matrix}\right)\mathrm{T}}{\frac{12 \sqrt{10}}{5}}, \\
-    H &amp;= I_2 - 2\mathbf{vv}\mathrm{T} = I_2 - \frac{2}{\frac{288}{5}}\left(\begin{matrix}\frac{3 \sqrt{10}}{10}\\\frac{\sqrt{10}}{10}\end{matrix}\right)\left(\begin{matrix}\frac{3 \sqrt{10}}{10} &amp; \frac{\sqrt{10}}{10}\end{matrix}\right) \\
+    \mathbf{u} &amp;= \mathbf{r}_{3} + \operatorname{sign}(r_{33}) \| \mathbf{r}_{3} \| \mathbf{e} = \left(\begin{matrix}\frac{16}{5} &amp; \frac{12}{5}\end{matrix}\right)^\mathrm{T} + 4 \left(\begin{matrix}1 &amp; 0\end{matrix}\right)^\mathrm{T} = \left(\begin{matrix}\frac{36}{5} &amp; \frac{12}{5}\end{matrix}\right)^\mathrm{T}, \\
+    \mathbf{v} &amp;= \frac{\mathbf{u}}{\| \mathbf{u} \|} = \frac{\left(\begin{matrix}\frac{36}{5} &amp; \frac{12}{5}\end{matrix}\right)^\mathrm{T}}{\frac{12 \sqrt{10}}{5}}, \\
+    H &amp;= I_2 - 2\mathbf{vv}^\mathrm{T} = I_2 - \frac{2}{\frac{288}{5}}\left(\begin{matrix}\frac{3 \sqrt{10}}{10}\\\frac{\sqrt{10}}{10}\end{matrix}\right)\left(\begin{matrix}\frac{3 \sqrt{10}}{10} &amp; \frac{\sqrt{10}}{10}\end{matrix}\right) \\
       &amp;= I_2 - \frac{5}{144}\left(\begin{matrix}\frac{9}{10} &amp; \frac{3}{10}\\\frac{3}{10} &amp; \frac{1}{10}\end{matrix}\right) = \left(\begin{matrix}- \frac{4}{5} &amp; - \frac{3}{5}\\- \frac{3}{5} &amp; \frac{4}{5}\end{matrix}\right),
 \end{align*}\]</div>
 <p class="sd-card-text">Adding the first 2 rows and columns of the identity matrix to <span class="math notranslate nohighlight">\(H\)</span></p>

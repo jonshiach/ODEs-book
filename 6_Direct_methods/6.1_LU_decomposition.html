@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/6_Direct_methods/6.1_LU_decomposition.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -662,17 +662,29 @@ title="Print to PDF"
         a_{11}  &amp; a_{12}  &amp; a_{13} \\
         a_{21}  &amp; a_{22}  &amp; a_{23} \\
         a_{31}  &amp; a_{32}  &amp; a_{33} 
-    \end{pmatrix}=
+    \end{pmatrix}
+    &amp;=
+    \begin{pmatrix}
+        1 &amp; 0 &amp; 0 \\
+        \ell_{21} &amp; 1 &amp; 0 \\
+        \ell_{31} &amp; \ell_{32} &amp; 1 
+    \end{pmatrix}
+    \begin{pmatrix}
+        u_{11} &amp; u_{12} &amp; u_{13} \\
+        0 &amp; u_{22} &amp; u_{23} \\
+        0 &amp; 0 &amp; u_{33}
+    \end{pmatrix} \\
+    &amp;=
     \begin{pmatrix}
         u_{11}  &amp; u_{12}  &amp; u_{13} \\
-        \ell_{21} u_{11}  &amp; \ell_{21} u_{12} + \ell_{22} u_{22}  &amp; \ell_{21} u_{13} + \ell_{22} u_{23} \\
-        \ell_{31} u_{11}  &amp; \ell_{31} u_{12} + \ell_{32} u_{22}  &amp; \ell_{31} u_{13} +\ell_{32} u_{23} +\ell_{33} u_{33} 
+        \ell_{21} u_{11}  &amp; u_{22} + \ell_{21} u_{12}  &amp; u_{23} + \ell_{21} u_{13} \\
+        \ell_{31} u_{11}  &amp; \ell_{31} u_{12} + \ell_{32} u_{22}  &amp; u_{33} + \ell_{31} u_{13} +\ell_{32} u_{23}
     \end{pmatrix}.
 \end{align*}\]</div>
 <p>The elements in the lower triangular region, where <span class="math notranslate nohighlight">\(i&gt;j\)</span>, are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \ell_{ij} =\sum_{k=1}^j \ell_{ik} u_{kj} =\ell_{ij} u_{jj} +\sum_{k=1}^{j-1} \ell_{ik} u_{kj}, 
+    a_{ij} =\sum_{k=1}^j \ell_{ik} u_{kj} =\ell_{ij} u_{jj} +\sum_{k=1}^{j-1} \ell_{ik} u_{kj}, 
 \end{align*}\]</div>
 <p>which is rearranged to</p>
 <div class="amsmath math notranslate nohighlight">
@@ -682,7 +694,7 @@ title="Print to PDF"
 <p>For the elements in the upper triangular region where <span class="math notranslate nohighlight">\(i\le j\)</span> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    u_{ij} =u_{ij} +\sum_{k=1}^{i-1} \ell_{ik} u_{kj},
+    a_{ij} = u_{ij} +\sum_{k=1}^{i-1} \ell_{ik} u_{kj},
 \end{align*}\]</div>
 <p>which is rearranged to</p>
 <div class="amsmath math notranslate nohighlight">

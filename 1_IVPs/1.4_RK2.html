@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/1_IVPs/1.4_RK2.html" />
     <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -577,6 +577,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matlab-code">
+   MATLAB code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analysing-the-accuracy-of-the-rk2-method">
    Analysing the accuracy of the RK2 method
   </a>
@@ -603,6 +608,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-code">
    Python code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matlab-code">
+   MATLAB code
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -681,7 +691,7 @@ Solution<div class="sd-summary-down docutils">
 </details></div>
 <section id="python-code">
 <span id="rk2-python-code"></span><h2>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">#</a></h2>
-<p>The Python code below defines a function called <code class="docutils literal notranslate"><span class="pre">rk2()</span></code> which computes the solution to an initial value problem using the RK2 method. The function is very similar to the function for the <a class="reference internal" href="1.2_Euler_Method.html#py-euler"><span class="std std-ref">Euler method</span></a> with the exception the commands are added to the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to calculate the stage values and update the solution.</p>
+<p>The Python code below defines a function called <code class="docutils literal notranslate"><span class="pre">rk2()</span></code> which computes the solution to an initial value problem using the RK2 method. The function is very similar to the function for the <a class="reference internal" href="1.2_Euler_Method.html#py-euler"><span class="std std-ref">Euler method</span></a> with the exception that commands are added to the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to calculate the stage values and update the solution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
@@ -710,12 +720,32 @@ Solution<div class="sd-summary-down docutils">
 </figcaption>
 </figure>
 </section>
+<section id="matlab-code">
+<h2>MATLAB code<a class="headerlink" href="#matlab-code" title="Permalink to this headline">#</a></h2>
+<p>The MATLAB code below defines a function called <code class="docutils literal notranslate"><span class="pre">rk2()</span></code> which computes the solution to an initial value problem using the RK2 method.  The function is very similar to the function for the <a class="reference internal" href="1.2_Euler_Method.html#euler-matlab-section"><span class="std std-ref">Euler method</span></a> with the exception that commands are added to the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to calculate the stage values and update the solution.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = rk2</span><span class="p">(</span>f, tspan, y0, h<span class="p">)</span><span class="w"></span>
+
+<span class="n">nsteps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">);</span><span class="w"></span>
+<span class="n">neq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span><span class="w"></span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nsteps</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"></span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="p">,</span><span class="w"> </span><span class="n">neq</span><span class="p">);</span><span class="w"></span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nsteps</span><span class="w"></span>
+<span class="w">    </span><span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">:));</span><span class="w"></span>
+<span class="w">    </span><span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k2</span><span class="p">);</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
 <section id="analysing-the-accuracy-of-the-rk2-method">
 <h2>Analysing the accuracy of the RK2 method<a class="headerlink" href="#analysing-the-accuracy-of-the-rk2-method" title="Permalink to this headline">#</a></h2>
 <p>In order to analyse the accuracy of the RK2 method it has been applied to solve the initial value problem from the <a class="reference external" href="#rk2-example">example</a> above using a range of values of the step length starting at <span class="math notranslate nohighlight">\(0.2\)</span> and progressively halving it each time until <span class="math notranslate nohighlight">\(h=0.025\)</span>. The global truncation errors have been calculated for the solution at <span class="math notranslate nohighlight">\(t=1\)</span> and plotted against <span class="math notranslate nohighlight">\(h\)</span> in <a class="reference internal" href="#rk2-gte-figure"><span class="std std-numref">Fig. 7</span></a> below. The errors tend to zero as the step lengths decrease in a <strong>quadratic</strong> manner as expected of a second order method.</p>
 <figure class="align-default" id="rk2-gte-figure">
 <div class="cell_output docutils container">
-<img alt="../_images/1.4_RK2_7_2.png" src="../_images/1.4_RK2_7_2.png" />
+<img alt="../_images/1.4_RK2_8_2.png" src="../_images/1.4_RK2_8_2.png" />
 </div>
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">The global truncation errors for the RK2 method solution of  <span class="math notranslate nohighlight">\(y' = t y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0)=1\)</span> at <span class="math notranslate nohighlight">\(t=1\)</span>.</span><a class="headerlink" href="#rk2-gte-figure" title="Permalink to this image">#</a></p>
@@ -751,7 +781,7 @@ Solution<div class="sd-summary-down docutils">
 <p>We can see that the RK2 method has significantly smaller global truncation errors than the Euler method. A graphical comparison is shown in <a class="reference internal" href="#rk2-euler-gte-plot-figure"><span class="std std-numref">Fig. 8</span></a>, however, on this scale is is difficult to see the convergence behaviour of the RK2 method.</p>
 <figure class="align-default" id="rk2-euler-gte-plot-figure">
 <div class="cell_output docutils container">
-<img alt="../_images/1.4_RK2_7_4.png" src="../_images/1.4_RK2_7_4.png" />
+<img alt="../_images/1.4_RK2_8_4.png" src="../_images/1.4_RK2_8_4.png" />
 </div>
 <figcaption>
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">The global truncation errors for the RK2 method and the Euler method solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span> at <span class="math notranslate nohighlight">\(t = 1\)</span>.</span><a class="headerlink" href="#rk2-euler-gte-plot-figure" title="Permalink to this image">#</a></p>
@@ -766,7 +796,7 @@ Solution<div class="sd-summary-down docutils">
 <p>where <span class="math notranslate nohighlight">\(h_1 &gt; h_2\)</span> are different step lengths. The global truncation errors for the Euler method and the RK2 method have been plotted on a <a class="reference external" href="https://en.wikipedia.org/wiki/Log%E2%80%93log_plot">loglog</a> scale in <a class="reference internal" href="#rk2-euler-gte-loglog-plot-figure"><span class="std std-numref">Fig. 9</span></a>.</p>
 <figure class="align-default" id="rk2-euler-gte-loglog-plot-figure">
 <div class="cell_output docutils container">
-<img alt="../_images/1.4_RK2_7_6.png" src="../_images/1.4_RK2_7_6.png" />
+<img alt="../_images/1.4_RK2_8_6.png" src="../_images/1.4_RK2_8_6.png" />
 </div>
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">A loglog plot of the global truncation errors for the Euler and RK2 method solutions of <span class="math notranslate nohighlight">\(y' = t y\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span> at <span class="math notranslate nohighlight">\(t = 1\)</span>.</span><a class="headerlink" href="#rk2-euler-gte-loglog-plot-figure" title="Permalink to this image">#</a></p>
