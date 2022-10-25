@@ -648,8 +648,8 @@ title="Print to PDF"
 <p>Gauss-Legendre methods are a family of methods that are derived using <a class="reference external" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature">Gauss-Legendre quadrature</a>. An <span class="math notranslate nohighlight">\(s\)</span>-stage Gauss-Legendre method has order <span class="math notranslate nohighlight">\(k=2s\)</span>. They are derived using <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre_polynomials">Legendre polynomials</a> which are are a system of orthogonal polynomials.</p>
 <div class="note admonition" id="legendre-polynomials-definition">
 <p class="admonition-title">Definition: Legendre polynomials</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6163e560-9cdc-4609-afc0-ba64fda944e4">
-<span class="eqno">(19)<a class="headerlink" href="#equation-6163e560-9cdc-4609-afc0-ba64fda944e4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-924249f3-8d83-4be2-81a6-78ef5ee597c5">
+<span class="eqno">(19)<a class="headerlink" href="#equation-924249f3-8d83-4be2-81a6-78ef5ee597c5" title="Permalink to this equation">#</a></span>\[\begin{align}
    P_n (t)=\sum_{k=0}^n \binom{n}{k}\binom{n+k}{k}(t-1)^k,
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\displaystyle\binom{n}{k}\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a>.</p>
@@ -688,7 +688,7 @@ Solution<div class="sd-summary-down docutils">
     a_{11} c_1 + a_{12} c_2 = &amp; \frac{1}{2}c_1^2 ,\\
     a_{21} c_1 + a_{22} c_2 = &amp; \frac{1}{2}c_2^2 .
 \end{align*}\]</div>
-<p class="sd-card-text">Using SymPy to solve the order conditions</p>
+<p class="sd-card-text">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
 
@@ -712,6 +712,29 @@ Solution<div class="sd-summary-down docutils">
 
 <span class="c1"># Solve order conditions</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sd-card-text">MATLAB</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define symbolic variables</span><span class="w"></span>
+<span class="n">syms</span><span class="w"> </span><span class="s">t</span><span class="w"> </span><span class="s">a11</span><span class="w"> </span><span class="s">a12</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a22</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">c1</span><span class="w"> </span><span class="s">c2</span><span class="w"></span>
+
+<span class="c">% Calculate c values</span><span class="w"></span>
+<span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">...</span><span class="w"></span>
+<span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">)</span><span class="w"></span>
+<span class="n">c1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">c2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+
+<span class="c">% Define order conditions</span><span class="w"></span>
+<span class="n">eq1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a12</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c1</span><span class="p">;</span><span class="w"></span>
+<span class="n">eq4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a22</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c2</span><span class="p">;</span><span class="w"></span>
+<span class="n">eq5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a12</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span>^<span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="n">eq6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a22</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span>^<span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+
+<span class="c">% Solve order conditions</span><span class="w"></span>
+<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">,</span><span class="w"> </span><span class="n">eq4</span><span class="p">,</span><span class="w"> </span><span class="n">eq5</span><span class="p">,</span><span class="w"> </span><span class="n">eq6</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p class="sd-card-text">Gives the solution</p>

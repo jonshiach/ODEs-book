@@ -774,6 +774,37 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">piplite</span>
+
+<span class="c1"># Define BVP parameters</span>
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
+<span class="n">bvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># boundary values</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.2</span>         <span class="c1"># step length</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+
+<span class="c1"># Calculate the solution to the IVP for the different guess values</span>
+<span class="n">ysols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="p">[</span><span class="n">bvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">ysols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">piplite</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Define BVP parameters</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;piplite&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <section id="improving-the-guess-value-using-the-secant-method">
 <span id="secant-method-section"></span><h2>Improving the guess value using the secant method<a class="headerlink" href="#improving-the-guess-value-using-the-secant-method" title="Permalink to this headline">#</a></h2>
 <p>In the <a class="reference internal" href="#shooting-example-1"><span class="std std-ref">example</span></a> we saw that by adjusting the guess value of <span class="math notranslate nohighlight">\(y'(0)\)</span> we obtained solutions at the upper boundary that were closer to the target value at the upper boundary <span class="math notranslate nohighlight">\(\beta\)</span>. We could continue in this way by increasing or decreasing our guess value halfway towards the previous guess value depending on whether the solution at the upper boundary was higher or lower than the target (this method is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Bisection_method">bisection method</a>), however a more efficient approach is to use the <a class="reference external" href="https://en.wikipedia.org/wiki/Secant_method">Secant method</a>. The Secant method is a root finding algorithm that calculates the value of <span class="math notranslate nohighlight">\(s\)</span> where <span class="math notranslate nohighlight">\(g(s)=0\)</span> for some function <span class="math notranslate nohighlight">\(g\)</span></p>
