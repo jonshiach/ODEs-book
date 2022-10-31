@@ -774,39 +774,6 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">piplite</span>
-
-<span class="c1"># Define BVP parameters</span>
-<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
-<span class="n">bvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># boundary values</span>
-<span class="n">h</span> <span class="o">=</span> <span class="mf">0.2</span>         <span class="c1"># step length</span>
-<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
-
-<span class="c1"># Calculate the solution to the IVP for the different guess values</span>
-<span class="n">ysols</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="p">[</span><span class="n">bvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">h</span><span class="p">)</span>
-    <span class="n">ysols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">rn</span><span class="o">/</span><span class="n">rs75_yx15gz4747nxd6xzq212q34wn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_76880</span><span class="o">/</span><span class="mf">1124722162.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">piplite</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Define BVP parameters</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">bvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># boundary values</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;piplite&#39;
-</pre></div>
-</div>
-</div>
-</div>
 <section id="improving-the-guess-value-using-the-secant-method">
 <span id="secant-method-section"></span><h2>Improving the guess value using the secant method<a class="headerlink" href="#improving-the-guess-value-using-the-secant-method" title="Permalink to this headline">#</a></h2>
 <p>In the <a class="reference internal" href="#shooting-example-1"><span class="std std-ref">example</span></a> we saw that by adjusting the guess value of <span class="math notranslate nohighlight">\(y'(0)\)</span> we obtained solutions at the upper boundary that were closer to the target value at the upper boundary <span class="math notranslate nohighlight">\(\beta\)</span>. We could continue in this way by increasing or decreasing our guess value halfway towards the previous guess value depending on whether the solution at the upper boundary was higher or lower than the target (this method is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Bisection_method">bisection method</a>), however a more efficient approach is to use the <a class="reference external" href="https://en.wikipedia.org/wiki/Secant_method">Secant method</a>. The Secant method is a root finding algorithm that calculates the value of <span class="math notranslate nohighlight">\(s\)</span> where <span class="math notranslate nohighlight">\(g(s)=0\)</span> for some function <span class="math notranslate nohighlight">\(g\)</span></p>
@@ -877,7 +844,7 @@ Solution<div class="sd-summary-down docutils">
 </table>
 <p class="sd-card-text">Here the solution at the upper boundary is <span class="math notranslate nohighlight">\(y_5 = 2\)</span> which is equal to <span class="math notranslate nohighlight">\(y(5)=2\)</span> correct to (at least) 4 decimal places.</p>
 <div class="cell_output docutils container">
-<img alt="../_images/5.1_Shooting_method_7_2.png" src="../_images/5.1_Shooting_method_7_2.png" />
+<img alt="../_images/5.1_Shooting_method_6_2.png" src="../_images/5.1_Shooting_method_6_2.png" />
 </div>
 </div>
 </details></div>
@@ -978,7 +945,7 @@ Solution<div class="sd-summary-down docutils">
 </table>
 <figure class="align-default" id="bvp-euler-rk4-figure">
 <div class="cell_output docutils container">
-<img alt="../_images/5.1_Shooting_method_9_2.png" src="../_images/5.1_Shooting_method_9_2.png" />
+<img alt="../_images/5.1_Shooting_method_8_2.png" src="../_images/5.1_Shooting_method_8_2.png" />
 </div>
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using the Euler and RK4 methods with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#bvp-euler-rk4-figure" title="Permalink to this image">#</a></p>
