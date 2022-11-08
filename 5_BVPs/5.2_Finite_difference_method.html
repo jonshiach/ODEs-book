@@ -716,20 +716,20 @@ title="Print to PDF"
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{pmatrix} 
-        b_1 &amp; c_1 \\
-        a_2 &amp; b_2 &amp; c_2 \\
+        b_0 &amp; c_0 \\
+        a_1 &amp; b_1 &amp; c_1 \\
         &amp; \ddots &amp; \ddots &amp; \ddots \\
         &amp; &amp; a_{n-1} &amp; b_{n-1} &amp; c_{n-1} \\
         &amp; &amp; &amp; a_n &amp; b_n
     \end{pmatrix}
-    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix} =
-    \begin{pmatrix} d_1 \\ d_2 \\ \vdots \\ d_{n-1} \\ d_n \end{pmatrix},
+    \begin{pmatrix} x_0 \\ x_1 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix} =
+    \begin{pmatrix} d_0 \\ d_1 \\ \vdots \\ d_{n-1} \\ d_n \end{pmatrix},
 \end{align*}\]</div>
 <p>the solution can be found by performing a forward sweep on the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(d_i\)</span> coefficients</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    b_i &amp;= b_i - c_{i-1} \left( \frac{a_i}{b_{i-1}} \right), &amp; i = 2, 3, \ldots, n, \\
-    d_i &amp;= d_i - d_{i-1} \left( \frac{a_i}{b_{i-1}} \right), &amp; i = 2, 3, \ldots, n, 
+    b_i &amp;= b_i - c_{i-1} \left( \frac{a_i}{b_{i-1}} \right), &amp; i = 1, 2, \ldots, n, \\
+    d_i &amp;= d_i - d_{i-1} \left( \frac{a_i}{b_{i-1}} \right), &amp; i = 1, 2, \ldots, n, 
 \end{align*}\]</div>
 <p>and then calculate the values of <span class="math notranslate nohighlight">\(x_i\)</span> using back substitution</p>
 <div class="amsmath math notranslate nohighlight">
@@ -981,6 +981,7 @@ Solution<div class="sd-summary-down docutils">
 <span class="w">    </span><span class="n">d</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
 <span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tridiagonal_solver</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">);</span><span class="w"></span>
+
 <span class="c">% Calculate exact solution</span><span class="w"></span>
 <span class="n">t_exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span><span class="w"></span>
 <span class="n">y_exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">);</span><span class="w"></span>
