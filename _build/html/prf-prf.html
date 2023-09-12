@@ -1,0 +1,1265 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proof Index &#8212; Runge-Kutta Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'prf-prf';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/prf-prf.html" />
+    <link rel="shortcut icon" href="_static/curve-icon-11.jpeg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/MMU_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/MMU_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Runge-Kutta Methods
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pages/0.1_Teaching_schedule.html">Teaching schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/0.2_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pages/1.0_ODEs.html">1. Ordinary Differential Equations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/1.2_Euler_Method.html">1.2. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/1.3_Error_Analysis.html">1.3. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/1.5_Higher_Order_ODEs.html">1.4. Higher-order Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/1.7_ODEs_exercises.html">1.5. Chapter 1 Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pages/2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/2.6_ERK_Exercises.html">2.8. Chapter 2 Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pages/3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/3.4_IRK_exercises.html">3.4. Chapter 3 Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pages/4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/4.1_Stability_functions.html">4.2. Stability functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/4.5_Stability_exercises.html">4.5. Chapter 4 Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pages/5.0_Matrix_decomposition.html">5. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/5.1_LU_decomposition.html">5.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/5.2_Solving_systems_using_LU.html">5.2. Solving systems of linear equations using LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/5.3_LUP_decomposition.html">5.3. LU decomposition with partial pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pages/6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/6.1_Jacobi_method.html">6.1. Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/6.2_Gauss_Seidel_method.html">6.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/6.3_Convergence_of_indirect_methods.html">6.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/6.4_SOR_method.html">6.4. The Successive Over Relaxation (SOR) method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/6.5_Indirect_methods_exercises.html">6.5. Indirect methods exercises</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pages/8.1_Python_code.html">Python Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/8.2_MATLAB_code.html">MATLAB Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/8.3_References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+
+   <h1>Proof Index</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-Bk_Ck_Dk_order_conditions"><strong>Bk_Ck_Dk_order_conditions</strong></a> | 
+   <a href="#cap-a-stability-definition"><strong>a-stability-definition</strong></a> | 
+   <a href="#cap-a-stability-example"><strong>a-stability-example</strong></a> | 
+   <a href="#cap-a-stability-theorem"><strong>a-stability-theorem</strong></a> | 
+   <a href="#cap-absolute-stability-definition"><strong>absolute-stability-definition</strong></a> | 
+   <a href="#cap-algorithm-0"><strong>algorithm-0</strong></a> | 
+   <a href="#cap-algorithm-1"><strong>algorithm-1</strong></a> | 
+   <a href="#cap-big-o-notation-definition"><strong>big-o-notation-definition</strong></a> | 
+   <a href="#cap-butcher-tableau-definition"><strong>butcher-tableau-definition</strong></a> | 
+   <a href="#cap-butcher-tableau-example"><strong>butcher-tableau-example</strong></a> | 
+   <a href="#cap-cash-karp-method-equation"><strong>cash-karp-method-equation</strong></a> | 
+   <a href="#cap-cholesky-algorithm"><strong>cholesky-algorithm</strong></a> | 
+   <a href="#cap-cholesky-example"><strong>cholesky-example</strong></a> | 
+   <a href="#cap-cholesky-solution-algorithm"><strong>cholesky-solution-algorithm</strong></a> | 
+   <a href="#cap-cholesky-solution-example"><strong>cholesky-solution-example</strong></a> | 
+   <a href="#cap-cholesky-theorem"><strong>cholesky-theorem</strong></a> | 
+   <a href="#cap-convergence-example"><strong>convergence-example</strong></a> | 
+   <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
+   <a href="#cap-definition-4"><strong>definition-4</strong></a> | 
+   <a href="#cap-definition-6"><strong>definition-6</strong></a> | 
+   <a href="#cap-density-of-a-rooted-tree-definition"><strong>density-of-a-rooted-tree-definition</strong></a> | 
+   <a href="#cap-determinant-test-for-positive-definite-matrix-theorem"><strong>determinant-test-for-positive-definite-matrix-theorem</strong></a> | 
+   <a href="#cap-dirk-derivation-example"><strong>dirk-derivation-example</strong></a> | 
+   <a href="#cap-eigenvalue-definition"><strong>eigenvalue-definition</strong></a> | 
+   <a href="#cap-elementary-weights-example"><strong>elementary-weights-example</strong></a> | 
+   <a href="#cap-embedded-rk-example"><strong>embedded-rk-example</strong></a> | 
+   <a href="#cap-erk-rz-definition"><strong>erk-rz-definition</strong></a> | 
+   <a href="#cap-erk-stability-example"><strong>erk-stability-example</strong></a> | 
+   <a href="#cap-euler-example"><strong>euler-example</strong></a> | 
+   <a href="#cap-euler-method-definition"><strong>euler-method-definition</strong></a> | 
+   <a href="#cap-example-1"><strong>example-1</strong></a> | 
+   <a href="#cap-example-2"><strong>example-2</strong></a> | 
+   <a href="#cap-fehlbergs-method-equation"><strong>fehlbergs-method-equation</strong></a> | 
+   <a href="#cap-gauss-legendre-derivation-definition"><strong>gauss-legendre-derivation-definition</strong></a> | 
+   <a href="#cap-gauss-legendre-derivation-example"><strong>gauss-legendre-derivation-example</strong></a> | 
+   <a href="#cap-gauss-seidel-method-definition"><strong>gauss-seidel-method-definition</strong></a> | 
+   <a href="#cap-gauss-seidel-method-example"><strong>gauss-seidel-method-example</strong></a> | 
+   <a href="#cap-gte-definition"><strong>gte-definition</strong></a> | 
+   <a href="#cap-higher-order-odes-example"><strong>higher-order-odes-example</strong></a> | 
+   <a href="#cap-indirect-methods-convergence-criteria-theorem"><strong>indirect-methods-convergence-criteria-theorem</strong></a> | 
+   <a href="#cap-interval-of-absolute-stability-definition"><strong>interval-of-absolute-stability-definition</strong></a> | 
+   <a href="#cap-irk-rz-definition"><strong>irk-rz-definition</strong></a> | 
+   <a href="#cap-ivp-definition"><strong>ivp-definition</strong></a> | 
+   <a href="#cap-jacobi-method-definition"><strong>jacobi-method-definition</strong></a> | 
+   <a href="#cap-jacobi-method-example"><strong>jacobi-method-example</strong></a> | 
+   <a href="#cap-legendre-polynomials-definition"><strong>legendre-polynomials-definition</strong></a> | 
+   <a href="#cap-lte-definition"><strong>lte-definition</strong></a> | 
+   <a href="#cap-lu-algorithm"><strong>lu-algorithm</strong></a> | 
+   <a href="#cap-lu-example"><strong>lu-example</strong></a> | 
+   <a href="#cap-lu-solution-algorithm"><strong>lu-solution-algorithm</strong></a> | 
+   <a href="#cap-lu-solution-example"><strong>lu-solution-example</strong></a> | 
+   <a href="#cap-lu-theorem"><strong>lu-theorem</strong></a> | 
+   <a href="#cap-lup-algorithm"><strong>lup-algorithm</strong></a> | 
+   <a href="#cap-lup-example"><strong>lup-example</strong></a> | 
+   <a href="#cap-optimum-relaxation-parameter-example"><strong>optimum-relaxation-parameter-example</strong></a> | 
+   <a href="#cap-optimum-relaxation-parameter-theorem"><strong>optimum-relaxation-parameter-theorem</strong></a> | 
+   <a href="#cap-order-definition"><strong>order-definition</strong></a> | 
+   <a href="#cap-order-density-elementary-weight-example"><strong>order-density-elementary-weight-example</strong></a> | 
+   <a href="#cap-order-of-a-rooted-tree-definition"><strong>order-of-a-rooted-tree-definition</strong></a> | 
+   <a href="#cap-orthogonal-matrix-definition"><strong>orthogonal-matrix-definition</strong></a> | 
+   <a href="#cap-orthogonal-vector-definition"><strong>orthogonal-vector-definition</strong></a> | 
+   <a href="#cap-permutation-matrix-definition"><strong>permutation-matrix-definition</strong></a> | 
+   <a href="#cap-pivoting-example"><strong>pivoting-example</strong></a> | 
+   <a href="#cap-positive-definite-definition"><strong>positive-definite-definition</strong></a> | 
+   <a href="#cap-positive-definite-example"><strong>positive-definite-example</strong></a> | 
+   <a href="#cap-pp-algorithm"><strong>pp-algorithm</strong></a> | 
+   <a href="#cap-qr-algorithm"><strong>qr-algorithm</strong></a> | 
+   <a href="#cap-qr-algorithm-example"><strong>qr-algorithm-example</strong></a> | 
+   <a href="#cap-qr-gramschmidt-algorithm"><strong>qr-gramschmidt-algorithm</strong></a> | 
+   <a href="#cap-qr-gramschmidt-example"><strong>qr-gramschmidt-example</strong></a> | 
+   <a href="#cap-qr-householder-algorithm"><strong>qr-householder-algorithm</strong></a> | 
+   <a href="#cap-qr-householder-example"><strong>qr-householder-example</strong></a> | 
+   <a href="#cap-radauIA-definition"><strong>radauIA-definition</strong></a> | 
+   <a href="#cap-radauIA-derivation-example"><strong>radauIA-derivation-example</strong></a> | 
+   <a href="#cap-radauIA-example"><strong>radauIA-example</strong></a> | 
+   <a href="#cap-radauIIA-definition"><strong>radauIIA-definition</strong></a> | 
+   <a href="#cap-region-of-absolute-stability-definition"><strong>region-of-absolute-stability-definition</strong></a> | 
+   <a href="#cap-residual-definition"><strong>residual-definition</strong></a> | 
+   <a href="#cap-rk-definition"><strong>rk-definition</strong></a> | 
+   <a href="#cap-rk2-derivation-example"><strong>rk2-derivation-example</strong></a> | 
+   <a href="#cap-rk2-order-condition-derivation"><strong>rk2-order-condition-derivation</strong></a> | 
+   <a href="#cap-rk2-order-conditions-definition"><strong>rk2-order-conditions-definition</strong></a> | 
+   <a href="#cap-rk4-definition"><strong>rk4-definition</strong></a> | 
+   <a href="#cap-rk4-derivation-example"><strong>rk4-derivation-example</strong></a> | 
+   <a href="#cap-rk4-example"><strong>rk4-example</strong></a> | 
+   <a href="#cap-rk4-order-conditions-definition"><strong>rk4-order-conditions-definition</strong></a> | 
+   <a href="#cap-sor-method-definition"><strong>sor-method-definition</strong></a> | 
+   <a href="#cap-sor-method-example"><strong>sor-method-example</strong></a> | 
+   <a href="#cap-spectral-radius-definition"><strong>spectral-radius-definition</strong></a> | 
+   <a href="#cap-stability-definition"><strong>stability-definition</strong></a> | 
+   <a href="#cap-stability-function-definition"><strong>stability-function-definition</strong></a> | 
+   <a href="#cap-step-size-control-algorithm"><strong>step-size-control-algorithm</strong></a> | 
+   <a href="#cap-stiffness-ratio-definition"><strong>stiffness-ratio-definition</strong></a> | 
+   <a href="#cap-system-odes-example"><strong>system-odes-example</strong></a> | 
+   <a href="#cap-taylor-series-definition"><strong>taylor-series-definition</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-Bk_Ck_Dk_order_conditions"><td></td><td>
+       <strong>Bk_Ck_Dk_order_conditions</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.1_IRK_order.html#Bk_Ck_Dk_order_conditions"><code class="xref">Bk_Ck_Dk_order_conditions</code></a> <em>(pages/3.1_IRK_order)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-a-stability-definition"><td></td><td>
+       <strong>a-stability-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.3_IRK_stability_function.html#a-stability-definition"><code class="xref">a-stability-definition</code></a> <em>(pages/4.3_IRK_stability_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-a-stability-example"><td></td><td>
+       <strong>a-stability-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.3_IRK_stability_function.html#a-stability-example"><code class="xref">a-stability-example</code></a> <em>(pages/4.3_IRK_stability_function)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-a-stability-theorem"><td></td><td>
+       <strong>a-stability-theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.3_IRK_stability_function.html#a-stability-theorem"><code class="xref">a-stability-theorem</code></a> <em>(pages/4.3_IRK_stability_function)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-absolute-stability-definition"><td></td><td>
+       <strong>absolute-stability-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.1_Stability_functions.html#absolute-stability-definition"><code class="xref">absolute-stability-definition</code></a> <em>(pages/4.1_Stability_functions)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-algorithm-0"><td></td><td>
+       <strong>algorithm-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.4_Solving_IVPs_using_ERK_methods.html#algorithm-0"><code class="xref">algorithm-0</code></a> <em>(pages/2.4_Solving_IVPs_using_ERK_methods)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-algorithm-1"><td></td><td>
+       <strong>algorithm-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.2_Euler_Method.html#algorithm-1"><code class="xref">algorithm-1</code></a> <em>(pages/1.2_Euler_Method)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-big-o-notation-definition"><td></td><td>
+       <strong>big-o-notation-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.3_Error_Analysis.html#big-o-notation-definition"><code class="xref">big-o-notation-definition</code></a> <em>(pages/1.3_Error_Analysis)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-butcher-tableau-definition"><td></td><td>
+       <strong>butcher-tableau-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.0_ERKs.html#butcher-tableau-definition"><code class="xref">butcher-tableau-definition</code></a> <em>(pages/2.0_ERKs)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-butcher-tableau-example"><td></td><td>
+       <strong>butcher-tableau-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.0_ERKs.html#butcher-tableau-example"><code class="xref">butcher-tableau-example</code></a> <em>(pages/2.0_ERKs)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-cash-karp-method-equation"><td></td><td>
+       <strong>cash-karp-method-equation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.5_Adaptive_step_size_control.html#cash-karp-method-equation"><code class="xref">cash-karp-method-equation</code></a> <em>(pages/2.5_Adaptive_step_size_control)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-cholesky-algorithm"><td></td><td>
+       <strong>cholesky-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.4_Cholesky_decomposition.html#cholesky-algorithm"><code class="xref">cholesky-algorithm</code></a> <em>(pages/5.4_Cholesky_decomposition)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-cholesky-example"><td></td><td>
+       <strong>cholesky-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.4_Cholesky_decomposition.html#cholesky-example"><code class="xref">cholesky-example</code></a> <em>(pages/5.4_Cholesky_decomposition)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-cholesky-solution-algorithm"><td></td><td>
+       <strong>cholesky-solution-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.4_Cholesky_decomposition.html#cholesky-solution-algorithm"><code class="xref">cholesky-solution-algorithm</code></a> <em>(pages/5.4_Cholesky_decomposition)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-cholesky-solution-example"><td></td><td>
+       <strong>cholesky-solution-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.4_Cholesky_decomposition.html#cholesky-solution-example"><code class="xref">cholesky-solution-example</code></a> <em>(pages/5.4_Cholesky_decomposition)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-cholesky-theorem"><td></td><td>
+       <strong>cholesky-theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.4_Cholesky_decomposition.html#cholesky-theorem"><code class="xref">cholesky-theorem</code></a> <em>(pages/5.4_Cholesky_decomposition)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-convergence-example"><td></td><td>
+       <strong>convergence-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.3_Convergence_of_indirect_methods.html#convergence-example"><code class="xref">convergence-example</code></a> <em>(pages/6.3_Convergence_of_indirect_methods)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-0"><td></td><td>
+       <strong>definition-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.0_ODEs.html#definition-0"><code class="xref">definition-0</code></a> <em>(pages/1.0_ODEs)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-4"><td></td><td>
+       <strong>definition-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.5_QR_decomposition.html#definition-4"><code class="xref">definition-4</code></a> <em>(pages/5.5_QR_decomposition)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-6"><td></td><td>
+       <strong>definition-6</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.2_Deriving_IRK_methods.html#definition-6"><code class="xref">definition-6</code></a> <em>(pages/3.2_Deriving_IRK_methods)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-density-of-a-rooted-tree-definition"><td></td><td>
+       <strong>density-of-a-rooted-tree-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.2_Deriving_order_conditions_using_trees.html#density-of-a-rooted-tree-definition"><code class="xref">density-of-a-rooted-tree-definition</code></a> <em>(pages/2.2_Deriving_order_conditions_using_trees)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-determinant-test-for-positive-definite-matrix-theorem"><td></td><td>
+       <strong>determinant-test-for-positive-definite-matrix-theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.4_Cholesky_decomposition.html#determinant-test-for-positive-definite-matrix-theorem"><code class="xref">determinant-test-for-positive-definite-matrix-theorem</code></a> <em>(pages/5.4_Cholesky_decomposition)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-dirk-derivation-example"><td></td><td>
+       <strong>dirk-derivation-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.2_Deriving_IRK_methods.html#dirk-derivation-example"><code class="xref">dirk-derivation-example</code></a> <em>(pages/3.2_Deriving_IRK_methods)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eigenvalue-definition"><td></td><td>
+       <strong>eigenvalue-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.6_Calculating_eigenvalues_using_QR.html#eigenvalue-definition"><code class="xref">eigenvalue-definition</code></a> <em>(pages/5.6_Calculating_eigenvalues_using_QR)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-elementary-weights-example"><td></td><td>
+       <strong>elementary-weights-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.2_Deriving_order_conditions_using_trees.html#elementary-weights-example"><code class="xref">elementary-weights-example</code></a> <em>(pages/2.2_Deriving_order_conditions_using_trees)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-embedded-rk-example"><td></td><td>
+       <strong>embedded-rk-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.5_Adaptive_step_size_control.html#embedded-rk-example"><code class="xref">embedded-rk-example</code></a> <em>(pages/2.5_Adaptive_step_size_control)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-erk-rz-definition"><td></td><td>
+       <strong>erk-rz-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.2_RK_stability_function.html#erk-rz-definition"><code class="xref">erk-rz-definition</code></a> <em>(pages/4.2_RK_stability_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-erk-stability-example"><td></td><td>
+       <strong>erk-stability-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.2_RK_stability_function.html#erk-stability-example"><code class="xref">erk-stability-example</code></a> <em>(pages/4.2_RK_stability_function)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-euler-example"><td></td><td>
+       <strong>euler-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.2_Euler_Method.html#euler-example"><code class="xref">euler-example</code></a> <em>(pages/1.2_Euler_Method)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-euler-method-definition"><td></td><td>
+       <strong>euler-method-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.2_Euler_Method.html#euler-method-definition"><code class="xref">euler-method-definition</code></a> <em>(pages/1.2_Euler_Method)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-1"><td></td><td>
+       <strong>example-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.1_IRK_order.html#example-1"><code class="xref">example-1</code></a> <em>(pages/3.1_IRK_order)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-2"><td></td><td>
+       <strong>example-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.0_Stability.html#example-2"><code class="xref">example-2</code></a> <em>(pages/4.0_Stability)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-fehlbergs-method-equation"><td></td><td>
+       <strong>fehlbergs-method-equation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.5_Adaptive_step_size_control.html#fehlbergs-method-equation"><code class="xref">fehlbergs-method-equation</code></a> <em>(pages/2.5_Adaptive_step_size_control)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gauss-legendre-derivation-definition"><td></td><td>
+       <strong>gauss-legendre-derivation-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.2_Deriving_IRK_methods.html#gauss-legendre-derivation-definition"><code class="xref">gauss-legendre-derivation-definition</code></a> <em>(pages/3.2_Deriving_IRK_methods)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gauss-legendre-derivation-example"><td></td><td>
+       <strong>gauss-legendre-derivation-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.2_Deriving_IRK_methods.html#gauss-legendre-derivation-example"><code class="xref">gauss-legendre-derivation-example</code></a> <em>(pages/3.2_Deriving_IRK_methods)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gauss-seidel-method-definition"><td></td><td>
+       <strong>gauss-seidel-method-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.2_Gauss_Seidel_method.html#gauss-seidel-method-definition"><code class="xref">gauss-seidel-method-definition</code></a> <em>(pages/6.2_Gauss_Seidel_method)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gauss-seidel-method-example"><td></td><td>
+       <strong>gauss-seidel-method-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.2_Gauss_Seidel_method.html#gauss-seidel-method-example"><code class="xref">gauss-seidel-method-example</code></a> <em>(pages/6.2_Gauss_Seidel_method)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gte-definition"><td></td><td>
+       <strong>gte-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.3_Error_Analysis.html#gte-definition"><code class="xref">gte-definition</code></a> <em>(pages/1.3_Error_Analysis)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-higher-order-odes-example"><td></td><td>
+       <strong>higher-order-odes-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.5_Higher_Order_ODEs.html#higher-order-odes-example"><code class="xref">higher-order-odes-example</code></a> <em>(pages/1.5_Higher_Order_ODEs)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-indirect-methods-convergence-criteria-theorem"><td></td><td>
+       <strong>indirect-methods-convergence-criteria-theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.3_Convergence_of_indirect_methods.html#indirect-methods-convergence-criteria-theorem"><code class="xref">indirect-methods-convergence-criteria-theorem</code></a> <em>(pages/6.3_Convergence_of_indirect_methods)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-interval-of-absolute-stability-definition"><td></td><td>
+       <strong>interval-of-absolute-stability-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.1_Stability_functions.html#interval-of-absolute-stability-definition"><code class="xref">interval-of-absolute-stability-definition</code></a> <em>(pages/4.1_Stability_functions)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-irk-rz-definition"><td></td><td>
+       <strong>irk-rz-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.3_IRK_stability_function.html#irk-rz-definition"><code class="xref">irk-rz-definition</code></a> <em>(pages/4.3_IRK_stability_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ivp-definition"><td></td><td>
+       <strong>ivp-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.0_ODEs.html#ivp-definition"><code class="xref">ivp-definition</code></a> <em>(pages/1.0_ODEs)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-jacobi-method-definition"><td></td><td>
+       <strong>jacobi-method-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.1_Jacobi_method.html#jacobi-method-definition"><code class="xref">jacobi-method-definition</code></a> <em>(pages/6.1_Jacobi_method)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-jacobi-method-example"><td></td><td>
+       <strong>jacobi-method-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.1_Jacobi_method.html#jacobi-method-example"><code class="xref">jacobi-method-example</code></a> <em>(pages/6.1_Jacobi_method)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-legendre-polynomials-definition"><td></td><td>
+       <strong>legendre-polynomials-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.2_Deriving_IRK_methods.html#legendre-polynomials-definition"><code class="xref">legendre-polynomials-definition</code></a> <em>(pages/3.2_Deriving_IRK_methods)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lte-definition"><td></td><td>
+       <strong>lte-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.3_Error_Analysis.html#lte-definition"><code class="xref">lte-definition</code></a> <em>(pages/1.3_Error_Analysis)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lu-algorithm"><td></td><td>
+       <strong>lu-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.1_LU_decomposition.html#lu-algorithm"><code class="xref">lu-algorithm</code></a> <em>(pages/5.1_LU_decomposition)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lu-example"><td></td><td>
+       <strong>lu-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.1_LU_decomposition.html#lu-example"><code class="xref">lu-example</code></a> <em>(pages/5.1_LU_decomposition)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lu-solution-algorithm"><td></td><td>
+       <strong>lu-solution-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.2_Solving_systems_using_LU.html#lu-solution-algorithm"><code class="xref">lu-solution-algorithm</code></a> <em>(pages/5.2_Solving_systems_using_LU)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lu-solution-example"><td></td><td>
+       <strong>lu-solution-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.2_Solving_systems_using_LU.html#lu-solution-example"><code class="xref">lu-solution-example</code></a> <em>(pages/5.2_Solving_systems_using_LU)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lu-theorem"><td></td><td>
+       <strong>lu-theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.1_LU_decomposition.html#lu-theorem"><code class="xref">lu-theorem</code></a> <em>(pages/5.1_LU_decomposition)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lup-algorithm"><td></td><td>
+       <strong>lup-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.3_LUP_decomposition.html#lup-algorithm"><code class="xref">lup-algorithm</code></a> <em>(pages/5.3_LUP_decomposition)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lup-example"><td></td><td>
+       <strong>lup-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.3_LUP_decomposition.html#lup-example"><code class="xref">lup-example</code></a> <em>(pages/5.3_LUP_decomposition)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-optimum-relaxation-parameter-example"><td></td><td>
+       <strong>optimum-relaxation-parameter-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.4_SOR_method.html#optimum-relaxation-parameter-example"><code class="xref">optimum-relaxation-parameter-example</code></a> <em>(pages/6.4_SOR_method)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-optimum-relaxation-parameter-theorem"><td></td><td>
+       <strong>optimum-relaxation-parameter-theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.4_SOR_method.html#optimum-relaxation-parameter-theorem"><code class="xref">optimum-relaxation-parameter-theorem</code></a> <em>(pages/6.4_SOR_method)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-order-definition"><td></td><td>
+       <strong>order-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.3_Error_Analysis.html#order-definition"><code class="xref">order-definition</code></a> <em>(pages/1.3_Error_Analysis)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-order-density-elementary-weight-example"><td></td><td>
+       <strong>order-density-elementary-weight-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.2_Deriving_order_conditions_using_trees.html#order-density-elementary-weight-example"><code class="xref">order-density-elementary-weight-example</code></a> <em>(pages/2.2_Deriving_order_conditions_using_trees)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-order-of-a-rooted-tree-definition"><td></td><td>
+       <strong>order-of-a-rooted-tree-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.2_Deriving_order_conditions_using_trees.html#order-of-a-rooted-tree-definition"><code class="xref">order-of-a-rooted-tree-definition</code></a> <em>(pages/2.2_Deriving_order_conditions_using_trees)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-orthogonal-matrix-definition"><td></td><td>
+       <strong>orthogonal-matrix-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.5_QR_decomposition.html#orthogonal-matrix-definition"><code class="xref">orthogonal-matrix-definition</code></a> <em>(pages/5.5_QR_decomposition)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-orthogonal-vector-definition"><td></td><td>
+       <strong>orthogonal-vector-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.5_QR_decomposition.html#orthogonal-vector-definition"><code class="xref">orthogonal-vector-definition</code></a> <em>(pages/5.5_QR_decomposition)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-permutation-matrix-definition"><td></td><td>
+       <strong>permutation-matrix-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.3_LUP_decomposition.html#permutation-matrix-definition"><code class="xref">permutation-matrix-definition</code></a> <em>(pages/5.3_LUP_decomposition)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-pivoting-example"><td></td><td>
+       <strong>pivoting-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.3_LUP_decomposition.html#pivoting-example"><code class="xref">pivoting-example</code></a> <em>(pages/5.3_LUP_decomposition)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-positive-definite-definition"><td></td><td>
+       <strong>positive-definite-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.4_Cholesky_decomposition.html#positive-definite-definition"><code class="xref">positive-definite-definition</code></a> <em>(pages/5.4_Cholesky_decomposition)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-positive-definite-example"><td></td><td>
+       <strong>positive-definite-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.4_Cholesky_decomposition.html#positive-definite-example"><code class="xref">positive-definite-example</code></a> <em>(pages/5.4_Cholesky_decomposition)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-pp-algorithm"><td></td><td>
+       <strong>pp-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.3_LUP_decomposition.html#pp-algorithm"><code class="xref">pp-algorithm</code></a> <em>(pages/5.3_LUP_decomposition)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-qr-algorithm"><td></td><td>
+       <strong>qr-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.6_Calculating_eigenvalues_using_QR.html#qr-algorithm"><code class="xref">qr-algorithm</code></a> <em>(pages/5.6_Calculating_eigenvalues_using_QR)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-qr-algorithm-example"><td></td><td>
+       <strong>qr-algorithm-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.6_Calculating_eigenvalues_using_QR.html#qr-algorithm-example"><code class="xref">qr-algorithm-example</code></a> <em>(pages/5.6_Calculating_eigenvalues_using_QR)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-qr-gramschmidt-algorithm"><td></td><td>
+       <strong>qr-gramschmidt-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.5_QR_decomposition.html#qr-gramschmidt-algorithm"><code class="xref">qr-gramschmidt-algorithm</code></a> <em>(pages/5.5_QR_decomposition)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-qr-gramschmidt-example"><td></td><td>
+       <strong>qr-gramschmidt-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.5_QR_decomposition.html#qr-gramschmidt-example"><code class="xref">qr-gramschmidt-example</code></a> <em>(pages/5.5_QR_decomposition)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-qr-householder-algorithm"><td></td><td>
+       <strong>qr-householder-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.5_QR_decomposition.html#qr-householder-algorithm"><code class="xref">qr-householder-algorithm</code></a> <em>(pages/5.5_QR_decomposition)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-qr-householder-example"><td></td><td>
+       <strong>qr-householder-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/5.5_QR_decomposition.html#qr-householder-example"><code class="xref">qr-householder-example</code></a> <em>(pages/5.5_QR_decomposition)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-radauIA-definition"><td></td><td>
+       <strong>radauIA-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.2_Deriving_IRK_methods.html#radauIA-definition"><code class="xref">radauIA-definition</code></a> <em>(pages/3.2_Deriving_IRK_methods)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-radauIA-derivation-example"><td></td><td>
+       <strong>radauIA-derivation-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.2_Deriving_IRK_methods.html#radauIA-derivation-example"><code class="xref">radauIA-derivation-example</code></a> <em>(pages/3.2_Deriving_IRK_methods)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-radauIA-example"><td></td><td>
+       <strong>radauIA-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.3_Solving_IVPs_using_IRK_methods.html#radauIA-example"><code class="xref">radauIA-example</code></a> <em>(pages/3.3_Solving_IVPs_using_IRK_methods)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-radauIIA-definition"><td></td><td>
+       <strong>radauIIA-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/3.2_Deriving_IRK_methods.html#radauIIA-definition"><code class="xref">radauIIA-definition</code></a> <em>(pages/3.2_Deriving_IRK_methods)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-region-of-absolute-stability-definition"><td></td><td>
+       <strong>region-of-absolute-stability-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.1_Stability_functions.html#region-of-absolute-stability-definition"><code class="xref">region-of-absolute-stability-definition</code></a> <em>(pages/4.1_Stability_functions)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-residual-definition"><td></td><td>
+       <strong>residual-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.1_Jacobi_method.html#residual-definition"><code class="xref">residual-definition</code></a> <em>(pages/6.1_Jacobi_method)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rk-definition"><td></td><td>
+       <strong>rk-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.0_ERKs.html#rk-definition"><code class="xref">rk-definition</code></a> <em>(pages/2.0_ERKs)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rk2-derivation-example"><td></td><td>
+       <strong>rk2-derivation-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.1_ERK_Derivation.html#rk2-derivation-example"><code class="xref">rk2-derivation-example</code></a> <em>(pages/2.1_ERK_Derivation)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rk2-order-condition-derivation"><td></td><td>
+       <strong>rk2-order-condition-derivation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.2_Deriving_order_conditions_using_trees.html#rk2-order-condition-derivation"><code class="xref">rk2-order-condition-derivation</code></a> <em>(pages/2.2_Deriving_order_conditions_using_trees)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rk2-order-conditions-definition"><td></td><td>
+       <strong>rk2-order-conditions-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.1_ERK_Derivation.html#rk2-order-conditions-definition"><code class="xref">rk2-order-conditions-definition</code></a> <em>(pages/2.1_ERK_Derivation)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rk4-definition"><td></td><td>
+       <strong>rk4-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.3_RK4_Derivation.html#rk4-definition"><code class="xref">rk4-definition</code></a> <em>(pages/2.3_RK4_Derivation)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rk4-derivation-example"><td></td><td>
+       <strong>rk4-derivation-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.3_RK4_Derivation.html#rk4-derivation-example"><code class="xref">rk4-derivation-example</code></a> <em>(pages/2.3_RK4_Derivation)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rk4-example"><td></td><td>
+       <strong>rk4-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.4_Solving_IVPs_using_ERK_methods.html#rk4-example"><code class="xref">rk4-example</code></a> <em>(pages/2.4_Solving_IVPs_using_ERK_methods)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rk4-order-conditions-definition"><td></td><td>
+       <strong>rk4-order-conditions-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.3_RK4_Derivation.html#rk4-order-conditions-definition"><code class="xref">rk4-order-conditions-definition</code></a> <em>(pages/2.3_RK4_Derivation)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-sor-method-definition"><td></td><td>
+       <strong>sor-method-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.4_SOR_method.html#sor-method-definition"><code class="xref">sor-method-definition</code></a> <em>(pages/6.4_SOR_method)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-sor-method-example"><td></td><td>
+       <strong>sor-method-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.4_SOR_method.html#sor-method-example"><code class="xref">sor-method-example</code></a> <em>(pages/6.4_SOR_method)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-spectral-radius-definition"><td></td><td>
+       <strong>spectral-radius-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/6.3_Convergence_of_indirect_methods.html#spectral-radius-definition"><code class="xref">spectral-radius-definition</code></a> <em>(pages/6.3_Convergence_of_indirect_methods)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-stability-definition"><td></td><td>
+       <strong>stability-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.0_Stability.html#stability-definition"><code class="xref">stability-definition</code></a> <em>(pages/4.0_Stability)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-stability-function-definition"><td></td><td>
+       <strong>stability-function-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.1_Stability_functions.html#stability-function-definition"><code class="xref">stability-function-definition</code></a> <em>(pages/4.1_Stability_functions)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-step-size-control-algorithm"><td></td><td>
+       <strong>step-size-control-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/2.5_Adaptive_step_size_control.html#step-size-control-algorithm"><code class="xref">step-size-control-algorithm</code></a> <em>(pages/2.5_Adaptive_step_size_control)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-stiffness-ratio-definition"><td></td><td>
+       <strong>stiffness-ratio-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/4.0_Stability.html#stiffness-ratio-definition"><code class="xref">stiffness-ratio-definition</code></a> <em>(pages/4.0_Stability)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-system-odes-example"><td></td><td>
+       <strong>system-odes-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.5_Higher_Order_ODEs.html#system-odes-example"><code class="xref">system-odes-example</code></a> <em>(pages/1.5_Higher_Order_ODEs)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-taylor-series-definition"><td></td><td>
+       <strong>taylor-series-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/1.1_Taylor_Series.html#taylor-series-definition"><code class="xref">taylor-series-definition</code></a> <em>(pages/1.1_Taylor_Series)</em></td><td>
+       <em>definition</em></td></tr>
+   </table>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Jon Shiach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
