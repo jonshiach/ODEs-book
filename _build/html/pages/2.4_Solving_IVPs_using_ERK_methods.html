@@ -171,11 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.7_ODEs_exercises.html">1.5. Chapter 1 Exercises</a></li>
 </ul>
 </li>
@@ -562,21 +562,21 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">rk4()</span></code> function has been used to solve the IVP from <a class="reference internal" href="#rk4-example">Example 2.7</a> which is shown in <a class="reference internal" href="#rk4-example-plot"><span class="std std-numref">Fig. 2.4</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rk4()</span></code> function has been used to solve the IVP from <a class="reference internal" href="#rk4-example">Example 2.7</a> which is shown in <a class="reference internal" href="#rk4-example-plot"><span class="std std-numref">Fig. 2.5</span></a>.</p>
 <figure class="align-default" id="rk4-example-plot" style="width: 600px">
 <img alt="../_images/ec42b7caa83add15f8d24ee6d65477940d9b1c3e0b7b4050ab0a6515684e493f.png" src="../_images/ec42b7caa83add15f8d24ee6d65477940d9b1c3e0b7b4050ab0a6515684e493f.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">The solution to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the RK4 method with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#rk4-example-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">The solution to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the RK4 method with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#rk4-example-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="comparison-of-first-second-and-fourth-order-solutions">
 <h2><span class="section-number">2.6.2. </span>Comparison of first, second and fourth-order solutions<a class="headerlink" href="#comparison-of-first-second-and-fourth-order-solutions" title="Permalink to this heading">#</a></h2>
-<p>The first-order Euler method, the second-order Heun’s method and the fourth-order RK4 method solutions to the IVP from <a class="reference internal" href="#rk4-example">Example 2.7</a> have been plotted against the exact solution in <a class="reference internal" href="#euler-rk2-rk4-figure"><span class="std std-numref">Fig. 2.5</span></a>.</p>
+<p>The first-order Euler method, the second-order Heun’s method and the fourth-order RK4 method solutions to the IVP from <a class="reference internal" href="#rk4-example">Example 2.7</a> have been plotted against the exact solution in <a class="reference internal" href="#euler-rk2-rk4-figure"><span class="std std-numref">Fig. 2.6</span></a>.</p>
 <figure class="align-default" id="euler-rk2-rk4-figure" style="width: 600px">
 <img alt="../_images/de834fccd847df44d25264a22c3e96416543e10d331e13f5b472bfc1e46c85ba.png" src="../_images/de834fccd847df44d25264a22c3e96416543e10d331e13f5b472bfc1e46c85ba.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Comparisons between the Euler method, Heun’s method and the RK4 method for solving the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> with <span class="math notranslate nohighlight">\(h=0.2\)</span></span><a class="headerlink" href="#euler-rk2-rk4-figure" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Comparisons between the Euler method, Heun’s method and the RK4 method for solving the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> with <span class="math notranslate nohighlight">\(h=0.2\)</span></span><a class="headerlink" href="#euler-rk2-rk4-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here we see that the second-order and fourth-order method are significantly more accurate than the first-order method. However, in this plot it is difficult to see the difference between the second and fourth-order solutions.</p>
@@ -618,11 +618,11 @@ MATLAB</label><div class="sd-tab-content docutils">
 \[ \begin{align*}
   \log(E(h)) &amp;= n\log(h).
 \end{align*} \]</div>
-<p>This is a linear function where the slope of <span class="math notranslate nohighlight">\(\log(E(h))\)</span> has a gradient of <span class="math notranslate nohighlight">\(n\)</span>. The global truncation errors for the three methods have been plotted on a loglog scale in <a class="reference internal" href="#rk4-example-hvals-log-plot"><span class="std std-numref">Fig. 2.6</span></a></p>
+<p>This is a linear function where the slope of <span class="math notranslate nohighlight">\(\log(E(h))\)</span> has a gradient of <span class="math notranslate nohighlight">\(n\)</span>. The global truncation errors for the three methods have been plotted on a loglog scale in <a class="reference internal" href="#rk4-example-hvals-log-plot"><span class="std std-numref">Fig. 2.7</span></a></p>
 <figure class="align-default" id="rk4-example-hvals-log-plot" style="width: 600px">
 <img alt="../_images/82fd90bbb29182da5dd47560bace950bb96cc9f91d4920bbeabcbe23705a18f8.png" src="../_images/82fd90bbb29182da5dd47560bace950bb96cc9f91d4920bbeabcbe23705a18f8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Plots of the the global truncation errors for the Euler method, Heuns’ method and the RK4 method on a loglog scale.</span><a class="headerlink" href="#rk4-example-hvals-log-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Plots of the the global truncation errors for the Euler method, Heuns’ method and the RK4 method on a loglog scale.</span><a class="headerlink" href="#rk4-example-hvals-log-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The loglog plots of the global truncation errors are linear functions where we can clearly see the distinction between the errors for the three methods. The order of the methods <span class="math notranslate nohighlight">\(n\)</span> can be approximated using</p>
