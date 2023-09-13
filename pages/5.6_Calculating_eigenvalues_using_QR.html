@@ -171,11 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.7_ODEs_exercises.html">1.5. Chapter 1 Exercises</a></li>
 </ul>
 </li>
@@ -439,7 +439,7 @@ document.write(`
 <li><p>For <span class="math notranslate nohighlight">\(k = 1, 2, \ldots\)</span> do</p>
 <ul>
 <li><p>Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(A_{prev} \gets A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A_{old} \gets A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(A \gets R Q\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\max(\operatorname{diag}(|A - A_{prev}|)) &lt; tol\)</span></p>
 <ul>
@@ -580,51 +580,32 @@ Solution<div class="sd-summary-down docutils">
 </div></section>
 <section id="code">
 <h2><span class="section-number">5.6.2. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">eigvals()</span></code> that uses the QR algorithm to compute the eigenvalues of a matrix. This is then used to calculate the eigenvalues of that matrix from <a class="reference internal" href="#qr-algorithm-example">Example 5.10</a>.</p>
+<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">eigvals()</span></code> that uses the QR algorithm to compute the eigenvalues of a matrix.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="k">def</span> <span class="nf">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
         <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">qrhh</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-        <span class="n">A</span><span class="p">,</span> <span class="n">Aprev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Q</span><span class="p">),</span> <span class="n">A</span>
-        <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">Aprev</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+        <span class="n">A</span><span class="p">,</span> <span class="n">Aold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Q</span><span class="p">),</span> <span class="n">A</span>
+        <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">Aold</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
             <span class="k">break</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-
-
-<span class="c1"># Define matrix</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-
-<span class="c1"># Calculate eigenvalues</span>
-<span class="n">lambda_</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lambda_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define matrix</span>
-<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span>
-<span class="w">     </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">];</span>
-
-<span class="c">% Calculate eigenvalues</span>
-<span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-4</span><span class="p">)</span>
-
-<span class="c">% --------------------------------------------------------------</span>
-<span class="k">function</span><span class="w"> </span>lambda<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">eigvals</span><span class="p">(</span>A, tol<span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>lambda<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">eigvals</span><span class="p">(</span>A, tol<span class="p">)</span>
 
 <span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
 <span class="w">    </span><span class="p">[</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">qrhh</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Aprev</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Aold</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
 <span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Aprev</span><span class="p">)))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Aold</span><span class="p">)))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
 <span class="w">        </span><span class="k">break</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>

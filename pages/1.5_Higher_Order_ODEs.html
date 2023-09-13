@@ -450,14 +450,15 @@ Solution<div class="sd-summary-down docutils">
 \[ \begin{align*}
     \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \mathbf{f}(t_n, \mathbf{y}_n).
 \end{align*} \]</div>
-<p>Where we have an initial value problem that is defined using a system of ODEs we need to know the initial value for each equation in the system, i.e., <span class="math notranslate nohighlight">\(y_1(t_0), y_2(t_0), \ldots\)</span>. The solution is a matrix with <span class="math notranslate nohighlight">\(n\)</span> columns</p>
+<p>Where we have an initial value problem that is defined using a system of ODEs we need to know the initial value for each equation in the system, i.e., <span class="math notranslate nohighlight">\(y_1(t_0), y_2(t_0), \ldots\)</span>. The solution is an <span class="math notranslate nohighlight">\(n \times N\)</span> matrix <span class="math notranslate nohighlight">\(Y\)</span> where the rows are formed from the solutions for <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{y} &amp;= \begin{pmatrix} 
-        y_1(t_0) &amp; y_2(t_0) &amp; \cdots &amp; y_N(t_0) \\
-        y_1(t_1) &amp; y_2(t_1) &amp; \cdots &amp; y_N(t_1) \\
-        \vdots &amp; \vdots &amp;  &amp; \vdots \\
-        y_1(t_n) &amp; y_2(t_n) &amp; \cdots &amp; y_N(t_n)
+    Y = 
+    \begin{pmatrix}
+        \leftarrow &amp; \textbf{y}_0 &amp; \rightarrow \\
+        \leftarrow &amp; \textbf{y}_1 &amp; \rightarrow \\
+        &amp; \vdots \\
+        \leftarrow &amp; \textbf{y}_n &amp; \rightarrow
     \end{pmatrix}
 \end{align*} \end{split}\]</div>
 <div class="proof example admonition" id="system-odes-example">

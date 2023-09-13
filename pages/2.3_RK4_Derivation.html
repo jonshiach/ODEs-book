@@ -171,11 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order Ordinary Differential Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.7_ODEs_exercises.html">1.5. Chapter 1 Exercises</a></li>
 </ul>
 </li>
@@ -387,8 +387,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="derivation-of-a-fourth-order-explicit-runge-kutta-method">
 <span id="derivation-of-rk4-section"></span><h1><span class="section-number">2.5. </span>Derivation of a fourth-order explicit Runge-Kutta method<a class="headerlink" href="#derivation-of-a-fourth-order-explicit-runge-kutta-method" title="Permalink to this heading">#</a></h1>
 <p>We saw in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a> that we derive a set of order conditions by listing all of the rooted trees up to a certain order and using the following relation between the elementary weight <span class="math notranslate nohighlight">\(\Phi\)</span> and density <span class="math notranslate nohighlight">\(\gamma\)</span> for each tree <span class="math notranslate nohighlight">\(t\)</span> in our set</p>
-<div class="math notranslate nohighlight">
-\[ \Phi = \dfrac{1}{\gamma}.\]</div>
+<div class="math notranslate nohighlight" id="equation-tree-order-condition">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-tree-order-condition" title="Permalink to this equation">#</a></span>\[\Phi = \dfrac{1}{\gamma}.\]</div>
 <p>To derive the order conditions for a fourth-order explicit method we consider all of the rooted trees up to and including order 4 (<a class="reference internal" href="#th-order-trees"><span class="std std-numref">Table 2.2</span></a>).</p>
 <table class="table" id="th-order-trees">
 <caption><span class="caption-number">Table 2.2 </span><span class="caption-text">Densities and elementary weights of all rooted trees up to fourth order.</span><a class="headerlink" href="#th-order-trees" title="Permalink to this table">#</a></caption>
@@ -433,7 +433,7 @@ document.write(`
 <td><p><span class="math notranslate nohighlight">\(\sum_i b_ic_i^3\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\sum_{i,j} b_ia_{ij}c_j^2\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\sum_{i,j} b_ia_{ij}c_ic_j\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\sum_{i,j,k} b_ia_{ij}a_{ik}c_j\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum_{i,j,k} b_ia_{ij}a_{jk}c_j\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></td>
 <td><p>4</p></td>
@@ -473,12 +473,55 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>So the fewest number of stages required for a fourth-order explicit Runge-Kutta method is 4. For an explicit method <span class="math notranslate nohighlight">\(c_1=0\)</span>, <span class="math notranslate nohighlight">\(a_{ij}=0\)</span> where <span class="math notranslate nohighlight">\(i \geq j\)</span> the  we obtain the following order conditions</p>
+<p>So the fewest number of stages required for a fourth-order explicit Runge-Kutta method is <span class="math notranslate nohighlight">\(s=4\)</span>. Using the trees from <a class="reference internal" href="#th-order-trees"><span class="std std-numref">Table 2.2</span></a> in equation <a class="reference internal" href="#equation-tree-order-condition">(2.15)</a> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  \sum_{i=1}^4 b_i &amp;= 1, \\
+  \sum_{i=1}^4 b_ic_i &amp;= \frac{1}{2}, \\
+  \sum_{i=1}^4 b_ic_i^2 &amp;= \frac{1}{3}, \\
+  \sum_{i=1}^4 b_ic_i^3 &amp;= \frac{1}{4}, \\
+  \sum_{i,j=1}^4 b_ia_{ij}c_j &amp;= \frac{1}{6}, \\
+  \sum_{i,j=1}^4 b_ia_{ij}c_ic_j &amp;= \frac{1}{8}, \\
+  \sum_{i,j=1}^4 b_ia_{ij}c_j^2 &amp;= \frac{1}{12}, \\
+  \sum_{i,j,k=1}^4 b_ia_{ij}a_{jk} c_j &amp;= \frac{1}{24}.
+\end{align*} \end{split}\]</div>
+<p>Since we are deriving the order conditions for an explicit method we know that <span class="math notranslate nohighlight">\(c_1=0\)</span> and <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> where <span class="math notranslate nohighlight">\(i \leq j\)</span> and we have the Butcher tableau</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  \begin{array}{c|cccc}
+    0 &amp; 0 \\
+    c_1 &amp; a_{21} \\
+    c_2 &amp; a_{31} &amp; a_{32} \\ 
+    c_3 &amp; a_{41} &amp; a_{42} &amp; a_{43} \\ \hline
+    &amp; b_1 &amp; b_2 &amp; b_3 &amp; b_4 
+  \end{array}
+\end{align*} \end{split}\]</div>
+<p>So we can omit any terms in the summations where the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are zero. For the first 4 order conditions we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align}
+    b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
+    b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac{1}{2}, \\
+    b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac{1}{3}, \\
+    b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &amp;= \frac{1}{4}, \\
+\end{align} \end{split}\]</div>
+<p>For the next 3 order conditions, the <span class="math notranslate nohighlight">\(a_{ij}c_j\)</span> term is only non-zero when <span class="math notranslate nohighlight">\(i = 3, 4\)</span> and <span class="math notranslate nohighlight">\(j = 2, 3\)</span> so we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &amp;= \frac{1}{6}, \\
+    b_3a_{32}c_3c_2 + b_4c_4a_{42}c_2 + b_4c_4a_{43}c_3 &amp;= \frac{1}{8}, \\
+    b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &amp;= \frac{1}{12}.
+\end{align*} \end{split}\]</div>
+<p>For the final order condition, the <span class="math notranslate nohighlight">\(a_{ij}a_{jk}c_j\)</span> term is only non-zero when <span class="math notranslate nohighlight">\(i=4\)</span>, <span class="math notranslate nohighlight">\(j=3\)</span> and <span class="math notranslate nohighlight">\(k=2\)</span> so we have</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+  b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}.
+\end{align*} \]</div>
+<p>We have now derived the order conditions for a fourth-order explicit Runge-Kutta method which are combined with the row sum condition equation <a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html#equation-row-sum-condition">(2.14)</a>. Using rooted trees to do this is much easier than expanding out the Taylor series for the ODE <span class="math notranslate nohighlight">\(y'=f(t, y)\)</span> and the general form of a 4-stage Runge-Kutta method which would require several pages of complicated calculus and algebra.</p>
 <div class="proof definition note admonition" id="rk4-order-conditions-definition">
 <p class="admonition-title"><span class="caption-number">Definition 2.6 </span> (Order conditions for a fourth-order explicit Runge-Kutta method)</p>
 <section class="definition-content" id="proof-content">
-<div class="amsmath math notranslate nohighlight" id="equation-bdcf1047-155e-4144-8d18-f72a8986cac0">
-<span class="eqno">(2.15)<a class="headerlink" href="#equation-bdcf1047-155e-4144-8d18-f72a8986cac0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
     b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac{1}{2}, \\
     b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac{1}{3}, \\
@@ -487,9 +530,10 @@ document.write(`
     b_3a_{32}c_3c_2 + b_4c_4a_{42}c_2 + b_4c_4a_{43}c_3 &amp;= \frac{1}{8}, \\
     b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &amp;= \frac{1}{12}, \\
     b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}.
-\end{align}\]</div>
+\end{align*} \end{split}\]</div>
 </section>
-</div><div class="proof example admonition" id="rk4-derivation-example">
+</div><p>A fourth-order explicit Runge-Kutta method has 8 order conditions expressed in 14 unknowns (6 <span class="math notranslate nohighlight">\(a_{ij}\)</span> values and 4 each of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span>). The row sum condition gives a further 3 order conditions so we have 11 order conditions and 14 unknowns. To derive a method we choose the value of 3 of the unknowns and solve for the rest.</p>
+<div class="proof example admonition" id="rk4-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 2.6 </span></p>
 <section class="example-content" id="proof-content">
 <p>Derive a fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = c_3 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(c_4 = 1\)</span>.</p>
