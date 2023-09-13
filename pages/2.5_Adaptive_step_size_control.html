@@ -553,13 +553,21 @@ Solution<div class="sd-summary-down docutils">
     &amp;= -21(0 + 0.1(\tfrac{2}{9}(1) + \tfrac{1}{3}(-0.098771) + \tfrac{4}{9}(1.083307))) + e^{-(0 + 0.1)} \\
     &amp;= -0.503777.
 \end{align*} \end{split}\]</div>
+<p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(y^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(y^{(p)}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y^{(p+1)} &amp;= y_0 + \frac{h}{9}(2 k_1 + 3k_2 + 4 k_3) \\
+    &amp;= 0 + \frac{0.1}{9}(2 (1) + 3(-0.098771) + 4 (1.083307)) \\
+    &amp;= 0.067077, \\
+    y^{(p)} &amp;= y_0 + \frac{h}{24} (7k_1 + 6 k_2 + 8 k_3 + 3 k_4) \\
+    &amp;= 0 + \frac{0.1}{24} (7 (1) + 6(-0.098771) + 8(1.083307) + 3(-0.503777)) \\
+    &amp;= 0.056510.
+\end{align*} \end{split}\]</div>
 <p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(\Delta\)</span></p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*} 
-    \Delta &amp;= h \max ( | (b_1 - b_1^*) k_1 | + | (b_2 - b_2^*) k_2 | + | (b_3 - b_3^*) k_3 | + | (b_4 - b_4^*) k_4 | ) \\
-    &amp;= 0.1 (| -\tfrac{5}{72} (1) | + | \tfrac{1}{12} (-0.098771) | + | \tfrac{1}{9} (1.083307) | + | -\tfrac{1}{8} (-0.503777) |) \\
-    &amp;= 0.010566.
-\end{align*} \end{split}\]</div>
+\[ \begin{align*} 
+    \Delta &amp;= | y^{(p+1)} - y^{(p)} | = | 0.067077 - 0.056510 | = 0.010566.
+\end{align*} \]</div>
 <p class="sd-card-text"><span class="math notranslate nohighlight">\(\Delta = 0.010566 &gt; 10^{-4}\)</span> so the step has failed. Recalculating <span class="math notranslate nohighlight">\(h\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -586,25 +594,26 @@ Solution<div class="sd-summary-down docutils">
     &amp;= -21(0 + 0.05(\tfrac{2}{9}(1) + \tfrac{1}{3}(0.450310) + \tfrac{4}{9}(0.608575))) + e^{-(0 + 0.05)} \\
     &amp;= 0.276286.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(\Delta\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*} 
-    \Delta &amp;= h \max ( | (b_1 - b_1^*) k_1 | + | (b_2 - b_2^*) k_2 | + | (b_3 - b_3^*) k_3 | + | (b_4 - b_4^*) k_4 | ) \\
-    &amp;= 0.1 ( | -\tfrac{5}{72} (1) | + | \tfrac{1}{12} (0.450310) | + | \tfrac{1}{9} (0.608575) | + | -\tfrac{1}{8} (0.276286) |) \\
-    &amp;= 5.825715 \times 10^{-5}.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(\Delta = 5.825715 \times 10^{-5} &lt; 10^{-4}\)</span> so the step has succeeded. Calculate the solution using a step length <span class="math notranslate nohighlight">\(h = 0.05\)</span></p>
+<p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(y^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(y^{(p)}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_1 &amp;= y_0 + \frac{h}{9} (2 k_1 + 3 k_2 + 4 k_3) \\
-    &amp;= 0 + \frac{0.05}{9} (2 (1) + 3 (0.450310) + 4 (0.608575)) \\
+    y^{(p+1)} &amp;= y_0 + \frac{h}{9}(2 k_1 + 3k_2 + 4 k_3) \\
+    &amp;= 0 + \frac{0.05}{9}(2 (1) + 3(-0.098771) + 4 (1.083307)) \\
     &amp;= 0.032140, \\
-    t_1 &amp;= t_0 + h = 0 + 0.05 = 0.05.
+    y^{(p)} &amp;= y_0 + \frac{h}{24} (7k_1 + 6 k_2 + 8 k_3 + 3 k_4) \\
+    &amp;= 0 + \frac{0.05}{24} (7 (1) + 6(-0.098771) + 8(1.083307) + 3(-0.503777)) \\
+    &amp;= 0.032082.
 \end{align*} \end{split}\]</div>
+<p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(\Delta\)</span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*} 
+    \Delta &amp;= | y^{(p+1)} - y^{(p)} | = | 0.032140 - 0.032082 | = 5.83 \times 10^{-5}.
+\end{align*} \]</div>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\Delta = 5.83 \times 10^{-5} &lt; 10^{-4}\)</span> so the step has been successful and <span class="math notranslate nohighlight">\(y_1 = y^{(p+1)} = 0.032140\)</span>.</p>
 <p class="sd-card-text">Calculate the new value of <span class="math notranslate nohighlight">\(h\)</span> for the next step</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    h &amp;= 0.05 \max \left( 0.5, \min \left( 2, 0.9 \left( \frac{10^{-4}}{5.825715 \times 10^{-5}} \right)^{1/3} \right) \right) \\
+    h &amp;= 0.05 \max \left( 0.5, \min \left( 2, 0.9 \left( \frac{10^{-4}}{5.83 \times 10^{-5}} \right)^{1/3} \right) \right) \\
     &amp;= 0.05 \max ( 0.5, \min (2, 1.077605)) \\
     &amp;= 0.053880.
 \end{align*} \end{split}\]</div>
@@ -685,7 +694,7 @@ Solution<div class="sd-summary-down docutils">
 </div></section>
 <section id="code">
 <span id="ssc-code-section"></span><h2><span class="section-number">2.7.3. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The code below defines the function <code class="docutils literal notranslate"><span class="pre">solveIVP_SSC()</span></code> which computes the solution to an initial value problem using step size control. This uses the same inputs as the <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code></span></a> with an addition optional input of <code class="docutils literal notranslate"><span class="pre">tol</span></code> which specifies the accuracy tolerance. Since we do not know beforehand how many steps will be required we assume the number steps will be large a while loop instead of a for loop for stepping through the solution. It is often useful to know how many successful and failed steps occurred in the solution and the total number of function evaluations (how often we evaluate <span class="math notranslate nohighlight">\(f(t,y)\)</span>). This function uses the counter <code class="docutils literal notranslate"><span class="pre">nfail</span></code> to track the number of failed steps and can be used to calculate the number of function evaluations.</p>
+<p>The code below defines the function <code class="docutils literal notranslate"><span class="pre">solveIVP_SSC()</span></code> which computes the solution to an initial value problem using step size control. This uses the same inputs as the <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code></span></a> with an additional input of <code class="docutils literal notranslate"><span class="pre">tol</span></code> which specifies the accuracy tolerance. Since we do not know beforehand how many steps will be required we assume the number steps will be large a while loop instead of a for loop for stepping through the solution.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -736,7 +745,7 @@ Python</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP_SSC</span><span class="p">(</span>f, tspan, y0, h, tol, solver<span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP_SSC</span><span class="p">(</span>f, tspan, y0, h, solver, tol<span class="p">)</span>
 
 <span class="c">% Define t and y arrays</span>
 <span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
