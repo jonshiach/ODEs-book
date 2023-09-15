@@ -222,6 +222,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="pages/6.5_Indirect_methods_exercises.html">6.5. Indirect methods exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pages/7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pages/7.1_Shooting_method.html">7.2. The shooting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pages/7.4_BVP_exercises.html">7.4. Chapter 5 exercises</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -342,6 +348,9 @@ document.write(`
    <a href="#cap-big-o-notation-definition"><strong>big-o-notation-definition</strong></a> | 
    <a href="#cap-butcher-tableau-definition"><strong>butcher-tableau-definition</strong></a> | 
    <a href="#cap-butcher-tableau-example"><strong>butcher-tableau-example</strong></a> | 
+   <a href="#cap-bvp-definition"><strong>bvp-definition</strong></a> | 
+   <a href="#cap-bvp-finite-difference-example"><strong>bvp-finite-difference-example</strong></a> | 
+   <a href="#cap-bvp-uniqueness-example"><strong>bvp-uniqueness-example</strong></a> | 
    <a href="#cap-cash-karp-method-equation"><strong>cash-karp-method-equation</strong></a> | 
    <a href="#cap-cholesky-algorithm"><strong>cholesky-algorithm</strong></a> | 
    <a href="#cap-cholesky-example"><strong>cholesky-example</strong></a> | 
@@ -418,6 +427,9 @@ document.write(`
    <a href="#cap-rk4-derivation-example"><strong>rk4-derivation-example</strong></a> | 
    <a href="#cap-rk4-example"><strong>rk4-example</strong></a> | 
    <a href="#cap-rk4-order-conditions-definition"><strong>rk4-order-conditions-definition</strong></a> | 
+   <a href="#cap-secant-method-algorithm"><strong>secant-method-algorithm</strong></a> | 
+   <a href="#cap-secant-method-example"><strong>secant-method-example</strong></a> | 
+   <a href="#cap-shooting-example-1"><strong>shooting-example-1</strong></a> | 
    <a href="#cap-sor-method-definition"><strong>sor-method-definition</strong></a> | 
    <a href="#cap-sor-method-example"><strong>sor-method-example</strong></a> | 
    <a href="#cap-spectral-radius-definition"><strong>spectral-radius-definition</strong></a> | 
@@ -426,7 +438,9 @@ document.write(`
    <a href="#cap-step-size-control-algorithm"><strong>step-size-control-algorithm</strong></a> | 
    <a href="#cap-stiffness-ratio-definition"><strong>stiffness-ratio-definition</strong></a> | 
    <a href="#cap-system-odes-example"><strong>system-odes-example</strong></a> | 
-   <a href="#cap-taylor-series-definition"><strong>taylor-series-definition</strong></a>
+   <a href="#cap-taylor-series-definition"><strong>taylor-series-definition</strong></a> | 
+   <a href="#cap-theorem-1"><strong>theorem-1</strong></a> | 
+   <a href="#cap-thomas-method-definition"><strong>thomas-method-definition</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -509,6 +523,30 @@ document.write(`
        <td></td>
        <td>
        <a href="pages/2.0_ERKs.html#butcher-tableau-example"><code class="xref">butcher-tableau-example</code></a> <em>(pages/2.0_ERKs)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-bvp-definition"><td></td><td>
+       <strong>bvp-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/7.0_BVPs.html#bvp-definition"><code class="xref">bvp-definition</code></a> <em>(pages/7.0_BVPs)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-bvp-finite-difference-example"><td></td><td>
+       <strong>bvp-finite-difference-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/7.2_Finite_difference_method.html#bvp-finite-difference-example"><code class="xref">bvp-finite-difference-example</code></a> <em>(pages/7.2_Finite_difference_method)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-bvp-uniqueness-example"><td></td><td>
+       <strong>bvp-uniqueness-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/7.0_BVPs.html#bvp-uniqueness-example"><code class="xref">bvp-uniqueness-example</code></a> <em>(pages/7.0_BVPs)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-cash-karp-method-equation"><td></td><td>
@@ -1119,6 +1157,30 @@ document.write(`
        <a href="pages/2.3_RK4_Derivation.html#rk4-order-conditions-definition"><code class="xref">rk4-order-conditions-definition</code></a> <em>(pages/2.3_RK4_Derivation)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-secant-method-algorithm"><td></td><td>
+       <strong>secant-method-algorithm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/7.1_Shooting_method.html#secant-method-algorithm"><code class="xref">secant-method-algorithm</code></a> <em>(pages/7.1_Shooting_method)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-secant-method-example"><td></td><td>
+       <strong>secant-method-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/7.1_Shooting_method.html#secant-method-example"><code class="xref">secant-method-example</code></a> <em>(pages/7.1_Shooting_method)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-shooting-example-1"><td></td><td>
+       <strong>shooting-example-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/7.1_Shooting_method.html#shooting-example-1"><code class="xref">shooting-example-1</code></a> <em>(pages/7.1_Shooting_method)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-sor-method-definition"><td></td><td>
        <strong>sor-method-definition</strong></td><td></td></tr>
      <tr>
@@ -1189,6 +1251,22 @@ document.write(`
        <td></td>
        <td>
        <a href="pages/1.1_Taylor_Series.html#taylor-series-definition"><code class="xref">taylor-series-definition</code></a> <em>(pages/1.1_Taylor_Series)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-1"><td></td><td>
+       <strong>theorem-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/7.0_BVPs.html#theorem-1"><code class="xref">theorem-1</code></a> <em>(pages/7.0_BVPs)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thomas-method-definition"><td></td><td>
+       <strong>thomas-method-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="pages/7.2_Finite_difference_method.html#thomas-method-definition"><code class="xref">thomas-method-definition</code></a> <em>(pages/7.2_Finite_difference_method)</em></td><td>
        <em>definition</em></td></tr>
    </table>
 
