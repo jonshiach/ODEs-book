@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>7.3. The finite-difference method &#8212; Runge-Kutta Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/7.2_Finite_difference_method';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/ODEs-book/pages/7.2_Finite_difference_method.html" />
+    <link rel="shortcut icon" href="../_static/curve-icon-11.jpeg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.4. Chapter 5 exercises" href="7.4_BVP_exercises.html" />
+    <link rel="prev" title="7.2. The shooting method" href="7.1_Shooting_method.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/MMU_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/MMU_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Runge-Kutta Methods
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.7_ODEs_exercises.html">1.5. Chapter 1 Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_Exercises.html">2.8. Chapter 2 Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Chapter 3 Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Chapter 4 Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_Matrix_decomposition.html">5. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.1_LU_decomposition.html">5.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2_Solving_systems_using_LU.html">5.2. Solving systems of linear equations using LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.3. LU decomposition with partial pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_Jacobi_method.html">6.1. Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_Gauss_Seidel_method.html">6.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Convergence_of_indirect_methods.html">6.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_SOR_method.html">6.4. The Successive Over Relaxation (SOR) method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Indirect_methods_exercises.html">6.5. Indirect methods exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 5 exercises</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="8.1_Python_code.html">Python Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8.2_MATLAB_code.html">MATLAB Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8.3_References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pages/7.2_Finite_difference_method.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The finite-difference method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thomas-algorithm">7.3.1. The Thomas algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">7.3.2. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-vs-number-of-nodes">7.3.3. Order vs number of nodes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-finite-difference-method">
+<span id="finite-difference-method-section"></span><h1><span class="section-number">7.3. </span>The finite-difference method<a class="headerlink" href="#the-finite-difference-method" title="Permalink to this heading">#</a></h1>
+<p>The finite-difference method for solving a boundary value problem replaces the derivatives in the ODE with <a href="https://en.wikipedia.org/wiki/Finite_difference" target="_blank">finite-difference approximations</a> derived from the Taylor series. This results in linear system of algebraic equations that can be solved to give an approximation of the solution to the BVP.</p>
+<p>The derivatives of <span class="math notranslate nohighlight">\(y_i\)</span> are approximated using values of neighbouring nodes <span class="math notranslate nohighlight">\(y_{i+1}\)</span>, <span class="math notranslate nohighlight">\(y_{i-1}\)</span> etc. using expressions derived by truncating the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition">Taylor series</a> and rearranging to make the derivative term the subject. Some common finite-difference approximations are listed in <a class="reference internal" href="#finite-difference-approximations-table"><span class="std std-numref">Table 7.2</span></a>.</p>
+<table class="table" id="finite-difference-approximations-table">
+<caption><span class="caption-number">Table 7.2 </span><span class="caption-text">Finite-difference approximations</span><a class="headerlink" href="#finite-difference-approximations-table" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Finite-difference approximation</p></th>
+<th class="head"><p>Order</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_{i+1} - y_i}{h}\)</span></p></td>
+<td><p>first</p></td>
+<td><p>forward difference</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_i - y_{i-1}}{h}\)</span></p></td>
+<td><p>first</p></td>
+<td><p>backward difference</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_{i+1} - y_{i-1}}{2h}\)</span></p></td>
+<td><p>second</p></td>
+<td><p>central difference</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(y'' = \dfrac{y_{i-1} - 2 y_i + y_{i+1}}{h^2}\)</span></p></td>
+<td><p>second</p></td>
+<td><p>symmetric difference</p></td>
+</tr>
+</tbody>
+</table>
+<p>The solution to a boundary value problem using then finite-difference method is determined by approximating the derivatives in the ODE using finite-differences. Consider the following boundary value problem</p>
+<div class="math notranslate nohighlight">
+\[ y'' = f(t,y), \qquad t \in [t_{\min}, t_{\max}], \qquad y(t_{\min}) = \alpha, \qquad y(t_{\max}) = \beta. \]</div>
+<p>Using the symmetric difference to approximate <span class="math notranslate nohighlight">\(y''\)</span> in the ODE we have</p>
+<div class="math notranslate nohighlight">
+\[ y_{i-1} - 2y_i + y_{i+1} = h^2 f(t_i ,y_i). \]</div>
+<p>Since we know that <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and <span class="math notranslate nohighlight">\(y_n = \beta\)</span> then the first and last equations become we have a system of <span class="math notranslate nohighlight">\(n\)</span> equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_0 &amp;= \alpha, \\
+    y_0 - 2y_1 + y_2 &amp;= h^2 f(t_1, y_1), \\
+    &amp; \vdots \\
+    y_{n-2} - 2y_{n-1} + y_{n} &amp;= h^2 f(t_{n-1}, y_{n-1}), \\
+    y_{n} &amp;= \beta,
+\end{align*} \end{split}\]</div>
+<p>which can be written as the matrix equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        1 &amp; 0  \\
+        1 &amp; -2 &amp; 1  \\
+        &amp; \ddots &amp; \ddots &amp; \ddots \\
+        &amp; &amp; 1 &amp; -2 &amp; 1 \\
+        &amp; &amp; &amp; 0 &amp; 1
+    \end{pmatrix}
+    \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{n-1} \\ y_n \end{pmatrix} =
+    \begin{pmatrix} \alpha \\ f(t_1, y_1) \\ \vdots \\ f(t_{n-1}, y_{n-1}) \\ \beta \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Once the linear system is defined it can be solved using LU decomposition.</p>
+<section id="the-thomas-algorithm">
+<span id="thomas-algorithm-section"></span><h2><span class="section-number">7.3.1. </span>The Thomas algorithm<a class="headerlink" href="#the-thomas-algorithm" title="Permalink to this heading">#</a></h2>
+<p>The coefficient matrix for the linear system that results from the application of the second-order symmetric finite-difference approximation of <span class="math notranslate nohighlight">\(y''\)</span> is <a href="https://en.wikipedia.org/wiki/Tridiagonal_matrix" target="_blank">tri-diagonal matrix</a> (the only non-zero elements are on the main, lower and upper diagonals). The usual methods for solving linear systems of equations such as Gaussian elimination and LU decomposition could be applied here, however there is a more efficient method that can solve tri-diagonal systems called the <a href="https://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm" target="_blank">Thomas algorithm</a>).</p>
+<div class="proof definition note admonition" id="thomas-method-definition">
+<p class="admonition-title"><span class="caption-number">Definition 7.2 </span> (The Thomas algorithm)</p>
+<section class="definition-content" id="proof-content">
+<p>Given a tri-diagonal linear system of equations of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix} 
+        b_0 &amp; c_0 \\
+        a_1 &amp; b_1 &amp; c_1 \\
+        &amp; \ddots &amp; \ddots &amp; \ddots \\
+        &amp; &amp; a_{n-1} &amp; b_{n-1} &amp; c_{n-1} \\
+        &amp; &amp; &amp; a_n &amp; b_n
+    \end{pmatrix}
+    \begin{pmatrix} x_0 \\ x_1 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix} =
+    \begin{pmatrix} d_0 \\ d_1 \\ \vdots \\ d_{n-1} \\ d_n \end{pmatrix},
+\end{align*} \end{split}\]</div>
+<p>the solution can be found by performing a forward sweep on the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(d_i\)</span> coefficients</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    b_i &amp;= b_i - c_{i-1} \left( \frac{a_i}{b_{i-1}} \right), &amp; i = 1, 2, \ldots, n, \\
+    d_i &amp;= d_i - d_{i-1} \left( \frac{a_i}{b_{i-1}} \right), &amp; i = 1, 2, \ldots, n, 
+\end{align*} \end{split}\]</div>
+<p>and then calculate the values of <span class="math notranslate nohighlight">\(x_i\)</span> using back substitution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_n &amp;= \frac{d_n}{b_n}, \\
+    x_i &amp;= \frac{d_i - c_i x_{i+1}}{b_i}, \qquad i = n-1, n-2, \ldots, 1.
+\end{align*} \end{split}\]</div>
+</section>
+</div><div class="proof example seealso admonition" id="bvp-finite-difference-example">
+<p class="admonition-title"><span class="caption-number">Example 7.4 </span></p>
+<section class="example-content" id="proof-content">
+<p>Use the finite-difference method to solve the boundary below using a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    y'' - y' - y = 0, \qquad y(0) = 0, \qquad y(1) = 2.
+\end{align*} \]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Using a forward difference to approximate <span class="math notranslate nohighlight">\(y'\)</span> and a symmetric difference to approximate <span class="math notranslate nohighlight">\(y''\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \frac{y_{i-1} -2y_i +y_{i+1} }{h^2 }-\frac{y_{i+1} -y_i }{h}-y_i = 0,
+\end{align*} \]</div>
+<p class="sd-card-text">which can be simplified to</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    y_{i-1} +(h-h^2 -2)y_i +(1-h)y_{i+1} = 0.
+\end{align*} \]</div>
+<p class="sd-card-text">This gives the following system of linear equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_0 &amp;= 0, \\
+    y_0 + (h - h^2 - 2) y_1 + (1 - h) y_2 &amp;= 0, \\
+    y_1 + (h - h^2 - 2) y_2 + (1 - h) y_3 &amp;= 0, \\
+    &amp;\vdots \\
+    y_{n-2} + (h - h^2 - 2) y_{n-1} + (1 - h) y_n &amp;= 0, \\
+    y_n &amp;= 2.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">which we can write the linear system as the matrix equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        1 &amp; 0 &amp; &amp;  &amp;  &amp; \\
+        1 &amp; h-h^2 -2 &amp; 1-h &amp;  &amp;  &amp; \\
+        &amp;  \ddots  &amp; \ddots  &amp; \ddots  &amp; \\
+        &amp;  &amp; 1 &amp; h-h^2 -2 &amp; 1-h \\
+        &amp;  &amp;  &amp; 0 &amp; 1
+    \end{pmatrix} 
+    \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{n-1} \\ y_n \end{pmatrix}  =
+    \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ 2  \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">If we use a step length of <span class="math notranslate nohighlight">\(h=0.2\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \mathbf{t} = (0, 0.2, 0.4, 0.6, 0.8, 1),
+\end{align*} \]</div>
+<p class="sd-card-text">and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        1 &amp; 0 \\
+        1 &amp; -1.84 &amp; 0.8 \\
+        &amp; 1 &amp; -1.84 &amp; 0.8 \\
+        &amp; &amp; 1 &amp; -1.84 &amp; 0.8 \\
+        &amp; &amp; &amp; 1 &amp; -1.84 &amp; 0.8 \\
+        &amp; &amp; &amp; &amp; 0 &amp; 1
+    \end{pmatrix}
+    \begin{pmatrix} y_0 \\ y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \end{pmatrix} = 
+    \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 2 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Performing the forward sweep of the Thomas algorithm</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    b_1 &amp;= 1, \\ 
+    b_2 &amp;= b_2 - c_1 \left( \frac{a_2}{b_1} \right) = -1.84 - 0 \left( \frac{1}{1} \right) = -1.84, \\
+    b_3 &amp;= b_3 - c_2 \left( \frac{a_3}{b_2} \right) = -1.84 - 0.8 \left( \frac{1}{-2.64} \right) = -1.405217, \\
+    b_4 &amp;= b_4 - c_3 \left( \frac{a_4}{b_3} \right) = -1.84 - 0.8 \left( \frac{1}{-1.405217} \right) = -1.270693, \\
+    b_5 &amp;= b_5 - c_4 \left( \frac{a_5}{b_4} \right) = -1.84 - 0.8 \left( \frac{1}{-1.270693} \right) = -1.210422, \\
+    b_6 &amp;= b_6 - c_5 \left( \frac{a_6}{b_5} \right) = 1 - 0.8 \left( \frac{0}{-1.210422} \right) = 1, \\
+    d_1 &amp;= 0, \\
+    d_2 &amp;= d_2 - d_1 \left( \frac{a_2}{b_1} \right) = 0 - 0 \left( \frac{1}{1} \right) = 0, \\
+    d_3 &amp;= d_3 - d_2 \left( \frac{a_3}{b_2} \right) = 0 - 0 \left( \frac{1}{-2.64} \right) = 0, \\
+    d_4 &amp;= d_4 - d_3 \left( \frac{a_4}{b_3} \right) = 0 - 0 \left( \frac{1}{-1.405217} \right) = 0, \\
+    d_5 &amp;= d_5 - d_4 \left( \frac{a_5}{b_4} \right) = 0 - 0 \left( \frac{1}{-1.270693} \right) = 0, \\
+    d_6 &amp;= d_6 - d_5 \left( \frac{a_6}{b_5} \right) = 2 - 0 \left( \frac{0}{-1.270693} \right) = 2, \\
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Performing the back substitution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_6 &amp;= \frac{d_6}{b_6} = \frac{2}{1} = 2, \\
+    y_5 &amp;= \frac{d_5 - c_5 y_6}{b_5} = \frac{0 - 0.8(2)}{-1.210422} = 1.321853, \\
+    y_4 &amp;= \frac{d_4 - c_4 y_5}{b_4} = \frac{0 - 0.8(1.321853)}{-1.270693} = 0.832209, \\
+    y_3 &amp;= \frac{d_3 - c_3 y_4}{b_3} = \frac{0 - 0.8(0.832209)}{-1.405217} = 0.473782, \\
+    y_2 &amp;= \frac{d_2 - c_2 y_3}{b_2} = \frac{0 - 0.8(0.473782)}{-2.64} = 0.205992, \\
+    y_1 &amp;= \frac{d_1 - c_1 y_2}{b_1} = \frac{0 - 0(0.205992)}{1} = 0, \\
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">The solutions to this boundary value problem using the finite-difference method are tabulated below.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_n\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text">Exact</p></th>
+<th class="head text-center"><p class="sd-card-text">Error</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.0</p></td>
+<td class="text-center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-center"><p class="sd-card-text">0.00e+00</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.2</p></td>
+<td class="text-center"><p class="sd-card-text">0.205992</p></td>
+<td class="text-center"><p class="sd-card-text">0.221296</p></td>
+<td class="text-center"><p class="sd-card-text">1.53e-02</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.4</p></td>
+<td class="text-center"><p class="sd-card-text">0.473782</p></td>
+<td class="text-center"><p class="sd-card-text">0.501419</p></td>
+<td class="text-center"><p class="sd-card-text">2.76e-02</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.6</p></td>
+<td class="text-center"><p class="sd-card-text">0.832209</p></td>
+<td class="text-center"><p class="sd-card-text">0.865840</p></td>
+<td class="text-center"><p class="sd-card-text">3.36e-02</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.8</p></td>
+<td class="text-center"><p class="sd-card-text">1.321853</p></td>
+<td class="text-center"><p class="sd-card-text">1.349412</p></td>
+<td class="text-center"><p class="sd-card-text">2.76e-02</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1.0</p></td>
+<td class="text-center"><p class="sd-card-text">2.000000</p></td>
+<td class="text-center"><p class="sd-card-text">2.000000</p></td>
+<td class="text-center"><p class="sd-card-text">0.00e+00</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details></section>
+</div></section>
+<section id="code">
+<h2><span class="section-number">7.3.2. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<p>The code below calculates the solution to the boundary value problem in  <a class="reference internal" href="#bvp-finite-difference-example">Example 7.4</a>. The coefficient arrays <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> along with the constant vector <code class="docutils literal notranslate"><span class="pre">d</span></code> are defined for this problem and the <code class="docutils literal notranslate"><span class="pre">tridiagonal_solver()</span></code> function is used to solve the linear system. Note that the values in <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> are specific to the problem being solved and will need to be changed when solving other boundary value problems.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># allows use of LaTeX in labels</span>
+
+<span class="c1"># Define tridiagonal solver</span>
+<span class="k">def</span> <span class="nf">tridiagonal_solver</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">x</span>
+    
+
+<span class="c1"># Define exact solution</span>
+<span class="k">def</span> <span class="nf">exact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+ 
+
+<span class="c1"># Define BVP parameters</span>
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
+<span class="n">bvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># boundary values</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.2</span>         <span class="c1"># step length</span>
+
+<span class="c1"># Define linear system</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="n">b</span><span class="p">[::</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">d</span><span class="p">[::</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">bvals</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span> <span class="o">-</span> <span class="n">h</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">h</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        
+<span class="c1"># Solve linear system</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tridiagonal_solver</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+<span class="c1"># Print table of solution values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|  t  |    y     |  Exact   |  Error   |&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|:---:|:--------:|:--------:|:--------:|&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">6.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">exact</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="si">:</span><span class="s2">6.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="si">:</span><span class="s2">6.2e</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Plot solution</span>
+<span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Finite-difference method&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define ODE</span>
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)];</span>
+
+<span class="c">% Define exact solution</span>
+<span class="n">exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">exp</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nb">exp</span><span class="p">(</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c">% Solve BVP using finite-difference method</span>
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">b</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">])</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">d</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">])</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bvals</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span>^<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="w">    </span><span class="n">d</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">end</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tridiagonal_solver</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+
+<span class="c">% Calculate exact solution</span>
+<span class="n">t_exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="n">y_exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">);</span>
+
+<span class="c">% Plot solutions</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span><span class="w"> </span><span class="n">y_exact</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;k&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&quot;b&quot;</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
+<span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;$t$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;$y$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Exact&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Finite-difference method&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&quot;northwest&quot;</span><span class="p">)</span>
+
+<span class="c">%% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">tridiagonal_solver</span><span class="p">(</span>a, b, c, d<span class="p">)</span>
+
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">d</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="order-vs-number-of-nodes">
+<h2><span class="section-number">7.3.3. </span>Order vs number of nodes<a class="headerlink" href="#order-vs-number-of-nodes" title="Permalink to this heading">#</a></h2>
+<p>The solutions seen in <a class="reference internal" href="#bvp-finite-difference-example">Example 7.4</a> seem to show that the finite-difference method produces reasonably accurate results for this boundary value problem. One way to improve on the accuracy of our solution is to increase the number of nodes used.</p>
+<p>Consider the solution of the following BVP using the finite-difference method</p>
+<div class="math notranslate nohighlight">
+\[ y'' + 3ty' + 7y = \cos (2t), \qquad y(0) = 1, \qquad y(3) = 0. \]</div>
+<p>Using forward and symmetric differences to approximate <span class="math notranslate nohighlight">\(y'\)</span> and <span class="math notranslate nohighlight">\(y''\)</span> respectively gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \frac{y_{i-1} - 2y_i + y_{i+1}}{h^2} + 3t_i \left( \frac{y_{i+1} - y_i}{h}\right) + 7y_i &amp;= \cos(2t_i) \\
+    y_{i-1} + (7h^2 - 3ht_i - 2)y_i + (1 + 3ht_i)y_{i+1} &amp;= h^2 \cos(2t_i).
+\end{align*} \end{split}\]</div>
+<p>So the linear system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix} 
+        1 &amp; 0 \\
+        1 &amp; 7h^2 - 3ht_1 - 2 &amp; 1 + 3ht_1 \\
+        &amp; \ddots &amp; \ddots &amp; \ddots \\
+        &amp;&amp; 1 &amp; 7h^2 - 3ht_{N-1} - 2 &amp; 1 + 3ht_{N-1} \\
+        &amp;&amp;&amp; 0 &amp; 1
+    \end{pmatrix}
+    \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{N-1} \\ y_N \end{pmatrix} \\
+    = \begin{pmatrix} 1 \\ h^2 \cos(2t_1) \\ \vdots \\ h^2 \cos(2t_{N-1}) \\ 0 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>The solution of this BVP is shown in <a class="reference internal" href="#bvp-fdm-accuracy-figure-1"><span class="std std-numref">Fig. 7.2</span></a> for <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h = 0.005\)</span>. Since we used a first-order approximation for <span class="math notranslate nohighlight">\(y'\)</span> the error for this method is <span class="math notranslate nohighlight">\(O(h)\)</span> and we expect the solution using <span class="math notranslate nohighlight">\(h=0.005\)</span> to be more accurate.</p>
+<figure class="align-default" id="bvp-fdm-accuracy-figure-1" style="width: 600px">
+<img alt="../_images/b23e0384a9ca7db92d171fbe1fb8716691fcbced97a7c92ce0cd5fd88381fad3.png" src="../_images/b23e0384a9ca7db92d171fbe1fb8716691fcbced97a7c92ce0cd5fd88381fad3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' + 3ty' + 7y = \cos (2t)\)</span>, <span class="math notranslate nohighlight">\(t \in [0,3]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span>, <span class="math notranslate nohighlight">\(y(3) = 0\)</span> using first-order finite-difference approximations with <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span>.</span><a class="headerlink" href="#bvp-fdm-accuracy-figure-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To obtain a more accurate solution, instead of increasing the number of nodes we could use the <a class="reference internal" href="#finite-difference-method-section"><span class="std std-ref">central difference approximation</span></a> (which is second-order accurate) to approximate <span class="math notranslate nohighlight">\(y'\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \frac{y_{i-1} - 2y_i + y_{i+1}}{h^2} + 3t_i\left( \frac{y_{i+1} - y_{i-1}}{2h} \right) + 7y_i &amp;= \cos(2t_i) \\
+    (2 - 3ht_i)y_{i-1} + (14h^2 - 4)y_i + (2 + 3ht_i)y_{i+1} &amp;= 2h^2 \cos(2t_i).
+\end{align*} \end{split}\]</div>
+<p>So the linear system for the second-order finite-difference method is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix} 
+        1 &amp; 0 \\
+        2 - 3ht_1 &amp; 14h^2 - 4 &amp; 2 + 3ht_1 \\
+        &amp; \ddots &amp; \ddots &amp; \ddots \\
+        &amp;&amp; 2 - 3ht_{N-1} &amp; 14h^2 - 4 &amp; 2 + 3ht_{N-1} \\
+        &amp;&amp;&amp; 0 &amp; 1
+    \end{pmatrix}
+    \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{N-1} \\ y_N \end{pmatrix} \\
+    = \begin{pmatrix} 1 \\ 2h^2 \cos(2t_1) \\ \vdots \\ 2h^2 \cos(2t_{N-1}) \\ 0 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>The solution using the second-order finite difference method with <span class="math notranslate nohighlight">\(h=0.05\)</span> has been plotted against the first-order solution using <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span> in <a class="reference internal" href="#bvp-fdm-accuracy-figure-2"><span class="std std-numref">Fig. 7.3</span></a>. The second order solution gives good agreement with the first order solution using 10 times fewer nodes.</p>
+<figure class="align-default" id="bvp-fdm-accuracy-figure-2" style="width: 600px">
+<img alt="../_images/557d74892e3a329876183ac8f6c4e888c4c563deee27a913a6bbba2a66d4bd07.png" src="../_images/557d74892e3a329876183ac8f6c4e888c4c563deee27a913a6bbba2a66d4bd07.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' + 3ty' + 7y = \cos (2t)\)</span>, <span class="math notranslate nohighlight">\(t \in [0,3]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span>, <span class="math notranslate nohighlight">\(y(3) = 0\)</span> using first-order and second-order finite-difference approximations with <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span>.</span><a class="headerlink" href="#bvp-fdm-accuracy-figure-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="7.1_Shooting_method.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>The shooting method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="7.4_BVP_exercises.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>Chapter 5 exercises</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thomas-algorithm">7.3.1. The Thomas algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">7.3.2. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-vs-number-of-nodes">7.3.3. Order vs number of nodes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Jon Shiach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

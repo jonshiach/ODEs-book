@@ -220,6 +220,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="6.5_Indirect_methods_exercises.html">6.5. Indirect methods exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 5 exercises</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -511,145 +517,145 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </div>
-<div class="exercise note admonition" id="ch2-ex-rk3-order-cond">
+<!-- :::{exercise}
+:class: note
+:label: ch2-ex-rk3-order-cond
+
+Derive the order conditions for a third-order explicit Runge-Kutta method.
+:::
+
+::::{solution} ch2-ex-rk3-order-cond
+:class: dropdown
+:label: ch2-ex-rk3-order-cond-sol
+
+Listing all of the rooted trees up to and including order 3.
+
+:::{list-table}
+:header-rows: 0
+
+* - Tree
+  - ![](/images/tree_1.svg)
+  - ![](/images/tree_2.svg)
+  - ![](/images/tree_3_1.svg)
+  - ![](/images/tree_3_2.svg)
+* - $\Phi$ 
+  - $\displaystyle\sum_{i=1}^{3} b_i$
+  - $\displaystyle\sum_{i=1}^{3} b_ic_i$
+  - $\displaystyle\sum_{i=1}^{3} b_ic_i^2$
+  - $\displaystyle\sum_{i,j=1}^3 b_ia_{ij}c_j$
+* - $\gamma$
+  - 1
+  - 2
+  - 3
+  - 6
+:::
+
+Using $\Phi = \dfrac{1}{\gamma}$ and that $c_1=0$, $a_{ij} = 0$ where $i \geq j$
+
+$$ \begin{align*}
+    b_1 + b_2 + b_3 &= 1, \\
+    b_2c_2 + b_3c_3 &= \frac{1}{2}, \\
+    b_2c_2^2 + b_3c_3^2 &= \frac{1}{3}, \\
+    b_3a_{32}c_2 &= \frac{1}{6}.
+\end{align*} $$
+
+:::: --><!-- :::{exercise} 
+:class: note
+:label: ch2-ex-myrk3-derivation
+
+Derive a third-order explicit Runge-Kutta method where $c_2 = \frac{1}{2}$ and $c_3 = 1$.
+:::
+
+::::::{solution} ch2-ex-myrk3-derivation
+:class: dropdown
+:label: ch2-ex-myrk3-derivation-sol
+
+Substituting the values of $c_2$ and $c_3$ into the order conditions gives
+
+$$ \begin{align*}
+    b_1 + b_2 + b_3 &= 1, \\
+    \frac{1}{2}b_2 + b_3 &= \frac{1}{2}, \\
+    \frac{1}{4}b_2 + b_3 &= \frac{1}{3}, \\
+    \frac{1}{2}b_3a_{32} &= \frac{1}{6}.
+\end{align*} $$
+
+Solving the second and third equations gives $b_2 = \frac{2}{3}$ and $b_3 = \frac{1}{6}$. Substituting these into the first equation gives $b_1 = \frac{1}{6}$. Substituting the $b$ values into the fourth equation gives $a_{32} = 2$. Applying the row sum conditions gives $a_{21} = c_2 = \frac{1}{2}$ and $a_{31} = c_1 - a_{32} = 1 - 2 = -1$. The Butcher tableau for this third-order explicit Runge-Kutta method is
+
+$$ \begin{align*}
+    \begin{array}{c|ccc}
+        0 & \\
+        1/2 & 1/2 \\
+        1 & -1 & 2 \\ \hline
+        & 1/6 & 2/3 & 1/6
+    \end{array}
+\end{align*} $$
+
+This is known as Kutta's third-order method.
+
+:::::{tab-set}
+::::{tab-item} Python
+
+```python
+import sympy as sp
+sp.init_printing(use_latex="mathjax")
+
+# Declare symbolic variables
+a21, a31, a32, b1, b2, b3 = sp.symbols('a21, a31, a32, b1, b2, b3')
+c2 = sp.Rational(1,2)
+c3 = 1
+
+# Define order conditions
+eq1 = b1 + b2 + b3 - 1
+eq2 = b2 * c2 + b3 * c3 - sp.Rational(1,2)
+eq3 = b2 * c2 ** 2 + b3 * c3 ** 2 - sp.Rational(1,3)
+eq4 = b3 * a32 * c2 - sp.Rational(1,6)
+
+# Row sum conditions
+eq5 = c2 - a21
+eq6 = c3 - a31 - a32
+
+# Solve order conditions
+sp.solve((eq1, eq2, eq3, eq4, eq5, eq6))
+```
+
+::::
+
+::::{tab-item} MATLAB
+
+```matlab
+% Define symbolic variables
+syms a21 a31 a32 b1 b2 b3
+
+% Define c values
+c2 = 1/2;
+c3 = 1;
+
+% Define order conditions
+eq1 = b1 + b2 + b3 == 1;
+eq2 = b2 * c2 + b3 * c3 == 1/2;
+eq3 = b2 * c2^2 + b3 * c3^2 == 1/3;
+eq4 = b3 * a32 * c2 == 1/6;
+
+% Define row sum conditions
+eq5 = c2 == a21;
+eq6 = c3 == a31 + a32;
+
+% Solve order conditions
+solve(eq1, eq2, eq3, eq4, eq5, eq6)
+```
+
+::::
+:::::
+:::::: --><div class="exercise admonition" id="ch2-ex-myrk4-derivation">
 
 <p class="admonition-title"><span class="caption-number">Exercise 2.4 </span></p>
 <section id="exercise-content">
-<p>Derive the order conditions for a third-order explicit Runge-Kutta method.</p>
+<p>Derive an explicit fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = \frac{1}{4}\)</span>, <span class="math notranslate nohighlight">\(c_3 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(c_4 = 1\)</span>.</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="ch2-ex-rk3-order-cond-sol">
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-7">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-rk3-order-cond"> Exercise 2.4</a></p>
-<section id="solution-content">
-<p>Listing all of the rooted trees up to and including order 3.</p>
-<table class="table">
-<tbody>
-<tr class="row-odd"><td><p>Tree</p></td>
-<td><p><img alt="" src="../_images/tree_1.svg" /></p></td>
-<td><p><img alt="" src="../_images/tree_2.svg" /></p></td>
-<td><p><img alt="" src="../_images/tree_3_1.svg" /></p></td>
-<td><p><img alt="" src="../_images/tree_3_2.svg" /></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\Phi\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i=1}^{3} b_i\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i=1}^{3} b_ic_i\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i=1}^{3} b_ic_i^2\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j=1}^3 b_ia_{ij}c_j\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></td>
-<td><p>1</p></td>
-<td><p>2</p></td>
-<td><p>3</p></td>
-<td><p>6</p></td>
-</tr>
-</tbody>
-</table>
-<p>Using <span class="math notranslate nohighlight">\(\Phi = \dfrac{1}{\gamma}\)</span> and that <span class="math notranslate nohighlight">\(c_1=0\)</span>, <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> where <span class="math notranslate nohighlight">\(i \geq j\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    b_1 + b_2 + b_3 &amp;= 1, \\
-    b_2c_2 + b_3c_3 &amp;= \frac{1}{2}, \\
-    b_2c_2^2 + b_3c_3^2 &amp;= \frac{1}{3}, \\
-    b_3a_{32}c_2 &amp;= \frac{1}{6}.
-\end{align*} \end{split}\]</div>
-</section>
-</div>
-<div class="exercise note admonition" id="ch2-ex-myrk3-derivation">
-
-<p class="admonition-title"><span class="caption-number">Exercise 2.5 </span></p>
-<section id="exercise-content">
-<p>Derive a third-order explicit Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(c_3 = 1\)</span>.</p>
-</section>
-</div>
-<div class="solution dropdown admonition" id="ch2-ex-myrk3-derivation-sol">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk3-derivation"> Exercise 2.5</a></p>
-<section id="solution-content">
-<p>Substituting the values of <span class="math notranslate nohighlight">\(c_2\)</span> and <span class="math notranslate nohighlight">\(c_3\)</span> into the order conditions gives</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    b_1 + b_2 + b_3 &amp;= 1, \\
-    \frac{1}{2}b_2 + b_3 &amp;= \frac{1}{2}, \\
-    \frac{1}{4}b_2 + b_3 &amp;= \frac{1}{3}, \\
-    \frac{1}{2}b_3a_{32} &amp;= \frac{1}{6}.
-\end{align*} \end{split}\]</div>
-<p>Solving the second and third equations gives <span class="math notranslate nohighlight">\(b_2 = \frac{2}{3}\)</span> and <span class="math notranslate nohighlight">\(b_3 = \frac{1}{6}\)</span>. Substituting these into the first equation gives <span class="math notranslate nohighlight">\(b_1 = \frac{1}{6}\)</span>. Substituting the <span class="math notranslate nohighlight">\(b\)</span> values into the fourth equation gives <span class="math notranslate nohighlight">\(a_{32} = 2\)</span>. Applying the row sum conditions gives <span class="math notranslate nohighlight">\(a_{21} = c_2 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{31} = c_1 - a_{32} = 1 - 2 = -1\)</span>. The Butcher tableau for this third-order explicit Runge-Kutta method is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \begin{array}{c|ccc}
-        0 &amp; \\
-        1/2 &amp; 1/2 \\
-        1 &amp; -1 &amp; 2 \\ \hline
-        &amp; 1/6 &amp; 2/3 &amp; 1/6
-    \end{array}
-\end{align*} \end{split}\]</div>
-<p>This is known as Kutta’s third-order method.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="s2">&quot;mathjax&quot;</span><span class="p">)</span>
-
-<span class="c1"># Declare symbolic variables</span>
-<span class="n">a21</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a21, a31, a32, b1, b2, b3&#39;</span><span class="p">)</span>
-<span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">c3</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="c1"># Define order conditions</span>
-<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">eq4</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
-
-<span class="c1"># Row sum conditions</span>
-<span class="n">eq5</span> <span class="o">=</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">a21</span>
-<span class="n">eq6</span> <span class="o">=</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">a31</span> <span class="o">-</span> <span class="n">a32</span>
-
-<span class="c1"># Solve order conditions</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
-MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define symbolic variables</span>
-<span class="n">syms</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a31</span><span class="w"> </span><span class="s">a32</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">b3</span>
-
-<span class="c">% Define c values</span>
-<span class="n">c2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-<span class="n">c3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-
-<span class="c">% Define order conditions</span>
-<span class="n">eq1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-<span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
-<span class="n">eq4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">;</span>
-
-<span class="c">% Define row sum conditions</span>
-<span class="n">eq5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">a21</span><span class="p">;</span>
-<span class="n">eq6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">a31</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a32</span><span class="p">;</span>
-
-<span class="c">% Solve order conditions</span>
-<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">,</span><span class="w"> </span><span class="n">eq4</span><span class="p">,</span><span class="w"> </span><span class="n">eq5</span><span class="p">,</span><span class="w"> </span><span class="n">eq6</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</div>
-<div class="exercise admonition" id="ch2-ex-myrk4-derivation">
-
-<p class="admonition-title"><span class="caption-number">Exercise 2.6 </span></p>
-<section id="exercise-content">
-<p>Derive an explicit fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = \frac{1}{4}\)</span>, <span class="math notranslate nohighlight">\(c_3 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(c_4 = 1\)</span>. Hint: you will need to use the row sum conditions here.</p>
-</section>
-</div>
-<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-11">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk4-derivation"> Exercise 2.6</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk4-derivation"> Exercise 2.4</a></p>
 <section id="solution-content">
 <p>Substituting <span class="math notranslate nohighlight">\(c_2\)</span>, <span class="math notranslate nohighlight">\(c_3\)</span> and <span class="math notranslate nohighlight">\(c_4\)</span> into the order conditions gives</p>
 <div class="math notranslate nohighlight">
@@ -771,8 +777,8 @@ MATLAB</label><div class="sd-tab-content docutils">
     \end{array}
 \end{align*} \end{split}\]</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-4">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="s2">&quot;mathjax&quot;</span><span class="p">)</span>
@@ -812,8 +818,8 @@ Python</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-5">
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define symbolic variables</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a31</span><span class="w"> </span><span class="s">a32</span><span class="w"> </span><span class="s">a41</span><span class="w"> </span><span class="s">a42</span><span class="w"> </span><span class="s">a43</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">b3</span><span class="w"> </span><span class="s">b4</span>
@@ -852,7 +858,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <div class="exercise admonition" id="ch2-ex-myrk2-hand-calc">
 
-<p class="admonition-title"><span class="caption-number">Exercise 2.7 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 2.5 </span></p>
 <section id="exercise-content">
 <p>Using pen and paper, apply your Runge-Kutta method derived in <a class="reference internal" href="#ch2-ex-myrk2-derivation"><span class="std std-numref">Exercise 2.3</span></a> to solve the following initial value problem using a step length of <span class="math notranslate nohighlight">\(h=0.4\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -862,9 +868,9 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p>Write your solutions correct to 4 decimal places.</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-13">
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-9">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk2-hand-calc"> Exercise 2.7</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk2-hand-calc"> Exercise 2.5</a></p>
 <section id="solution-content">
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -923,14 +929,14 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <div class="exercise admonition" id="ch2-ex-myrk2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 2.8 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 2.6 </span></p>
 <section id="exercise-content">
-<p>Define a Python or MATLAB function called <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code> which uses the method from derived in <a class="reference internal" href="#ch2-ex-myrk2-derivation"><span class="std std-numref">Exercise 2.3</span></a> to compute the solution over a single step. Use your function along with the [<code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code>]euler-code-section) function to solve the initial value problem in <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.7</span></a>. Present your solution in a table and as a plot of the numerical solutions against the exact solutions on the same set of axes.</p>
+<p>Define a Python or MATLAB function called <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code> which uses the method from derived in <a class="reference internal" href="#ch2-ex-myrk2-derivation"><span class="std std-numref">Exercise 2.3</span></a> to compute the solution over a single step. Use your function along with the [<code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code>]euler-code-section) function to solve the initial value problem in <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a>. Present your solution in a table and as a plot of the numerical solutions against the exact solutions on the same set of axes.</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-15">
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-11">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk2"> Exercise 2.8</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk2"> Exercise 2.6</a></p>
 <section id="solution-content">
 <p>Solution</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>  <span class="n">t</span>   <span class="o">|</span>     <span class="n">y</span>     <span class="o">|</span>   <span class="n">Exact</span>   <span class="o">|</span>
@@ -949,8 +955,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 </figure>
 <p>Code</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-6">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1014,8 +1020,8 @@ Python</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-7">
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define ODE function and exact solution</span>
 <span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
@@ -1082,14 +1088,14 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <div class="exercise admonition" id="ch2-ex-myrk4">
 
-<p class="admonition-title"><span class="caption-number">Exercise 2.9 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 2.7 </span></p>
 <section id="exercise-content">
-<p>Define two Python or MATLAB functions called <code class="docutils literal notranslate"><span class="pre">myrk3()</span></code> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> which uses the third and fourth-order method derived in <a class="reference internal" href="#ch2-ex-myrk3-derivation"><span class="std std-numref">Exercise 2.5</span></a> and <a class="reference internal" href="#ch2-ex-myrk4-derivation"><span class="std std-numref">Exercise 2.6</span></a> to solve an initial value problem. Use your functions, along with your code from <a class="reference internal" href="#ch2-ex-myrk2"><span class="std std-numref">Exercise 2.8</span></a>, to solve the initial value problem in <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.7</span></a>. Present your solutions as a plot of the numerical solutions against the exact solution on the same set of axes.</p>
+<p>Define two Python or MATLAB functions called <code class="docutils literal notranslate"><span class="pre">myrk3()</span></code> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> which uses the third and fourth-order method derived in <span class="xref std std-ref">ch2-ex-myrk3-derivation</span> and <a class="reference internal" href="#ch2-ex-myrk4-derivation"><span class="std std-numref">Exercise 2.4</span></a> to solve an initial value problem. Use your functions, along with your code from <a class="reference internal" href="#ch2-ex-myrk2"><span class="std std-numref">Exercise 2.6</span></a>, to solve the initial value problem in <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a>. Present your solutions as a plot of the numerical solutions against the exact solution on the same set of axes.</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-17">
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-13">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk4"> Exercise 2.9</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk4"> Exercise 2.7</a></p>
 <section id="solution-content">
 <p>Plot</p>
 <figure class="align-default" style="width: 500px">
@@ -1097,8 +1103,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 </figure>
 <p>Code</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-8">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myrk3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
     <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -1135,8 +1141,8 @@ Python</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-9">
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define IVP parameters</span>
 <span class="n">tspan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span><span class="w">     </span><span class="c">% boundaries of the t domain</span>
@@ -1192,14 +1198,14 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <div class="exercise admonition" id="ch2-ex-error-comparison">
 
-<p class="admonition-title"><span class="caption-number">Exercise 2.10 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 2.8 </span></p>
 <section id="exercise-content">
-<p>Use your functions <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code>, <code class="docutils literal notranslate"><span class="pre">myrk3()</span></code> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> from <a class="reference internal" href="#ch2-ex-myrk2"><span class="std std-numref">Exercise 2.8</span></a> and <a class="reference internal" href="#ch2-ex-myrk4"><span class="std std-numref">Exercise 2.9</span></a> to solve the initial value problem from <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.7</span></a> using a range of step lengths starting at <span class="math notranslate nohighlight">\(h=0.4\)</span> and halving each time until <span class="math notranslate nohighlight">\(h=0.025\)</span>. Plot the global truncation errors for the numerical solutions for the solution at <span class="math notranslate nohighlight">\(t=2\)</span> against <span class="math notranslate nohighlight">\(h\)</span> on a loglog scale and estimate the order of the three methods.</p>
+<p>Use your functions <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code>, <code class="docutils literal notranslate"><span class="pre">myrk3()</span></code> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> from <a class="reference internal" href="#ch2-ex-myrk2"><span class="std std-numref">Exercise 2.6</span></a> and <a class="reference internal" href="#ch2-ex-myrk4"><span class="std std-numref">Exercise 2.7</span></a> to solve the initial value problem from <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a> using a range of step lengths starting at <span class="math notranslate nohighlight">\(h=0.4\)</span> and halving each time until <span class="math notranslate nohighlight">\(h=0.025\)</span>. Plot the global truncation errors for the numerical solutions for the solution at <span class="math notranslate nohighlight">\(t=2\)</span> against <span class="math notranslate nohighlight">\(h\)</span> on a loglog scale and estimate the order of the three methods.</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-19">
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-15">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-error-comparison"> Exercise 2.10</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-error-comparison"> Exercise 2.8</a></p>
 <section id="solution-content">
 <p>Global truncation errors</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>   <span class="n">h</span>   <span class="o">|</span>  <span class="n">myRK2</span>   <span class="o">|</span>  <span class="n">myRK3</span>   <span class="o">|</span>  <span class="n">myRK4</span>   <span class="o">|</span>
@@ -1224,8 +1230,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 \end{align*} \end{split}\]</div>
 <p>Code</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-10">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate solution for decreasing step lengths</span>
 <span class="n">hvals</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">]</span>
@@ -1258,8 +1264,8 @@ Python</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-11" name="sd-tab-set-5" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-11">
+<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Calculate solution for decreasing step lengths</span>
 <span class="n">hvals</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.025</span><span class="p">];</span>
@@ -1304,7 +1310,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <div class="exercise admonition" id="ch2-ex-rk23">
 
-<p class="admonition-title"><span class="caption-number">Exercise 2.11 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 2.9 </span></p>
 <section id="exercise-content">
 <p>Combining Heun’s method and Kutta’s third-order method gives the following Butcher tableau for an embedded Runge-Kutta method</p>
 <div class="math notranslate nohighlight">
@@ -1315,12 +1321,12 @@ MATLAB</label><div class="sd-tab-content docutils">
     &amp; 1/6 &amp; 2/3 &amp; 1/6 \\
     &amp; 0 &amp; 1 &amp; 0 
 \end{array}\end{split}\]</div>
-<p>where the first row of <span class="math notranslate nohighlight">\(b\)</span> coefficients gives the third-order accurate solution and the second row gives the second-order accurate solution. Define a function called <code class="docutils literal notranslate"><span class="pre">rk23()</span></code> that calculates the second and third order solutions over a single step and, along with the <code class="docutils literal notranslate"><span class="pre">solveIVP_SSC()</span></code> function from the section on <a class="reference internal" href="2.5_Adaptive_step_size_control.html#ssc-code-section"><span class="std std-ref">adaptive stepsize control</span></a>, use it to solve the initial value problem from <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.7</span></a> using an initial step length of <span class="math notranslate nohighlight">\(h_0=0.4\)</span> and an accuracy tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span>. How many successful steps were used?</p>
+<p>where the first row of <span class="math notranslate nohighlight">\(b\)</span> coefficients gives the third-order accurate solution and the second row gives the second-order accurate solution. Define a function called <code class="docutils literal notranslate"><span class="pre">rk23()</span></code> that calculates the second and third order solutions over a single step and, along with the <code class="docutils literal notranslate"><span class="pre">solveIVP_SSC()</span></code> function from the section on <a class="reference internal" href="2.5_Adaptive_step_size_control.html#ssc-code-section"><span class="std std-ref">adaptive stepsize control</span></a>, use it to solve the initial value problem from <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a> using an initial step length of <span class="math notranslate nohighlight">\(h_0=0.4\)</span> and an accuracy tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span>. How many successful steps were used?</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-21">
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-17">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-rk23"> Exercise 2.11</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-rk23"> Exercise 2.9</a></p>
 <section id="solution-content">
 <p>Plot</p>
 <figure class="align-default" style="width: 600px">
@@ -1329,8 +1335,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p>26 successful steps were required.</p>
 <p>Code</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-6" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-12">
+<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1399,8 +1405,8 @@ Python</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-13" name="sd-tab-set-6" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-13">
+<input id="sd-tab-item-11" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-11">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define ODE function and exact solution</span>
 <span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
