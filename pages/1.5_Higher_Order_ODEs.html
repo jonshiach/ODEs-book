@@ -443,8 +443,8 @@ Solution<div class="sd-summary-down docutils">
 <p>Let <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{f}(t, \mathbf{y})\)</span> be the vectors</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{y} &amp;= \begin{pmatrix} y_1 , y_2 , \ldots , y_N \end{pmatrix}, \\
-    \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} f_1(t, \mathbf{y}) , f_2(t, \mathbf{y}) , \ldots , f_n(t, \mathbf{y}) \end{pmatrix},
+    \mathbf{y} &amp;= \begin{pmatrix} y_1  \\ y_2  \\ \vdots \\ y_N \end{pmatrix}, &amp;
+    \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} f_1(t, \mathbf{y}) \\ f_2(t, \mathbf{y}) \\ \vdots \\ f_n(t, \mathbf{y}) \end{pmatrix},
 \end{align*} \end{split}\]</div>
 <p>then we can write the system in vector form</p>
 <div class="math notranslate nohighlight">
@@ -490,32 +490,41 @@ Solution<div class="sd-summary-down docutils">
 \end{align*} \end{split}\]</div>
 <p class="sd-card-text">which can be written in vector form as</p>
 <div class="math notranslate nohighlight">
-\[\begin{align*}
-    \mathbf{y} &amp;= \begin{pmatrix} y_1,   y_2 \end{pmatrix}, &amp;
+\[\begin{split}\begin{align*}
+    \mathbf{y} &amp;= \begin{pmatrix} y_1 \\  y_2 \end{pmatrix}, &amp;
     \mathbf{f}(t, \mathbf{y}) &amp;= 
-    \begin{pmatrix} y_2,  \mu (1 - y_1^2) y_2 - y_1 \end{pmatrix}.
-\end{align*} \]</div>
-<p class="sd-card-text">The initial conditions are <span class="math notranslate nohighlight">\(y(0) = 2\)</span> and <span class="math notranslate nohighlight">\(\dot{y}(0) = 0\)</span> so <span class="math notranslate nohighlight">\(\mathbf{y}_0 = \begin{pmatrix} 2 , 0 \end{pmatrix}\)</span>. Calculating the first few steps of the Euler method with <span class="math notranslate nohighlight">\(\mu=1\)</span> and <span class="math notranslate nohighlight">\(h=0.1\)</span></p>
+    \begin{pmatrix} y_2 \\ \mu (1 - y_1^2) y_2 - y_1 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">The initial conditions are <span class="math notranslate nohighlight">\(y(0) = 2\)</span> and <span class="math notranslate nohighlight">\(\dot{y}(0) = 0\)</span> so <span class="math notranslate nohighlight">\(\mathbf{y}_0 = \begin{pmatrix} 2 , 0 \end{pmatrix}\)</span>. The values of <span class="math notranslate nohighlight">\(t\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{t} = \begin{pmatrix} 0.0 \\ 0.1 \\ 0.2 \\ \vdots \\ 19.9 \\ 20.0 \end{pmatrix}.\end{split}\]</div>
+<p class="sd-card-text">Calculating the first few steps of the Euler method with <span class="math notranslate nohighlight">\(\mu=1\)</span> and <span class="math notranslate nohighlight">\(h=0.1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{y}_1 &amp;= \mathbf{y}_0 + h \mathbf{f}(t_0, \mathbf{y}_0) \\
-    &amp;= \begin{pmatrix} 2 , 0 \end{pmatrix} + 0.1
-    \begin{pmatrix} 0 , 1(1 - 2^2)(0) - 2 \end{pmatrix} \\
-    &amp;= \begin{pmatrix} 2 , -0.2 \end{pmatrix}, \\
-    t_1 &amp;= t_0 + h = 0 + 0.1 = 0.1, \\ \\
+    &amp;= \begin{pmatrix} 2 \\ 0 \end{pmatrix} + 0.1
+    \begin{pmatrix} 0  \\ 1(1 - 2^2)(0) - 2 \end{pmatrix} 
+    = \begin{pmatrix} 2 \\ -0.2 \end{pmatrix}, \\
     \mathbf{y}_2 &amp;= \mathbf{y}_1 + h \mathbf{f}(t_1, \mathbf{y}_1) \\
-    &amp;= \begin{pmatrix} 2 , -0.2 \end{pmatrix} + 0.1
-    \begin{pmatrix} -0.2 , 1(1 - 2^2)(-0.2) - 2 \end{pmatrix} \\
-    &amp;= \begin{pmatrix} 1.98 , -0.34 \end{pmatrix}, \\
-    t_2 &amp;= t_1 + h = 0.1 + 0.1 = 0.2, \\ \\
+    &amp;= \begin{pmatrix} 2  \\ -0.2 \end{pmatrix} + 0.1
+    \begin{pmatrix} -0.2 \\ 1(1 - 2^2)(-0.2) - 2 \end{pmatrix} 
+    = \begin{pmatrix} 1.98 \\ -0.34 \end{pmatrix}, \\
     \mathbf{y}_3 &amp;= \mathbf{y}_2 + h \mathbf{f}(t_2, \mathbf{y}_2) \\
-    &amp;= \begin{pmatrix} 1.98 , -0.34 \end{pmatrix} + 0.1
-    \begin{pmatrix} -0.34 , 1(1 - 1.98^2)(-0.34) - 1.98 \end{pmatrix} \\
-    &amp;= \begin{pmatrix} 1.946 , -0.348706 \end{pmatrix},  \\
-    t_3 &amp;= t_1 + h = 0.2 + 0.1 = 0.3, \\
+    &amp;= \begin{pmatrix} 1.98 \\ -0.34 \end{pmatrix} + 0.1
+    \begin{pmatrix} -0.34 \\ 1(1 - 1.98^2)(-0.34) - 1.98 \end{pmatrix} 
+    = \begin{pmatrix} 1.946 \\ -0.348706 \end{pmatrix},  \\
     &amp;\vdots
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Since we let <span class="math notranslate nohighlight">\(y_1=y\)</span> the solution values for <span class="math notranslate nohighlight">\(y(t_n)\)</span> are the first value in each of the <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span> vectors. The solution over the full domain have been calculated using a computer program and the solution has been plotted in <a class="reference internal" href="#system-odes-plot"><span class="std std-numref">Fig. 1.9</span></a></p>
+<p class="sd-card-text">Continuing for the whole domain we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} Y = \begin{pmatrix}
+    2 &amp; -0.2 \\
+    1.98 &amp; -0.34 \\
+    \vdots &amp; \vdots \\
+    -0.828052 &amp; 1.314658 \\
+    -0.696586 &amp; 1.438787
+\end{pmatrix}. \end{split}\]</div>
+<p class="sd-card-text">The first column of <span class="math notranslate nohighlight">\(Y\)</span> is the solution <span class="math notranslate nohighlight">\(y\)</span> for the van der Pol equation which has been plotted in <a class="reference internal" href="#system-odes-plot"><span class="std std-numref">Fig. 1.9</span></a></p>
 <figure class="align-default" id="system-odes-plot" style="width: 600px">
 <img alt="../_images/67baeb899c01a5024b7cba53ebbe930d4f45d3638ab148765e2fe3de22552394.png" src="../_images/67baeb899c01a5024b7cba53ebbe930d4f45d3638ab148765e2fe3de22552394.png" />
 <figcaption>
@@ -527,7 +536,7 @@ Solution<div class="sd-summary-down docutils">
 </div></section>
 <section id="code">
 <h2><span class="section-number">1.4.2. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The code used to compute the solutions to <a class="reference internal" href="#system-odes-example">Example 1.3</a> is shown below (this assumes the functions <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code></span></a> and <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">euler()</span></code></span></a> have already been defined).</p>
+<p>The code used to compute the solutions to <a class="reference internal" href="#system-odes-example">Example 1.3</a> is shown below (this assumes the functions <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code></span></a> and <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">euler()</span></code></span></a> have already been defined). Note that the <code class="docutils literal notranslate"><span class="pre">y0</span></code> array and the values returned by the <code class="docutils literal notranslate"><span class="pre">f()</span></code> function are <span class="math notranslate nohighlight">\(1 \times 2\)</span> arrays where the number of columns is the same as the number of equations in the system of ODEs.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
