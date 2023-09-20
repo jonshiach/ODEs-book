@@ -410,7 +410,7 @@ document.write(`
 <section class="definition-content" id="proof-content">
 <p>The Euler method for solving the initial value problem <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span>, <span class="math notranslate nohighlight">\(y_0 = y(t_{\min})\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-euler-method-equation">
-<span class="eqno">(1.3)<a class="headerlink" href="#equation-euler-method-equation" title="Permalink to this equation">#</a></span>\[ y_{n+1} = y_n + h f(t_n ,y_n), \]</div>
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-euler-method-equation" title="Permalink to this equation">#</a></span>\[y_{n+1} = y_n + h f(t_n ,y_n),\]</div>
 <p>where <span class="math notranslate nohighlight">\(h = t_{n+1} - t_n\)</span>.</p>
 </section>
 </div><p>To solve an initial value problem using the Euler method we first initialise <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and <span class="math notranslate nohighlight">\(t_0 = t_{\min}\)</span> then calculate the value of <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="#equation-euler-method-equation">(1.3)</a> and <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span>. Then we use <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the value of <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(t_2 = t_1 + h\)</span>. We continue in this way until we have calculated up to <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step. The other type of numerical method for solving ODEs is the <a href="https://en.wikipedia.org/wiki/Linear_multistep_method" target="_blank">linear multistep methods</a> that requires information from multiple previous steps.</p>
@@ -452,26 +452,27 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Here the ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span>, the lower bound of the domain is <span class="math notranslate nohighlight">\(t_{\min}=0\)</span>, the initial value is <span class="math notranslate nohighlight">\(y(t_{\min}) = 1\)</span> and the step length is <span class="math notranslate nohighlight">\(h=0.2\)</span>. Using equation <a class="reference internal" href="#equation-euler-method-equation">(1.3)</a> we have</p>
+<p class="sd-card-text">Here the ODE function is <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span>, the lower bound of the domain is <span class="math notranslate nohighlight">\(t_{\min}=0\)</span>, the initial value is <span class="math notranslate nohighlight">\(y(t_{\min}) = 1\)</span> and the step length is <span class="math notranslate nohighlight">\(h=0.2\)</span>. Since we are using a constant step length we know that the values of <span class="math notranslate nohighlight">\(t\)</span> are <span class="math notranslate nohighlight">\(t_n = nh\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{t} = \begin{pmatrix} 0.0 \\ 0.2 \\ 0.4 \\ 0.6 \\ 0.8 \\ 1.0 \end{pmatrix}.\end{split}\]</div>
+<p class="sd-card-text">The values of <span class="math notranslate nohighlight">\(y_n\)</span> are calculated using equation <a class="reference internal" href="#equation-euler-method-equation">(1.3)</a> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_0 &amp;= 1, \\
-    t_0 &amp;= 0, \\ \\
-    y_1 &amp;= y_0 + h f(t_0, y_0) = 1 + 0.2(0)(1) = 1,  \\
-    t_1 &amp;= t_0 + h = 0 + 0.2 = 0.2, \\ \\
-    y_2 &amp;= y_1 + h f(t_1, y_1) = 1 + 0.2(0.2)(1) = 1.04, \\
-    t_2 &amp;= t_1 + h = 0.2 + 0.2 = 0.4, \\ \\
-    y_3 &amp;= y_2 + h f(t_2, y_2) = 1.04 + 0.2(0.4)(1.04) = 1.1232, \\
-    t_3 &amp;= t_2 + h = 0.4 + 0.2 = 0.6, \\ \\
-    y_4 &amp;= y_3 + h f(t_3, y_3) = 1.1232 + 0.2(0.6)(1.1232) = 1.257984, \\
-    t_4 &amp;= t_3 + h = 0.6 + 0.2 = 0.8, \\ \\
-    y_5 &amp;= y_4 + h f(t_4, y_4) = 1.257984 + 0.2(0.8)(1.257984) = 1.459261, \\
-    t_5 &amp;= t_4 + h = 0.8 + 0.2 = 1.0.
+    y_1 &amp;= y_0 + h f(t_0, y_0) = y_0 + h t_0 y_0 \\ 
+    &amp;= 1 + 0.2(0)(1) = 1,  \\
+    y_2 &amp;= y_1 + h f(t_1, y_1) = y_1 + h t_1 y_1 \\
+    &amp;= 1 + 0.2(0.2)(1) = 1.04, \\
+    y_3 &amp;= y_2 + h f(t_2, y_2) = y_2 + h t_2 y_2 \\
+    &amp;= 1.04 + 0.2(0.4)(1.04) = 1.1232, \\
+    y_4 &amp;= y_3 + h f(t_3, y_3) = y_3 + h t_3 y_3 \\
+    &amp;= 1.1232 + 0.2(0.6)(1.1232) = 1.257984, \\
+    y_5 &amp;= y_4 + h f(t_4, y_4) = y_4 + h t_4 y_4 \\
+    &amp;= 1.257984 + 0.2(0.8)(1.257984) = 1.459261, \\
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(t_5 = t_{\max}\)</span> so we cease iterations and the solution vectors are</p>
+<p class="sd-card-text">So the solution to this IVP is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{t} &amp;= \begin{pmatrix}  0 \\ 0.2 \\ 0.4 \\ 0.6 \\ 0.8 \\ 1.0 \end{pmatrix}, &amp;
     \mathbf{y} &amp;= \begin{pmatrix} 1 \\ 1 \\ 1.04 \\ 1.1232 \\ 1.257984 \\ 1.459261 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 </div>

@@ -433,7 +433,7 @@ document.write(`
 <p>Stiffness is not strictly defined but we can attempt to define a metric to help us determine whether an ODE is stiff.  Consider a system of linear ODEs for the form</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{y}' = A \mathbf{y}, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{y} = (y_1, y_2, \ldots, y_n)^T\)</span> and <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix of constants. Let <span class="math notranslate nohighlight">\(V = (\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n)\)</span> be a matrix containing the &lt;a href=”https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors” target=”_blank”&lt;eigenvalues</a> of <span class="math notranslate nohighlight">\(A\)</span> then</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{y} = (y_1, y_2, \ldots, y_n)^T\)</span> and <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix of constants. Let <span class="math notranslate nohighlight">\(V = (\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n)\)</span> be a matrix containing the <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">eigenvalues</a> of <span class="math notranslate nohighlight">\(A\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[V = (A \mathbf{v}_1, A \mathbf{v}_2, \ldots, A \mathbf{v}_n).\]</div>
 <p>Since <span class="math notranslate nohighlight">\(A \mathbf{v}_i = \lambda_i \mathbf{v}_1\)</span> where <span class="math notranslate nohighlight">\(\lambda_i\)</span> is the eigenvalue corresponding to the eigenvector <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> then</p>
@@ -445,10 +445,15 @@ document.write(`
 <p>which means that <span class="math notranslate nohighlight">\(V^{-1} A\)</span> is a linear transformation that that <strong>diagonalises</strong> the matrix <span class="math notranslate nohighlight">\(A\)</span>. Let <span class="math notranslate nohighlight">\(\mathbf{u} = V^{-1} A \mathbf{y}\)</span> then we have the transformed system <span class="math notranslate nohighlight">\(\mathbf{u}' = \Lambda \mathbf{u}\)</span> which is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    u_1' &amp;= \lambda_1 u_1, \\
-    u_2' &amp;= \lambda_2 u_2, \\
-    &amp;\vdots \\
-    u_n' &amp;= \lambda_n u_n.
+    \begin{pmatrix} u_1' \\ u_2' \\ \vdots \\ u_n' \end{pmatrix} = 
+    \begin{pmatrix}
+        \lambda_1 \\
+        &amp; \lambda_2 \\
+        &amp;&amp; \ddots \\
+        &amp;&amp;&amp; \lambda_n
+    \end{pmatrix}
+    \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} =
+    \begin{pmatrix} \lambda_1 u_1 \\ \lambda_2 u_2 \\ \vdots \\ \lambda_n u_n \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Each equation in the transformed system has the solution <span class="math notranslate nohighlight">\(u_i = e^{\lambda_i t}\)</span> so the fastest growing solution will be for the equation with the largest value of <span class="math notranslate nohighlight">\(\lambda\)</span> and the slowest growing solution will be for the equation with the smallest value of <span class="math notranslate nohighlight">\(\lambda\)</span>. Stiffness occurs when there is a large variation in the solutions of equations in a system so we can gauge this by calculating the ratio between the largest and smallest eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="proof definition admonition" id="stiffness-ratio-definition">

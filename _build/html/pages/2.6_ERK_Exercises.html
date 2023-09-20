@@ -872,6 +872,10 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk2-hand-calc"> Exercise 2.5</a></p>
 <section id="solution-content">
+<p>The <span class="math notranslate nohighlight">\(t_n\)</span> values are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{t} = \begin{pmatrix} 0.0 \\ 0.4 \\ 0.8 \\ 1.2 \\ 1.6 \\ 2.0 \end{pmatrix}. \end{split}\]</div>
+<p>Using the second-order ERK method derived in <a class="reference internal" href="#ch2-ex-myrk2-derivation"><span class="std std-numref">Exercise 2.3</span></a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_0 &amp;= 1.0000, \\
@@ -911,10 +915,9 @@ MATLAB</label><div class="sd-tab-content docutils">
         &amp;= 1.0276 + \frac{0.4}{3}(0.5724 + 2(0.7007)) \\
         &amp;= 1.2908.
 \end{align*} \end{split}\]</div>
-<p>So the solution arrays are</p>
+<p>So the solution is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{t} &amp;= \begin{pmatrix} 0.0 \\ 0.4 \\ 0.8 \\ 1.2 \\ 1.6 \\ 2.0 \end{pmatrix}, &amp;
     \mathbf{y} &amp;= 
     \begin{pmatrix}
         0.0000 \\
@@ -1086,16 +1089,47 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </div>
-<div class="exercise admonition" id="ch2-ex-myrk4">
+<div class="exercise admonition" id="ch2-ex-tree">
 
 <p class="admonition-title"><span class="caption-number">Exercise 2.7 </span></p>
 <section id="exercise-content">
-<p>Define two Python or MATLAB functions called <code class="docutils literal notranslate"><span class="pre">myrk3()</span></code> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> which uses the third and fourth-order method derived in <span class="xref std std-ref">ch2-ex-myrk3-derivation</span> and <a class="reference internal" href="#ch2-ex-myrk4-derivation"><span class="std std-numref">Exercise 2.4</span></a> to solve an initial value problem. Use your functions, along with your code from <a class="reference internal" href="#ch2-ex-myrk2"><span class="std std-numref">Exercise 2.6</span></a>, to solve the initial value problem in <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a>. Present your solutions as a plot of the numerical solutions against the exact solution on the same set of axes.</p>
+<p>Determine the order, elementary weight and density of this rooted tree.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/tree_exercise.svg"><img alt="../_images/tree_exercise.svg" src="../_images/tree_exercise.svg" width="200" /></a>
+</figure>
 </section>
 </div>
 <div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-13">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk4"> Exercise 2.7</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-tree"> Exercise 2.7</a></p>
+<section id="solution-content">
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    r &amp;= 10, \\
+    \Phi &amp;= \sum_{i,j,k,\ell} b_i a_{ij} a_{jk} a_{k\ell} c_j^3 c_k c_\ell^2, \\
+    \gamma &amp;= 600.
+\end{align*} \end{split}\]</div>
+</section>
+</div>
+<div class="exercise admonition" id="ch2-ex-myrk4">
+
+<p class="admonition-title"><span class="caption-number">Exercise 2.8 </span></p>
+<section id="exercise-content">
+<p>A third-order explicit Runge-Kutta method has the Butcher tableau</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|ccc}
+    0 &amp; 0 \\
+    1/2 &amp; 1/2 \\
+    1 &amp; -1 &amp; 2 \\
+    \hline
+    &amp; 1/6 &amp; 2/3 &amp; 1/6
+\end{array} \end{split}\]</div>
+<p>Define two Python or MATLAB functions called <code class="docutils literal notranslate"><span class="pre">myrk3()</span></code> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> which uses this third-order method and the fourth-order method derived <a class="reference internal" href="#ch2-ex-myrk4-derivation"><span class="std std-numref">Exercise 2.4</span></a> to solve an initial value problem. Use your functions, along with your code from <a class="reference internal" href="#ch2-ex-myrk2"><span class="std std-numref">Exercise 2.6</span></a>, to solve the initial value problem in <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a>. Present your solutions as a plot of the numerical solutions against the exact solution on the same set of axes.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-15">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-myrk4"> Exercise 2.8</a></p>
 <section id="solution-content">
 <p>Plot</p>
 <figure class="align-default" style="width: 500px">
@@ -1198,14 +1232,14 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <div class="exercise admonition" id="ch2-ex-error-comparison">
 
-<p class="admonition-title"><span class="caption-number">Exercise 2.8 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 2.9 </span></p>
 <section id="exercise-content">
-<p>Use your functions <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code>, <code class="docutils literal notranslate"><span class="pre">myrk3()</span></code> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> from <a class="reference internal" href="#ch2-ex-myrk2"><span class="std std-numref">Exercise 2.6</span></a> and <a class="reference internal" href="#ch2-ex-myrk4"><span class="std std-numref">Exercise 2.7</span></a> to solve the initial value problem from <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a> using a range of step lengths starting at <span class="math notranslate nohighlight">\(h=0.4\)</span> and halving each time until <span class="math notranslate nohighlight">\(h=0.025\)</span>. Plot the global truncation errors for the numerical solutions for the solution at <span class="math notranslate nohighlight">\(t=2\)</span> against <span class="math notranslate nohighlight">\(h\)</span> on a loglog scale and estimate the order of the three methods.</p>
+<p>Use your functions <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code>, <code class="docutils literal notranslate"><span class="pre">myrk3()</span></code> and <code class="docutils literal notranslate"><span class="pre">myrk4()</span></code> from <a class="reference internal" href="#ch2-ex-myrk2"><span class="std std-numref">Exercise 2.6</span></a> and <a class="reference internal" href="#ch2-ex-myrk4"><span class="std std-numref">Exercise 2.8</span></a> to solve the initial value problem from <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a> using a range of step lengths starting at <span class="math notranslate nohighlight">\(h=0.4\)</span> and halving each time until <span class="math notranslate nohighlight">\(h=0.025\)</span>. Plot the global truncation errors for the numerical solutions for the solution at <span class="math notranslate nohighlight">\(t=2\)</span> against <span class="math notranslate nohighlight">\(h\)</span> on a loglog scale and estimate the order of the three methods.</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-15">
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-17">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-error-comparison"> Exercise 2.8</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-error-comparison"> Exercise 2.9</a></p>
 <section id="solution-content">
 <p>Global truncation errors</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>   <span class="n">h</span>   <span class="o">|</span>  <span class="n">myRK2</span>   <span class="o">|</span>  <span class="n">myRK3</span>   <span class="o">|</span>  <span class="n">myRK4</span>   <span class="o">|</span>
@@ -1310,7 +1344,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <div class="exercise admonition" id="ch2-ex-rk23">
 
-<p class="admonition-title"><span class="caption-number">Exercise 2.9 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 2.10 </span></p>
 <section id="exercise-content">
 <p>Combining Heun’s method and Kutta’s third-order method gives the following Butcher tableau for an embedded Runge-Kutta method</p>
 <div class="math notranslate nohighlight">
@@ -1324,9 +1358,9 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p>where the first row of <span class="math notranslate nohighlight">\(b\)</span> coefficients gives the third-order accurate solution and the second row gives the second-order accurate solution. Define a function called <code class="docutils literal notranslate"><span class="pre">rk23()</span></code> that calculates the second and third order solutions over a single step and, along with the <code class="docutils literal notranslate"><span class="pre">solveIVP_SSC()</span></code> function from the section on <a class="reference internal" href="2.5_Adaptive_step_size_control.html#ssc-code-section"><span class="std std-ref">adaptive stepsize control</span></a>, use it to solve the initial value problem from <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.5</span></a> using an initial step length of <span class="math notranslate nohighlight">\(h_0=0.4\)</span> and an accuracy tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span>. How many successful steps were used?</p>
 </section>
 </div>
-<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-17">
+<div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-19">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-rk23"> Exercise 2.9</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-rk23"> Exercise 2.10</a></p>
 <section id="solution-content">
 <p>Plot</p>
 <figure class="align-default" style="width: 600px">

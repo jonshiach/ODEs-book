@@ -397,27 +397,29 @@ document.write(`
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#ch1-ex1"> Exercise 1.1</a></p>
 <section id="solution-content">
-<p>Rearranging the ODE slightly gives <span class="math notranslate nohighlight">\(y' = 1 - y -e^{-t}\)</span>. Applying the Euler method with step length <span class="math notranslate nohighlight">\(h=0.5\)</span>:</p>
+<p>Rearranging the ODE slightly gives <span class="math notranslate nohighlight">\(y' = 1 - y -e^{-t}\)</span>. The values of <span class="math notranslate nohighlight">\(t_n\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{t} = \begin{pmatrix} 0.0 \\ 0.5 \\ 1.0 \\ 1.5 \\ 2.0 \\ 2.5 \\ 3.0 \\ 3.5 \\ 4.0 \end{pmatrix}, \end{split}\]</div>
+<p>and applying the Euler method with step length <span class="math notranslate nohighlight">\(h=0.5\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_0 &amp;= 1, \\
-    t_0 &amp;= 0, \\ \\
-    y_1 &amp;= y_0 + h(1 - y_0 - e^{-t_0}) = 1 + 0.5(1 - 1 - e^{0}) = 1, \\
-    t_1 &amp;= t_0 + h = 0 + 0.5 = 0.5, \\ \\
-    y_2 &amp;= y_1 + h(1 - y_1 - e^{-t_1}) = 1 + 0.5(1 - 1 - e^{-0.5}) = 0.6967, \\
-    t_2 &amp;= t_1 + h = 0.5 + 0.5 = 1.0, \\ \\
-    y_3 &amp;= y_2 + h(1 - y_2 - e^{-t_2}) = 0.6967 + 0.5(1 - 0.6967 - e^{-1.0}) = 0.6655, \\
-    t_3 &amp;= t_2 + h = 1.0 + 0.5 = 1.5, \\ \\
-    y_4 &amp;= y_3 + h(1 - y_3 - e^{-t_3}) = 0.6655 + 0.5(1 - 0.6655 - e^{-1.5}) = 0.7206, \\
-    t_4 &amp;= y_3 + h = 1.5 + 0.5 = 2.0, \\ \\
-    y_5 &amp;= y_4 + h(1 - y_4 - e^{-t_4}) = 0.7206 + 0.5(1 - 0.7206 - e^{-2.0}) = 0.7926, \\
-    t_5 &amp;= t_4 + h = 2.0 + 0.5 = 2.5, \\ \\ 
-    y_6 &amp;= y_5 + h(1 - y_5 - e^{-t_5}) = 0.7926 + 0.5(1 - 0.7926 - e^{-2.5}) = 0.8553, \\
-    t_6 &amp;= t_5 + h = 2.5 + 0.5 = 3.0, \\ \\ 
-    y_7 &amp;= y_6 + h(1 - y_6 - e^{-t_6}) = 0.8553 + 0.5(1 - 0.8553 - e^{-3.0}) = 0.9027, \\
-    t_7 &amp;= t_6 + h = 3.0 + 0.5 = 3.5, \\ \\
-    y_8 &amp;= y_7 + h(1 - y_7 - e^{-t_7}) = 0.9027 + 0.5(1 - 0.9027 - e^{-3.5}) = 0.9363, \\
-    t_8 &amp;= t_7 = h = 3.5 + 0.5 = 4.0.
+    y_1 &amp;= y_0 + h(1 - y_0 - e^{-t_0}) \\
+    &amp;= 1 + 0.5(1 - 1 - e^{0}) = 1, \\
+    y_2 &amp;= y_1 + h(1 - y_1 - e^{-t_1}) \\
+    &amp;= 1 + 0.5(1 - 1 - e^{-0.5}) = 0.6967, \\
+    y_3 &amp;= y_2 + h(1 - y_2 - e^{-t_2}) \\
+    &amp;= 0.6967 + 0.5(1 - 0.6967 - e^{-1.0}) = 0.6655, \\
+    y_4 &amp;= y_3 + h(1 - y_3 - e^{-t_3}) \\
+    &amp;= 0.6655 + 0.5(1 - 0.6655 - e^{-1.5}) = 0.7206, \\
+    y_5 &amp;= y_4 + h(1 - y_4 - e^{-t_4}) \\
+    &amp;= 0.7206 + 0.5(1 - 0.7206 - e^{-2.0}) = 0.7926, \\
+    y_6 &amp;= y_5 + h(1 - y_5 - e^{-t_5}) \\
+    &amp;= 0.7926 + 0.5(1 - 0.7926 - e^{-2.5}) = 0.8553, \\
+    y_7 &amp;= y_6 + h(1 - y_6 - e^{-t_6}) \\
+    &amp;= 0.8553 + 0.5(1 - 0.8553 - e^{-3.0}) = 0.9027, \\
+    y_8 &amp;= y_7 + h(1 - y_7 - e^{-t_7}) \\
+    &amp;= 0.9027 + 0.5(1 - 0.9027 - e^{-3.5}) = 0.9363.
 \end{align*} \end{split}\]</div>
 </section>
 </div>
