@@ -407,21 +407,22 @@ document.write(`
 <div class="proof algorithm admonition" id="algorithm-0">
 <p class="admonition-title"><span class="caption-number">Algorithm 2.1 </span> (Solving an IVP using an explicit Runge-Kutta method)</p>
 <section class="algorithm-content" id="proof-content">
-<p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t,\mathbf{y})\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span>, an initial value <span class="math notranslate nohighlight">\(\mathbf{y}(t_{\min})\)</span> and a step length <span class="math notranslate nohighlight">\(h\)</span></p>
-<p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots, t_n)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots, \mathbf{y}_n)\)</span></p>
+<p><strong>Inputs</strong> A first-order ODE of the form <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span>, an initial value <span class="math notranslate nohighlight">\(y(t_{\min})\)</span> and a step length <span class="math notranslate nohighlight">\(h\)</span></p>
+<p><strong>Outputs</strong> <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(y_0 \gets y(t_{\min})\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(t_0 \gets t_{\min}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(n \gets 0\)</span></p></li>
-<li><p>While <span class="math notranslate nohighlight">\(t_n &lt; t_{\max}\)</span></p>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{t} \gets (t_{\min}, t_{\min} + h, t_{\min} + 2h, \ldots, t_{\max})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{y} \gets (y_0, 0, \ldots, 0)\)</span>   (same size as <span class="math notranslate nohighlight">\(\mathbf{t}\)</span>)</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, \operatorname{length}(\mathbf{t}) - 1\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(k_i \gets f\left( t_n + c_i h, \mathbf{y}_n + h \displaystyle \sum_{j=1}^s a_{ij} k_j \right)\)</span>   <span class="math notranslate nohighlight">\(i = 1, \ldots, s\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{y}_{n+1} \gets \mathbf{y}_n + h \displaystyle \sum_{i=1}^s b_i k_i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(t_{n+1} \gets t_n + h\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(n \gets n + 1\)</span></p></li>
+<li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, s\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(k_i \gets f(t_n + c_i h, y_n + h (a_{i1}k_1 + a_{i2}k_2 + \cdots + a_{i,i-1}k_{i-1}))\)</span></p></li>
 </ul>
 </li>
-<li><p>Return <span class="math notranslate nohighlight">\((t_0, t_1, \ldots, t_n)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots, \mathbf{y}_n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y_{n+1} \gets y_n + h (b_1k_1 + b_2k_2 + \cdots + b_sk_s)\)</span></p></li>
+</ul>
+</li>
+<li><p>Return <span class="math notranslate nohighlight">\(\mathbf{t}, \mathbf{y}\)</span></p></li>
 </ul>
 </section>
 </div><div class="proof example admonition" id="rk4-example">
