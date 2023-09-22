@@ -559,49 +559,31 @@ Solution<div class="sd-summary-down docutils">
     \frac{1}{4} b_2 + \frac{1}{4}b_3 + b_4 &amp;= \frac{1}{3}, \\
     \frac{1}{16} b_2 + \frac{1}{16}b_3 + b_4 &amp;= \frac{1}{4}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Solving this system using Gaussian elimination</p>
+<p class="sd-card-text">Solving the second, third and fourth order conditions using Gaussian elimination</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    &amp;\left( \begin{array}{cccc|c}
-        1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
-        0 &amp; 1/2 &amp; 1/2 &amp; 1 &amp; 1/2 \\
-        0 &amp; 1/4 &amp; 1/4 &amp; 1 &amp; 1/3 \\
-        0 &amp; 1/8 &amp; 1/8 &amp; 1 &amp; 1/4
-    \end{array} \right)
-    \begin{array}{l} \\ 2R_2 \\ \phantom{x} \end{array} \\
-    \longrightarrow
-    &amp; \left( \begin{array}{cccc|c}
-        1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
-        0 &amp; 1 &amp; 1 &amp; 2 &amp; 1 \\
-        0 &amp; 1/4 &amp; 1/4 &amp; 1 &amp; 1/3 \\
-        0 &amp; 1/8 &amp; 1/8 &amp; 1 &amp; 1/4
-    \end{array} \right)
-    \begin{array}{l} R_1 - R_2 \\  \\ R_3 - \frac{1}{4} R_2 \\[1pt] R_4 - \frac{1}{8} R_2 \end{array} \\
-    \longrightarrow
-    &amp; \left( \begin{array}{cccc|c}
-        1 &amp; 0 &amp; 0 &amp; -1 &amp; 0 \\
-        0 &amp; 1 &amp; 1 &amp; 2 &amp; 1 \\
-        0 &amp; 0 &amp; 0 &amp; 1/2 &amp; 1/12 \\
-        0 &amp; 0 &amp; 0 &amp; 3/4 &amp; 1/8
-    \end{array} \right)
-    \begin{array}{l} \\ \\ 2 R_3 \\ \phantom{x} \end{array}  \\
-    \longrightarrow
-    &amp; \left( \begin{array}{cccc|c}
-        1 &amp; 0 &amp; 0 &amp; -1 &amp; 0 \\
-        0 &amp; 1 &amp; 1 &amp; 2 &amp; 1 \\
-        0 &amp; 0 &amp; 0 &amp; 1 &amp; 1/6 \\
-        0 &amp; 0 &amp; 0 &amp; 3/4 &amp; 1/8
-    \end{array} \right)
-    \begin{array}{l} R_1 + R_3 \\ R_2 - 2R_3 \\ \\ R_4 - \frac{4}{3}R_3 \phantom{x} \end{array} \\
-    \longrightarrow
-    &amp; \left( \begin{array}{cccc|c}
-        1 &amp; 0 &amp; 0 &amp; 0 &amp; 1/6 \\
-        0 &amp; 1 &amp; 1 &amp; 0 &amp; 2/3 \\
-        0 &amp; 0 &amp; 0 &amp; 1 &amp; 1/6 \\
-        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
-    \end{array} \right)
+  &amp;\left( \begin{array}{ccc|c}
+    1/2 &amp; 1/2 &amp; 1 &amp; 1/2 \\
+    1/4 &amp; 1/4 &amp; 1 &amp; 1/3 \\
+    1/8 &amp; 1/8 &amp; 1 &amp; 1/4
+  \end{array} \right)
+  \begin{array}{l} 2R_1 \\ \phantom{x} \\ \phantom{x} \end{array} \\
+  \longrightarrow
+  &amp;\left( \begin{array}{ccc|c}
+    1 &amp; 1 &amp; 2 &amp; 1 \\
+    1/4 &amp; 1/4 &amp; 1 &amp; 1/3 \\
+    1/8 &amp; 1/8 &amp; 1 &amp; 1/4
+  \end{array} \right)
+  \begin{array}{l} \\ R_2 - \frac{1}{4}R_1 \\ R_3 - \frac{1}{8}R_3 \end{array} \\
+  \longrightarrow
+  &amp;\left( \begin{array}{ccc|c}
+    1 &amp; 1 &amp; 2 &amp; 1 \\
+    0 &amp; 0 &amp; 1/2 &amp; 1/12 \\
+    0 &amp; 0 &amp; 3/4 &amp; 1/8
+  \end{array} \right)
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(b_1 = \frac{1}{6}\)</span>, <span class="math notranslate nohighlight">\(b_2 = \frac{1}{3}\)</span>, <span class="math notranslate nohighlight">\(b_3 = \frac{1}{3}\)</span> and <span class="math notranslate nohighlight">\(b_4 = \frac{1}{6}\)</span>. Substituting known values into the fifth, sixth and seventh order conditions gives</p>
+<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(b_4 = \frac{1}{6}\)</span>, <span class="math notranslate nohighlight">\(b_2 + b_3 = \frac{2}{3}\)</span>. Let <span class="math notranslate nohighlight">\(b_2 = b_3 = \frac{1}{3}\)</span> and substituting <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span> into the first order condition gives <span class="math notranslate nohighlight">\(b_1 = \frac{1}{6}\)</span>.</p>
+<p class="sd-card-text">Substituting the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> coefficients into the fifth, sixth and seventh order conditions gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \frac{1}{6} a_{32} + \frac{1}{12} a_{42} + \frac{1}{12} a_{43} &amp;= \frac{1}{6}, \\
@@ -609,7 +591,7 @@ Solution<div class="sd-summary-down docutils">
     \frac{1}{12} a_{32} + \frac{1}{24} a_{42} + \frac{1}{24} a_{43}&amp;= \frac{1}{12}, \\
     \frac{1}{12} a_{43}a_{32} &amp;= \frac{1}{24}. 
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">The first three equations form a system of linear equations which we can solve using Gaussian elimination</p>
+<p class="sd-card-text">Solving the first, second and third equations using Gaussian elimination</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     &amp; \left( \begin{array}{ccc|c}
@@ -646,16 +628,24 @@ Solution<div class="sd-summary-down docutils">
         0 &amp; 0 &amp; 0 &amp; 0 
     \end{array} \right)
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(a_{42} = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{43} = \frac{1}{2}\)</span>. We now have the values of all of the coefficients so this fourth-order explicit Runge-Kutta method is</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{42} + a_{43} = 1\)</span>. Using the row sum condition for <span class="math notranslate nohighlight">\(c_3\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_{n+1} &amp;=y_n +\frac{h}{6}(k_1 +2 k_2 +2k_3 +k_4 ),\\
-    k_1 &amp;=f(t_n ,y_n ),\\
-    k_2 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_1 ),\\
-    k_3 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_2 ),\\
-    k_4 &amp;=f(t_n +h,y_n +hk_3 ),
+  c_3 &amp;= a_{31} + a_{32} \\
+  \frac{1}{2} &amp;= a_{31} + \frac{1}{2},
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">which has the Butcher tableau</p>
+<p class="sd-card-text">which is satisfied when <span class="math notranslate nohighlight">\(a_{31} = 0\)</span>. Substituting <span class="math notranslate nohighlight">\(a_{32}\)</span> into the last order condition gives</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+  \frac{1}{12} a_{43}  \frac{1}{2} = \frac{1}{24},
+\end{align*}\]</div>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{43} = 1\)</span> and <span class="math notranslate nohighlight">\(a_{42} = 0\)</span>. Finally using the row sum condition for <span class="math notranslate nohighlight">\(c_4\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  c_4 &amp;= a_{41} + a_{42} + a_{43} \\
+  1 &amp;= a_{41} + 0 + 1,
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">which is satisfied when <span class="math notranslate nohighlight">\(a_{41} = 0\)</span>. We now have the values of all of the coefficients so this fourth-order explicit Runge-Kutta method is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{array}{c|cccc}
@@ -665,6 +655,15 @@ Solution<div class="sd-summary-down docutils">
         1 &amp; 0 &amp; 0 &amp; 1 &amp; \\ \hline
         &amp; 1/6 &amp; 1/3 &amp; 1/3 &amp; 1/6
     \end{array}
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">or alternatively</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_{n+1} &amp;=y_n +\frac{h}{6}(k_1 +2 k_2 +2k_3 +k_4 ),\\
+    k_1 &amp;=f(t_n ,y_n ),\\
+    k_2 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_1 ),\\
+    k_3 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_2 ),\\
+    k_4 &amp;=f(t_n +h,y_n +hk_3 ),
 \end{align*} \end{split}\]</div>
 </div>
 </details></section>
