@@ -37,7 +37,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -148,8 +147,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/MMU_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/MMU_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -413,7 +412,7 @@ document.write(`
 <span class="eqno">(1.3)<a class="headerlink" href="#equation-euler-method-equation" title="Permalink to this equation">#</a></span>\[y_{n+1} = y_n + h f(t_n ,y_n),\]</div>
 <p>where <span class="math notranslate nohighlight">\(h = t_{n+1} - t_n\)</span>.</p>
 </section>
-</div><p>To solve an initial value problem using the Euler method we first initialise <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and <span class="math notranslate nohighlight">\(t_0 = t_{\min}\)</span> then calculate the value of <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="#equation-euler-method-equation">(1.3)</a> and <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span>. Then we use <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the value of <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(t_2 = t_1 + h\)</span>. We continue in this way until we have calculated up to <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step. The other type of numerical method for solving ODEs is the <a href="https://en.wikipedia.org/wiki/Linear_multistep_method" target="_blank">linear multistep methods</a> that requires information from multiple previous steps.</p>
+</div><p>To solve an initial value problem using the Euler method we first initialise <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and <span class="math notranslate nohighlight">\(t_0 = t_{\min}\)</span> then calculate the value of <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="#equation-euler-method-equation">(1.3)</a>. Then we use <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the value of <span class="math notranslate nohighlight">\(y_2\)</span>. We continue in this way until we have calculated up to <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step. The other type of numerical method for solving ODEs is the <a href="https://en.wikipedia.org/wiki/Linear_multistep_method" target="_blank">linear multistep methods</a> that requires information from multiple previous steps.</p>
 <p>The solution of the initial value problem using the Euler method will result in two vectors containing the values of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(y\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -428,14 +427,9 @@ document.write(`
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbf{t} \gets (t_{\min}, t_{\min} + h, t_{\min} + 2h, \ldots, t_{\max})\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{y} \gets (y_0, 0, \ldots, 0)\)</span>   (same size as <span class="math notranslate nohighlight">\(\mathbf{t}\)</span>)</p></li>
-<li><p>For <span class="math notranslate nohighlight">\(t_n &lt; t_{\max}\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(y_{n+1} \gets y_n + h f(t_n, y_n)\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, \operatorname{length}(\mathbf{t}) - 1\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(y_{n+1} \gets y_n + hf(t_n, y_n)\)</span></p></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><p>Return <span class="math notranslate nohighlight">\(\mathbf{t}, \mathbf{y}\)</span></p></li>
@@ -449,7 +443,7 @@ document.write(`
 \[y' = ty, \qquad t\in [0,1], \qquad y(0)=1.\]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Solution<div class="sd-summary-down docutils">
+Solution (click to show)<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -543,7 +537,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </ul>
 <p>The function first calculates creates two arrays <code class="docutils literal notranslate"><span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> which store the values of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. Since we are using a constant step length<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> <code class="docutils literal notranslate"><span class="pre">h</span></code>, we generate the values of <code class="docutils literal notranslate"><span class="pre">t</span></code> using array commands. The <code class="docutils literal notranslate"><span class="pre">y</span></code> array has the same number of rows as the <code class="docutils literal notranslate"><span class="pre">t</span></code> array and the same number of columns as elements in <code class="docutils literal notranslate"><span class="pre">y0</span></code> so that our solver can deal with multiple ODEs at the same time. The first row of <code class="docutils literal notranslate"><span class="pre">y</span></code> is set equal to <code class="docutils literal notranslate"><span class="pre">y0</span></code>. A for loop is used to step through the domain and calculate the solution at each step using the <code class="docutils literal notranslate"><span class="pre">solver()</span></code> function.</p>
 <p>We have also defined the function <code class="docutils literal notranslate"><span class="pre">euler()</span></code> which calculates the Euler method solution over a single step of length <code class="docutils literal notranslate"><span class="pre">h</span></code> given input values of <code class="docutils literal notranslate"><span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> and the ODE function <code class="docutils literal notranslate"><span class="pre">f</span></code>. Now we need some code that defines the IVP being solved and invokes our <code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code> function. Using functions in this way allows us to easily use other IVP solvers without needing to repeat lots of code (this is a programming concept known as DRY - Don’t Repeat Yourself).</p>
-<p>The code below solver the IVP from <a class="reference internal" href="#euler-example">Example 1.1</a> and outputs the solution as a table and a plot.</p>
+<p>The code below solves the IVP from <a class="reference internal" href="#euler-example">Example 1.1</a> and outputs the solution as a table and a plot.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
