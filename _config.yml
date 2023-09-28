@@ -4,6 +4,7 @@
 title: Runge-Kutta Methods
 author: Dr Jon Shiach
 logo: images/logo.png
+copyright : "2023"  # Copyright year to be placed in the footer
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -21,14 +22,14 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/drjonshiach/ODEs_book  # Online location of your book
+  url: https://github.com/jonshiach/LA-book  # Online location of your book
   path_to_book: /  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  favicon                   : ""  # A path to a favicon image
+  favicon                   : "/images/favicon.jpeg"  # A path to a favicon image
   use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
   use_repository_button     : false  # Whether to add a link to your repository button
   use_issues_button         : false  # Whether to add an "open an issue" button
@@ -37,7 +38,7 @@ html:
   extra_footer              : ""  # Will be displayed underneath the footer.
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
-  baseurl                   : "https://jonshiach.github.io/ODEs-book/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  baseurl                   : "https://jonshiach.github.io/LA-book/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
   comments:
     hypothesis              : false
     utterances              : false
@@ -45,7 +46,7 @@ html:
 
 launch_buttons:
   binderhub_url             : ""  # The URL of the BinderHub (e.g., https://mybinder.org)
- 
+
 parse:
   myst_enable_extensions:
      - dollarmath
@@ -58,10 +59,11 @@ parse:
 sphinx:
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    bibtex_reference_style: author_year
-    html_favicon: "Images/curve-icon-11.jpeg"
+    html_favicon: "images/favicon.jpeg"
   extra_extensions:
     - sphinx_proof
     - sphinx_exercise
 
 only_build_toc_files: true
+
+exclude_patterns: [README.md]

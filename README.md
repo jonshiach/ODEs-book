@@ -1,3 +1,3 @@
-# Runge-Kutta Methods
+# Linear algebra book
 
-These are the lecture notes that accompany part of the unit Computational Methods in Ordinary Differential Equations that is taught as part of the BSc (Hons) Mathematics course at the [Manchester Metropolitan University](mmu.ac.uk). These notes are written by [Dr Jon Shiach](jonshiach.github.io) and are free to use for education purposes. Any corrections, suggested amendments or queries should be sent to [j.shiach@mmu.ac.uk](mailto:j.shiach@mmu.ac.uk).
+Lecture notes for first year linear algebra taught at the Manchester Metropolitan University.
