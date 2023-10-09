@@ -429,7 +429,7 @@ document.write(`
 y_{n+1} &amp;= y_n + (h b_1 f + h b_2 (f + h c_2 f_t + h a_{21} k_1 f_y))(t_n, y_n) + O(h^3) \\
 &amp;= y_n + (h (b_1 + b_2)f + h^2 (b_2 c_2 f_t + a_{21} b_2 ff_y))(t_n, y_n) + O(h^3).
 \end{align*} \end{split}\]</div>
-<p>We need equation <a class="reference internal" href="#equation-bivariate-rk2-equation">(2.7)</a> to be equal to equation <a class="reference internal" href="#equation-ode-taylor-equation">(2.5)</a>. Equating the coefficients of <span class="math notranslate nohighlight">\(f\)</span> we have (the <span class="math notranslate nohighlight">\(h\)</span> cancels out)</p>
+<p>We need equation <a class="reference internal" href="#equation-bivariate-rk2-equation">(2.7)</a> to be equal to equation <a class="reference internal" href="#equation-ode-taylor-equation">(2.5)</a>. Equating the coefficients of <span class="math notranslate nohighlight">\(f\)</span> we have (the <span class="math notranslate nohighlight">\(h\)</span>’s cancel out)</p>
 <div class="math notranslate nohighlight" id="equation-rk2-order-condition-1-equation">
 <span class="eqno">(2.8)<a class="headerlink" href="#equation-rk2-order-condition-1-equation" title="Permalink to this equation">#</a></span>\[ b_1 + b_2 = 1. \]</div>
 <p>Equating the coefficients of <span class="math notranslate nohighlight">\(f_t\)</span> we have</p>
@@ -536,7 +536,7 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">eq3</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">c2</span>
 
 <span class="c1"># Solve order conditions</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">),</span> <span class="n">manual</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

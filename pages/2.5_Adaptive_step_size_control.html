@@ -506,10 +506,10 @@ document.write(`
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{y}_{n+1} \gets \textbf{y}^{(p+1)}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(t_{n+1} \gets t_n + h\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n \gets n + 1\)</span></p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(h \gets h \max\left(0.5, \min \left(2, 0.9 \left( \dfrac{tol}{\Delta} \right) ^{1/(p+1)} \right) \right)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(h \gets \min(h, t_{max} - t_n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h \gets \min\left( h \max\left(0.5, \min \left(2, 0.9 \left( \dfrac{tol}{\Delta} \right) ^{1/(p+1)} \right) \right), t_{\max} - t_n \right)\)</span></p></li>
 </ul>
 </li>
 <li><p>Return <span class="math notranslate nohighlight">\((t_0, t_1, \ldots, t_n)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots, \mathbf{y}_n)\)</span></p></li>

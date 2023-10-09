@@ -392,7 +392,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="derivation-of-a-fourth-order-explicit-runge-kutta-method">
 <span id="derivation-of-rk4-section"></span><h1><span class="section-number">2.5. </span>Derivation of a fourth-order explicit Runge-Kutta method<a class="headerlink" href="#derivation-of-a-fourth-order-explicit-runge-kutta-method" title="Permalink to this heading">#</a></h1>
-<p>We saw in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a> that we derive a set of order conditions by listing all of the rooted trees up to a certain order and using the following relation between the elementary weight <span class="math notranslate nohighlight">\(\Phi\)</span> and density <span class="math notranslate nohighlight">\(\gamma\)</span> for each tree <span class="math notranslate nohighlight">\(t\)</span> in our set</p>
+<p>We saw in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a> that we derive a set of order conditions by listing all of the rooted trees up to a certain order and using the following relation between the elementary weight <span class="math notranslate nohighlight">\(\Phi\)</span> and density <span class="math notranslate nohighlight">\(\gamma\)</span> for each tree</p>
 <div class="math notranslate nohighlight" id="equation-tree-order-condition">
 <span class="eqno">(2.15)<a class="headerlink" href="#equation-tree-order-condition" title="Permalink to this equation">#</a></span>\[\Phi = \dfrac{1}{\gamma}.\]</div>
 <p>To derive the order conditions for a fourth-order explicit method we consider all of the rooted trees up to and including order 4 (<a class="reference internal" href="#th-order-trees"><span class="std std-numref">Table 2.2</span></a>).</p>
@@ -502,7 +502,7 @@ document.write(`
     &amp; b_1 &amp; b_2 &amp; b_3 &amp; b_4 
   \end{array}
 \end{align*} \end{split}\]</div>
-<p>So we can omit any terms in the summations where the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> are zero. For the first 4 order conditions we have</p>
+<p>So we can omit any terms in the summations where the values of the <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients are zero. For the first 4 order conditions we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align}
     b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
@@ -538,7 +538,7 @@ document.write(`
     b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}.
 \end{align*} \end{split}\]</div>
 </section>
-</div><p>A fourth-order explicit Runge-Kutta method has 8 order conditions expressed in 14 unknowns (6 <span class="math notranslate nohighlight">\(a_{ij}\)</span> values and 4 each of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span>). The row sum condition gives a further 3 order conditions so we have 11 order conditions and 14 unknowns. To derive a method we choose the value of 3 of the unknowns and solve for the rest.</p>
+</div><p>A fourth-order explicit Runge-Kutta method has 8 order conditions expressed in 14 unknowns (6 <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients and 4 each of the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> coefficients). The row sum condition gives a further 3 order conditions so we have 11 order conditions and 14 unknowns. To derive a method we choose the value of 3 of the unknowns and solve for the rest.</p>
 <div class="proof example admonition" id="rk4-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 2.6 </span></p>
 <section class="example-content" id="proof-content">
@@ -550,7 +550,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">To determine a unique solution we choose values for some of the unknowns and solve the order conditions for the remaining unknowns.</p>
+<p class="sd-card-text">To determine a unique solution we choose values for some of the coefficients and solve the order conditions for the remaining unknowns.</p>
 <p class="sd-card-text">Substituting <span class="math notranslate nohighlight">\(c_2\)</span>, <span class="math notranslate nohighlight">\(c_3\)</span> and <span class="math notranslate nohighlight">\(c_4\)</span> into the first four order conditions gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -697,7 +697,6 @@ Solution (click to show)<div class="sd-summary-down docutils">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="s2">&quot;mathjax&quot;</span><span class="p">)</span>
 
 <span class="c1"># Declare symbolic variables</span>
 <span class="n">a21</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span><span class="p">,</span> <span class="n">a43</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span> \
