@@ -672,7 +672,7 @@ solve(eq1, eq2, eq3, eq4, eq5, eq6)
 
 <p class="admonition-title"><span class="caption-number">Exercise 2.5 </span></p>
 <section id="exercise-content">
-<p>Derive an explicit fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = \frac{1}{4}\)</span>, <span class="math notranslate nohighlight">\(c_3 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(c_4 = 1\)</span>.</p>
+<p>Derive an explicit fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = \frac{1}{4}\)</span>, <span class="math notranslate nohighlight">\(c_3 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(c_4 = 1\)</span>. (Hint: you may need to solve some of the order conditions separately to get Python and MATLAB to return a solution).</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-9">
@@ -803,7 +803,6 @@ solve(eq1, eq2, eq3, eq4, eq5, eq6)
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="s2">&quot;mathjax&quot;</span><span class="p">)</span>
 
 <span class="c1"># Declare symbolic variables</span>
 <span class="n">a21</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span><span class="p">,</span> <span class="n">a43</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a21, a31, a32, a41, a42, a43, b1, b2, b3, b4&quot;</span><span class="p">)</span>
@@ -956,7 +955,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <p class="admonition-title"><span class="caption-number">Exercise 2.7 </span></p>
 <section id="exercise-content">
-<p>Define a Python or MATLAB function called <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code> which uses the method from derived in <a class="reference internal" href="#ch2-ex-myrk2-derivation"><span class="std std-numref">Exercise 2.3</span></a> to compute the solution over a single step. Use your function along with the [<code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code>]euler-code-section) function to solve the initial value problem in <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.6</span></a>. Present your solution in a table and as a plot of the numerical solutions against the exact solutions on the same set of axes.</p>
+<p>Define a Python or MATLAB function called <code class="docutils literal notranslate"><span class="pre">myrk2()</span></code> which uses the method from derived in <a class="reference internal" href="#ch2-ex-myrk2-derivation"><span class="std std-numref">Exercise 2.3</span></a> to compute the solution over a single step. Use your function along with the <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code></span></a> function to solve the initial value problem in <a class="reference internal" href="#ch2-ex-myrk2-hand-calc"><span class="std std-numref">Exercise 2.6</span></a>. Present your solution in a table and as a plot of the numerical solutions against the exact solutions on the same set of axes.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="pages/2.6_ERK_Exercises-solution-13">
