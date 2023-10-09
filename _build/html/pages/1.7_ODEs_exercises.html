@@ -404,22 +404,22 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_0 &amp;= 1, \\
-    y_1 &amp;= y_0 + h(1 - y_0 - e^{-t_0}) \\
-    &amp;= 1 + 0.5(1 - 1 - e^{0}) = 1, \\
-    y_2 &amp;= y_1 + h(1 - y_1 - e^{-t_1}) \\
-    &amp;= 1 + 0.5(1 - 1 - e^{-0.5}) = 0.6967, \\
-    y_3 &amp;= y_2 + h(1 - y_2 - e^{-t_2}) \\
-    &amp;= 0.6967 + 0.5(1 - 0.6967 - e^{-1.0}) = 0.6655, \\
-    y_4 &amp;= y_3 + h(1 - y_3 - e^{-t_3}) \\
-    &amp;= 0.6655 + 0.5(1 - 0.6655 - e^{-1.5}) = 0.7206, \\
-    y_5 &amp;= y_4 + h(1 - y_4 - e^{-t_4}) \\
-    &amp;= 0.7206 + 0.5(1 - 0.7206 - e^{-2.0}) = 0.7926, \\
-    y_6 &amp;= y_5 + h(1 - y_5 - e^{-t_5}) \\
-    &amp;= 0.7926 + 0.5(1 - 0.7926 - e^{-2.5}) = 0.8553, \\
-    y_7 &amp;= y_6 + h(1 - y_6 - e^{-t_6}) \\
-    &amp;= 0.8553 + 0.5(1 - 0.8553 - e^{-3.0}) = 0.9027, \\
-    y_8 &amp;= y_7 + h(1 - y_7 - e^{-t_7}) \\
-    &amp;= 0.9027 + 0.5(1 - 0.9027 - e^{-3.5}) = 0.9363.
+    y_1 &amp;= y_0 + h (1 - y_0 - e^{-t_0}) \\
+    &amp;= 1.0 + 0.5 (1 - 1.0 - e^{-0.0}) = 0.5, \\
+    y_2 &amp;= y_1 + h (1 - y_1 - e^{-t_1}) \\
+    &amp;= 0.5 + 0.5 (1 - 0.5 - e^{-0.5}) = 0.446735, \\
+    y_3 &amp;= y_2 + h (1 - y_2 - e^{-t_2}) \\
+    &amp;= 0.446735 + 0.5 (1 - 0.446735 - e^{-1.0}) = 0.539428, \\
+    y_4 &amp;= y_3 + h (1 - y_3 - e^{-t_3}) \\
+    &amp;= 0.539428 + 0.5 (1 - 0.539428 - e^{-1.5}) = 0.658149, \\
+    y_5 &amp;= y_4 + h (1 - y_4 - e^{-t_4}) \\
+    &amp;= 0.658149 + 0.5 (1 - 0.658149 - e^{-2.0}) = 0.761407, \\
+    y_6 &amp;= y_5 + h (1 - y_5 - e^{-t_5}) \\
+    &amp;= 0.761407 + 0.5 (1 - 0.761407 - e^{-2.5}) = 0.839661, \\
+    y_7 &amp;= y_6 + h (1 - y_6 - e^{-t_6}) \\
+    &amp;= 0.839661 + 0.5 (1 - 0.839661 - e^{-3.0}) = 0.894937, \\
+    y_8 &amp;= y_7 + h (1 - y_7 - e^{-t_7}) \\
+    &amp;= 0.894937 + 0.5 (1 - 0.894937 - e^{-3.5}) = 0.93237, \\
 \end{align*} \end{split}\]</div>
 </section>
 </div>
@@ -714,7 +714,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p>The motion of a pendulum can be modelled by the following ODE</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    \theta'' + \frac{g}{L} \sin(\theta) = 0,
+    \ddot{\theta} + \frac{g}{L} \sin(\theta) = 0,
 \end{align*} \]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between the pendulum and the vertical, <span class="math notranslate nohighlight">\(L\)</span> is the length of the pendulum and <span class="math notranslate nohighlight">\(g=9.81\text{ms}^{-2}\)</span> is the acceleration due to gravity.</p>
 <figure class="align-default">
@@ -727,7 +727,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#ch1-ex4"> Exercise 1.4</a></p>
 <section id="solution-content">
-<p>Let <span class="math notranslate nohighlight">\(y_1 = y\)</span> and <span class="math notranslate nohighlight">\(y_2 = y'\)</span> then we can write the ODE as</p>
+<p>Let <span class="math notranslate nohighlight">\(y_1 = \theta\)</span> and <span class="math notranslate nohighlight">\(y_2 = \dot{\theta}\)</span> then we can write the ODE as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_1' &amp;= y_2, \\
@@ -735,11 +735,11 @@ MATLAB</label><div class="sd-tab-content docutils">
 \end{align*} \end{split}\]</div>
 <p>so we have the IVP <span class="math notranslate nohighlight">\(\mathbf{y}' = \mathbf{f}(t, \mathbf{y})\)</span> where</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align*}
-    \mathbf{y} &amp;= \begin{pmatrix} y_1 , y_2 \end{pmatrix}, &amp;
-    \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} y_2 , -\dfrac{g}{L} \sin(y_1) \end{pmatrix}, &amp;
-    \mathbf{y}_0 &amp;= \begin{pmatrix} \dfrac{\pi}{2} , 0 \end{pmatrix}.
-\end{align*} \]</div>
+\[\begin{split} \begin{align*}
+    \mathbf{y} &amp;= \begin{pmatrix} y_1  \\ y_2 \end{pmatrix}, &amp;
+    \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} y_2 \\  -g \sin(y_1)/L \end{pmatrix}, &amp;
+    \mathbf{y}_0 &amp;= \begin{pmatrix} \pi/2 \\  0 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
 <p>Plot</p>
 <figure class="align-default" style="width: 600px">
 <img alt="../_images/597a180606877d027d44cfe9d29f95001c3f25a09f0c240be678b6b6c0b568b7.png" src="../_images/597a180606877d027d44cfe9d29f95001c3f25a09f0c240be678b6b6c0b568b7.png" />

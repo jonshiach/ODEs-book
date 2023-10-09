@@ -402,7 +402,7 @@ document.write(`
     y_1' &amp;= y_2,\\
     y_2' &amp;= y_3,\\
     &amp;\vdots \\
-    y_N' &amp;= f(t, y_1 , y_2 , y_3 , \ldots, y_N).
+    y_N' &amp;= f(t, y_1 , y_2 , y_3 , \ldots, y_{N-1}).
 \end{align*} \end{split}\]</div>
 <p>This is a system of <span class="math notranslate nohighlight">\(N\)</span> first-order ODEs so we can apply the Euler method to each equation in the system to give an equivalent solution to the <span class="math notranslate nohighlight">\(n\)</span>th order ODE.</p>
 <div class="proof example admonition" id="higher-order-odes-example">
@@ -435,16 +435,16 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <p>We have seen that we can rewrite an <span class="math notranslate nohighlight">\(N\)</span>-th order ODE into a system of <span class="math notranslate nohighlight">\(N\)</span> first-order ODEs and we can apply the Euler method to solve each one. Since we applying the same method to multiple equations it makes sense to group them for convenience. Consider a system of <span class="math notranslate nohighlight">\(N\)</span> first-order ODEs</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_1' &amp;= f_1(t, y_1, y_2, \ldots, y_N), \\
-    y_2' &amp;= f_2(t, y_1, y_2, \ldots, y_N), \\
+    y_1' &amp;= f_1(t, y_1, \ldots, y_N), \\
+    y_2' &amp;= f_2(t, y_1, \ldots, y_N), \\
     &amp; \vdots \\
-    y_n' &amp;= f_n(t, y_1, y_2, \ldots, y_N).
+    y_N' &amp;= f_N(t, y_1, \ldots, y_N).
 \end{align*} \end{split}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{f}(t, \mathbf{y})\)</span> be the vectors</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{y} &amp;= \begin{pmatrix} y_1  \\ y_2  \\ \vdots \\ y_N \end{pmatrix}, &amp;
-    \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} f_1(t, \mathbf{y}) \\ f_2(t, \mathbf{y}) \\ \vdots \\ f_n(t, \mathbf{y}) \end{pmatrix},
+    \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} f_1(t, \mathbf{y}) \\ f_2(t, \mathbf{y}) \\ \vdots \\ f_N(t, \mathbf{y}) \end{pmatrix},
 \end{align*} \end{split}\]</div>
 <p>then we can write the system in vector form</p>
 <div class="math notranslate nohighlight">
@@ -590,7 +590,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>The functions <span class="math notranslate nohighlight">\(y_1, y_2, \ldots\)</span> are ODEs and should not be confused for the solution values <span class="math notranslate nohighlight">\(y_1=y(t_1), y_2=y(t_2), \ldots\)</span>.</p>
+<p>Here <span class="math notranslate nohighlight">\(y_1, y_2, \ldots\)</span> are functions and should not be confused for the solution values <span class="math notranslate nohighlight">\(y_1=y(t_1), y_2=y(t_2), \ldots\)</span>.</p>
 </aside>
 </section>
 </section>
