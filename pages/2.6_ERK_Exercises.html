@@ -1385,7 +1385,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
 
     <span class="c1"># Solver loop</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">nsucc</span><span class="p">,</span> <span class="n">nfail</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
         <span class="n">yp1</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:],</span> <span class="n">h</span><span class="p">)</span>
         <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yp1</span> <span class="o">-</span> <span class="n">yp</span><span class="p">))</span>
@@ -1395,10 +1395,16 @@ Python</label><div class="sd-tab-content docutils">
             <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">yp1</span>
             <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">nsucc</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nfail</span> <span class="o">+=</span> <span class="mi">1</span>
         
         <span class="c1"># Calculate new value of h (making sure not to exceed tmax)</span>
         <span class="n">h</span> <span class="o">*=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="p">(</span><span class="n">tol</span> <span class="o">/</span> <span class="n">delta</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))))</span>
         <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+
+    <span class="c1"># Output number of successful steps and failed steps</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nsucc</span><span class="si">}</span><span class="s2"> successful steps</span><span class="se">\n</span><span class="si">{</span><span class="n">nfail</span><span class="si">}</span><span class="s2"> failed steps&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">t</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span>
 
@@ -1420,9 +1426,6 @@ Python</label><div class="sd-tab-content docutils">
 
 <span class="c1"># Calculate the solution to the IVP</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">solveIVP_SSC</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">rk23</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
-
-<span class="c1"># Output number of successful steps</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> successful steps&quot;</span><span class="p">)</span>
 
 <span class="c1"># Plot solutions</span>
 <span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
@@ -1481,6 +1484,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="c">% Loop through the steps</span>
 <span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">nsucc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">nfail</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="k">while</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="c">% Calculate order p and p+1 solutions</span>
@@ -1492,6 +1497,9 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">yp1</span><span class="p">;</span>
 <span class="w">        </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
 <span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">nsucc</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nsucc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">nfail</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nfail</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="k">end</span>
 
 <span class="w">    </span><span class="c">% Calculate new value of h (making sure not to exceed tmax)</span>
@@ -1503,6 +1511,9 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="c">% Remove unused entries from t and y</span>
 <span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
 <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="c">% Print number of successful and failed steps</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;%1i successful steps\n%1i failed steps&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nsucc</span><span class="p">,</span><span class="w"> </span><span class="n">nfail</span><span class="p">)</span>
 
 <span class="k">end</span>
 
