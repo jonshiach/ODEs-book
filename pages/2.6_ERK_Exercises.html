@@ -961,20 +961,20 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p>Using the second-order ERK method derived in <a class="reference internal" href="#ch2-ex-myrk2-derivation"><span class="std std-numref">Exercise 2.3</span></a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_0 &amp;= 1.0000, \\
-    k_1 &amp;= f(t_0, y_0) = (0.0) - (1.0000) = -1.0000, \\
+    y_0 &amp;= 1, \\
+    k_1 &amp;= f(t_0, y_0) = (0.0) - (1.0) = -1, \\
     k_2 &amp;= f(t_0 + \tfrac{3}{4}h, y_0 + \tfrac{3}{4}hk_1) \\
-        &amp;= (0.0 + \tfrac{3}{4}(0.4)) - (1.0000 + \tfrac{3}{4}(0.4)(-1.0000)) \\
-        &amp;= -0.4000, \\
+        &amp;= (0 + \tfrac{3}{4}(0.4)) - (1 + \tfrac{3}{4}(0.4)(-1)) \\
+        &amp;= -0.4, \\
     y_1 &amp;= y_0 + \frac{h}{3}(k_1 + k_2) \\
-        &amp;= 1.0000 + \frac{0.4}{3}(-1.0000 + 2(-0.4000)) \\
-        &amp;= 0.7600,\\ \\
-    k_1 &amp;= f(t_1, y_1) = (0.4) - (0.7600) = -0.3600, \\
+        &amp;= 1 + \frac{0.4}{3}(-1 + 2(-0.4)) \\
+        &amp;= 0.76,\\ \\
+    k_1 &amp;= f(t_1, y_1) = (0.4) - (0.76) = -0.36, \\
     k_2 &amp;= f(t_1 + \tfrac{3}{4}h, y_1 + \tfrac{3}{4}hk_1) \\
-        &amp;= (0.4 + \tfrac{3}{4}(0.4)) - (0.7600 + \tfrac{3}{4}(0.4)(-0.3600)) \\
-        &amp;= 0.0480, \\
+        &amp;= (0.4 + \tfrac{3}{4}(0.4)) - (0.76 + \tfrac{3}{4}(0.4)(-0.36)) \\
+        &amp;= 0.048, \\
     y_2 &amp;= y_1 + \frac{h}{3}(k_1 + k_2) \\
-        &amp;= 0.7600 + \frac{0.4}{3}(-0.3600 + 2(0.0480)) \\
+        &amp;= 0.76 + \frac{0.4}{3}(-0.36 + 2(0.048)) \\
         &amp;= 0.7248,\\ \\
     k_1 &amp;= f(t_2, y_2) = (0.8) - (0.7248) = 0.0752, \\
     k_2 &amp;= f(t_2 + \tfrac{3}{4}h, y_2 + \tfrac{3}{4}hk_1) \\
@@ -989,22 +989,22 @@ MATLAB</label><div class="sd-tab-content docutils">
         &amp;= 0.5598, \\
     y_4 &amp;= y_3 + \frac{h}{3}(k_1 + k_2) \\
         &amp;= 0.8289 + \frac{0.4}{3}(0.3711 + 2(0.5598)) \\
-        &amp;= 1.0276,\\ \\
-    k_1 &amp;= f(t_4, y_4) = (1.6) - (1.0276) = 0.5724, \\
+        &amp;= 1.028,\\ \\
+    k_1 &amp;= f(t_4, y_4) = (1.6) - (1.028) = 0.5724, \\
     k_2 &amp;= f(t_4 + \tfrac{3}{4}h, y_4 + \tfrac{3}{4}hk_1) \\
-        &amp;= (1.6 + \tfrac{3}{4}(0.4)) - (1.0276 + \tfrac{3}{4}(0.4)(0.5724)) \\
+        &amp;= (1.6 + \tfrac{3}{4}(0.4)) - (1.028 + \tfrac{3}{4}(0.4)(0.5724)) \\
         &amp;= 0.7007, \\
     y_5 &amp;= y_4 + \frac{h}{3}(k_1 + k_2) \\
-        &amp;= 1.0276 + \frac{0.4}{3}(0.5724 + 2(0.7007)) \\
-        &amp;= 1.2908.
+        &amp;= 1.028 + \frac{0.4}{3}(0.5724 + 2(0.7007)) \\
+        &amp;= 1.291,\\ \\
 \end{align*} \end{split}\]</div>
 <p>So the solution is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{y} &amp;= 
     \begin{pmatrix}
-        0.0000 \\
-        0.7600 \\
+        1 \\
+        0.76 \\
         0.7248 \\
         0.8289 \\
         1.0276 \\
@@ -1046,7 +1046,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># allows use of LaTeX in labels</span>
 
 
 <span class="k">def</span> <span class="nf">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
@@ -1427,7 +1426,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <figure class="align-default" style="width: 600px">
 <img alt="../_images/453e75810dc61fbcb51382c5b9b61c46d85fb8a36a71572703d62bb75709e258.png" src="../_images/453e75810dc61fbcb51382c5b9b61c46d85fb8a36a71572703d62bb75709e258.png" />
 </figure>
-<p>26 successful steps were required.</p>
+<p>There were 26 successful steps and 3 failed steps.</p>
 <p>Code</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
@@ -1435,7 +1434,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># allows use of LaTeX in labels</span>
 
 
 <span class="k">def</span> <span class="nf">solveIVP_SSC</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
