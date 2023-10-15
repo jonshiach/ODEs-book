@@ -500,6 +500,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(n \gets 0\)</span></p></li>
 <li><p>While <span class="math notranslate nohighlight">\(t_n &lt; t_{\max}\)</span></p>
 <ul>
+<li><p><span class="math notranslate nohighlight">\(h \gets \min(h, t_{\max} - t_{n})\)</span></p></li>
 <li><p>Calculate <span class="math notranslate nohighlight">\(\mathbf{y}^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}^{(p)}\)</span> solutions</p></li>
 <li><p><span class="math notranslate nohighlight">\(\Delta \gets  \max | \mathbf{y}^{(p+1)} - \mathbf{y}^{(p)} |\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\Delta &lt; tol\)</span></p>
@@ -509,7 +510,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(n \gets n + 1\)</span></p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(h \gets \min\left( h \max\left(0.5, \min \left(2, 0.9 \left( \dfrac{tol}{\Delta} \right) ^{1/(p+1)} \right) \right), t_{\max} - t_n \right)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h \gets \max\left(0.5, \min \left(2, 0.9 \left( \dfrac{tol}{\Delta} \right) ^{1/(p+1)} \right) \right)\)</span></p></li>
 </ul>
 </li>
 <li><p>Return <span class="math notranslate nohighlight">\((t_0, t_1, \ldots, t_n)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots, \mathbf{y}_n)\)</span></p></li>
@@ -717,17 +718,22 @@ Python</label><div class="sd-tab-content docutils">
     <span class="c1"># Solver loop</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+
+        <span class="c1"># Ensure t does not exceed tmax</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+
+        <span class="c1"># Calculate order p and p+1 solutions</span>
         <span class="n">yp1</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:],</span> <span class="n">h</span><span class="p">)</span>
-        <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yp1</span> <span class="o">-</span> <span class="n">yp</span><span class="p">))</span>
 
         <span class="c1"># Determine whether step was successful or not</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yp1</span> <span class="o">-</span> <span class="n">yp</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
             <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">yp1</span>
             <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
         
         <span class="c1"># Calculate new value of h (making sure not to exceed tmax)</span>
-        <span class="n">h</span> <span class="o">*=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="p">(</span><span class="n">tol</span> <span class="o">/</span> <span class="n">delta</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))),</span> <span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">h</span> <span class="o">*=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="p">(</span><span class="n">tol</span> <span class="o">/</span> <span class="n">delta</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))))</span>
 
     <span class="k">return</span> <span class="n">t</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span>
 
@@ -762,13 +768,14 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="k">while</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="w">    </span>
+<span class="w">    </span><span class="c">% Ensure t does not exceed tmax</span>
+<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+
 <span class="w">    </span><span class="c">% Calculate order p and p+1 solutions</span>
 <span class="w">    </span><span class="p">[</span><span class="n">yp1</span><span class="p">,</span><span class="w"> </span><span class="n">yp</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:),</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c">% Calculate error estimate</span>
-<span class="w">    </span><span class="n">delta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yp1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yp</span><span class="p">));</span>
-
 <span class="w">    </span><span class="c">% Determine whether the step was successful or not</span>
+<span class="w">    </span><span class="n">delta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yp1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yp</span><span class="p">));</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
 <span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">yp1</span><span class="p">;</span>
 <span class="w">        </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
@@ -777,7 +784,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="w">    </span><span class="c">% Calculate new value of h (making sure not to exceed tmax)</span>
 <span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">tol</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))));</span>
-<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
 
 <span class="k">end</span>
 
@@ -805,7 +811,13 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<p>Fehlberg’s method has been applied to solve the initial value problem from <a class="reference internal" href="#embedded-rk-example">Example 2.8</a> and the solution is plotted in <code class="xref std std-numref docutils literal notranslate"><span class="pre">rkf45-example-figure</span></code>. The solution had 11 successful steps, 3 failed steps and a total of 84 function evaluations.</p>
+<p>Fehlberg’s method has been applied to solve the initial value problem from <a class="reference internal" href="#embedded-rk-example">Example 2.8</a> and the solution is plotted in <a class="reference internal" href="#rkf45-example-figure"><span class="std std-numref">Fig. 2.8</span></a>. The solution had 11 successful steps, 3 failed steps and a total of 84 function evaluations.</p>
+<figure class="align-default" id="rkf45-example-figure">
+<img alt="../_images/a21ffdff3330127330726fb184cdbd7313cfca9b352fc2e63a9242e1f43c5fae.png" src="../_images/a21ffdff3330127330726fb184cdbd7313cfca9b352fc2e63a9242e1f43c5fae.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Fehlberg method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = -21y + e^{-t}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span> using Fehlberg’s method with an initial step length <span class="math notranslate nohighlight">\(h=0.1\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</span><a class="headerlink" href="#rkf45-example-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
