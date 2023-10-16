@@ -528,10 +528,10 @@ Solution (click to show)<div class="sd-summary-down docutils">
 </div><p>John Butcher noticed that comparing the Taylor series expansions for the autonomous ODE <span class="math notranslate nohighlight">\(y'=f(y)\)</span> and the general form of a Runge-Kutta method gives the order condition <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-order-condition-relation">
 <span class="eqno">(2.13)<a class="headerlink" href="#equation-order-condition-relation" title="Permalink to this equation">#</a></span>\[\Phi = \dfrac{1}{\gamma}.\]</div>
-<p>To derive the order conditions for a <span class="math notranslate nohighlight">\(k\)</span>-th order <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method we do the following:</p>
+<p>To derive the order conditions for a <span class="math notranslate nohighlight">\(n\)</span>-th order <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method we do the following:</p>
 <ul class="simple">
-<li><p>determine the set <span class="math notranslate nohighlight">\(T\)</span> of all rooted trees of order up to and including <span class="math notranslate nohighlight">\(k\)</span>;</p></li>
-<li><p>determine the density and elementary weights summed to the number of stages <span class="math notranslate nohighlight">\(s\)</span> for all trees in <span class="math notranslate nohighlight">\(T\)</span>;</p></li>
+<li><p>determine the set <span class="math notranslate nohighlight">\(T\)</span> of all rooted trees of order up to and including <span class="math notranslate nohighlight">\(n\)</span>;</p></li>
+<li><p>determine the density and elementary weights (summed to <span class="math notranslate nohighlight">\(s\)</span>) for all trees in <span class="math notranslate nohighlight">\(T\)</span>;</p></li>
 <li><p>use equation <a class="reference internal" href="#equation-order-condition-relation">(2.13)</a> to determine the order condition for each tree in <span class="math notranslate nohighlight">\(T\)</span>;</p></li>
 <li><p>if we don’t have order conditions that include all of the unknowns we apply the row sum condition which is</p></li>
 </ul>
@@ -569,11 +569,11 @@ Solution (click to show)<div class="sd-summary-down docutils">
 </tr>
 </tbody>
 </table>
-<p class="sd-card-text">Using equation <a class="reference internal" href="#equation-order-condition-relation">(2.13)</a> and summing the elementary weights to <span class="math notranslate nohighlight">\(s=2\)</span> the order conditions for a second-order method are (remember that <span class="math notranslate nohighlight">\(c_1=0\)</span>)</p>
+<p class="sd-card-text">Using equation <a class="reference internal" href="#equation-order-condition-relation">(2.13)</a> and summing the elementary weights to <span class="math notranslate nohighlight">\(s=2\)</span> the order conditions for a second-order method are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     b_1 + b_2 &amp;= 1, \\
-    b_2c_2 &amp;= \frac{1}{2}.
+    b_1c_1 + b_2c_2 &amp;= \frac{1}{2}.
 \end{align*} \end{split}\]</div>
 <p class="sd-card-text">We also need to determine a value for <span class="math notranslate nohighlight">\(a_{21}\)</span> which isn’t included in the order conditions above. Using the row sum condition for the second row we have</p>
 <div class="math notranslate nohighlight">
