@@ -431,7 +431,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <p class="sd-card-text">A fourth-order Gauss-Legendre method has <span class="math notranslate nohighlight">\(s=2\)</span> stages. The <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_2(2x - 1)\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    0 &amp;= {2 \choose 0} {2 \choose 0} (x - 1)^0 + {2 \choose 1} {3 \choose 1} (x - 1)^1 + {2 \choose 2} {2 \choose 2} (x - 1)^2 \\
+    0 &amp;= {2 \choose 0} {2 \choose 0} (x - 1)^0 + {2 \choose 1} {3 \choose 1} (x - 1)^1 + {2 \choose 2} {4 \choose 2} (x - 1)^2 \\
     &amp;= 1 + 6(x - 1) + 6(x - 1)^2 \\
     &amp;= 1 + 6x - 6 + 6x^2 - 12x + 6 \\
     &amp;= 6x^2 - 6x + 1, \\
@@ -572,12 +572,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 <div class="proof definition admonition" id="radauIA-definition">
 <p class="admonition-title"><span class="caption-number">Definition 3.4 </span> (Radau IA methods)</p>
 <section class="definition-content" id="proof-content">
-<p>A Radau IA method of order <span class="math notranslate nohighlight">\(2s-1\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients where <span class="math notranslate nohighlight">\(c_1=0\)</span> and the remaining <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_s(2x - 1) + P_{s-1}(2x - 1) = 0\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(B(2s-1)\)</span> and <span class="math notranslate nohighlight">\(D(s)\)</span> order conditions.</p>
+<p>A Radau IA method of order <span class="math notranslate nohighlight">\(2s-1\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients where <span class="math notranslate nohighlight">\(c_1=0\)</span> and the remaining <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_s(2x - 1) + P_{s-1}(2x - 1) = 0\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(B(2s-1)\)</span> and <span class="math notranslate nohighlight">\(D(s)\)</span> order conditions.</p>
 </section>
 </div><div class="proof definition admonition" id="radauIIA-definition">
 <p class="admonition-title"><span class="caption-number">Definition 3.5 </span> (Radau IIA methods)</p>
 <section class="definition-content" id="proof-content">
-<p>A Radau IIA method of order <span class="math notranslate nohighlight">\(2s-1\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients where <span class="math notranslate nohighlight">\(c_s=1\)</span> and the remaining <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_s(2x - 1) - P_{s-1}(2x - 1) = 0\)</span> and the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(B(2s-1)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions.</p>
+<p>A Radau IIA method of order <span class="math notranslate nohighlight">\(2s-1\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients where <span class="math notranslate nohighlight">\(c_s=1\)</span> and the remaining <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_s(2x - 1) - P_{s-1}(2x - 1) = 0\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(B(2s-1)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions.</p>
 </section>
 </div><div class="proof example admonition" id="radauIA-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 3.3 </span></p>
@@ -590,22 +590,22 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">A third-order Radau IA method will have <span class="math notranslate nohighlight">\(s=2\)</span> stages. We know that <span class="math notranslate nohighlight">\(c_1=0\)</span> and the value of <span class="math notranslate nohighlight">\(c_2\)</span> is the non-zero root of <span class="math notranslate nohighlight">\(0=P_2(t)+P_1(t)\)</span></p>
+<p class="sd-card-text">A third-order Radau IA method will have <span class="math notranslate nohighlight">\(s=2\)</span> stages. We know that <span class="math notranslate nohighlight">\(c_1=0\)</span> and the value of <span class="math notranslate nohighlight">\(c_2\)</span> is the non-zero root of <span class="math notranslate nohighlight">\(0=P_2(2x-1)+P_1(2x-1)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    0 &amp;= 1 + \binom{2}{1} \binom{3}{1} (x - 1) + \binom{2}{2} \binom{4}{2} (x - 1)^2 + 1 + \binom{1}{1} \binom{2}{1} (x - 1) \\
+    0 &amp;= \underbrace{\left( 1 + \binom{2}{1} \binom{3}{1} (x - 1) + \binom{2}{2} \binom{4}{2} (x - 1)^2 \right)}_{P_2(2x-1)} + \underbrace{\left( 1 + \binom{1}{1} \binom{2}{1} (x - 1)\right)}_{P_1(2x-1)} \\
     &amp;= 2 + 8(x - 1) + 6(x - 1)^2 \\
     &amp;= 2 + 8x - 8 + 6x^2 - 12x + 6 \\
     &amp;= 6x^2 - 4x \\
     &amp;= 2x(3x - 2),
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(c_2 = \frac{2}{3}\)</span>. The values of <span class="math notranslate nohighlight">\(b\)</span> need to satisfy the <span class="math notranslate nohighlight">\(B(3)\)</span> order conditions. Substituting the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> give</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(c_2 = \frac{2}{3}\)</span>. The values of <span class="math notranslate nohighlight">\(b_i\)</span> need to satisfy the <span class="math notranslate nohighlight">\(B(3)\)</span> order conditions. Substituting the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> give</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     b_1 + b_2 &amp;= 1, \\
     \frac{2}{3}b_2 &amp;= \frac{1}{2},
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(b_2 = \frac{3}{4}\)</span> and <span class="math notranslate nohighlight">\(b_1 = \frac{1}{4}\)</span>. The <span class="math notranslate nohighlight">\(a\)</span> coefficients satisfy the <span class="math notranslate nohighlight">\(C(2)\)</span> order condition</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(b_2 = \frac{3}{4}\)</span> and <span class="math notranslate nohighlight">\(b_1 = \frac{1}{4}\)</span>. The <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients satisfy the <span class="math notranslate nohighlight">\(D(2)\)</span> order condition</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     a_{11} + a_{12} &amp;= 0, \\
