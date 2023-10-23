@@ -649,7 +649,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 \end{align*}\]</div>
 <p>Plot</p>
 <figure class="align-default" style="width: 600px">
-<img alt="../_images/b3f4bda415e0b8cbfaf4ec17b57a72113600db686a32a7e2c5f26b35034f3133.png" src="../_images/b3f4bda415e0b8cbfaf4ec17b57a72113600db686a32a7e2c5f26b35034f3133.png" />
+<img alt="../_images/7223602d4eaab3b1bd749bb13cabe23d2d01accde97c4f4f451c94fc5c19ea71.png" src="../_images/7223602d4eaab3b1bd749bb13cabe23d2d01accde97c4f4f451c94fc5c19ea71.png" />
 </figure>
 <p>Code</p>
 <div class="sd-tab-set docutils">
@@ -746,36 +746,34 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </div>
-<div class="exercise admonition" id="ch4-ex-stiffness-ratio">
+<!-- :::{exercise}
+:label: ch4-ex-stiffness-ratio
 
-<p class="admonition-title"><span class="caption-number">Exercise 4.4 </span></p>
-<section id="exercise-content">
-<p>Calculate the stiffness ratio for the following system of ODEs.</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    y_1' &amp;= -80.6 y_1 + 119.4 y_2,\\
-    y_2' &amp;= 79.6 y_1 - 120.4 y_2.
-\end{align*}\]</div>
-<p>What are the maximum step lengths that the Euler method is stable for solving each equation?</p>
-</section>
-</div>
-<div class="solution dropdown admonition" id="pages/4.5_Stability_exercises-solution-7">
+Calculate the stiffness ratio for the following system of ODEs. 
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#ch4-ex-stiffness-ratio"> Exercise 4.4</a></p>
-<section id="solution-content">
-<p>Calculate the eigenvalues of the coefficient matrix</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    0 &amp;= \begin{vmatrix} -80.6 - \lambda &amp; 119.4 \\ 79.6 &amp; -120.4 - \lambda \end{vmatrix}
+\begin{align*}
+    y_1' &= -80.6 y_1 + 119.4 y_2,\\
+    y_2' &= 79.6 y_1 - 120.4 y_2.
+\end{align*}
+
+What are the maximum step lengths that the Euler method is stable for solving each equation?
+:::
+
+::::{solution} ch4-ex-stiffness-ratio
+:class: dropdown
+
+Calculate the eigenvalues of the coefficient matrix
+
+\begin{align*}
+    0 &= \begin{vmatrix} -80.6 - \lambda & 119.4 \\ 79.6 & -120.4 - \lambda \end{vmatrix}
     = \lambda^2 + 201 \lambda + 200, \\
-    \therefore \lambda &amp;= \frac{-201 \pm 199}{2} = -200, -1
-\end{align*}\]</div>
-<p>so the stiffness ratio is <span class="math notranslate nohighlight">\(S = 200\)</span>. The Euler method is stable for <span class="math notranslate nohighlight">\(h\lambda \in [-2, 0]\)</span> so the maximum step length is</p>
-<div class="math notranslate nohighlight">
-\[h = \frac{-2}{\min(-200, -1)} = \frac{-2}{-200} = 0.01.\]</div>
-</section>
-</div>
-</section>
+    \therefore \lambda &= \frac{-201 \pm 199}{2} = -200, -1
+\end{align*}
+
+so the stiffness ratio is $S = 200$. The Euler method is stable for $h\lambda \in [-2, 0]$ so the maximum step length is 
+
+$$h = \frac{-2}{\min(-200, -1)} = \frac{-2}{-200} = 0.01.$$
+:::: --></section>
 
     <script type="text/x-thebe-config">
     {
