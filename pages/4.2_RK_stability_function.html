@@ -428,7 +428,7 @@ document.write(`
     a_{s1} &amp; a_{s2} &amp; \cdots &amp; a_{ss}
 \end{pmatrix} 
 \begin{pmatrix} Y_1 \\ Y_2 \\ \vdots \\ Y_s \end{pmatrix}. \end{split}\]</div>
-<p>Let <span class="math notranslate nohighlight">\(Y=(Y_1 ,Y_2 ,\dots ,Y_s )^T\)</span> and <span class="math notranslate nohighlight">\(\mathbf{e}=(1,1,\dots ,1)^T\)</span> then</p>
+<p>Let <span class="math notranslate nohighlight">\(Y=(Y_1 ,Y_2 ,\dots ,Y_s )^\mathsf{T}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{e}=(1,1,\dots ,1)^\mathsf{T}\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-rk-stability-y-equation">
 <span class="eqno">(4.3)<a class="headerlink" href="#equation-rk-stability-y-equation" title="Permalink to this equation">#</a></span>\[ Y = \mathbf{e} y_n + z A Y. \]</div>
 <p>Expanding the summation in the equation for updating the solution over a single step and using <span class="math notranslate nohighlight">\(z = h \lambda\)</span> gives</p>
@@ -447,7 +447,7 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is a column vector then the vector form of a Runge-Kutta method for solving the test equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-rk-stability-yn-1-equation">
-<span class="eqno">(4.4)<a class="headerlink" href="#equation-rk-stability-yn-1-equation" title="Permalink to this equation">#</a></span>\[ y_{n+1} =y_n + z \mathbf{b}^T Y. \]</div>
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-rk-stability-yn-1-equation" title="Permalink to this equation">#</a></span>\[ y_{n+1} =y_n + z \mathbf{b}^\mathsf{T} Y. \]</div>
 <p>The stability functions for explicit and implicit Runge-Kutta methods are derived using different approaches.</p>
 <section id="stability-function-of-an-explicit-runge-kutta-method">
 <span id="erk-rz-section"></span><h2><span class="section-number">4.3.1. </span>Stability function of an explicit Runge-Kutta method<a class="headerlink" href="#stability-function-of-an-explicit-runge-kutta-method" title="Permalink to this heading">#</a></h2>
@@ -461,13 +461,13 @@ document.write(`
 <p>and substituting into equation <a class="reference internal" href="#equation-rk-stability-yn-1-equation">(4.4)</a> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_{n+1} &amp;= y_n +z\mathbf{b}^T (I-zA)^{-1} \mathbf{e} y_n \\
-    &amp;= (1 + z \mathbf{b}^T (I - zA)^{-1} \mathbf{e})y_n ,
+    y_{n+1} &amp;= y_n +z\mathbf{b}^\mathsf{T} (I-zA)^{-1} \mathbf{e} y_n \\
+    &amp;= (1 + z \mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e})y_n ,
 \end{align*} \end{split}\]</div>
 <p>so the stability function is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    R(z)=1 + z\mathbf{b}^T (I - zA)^{-1} \mathbf{e}
+    R(z)=1 + z\mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e}
 \end{align*} \]</div>
 <p>Using the geometric series of matrices</p>
 <div class="math notranslate nohighlight">
@@ -480,8 +480,8 @@ document.write(`
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight" id="equation-erk-stability-rz-equation">
 <span class="eqno">(4.5)<a class="headerlink" href="#equation-erk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
-    R(z) &amp;= 1 + \sum_{k=0}^{\infty} \mathbf{b}^T A^k \mathbf{e}\,z^{k+1} \\
-    &amp;= 1 + \mathbf{b}^T \mathbf{e}\,z+\mathbf{b}^T A\mathbf{e}\,z^2 +\mathbf{b}^T A^2 \mathbf{e}\,z^3 + \cdots
+    R(z) &amp;= 1 + \sum_{k=0}^{\infty} \mathbf{b}^\mathsf{T} A^k \mathbf{e}\,z^{k+1} \\
+    &amp;= 1 + \mathbf{b}^\mathsf{T} \mathbf{e}\,z+\mathbf{b}^\mathsf{T} A\mathbf{e}\,z^2 +\mathbf{b}^\mathsf{T} A^2 \mathbf{e}\,z^3 + \cdots
 \end{align*} \end{split}\]</div>
 </section>
 </div><p>Since the solution to the test equation is <span class="math notranslate nohighlight">\(y=e^{\lambda t}\)</span>, over one step of an explicit Runge-Kutta method we would expect the local truncation errors to change at a rate of <span class="math notranslate nohighlight">\(e^z\)</span>. The series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> is</p>
@@ -490,7 +490,7 @@ document.write(`
 <p>Comparing the coefficients of <span class="math notranslate nohighlight">\(z^k\)</span> in equations <a class="reference internal" href="#equation-erk-stability-rz-equation">(4.5)</a> and <a class="reference internal" href="#equation-erk-stability-ez-equation">(4.6)</a> we have</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    \frac{1}{k!}= \mathbf{b}^T A^{k-1} \mathbf{e},
+    \frac{1}{k!}= \mathbf{b}^\mathsf{T} A^{k-1} \mathbf{e},
 \end{align*} \]</div>
 <p>which must be satisfied up to the <span class="math notranslate nohighlight">\(k\)</span>th term for an order <span class="math notranslate nohighlight">\(k\)</span> explicit method to be stable.</p>
 <section id="code">
@@ -638,10 +638,10 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \end{pmatrix}, &amp;
     \mathbf{b} &amp;= \begin{pmatrix} 7/24 \\ 1/4 \\ 1/3 \\ 1/8 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculating <span class="math notranslate nohighlight">\(\mathbf{b}^TA^{k - 1}\mathbf{e}\)</span> for <span class="math notranslate nohighlight">\(k = 1, \ldots, 4\)</span></p>
+<p class="sd-card-text">Calculating <span class="math notranslate nohighlight">\(\mathbf{b}^\mathsf{T}A^{k - 1}\mathbf{e}\)</span> for <span class="math notranslate nohighlight">\(k = 1, \ldots, 4\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    k &amp;= 1, &amp; \mathbf{b}^TA^0 \mathbf{e} &amp;= 
+    k &amp;= 1, &amp; \mathbf{b}^\mathsf{T}A^0 \mathbf{e} &amp;= 
     \begin{pmatrix} 7/24 \\ 1/4 \\ 1/3 \\ 1/8 \end{pmatrix}
     \begin{pmatrix} 
         1 &amp; 0 &amp; 0 &amp; 0 \\
@@ -650,7 +650,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
         0 &amp; 0 &amp; 0 &amp; 1 
     \end{pmatrix}
     \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = 1, \\
-    k &amp;= 2, &amp; \mathbf{b}^TA^1 \mathbf{e} &amp;= 
+    k &amp;= 2, &amp; \mathbf{b}^\mathsf{T}A^1 \mathbf{e} &amp;= 
     \begin{pmatrix} 7/24 \\ 1/4 \\ 1/3 \\ 1/8 \end{pmatrix}
     \begin{pmatrix}
         0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -660,7 +660,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \end{pmatrix}
     \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} 
     = \frac{1}{2}, \\
-    k &amp;= 3, &amp; \mathbf{b}^TA^2 \mathbf{e} &amp;= 
+    k &amp;= 3, &amp; \mathbf{b}^\mathsf{T}A^2 \mathbf{e} &amp;= 
     \begin{pmatrix} 7/24 \\ 1/4 \\ 1/3 \\ 1/8 \end{pmatrix}
     \begin{pmatrix}
         0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -670,7 +670,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \end{pmatrix}
     \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} 
     = \frac{3}{16}, \\
-    k &amp;= 4, &amp; \mathbf{b}^TA^3 \mathbf{e} &amp;= 
+    k &amp;= 4, &amp; \mathbf{b}^\mathsf{T}A^3 \mathbf{e} &amp;= 
     \begin{pmatrix} 7/24 \\ 1/4 \\ 1/3 \\ 1/8 \end{pmatrix}
     \begin{pmatrix}
         0 &amp; 0 &amp; 0 &amp; 0 \\

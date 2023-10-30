@@ -482,24 +482,24 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Rewriting the second-order ODE as a system of two first-order ODEs</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     y_1' &amp;= y_2, \\
     y_2' &amp;= -1000 y_1 - 1001 y_2.
-\end{align*}\]</div>
+\end{align*} \end{split}\]</div>
 <p class="sd-card-text">which can be written as the matrix equation</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     \begin{pmatrix} y_1' \\ y_2' \end{pmatrix} =
     \begin{pmatrix} 0 &amp; 1 \\ -1000 &amp; -1001 \end{pmatrix}
     \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}.
-\end{align*}\]</div>
+\end{align*} \end{split}\]</div>
 <p class="sd-card-text">Calculating the eigenvalues of the coefficient matrix</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     0 &amp;= \begin{vmatrix} -\lambda &amp; 1 \\ -1000 &amp; -1001 - \lambda \end{vmatrix} 
     = \lambda^2 + 1001 \lambda + 1000 = (\lambda + 1000) (\lambda + 1),
-\end{align*}\]</div>
+\end{align*} \end{split}\]</div>
 <p class="sd-card-text">so the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = -1000\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = -1\)</span>. The stiffness ratio is</p>
 <div class="math notranslate nohighlight">
 \[S = \frac{|-1000|}{|-1|} = 1000.\]</div>

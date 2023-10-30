@@ -421,41 +421,50 @@ document.write(`
 <p>To determine the stability function for an implicit Runge-Kutta method we consider the stability function of a general Runge-Kutta method given in equations <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-y-equation">(4.3)</a> and <a class="reference internal" href="4.2_RK_stability_function.html#equation-rk-stability-yn-1-equation">(4.4)</a> which are repeated below</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_{n+1} &amp; = y_n + z \mathbf{b}^\mathrm{T} Y, \\
+    y_{n+1} &amp; = y_n + z \mathbf{b}^\mathsf{T} Y, \\
     Y &amp;= \mathbf{e} y_n + z A Y.
 \end{align*} \end{split}\]</div>
 <p>Rewriting these gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_{n+1} - z \mathbf{b}^\mathrm{T} Y &amp;= y_n \\
-    (I - z A) Y &amp;= \mathbf{e}y_n. 
+    y_{n+1} - z \mathbf{b}^\mathsf{T} Y &amp;= y_n \\
+    (I - z A) Y &amp;= \mathbf{e}y_n,
 \end{align*} \end{split}\]</div>
-<p>We can write these as a matrix equation</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{e} = (1, 1, \ldots, 1)^\mathsf{T}\)</span>. We can write these as a matrix equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix}
-        1 &amp; -z b_1  &amp; -z b_2  &amp; \cdots  &amp; -z b_s \\
-        0 &amp; 1-z a_{11}  &amp; -z a_{12}  &amp; \cdots  &amp; -z a_{1s} \\
-        0 &amp; -z a_{21}  &amp; 1-z a_{22}  &amp; \cdots  &amp; -z a_{2s} \\
-        \vdots &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
-        0 &amp; -z a_{s1}  &amp; -z a_{s2}  &amp; \cdots  &amp; 1-z a_{ss} 
+        1 &amp; -z b_1  &amp; \cdots  &amp; -z b_s \\
+        0 &amp; 1-z a_{11}  &amp; \cdots  &amp; -z a_{1s} \\
+        \vdots &amp; \vdots   &amp; \ddots  &amp; \vdots \\
+        0 &amp; -z a_{s1}   &amp; \cdots  &amp; 1-z a_{ss} 
     \end{pmatrix}
-    \begin{pmatrix} y_{n+1} \\ Y_1 \\ Y_2 \\ \vdots \\ Y_s  \end{pmatrix}=
-    \begin{pmatrix} y_n \\ y_n \\ y_n \\ \vdots \\ y_n \end{pmatrix}.
+    \begin{pmatrix} y_{n+1} \\ Y_1 \\ \vdots \\ Y_s  \end{pmatrix}=
+    \begin{pmatrix} y_n \\ y_n \\ \vdots \\ y_n \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Using <a href="https://en.wikipedia.org/wiki/Cramer%27s_rule" target="_blank">Cramer’s rule</a> to solve this system for <span class="math notranslate nohighlight">\(y_{n+1}\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_{n+1} = \frac{\det 
-    \begin{pmatrix}
-        y_n  &amp; -zb_1  &amp; -zb_2  &amp; \cdots  &amp; -zb_s \\
-        y_n  &amp; 1-za_{11}  &amp; -za_{12}  &amp; \cdots  &amp; -za_{1s} \\
-        y_n  &amp; -za_{21}  &amp; 1-za_{22}  &amp; \cdots  &amp; -za_{2s} \\
-        \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
-        y_n  &amp; -za_{s1}  &amp; -za_{s2}  &amp; \cdots  &amp; 1-za_{ss} 
-    \end{pmatrix}}{\det (I-zA)}.
+    y_{n+1} = \frac{
+        \det 
+        \begin{pmatrix}
+            y_n  &amp; -zb_1      &amp; \cdots  &amp; -zb_s \\
+            y_n  &amp; 1-za_{11}  &amp; \cdots  &amp; -za_{1s} \\
+            \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
+            y_n  &amp; -za_{s1}   &amp; \cdots  &amp; 1-za_{ss} 
+        \end{pmatrix}
+    }
+    {
+        \det
+        \begin{pmatrix}  
+            1 &amp; -z b_1  &amp; \cdots  &amp; -z b_s \\
+            0 &amp; 1-z a_{11}  &amp; \cdots  &amp; -z a_{1s} \\
+            \vdots &amp; \vdots   &amp; \ddots  &amp; \vdots \\
+            0 &amp; -z a_{s1}   &amp; \cdots  &amp; 1-z a_{ss} 
+        \end{pmatrix}
+    }.
 \end{align*} \end{split}\]</div>
-<p>Performing a row operation of subtracting the first row of matrix from all other rows gives</p>
+<p>Performing a row operation on the matrix in the numerator of subtracting the first row of matrix from all other rows gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_{n+1} &amp;=\frac{\det 
@@ -465,17 +474,37 @@ document.write(`
         0 &amp; -za_{21} +zb_1  &amp; 1-za_{22} +zb_2  &amp; \cdots  &amp; -za_{2s} +zb_s \\
         \vdots &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
         0 &amp; -za_{s1} +zb_1  &amp; -za_{s2} +zb_2  &amp; \cdots  &amp; 1-za_{ss} +zb_s 
-    \end{pmatrix}}{\det(I-zA)} \\
+    \end{pmatrix}}
+    {
+        \det
+        \begin{pmatrix}  
+            1 &amp; -z b_1  &amp; \cdots  &amp; -z b_s \\
+            0 &amp; 1-z a_{11}  &amp; \cdots  &amp; -z a_{1s} \\
+            \vdots &amp; \vdots   &amp; \ddots  &amp; \vdots \\
+            0 &amp; -z a_{s1}   &amp; \cdots  &amp; 1-z a_{ss} 
+        \end{pmatrix}
+    }
+\end{align*} \end{split}\]</div>
+<p>Expanding by the first column of both determinants</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     &amp;= \frac{
-            \det
+            y_n \det
             \begin{pmatrix}
                 1-za_{11} +zb_1  &amp; -za_{12} +zb_2  &amp; \cdots  &amp; -za_{1s} +zb_s \\
                 -za_{21} +zb_1  &amp; 1-za_{22} +zb_2  &amp; \cdots  &amp; -za_{2s} +zb_s \\
-                \vdots &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
+                \vdots &amp; \vdots  &amp; \ddots  &amp; \vdots \\
                 -za_{s1} +zb_1  &amp; -za_{s2} +zb_2  &amp; \cdots  &amp; 1-za_{ss} +zb_s 
             \end{pmatrix}
-        }{\det(I - zA)} y_n \\
-    &amp;= \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathrm{T})}{\det(I - zA)} y_n.
+        } {
+        \det
+        \begin{pmatrix}  
+            1-z a_{11}  &amp; \cdots  &amp; -z a_{1s} \\
+            \vdots   &amp; \ddots  &amp; \vdots \\
+            -z a_{s1}   &amp; \cdots  &amp; 1-z a_{ss} 
+        \end{pmatrix}
+    } \\
+    &amp;= \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathsf{T})}{\det(I - zA)} y_n.
 \end{align*} \end{split}\]</div>
 <p>This provides the following definition of the stability function for an implicit Runge-Kutta method.</p>
 <div class="proof definition admonition" id="irk-rz-definition">
@@ -483,11 +512,11 @@ document.write(`
 <section class="definition-content" id="proof-content">
 <p>The stability function of an implicit Runge-Kutta method is</p>
 <div class="math notranslate nohighlight" id="equation-irk-stability-rz-equation">
-<span class="eqno">(4.7)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathrm{T})}{\det(I - zA)}.\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{e}\mathbf{b}^\mathrm{T}\)</span> is a diagonal matrix with the elements of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> on the main diagonal</p>
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Permalink to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathsf{T})}{\det(I - zA)}.\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{e}\mathbf{b}^\mathsf{T}\)</span> is a diagonal matrix with the elements of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> on the main diagonal</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{e}\mathbf{b}^\mathrm{T} = 
+    \mathbf{e}\mathbf{b}^\mathsf{T} = 
     \begin{pmatrix}
         b_1 &amp; 0 &amp; \cdots &amp; 0 \\
         0 &amp; b_2 &amp; \cdots &amp; 0 \\
