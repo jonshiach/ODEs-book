@@ -402,8 +402,8 @@ document.write(`
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#ch4-ex-erk-stability-function"> Exercise 4.1</a></p>
 <section id="solution-content">
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     \mathbf{b} A^0 \mathbf{e} &amp;= 
     \begin{pmatrix} -1 \\ 2/3 \\ -1/3 \\ 2/3 \\ 1 \end{pmatrix}
     \begin{pmatrix} 
@@ -459,7 +459,7 @@ document.write(`
     \end{pmatrix}
     \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}
     = 0, \\
-\end{align*}\]</div>
+\end{align*} \end{split}\]</div>
 <p>So the stability function is <span class="math notranslate nohighlight">\(R(z) = 1 + z + \frac{1}{2} z^2 + \frac{1}{6} z^3 + \frac{1}{24} z^4\)</span></p>
 <p>Code</p>
 <div class="sd-tab-set docutils">
@@ -773,7 +773,64 @@ Calculate the eigenvalues of the coefficient matrix
 so the stiffness ratio is $S = 200$. The Euler method is stable for $h\lambda \in [-2, 0]$ so the maximum step length is 
 
 $$h = \frac{-2}{\min(-200, -1)} = \frac{-2}{-200} = 0.01.$$
-:::: --></section>
+:::: --><div class="exercise admonition" id="ch4-ex-vanderpol-stiffness">
+
+<p class="admonition-title"><span class="caption-number">Exercise 4.4 </span></p>
+<section id="exercise-content">
+<p>The stiffness ratio of a non-linear system of ODEs can be calculated using the eigenvalues of the Jacobian matrix <span class="math notranslate nohighlight">\(J\)</span> at the equilibrium points</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} J = \begin{pmatrix} 
+    \dfrac{\partial f_1}{\partial y_1} &amp; \cdots &amp; \dfrac{\partial f_1}{\partial y_n} \\
+    \vdots &amp; \ddots &amp; \vdots \\
+    \dfrac{\partial f_m}{\partial y_1} &amp; \cdots &amp; \dfrac{\partial y_m}{\partial y_n}
+\end{pmatrix} \end{split}\]</div>
+<p>Determine the stiffness ratio of the van der Pol oscillator described by the second-order ODE</p>
+<div class="math notranslate nohighlight">
+\[ y'' - \mu (1 - y^2) y' = 0, \]</div>
+<p>when <span class="math notranslate nohighlight">\(\mu = 1000\)</span>. What does this tell you about the type of solver that is required.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="pages/4.5_Stability_exercises-solution-7">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#ch4-ex-vanderpol-stiffness"> Exercise 4.4</a></p>
+<section id="solution-content">
+<p>Let <span class="math notranslate nohighlight">\(y_1 = y\)</span> and <span class="math notranslate nohighlight">\(y_2 = y'\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_1' &amp;= y_2, \\
+    y_2' &amp;= \mu(1 - y_1^2) y_2 - y_1.
+\end{align*} \end{split}\]</div>
+<p>The equilibrium points are where <span class="math notranslate nohighlight">\(y_1'=y_2'=0\)</span> so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    0 &amp;= y_2, \\
+    0 &amp;= \mu(1 - y_1^2) y_2 - y_1, 
+\end{align*} \end{split}\]</div>
+<p>so there is one equilibrium point at <span class="math notranslate nohighlight">\((0,0)\)</span>. The Jacobian matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    J &amp;= 
+    \begin{pmatrix} 
+    0 &amp; 1 \\
+    -2\mu y_1 y_2 - 1 &amp; \mu (1 - y_1^2)
+    \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    J_{(0,0)} &amp;=
+    \begin{pmatrix}
+        0 &amp; 1 \\
+        -1 &amp; \mu
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>The eigenvalues are <span class="math notranslate nohighlight">\(\lambda = (\mu \pm \sqrt{\mu^2 - 4}) /2\)</span>. When <span class="math notranslate nohighlight">\(\mu = 1000\)</span> then the stiffness ratio is</p>
+<div class="math notranslate nohighlight">
+\[ S = \frac{\frac{1000 + \sqrt{999996}}{2}}{\frac{1000 - \sqrt{999996}}{2}} = 999999. \]</div>
+<p>Since the stiffness ratio is large then the van der Pol oscillator is a stiff ODE when <span class="math notranslate nohighlight">\(\mu = 1000\)</span> and would require an implicit method to prevent small step lengths being used.</p>
+</section>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
