@@ -433,7 +433,7 @@ document.write(`
 <p>Stiffness is not strictly defined but we can attempt to define a metric to help us determine whether an ODE is stiff.  Consider a system of linear ODEs for the form</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{y}' = A \mathbf{y}, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{y} = (y_1, y_2, \ldots, y_n)^T\)</span> and <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix of constants. Let <span class="math notranslate nohighlight">\(P = \begin{pmatrix} \boldsymbol{\alpha}_1 &amp; \boldsymbol{\alpha} &amp; \cdots &amp; \boldsymbol{\alpha}_n \end{pmatrix}\)</span> be a matrix containing the <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">eigenvalues</a> of <span class="math notranslate nohighlight">\(A\)</span> then by the definition of an eigenvector, <span class="math notranslate nohighlight">\(A \boldsymbol{\alpha}_i = \lambda_i \boldsymbol{\alpha}_1\)</span></p>
+<p>Let <span class="math notranslate nohighlight">\(P = \begin{pmatrix} \boldsymbol{\alpha}_1 &amp; \boldsymbol{\alpha} &amp; \cdots &amp; \boldsymbol{\alpha}_n \end{pmatrix}\)</span> be a matrix containing the <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">eigenvalues</a> of <span class="math notranslate nohighlight">\(A\)</span> then by the definition of an eigenvector, <span class="math notranslate nohighlight">\(A \boldsymbol{\alpha}_i = \lambda_i \boldsymbol{\alpha}_1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}A P = \begin{pmatrix} \lambda_1 \boldsymbol{\alpha}_1 &amp; \lambda_2 \boldsymbol{\alpha} &amp; \cdots &amp; \lambda_n\boldsymbol{\alpha}_n \end{pmatrix} = P 
 \begin{pmatrix}
@@ -445,7 +445,7 @@ document.write(`
 <p>Let <span class="math notranslate nohighlight">\(D\)</span> denote the diagonal matrix of eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> and left multiplying both sides by <span class="math notranslate nohighlight">\(P^{-1}\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[ P^{-1} A P = D. \]</div>
-<p>Let <span class="math notranslate nohighlight">\(\mathbf{u} = P^{-1} A P \mathbf{y}\)</span> then</p>
+<p>This means we can <strong>diagonalise</strong> the matrix <span class="math notranslate nohighlight">\(A\)</span>. Let <span class="math notranslate nohighlight">\(\mathbf{u} = P^{-1} A P \mathbf{y}\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix} u_1' \\ u_2' \\ \vdots \\ u_n' \end{pmatrix} = 
@@ -458,7 +458,7 @@ document.write(`
     \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} =
     \begin{pmatrix} \lambda_1 u_1 \\ \lambda_2 u_2 \\ \vdots \\ \lambda_n u_n \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Each equation in the transformed system is in the form <span class="math notranslate nohighlight">\(u' = \lambda u\)</span> which is similar to our test ODE an has the solution  <span class="math notranslate nohighlight">\(u_i = e^{\lambda_i t}\)</span>. The fastest growing solution will be for the equation with the largest value of <span class="math notranslate nohighlight">\(\lambda\)</span> and the slowest growing solution will be for the equation with the smallest value of <span class="math notranslate nohighlight">\(\lambda\)</span>. Stiffness occurs when there is a large variation in the solutions of equations in a system so we can gauge this by calculating the ratio between the largest and smallest eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Each equation in the transformed system is in the form <span class="math notranslate nohighlight">\(u' = \lambda u\)</span> which has the solution  <span class="math notranslate nohighlight">\(u_i = e^{\lambda_i t}\)</span>. The fastest growing solution will be for the equation with the largest value of <span class="math notranslate nohighlight">\(\lambda\)</span> and the slowest growing solution will be for the equation with the smallest value of <span class="math notranslate nohighlight">\(\lambda\)</span>. Stiffness occurs when there is a large variation in the solutions of equations in a system so we can gauge this by calculating the ratio between the largest and smallest eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="proof definition admonition" id="stiffness-ratio-definition">
 <p class="admonition-title"><span class="caption-number">Definition 4.2 </span> (Stiffness ratio)</p>
 <section class="definition-content" id="proof-content">
@@ -467,7 +467,7 @@ document.write(`
 \[ S = \frac{\max_i(|\lambda_i|)}{\min_i(|\lambda_i|)} \]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda_i\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </section>
-</div><p>If the stiffness ratio of a system of ODEs is large<a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> then the system is considered to be stiff.</p>
+</div><p>If the stiffness ratio of a system of ODEs is large then the system is considered to be stiff.</p>
 <div class="proof example admonition" id="example-2">
 <p class="admonition-title"><span class="caption-number">Example 4.1 </span></p>
 <section class="example-content" id="proof-content">
@@ -520,11 +520,6 @@ Solution (click to show)<div class="sd-summary-down docutils">
 </figcaption>
 </figure>
 <p>So if we were constrained with using a step length of <span class="math notranslate nohighlight">\(h=0.25\)</span> then we could choose the implicit Euler method to solve this initial value problem.</p>
-<hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>What constitutes “large” is vague and subjective. As a rule of thumb if <span class="math notranslate nohighlight">\(S\)</span> is in the hundreds or greater we can consider the system to be stiff.</p>
-</aside>
 </section>
 </section>
 <div class="toctree-wrapper compound">
