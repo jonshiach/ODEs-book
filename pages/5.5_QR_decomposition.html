@@ -416,7 +416,7 @@ document.write(`
 <p>An <strong>orthogonal matrix</strong> is a matrix where the columns are a set of orthonormal vectors. If <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix if</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    A^\mathrm{T} A=I.
+    A^\mathsf{T} A=I.
 \end{align*} \]</div>
 </section>
 </div><p>For example consider the matrix</p>
@@ -430,7 +430,7 @@ document.write(`
 <p>This is an orthogonal matrix since</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    A^\mathrm{T} A=\begin{pmatrix}
+    A^\mathsf{T} A=\begin{pmatrix}
         0.8 &amp; 0.6\\
         -0.6 &amp; 0.8
     \end{pmatrix}
@@ -458,7 +458,7 @@ document.write(`
     \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \mathbf{a}_3 \\
     \downarrow &amp; \downarrow &amp; \downarrow
 \end{pmatrix} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{a}_i = (a_{1i}, a_{2i}, a_{3i})^\mathrm{T}\)</span>. To calculate the orthogonal <span class="math notranslate nohighlight">\(Q\)</span> matrix we need a set of vectors <span class="math notranslate nohighlight">\(\{\mathbf{q}_1, \mathbf{q}_2, \mathbf{q}_3\}\)</span> that span the same space as {<span class="math notranslate nohighlight">\(\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\}\)</span> but are orthogonal to each other. One way to do this is using the <strong>Gram-Schmidt process</strong>. Consider the diagram shown in <a class="reference internal" href="#gram-schmidt-figure"><span class="std std-numref">Fig. 5.1</span></a> that shows the first two non-orthogonal vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{a}_i = (a_{1i}, a_{2i}, a_{3i})^\mathsf{T}\)</span>. To calculate the orthogonal <span class="math notranslate nohighlight">\(Q\)</span> matrix we need a set of vectors <span class="math notranslate nohighlight">\(\{\mathbf{q}_1, \mathbf{q}_2, \mathbf{q}_3\}\)</span> that span the same space as {<span class="math notranslate nohighlight">\(\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\}\)</span> but are orthogonal to each other. One way to do this is using the <strong>Gram-Schmidt process</strong>. Consider the diagram shown in <a class="reference internal" href="#gram-schmidt-figure"><span class="std std-numref">Fig. 5.1</span></a> that shows the first two non-orthogonal vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>.</p>
 <figure class="align-default" id="gram-schmidt-figure">
 <a class="reference internal image-reference" href="../_images/gram_schmidt.svg"><img alt="../_images/gram_schmidt.svg" src="../_images/gram_schmidt.svg" width="400" /></a>
 <figcaption>
@@ -666,7 +666,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </section>
 <section id="qr-decomposition-using-householder-transformations">
 <span id="qr-householder-section"></span><h2><span class="section-number">5.5.2. </span>QR decomposition using Householder transformations<a class="headerlink" href="#qr-decomposition-using-householder-transformations" title="Permalink to this heading">#</a></h2>
-<p>Another method we can use to calculate the QR decomposition of a matrix is by the use of <strong>Householder transformations</strong>. Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 5.2</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane represented by the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathrm{T}\)</span>.</p>
+<p>Another method we can use to calculate the QR decomposition of a matrix is by the use of <strong>Householder transformations</strong>. Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 5.2</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane represented by the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathsf{T}\)</span>.</p>
 <figure class="align-default" id="householder-1-figure">
 <a class="reference internal image-reference" href="../_images/householder_1.svg"><img alt="../_images/householder_1.svg" src="../_images/householder_1.svg" width="250" /></a>
 <figcaption>
@@ -678,7 +678,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p class="admonition-title"><span class="caption-number">Definition 5.4 </span> (Householder matrix)</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight" id="equation-householder-equation">
-<span class="eqno">(5.3)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[ H = I - 2 \mathbf{v} \mathbf{v}^\mathrm{T}, \]</div>
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[ H = I - 2 \mathbf{v} \mathbf{v}^\mathsf{T}, \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -720,7 +720,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p>and then we calculate the Householder matrix <span class="math notranslate nohighlight">\(H\)</span> using equation <a class="reference internal" href="#equation-householder-equation">(5.3)</a></p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    H_1 &amp;= I_m - 2 \mathbf{v}_1 \mathbf{v}_1^\mathrm{T},
+    H_1 &amp;= I_m - 2 \mathbf{v}_1 \mathbf{v}_1^\mathsf{T},
 \end{align*} \]</div>
 <p>and apply the Householder transformation to <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span></p>
 <div class="math notranslate nohighlight">
@@ -749,7 +749,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li><p><span class="math notranslate nohighlight">\(\mathbf{u} \gets\)</span> column <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(R\)</span> with the first <span class="math notranslate nohighlight">\(j-1\)</span> elements set to zero</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{u} \gets \mathbf{u} + \operatorname{sign}(r_{jj})\|\mathbf{u}\|\mathbf{e}_j\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \dfrac{\mathbf{u}}{| \mathbf{u} |}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H \gets I_m - 2 \mathbf{v} \mathbf{v} ^\mathrm{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H \gets I_m - 2 \mathbf{v} \mathbf{v} ^\mathsf{T}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(Q \gets Q H\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R \gets H R\)</span></p></li>
 </ul>
@@ -786,7 +786,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \mathbf{v} &amp;= \frac{\mathbf{u}}{|\mathbf{u}|} 
     = \frac{1}{2\sqrt{6}} \begin{pmatrix} 4 \\ 2 \\ 2 \end{pmatrix}
     = \frac{\sqrt{6}}{6} \begin{pmatrix} 2 \\ 1 \\ 1 \end{pmatrix}, \\
-    H &amp;= I - 2 \mathbf{v} \mathbf{v}^\mathrm{T} 
+    H &amp;= I - 2 \mathbf{v} \mathbf{v}^\mathsf{T} 
     = 
     \begin{pmatrix}
         1 &amp; 0 &amp; 0 \\
@@ -851,7 +851,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \mathbf{v} &amp;= \frac{\mathbf{u}}{|\mathbf{u}|} 
     = \frac{1}{3\sqrt{10}} \begin{pmatrix} 0 \\ 9 \\ 3 \end{pmatrix} 
     = \frac{\sqrt{10}}{10} \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix}, \\
-    H &amp;= I - 2 \mathbf{v} \mathbf{v}^\mathrm{T} 
+    H &amp;= I - 2 \mathbf{v} \mathbf{v}^\mathsf{T} 
     = 
     \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
      - \frac{1}{5} 
@@ -926,7 +926,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
 </pre></div>
 </div>
-<p>The NumPy command <code class="docutils literal notranslate"><span class="pre">np.matmul(A,</span> <span class="pre">B)</span></code> calculates the matrix multiplication of two matrices <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code>. Note that here we used <code class="docutils literal notranslate"><span class="pre">np.matmul(v.T,</span> <span class="pre">v)</span></code> for calculating <span class="math notranslate nohighlight">\(\mathbf{v} \mathbf{v}^\mathrm{T}\)</span> (i.e., <code class="docutils literal notranslate"><span class="pre">v</span></code> and <code class="docutils literal notranslate"><span class="pre">v.T</span></code> are the other way around) because NumPy column vectors are treated as row vectors.</p>
+<p>The NumPy command <code class="docutils literal notranslate"><span class="pre">np.matmul(A,</span> <span class="pre">B)</span></code> calculates the matrix multiplication of two matrices <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code>. Note that here we used <code class="docutils literal notranslate"><span class="pre">np.matmul(v.T,</span> <span class="pre">v)</span></code> for calculating <span class="math notranslate nohighlight">\(\mathbf{v} \mathbf{v}^\mathsf{T}\)</span> (i.e., <code class="docutils literal notranslate"><span class="pre">v</span></code> and <code class="docutils literal notranslate"><span class="pre">v.T</span></code> are the other way around) because NumPy column vectors are treated as row vectors.</p>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">

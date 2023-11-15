@@ -865,7 +865,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="c">% Calculate LUP decomposition</span>
 <span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">partial_pivot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="p">[</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">U</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">lu</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
+<span class="p">[</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">U</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ludecomp</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
 
 <span class="c">% Solve linear system</span>
 <span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">forward_substitution</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
