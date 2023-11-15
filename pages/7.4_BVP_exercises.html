@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>7.4. Chapter 5 exercises &#8212; Runge-Kutta Methods</title>
+    <title>7.4. Chapter 7 exercises &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -209,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Chapter 5 exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -223,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.4. Chapter 5 exercises</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.4. Chapter 7 exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -366,7 +366,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 5 exercises</h1>
+    <h1>Chapter 7 exercises</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,8 +380,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-exercises">
-<h1><span class="section-number">7.4. </span>Chapter 5 exercises<a class="headerlink" href="#chapter-5-exercises" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-exercises">
+<h1><span class="section-number">7.4. </span>Chapter 7 exercises<a class="headerlink" href="#chapter-7-exercises" title="Permalink to this heading">#</a></h1>
 <div class="exercise admonition" id="ch5-ex-uniqueness">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.1 </span></p>
@@ -680,37 +680,33 @@ document.write(`
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># allows use of LaTeX in labels</span>
 
-<span class="c1">#  Define Euler method</span>
-<span class="k">def</span> <span class="nf">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
+<span class="c1"># Euler method function</span>
+<span class="k">def</span> <span class="nf">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="c1"># IVP solver function</span>
+<span class="k">def</span> <span class="nf">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">solver</span><span class="p">):</span>
 
     <span class="c1"># Initialise t and y arrays</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">100000</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
     <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
 
-    <span class="c1"># Loop through steps</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-
-        <span class="c1"># Ensure t does not exceed tspan[1]</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
-        
-        <span class="c1"># Calculate Euler method</span>
-        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
-        <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
-        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
-        
-    <span class="k">return</span> <span class="n">t</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span>
+    <span class="c1"># Loop through steps and calculate single step solver solution</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:],</span> <span class="n">h</span><span class="p">)</span>
+              
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
 
 
 <span class="c1"># Define shooting method</span>
 <span class="k">def</span> <span class="nf">shooting_method</span><span class="p">(</span><span class="n">solver</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">bvals</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
     <span class="n">s</span><span class="p">,</span> <span class="n">sprev</span><span class="p">,</span> <span class="n">gprev</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="p">[</span><span class="n">bvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span>
+        <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="p">[</span><span class="n">bvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">],</span> <span class="n">h</span><span class="p">,</span> <span class="n">euler</span><span class="p">)</span>
         <span class="n">g</span> <span class="o">=</span> <span class="n">bvals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">s</span><span class="p">,</span> <span class="n">sprev</span><span class="p">,</span> <span class="n">gprev</span> <span class="o">=</span> <span class="n">s</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">sprev</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">g</span> <span class="o">-</span> <span class="n">gprev</span><span class="p">),</span> <span class="n">s</span><span class="p">,</span> <span class="n">g</span>
         <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">sprev</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
@@ -735,7 +731,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="n">x</span>
 
 
-<span class="c1"># Define ODE functions</span>
+<span class="c1"># Define ODE function</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">])</span>
 
@@ -801,8 +797,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_euler</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">shooting_method</span><span class="p">(@</span><span class="n">euler</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">bvals</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-4</span><span class="p">);</span>
 
 <span class="c">% Solve BVP using finite-difference method</span>
-<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 <span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
@@ -830,19 +825,27 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;$t$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;$y$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
-<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Exact&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Euler method&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Finite-difference method&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&quot;northwest&quot;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Exact&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Euler method&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Finite-difference method&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&quot;northwest&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="c">%% ----------------------------------------------------------------------------</span>
-<span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = euler</span><span class="p">(</span>f, tspan, y0, h<span class="p">)</span>
+<span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP</span><span class="p">(</span>f, tspan, y0, h, solver<span class="p">)</span>
 
-<span class="n">nsteps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="n">neq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nsteps</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
-<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">neq</span><span class="p">);</span>
-<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
-<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nsteps</span>
-<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">:));</span>
+<span class="c">% Define t and y arrays</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">));</span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
+
+<span class="c">% Loop through the steps and calculate single step solver solution</span>
+<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:),</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 <span class="k">end</span>
+
+<span class="k">end</span>
+
+<span class="c">%% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">euler</span><span class="p">(</span>f, t, y, h<span class="p">)</span>
+
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
 
 <span class="k">end</span>
 
@@ -850,16 +853,16 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = shooting_method</span><span class="p">(</span>solver, f, tspan, bvals, h, tol<span class="p">)</span>
 
 <span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="n">so</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="n">go</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">sprev</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="n">gprev</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
-<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">bvals</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">s</span><span class="p">],</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">bvals</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">s</span><span class="p">],</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">solver</span><span class="p">);</span>
 <span class="w">    </span><span class="n">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bvals</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="k">end</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="n">temp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">so</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">go</span><span class="p">);</span>
-<span class="w">    </span><span class="n">so</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
-<span class="w">    </span><span class="n">go</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">so</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sprev</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gprev</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sprev</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gprev</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sprev</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
 <span class="w">        </span><span class="k">break</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>

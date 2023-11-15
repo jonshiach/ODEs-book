@@ -439,8 +439,8 @@ document.write(`
     y_{n} &amp;= \beta,
 \end{align*} \end{split}\]</div>
 <p>which can be written as the matrix equation</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+<div class="math notranslate nohighlight" id="equation-fd-tri-diag-equation">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-fd-tri-diag-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     \begin{pmatrix}
         1 &amp; 0  \\
         1 &amp; -2 &amp; 1  \\
@@ -449,12 +449,11 @@ document.write(`
         &amp; &amp; &amp; 0 &amp; 1
     \end{pmatrix}
     \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{n-1} \\ y_n \end{pmatrix} =
-    \begin{pmatrix} \alpha \\ f(t_1, y_1) \\ \vdots \\ f(t_{n-1}, y_{n-1}) \\ \beta \end{pmatrix}.
+    \begin{pmatrix} \alpha \\ h^2f(t_1, y_1) \\ \vdots \\ h^2 f(t_{n-1}, y_{n-1}) \\ \beta \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Once the linear system is defined it can be solved using LU decomposition.</p>
 <section id="the-thomas-algorithm">
 <span id="thomas-algorithm-section"></span><h2><span class="section-number">7.3.1. </span>The Thomas algorithm<a class="headerlink" href="#the-thomas-algorithm" title="Permalink to this heading">#</a></h2>
-<p>The coefficient matrix for the linear system that results from the application of the second-order symmetric finite-difference approximation of <span class="math notranslate nohighlight">\(y''\)</span> is <a href="https://en.wikipedia.org/wiki/Tridiagonal_matrix" target="_blank">tri-diagonal matrix</a> (the only non-zero elements are on the main, lower and upper diagonals). The usual methods for solving linear systems of equations such as Gaussian elimination and LU decomposition could be applied here, however there is a more efficient method that can solve tri-diagonal systems called the <a href="https://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm" target="_blank">Thomas algorithm</a>).</p>
+<p>The coefficient matrix in equation <a class="reference internal" href="#equation-fd-tri-diag-equation">(7.4)</a> is a <a href="https://en.wikipedia.org/wiki/Tridiagonal_matrix" target="_blank">tri-diagonal matrix</a> (the only non-zero elements are on the main, lower and upper diagonals). The usual methods for solving linear systems of equations such as Gaussian elimination and LU decomposition could be applied here, however there is a more efficient method that can solve tri-diagonal systems called the <a href="https://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm" target="_blank">Thomas algorithm</a>.</p>
 <div class="proof definition note admonition" id="thomas-method-definition">
 <p class="admonition-title"><span class="caption-number">Definition 7.2 </span> (The Thomas algorithm)</p>
 <section class="definition-content" id="proof-content">
