@@ -602,10 +602,10 @@ document.write(`
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#matrix-decomposition-ex-qr-gramschmidt"> Exercise 5.4</a></p>
 <section id="solution-content">
-<p>(a) <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
+<p>(a)   <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*} 
-    \mathbf{u}_1 &amp;= \mathbf{a}_1= \left(\begin{matrix}\frac{\sqrt{2}}{2}\\- \frac{\sqrt{2}}{2}\end{matrix}\right), \\
+    \mathbf{u}_1 &amp;= \mathbf{a}_1= \left(\begin{matrix}1\\-1\end{matrix}\right), \\
     r_{11} &amp;= |\mathbf{u}_1| = \sqrt{2}, \\
     \mathbf{q}_1 &amp;= \frac{\mathbf{u}_1}{r_{11}} = \frac{1}{\sqrt{2}} \left(\begin{matrix}1\\-1\end{matrix}\right) = \left(\begin{matrix}\frac{\sqrt{2}}{2}\\- \frac{\sqrt{2}}{2}\end{matrix}\right).
 \end{align*} \end{split}\]</div>
@@ -613,15 +613,25 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*} 
     r_{12} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_2 = \frac{\sqrt{2}}{2} \\ 
-    \mathbf{u}_2 &amp;= \mathbf{a}_2- r_{12} \mathbf{q}_1 = \left(\begin{matrix}\frac{\sqrt{2}}{2}\\\frac{\sqrt{2}}{2}\end{matrix}\right), \\
+    \mathbf{u}_2 &amp;= \mathbf{a}_2- r_{12} \mathbf{q}_1 = \left(\begin{matrix}1\\0\end{matrix}\right), \\
     r_{22} &amp;= |\mathbf{u}_2| = \frac{\sqrt{2}}{2}, \\
     \mathbf{q}_2 &amp;= \frac{\mathbf{u}_2}{r_{22}} = \frac{1}{\frac{\sqrt{2}}{2}} \left(\begin{matrix}\frac{1}{2}\\\frac{1}{2}\end{matrix}\right) = \left(\begin{matrix}\frac{\sqrt{2}}{2}\\\frac{\sqrt{2}}{2}\end{matrix}\right).
 \end{align*} \end{split}\]</div>
 <p>Therefore <span class="math notranslate nohighlight">\(Q = \left(\begin{matrix}\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\\- \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right)\)</span> and <span class="math notranslate nohighlight">\(R = \left(\begin{matrix}\sqrt{2} &amp; \frac{\sqrt{2}}{2}\\0 &amp; \frac{\sqrt{2}}{2}\end{matrix}\right)\)</span></p>
-<p>(b) <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
+<p>Check <span class="math notranslate nohighlight">\(QR = A\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    QR = \left(\begin{matrix}\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\\- \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right)\left(\begin{matrix}\sqrt{2} &amp; \frac{\sqrt{2}}{2}\\0 &amp; \frac{\sqrt{2}}{2}\end{matrix}\right) = \left(\begin{matrix}1 &amp; 1\\-1 &amp; 0\end{matrix}\right) = A.
+\end{align*} \end{split}\]</div>
+<p>Check <span class="math notranslate nohighlight">\(Q^\mathsf{T}Q = I\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*} 
-    \mathbf{u}_1 &amp;= \mathbf{a}_1= \left(\begin{matrix}\frac{6}{7}\\\frac{3}{7}\\\frac{2}{7}\end{matrix}\right), \\
+    Q^\mathsf{T}Q = \left(\begin{matrix}\frac{\sqrt{2}}{2} &amp; - \frac{\sqrt{2}}{2}\\\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right)\left(\begin{matrix}\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\\- \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}\end{matrix}\right) = \left(\begin{matrix}1 &amp; 0\\0 &amp; 1\end{matrix}\right) = I.
+\end{align*} \end{split}\]</div>
+<p>(b)   <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    \mathbf{u}_1 &amp;= \mathbf{a}_1= \left(\begin{matrix}6\\3\\2\end{matrix}\right), \\
     r_{11} &amp;= |\mathbf{u}_1| = 7, \\
     \mathbf{q}_1 &amp;= \frac{\mathbf{u}_1}{r_{11}} = \frac{1}{7} \left(\begin{matrix}6\\3\\2\end{matrix}\right) = \left(\begin{matrix}\frac{6}{7}\\\frac{3}{7}\\\frac{2}{7}\end{matrix}\right).
 \end{align*} \end{split}\]</div>
@@ -629,7 +639,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*} 
     r_{12} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_2 = 8 \\ 
-    \mathbf{u}_2 &amp;= \mathbf{a}_2- r_{12} \mathbf{q}_1 = \left(\begin{matrix}- \frac{2}{7}\\\frac{6}{7}\\- \frac{3}{7}\end{matrix}\right), \\
+    \mathbf{u}_2 &amp;= \mathbf{a}_2- r_{12} \mathbf{q}_1 = \left(\begin{matrix}6\\6\\1\end{matrix}\right), \\
     r_{22} &amp;= |\mathbf{u}_2| = 3, \\
     \mathbf{q}_2 &amp;= \frac{\mathbf{u}_2}{r_{22}} = \frac{1}{3} \left(\begin{matrix}- \frac{6}{7}\\\frac{18}{7}\\- \frac{9}{7}\end{matrix}\right) = \left(\begin{matrix}- \frac{2}{7}\\\frac{6}{7}\\- \frac{3}{7}\end{matrix}\right).
 \end{align*} \end{split}\]</div>
@@ -638,15 +648,25 @@ document.write(`
 \[\begin{split} \begin{align*} 
     r_{13} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_3 = \frac{11}{7} \\ 
     r_{23} &amp;= \mathbf{q}_2 \cdot \mathbf{a}_3 = \frac{1}{7} \\ 
-    \mathbf{u}_3 &amp;= \mathbf{a}_3- r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2 = \left(\begin{matrix}- \frac{3}{7}\\\frac{2}{7}\\\frac{6}{7}\end{matrix}\right), \\
+    \mathbf{u}_3 &amp;= \mathbf{a}_3- r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2 = \left(\begin{matrix}1\\1\\1\end{matrix}\right), \\
     r_{33} &amp;= |\mathbf{u}_3| = \frac{5}{7}, \\
     \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3}{r_{33}} = \frac{1}{\frac{5}{7}} \left(\begin{matrix}- \frac{15}{49}\\\frac{10}{49}\\\frac{30}{49}\end{matrix}\right) = \left(\begin{matrix}- \frac{3}{7}\\\frac{2}{7}\\\frac{6}{7}\end{matrix}\right).
 \end{align*} \end{split}\]</div>
 <p>Therefore <span class="math notranslate nohighlight">\(Q = \left(\begin{matrix}\frac{6}{7} &amp; - \frac{2}{7} &amp; - \frac{3}{7}\\\frac{3}{7} &amp; \frac{6}{7} &amp; \frac{2}{7}\\\frac{2}{7} &amp; - \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right)\)</span> and <span class="math notranslate nohighlight">\(R = \left(\begin{matrix}7 &amp; 8 &amp; \frac{11}{7}\\0 &amp; 3 &amp; \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right)\)</span></p>
-<p>(c) <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
+<p>Check <span class="math notranslate nohighlight">\(QR = A\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    QR = \left(\begin{matrix}\frac{6}{7} &amp; - \frac{2}{7} &amp; - \frac{3}{7}\\\frac{3}{7} &amp; \frac{6}{7} &amp; \frac{2}{7}\\\frac{2}{7} &amp; - \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right)\left(\begin{matrix}7 &amp; 8 &amp; \frac{11}{7}\\0 &amp; 3 &amp; \frac{1}{7}\\0 &amp; 0 &amp; \frac{5}{7}\end{matrix}\right) = \left(\begin{matrix}6 &amp; 6 &amp; 1\\3 &amp; 6 &amp; 1\\2 &amp; 1 &amp; 1\end{matrix}\right) = A.
+\end{align*} \end{split}\]</div>
+<p>Check <span class="math notranslate nohighlight">\(Q^\mathsf{T}Q = I\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*} 
-    \mathbf{u}_1 &amp;= \mathbf{a}_1= \left(\begin{matrix}\frac{1}{2}\\\frac{1}{2}\\\frac{1}{2}\\\frac{1}{2}\end{matrix}\right), \\
+    Q^\mathsf{T}Q = \left(\begin{matrix}\frac{6}{7} &amp; \frac{3}{7} &amp; \frac{2}{7}\\- \frac{2}{7} &amp; \frac{6}{7} &amp; - \frac{3}{7}\\- \frac{3}{7} &amp; \frac{2}{7} &amp; \frac{6}{7}\end{matrix}\right)\left(\begin{matrix}\frac{6}{7} &amp; - \frac{2}{7} &amp; - \frac{3}{7}\\\frac{3}{7} &amp; \frac{6}{7} &amp; \frac{2}{7}\\\frac{2}{7} &amp; - \frac{3}{7} &amp; \frac{6}{7}\end{matrix}\right) = \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right) = I.
+\end{align*} \end{split}\]</div>
+<p>(c)   <span class="math notranslate nohighlight">\(j = 1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    \mathbf{u}_1 &amp;= \mathbf{a}_1= \left(\begin{matrix}1\\1\\1\\1\end{matrix}\right), \\
     r_{11} &amp;= |\mathbf{u}_1| = 2, \\
     \mathbf{q}_1 &amp;= \frac{\mathbf{u}_1}{r_{11}} = \frac{1}{2} \left(\begin{matrix}1\\1\\1\\1\end{matrix}\right) = \left(\begin{matrix}\frac{1}{2}\\\frac{1}{2}\\\frac{1}{2}\\\frac{1}{2}\end{matrix}\right).
 \end{align*} \end{split}\]</div>
@@ -654,7 +674,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*} 
     r_{12} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_2 = 2 \\ 
-    \mathbf{u}_2 &amp;= \mathbf{a}_2- r_{12} \mathbf{q}_1 = \left(\begin{matrix}\frac{1}{6}\\\frac{1}{2}\\- \frac{5}{6}\\\frac{1}{6}\end{matrix}\right), \\
+    \mathbf{u}_2 &amp;= \mathbf{a}_2- r_{12} \mathbf{q}_1 = \left(\begin{matrix}2\\4\\-4\\2\end{matrix}\right), \\
     r_{22} &amp;= |\mathbf{u}_2| = 6, \\
     \mathbf{q}_2 &amp;= \frac{\mathbf{u}_2}{r_{22}} = \frac{1}{6} \left(\begin{matrix}1\\3\\-5\\1\end{matrix}\right) = \left(\begin{matrix}\frac{1}{6}\\\frac{1}{2}\\- \frac{5}{6}\\\frac{1}{6}\end{matrix}\right).
 \end{align*} \end{split}\]</div>
@@ -663,11 +683,21 @@ document.write(`
 \[\begin{split} \begin{align*} 
     r_{13} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_3 = \frac{11}{2} \\ 
     r_{23} &amp;= \mathbf{q}_2 \cdot \mathbf{a}_3 = - \frac{19}{6} \\ 
-    \mathbf{u}_3 &amp;= \mathbf{a}_3- r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2 = \left(\begin{matrix}- \frac{\sqrt{2}}{3}\\\frac{\sqrt{2}}{2}\\\frac{\sqrt{2}}{6}\\- \frac{\sqrt{2}}{3}\end{matrix}\right), \\
+    \mathbf{u}_3 &amp;= \mathbf{a}_3- r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2 = \left(\begin{matrix}1\\3\\6\\1\end{matrix}\right), \\
     r_{33} &amp;= |\mathbf{u}_3| = \frac{11 \sqrt{2}}{6}, \\
     \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3}{r_{33}} = \frac{1}{\frac{11 \sqrt{2}}{6}} \left(\begin{matrix}- \frac{11}{9}\\\frac{11}{6}\\\frac{11}{18}\\- \frac{11}{9}\end{matrix}\right) = \left(\begin{matrix}- \frac{\sqrt{2}}{3}\\\frac{\sqrt{2}}{2}\\\frac{\sqrt{2}}{6}\\- \frac{\sqrt{2}}{3}\end{matrix}\right).
 \end{align*} \end{split}\]</div>
 <p>Therefore <span class="math notranslate nohighlight">\(Q = \left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\\\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{\sqrt{2}}{2}\\\frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{\sqrt{2}}{6}\\\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right)\)</span> and <span class="math notranslate nohighlight">\(R = \left(\begin{matrix}2 &amp; 2 &amp; \frac{11}{2}\\0 &amp; 6 &amp; - \frac{19}{6}\\0 &amp; 0 &amp; \frac{11 \sqrt{2}}{6}\end{matrix}\right)\)</span></p>
+<p>Check <span class="math notranslate nohighlight">\(QR = A\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    QR = \left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\\\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{\sqrt{2}}{2}\\\frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{\sqrt{2}}{6}\\\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right)\left(\begin{matrix}2 &amp; 2 &amp; \frac{11}{2}\\0 &amp; 6 &amp; - \frac{19}{6}\\0 &amp; 0 &amp; \frac{11 \sqrt{2}}{6}\end{matrix}\right) = \left(\begin{matrix}1 &amp; 2 &amp; 1\\1 &amp; 4 &amp; 3\\1 &amp; -4 &amp; 6\\1 &amp; 2 &amp; 1\end{matrix}\right) = A.
+\end{align*} \end{split}\]</div>
+<p>Check <span class="math notranslate nohighlight">\(Q^\mathsf{T}Q = I\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    Q^\mathsf{T}Q = \left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}\\\frac{1}{6} &amp; \frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{1}{6}\\- \frac{\sqrt{2}}{3} &amp; \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right)\left(\begin{matrix}\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\\\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{\sqrt{2}}{2}\\\frac{1}{2} &amp; - \frac{5}{6} &amp; \frac{\sqrt{2}}{6}\\\frac{1}{2} &amp; \frac{1}{6} &amp; - \frac{\sqrt{2}}{3}\end{matrix}\right) = \left(\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right) = I.
+\end{align*} \end{split}\]</div>
 </section>
 </div>
 <div class="exercise admonition" id="matrix-decomposition-ex-qr-householder">
