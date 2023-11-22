@@ -386,6 +386,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-errors">5.5.3. Orthogonality errors</a></li>
 </ul>
             </nav>
         </div>
@@ -742,12 +743,13 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p class="admonition-title"><span class="caption-number">Algorithm 5.8 </span> (QR decomposition using Householder transformations)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
-<p><strong>Outputs:</strong> An <span class="math notranslate nohighlight">\(n \times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and and <span class="math notranslate nohighlight">\(n \times n\)</span> upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
+<p><strong>Outputs:</strong> An <span class="math notranslate nohighlight">\(m \times m\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and and <span class="math notranslate nohighlight">\(m \times n\)</span> upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
 <ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q \gets I_m\)</span> and <span class="math notranslate nohighlight">\(R \gets A\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span> do</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{u} \gets\)</span> column <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(R\)</span> with the first <span class="math notranslate nohighlight">\(j-1\)</span> elements set to zero</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{u} \gets \mathbf{u} + \operatorname{sign}(r_{jj})|\mathbf{u}|\mathbf{e}_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u} \gets \mathbf{u} + \operatorname{sign}(r_{jj})|\mathbf{u}|\mathbf{e}_j\)</span>   (<span class="math notranslate nohighlight">\(\mathbf{e}_j\)</span> is column <span class="math notranslate nohighlight">\(j\)</span> of the identity matrix)</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \dfrac{\mathbf{u}}{| \mathbf{u} |}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(H \gets I_m - 2 \mathbf{v} \mathbf{v} ^\mathsf{T}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(Q \gets Q H\)</span></p></li>
@@ -955,6 +957,19 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
+<section id="orthogonality-errors">
+<h2><span class="section-number">5.5.3. </span>Orthogonality errors<a class="headerlink" href="#orthogonality-errors" title="Permalink to this heading">#</a></h2>
+<p>As with all numerical techniques, the two QR decomposition methods shown here are prone to computational rounding errors, especially since they both use square root calculations. The matrix <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal so the dot product of each column of <span class="math notranslate nohighlight">\(Q\)</span> with all other columns should be equal to zero. We can use this to check the <strong>loss of orthogonality</strong> in our results.</p>
+<p>Defining an orthogonality error <span class="math notranslate nohighlight">\(E_j\)</span> for a column vector <span class="math notranslate nohighlight">\(\mathbf{q}_j\)</span> from <span class="math notranslate nohighlight">\(Q\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    E_j =\max_{i} |\mathbf{q}_j \cdot \mathbf{q}_i |, \qquad i = 1 ,\ldots ,j-1,
+\end{align*} \]</div>
+<p>then non-zero values of <span class="math notranslate nohighlight">\(E_j\)</span> indicates that we have lost some orthogonality due to computational rounding errors. The orthogonality errors have been calculated for the QR decomposition of a random <span class="math notranslate nohighlight">\(50\times 50\)</span> matrix using the Gram-Schmidt process and Householder transformations and plotted below. Note that as the column number increases, the orthogonality error for the QR decomposition using the Gram-Schmidt process increases whereas the Householder transformation stays constant.</p>
+<figure class="align-default" style="width: 600px">
+<img alt="../_images/b6202feb7455875386e44833c02edda8aa31bb6902a9d3159f228a1511b785dc.png" src="../_images/b6202feb7455875386e44833c02edda8aa31bb6902a9d3159f228a1511b785dc.png" />
+</figure>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1032,6 +1047,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-errors">5.5.3. Orthogonality errors</a></li>
 </ul>
   </nav></div>
 
