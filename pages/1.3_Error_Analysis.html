@@ -209,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Chapter 5 exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -223,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 5 exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 7 exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -405,7 +405,7 @@ document.write(`
 \[ \begin{align*}
     \text{absolute error} &amp;= | y_\text{exact} - y_\text{numerical} |.
 \end{align*} \]</div>
-<p>The numerical solution to this IVP computed using the Euler method, the exact solution for the same <span class="math notranslate nohighlight">\(t\)</span> values used in the Euler method and the absolute error are shown in <a class="reference internal" href="#euler-example-exact-table"><span class="std std-numref">Table 1.2</span></a> below and the numerical and exact solutions plotted in <a class="reference internal" href="#euler-example-exact-figure"><span class="std std-numref">Fig. 1.5</span></a>.</p>
+<p>The numerical solution to this IVP computed using the Euler method, the exact solution for the same <span class="math notranslate nohighlight">\(t\)</span> values used in the Euler method and the absolute error are shown in <a class="reference internal" href="#euler-example-exact-table"><span class="std std-numref">Table 1.2</span></a> below and the numerical and exact solutions plotted in <code class="xref std std-numref docutils literal notranslate"><span class="pre">euler-example-exact-figure</span></code>.</p>
 <table class="table" id="euler-example-exact-table">
 <caption><span class="caption-number">Table 1.2 </span><span class="caption-text">Comparisons between the Euler method solutions and the exact solutions for the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span>.</span><a class="headerlink" href="#euler-example-exact-table" title="Permalink to this table">#</a></caption>
 <thead>
@@ -448,24 +448,18 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<figure class="align-default" id="euler-example-exact-figure" style="width: 600px">
-<img alt="../_images/acd7218b662f0e3c3701d3fb077847596c02deb5ce07a99c699be1ee48e27b1b.png" src="../_images/acd7218b662f0e3c3701d3fb077847596c02deb5ce07a99c699be1ee48e27b1b.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Comparisons between the Euler method solutions and the exact solutions for the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span>.</span><a class="headerlink" href="#euler-example-exact-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>From the <a class="reference internal" href="#euler-example-exact-table"><span class="std std-numref">Table 1.2</span></a> and <a class="reference internal" href="#euler-example-exact-figure"><span class="std std-numref">Fig. 1.5</span></a> it is obvious that the numerical solution computed using the Euler method becomes increasingly inaccurate as <span class="math notranslate nohighlight">\(t\)</span> increases. This is because when deriving the Euler method we truncate the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition">Taylor series</a> so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to <span class="math notranslate nohighlight">\(f(t+h)\)</span> and we have introduced an error. It is important that we study this error and the effect that the errors have on our solutions.</p>
+<p>From the <a class="reference internal" href="#euler-example-exact-table"><span class="std std-numref">Table 1.2</span></a> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">euler-example-exact-figure</span></code> it is obvious that the numerical solution computed using the Euler method becomes increasingly inaccurate as <span class="math notranslate nohighlight">\(t\)</span> increases. This is because when deriving the Euler method we truncate the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition">Taylor series</a> so that any term after the first-order derivative is ignored. The omission of the higher-order terms means that the Taylor series is longer equal to <span class="math notranslate nohighlight">\(f(t+h)\)</span> and we have introduced an error. It is important that we study this error and the effect that the errors have on our solutions.</p>
 <section id="changing-the-step-length">
 <h2><span class="section-number">1.3.1. </span>Changing the step length<a class="headerlink" href="#changing-the-step-length" title="Permalink to this heading">#</a></h2>
 <p>Analysing the error of a numerical method is challenging since usually we do not know what the exact solution is (if we did we wouldn’t need a numerical method to calculate a solution). So instead we look at the behaviour of the error as the step length changes. Recall the <a class="reference internal" href="1.2_Euler_Method.html#euler-method-section"><span class="std std-ref">Euler method</span></a> which is</p>
 <div class="math notranslate nohighlight">
 \[y_{n+1} = y_n + h f(t_n, y_n).\]</div>
 <p>The solution over a single time step is changed from the current solution <span class="math notranslate nohighlight">\(y_n\)</span> by <span class="math notranslate nohighlight">\(h\)</span> multiplied by the value of <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span>. If we assume that that value of <span class="math notranslate nohighlight">\(y_n\)</span> has some error associated to it then the error will also be changed by <span class="math notranslate nohighlight">\(h\)</span> multiplied by some value. Therefore, the smaller the value of <span class="math notranslate nohighlight">\(h\)</span> then the smaller the change in the error converging to zero when <span class="math notranslate nohighlight">\(h\)</span> is infinitesimally small.</p>
-<p>We can demonstrate this by looking at the solutions to the initial value problem from <a class="reference internal" href="1.2_Euler_Method.html#euler-example">Example 1.1</a> using different values of the step length <span class="math notranslate nohighlight">\(h\)</span>. The numerical solutions using <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span> have been plotted against the exact solution in <a class="reference internal" href="#euler-example-hvals-figure"><span class="std std-numref">Fig. 1.6</span></a>.</p>
+<p>We can demonstrate this by looking at the solutions to the initial value problem from <a class="reference internal" href="1.2_Euler_Method.html#euler-example">Example 1.1</a> using different values of the step length <span class="math notranslate nohighlight">\(h\)</span>. The numerical solutions using <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span> have been plotted against the exact solution in <a class="reference internal" href="#euler-example-hvals-figure"><span class="std std-numref">Fig. 1.3</span></a>.</p>
 <figure class="align-default" id="euler-example-hvals-figure" style="width: 600px">
-<img alt="../_images/6a6a367cbce118e95802b4d672e4b44bada581dce164472204c4543e7139f039.png" src="../_images/6a6a367cbce118e95802b4d672e4b44bada581dce164472204c4543e7139f039.png" />
+<img alt="../_images/329eac09bbc0d5a79981edff80d30b414a69e23ecd455a7447f68fb441012c34.png" src="../_images/329eac09bbc0d5a79981edff80d30b414a69e23ecd455a7447f68fb441012c34.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-hvals-figure" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-hvals-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here we can see that as the step length is reduced, the solution gets closer to the exact solution as expected. The absolute errors between the exact solution <span class="math notranslate nohighlight">\(y(1) = e^{1/2} = 1.648721\ldots\)</span> calculated using the different step lengths are tabulated in <a class="reference internal" href="#euler-example-hvals-table"><span class="std std-numref">Table 1.3</span></a>.</p>
@@ -496,11 +490,11 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>The third columns shows that as the step length is halved, the error decreases by a factor of approximately one half. This behaviour can be seen in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a> where the absolute errors between the numerical solutions for <span class="math notranslate nohighlight">\(y(1)\)</span> and the exact solution is plotted against the step length.</p>
+<p>The third columns shows that as the step length is halved, the error decreases by a factor of approximately one half. This behaviour can be seen in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.4</span></a> where the absolute errors between the numerical solutions for <span class="math notranslate nohighlight">\(y(1)\)</span> and the exact solution is plotted against the step length.</p>
 <figure class="align-default" id="euler-example-errors-figure" style="width: 600px">
-<img alt="../_images/0fc644be87d94044b3272d210ce06b15d6bb0614fa29fa9596e34ae523142bda.png" src="../_images/0fc644be87d94044b3272d210ce06b15d6bb0614fa29fa9596e34ae523142bda.png" />
+<img alt="../_images/9f7743e63edc68b15ca96b115c80e3882e2b8e9b683d90e86f202b887166f315.png" src="../_images/9f7743e63edc68b15ca96b115c80e3882e2b8e9b683d90e86f202b887166f315.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span> using step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-errors-figure" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span> using step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-errors-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -557,11 +551,11 @@ document.write(`
 \[ \begin{align*}
     E_n = |y_n - \tilde{y}_n |,
 \end{align*} \]</div>
-<p>This is represented graphically in <a class="reference internal" href="#gte-figure"><span class="std std-numref">Fig. 1.8</span></a>.</p>
+<p>This is represented graphically in <a class="reference internal" href="#gte-figure"><span class="std std-numref">Fig. 1.5</span></a>.</p>
 <figure class="align-default" id="gte-figure" style="width: 600px">
-<img alt="../_images/b751d99000aee7733a2119280d253b04da002b923e3340e22605abe6326b3426.png" src="../_images/b751d99000aee7733a2119280d253b04da002b923e3340e22605abe6326b3426.png" />
+<img alt="../_images/7bd4558c43fe42bde9296d57e1989f353c4254c4f30401f01884d03b75422709.png" src="../_images/7bd4558c43fe42bde9296d57e1989f353c4254c4f30401f01884d03b75422709.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">The global truncation error, <span class="math notranslate nohighlight">\(E_n\)</span>, is the difference between the exact solution, <span class="math notranslate nohighlight">\(y_n\)</span>, and the numerical solution, <span class="math notranslate nohighlight">\(\tilde{y}_n\)</span>.</span><a class="headerlink" href="#gte-figure" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">The global truncation error, <span class="math notranslate nohighlight">\(E_n\)</span>, is the difference between the exact solution, <span class="math notranslate nohighlight">\(y_n\)</span>, and the numerical solution, <span class="math notranslate nohighlight">\(\tilde{y}_n\)</span>.</span><a class="headerlink" href="#gte-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -594,11 +588,11 @@ document.write(`
 \[\begin{align*}
     E_n \leq C\frac{O(h^2)}{h} = O(h).
 \end{align*}  \]</div>
-<p>So this means the global truncation error for the Euler method is <span class="math notranslate nohighlight">\(O(h)\)</span> which confirms that it is a first order method. We saw in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a> that as <span class="math notranslate nohighlight">\(h\)</span> decreases the global truncation error decreased in a linear fashion where gradient of the line was approximately 1 confirming that the Euler method is a first-order method.</p>
+<p>So this means the global truncation error for the Euler method is <span class="math notranslate nohighlight">\(O(h)\)</span> which confirms that it is a first order method. We saw in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.4</span></a> that as <span class="math notranslate nohighlight">\(h\)</span> decreases the global truncation error decreased in a linear fashion where gradient of the line was approximately 1 confirming that the Euler method is a first-order method.</p>
 </section>
 <section id="code">
 <h2><span class="section-number">1.3.6. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The code used to produce <a class="reference internal" href="#euler-example-hvals-table"><span class="std std-numref">Table 1.3</span></a> and <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a> is shown below. This assumes the function <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code></span></a> and <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">euler()</span></code></span></a> have already been defined.</p>
+<p>The code used to produce <a class="reference internal" href="#euler-example-hvals-table"><span class="std std-numref">Table 1.3</span></a> and <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.4</span></a> is shown below. This assumes the function <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code></span></a> and <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">euler()</span></code></span></a> have already been defined.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">

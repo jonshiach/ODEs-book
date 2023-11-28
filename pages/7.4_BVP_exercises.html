@@ -418,63 +418,44 @@ document.write(`
 <p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-bvp-hand-calc"> Exercise 7.2</a></p>
 <section id="solution-content">
 <p>Rewriting the ODE as a system of two first-order ODEs</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
     y_1' &amp;= y_2, \\
     y_2' &amp;= 2t.
-\end{align*}\]</div>
-<p>Solving using the Euler method and <span class="math notranslate nohighlight">\(y'(0)=1\)</span></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \mathbf{y}_0 &amp;= (1.000000, 1.000000), \\
-    t_{0} &amp;= 0.0, \\ \\
-    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h\mathbf{f}(t_0, \mathbf{y}_0) \\
-    &amp;= (1.000000, 1.000000) + 0.4(1.000000, 2(0.0)) \\
-    &amp;= (1.400000, 1.000000), \\
-    t_{1} &amp;= t_{0} + h = 0.0 + 0.4 = 0.4, \\ \\
-    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h\mathbf{f}(t_1, \mathbf{y}_1) \\
-    &amp;= (1.400000, 1.000000) + 0.4(1.400000, 2(0.4)) \\
-    &amp;= (1.800000, 1.320000), \\
-    t_{2} &amp;= t_{1} + h = 0.4 + 0.4 = 0.8, \\ \\
-    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h\mathbf{f}(t_2, \mathbf{y}_2) \\
-    &amp;= (1.800000, 1.320000) + 0.4(1.800000, 2(0.8)) \\
-    &amp;= (2.328000, 1.960000), \\
-    t_{3} &amp;= t_{2} + h = 0.8 + 0.4 = 1.2, \\ \\
-    \mathbf{y}_4 &amp;= \mathbf{y}_3 + h\mathbf{f}(t_3, \mathbf{y}_3) \\
-    &amp;= (2.328000, 1.960000) + 0.4(2.328000, 2(1.2)) \\
-    &amp;= (3.112000, 2.920000), \\
-    t_{4} &amp;= t_{3} + h = 1.2 + 0.4 = 1.6, \\ \\
-    \mathbf{y}_5 &amp;= \mathbf{y}_4 + h\mathbf{f}(t_4, \mathbf{y}_4) \\
-    &amp;= (3.112000, 2.920000) + 0.4(3.112000, 2(1.6)) \\
-    &amp;= (4.280000, 4.200000), \\
-    t_{5} &amp;= t_{4} + h = 1.6 + 0.4 = 2.0.
-\end{align*}\]</div>
-<p>Solving using <span class="math notranslate nohighlight">\(y'(0)=-1\)</span></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \mathbf{y}_0 &amp;= (1.000000, -1.000000), \\
-    t_{0} &amp;= 0.0, \\ \\
-    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h\mathbf{f}(t_0, \mathbf{y}_0) \\
-    &amp;= (1.000000, -1.000000) + 0.4(1.000000, 2(0.0)) \\
-    &amp;= (0.600000, -1.000000), \\
-    t_{1} &amp;= t_{0} + h = 0.0 + 0.4 = 0.4, \\ \\
-    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h\mathbf{f}(t_1, \mathbf{y}_1) \\
-    &amp;= (0.600000, -1.000000) + 0.4(0.600000, 2(0.4)) \\
-    &amp;= (0.200000, -0.680000), \\
-    t_{2} &amp;= t_{1} + h = 0.4 + 0.4 = 0.8, \\ \\
-    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h\mathbf{f}(t_2, \mathbf{y}_2) \\
-    &amp;= (0.200000, -0.680000) + 0.4(0.200000, 2(0.8)) \\
-    &amp;= (-0.072000, -0.040000), \\
-    t_{3} &amp;= t_{2} + h = 0.8 + 0.4 = 1.2, \\ \\
-    \mathbf{y}_4 &amp;= \mathbf{y}_3 + h\mathbf{f}(t_3, \mathbf{y}_3) \\
-    &amp;= (-0.072000, -0.040000) + 0.4(-0.072000, 2(1.2)) \\
-    &amp;= (-0.088000, 0.920000), \\
-    t_{4} &amp;= t_{3} + h = 1.2 + 0.4 = 1.6, \\ \\
-    \mathbf{y}_5 &amp;= \mathbf{y}_4 + h\mathbf{f}(t_4, \mathbf{y}_4) \\
-    &amp;= (-0.088000, 0.920000) + 0.4(-0.088000, 2(1.6)) \\
-    &amp;= (0.280000, 2.200000), \\
-    t_{5} &amp;= t_{4} + h = 1.6 + 0.4 = 2.0, \\ \\
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
+<p>Using a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span> the <span class="math notranslate nohighlight">\(t\)</span> values are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} \mathbf{t} = \begin{pmatrix} 0.0 \\ 0.4 \\ 0.8 \\ 1.2 \\ 1.6 \\ 2.0 \end{pmatrix} \end{align*} \end{split}\]</div>
+<p>Solving using the Euler method and <span class="math notranslate nohighlight">\(y'(0) = 1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    \mathbf{y}_0 &amp;= \begin{pmatrix} 1.0 \\ 1.0 \end{pmatrix} , \\ 
+    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h \mathbf{f}(t_0, \mathbf{y}_0) 
+ = \begin{pmatrix} 1.0 \\ 1.0 \end{pmatrix}  + {h} \begin{pmatrix} 1.0 \\ 0.0 \end{pmatrix}  = \begin{pmatrix} 1.4 \\ 1.0 \end{pmatrix} , \\ 
+    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h \mathbf{f}(t_1, \mathbf{y}_1) 
+ = \begin{pmatrix} 1.4 \\ 1.0 \end{pmatrix}  + {h} \begin{pmatrix} 1.0 \\ 0.8 \end{pmatrix}  = \begin{pmatrix} 1.8 \\ 1.32 \end{pmatrix} , \\ 
+    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h \mathbf{f}(t_2, \mathbf{y}_2) 
+ = \begin{pmatrix} 1.8 \\ 1.32 \end{pmatrix}  + {h} \begin{pmatrix} 1.32 \\ 1.6 \end{pmatrix}  = \begin{pmatrix} 2.328 \\ 1.96 \end{pmatrix} , \\ 
+    \mathbf{y}_4 &amp;= \mathbf{y}_3 + h \mathbf{f}(t_3, \mathbf{y}_3) 
+ = \begin{pmatrix} 2.328 \\ 1.96 \end{pmatrix}  + {h} \begin{pmatrix} 1.96 \\ 2.4 \end{pmatrix}  = \begin{pmatrix} 3.112 \\ 2.92 \end{pmatrix} , \\ 
+    \mathbf{y}_5 &amp;= \mathbf{y}_4 + h \mathbf{f}(t_4, \mathbf{y}_4) 
+ = \begin{pmatrix} 3.112 \\ 2.92 \end{pmatrix}  + {h} \begin{pmatrix} 2.92 \\ 3.2 \end{pmatrix}  = \begin{pmatrix} 4.28 \\ 4.2 \end{pmatrix} , \\ 
+\end{align*} \end{split}\]</div>
+<p>Solving using <span class="math notranslate nohighlight">\(y'(0) = -1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    \mathbf{y}_0 &amp;= \begin{pmatrix} 1.0 \\ -1.0 \end{pmatrix} , \\ 
+    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h \mathbf{f}(t_0, \mathbf{y}_0) 
+ = \begin{pmatrix} 1.0 \\ -1.0 \end{pmatrix}  + {h} \begin{pmatrix} -1.0 \\ 0.0 \end{pmatrix}  = \begin{pmatrix} 0.6 \\ -1.0 \end{pmatrix} , \\ 
+    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h \mathbf{f}(t_1, \mathbf{y}_1) 
+ = \begin{pmatrix} 0.6 \\ -1.0 \end{pmatrix}  + {h} \begin{pmatrix} -1.0 \\ 0.8 \end{pmatrix}  = \begin{pmatrix} 0.2 \\ -0.68 \end{pmatrix} , \\ 
+    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h \mathbf{f}(t_2, \mathbf{y}_2) 
+ = \begin{pmatrix} 0.2 \\ -0.68 \end{pmatrix}  + {h} \begin{pmatrix} -0.68 \\ 1.6 \end{pmatrix}  = \begin{pmatrix} -0.072 \\ -0.04 \end{pmatrix} , \\ 
+    \mathbf{y}_4 &amp;= \mathbf{y}_3 + h \mathbf{f}(t_3, \mathbf{y}_3) 
+ = \begin{pmatrix} -0.072 \\ -0.04 \end{pmatrix}  + {h} \begin{pmatrix} -0.04 \\ 2.4 \end{pmatrix}  = \begin{pmatrix} -0.088 \\ 0.92 \end{pmatrix} , \\ 
+    \mathbf{y}_5 &amp;= \mathbf{y}_4 + h \mathbf{f}(t_4, \mathbf{y}_4) 
+ = \begin{pmatrix} -0.088 \\ 0.92 \end{pmatrix}  + {h} \begin{pmatrix} 0.92 \\ 3.2 \end{pmatrix}  = \begin{pmatrix} 0.28 \\ 2.2 \end{pmatrix} , \\ 
+\end{align*} \end{split}\]</div>
 </section>
 </div>
 <div class="exercise admonition" id="ch2-ex-bvp-secant">
@@ -489,38 +470,27 @@ document.write(`
 <p class="admonition-title">Solution to<a class="reference internal" href="#ch2-ex-bvp-secant"> Exercise 7.3</a></p>
 <section id="solution-content">
 <p>Calculate the improved guess value</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
     s_2 &amp;= s_1 + g(s_1) \frac{s_1 - s_0}{g(s_1) - g(s_0)} \\
     &amp;= -1 + (3 - 0.28) \frac{1 - (-1)}{(3 - 0.28) - (3 - 4.28)} \\
     &amp;= 0.36
-\end{align*}\]</div>
-<p>Solving using the Euler method with <span class="math notranslate nohighlight">\(y'(0) = 0.36\)</span></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \mathbf{y}_0 &amp;= (1.000000, 0.360000), \\
-    t_{0} &amp;= 0.0, \\ \\
-    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h\mathbf{f}(t_0, \mathbf{y}_0) \\
-    &amp;= (1.000000, 0.360000) + 0.4(1.000000, 2(0.0)) \\
-    &amp;= (1.144000, 0.360000), \\
-    t_{1} &amp;= t_{0} + h = 0.0 + 0.4 = 0.4, \\ \\
-    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h\mathbf{f}(t_1, \mathbf{y}_1) \\
-    &amp;= (1.144000, 0.360000) + 0.4(1.144000, 2(0.4)) \\
-    &amp;= (1.288000, 0.680000), \\
-    t_{2} &amp;= t_{1} + h = 0.4 + 0.4 = 0.8, \\ \\
-    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h\mathbf{f}(t_2, \mathbf{y}_2) \\
-    &amp;= (1.288000, 0.680000) + 0.4(1.288000, 2(0.8)) \\
-    &amp;= (1.560000, 1.320000), \\
-    t_{3} &amp;= t_{2} + h = 0.8 + 0.4 = 1.2, \\ \\
-    \mathbf{y}_4 &amp;= \mathbf{y}_3 + h\mathbf{f}(t_3, \mathbf{y}_3) \\
-    &amp;= (1.560000, 1.320000) + 0.4(1.560000, 2(1.2)) \\
-    &amp;= (2.088000, 2.280000), \\
-    t_{4} &amp;= t_{3} + h = 1.2 + 0.4 = 1.6, \\ \\
-    \mathbf{y}_5 &amp;= \mathbf{y}_4 + h\mathbf{f}(t_4, \mathbf{y}_4) \\
-    &amp;= (2.088000, 2.280000) + 0.4(2.088000, 2(1.6)) \\
-    &amp;= (3.000000, 3.560000), \\
-    t_{5} &amp;= t_{4} + h = 1.6 + 0.4 = 2.0, \\ \\
-\end{align*}\]</div>
+\end{align*}\end{split}\]</div>
+<p>Solving using the Euler method with <span class="math notranslate nohighlight">\(y'(0) = 0.36\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    \mathbf{y}_0 &amp;= \begin{pmatrix} 1.0 \\ 0.36 \end{pmatrix} , \\ 
+    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h \mathbf{f}(t_0, \mathbf{y}_0) 
+ = \begin{pmatrix} 1.0 \\ 0.36 \end{pmatrix}  + {h} \begin{pmatrix} 0.36 \\ 0.0 \end{pmatrix}  = \begin{pmatrix} 1.144 \\ 0.36 \end{pmatrix} , \\ 
+    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h \mathbf{f}(t_1, \mathbf{y}_1) 
+ = \begin{pmatrix} 1.144 \\ 0.36 \end{pmatrix}  + {h} \begin{pmatrix} 0.36 \\ 0.8 \end{pmatrix}  = \begin{pmatrix} 1.288 \\ 0.68 \end{pmatrix} , \\ 
+    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h \mathbf{f}(t_2, \mathbf{y}_2) 
+ = \begin{pmatrix} 1.288 \\ 0.68 \end{pmatrix}  + {h} \begin{pmatrix} 0.68 \\ 1.6 \end{pmatrix}  = \begin{pmatrix} 1.56 \\ 1.32 \end{pmatrix} , \\ 
+    \mathbf{y}_4 &amp;= \mathbf{y}_3 + h \mathbf{f}(t_3, \mathbf{y}_3) 
+ = \begin{pmatrix} 1.56 \\ 1.32 \end{pmatrix}  + {h} \begin{pmatrix} 1.32 \\ 2.4 \end{pmatrix}  = \begin{pmatrix} 2.088 \\ 2.28 \end{pmatrix} , \\ 
+    \mathbf{y}_5 &amp;= \mathbf{y}_4 + h \mathbf{f}(t_4, \mathbf{y}_4) 
+ = \begin{pmatrix} 2.088 \\ 2.28 \end{pmatrix}  + {h} \begin{pmatrix} 2.28 \\ 3.2 \end{pmatrix}  = \begin{pmatrix} 3.0 \\ 3.56 \end{pmatrix} , \\ 
+\end{align*} \end{split}\]</div>
 <p>The solutions to this boundary value problem using the Euler method with the shooting method are tabulated below.</p>
 <table class="table">
 <thead>
@@ -775,7 +745,6 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="p">:::</span>
 </pre></div>
 </div>
 </div>
@@ -886,7 +855,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="k">end</span>
 
 <span class="k">end</span>
-<span class="p">:::</span>
 </pre></div>
 </div>
 </div>

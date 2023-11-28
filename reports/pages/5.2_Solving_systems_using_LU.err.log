@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jupyter_core\utils\__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from functions import *
+import numpy as np
+
+def forward_substitution(L, b):
+    n = L.shape[0]
+    x = np.zeros(n)
+    for i in range(n):
+        sum_ = 0
+        for j in range(i):
+            sum_ += L[i,j] * x[j]
+            
+        x[i] = (b[i] - sum_) / L[i,i]
+    
+    return x
+
+
+def back_substitution(U, b):
+    n = U.shape[0]
+    x = np.zeros(n)
+    x[-1] = b[-1] / U[-1,-1]
+    for i in range(n - 2, -1, -1):
+        sum_ = 0
+        for j in range(i + 1, n):
+            sum_ += U[i,j] * x[j]
+            
+        x[i] = (b[i] - sum_) / U[i,i]
+        
+    return x
+
+
+# Define system
+A = np.array([[1, 3, 0], 
+              [2, -4, -1], 
+              [-3, 1, 2]])
+b = np.array([-7, 11, 1])
+
+# Calculate LU decomposition
+L, U = lu(A)
+
+# Solve system
+y = forward_substitution(L, b)
+x = back_substitution(U, y)
+print(f"x = {x}")
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mfunctions[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      4[0m [38;5;28;01mdef[39;00m [38;5;21mforward_substitution[39m(L, b):
+
+File [1;32m~\OneDrive - MMU\Documents\2023_2024\ODEs\ODEs-book\pages\functions.py:1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      3[0m [38;5;28;01mdef[39;00m [38;5;21mivp_solver[39m(f, tspan, y0, h, solver):
+[0;32m      4[0m 
+[0;32m      5[0m     [38;5;66;03m# Initialise t and y arrays[39;00m
+[0;32m      6[0m     nsteps [38;5;241m=[39m [38;5;28mint[39m((tspan[[38;5;241m1[39m] [38;5;241m-[39m tspan[[38;5;241m0[39m]) [38;5;241m/[39m h)
+
+[1;31mModuleNotFoundError[0m: No module named 'numpy'
+

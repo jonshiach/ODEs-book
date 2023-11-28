@@ -1,0 +1,132 @@
+Traceback (most recent call last):
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jupyter_core\utils\__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams['text.usetex'] = True  # allows use of LaTeX in labels
+
+
+def solveIVP_SSC(f, tspan, y0, h, solver, tol=1e-4):
+
+    # Define t and y arrays
+    t = np.zeros(10000)
+    y = np.zeros((10000,len(y0)))
+    t[0] = tspan[0]
+    y[0,:] = y0
+
+    # Solver loop
+    n = 0
+    while t[n] < tspan[-1]:
+
+        # Ensure t does not exceed tmax
+        h = min(h, tspan[-1] - t[n])
+
+        # Calculate order p and p+1 solutions
+        yp1, yp, p = solver(f, t[n], y[n,:], h)
+
+        # Determine whether step was successful or not
+        delta = np.max(np.abs(yp1 - yp))
+        if delta < tol:
+            y[n+1,:] = yp1
+            t[n+1] = t[n] + h
+            n += 1
+        
+        # Calculate new value of h (making sure not to exceed tmax)
+        h *= max(0.5, min(2, 0.9 * (tol / delta) ** (1 / (p + 1))))
+
+    return t[:n+1], y[:n+1,:]
+
+
+def rkf45(f, t, y, h):
+
+    k1 = f(t, y)
+    k2 = f(t + 1/4 * h, y + 1/4 * h * k1)
+    k3 = f(t + 3/8 * h, y + h * (3/32 * k1 + 9/32 * k2))
+    k4 = f(t + 12/13 * h, y + h * (1932/2197 * k1 - 7200/2197 * k2 + 7296/2197 * k3))
+    k5 = f(t + h, y + h * (439/216 * k1 - 8 * k2 + 3680/513 * k3 - 845/4104 * k4))
+    k6 = f(t + 1/2 * h, y + h * (-8/27 * k1 + 2 * k2 - 3544/2565 * k3 + 1859/4104 * k4 - 11/40 * k5))
+    y5 = y + h * (16/135 * k1 + 6656/12825 * k3 + 28561/56430 * k4 - 9/50 * k5 + 2/55 * k6)
+    y4 = y + h * (25/216 * k1 + 1408/2565 * k3 + 2197/4104 * k4 - 1/5 * k5);
+
+    return y5, y4, 4
+
+
+def rkbs23(f, t, y, h):
+
+    k1 = f(t, y)
+    k2 = f(t + 1/2 * h, y + 1/2 * h * k1)
+    k3 = f(t + 3/4 * h, y + 3/4 * h * k2)
+    k4 = f(t + h, y + h * (2/9 * k1 + 1/3 * k2 + 4/9 * k3))
+    y3 = y + h * (2/9 * k1 + 1/3 * k2 + 4/9 * k3)
+    y2 = y + h * (7/24 * k1 + 1/4 * k2 + 1/3 * k3 + 1/8 * k4)
+
+    return y3, y2, 2
+
+    
+# Define the ODE function and exact solution
+def f(t, y):
+    return -21 * y + np.exp(-t)
+
+
+def exact(t):
+    return 1/20 * np.exp(-21 * t) * (np.exp(20 * t) - 1)
+
+
+# Define IVP
+tspan = [0, 1]  # boundaries of the t domain
+y0 = [0]        # solution at the lower boundary
+h = 0.1         # initial step length
+tol = 1e-4      # accuracy tolerance
+
+# Calculate the solution to the IVP
+t_rkbs23, y_rkbs23 = solveIVP_SSC(f, tspan, y0, h, rkbs23, tol)
+t_rkf45, y_rkf45 = solveIVP_SSC(f, tspan, y0, h, rkf45, tol)
+
+# Print table of solution values
+print("\n| $n$ |   $t_n$   |   $y_n$   |    $h_n$  |")
+print("|:---:|:---------:|:---------:|:---------:|")
+print(f"|  0  | {t_rkf45[0]:9.6f} | {y_rkf45[0,0]:9.6f} |     -     |")
+for n in range(1,len(t_rkf45)):
+    print(f"| {n:2d}  | {t_rkf45[n]:9.6f} | {y_rkf45[n,0]:9.6f} | {t_rkf45[n] - t_rkf45[n-1]:9.6f} |")
+
+# Plot solutions
+t_exact = np.linspace(tspan[0], tspan[1], 200)
+y_exact = exact(t_exact)
+fig, ax = plt.subplots()
+plt.plot(t_exact, y_exact, "k", label="Exact")
+plt.plot(t_rkf45, y_rkf45, "bo-", label="RKF45")
+plt.xlabel("$t$", fontsize=12)
+plt.ylabel("$y$", fontsize=12)
+plt.legend()
+
+from myst_nb import glue
+glue('rkf45-example-plot', fig, display=False)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[0;32m      3[0m plt[38;5;241m.[39mrcParams[[38;5;124m'[39m[38;5;124mtext.usetex[39m[38;5;124m'[39m] [38;5;241m=[39m [38;5;28;01mTrue[39;00m  [38;5;66;03m# allows use of LaTeX in labels[39;00m
+
+[1;31mModuleNotFoundError[0m: No module named 'numpy'
+

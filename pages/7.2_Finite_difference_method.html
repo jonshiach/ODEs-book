@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.4. Chapter 5 exercises" href="7.4_BVP_exercises.html" />
+    <link rel="next" title="7.4. Chapter 7 exercises" href="7.4_BVP_exercises.html" />
     <link rel="prev" title="7.2. The shooting method" href="7.1_Shooting_method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -209,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Chapter 5 exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -223,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. The finite-difference method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 5 exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 7 exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -805,9 +805,9 @@ MATLAB</label><div class="sd-tab-content docutils">
     \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{N-1} \\ y_N \end{pmatrix} \\
     = \begin{pmatrix} 1 \\ 2h^2 \cos(2t_1) \\ \vdots \\ 2h^2 \cos(2t_{N-1}) \\ 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>The solution using the second-order finite difference method with <span class="math notranslate nohighlight">\(h=0.05\)</span> has been plotted against the first-order solution using <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span> in <a class="reference internal" href="#bvp-fdm-accuracy-figure-2"><span class="std std-numref">Fig. 7.3</span></a>. The second order solution gives good agreement with the first order solution using 10 times fewer nodes.</p>
+<p>The solution using the second-order finite difference method with <span class="math notranslate nohighlight">\(h=0.05\)</span> has been plotted against the first-order solution using <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span> and the shooting method using the RK4 solver with <span class="math notranslate nohighlight">\(h=0.05\)</span> in <a class="reference internal" href="#bvp-fdm-accuracy-figure-2"><span class="std std-numref">Fig. 7.3</span></a>. The second-order finite-difference method gives better agreement with the fourth-order solution using 10 times fewer nodes than the first-order finite-difference method.</p>
 <figure class="align-default" id="bvp-fdm-accuracy-figure-2" style="width: 600px">
-<img alt="../_images/7ba20bf852072bd21109922916044b5d98c56a975a786c7f1f97b420becd1924.png" src="../_images/7ba20bf852072bd21109922916044b5d98c56a975a786c7f1f97b420becd1924.png" />
+<img alt="../_images/11b7b28469919a14be921523833afe4a35fce8a9a1fac06c9beaae6ff1d4d933.png" src="../_images/11b7b28469919a14be921523833afe4a35fce8a9a1fac06c9beaae6ff1d4d933.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' + 3ty' + 7y = \cos (2t)\)</span>, <span class="math notranslate nohighlight">\(t \in [0,3]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span>, <span class="math notranslate nohighlight">\(y(3) = 0\)</span> using first-order and second-order finite-difference approximations with <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span>.</span><a class="headerlink" href="#bvp-fdm-accuracy-figure-2" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -860,7 +860,7 @@ MATLAB</label><div class="sd-tab-content docutils">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.4. </span>Chapter 5 exercises</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>Chapter 7 exercises</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -1,0 +1,72 @@
+Traceback (most recent call last):
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jupyter_core\utils\__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from myst_nb import glue
+plt.rcParams['text.usetex'] = True  # use LaTeX commands in plot
+
+def solveIVP(f, tspan, y0, h, solver):
+
+    # Initialise t and y arrays
+    t = np.arange(tspan[0], tspan[1] + h, h)
+    y = np.zeros((len(t),len(y0)))
+    t[0] = tspan[0]
+    y[0,:] = y0
+
+    # Loop through steps and calculate single step solver solution
+    print(r"$$ \begin{align*}")
+    print(rf"    y_0 &= {y0[0]}, \\")
+    for n in range(len(t) - 1):
+        y[n+1,:] = solver(f, t[n], y[n,:], h)
+        print(rf"    y_{n+1} &= y_{n} + h (1 - y_{n} - e^{{-t_{n}}}) \\")
+        print(rf"    &= {y[n,0]:0.6} + {h} (1 - {y[n,0]:0.6} - e^{{-{t[n]}}}) = {y[n+1,0]:0.6}, \\")
+              
+    print(r"\end{align*} $$")
+    return t, y
+
+
+def euler(f, t, y, h): 
+    return y + h * f(t, y)
+
+
+def f(t,y):
+    return 1 - y - np.exp(-t)
+
+
+# Define IVP parameters
+tspan = [0, 4]   # boundaries of the t domain
+y0 =  [1]        # initial value
+h = 0.5          # step length
+
+# Solve the IVP using the Euler method
+t, y = solveIVP(f, tspan, y0, h, euler)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                  Traceback (most recent call last)
+Cell [1;32mIn[1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[0;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmyst_nb[39;00m [38;5;28;01mimport[39;00m glue
+
+[1;31mModuleNotFoundError[0m: No module named 'numpy'
+

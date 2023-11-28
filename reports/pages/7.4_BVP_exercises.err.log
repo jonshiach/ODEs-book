@@ -1,0 +1,105 @@
+Traceback (most recent call last):
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jupyter_core\utils\__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Jon\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+import subprocess 
+plt.rcParams['text.usetex'] = True  # allows use of LaTeX in labels
+
+
+def vector_latex(v):
+    string = "\\begin{pmatrix} "
+    for i in range(len(v) - 1):
+        string += f"{v[i]:0.6} \\\ "
+    string += f"{v[-1]:0.6} \\end{{pmatrix}} "
+    return string
+
+def euler_latex(string, f, tspan, y0, h): 
+
+    # Initialise t and y variables
+    t = tspan[0]
+    y = y0
+
+    # Initialise output arrays
+    tout = np.array(t)
+    yout = np.array(y0)
+
+    # Loop through steps
+    string += "$$ \\begin{align*} \n"
+    string += f"    \\mathbf{{y}}_0 &= " + vector_latex(y) + ", \\\ \n"
+
+    n = 0
+    while t < tspan[1]:
+
+        # Ensure t does not exceed tspan[1]
+        h = min(h, tspan[1] - t)
+
+        string += f"    \\mathbf{{y}}_{n+1} &= \\mathbf{{y}}_{n} + h \\mathbf{{f}}(t_{n}, \\mathbf{{y}}_{n}) \n"
+        string += f" = " + vector_latex(y) + " + {h} " + vector_latex(f(t,y))
+
+        # Calculate Euler method
+        y += h * f(t, y)
+        t += h
+
+        # Append current solution to output arrays
+        tout = np.append(tout, t)
+        yout = np.vstack((yout, y))
+
+        string += f" = " + vector_latex(y) + ", \\\ \n"
+        n += 1
+    
+    string += "\\end{align*} $$\n"
+        
+    return tout, yout, string
+
+
+def f(t, y):
+    return np.array([y[1], 2.0 * t])
+
+
+# Define BVP parameters
+tspan = 0.0, 2.0  # boundaries of the t domain
+bvals = 1.0, 3.0  # boundary values
+h = 0.4       # step length
+
+# Invoke Euler method
+string = "Using a step length of $h = 0.2$ the $t$ values are\n\n"
+string += "$$ \\begin{align*} \\mathbf{t} = " + vector_latex(np.arange(0, tspan[1] + h, h)) + "\\end{align*} $$\n\n"
+
+string += "Solving using the Euler method and $y'(0) = 1$. \n\n"
+t, y, string = euler_latex(string, f, tspan, [bvals[0], 1.0], h)
+
+string += "Solving using $y'(0) = -1$. \n\n"
+t, y, string = euler_latex(string, f, tspan, [bvals[0], -1.0], h)
+
+print(string)
+subprocess.run("pbcopy", text=True, input=string)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[0;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01msubprocess[39;00m 
+
+[1;31mModuleNotFoundError[0m: No module named 'numpy'
+

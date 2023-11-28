@@ -209,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Chapter 5 exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -223,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 5 exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 7 exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -386,10 +386,10 @@ document.write(`
 
 <p class="admonition-title"><span class="caption-number">Exercise 6.1 </span></p>
 <section id="exercise-content">
-<p>Using a pen and calculator, calculate the first 2 iterations of the Jacobi method for solving the system of linear equations below. Use starting values of <span class="math notranslate nohighlight">\(x_i^{(0)} = 0 \)</span> and work to 4 decimal places.</p>
+<p>Using a pen and calculator and starting values of <span class="math notranslate nohighlight">\(x_i^{(0)} = 0\)</span>, calculate the first 2 iterations of the Jacobi method for solving the system of linear equations below and calculate the maximum value of the residual.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    4x_1 +x_2 -x_3 +x_4 &amp;=14,\\
+    5x_1 +x_2 -x_3 +x_4 &amp;=14,\\
     x_1 +4x_2 -x_3 -x_4 &amp;=10,\\
     -x_1 -x_2 +5x_3 +x_4 &amp;=-15,\\
     x_1 -x_2 +x_3 +3x_4 &amp;=3.
@@ -403,44 +403,43 @@ document.write(`
 <p>The Jacobi method for this system is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(k+1)} &amp;= \frac{1}{5} \left( 14 - x_{2}^{(k)} + x_{3}^{(k)} - x_{4}^{(k)} \right), \\
-    x_{2}^{(k+1)} &amp;= \frac{1}{4} \left( 10 - x_{1}^{(k)} + x_{3}^{(k)} + x_{4}^{(k)} \right), \\
-    x_{3}^{(k+1)} &amp;= \frac{1}{5} \left( -15 + x_{1}^{(k)} + x_{2}^{(k)} - x_{4}^{(k)} \right), \\
-    x_{4}^{(k+1)} &amp;= \frac{1}{3} \left( 3 - x_{1}^{(k)} + x_{2}^{(k)} - x_{3}^{(k)} \right).
+    x_{1}^{(k+1)} &amp;= \frac{1}{5} \left( 14 - x_{2}^{(k)} + x_{3}^{(k)} - x_{4}^{(k)} \right), \\ 
+    x_{2}^{(k+1)} &amp;= \frac{1}{4} \left( 10 - x_{1}^{(k)} + x_{3}^{(k)} + x_{4}^{(k)} \right), \\ 
+    x_{3}^{(k+1)} &amp;= \frac{1}{5} \left( -15 + x_{1}^{(k)} + x_{2}^{(k)} - x_{4}^{(k)} \right), \\ 
+    x_{4}^{(k+1)} &amp;= \frac{1}{3} \left( 3 - x_{1}^{(k)} + x_{2}^{(k)} - x_{3}^{(k)} \right). 
 \end{align*} \end{split}\]</div>
 <p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(1)} &amp;= \frac{1}{5} \left( 14 - 2.5 + 3.0 - 1.0 \right) = 2.8, \\
-    x_{2}^{(1)} &amp;= \frac{1}{4} \left( 10 - 2.8 + 3.0 + -1.0 \right) = 2.5, \\
-    x_{3}^{(1)} &amp;= \frac{1}{5} \left( -15 + -2.8 + -2.5 - 1.0 \right) = -3.0, \\
-    x_{4}^{(1)} &amp;= \frac{1}{3} \left( 3 - 2.8 + -2.5 - -3.0 \right) = 1.0.
+    x_{1}^{(1)} &amp;= \frac{1}{5} \left( 14 - 0 + 0 - 0 \right) = 2.8, \\ 
+    x_{2}^{(1)} &amp;= \frac{1}{4} \left( 10 - 0 + 0 + 0 \right) = 2.5, \\ 
+    x_{3}^{(1)} &amp;= \frac{1}{5} \left( -15 + 0 + 0 - 0 \right) = -3.0, \\ 
+    x_{4}^{(1)} &amp;= \frac{1}{3} \left( 3 - 0 + 0 - 0 \right) = 1.0. 
 \end{align*} \end{split}\]</div>
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+\[\begin{split} \begin{align*} 
     \mathbf{r}^{(1)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
-    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} -
+    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} - 
     \begin{pmatrix} 5 &amp; 1 &amp; -1 &amp; 1 \\ 1 &amp; 4 &amp; -1 &amp; -1 \\ -1 &amp; -1 &amp; 5 &amp; 1 \\ 1 &amp; -1 &amp; 1 &amp; 3 \end{pmatrix}
-    \begin{pmatrix} 2.8 \\ 2.5 \\ -3.0 \\ 1.0 \end{pmatrix} =
+    \begin{pmatrix} 2.8 \\ 2.5 \\ -3.0 \\ 1.0 \end{pmatrix} = 
     \begin{pmatrix} -6.5 \\ -4.8 \\ 4.3 \\ 2.7 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 6.5 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(2)} &amp;= \frac{1}{5} \left( 14 - 1.3 + 2.14 - 1.9 \right) = 1.5, \\
-    x_{2}^{(2)} &amp;= \frac{1}{4} \left( 10 - 1.5 + 2.14 + -1.9 \right) = 1.3, \\
-    x_{3}^{(2)} &amp;= \frac{1}{5} \left( -15 + -1.5 + -1.3 - 1.9 \right) = -2.14, \\
-    x_{4}^{(2)} &amp;= \frac{1}{3} \left( 3 - 1.5 + -1.3 - -2.14 \right) = 1.9.
+    x_{1}^{(2)} &amp;= \frac{1}{5} \left( 14 - 2.5 + (-3.0) - 1.0 \right) = 1.5, \\ 
+    x_{2}^{(2)} &amp;= \frac{1}{4} \left( 10 - 2.8 + (-3.0) + 1.0 \right) = 1.3, \\ 
+    x_{3}^{(2)} &amp;= \frac{1}{5} \left( -15 + 2.8 + 2.5 - 1.0 \right) = -2.14, \\ 
+    x_{4}^{(2)} &amp;= \frac{1}{3} \left( 3 - 2.8 + 2.5 + (-3.0) \right) = 1.9. 
 \end{align*} \end{split}\]</div>
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \mathbf{r}^{(2)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
-    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} -
+\[\begin{split} \begin{align*} 
+    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} - 
     \begin{pmatrix} 5 &amp; 1 &amp; -1 &amp; 1 \\ 1 &amp; 4 &amp; -1 &amp; -1 \\ -1 &amp; -1 &amp; 5 &amp; 1 \\ 1 &amp; -1 &amp; 1 &amp; 3 \end{pmatrix}
-    \begin{pmatrix} 1.5 \\ 1.3 \\ -2.14 \\ 1.9 \end{pmatrix} \\
-    &amp;=
+    \begin{pmatrix} 1.5 \\ 1.3 \\ -2.14 \\ 1.9 \end{pmatrix} = 
     \begin{pmatrix} 1.16 \\ 3.06 \\ -3.4 \\ -0.76 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 3.4 &gt; 10^{-4}\)</span> we continue iterating.</p>
@@ -460,46 +459,44 @@ document.write(`
 <p>The Gauss-Seidel method for this system is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(k+1)} &amp;= \frac{1}{5} \left( 14 - x_{2}^{(k)} + x_{3}^{(k)} - x_{4}^{(k)} \right), \\
-    x_{2}^{(k+1)} &amp;= \frac{1}{4} \left( 10 - x_{1}^{(k+1)} + x_{3}^{(k)} + x_{4}^{(k)} \right), \\
-    x_{3}^{(k+1)} &amp;= \frac{1}{5} \left( -15 + x_{1}^{(k+1)} + x_{2}^{(k+1)} - x_{4}^{(k)} \right), \\
-    x_{4}^{(k+1)} &amp;= \frac{1}{3} \left( 3 - x_{1}^{(k+1)} + x_{2}^{(k+1)} - x_{3}^{(k+1)} \right).
+    x_{1}^{(k+1)} &amp;= \frac{1}{5} \left( 14 - x_{2}^{(k)} + x_{3}^{(k)} - x_{4}^{(k)} \right), \\ 
+    x_{2}^{(k+1)} &amp;= \frac{1}{4} \left( 10 - x_{1}^{(k+1)} + x_{3}^{(k)} + x_{4}^{(k)} \right), \\ 
+    x_{3}^{(k+1)} &amp;= \frac{1}{5} \left( -15 + x_{1}^{(k+1)} + x_{2}^{(k+1)} - x_{4}^{(k)} \right), \\ 
+    x_{4}^{(k+1)} &amp;= \frac{1}{3} \left( 3 - x_{1}^{(k+1)} + x_{2}^{(k+1)} - x_{3}^{(k+1)} \right). 
 \end{align*} \end{split}\]</div>
 <p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(1)} &amp;= \frac{1}{5} \left( 14 - 1.8 + 2.08 - 1.36 \right) = 2.8, \\
-    x_{2}^{(1)} &amp;= \frac{1}{4} \left( 10 - 2.8 + 2.08 + -1.36 \right) = 1.8, \\
-    x_{3}^{(1)} &amp;= \frac{1}{5} \left( -15 + -2.8 + -1.8 - 1.36 \right) = -2.08, \\
-    x_{4}^{(1)} &amp;= \frac{1}{3} \left( 3 - 2.8 + -1.8 - -2.08 \right) = 1.36.
+    x_{1}^{(1)} &amp;= \frac{1}{5} \left( 14 - 0 + 0 - 0 \right) = 2.8, \\ 
+    x_{2}^{(1)} &amp;= \frac{1}{4} \left( 10 - 2.8 + 0 + 0 \right) = 1.8, \\ 
+    x_{3}^{(1)} &amp;= \frac{1}{5} \left( -15 + 2.8 + 1.8 - 0 \right) = -2.08, \\ 
+    x_{4}^{(1)} &amp;= \frac{1}{3} \left( 3 - 2.8 + 1.8 + (-2.08) \right) = 1.36. 
 \end{align*} \end{split}\]</div>
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \mathbf{r}^{(1)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
-    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} -
+\[\begin{split} \begin{align*} 
+    \mathbf{r}^{(1)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} - 
     \begin{pmatrix} 5 &amp; 1 &amp; -1 &amp; 1 \\ 1 &amp; 4 &amp; -1 &amp; -1 \\ -1 &amp; -1 &amp; 5 &amp; 1 \\ 1 &amp; -1 &amp; 1 &amp; 3 \end{pmatrix}
-    \begin{pmatrix} 2.8 \\ 1.8 \\ -2.08 \\ 1.36 \end{pmatrix} \\
-    &amp;=
-    \begin{pmatrix} -5.24 \\ -0.72 \\ -1.36 \\ 0.0 \end{pmatrix}.
+    \begin{pmatrix} 2.8 \\ 1.8 \\ -2.08 \\ 1.36 \end{pmatrix} = 
+    \begin{pmatrix} -5.24 \\ -0.72 \\ -1.36 \\ 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 5.24 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(2)} &amp;= \frac{1}{5} \left( 14 - 1.882 + 2.5452 - 1.89173 \right) = 1.752, \\
-    x_{2}^{(2)} &amp;= \frac{1}{4} \left( 10 - 1.752 + 2.5452 + -1.89173 \right) = 1.882, \\
-    x_{3}^{(2)} &amp;= \frac{1}{5} \left( -15 + -1.752 + -1.882 - 1.89173 \right) = -2.5452, \\
-    x_{4}^{(2)} &amp;= \frac{1}{3} \left( 3 - 1.752 + -1.882 - -2.5452 \right) = 1.89173.
+    x_{1}^{(2)} &amp;= \frac{1}{5} \left( 14 - 1.8 + (-2.08) - 1.36 \right) = 1.752, \\ 
+    x_{2}^{(2)} &amp;= \frac{1}{4} \left( 10 - 1.752 + (-2.08) + 1.36 \right) = 1.882, \\ 
+    x_{3}^{(2)} &amp;= \frac{1}{5} \left( -15 + 1.752 + 1.882 - 1.36 \right) = -2.5452, \\ 
+    x_{4}^{(2)} &amp;= \frac{1}{3} \left( 3 - 1.752 + 1.882 + (-2.5452) \right) = 1.89173. 
 \end{align*} \end{split}\]</div>
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \mathbf{r}^{(2)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
-    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} -
+\[\begin{split} \begin{align*} 
+    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} - 
     \begin{pmatrix} 5 &amp; 1 &amp; -1 &amp; 1 \\ 1 &amp; 4 &amp; -1 &amp; -1 \\ -1 &amp; -1 &amp; 5 &amp; 1 \\ 1 &amp; -1 &amp; 1 &amp; 3 \end{pmatrix}
-    \begin{pmatrix} 1.752 \\ 1.882 \\ -2.5452 \\ 1.89173 \end{pmatrix} \\
-    &amp;=
-    \begin{pmatrix} -1.07893 \\ 0.06653 \\ -0.53173 \\ 0 \end{pmatrix}.
+    \begin{pmatrix} 1.752 \\ 1.882 \\ -2.5452 \\ 1.89173 \end{pmatrix} = 
+    \begin{pmatrix} -1.07893 \\ 0.0665333 \\ -0.531733 \\ 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 1.07893 &gt; 10^{-4}\)</span> we continue iterating.</p>
 </section>
@@ -544,50 +541,46 @@ document.write(`
 <p>The SOR method for this system is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(k+1)} &amp;= (1 - \omega)x_{1}^{(k)} + \frac{\omega}{5} \left( 14 - x_{2}^{(k)} + x_{3}^{(k)} - x_{4}^{(k)} \right), \\
-    x_{2}^{(k+1)} &amp;= (1 - \omega)x_{2}^{(k)} + \frac{\omega}{4} \left( 10 - x_{1}^{(k+1)} + x_{3}^{(k)} + x_{4}^{(k)} \right), \\
-    x_{3}^{(k+1)} &amp;= (1 - \omega)x_{3}^{(k)} + \frac{\omega}{5} \left( -15 + x_{1}^{(k+1)} + x_{2}^{(k+1)} - x_{4}^{(k)} \right), \\
-    x_{4}^{(k+1)} &amp;= (1 - \omega)x_{4}^{(k)} + \frac{\omega}{3} \left( 3 - x_{1}^{(k+1)} + x_{2}^{(k+1)} - x_{3}^{(k+1)} \right).
+    x_{1}^{(k+1)} &amp;= (1 - \omega) x_{1}^{(k)} + \frac{\omega}{5} \left( 14 - x_{2}^{(k)} + x_{3}^{(k)} - x_{4}^{(k)} \right), \\ 
+    x_{2}^{(k+1)} &amp;= (1 - \omega) x_{2}^{(k)} + \frac{\omega}{4} \left( 10 - x_{1}^{(k+1)} + x_{3}^{(k)} + x_{4}^{(k)} \right), \\ 
+    x_{3}^{(k+1)} &amp;= (1 - \omega) x_{3}^{(k)} + \frac{\omega}{5} \left( -15 + x_{1}^{(k+1)} + x_{2}^{(k+1)} - x_{4}^{(k)} \right), \\ 
+    x_{4}^{(k+1)} &amp;= (1 - \omega) x_{4}^{(k)} + \frac{\omega}{3} \left( 3 - x_{1}^{(k+1)} + x_{2}^{(k+1)} - x_{3}^{(k+1)} \right). 
 \end{align*} \end{split}\]</div>
 <p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(1)} &amp;= (1 - 1.0946)(2.8) - \frac{1.0946}{5} \left( 14 - 1.8 + 2.08 - 1.36 \right) = 2.8, \\
-    x_{2}^{(1)} &amp;= (1 - 1.0946)(1.8) - \frac{1.0946}{4} \left( 10 - 2.8 + 2.08 - 1.36 \right) = 1.8, \\
-    x_{3}^{(1)} &amp;= (1 - 1.0946)(-2.08) - \frac{1.0946}{5} \left( -15 - 2.8 - 1.8 - 1.36 \right) = -2.08, \\
-    x_{4}^{(1)} &amp;= (1 - 1.0946)(1.36) - \frac{1.0946}{3} \left( 3 - 2.8 - 1.8 - -2.08 \right) = 1.36.
+    x_{1}^{(1)} &amp;= -0.0946 (0) + \frac{1.0946}{5} \left( 14 - 0 + 0 - 0 \right) = 3.06488, \\ 
+    x_{2}^{(1)} &amp;= -0.0946 (0) + \frac{1.0946}{4} \left( 10 - 3.06488 + 0 + 0 \right) = 1.8978, \\ 
+    x_{3}^{(1)} &amp;= -0.0946 (0) + \frac{1.0946}{5} \left( -15 + 3.06488 + 1.8978 - 0 \right) = -2.19737, \\ 
+    x_{4}^{(1)} &amp;= -0.0946 (0) + \frac{1.0946}{3} \left( 3 - 3.06488 + 1.8978 + (-2.19737) \right) = 1.47052. 
 \end{align*} \end{split}\]</div>
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \mathbf{r}^{(1)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
-    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} -
+\[\begin{split} \begin{align*} 
+    \mathbf{r}^{(1)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} - 
     \begin{pmatrix} 5 &amp; 1 &amp; -1 &amp; 1 \\ 1 &amp; 4 &amp; -1 &amp; -1 \\ -1 &amp; -1 &amp; 5 &amp; 1 \\ 1 &amp; -1 &amp; 1 &amp; 3 \end{pmatrix}
-    \begin{pmatrix} 2.8 \\ 1.8 \\ -2.08 \\ 1.36 \end{pmatrix} \\
-    &amp;= \begin{pmatrix} -5.24 \\ -0.72 \\ -1.36 \\ 0\end{pmatrix}.
+    \begin{pmatrix} 3.06488 \\ 1.8978 \\ -2.19737 \\ 1.47052 \end{pmatrix} = 
+    \begin{pmatrix} -6.89008 \\ -1.38292 \\ -0.520986 \\ -0.381265 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 5.24 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 6.89008 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(2)} &amp;= (1 - 1.0946)(1.752) - \frac{1.0946}{5} \left( 14 - 1.882 + 2.5452 - 1.891733 \right) \\ 
-    &amp;= 1.752, \\
-    x_{2}^{(2)} &amp;= (1 - 1.0946)(1.882) - \frac{1.0946}{4} \left( 10 - 1.752 + 2.5452 - 1.891733 \right) \\
-    &amp;= 1.882, \\
-    x_{3}^{(2)} &amp;= (1 - 1.0946)(-2.5452) - \frac{1.0946}{5} \left( -15 - 1.752 - 1.882 - 1.891733 \right) \\
-    &amp;= -2.5452, \\
-    x_{4}^{(2)} &amp;= (1 - 1.0946)(1.891733) - \frac{1.0946}{3} \left( 3 - 1.752 - 1.882 - -2.5452 \right) \\
-    &amp;= 1.891733.
+    x_{1}^{(2)} &amp;= -0.0946 (3.06488) + \frac{1.0946}{5} \left( 14 - 1.8978 + (-2.19737) - 1.47052 \right) = 1.5565, \\ 
+    x_{2}^{(2)} &amp;= -0.0946 (1.8978) + \frac{1.0946}{4} \left( 10 - 1.5565 + (-2.19737) + 1.47052 \right) = 1.93213, \\ 
+    x_{3}^{(2)} &amp;= -0.0946 (-2.19737) + \frac{1.0946}{5} \left( -15 + 1.5565 + 1.93213 - 1.47052 \right) = -2.63412, \\ 
+    x_{4}^{(2)} &amp;= -0.0946 (1.47052) + \frac{1.0946}{3} \left( 3 - 1.5565 + 1.93213 + (-2.63412) \right) = 2.05365. 
 \end{align*} \end{split}\]</div>
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \mathbf{r}^{(2)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
-    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} -
+\[\begin{split} \begin{align*} 
+    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \begin{pmatrix} 14 \\ 10 \\ -15 \\ 3 \end{pmatrix} - 
     \begin{pmatrix} 5 &amp; 1 &amp; -1 &amp; 1 \\ 1 &amp; 4 &amp; -1 &amp; -1 \\ -1 &amp; -1 &amp; 5 &amp; 1 \\ 1 &amp; -1 &amp; 1 &amp; 3 \end{pmatrix}
-    \begin{pmatrix} 1.752 \\ 1.882 \\ -2.5452 \\ 1.891733 \end{pmatrix} \\
-    &amp;= \begin{pmatrix} -1.078933 \\ 0.066533 \\ -0.531733 \\ -0\end{pmatrix}.
+    \begin{pmatrix} 1.5565 \\ 1.93213 \\ -2.63412 \\ 2.05365 \end{pmatrix} = 
+    \begin{pmatrix} -0.402411 \\ 0.134508 \\ -0.394399 \\ -0.151189 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 1.078933 &gt; 10^{-4}\)</span> we continue iterating.</p>
+<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 0.402411 &gt; 10^{-4}\)</span> we continue iterating.</p>
 </section>
 </div>
 <div class="exercise admonition" id="indirect-methods-ex-convergence">
@@ -604,9 +597,9 @@ document.write(`
 <p>The iteration matrices for the Jacobi, Gauss-Seidel and SOR methods (with <span class="math notranslate nohighlight">\(\omega = 1.094573\)</span>) are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    T_J &amp;= \begin{pmatrix} 0 &amp; -\frac{1}{5} &amp; \frac{1}{5} &amp; -\frac{1}{5} \\ -\frac{1}{4} &amp; 0 &amp; \frac{1}{4} &amp; \frac{1}{4} \\ \frac{1}{5} &amp; \frac{1}{5} &amp; 0 &amp; -\frac{1}{5} \\ -\frac{1}{3} &amp; \frac{1}{3} &amp; -\frac{1}{3} &amp; 0 \end{pmatrix}, \\
-    T_{GS} &amp;= \begin{pmatrix} 0 &amp; -\frac{1}{5} &amp; \frac{1}{5} &amp; -\frac{1}{5} \\ 0 &amp; \frac{1}{20} &amp; \frac{1}{5} &amp; \frac{3}{10} \\ 0 &amp; -\frac{3}{100} &amp; \frac{8}{100} &amp; -\frac{9}{50} \\ 0 &amp; \frac{7}{75} &amp; -\frac{2}{75} &amp; \frac{17}{75} \end{pmatrix}, \\
-    T_{SOR} &amp;= \begin{pmatrix} -0.094573 &amp; -0.218915 &amp; 0.218915 &amp; -0.218915 \\ 0.025879 &amp; -0.034668 &amp; 0.213739 &amp; 0.333548 \\ -0.015038 &amp; -0.055513 &amp; 0.000141 &amp; -0.193820 \\ 0.049435 &amp; 0.087478 &amp; -0.001940 &amp; 0.177714 \end{pmatrix}.
+    T_J &amp;= \begin{pmatrix} 0 &amp; -0.2 &amp; 0.2 &amp; -0.2 \\ -0.25 &amp; 0 &amp; 0.25 &amp; 0.25 \\ 0.2 &amp; 0.2 &amp; 0 &amp; -0.2 \\ -0.333333 &amp; 0.333333 &amp; -0.333333 &amp; 0 \end{pmatrix}, \\
+    T_{GS} &amp;= \begin{pmatrix} 0 &amp; -0.2 &amp; 0.2 &amp; -0.2 \\ 0 &amp; 0.05 &amp; 0.2 &amp; 0.3 \\ 0 &amp; -0.03 &amp; 0.08 &amp; -0.18 \\ 0 &amp; 0.0933333 &amp; -0.0266667 &amp; 0.226667 \end{pmatrix}, \\
+    T_{SOR} &amp;= \begin{pmatrix} -0.0946 &amp; -0.21892 &amp; 0.21892 &amp; -0.21892 \\ 0.0258873 &amp; -0.0346925 &amp; 0.213743 &amp; 0.333557 \\ -0.0150426 &amp; -0.0555209 &amp; 0.000118484 &amp; -0.193824 \\ 0.0494503 &amp; 0.0874762 &amp; -0.00193231 &amp; 0.1777 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>and the spectral radii for these matrices are</p>
 <div class="math notranslate nohighlight">

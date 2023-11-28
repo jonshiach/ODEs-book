@@ -209,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Chapter 5 exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -223,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 5 exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 7 exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -400,14 +400,8 @@ document.write(`
 <p>For example, consider the Euler method solution to the following initial value problem using step lengths of <span class="math notranslate nohighlight">\(h = 0.25\)</span> and <span class="math notranslate nohighlight">\(h = 0.125\)</span></p>
 <div class="math notranslate nohighlight">
 \[ y' = -15y, \qquad t \in [0, 1], \qquad y(0) = 1. \]</div>
-<p>The exact solution for this initial value problem is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
-<figure class="align-default" id="stability-plot-1-figure" style="width: 600px">
-<img alt="../_images/4f3ae883708f2b527b45c551ddc7495354f2280b47c16821783a6b63260b707f.png" src="../_images/4f3ae883708f2b527b45c551ddc7495354f2280b47c16821783a6b63260b707f.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> and <span class="math notranslate nohighlight">\(h=0.125\)</span>.</span><a class="headerlink" href="#stability-plot-1-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution where the numerical solution remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution which is unbounded. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="1.3_Error_Analysis.html#lte-definition">local truncation error</a>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="1.3_Error_Analysis.html#gte-definition">global truncation error</a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
+<p>The exact solution for this initial value problem is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <code class="xref std std-numref docutils literal notranslate"><span class="pre">stability-plot-1-figure</span></code>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
+<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution where the numerical solution remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution which is unbounded. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="1.3_Error_Analysis.html#lte-definition">local truncation error</a>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="1.3_Error_Analysis.html#gte-definition">global truncation error</a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <code class="xref std std-numref docutils literal notranslate"><span class="pre">stability-plot-1-figure</span></code> causing the solution to be unusable. This provides us with the definition of stability.</p>
 <div class="proof definition admonition" id="stability-definition">
 <p class="admonition-title"><span class="caption-number">Definition 4.1 </span> (Stability)</p>
 <section class="definition-content" id="proof-content">
@@ -512,13 +506,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <p>Different ODE solvers have different stability properties and are stable over larger values of <span class="math notranslate nohighlight">\(h\)</span>. For example the <a href="https://en.wikipedia.org/wiki/Backward_Euler_method" target="_blank">implicit Euler method</a> is an A-stable method meaning that it is stable for any value of <span class="math notranslate nohighlight">\(h\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ y_{n+1} = y_n + h f(t_{n+1}, y_{n+1}) \]</div>
-<p>A comparison of the Euler and implicit Euler methods used to solve the same initial value problem as before is shown in <a class="reference internal" href="#stability-plot-2-figure"><span class="std std-numref">Fig. 4.2</span></a> where the implicit Euler method solutions remain bounded despite using the same step length.</p>
-<figure class="align-default" id="stability-plot-2-figure" style="width: 600px">
-<img alt="../_images/e448238a8317d66191bda9e55d424146a1677584fabd31f880d57027afb76631.png" src="../_images/e448238a8317d66191bda9e55d424146a1677584fabd31f880d57027afb76631.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler and implicit Euler methods with <span class="math notranslate nohighlight">\(h=0.25\)</span>.</span><a class="headerlink" href="#stability-plot-2-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p>A comparison of the Euler and implicit Euler methods used to solve the same initial value problem as before is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">stability-plot-2-figure</span></code> where the implicit Euler method solutions remain bounded despite using the same step length.</p>
 <p>So if we were constrained with using a step length of <span class="math notranslate nohighlight">\(h=0.25\)</span> then we could choose the implicit Euler method to solve this initial value problem.</p>
 </section>
 </section>

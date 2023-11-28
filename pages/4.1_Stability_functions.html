@@ -209,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Chapter 5 exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -223,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 5 exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_BVP_exercises.html">7.4. Chapter 7 exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -428,13 +428,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ \{ z:z\in \mathbb{C},|R(z)|\leq 1 \} \]</div>
 </section>
-</div><p>The region of absolute stability for the Euler method is shown in <a class="reference internal" href="#euler-stability-region-figure"><span class="std std-numref">Fig. 4.3</span></a>.</p>
-<figure class="align-default" id="euler-stability-region-figure" style="width: 600px">
-<img alt="../_images/18c5bdcd9d647cb8f8790f7f5ec851fb923c8f23f0d002293a5c86614eb2e8cc.png" src="../_images/18c5bdcd9d647cb8f8790f7f5ec851fb923c8f23f0d002293a5c86614eb2e8cc.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">The region of absolute stability for the Euler method.</span><a class="headerlink" href="#euler-stability-region-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+</div><p>The region of absolute stability for the Euler method is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">euler-stability-region-figure</span></code>.</p>
 </section>
 <section id="plotting-stability-regions">
 <span id="plot-stability-region-section"></span><h2><span class="section-number">4.2.2. </span>Plotting stability regions<a class="headerlink" href="#plotting-stability-regions" title="Permalink to this heading">#</a></h2>
@@ -509,13 +503,7 @@ MATLAB</label><div class="sd-tab-content docutils">
     \{ z : z \in \mathbb{R}, |R(z)| \leq 1 \}
 \end{align*} \]</div>
 </section>
-</div><p>The interval of absolute stability for the Euler method can be seen in <a class="reference internal" href="#stability-interval-plot-figure"><span class="std std-numref">Fig. 4.4</span></a>.</p>
-<figure class="align-default" id="stability-interval-plot-figure" style="width: 600px">
-<img alt="../_images/5114906d174f8cae1c3fa5e1a7d1f9aaecc61f1c9bdce7ce4f8a504d18154a42.png" src="../_images/5114906d174f8cae1c3fa5e1a7d1f9aaecc61f1c9bdce7ce4f8a504d18154a42.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Interval of absolute stability for the Euler method.</span><a class="headerlink" href="#stability-interval-plot-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+</div><p>The interval of absolute stability for the Euler method can be seen in <code class="xref std std-numref docutils literal notranslate"><span class="pre">stability-interval-plot-figure</span></code>.</p>
 <p>The region of absolute stability for the Euler method shows that the interval of absolute stability for the test ODE <span class="math notranslate nohighlight">\(y'=\lambda y\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
@@ -531,7 +519,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 \[ \begin{align*}
     h \leq -\frac{2}{\lambda}.
 \end{align*} \]</div>
-<p>We saw in <a class="reference internal" href="4.0_Stability.html#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a> that solving the ODE <span class="math notranslate nohighlight">\(y' = -15y\)</span> using <span class="math notranslate nohighlight">\(h=0.25\)</span> resulted in an unstable solution whereas using <span class="math notranslate nohighlight">\(h=0.125\)</span> resulted in a stable (albeit oscillatory) solution. This is because for this ODE <span class="math notranslate nohighlight">\(\lambda = -15\)</span> and the step length for the Euler method must satisfy</p>
+<p>We saw in <code class="xref std std-numref docutils literal notranslate"><span class="pre">stability-plot-1-figure</span></code> that solving the ODE <span class="math notranslate nohighlight">\(y' = -15y\)</span> using <span class="math notranslate nohighlight">\(h=0.25\)</span> resulted in an unstable solution whereas using <span class="math notranslate nohighlight">\(h=0.125\)</span> resulted in a stable (albeit oscillatory) solution. This is because for this ODE <span class="math notranslate nohighlight">\(\lambda = -15\)</span> and the step length for the Euler method must satisfy</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     h \leq -\frac{2}{-15} = 0.1\dot{3}.
