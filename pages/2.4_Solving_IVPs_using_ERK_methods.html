@@ -574,15 +574,21 @@ MATLAB</label><div class="sd-tab-content docutils">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cXemDaA6jAM?si=Uz1FRgCeRGiEnZaE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">rk4()</span></code> function has been used to solve the IVP from <a class="reference internal" href="#rk4-example">Example 2.7</a> which is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">rk4-example-plot</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rk4()</span></code> function has been used to solve the IVP from <a class="reference internal" href="#rk4-example">Example 2.7</a> which is shown in <a class="reference internal" href="#rk4-example-plot"><span class="std std-numref">Fig. 2.5</span></a>.</p>
+<figure class="align-default" id="rk4-example-plot" style="width: 600px">
+<img alt="../_images/13930b7aed68f77c24d36c53b39d0a8ca7870dab90eb8408ea7fd8f1b69e9ae4.png" src="../_images/13930b7aed68f77c24d36c53b39d0a8ca7870dab90eb8408ea7fd8f1b69e9ae4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">The solution to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the RK4 method with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#rk4-example-plot" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="comparison-of-first-second-and-fourth-order-solutions">
 <h2><span class="section-number">2.6.2. </span>Comparison of first, second and fourth-order solutions<a class="headerlink" href="#comparison-of-first-second-and-fourth-order-solutions" title="Permalink to this heading">#</a></h2>
-<p>The first-order Euler method, the second-order Heun’s method and the fourth-order RK4 method solutions to the IVP from <a class="reference internal" href="#rk4-example">Example 2.7</a> have been plotted against the exact solution in <a class="reference internal" href="#euler-rk2-rk4-figure"><span class="std std-numref">Fig. 2.5</span></a>.</p>
+<p>The first-order Euler method, the second-order Heun’s method and the fourth-order RK4 method solutions to the IVP from <a class="reference internal" href="#rk4-example">Example 2.7</a> have been plotted against the exact solution in <a class="reference internal" href="#euler-rk2-rk4-figure"><span class="std std-numref">Fig. 2.6</span></a>.</p>
 <figure class="align-default" id="euler-rk2-rk4-figure" style="width: 600px">
-<img alt="../_images/de834fccd847df44d25264a22c3e96416543e10d331e13f5b472bfc1e46c85ba.png" src="../_images/de834fccd847df44d25264a22c3e96416543e10d331e13f5b472bfc1e46c85ba.png" />
+<img alt="../_images/38d56f612503f6d97899beec9579485329ca3b1dcd34024bce6735f6f477effd.png" src="../_images/38d56f612503f6d97899beec9579485329ca3b1dcd34024bce6735f6f477effd.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Comparisons between the Euler method, Heun’s method and the RK4 method for solving the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> with <span class="math notranslate nohighlight">\(h=0.2\)</span></span><a class="headerlink" href="#euler-rk2-rk4-figure" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Comparisons between the Euler method, Heun’s method and the RK4 method for solving the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> with <span class="math notranslate nohighlight">\(h=0.2\)</span></span><a class="headerlink" href="#euler-rk2-rk4-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here we see that the second-order and fourth-order method are significantly more accurate than the first-order method. However, in this plot it is difficult to see the difference between the second and fourth-order solutions.</p>
@@ -624,11 +630,11 @@ MATLAB</label><div class="sd-tab-content docutils">
 \[ \begin{align*}
   \log(E(h)) &amp;= n\log(h).
 \end{align*} \]</div>
-<p>This is a linear function where the slope of <span class="math notranslate nohighlight">\(\log(E(h))\)</span> has a gradient of <span class="math notranslate nohighlight">\(n\)</span>. The global truncation errors for the three methods have been plotted on a loglog scale in <a class="reference internal" href="#rk4-example-hvals-log-plot"><span class="std std-numref">Fig. 2.6</span></a></p>
+<p>This is a linear function where the slope of <span class="math notranslate nohighlight">\(\log(E(h))\)</span> has a gradient of <span class="math notranslate nohighlight">\(n\)</span>. The global truncation errors for the three methods have been plotted on a loglog scale in <a class="reference internal" href="#rk4-example-hvals-log-plot"><span class="std std-numref">Fig. 2.7</span></a></p>
 <figure class="align-default" id="rk4-example-hvals-log-plot" style="width: 600px">
-<img alt="../_images/82fd90bbb29182da5dd47560bace950bb96cc9f91d4920bbeabcbe23705a18f8.png" src="../_images/82fd90bbb29182da5dd47560bace950bb96cc9f91d4920bbeabcbe23705a18f8.png" />
+<img alt="../_images/61f123c4246ffe26e26f3b7315a1c78fb4aa3b57d1b9f7120554f1648c26ac5b.png" src="../_images/61f123c4246ffe26e26f3b7315a1c78fb4aa3b57d1b9f7120554f1648c26ac5b.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Plots of the the global truncation errors for the Euler method, Heuns’ method and the RK4 method on a loglog scale.</span><a class="headerlink" href="#rk4-example-hvals-log-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Plots of the the global truncation errors for the Euler method, Heuns’ method and the RK4 method on a loglog scale.</span><a class="headerlink" href="#rk4-example-hvals-log-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The loglog plots of the global truncation errors are linear functions where we can clearly see the distinction between the errors for the three methods. The order of the methods <span class="math notranslate nohighlight">\(n\)</span> can be approximated using</p>

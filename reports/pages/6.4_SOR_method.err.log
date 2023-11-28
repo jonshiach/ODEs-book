@@ -19,43 +19,322 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 import numpy as np
-import matplotlib.pyplot as plt
-
-def sor_iteration_matrix(A, omega):
-    L = np.tril(A, -1)
-    U = np.triu(A, 1)
-    D = A - L - U
-    return np.dot(np.linalg.inv(D + omega * L), ((1 - omega) * D - omega * U))
+import subprocess 
 
 
-# Define coefficient matrix
-A = np.array([[4, 3, 0], [3, 4, -1], [0, -1, 4]])
+def table_row(string, k, x, r):
+    string += f"| {k} |"
+    for i in range(len(x)):
+        string += f"{x[i]:9.6f} | "
+    string += f"{max(abs(r)):0.2e} |\n"
 
-# Loop through values of omega and calculate the spectral radius of the iteration matrix
-omega = np.arange(0, 2 + 1e-4, 1e-4)
-rho = np.zeros(omega.shape)
-for i in range(len(omega)):
-    T_SOR = sor_iteration_matrix(A, omega[i])
-    rho[i] = max(abs(np.linalg.eigvals(T_SOR)))
+    return string
+
+def sor_table(A, b, omega, tol=1e-4):
+    n = len(b)
+    x = np.zeros(n)
+    maxiter = 100
+    r = b - np.dot(A, x)
     
-# Plot spectral radii
-fig, ax = plt.subplots()
-plt.plot(omega, rho, "b")
-plt.xlabel("$\omega$", fontsize=14)
-plt.ylabel(r"$\rho(T_{SOR})$")
-plt.show()
+    string =  f"| $k$ |"
+    for i in range(n):
+        string += f" $x_{i+1}$ | "
+    string += " max residual |\n"
+    string += "|:--:|"
+    for i in range(n+1):
+        string += ":--:|"
+    string += "\n"
 
-from myst_nb import glue
-glue("optimum_omega_plot", fig, display=False)
+    string  = table_row(string, 0, x, r)
+
+    for k in range(1, maxiter):
+        for i in range(n):
+            sum_ = 0
+            for j in range(n):
+                if i != j:
+                    sum_ += A[i,j] * x[j]
+        
+            x[i] = (1 - omega) * x[i] + omega * (b[i] - sum_) / A[i,i]
+            
+        r = b - np.dot(A, x)
+
+        if k < 10:
+            string  = table_row(string, k, x, r)
+
+        if max(abs(r)) < tol:
+            break
+    
+
+    # string += "| $\\vdots$ |"
+    # for i in range(n + 1):
+    #     string += " $\\vdots$ | "
+    # string += " \n"
+
+    # string  = table_row(string, k, x, r)
+
+    return string
+
+def sor_latex(A, b, omega, tol=1e-4):
+    n = len(b)
+    x = np.zeros(n)
+    maxiter = 100
+    ordinal = ["first", "second", "third"]
+    string =  "The SOR method for this system is\n\n"
+    string += "$$ \\begin{align*}\n"
+    for i in range(n):
+        string += f"    x_{{{i+1}}}^{{(k+1)}} &= (1 - \\omega) x_{{{i+1}}}^{{(k)}} + \\frac{{\\omega}}{{{A[i,i]}}} \\left( {b[i]}"
+        for j in range(n):
+            if i == j:
+                continue
+            if A[i,j] == 1:
+                string += f" - x_{{{j+1}}}"
+            elif A[i,j] == -1:
+                string += f" + x_{{{j+1}}}"
+            elif A[i,j] < 0:
+                string += f" + {-A[i,j]} x_{{{j+1}}}"
+            elif A[i,j] > 0:
+                string += f" - {A[i,j]} x_{{{j+1}}}"
+
+            if j < i and A[i,j] != 0:
+                string += "^{{(k+1)}}"
+            elif j > i and A[i,j] != 0:
+                string += "^{{(k)}}"
+        
+        if i == n - 1:
+            string += " \\right). \n"
+        else:
+            string += " \\right), \\\ \n"
+            
+    string += "\\end{align*} $$ \n\n"
+    string += "Using starting values of $\\mathbf{x} = \\mathbf{0}$. "
+        
+    for k in range(2):
+
+        string += f"Calculating the {ordinal[k]} iteration\n\n"
+        string += "$$ \\begin{align*}\n"
+        
+        for i in range(n):
+    
+            string += rf"    x_{{{i+1}}}^{{({k+1})}} &= {1 - omega} "
+            if x[i] == 0:
+                string += f"(0) + \\frac{{{omega}}}{{{A[i,i]}}} \\left( {b[i]}"
+            else:
+                string += f"({x[i]:0.6}) + \\frac{{{omega}}}{{{A[i,i]}}} \\left( {b[i]}"
+
+            sum_ = b[i]
+            for j in range(n):
+                if i != j: 
+                    sum_ -= A[i,j] * x[j]
+        
+                if i == j:
+                    continue
+
+                if A[i,j] == 1:
+                    if x[j] == 0:
+                        string += f" - 0 "
+                    elif x[j] > 0:
+                        string += f" + {x[j]:0.6} "
+                    else:
+                        string += f" {x[j]:0.6} "
+                elif A[i,j] == -1:
+                    if x[j] == 0:
+                        string += f" + 0 "
+                    elif x[j] > 0:
+                        string += f" + {x[j]:0.6} "
+                    else:
+                        string += f" {x[j]:0.6} "
+                elif A[i,j] < 0:
+                    if x[j] == 0:
+                        string += f" + {-A[i,j]} (0) "
+                    else:
+                        string += f" + {-A[i,j]}({x[j]:0.6}) "
+                elif A[i,j] > 0:
+                    if x[j] == 0:
+                        string += f" - {A[i,j]} (0) "
+                    else:
+                        string += f" - {A[i,j]}({x[j]:0.6}) "
+
+            x[i] = (1 - omega) * x[i] + omega * sum_ / A[i,i]
+
+            if i == n - 1:
+                string += f" \\right) = {x[i]:0.6}. \n"
+            else:
+                string += f" \\right) = {x[i]:0.6}, \\\ \n"
+            
+        r = b - np.dot(A, x)   
+        
+
+        string += "\\end{align*} $$\n\nCalculate the residual\n\n"
+        string += "$$ \\begin{align*} \n"
+        string += f"    \\mathbf{{r}}^{{({k+1})}} = \\mathbf{{b}} - A \\mathbf{{x}}^{{(1)}} = \n"
+        string += "    \\begin{pmatrix}"
+        for i in range(n):
+            string += f" {b[i]}"
+            if i < n - 1:
+                string += " \\\ "
+        string += " \\end{pmatrix} - \n"
+
+        string += "    \\begin{pmatrix}"
+        for i in range(n):
+            for j in range(n):
+                string += f" {A[i,j]}"
+                if j < n - 1:
+                    string += " &"
+            if i < n - 1:
+                string += " \\\ "
+        string += " \\end{pmatrix}\n"
+        string += "    \\begin{pmatrix}"
+        for i in range(n):
+            string += f" {x[i]:0.6}"
+            if i < n - 1:
+                string += " \\\ "
+        string += " \\end{pmatrix} = \n"
+
+        string += "    \\begin{pmatrix}"
+        for i in range(n):
+            string += f" {r[i]:0.6}"
+            if i < n - 1:
+                string += " \\\ "
+        string += "    \\end{pmatrix}.\n"
+        string += "\\end{align*} $$\n\n"
+        string += f"Since $\\max(| \\mathbf{{r}}^{{({k+1})}} |) = {max(abs(r)):0.4f} > 10^{{-4}}$ we continue iterating. "
+    
+    return string
+        
+# Define linear system
+A = np.array([[4, 3, 0], [3, 4, -1], [0, -1, 4]])
+b = np.array([-2, -8, 14])
+omega = 1.24
+
+# Solve linear system
+string = ""
+string += sor_latex(A, b, omega)
+
+string += "The SOR method was iterated until $\\max(|\\mathbf{r}|) < 10^{-4}$ and a selection of the iteration values are given in the table below.\n\n"
+
+string += sor_table(A, b, omega)
+
+string += "\n:::\n::::"
+
+print(string)
+subprocess.run("pbcopy", text=True, input=string)
 ------------------
 
+----- stdout -----
+The SOR method for this system is
+
+$$ \begin{align*}
+    x_{1}^{(k+1)} &= (1 - \omega) x_{1}^{(k)} + \frac{\omega}{4} \left( -2 - 3 x_{2}^{{(k)}} \right), \\ 
+    x_{2}^{(k+1)} &= (1 - \omega) x_{2}^{(k)} + \frac{\omega}{4} \left( -8 - 3 x_{1}^{{(k+1)}} + x_{3}^{{(k)}} \right), \\ 
+    x_{3}^{(k+1)} &= (1 - \omega) x_{3}^{(k)} + \frac{\omega}{4} \left( 14 + x_{2}^{{(k+1)}} \right). 
+\end{align*} $$ 
+
+Using starting values of $\mathbf{x} = \mathbf{0}$. Calculating the first iteration
+
+$$ \begin{align*}
+    x_{1}^{(1)} &= -0.24 (0) + \frac{1.24}{4} \left( -2 - 3 (0)  \right) = -0.62, \\ 
+    x_{2}^{(1)} &= -0.24 (0) + \frac{1.24}{4} \left( -8 - 3(-0.62)  + 0  \right) = -1.9034, \\ 
+    x_{3}^{(1)} &= -0.24 (0) + \frac{1.24}{4} \left( 14 -1.9034  \right) = 3.74995. 
+\end{align*} $$
+
+Calculate the residual
+
+$$ \begin{align*} 
+    \mathbf{r}^{(1)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \begin{pmatrix} -2 \\  -8 \\  14 \end{pmatrix} - 
+    \begin{pmatrix} 4 & 3 & 0 \\  3 & 4 & -1 \\  0 & -1 & 4 \end{pmatrix}
+    \begin{pmatrix} -0.62 \\  -1.9034 \\  3.74995 \end{pmatrix} = 
+    \begin{pmatrix} 6.1902 \\  5.22355 \\  -2.90318    \end{pmatrix}.
+\end{align*} $$
+
+Since $\max(| \mathbf{r}^{(1)} |) = 6.1902 > 10^{-4}$ we continue iterating. Calculating the second iteration
+
+$$ \begin{align*}
+    x_{1}^{(2)} &= -0.24 (-0.62) + \frac{1.24}{4} \left( -2 - 3(-1.9034)  \right) = 1.29896, \\ 
+    x_{2}^{(2)} &= -0.24 (-1.9034) + \frac{1.24}{4} \left( -8 - 3(1.29896)  + 3.74995  \right) = -2.06874, \\ 
+    x_{3}^{(2)} &= -0.24 (3.74995) + \frac{1.24}{4} \left( 14 -2.06874  \right) = 2.7987. 
+\end{align*} $$
+
+Calculate the residual
+
+$$ \begin{align*} 
+    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \begin{pmatrix} -2 \\  -8 \\  14 \end{pmatrix} - 
+    \begin{pmatrix} 4 & 3 & 0 \\  3 & 4 & -1 \\  0 & -1 & 4 \end{pmatrix}
+    \begin{pmatrix} 1.29896 \\  -2.06874 \\  2.7987 \end{pmatrix} = 
+    \begin{pmatrix} -0.989642 \\  -0.823239 \\  0.736445    \end{pmatrix}.
+\end{align*} $$
+
+Since $\max(| \mathbf{r}^{(2)} |) = 0.9896 > 10^{-4}$ we continue iterating. The SOR method was iterated until $\max(|\mathbf{r}|) < 10^{-4}$ and a selection of the iteration values are given in the table below.
+
+| $k$ | $x_1$ |  $x_2$ |  $x_3$ |  max residual |
+|:--:|:--:|:--:|:--:|:--:|
+| 0 | 0.000000 |  0.000000 |  0.000000 | 1.40e+01 |
+| 1 |-0.620000 | -1.903400 |  3.749946 | 6.19e+00 |
+| 2 | 1.298962 | -2.068735 |  2.798705 | 9.90e-01 |
+| 3 | 0.992173 | -2.038626 |  3.036337 | 2.14e-01 |
+| 4 | 1.037801 | -2.014620 |  2.986747 | 1.07e-01 |
+| 5 | 1.004524 | -2.004807 |  3.001690 | 1.16e-02 |
+| 6 | 1.003385 | -2.001470 |  2.999139 | 9.13e-03 |
+| 7 | 1.000555 | -2.000430 |  3.000073 | 9.29e-04 |
+| 8 | 1.000267 | -2.000122 |  2.999944 | 7.01e-04 |
+| 9 | 1.000050 | -2.000034 |  3.000003 | 9.65e-05 |
+
+:::
+::::
+------------------
 
 [1;31m---------------------------------------------------------------------------[0m
-[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [1;32mIn[1], line 1[0m
-[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[0;32m      4[0m [38;5;28;01mdef[39;00m [38;5;21msor_iteration_matrix[39m(A, omega):
+[1;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [1;32mIn[2], line 200[0m
+[0;32m    197[0m string [38;5;241m+[39m[38;5;241m=[39m [38;5;124m"[39m[38;5;130;01m\n[39;00m[38;5;124m:::[39m[38;5;130;01m\n[39;00m[38;5;124m::::[39m[38;5;124m"[39m
+[0;32m    199[0m [38;5;28mprint[39m(string)
+[1;32m--> 200[0m [43msubprocess[49m[38;5;241;43m.[39;49m[43mrun[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mpbcopy[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mtext[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[38;5;28;43minput[39;49m[38;5;241;43m=[39;49m[43mstring[49m[43m)[49m
 
-[1;31mModuleNotFoundError[0m: No module named 'numpy'
+File [1;32mC:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:548[0m, in [0;36mrun[1;34m(input, capture_output, timeout, check, *popenargs, **kwargs)[0m
+[0;32m    545[0m     kwargs[[38;5;124m'[39m[38;5;124mstdout[39m[38;5;124m'[39m] [38;5;241m=[39m PIPE
+[0;32m    546[0m     kwargs[[38;5;124m'[39m[38;5;124mstderr[39m[38;5;124m'[39m] [38;5;241m=[39m PIPE
+[1;32m--> 548[0m [38;5;28;01mwith[39;00m [43mPopen[49m[43m([49m[38;5;241;43m*[39;49m[43mpopenargs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m [38;5;28;01mas[39;00m process:
+[0;32m    549[0m     [38;5;28;01mtry[39;00m:
+[0;32m    550[0m         stdout, stderr [38;5;241m=[39m process[38;5;241m.[39mcommunicate([38;5;28minput[39m, timeout[38;5;241m=[39mtimeout)
+
+File [1;32mC:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1026[0m, in [0;36mPopen.__init__[1;34m(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, user, group, extra_groups, encoding, errors, text, umask, pipesize, process_group)[0m
+[0;32m   1022[0m         [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mtext_mode:
+[0;32m   1023[0m             [38;5;28mself[39m[38;5;241m.[39mstderr [38;5;241m=[39m io[38;5;241m.[39mTextIOWrapper([38;5;28mself[39m[38;5;241m.[39mstderr,
+[0;32m   1024[0m                     encoding[38;5;241m=[39mencoding, errors[38;5;241m=[39merrors)
+[1;32m-> 1026[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_execute_child[49m[43m([49m[43margs[49m[43m,[49m[43m [49m[43mexecutable[49m[43m,[49m[43m [49m[43mpreexec_fn[49m[43m,[49m[43m [49m[43mclose_fds[49m[43m,[49m
+[0;32m   1027[0m [43m                        [49m[43mpass_fds[49m[43m,[49m[43m [49m[43mcwd[49m[43m,[49m[43m [49m[43menv[49m[43m,[49m
+[0;32m   1028[0m [43m                        [49m[43mstartupinfo[49m[43m,[49m[43m [49m[43mcreationflags[49m[43m,[49m[43m [49m[43mshell[49m[43m,[49m
+[0;32m   1029[0m [43m                        [49m[43mp2cread[49m[43m,[49m[43m [49m[43mp2cwrite[49m[43m,[49m
+[0;32m   1030[0m [43m                        [49m[43mc2pread[49m[43m,[49m[43m [49m[43mc2pwrite[49m[43m,[49m
+[0;32m   1031[0m [43m                        [49m[43merrread[49m[43m,[49m[43m [49m[43merrwrite[49m[43m,[49m
+[0;32m   1032[0m [43m                        [49m[43mrestore_signals[49m[43m,[49m
+[0;32m   1033[0m [43m                        [49m[43mgid[49m[43m,[49m[43m [49m[43mgids[49m[43m,[49m[43m [49m[43muid[49m[43m,[49m[43m [49m[43mumask[49m[43m,[49m
+[0;32m   1034[0m [43m                        [49m[43mstart_new_session[49m[43m,[49m[43m [49m[43mprocess_group[49m[43m)[49m
+[0;32m   1035[0m [38;5;28;01mexcept[39;00m:
+[0;32m   1036[0m     [38;5;66;03m# Cleanup if the child failed starting.[39;00m
+[0;32m   1037[0m     [38;5;28;01mfor[39;00m f [38;5;129;01min[39;00m [38;5;28mfilter[39m([38;5;28;01mNone[39;00m, ([38;5;28mself[39m[38;5;241m.[39mstdin, [38;5;28mself[39m[38;5;241m.[39mstdout, [38;5;28mself[39m[38;5;241m.[39mstderr)):
+
+File [1;32mC:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.1776.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1538[0m, in [0;36mPopen._execute_child[1;34m(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, unused_restore_signals, unused_gid, unused_gids, unused_uid, unused_umask, unused_start_new_session, unused_process_group)[0m
+[0;32m   1536[0m [38;5;66;03m# Start the process[39;00m
+[0;32m   1537[0m [38;5;28;01mtry[39;00m:
+[1;32m-> 1538[0m     hp, ht, pid, tid [38;5;241m=[39m [43m_winapi[49m[38;5;241;43m.[39;49m[43mCreateProcess[49m[43m([49m[43mexecutable[49m[43m,[49m[43m [49m[43margs[49m[43m,[49m
+[0;32m   1539[0m [43m                             [49m[38;5;66;43;03m# no special security[39;49;00m
+[0;32m   1540[0m [43m                             [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m
+[0;32m   1541[0m [43m                             [49m[38;5;28;43mint[39;49m[43m([49m[38;5;129;43;01mnot[39;49;00m[43m [49m[43mclose_fds[49m[43m)[49m[43m,[49m
+[0;32m   1542[0m [43m                             [49m[43mcreationflags[49m[43m,[49m
+[0;32m   1543[0m [43m                             [49m[43menv[49m[43m,[49m
+[0;32m   1544[0m [43m                             [49m[43mcwd[49m[43m,[49m
+[0;32m   1545[0m [43m                             [49m[43mstartupinfo[49m[43m)[49m
+[0;32m   1546[0m [38;5;28;01mfinally[39;00m:
+[0;32m   1547[0m     [38;5;66;03m# Child is launched. Close the parent's copy of those pipe[39;00m
+[0;32m   1548[0m     [38;5;66;03m# handles that only the child should have open.  You need[39;00m
+[1;32m   (...)[0m
+[0;32m   1551[0m     [38;5;66;03m# pipe will not close when the child process exits and the[39;00m
+[0;32m   1552[0m     [38;5;66;03m# ReadFile will hang.[39;00m
+[0;32m   1553[0m     [38;5;28mself[39m[38;5;241m.[39m_close_pipe_fds(p2cread, p2cwrite,
+[0;32m   1554[0m                          c2pread, c2pwrite,
+[0;32m   1555[0m                          errread, errwrite)
+
+[1;31mFileNotFoundError[0m: [WinError 2] The system cannot find the file specified
 
