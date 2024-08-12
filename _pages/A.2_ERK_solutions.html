@@ -1,0 +1,1515 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Explicit Runge-Kutta methods exercise solutions &#8212; Runge-Kutta Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/A.2_ERK_solutions';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/A.2_ERK_solutions.html" />
+    <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Implicit Runge-Kutta methods exercise solutions" href="A.3_IRK_solutions.html" />
+    <link rel="prev" title="Ordinary Differential Equations exercise solutions" href="A.1_ODEs_solutions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Runge-Kutta Methods</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_Matrix_decomposition.html">5. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.1_LU_decomposition.html">5.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2_Solving_systems_using_LU.html">5.2. Solving systems of linear equations using LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.3. LU decomposition with partial pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_Jacobi_method.html">6.1. Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_Gauss_Seidel_method.html">6.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Convergence_of_indirect_methods.html">6.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_SOR_method.html">6.4. The Successive Over Relaxation (SOR) method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Indirect_methods_exercises.html">6.5. Indirect methods exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_BVP_exercises.html">7.4. Boundary value problems exercises</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Explicit Runge-Kutta methods exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.6_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.7_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_pages/A.2_ERK_solutions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Explicit Runge-Kutta methods exercise solutions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="explicit-runge-kutta-methods-exercise-solutions">
+<span id="erk-solutions-section"></span><h1>Explicit Runge-Kutta methods exercise solutions<a class="headerlink" href="#explicit-runge-kutta-methods-exercise-solutions" title="Permalink to this heading">#</a></h1>
+<p>Solutions to the exercises on <a class="reference internal" href="2.6_ERK_exercises.html#erk-exercises-section"><span class="std std-ref">explicit Runge-Kutta methods</span></a>.</p>
+<div class="solution admonition" id="ch2-ex-eq-to-butcher-sol">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-eq-to-butcher"> Exercise 2.1</a></p>
+<section id="solution-content">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{array}{c|cccc}
+        0 &amp; 0 \\
+        1/4 &amp; 1/4 \\
+        1/2 &amp; 0 &amp; 1/2 \\
+        1 &amp; 1 &amp; -2 &amp; 2 \\ \hline
+        &amp; 1/6 &amp; 0 &amp; 2/3 &amp; 1/6
+    \end{array}
+\end{align*}\]</div>
+</section>
+</div>
+<div class="solution admonition" id="ch2-ex-butcher-to-eq-sol">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-butcher-to-eq"> Exercise 2.2</a></p>
+<section id="solution-content">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    y_{n+1} &amp;= y_n + \frac{h}{9}(4k_2 + 3k_3 + 2k_4), \\
+    k_1 &amp;= f(t_n, y_n), \\
+    k_2 &amp;= f(t_n + \frac{1}{4}h, y_n + \frac{1}{4} h k_1), \\
+    k_3 &amp;= f(t_n + \frac{1}{2}h, y_n + h ( - \frac{1}{2}k_1 + k_2)), \\
+    k_4 &amp;= f(t_n + h, y_n + h ( \frac{1}{4}k_1 + \frac{3}{4}k_3)).
+\end{align*}\]</div>
+</section>
+</div>
+<div class="solution admonition" id="ch2-ex-myrk2-derivation-sol">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-myrk2-derivation"> Exercise 2.3</a></p>
+<section id="solution-content">
+<p>The order conditions are:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \frac{1}{3} + b_2 &amp;=1,\\
+    c_2 b_2 &amp;=\frac{1}{2},\\
+    a_{21} &amp;= c_2.
+\end{align*}\]</div>
+<p>Solving gives <span class="math notranslate nohighlight">\(b_2 = \frac{2}{3}\)</span>, <span class="math notranslate nohighlight">\(c_2=\frac{3}{4}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = \frac{3}{4}\)</span> so the method is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    y_{n+1} &amp;= y_n + \frac{h}{3}(k_1 + 2k_2), \\
+    k_1 &amp;= f(t_n, y_n), \\
+    k_2 &amp;= f(t_n + \frac{3}{4}h, y_n + \frac{3}{4}h k_1).
+\end{align*}\]</div>
+<p>Alternatively as a Butcher tableau</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \begin{array}{c|cc}
+    0 &amp; 0 \\
+    3/4 &amp; 3/4 &amp; 0 \\ \hline
+    &amp; 1/3 &amp; 2/3
+    \end{array}
+\end{align*}\]</div>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+```python
+from sympy import *
+
+# Declare symbolic variables
+a21, b1, b2, c2 = symbols(&#39;a21, b1, b2, c2&#39;)
+b1 = Rational(1,3)
+
+# Define order conditions
+eq1 = b1 + b2 - 1
+eq2 = b2 * c2 - Rational(1,2)
+eq3 = a21 * b2 - Rational(1,2)
+
+# Solve order conditions
+solve((eq1, eq2, eq3))
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+```matlab
+% Declare symbolic variables
+syms a21 b1 b2 c2
+b1 = 1 / 3;
+
+% Define order conditions
+eq1 = b1 + b2 == 1;
+eq2 = b2 * c2 == 1 / 2;
+eq3 = a21 == c2;
+
+% Solve order conditions
+solve(eq1, eq2, eq3)
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+</pre></div>
+</div>
+</section>
+</div>
+<div class="highlight-:{solution} notranslate"><div class="highlight"><pre><span></span>Adding the labels to the tree
+
+```{figure} ../_images/rooted_tree_exercise_solution.svg
+:width: 500
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    r &amp;= 10, \\
+    \Phi &amp;= \sum_{i,j,k,\ell} b_i a_{ij} a_{ik} a_{k\ell} c_j^3 c_k c_\ell^2, \\
+    \gamma &amp;= 10 \cdot 4 \cdot 5 \cdot 3 = 600.
+\end{align*} \end{split}\]</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{solution} ch2-ex-rk3-order-conditions
+
+The set of rooted trees up to and including order 3 are
+
+| Tree | $\Phi$ | $\gamma$ |
+|:----:|:------------------:|:-------:|
+| ![](/_images/tree_1.svg) | $\displaystyle\sum_i b_i$ | 1 |
+| ![](/_images/tree_2.svg) | $\displaystyle\sum_i b_ic_i$ | 2 |
+| ![](/_images/tree_3_1.svg) | $\displaystyle\sum_i b_ic_i^2$ | 3 | 
+| ![](/_images/tree_3_2.svg) | $\displaystyle\sum_{i,j} b_i a_{ij} c_j$ | 6 |
+
+Using $\Phi = \dfrac{1}{\gamma}$ we have
+
+$$ \begin{align*}
+    b_1 + b_2 + b_3 &amp;= 1, \\
+    \textcolor{red}{b_1 c_1} + b_2 c_2 + b_3 c_3 &amp;= \frac{1}{2}, \\
+    \textcolor{red}{b_1 c_1^2} + b_2 c_2^2 + b_3 c_3^2 &amp;= \frac{1}{3}, \\
+    \textcolor{red}{b_1 a_{11} c_1} + \textcolor{red}{b_1 a_{12} c_2} + \textcolor{red}{b_1 a_{13} c_3} \quad &amp; \\
+    \textcolor{red}{b_2 a_{21} c_1} + \textcolor{red}{b_2 a_{22} c_2} + \textcolor{red}{b_2 a_{23} c_3} \quad &amp; \\
+    \textcolor{red}{b_3 a_{31} c_1} + b_3 a_{32} c_2 + \textcolor{red}{b_3 a_{33} c_3} &amp;= \frac{1}{6}.
+\end{align*} $$ 
+
+Since for an ERK method $c_1 = 0$ and $a_{ij} = 0$ where $i \leq j$ then the terms in red are zero so the order conditions are (including the row sum conditions)
+
+$$ \begin{align*}
+    b_1 + b_2 + b_3 &amp;= 1, \\
+    b_2 c_2 + b_3 c_3 &amp;= \frac{1}{2}, \\
+    b_2 c_2^3 + b_3 c_3^2 &amp;= \frac{1}{3}, \\
+    b_3 a_{32} c_2 &amp;= \frac{1}{6}, \\
+    a_{21} &amp;= c_2, \\
+    a_{31} + a_{32} &amp;= c_3.
+\end{align*} $$
+```:
+
+``````{solution} ch2-ex-myrk4-derivation
+
+Substituting $c_2$, $c_3$ and $c_4$ into the order conditions gives
+
+$$ \begin{align*}
+    b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
+    \frac{1}{4}b_2 + \frac{1}{2}b_3 + b_4 &amp;= \frac{1}{2}, \\
+    \frac{1}{16}b_2 + \frac{1}{4}b_3 + b_4 &amp;= \frac{1}{3}, \\
+    \frac{1}{64}b_2 + \frac{1}{8}b_3 + b_4 &amp;= \frac{1}{4}, \\
+    \frac{1}{4}b_3a_{32} + \frac{1}{4}b_4a_{42} + \frac{1}{2}b_4a_{43} &amp;= \frac{1}{6}, \\
+    \frac{1}{8}b_3a_{32} + \frac{1}{4}b_4a_{42} + \frac{1}{2}b_4a_{43} &amp;= \frac{1}{8}, \\
+    \frac{1}{16}b_3a_{32} + \frac{1}{16}b_4a_{42} + \frac{1}{4}b_4a_{43} &amp;= \frac{1}{12}, \\
+    \frac{1}{4}b_4a_{43}a_{32} &amp;= \frac{1}{24}.
+\end{align*} $$
+
+Solving the second, third and fourth equations using Gaussian elimination
+
+$$ \begin{align*}
+    &amp; \left( \begin{array}{ccc|c}
+        1/4 &amp; 1/2 &amp; 1 &amp; 1/2 \\
+        1/16 &amp; 1/4 &amp; 1 &amp; 1/3 \\
+        1/64 &amp; 1/8 &amp; 1 &amp; 1/4
+    \end{array} \right)
+    \begin{array}{l} 4R_1 \\ \phantom{x} \\ \phantom{x} \end{array}
+    &amp; \longrightarrow
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 2 &amp; 4 &amp; 2 \\
+        1/16 &amp; 1/4 &amp; 1 &amp; 1/3 \\
+        1/64 &amp; 1/8 &amp; 1 &amp; 1/4
+    \end{array} \right)
+    \begin{array}{l} \\ R_2 - \frac{1}{16}R_1 \\ R_3 - \frac{1}{64}R_1 \end{array} \\ \\
+    \longrightarrow
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 2 &amp; 4 &amp; 2 \\
+        0 &amp; 1/8 &amp; 3/4 &amp; 5/24 \\
+        0 &amp; 0 &amp; 3/4 &amp; 1/8
+    \end{array} \right)
+    \begin{array}{l} \\ 8R_2 \\ \phantom{x} \end{array}
+    &amp;\longrightarrow
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 2 &amp; 4 &amp; 2 \\
+        0 &amp; 1 &amp; 6 &amp; 5/3 \\
+        0 &amp; 0 &amp; 3/4 &amp; 1/8
+    \end{array} \right)
+    \begin{array}{l} R_1 - 2R_2 \\ \phantom{x} \\ \frac{4}{3}R_3 \end{array} \\ \\
+    \longrightarrow
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 0 &amp; -8 &amp; -4/3 \\
+        0 &amp; 1 &amp; 6 &amp; 5/3 \\
+        0 &amp; 0 &amp; 1 &amp; 1/6
+    \end{array} \right)
+    \begin{array}{l} R_1 + 8R_3 \\ R_2 - 6R_3 \\ \phantom{x} \end{array}
+    &amp;\longrightarrow
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 2/3 \\
+        0 &amp; 0 &amp; 1 &amp; 1/6
+    \end{array} \right)
+\end{align*} $$
+
+So $b_2 = 0$, $b_3 = \frac{2}{3}$ and $b_4 = \frac{1}{6}$. Using the first order condition we have $b_1 = \frac{1}{6}$. Substituting these values into the fifth, sixth and seventh order conditions
+
+$$ \begin{align*}
+    \frac{1}{6}a_{32} + \frac{1}{24}a_{42} + \frac{1}{12}a_{43} &amp;= \frac{1}{6}, \\
+    \frac{1}{12}a_{32} + \frac{1}{24}a_{42} + \frac{1}{12}a_{43} &amp;= \frac{1}{8}, \\
+    \frac{1}{24}a_{32} + \frac{1}{96}a_{42} + \frac{1}{24}a_{43} &amp;= \frac{1}{12}, \\
+\end{align*} $$
+
+Solving using Gaussian elimination
+
+$$ \begin{align*}
+    &amp;\left( \begin{array}{ccc|c}
+        1/6 &amp; 1/24 &amp; 1/12 &amp; 1/6 \\
+        1/12 &amp; 1/24 &amp; 1/12 &amp; 1/8 \\
+        1/24 &amp; 1/96 &amp; 1/24 &amp; 1/12
+    \end{array} \right)
+    \begin{array}{l} 6 R_1 \\ 24R_2 \\ 96R_3 \phantom{x} \end{array}
+    &amp; \longrightarrow 
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 1/4 &amp; 1/2 &amp; 1 \\
+        2 &amp; 1 &amp; 2 &amp; 3 \\
+        4 &amp; 1 &amp; 4 &amp; 8
+    \end{array} \right)
+    \begin{array}{l}  \\ R_2 - 2 R_1 \\ R_3 - 4R_1 \end{array} \\ \\
+    \longrightarrow 
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 1/4 &amp; 1/2 &amp; 1 \\
+        0 &amp; 1/2 &amp; 1 &amp; 1 \\
+        0 &amp; 0 &amp; 2 &amp; 4
+    \end{array} \right)
+    \begin{array}{l} \\ 2R_2 \\ \phantom{x} \end{array}
+    &amp; \longrightarrow 
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 1/4 &amp; 1/2 &amp; 1 \\
+        0 &amp; 1 &amp; 2 &amp; 2 \\
+        0 &amp; 0 &amp; 2 &amp; 4
+    \end{array} \right)
+    \begin{array}{l} R_1 - \frac{1}{4}R_2 \\  \\ \frac{1}{2}R_3 \end{array} \\ \\
+    \longrightarrow 
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 0 &amp; 0 &amp; 1/2 \\
+        0 &amp; 1 &amp; 2 &amp; 2 \\
+        0 &amp; 0 &amp; 1 &amp; 2
+    \end{array} \right)
+    \begin{array}{l}  \\ R_2 - 2R_3 \\ \phantom{x} \end{array}
+    &amp;\longrightarrow 
+    &amp; \left( \begin{array}{ccc|c}
+        1 &amp; 0 &amp; 0 &amp; 1/2 \\
+        0 &amp; 1 &amp; 0 &amp; -2 \\
+        0 &amp; 0 &amp; 1 &amp; 2
+    \end{array} \right)
+    \begin{array}{l}  \\ R_2 - 2R_3 \\ \phantom{x} \end{array}
+\end{align*} $$
+
+So $a_{32} = \frac{1}{2}$, $a_{42} = -2$ and $a_{43} = 2$. Using the row sum condition gives $a_{31} = c_3 - a_{32} = \frac{1}{2} - \frac{1}{2} = 0$ and $a_{41} = c_4 - a_{42} - a_{43} = 1 - (-2) - 2 = 1$. The Butcher tableau for this method is
+
+$$ \begin{align*}
+    \begin{array}{c|cccc}
+        0 &amp; \\
+        1/4 &amp; 1/4 \\
+        1/2 &amp; 0 &amp; 1/2 \\
+        1 &amp; 1 &amp; -2 &amp; 2 \\ \hline
+        &amp; 1/6 &amp; 0 &amp; 2/3 &amp; 1/6
+    \end{array}
+\end{align*} $$
+
+```::{tab-set}
+```:{tab-item} Python
+
+```python
+import sympy as sp
+
+# Declare symbolic variables
+a21, a31, a32, a41, a42, a43, b1, b2, b3, b4 = sp.symbols(&quot;a21, a31, a32, a41, a42, a43, b1, b2, b3, b4&quot;)
+
+# Define c values
+c2, c3, c4 = sp.Rational(1,4), sp.Rational(1,2), 1
+
+# Solve for the b values
+eq1 = b1 + b2 + b3 + b4 - 1
+eq2 = b2 * c2 + b3 * c3 + b4 * c4 - sp.Rational(1,2)
+eq3 = b2 * c2 ** 2 + b3 * c3 ** 2 + b4 * c4 ** 2 - sp.Rational(1,3)
+eq4 = b2 * c2 ** 3 + b3 * c3 ** 3 + b4 * c4 ** 3 - sp.Rational(1,4)
+
+sol = sp.solve((eq1, eq2, eq3, eq4)) 
+print(sol)
+b1, b2, b3, b4 = sol[b1], sol[b2], sol[b3], sol[b4]
+
+# Solve for a32, a42 and a43
+eq5 = b3 * a32 * c2 + b4 * a42 * c2 + b4 * a43 * c3 - sp.Rational(1,6)
+eq6 = b3 * a32 * c3 * c2 + b4 * c4 * a42 * c2 + b4 * c4 * a43 * c3 - sp.Rational(1,8)
+eq7 = b3 * a32 * c2 ** 2 + b4 * a42 * c2 ** 2 + b4 * a43 * c3 ** 2 - sp.Rational(1,12)
+
+sol = sp.solve((eq5, eq6, eq7)) 
+print(sol)
+a32, a42, a43 = sol[a32], sol[a42], sol[a43]
+
+# Solve for a21, a31 and a41
+eq8 = c2 - a21
+eq9 = c3 - a31 - a32
+eq10 = c4 - a41 - a42 - a43
+sol = sp.solve((eq8, eq9, eq10))
+print(sol)
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+
+```matlab
+% Define symbolic variables
+syms a21 a31 a32 a41 a42 a43 b1 b2 b3 b4
+
+% Define c values
+c2 = 1/4;
+c3 = 1/2;
+c4 = 1;
+
+% Solve for the b values
+eq1 = b1 + b2 + b3 + b4 == 1;
+eq2 = b2 * c2 + b3 * c3 + b4 * c4 == 1/2;
+eq3 = b2 * c2^2 + b3 * c3^2 + b4 * c4^2 == 1/3;
+eq4 = b2 * c2^3 + b3 * c3^3 + b4 * c4^3 == 1/4;
+
+[b1, b2, b3, b4] = solve(eq1, eq2, eq3, eq4)
+
+% Solve for a32 a42 and a43
+eq5 = b3 * a32 * c2 + b4 * a42 * c2 + b4 * a43 * c3 == 1/6;
+eq6 = b3 * a32 * c3 * c2 + b4 * c4 * a42 * c2 + b4 * c4 * a43 * c3 == 1/8;
+eq7 = b3 * a32 * c2^2 + b4 * a42 * c2^2 + b4 * a43 * c3^2 == 1/12;
+
+[a32, a42, a43] = solve(eq5, eq6, eq7)
+
+% Solve for a21, a31 and a41 using row sum conditions
+eq9 = c2 - a21;
+eq10 = c3 - a31 - a32;
+eq11 = c4 - a41 - a42 - a43;
+
+[a21, a31, a41] = solve(eq9, eq10, eq11)
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+</pre></div>
+</div>
+<div class="highlight-:{solution} notranslate"><div class="highlight"><pre><span></span>
+The $t_n$ values are
+
+$$ \vec{t} = \begin{pmatrix} 0.0 \\ 0.4 \\ 0.8 \\ 1.2 \\ 1.6 \\ 2.0 \end{pmatrix}. $$
+
+Using the second-order ERK method derived in {ref}`ch2-ex-myrk2-derivation`
+
+$$ \begin{align*}
+    y_0 &amp;= 1, \\
+    k_1 &amp;= f(t_0, y_0) = (0.0) - (1.0) = -1, \\
+    k_2 &amp;= f(t_0 + \tfrac{3}{4}h, y_0 + \tfrac{3}{4}hk_1) \\
+        &amp;= (0 + \tfrac{3}{4}(0.4)) - (1 + \tfrac{3}{4}(0.4)(-1)) \\
+        &amp;= -0.4, \\
+    y_1 &amp;= y_0 + \frac{h}{3}(k_1 + k_2) \\
+        &amp;= 1 + \frac{0.4}{3}(-1 + 2(-0.4)) \\
+        &amp;= 0.76,\\ \\
+    k_1 &amp;= f(t_1, y_1) = (0.4) - (0.76) = -0.36, \\
+    k_2 &amp;= f(t_1 + \tfrac{3}{4}h, y_1 + \tfrac{3}{4}hk_1) \\
+        &amp;= (0.4 + \tfrac{3}{4}(0.4)) - (0.76 + \tfrac{3}{4}(0.4)(-0.36)) \\
+        &amp;= 0.048, \\
+    y_2 &amp;= y_1 + \frac{h}{3}(k_1 + k_2) \\
+        &amp;= 0.76 + \frac{0.4}{3}(-0.36 + 2(0.048)) \\
+        &amp;= 0.7248,\\ \\
+    k_1 &amp;= f(t_2, y_2) = (0.8) - (0.7248) = 0.0752, \\
+    k_2 &amp;= f(t_2 + \tfrac{3}{4}h, y_2 + \tfrac{3}{4}hk_1) \\
+        &amp;= (0.8 + \tfrac{3}{4}(0.4)) - (0.7248 + \tfrac{3}{4}(0.4)(0.0752)) \\
+        &amp;= 0.3526, \\
+    y_3 &amp;= y_2 + \frac{h}{3}(k_1 + k_2) \\
+        &amp;= 0.7248 + \frac{0.4}{3}(0.0752 + 2(0.3526)) \\
+        &amp;= 0.8289,\\ \\
+    k_1 &amp;= f(t_3, y_3) = (1.2) - (0.8289) = 0.3711, \\
+    k_2 &amp;= f(t_3 + \tfrac{3}{4}h, y_3 + \tfrac{3}{4}hk_1) \\
+        &amp;= (1.2 + \tfrac{3}{4}(0.4)) - (0.8289 + \tfrac{3}{4}(0.4)(0.3711)) \\
+        &amp;= 0.5598, \\
+    y_4 &amp;= y_3 + \frac{h}{3}(k_1 + k_2) \\
+        &amp;= 0.8289 + \frac{0.4}{3}(0.3711 + 2(0.5598)) \\
+        &amp;= 1.028,\\ \\
+    k_1 &amp;= f(t_4, y_4) = (1.6) - (1.028) = 0.5724, \\
+    k_2 &amp;= f(t_4 + \tfrac{3}{4}h, y_4 + \tfrac{3}{4}hk_1) \\
+        &amp;= (1.6 + \tfrac{3}{4}(0.4)) - (1.028 + \tfrac{3}{4}(0.4)(0.5724)) \\
+        &amp;= 0.7007, \\
+    y_5 &amp;= y_4 + \frac{h}{3}(k_1 + k_2) \\
+        &amp;= 1.028 + \frac{0.4}{3}(0.5724 + 2(0.7007)) \\
+        &amp;= 1.291,\\ \\
+\end{align*} $$
+
+
+So the solution is
+
+$$ \begin{align*}
+    \vec{y} &amp;= 
+    \begin{pmatrix}
+        1 \\
+        0.76 \\
+        0.7248 \\
+        0.8289 \\
+        1.0276 \\
+        1.2908
+    \end{pmatrix}.
+\end{align*} $$
+
+```:
+</pre></div>
+</div>
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-myrk2"> Exercise 2.8</a></p>
+<section id="solution-content">
+<p>Solution</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>  <span class="n">t</span>   <span class="o">|</span>     <span class="n">y</span>     <span class="o">|</span>   <span class="n">Exact</span>   <span class="o">|</span>
+<span class="o">|</span><span class="p">:</span><span class="o">----</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">---------</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">---------</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.00</span> <span class="o">|</span>  <span class="mf">1.000000</span> <span class="o">|</span>  <span class="mf">1.000000</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.40</span> <span class="o">|</span>  <span class="mf">0.760000</span> <span class="o">|</span>  <span class="mf">0.740640</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.80</span> <span class="o">|</span>  <span class="mf">0.724800</span> <span class="o">|</span>  <span class="mf">0.698658</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">1.20</span> <span class="o">|</span>  <span class="mf">0.828864</span> <span class="o">|</span>  <span class="mf">0.802388</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">1.60</span> <span class="o">|</span>  <span class="mf">1.027628</span> <span class="o">|</span>  <span class="mf">1.003793</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">2.00</span> <span class="o">|</span>  <span class="mf">1.290787</span> <span class="o">|</span>  <span class="mf">1.270671</span> <span class="o">|</span>
+</pre></div>
+</div>
+<p>Plot</p>
+<figure class="align-default" style="width: 500px">
+<img alt="../_images/d8dfd969f0347f2e7b5ca4bfd95b8ecb7f77861687d51ba863cb5036d5ef4120.png" src="../_images/d8dfd969f0347f2e7b5ca4bfd95b8ecb7f77861687d51ba863cb5036d5ef4120.png" />
+</figure>
+<p>Code</p>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def myrk2(f, t, y, h): 
+    k1 = f(t, y)
+    k2 = f(t + 3/4 * h, y + 3 / 4 * h * k1)
+    return y + h / 3 * (k1 + 2 * k2)
+
+
+def solveIVP(f, tspan, y0, h, solver):
+
+    # Initialise t and y arrays
+    t = np.arange(tspan[0], tspan[1] + h, h)
+    y = np.zeros((len(t),len(y0)))
+    t[0] = tspan[0]
+    y[0,:] = y0
+
+    # Loop through steps and calculate single step solver solution
+    for n in range(len(t) - 1):
+        y[n+1,:] = solver(f, t[n], y[n,:], h)
+              
+    return t, y
+
+
+# Define ODE function and exact solution
+def f(t, y):
+    return t - y
+
+
+def exact(t):
+    return t + 2 * np.exp(-t) - 1
+
+
+# Define IVP
+tspan = [0, 2]  # boundaries of the t domain
+y0 = [1]        # solution at the lower boundary
+h = 0.4         # step length
+
+# Calculate the solution to the IVP
+t, y = solveIVP(f, tspan, y0, h, myrk2)
+
+# Print table of solution values
+print(&quot;|  t   |     y     |   Exact   |&quot;)
+print(&quot;|:----:|:---------:|:---------:|&quot;)
+for n in range(len(t)):
+    print(f&quot;| {t[n]:4.2f} | {y[n,0]:9.6f} | {exact(t[n]):9.6f} |&quot;)
+    
+# Plot solutions
+t_exact = np.linspace(tspan[0], tspan[1], 200)
+y_exact = exact(t_exact)
+fig, ax = plt.subplots()
+plt.plot(t_exact, y_exact, &quot;k&quot;, label=&quot;Exact&quot;)
+plt.plot(t, y, &quot;bo-&quot;, label=&quot;myRK2&quot;)
+plt.xlabel(&quot;$t$&quot;, fontsize=12)
+plt.ylabel(&quot;$y$&quot;, fontsize=12)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+
+```matlab
+% Define ODE function and exact solution
+f = @(t, y) t - y;
+exact = @(t) t + 2 * exp(-t) - 1;
+
+% Define IVP parameters
+tspan = [0, 2];     % boundaries of the t domain
+y0 = 1;             % initial value of the solution
+h = 0.4;            % step length
+
+% Calculate the solution to the IVP
+[t, y_myrk2] = solveIVP(f, tspan, y0, h, @myrk2);
+
+% Calculate exact solution for plotting
+texact = linspace(tspan(1), tspan(2), 200);
+yexact = exact(texact);
+
+% Print table of solution values (for loop is used to group print statements)
+for i = 1 : 1
+    fprintf(&#39;|  t   |     y     |   Exact   |\n|:----:|:---------:|:---------:|&#39;);
+    for n = 1 : length(t)
+        fprintf(&#39;\n| %4.2f | %9.6f | %9.6f |&#39;, t(n), y_myrk2(n), exact(t(n)));
+    end
+end
+
+% Plot solution
+plot(texact, yexact, &#39;k-&#39;, LineWidth=2)
+hold on
+plot(t, y_myrk2, &#39;b-o&#39;, LineWidth=2, MarkerFaceColor=&#39;b&#39;)
+hold off
+axis padded
+xlabel(&#39;$t$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+ylabel(&#39;$y$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+legend(&#39;Exact&#39;, &#39;myRK2&#39;, Location=&#39;northwest&#39;, FontSize=12)
+
+% ----------------------------------------------------------------------------
+function [t, y] = solveIVP(f, tspan, y0, h, solver)
+
+% Define t and y arrays
+t = (tspan(1) : h : tspan(2));
+y = zeros(length(t), length(y0));
+y(1,:) = y0;
+
+% Loop through the steps and calculate single step solver solution
+for n = 1 : length(t) - 1
+    y(n+1,:) = solver(f, t(n), y(n,:), h);
+end
+
+end
+
+% ----------------------------------------------------------------------------
+function ynew = myrk2(f, t, y, h)
+
+k1 = f(t, y);
+k2 = f(t + 3/4 * h, y + 3/4 * h * k1);
+ynew = y + h / 3 * (k1 + 2 * k2);
+
+end
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-4">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-myrk4"> Exercise 2.9</a></p>
+<section id="solution-content">
+<p>Plot</p>
+<figure class="align-default" style="width: 500px">
+<img alt="../_images/6e495fad4076e295749e542e82c7a22234b7ca4a321d7e485e59bc45a19071ea.png" src="../_images/6e495fad4076e295749e542e82c7a22234b7ca4a321d7e485e59bc45a19071ea.png" />
+</figure>
+<p>Code</p>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams[&#39;text.usetex&#39;] = True  # allows use of LaTeX in labels
+
+
+def myrk2(f, t, y, h): 
+    k1 = f(t, y)
+    k2 = f(t + 3/4 * h, y + 3 / 4 * h * k1)
+    return y + h / 3 * (k1 + 2 * k2)
+
+
+def myrk3(f, t, y, h): 
+    k1 = f(t, y)
+    k2 = f(t + 1/2 * h, y + 1/2 * h * k1)
+    k3 = f(t + h, y + h * (-k1 + 2 * k2))
+    return y + h / 6 * (k1 + 4 * k2 + k3)
+
+
+def myrk4(f, t, y, h): 
+    k1 = f(t, y)
+    k2 = f(t + 1/4 * h, y + 1/4 * h * k1)
+    k3 = f(t + 1/2 * h, y + 1/2 * h * k2)
+    k4 = f(t + h, y + h * (k1 - 2 * k2 + 2 * k3))
+    return y + h / 6 * (k1 + 4 * k3 + k4)
+
+
+def solveIVP(f, tspan, y0, h, solver):
+
+    # Initialise t and y arrays
+    t = np.arange(tspan[0], tspan[1] + h, h)
+    y = np.zeros((len(t),len(y0)))
+    t[0] = tspan[0]
+    y[0,:] = y0
+
+    # Loop through steps and calculate single step solver solution
+    for n in range(len(t) - 1):
+        y[n+1,:] = solver(f, t[n], y[n,:], h)
+              
+    return t, y
+
+
+# Define ODE function and exact solution
+def f(t, y):
+    return t - y
+
+
+def exact(t):
+    return t + 2 * np.exp(-t) - 1
+
+
+# Define IVP
+tspan = [0, 2]  # boundaries of the t domain
+y0 = [1]        # solution at the lower boundary
+h = 0.4         # step length
+
+# Calculate the solution to the IVP
+t, y_myrk2 = solveIVP(f, tspan, y0, h, myrk2)
+t, y_myrk3 = solveIVP(f, tspan, y0, h, myrk3)
+t, y_myrk4 = solveIVP(f, tspan, y0, h, myrk4)
+
+# Plot solutions
+t_exact = np.linspace(tspan[0], tspan[1], 200)
+y_exact = exact(t_exact)
+fig, ax = plt.subplots()
+plt.plot(t_exact, y_exact, &quot;k&quot;, label=&quot;Exact&quot;)
+plt.plot(t, y_myrk2, &quot;bo-&quot;, label=&quot;myRK2&quot;)
+plt.plot(t, y_myrk3, &quot;ro-&quot;, label=&quot;myRK3&quot;)
+plt.plot(t, y_myrk4, &quot;go-&quot;, label=&quot;myRK4&quot;)
+plt.xlabel(&quot;$t$&quot;, fontsize=12)
+plt.ylabel(&quot;$y$&quot;, fontsize=12)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+
+```matlab
+% Define ODE function and exact solution
+f = @(t, y) t - y;
+exact = @(t) t + 2 * exp(-t) - 1;
+
+% Define IVP parameters
+tspan = [0, 2];     % boundaries of the t domain
+y0 = 1;             % initial value of the solution
+h = 0.4;            % step length
+
+% Calculate the solution to the IVP
+[t, y_myrk2] = solveIVP(f, tspan, y0, h, @myrk2);
+[t, y_myrk3] = solveIVP(f, tspan, y0, h, @myrk3);
+[t, y_myrk4] = solveIVP(f, tspan, y0, h, @myrk4);
+
+% Calculate exact solution for plotting
+texact = linspace(tspan(1), tspan(2), 200);
+yexact = exact(texact);
+
+% Plot solution
+plot(texact, yexact, &#39;k-&#39;, LineWidth=1)
+hold on
+plot(t, y_myrk2, &#39;b-o&#39;, LineWidth=2, MarkerFaceColor=&#39;b&#39;)
+plot(t, y_myrk3, &#39;r-o&#39;, LineWidth=2, MarkerFaceColor=&#39;r&#39;)
+plot(t, y_myrk4, &#39;g-o&#39;, LineWidth=2, MarkerFaceColor=&#39;g&#39;)
+hold off
+axis padded
+xlabel(&#39;$t$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+ylabel(&#39;$y$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+legend(&#39;Exact&#39;, &#39;myRK2&#39;, &#39;myRK3&#39;, &#39;myRK4&#39;, Location=&#39;northwest&#39;, FontSize=12)
+
+% ----------------------------------------------------------------------------
+function [t, y] = solveIVP(f, tspan, y0, h, solver)
+
+% Define t and y arrays
+t = (tspan(1) : h : tspan(2));
+y = zeros(length(t), length(y0));
+y(1,:) = y0;
+
+% Loop through the steps and calculate single step solver solution
+for n = 1 : length(t) - 1
+    y(n+1,:) = solver(f, t(n), y(n,:), h);
+end
+
+end
+
+% ----------------------------------------------------------------------------
+function ynew = myrk2(f, t, y, h)
+
+k1 = f(t, y);
+k2 = f(t + 3/4 * h, y + 3/4 * h * k1);
+ynew = y + h / 3 * (k1 + 2 * k2);
+
+end
+
+% ----------------------------------------------------------------------------
+function ynew = myrk3(f, t, y, h)
+
+k1 = f(t, y);
+k2 = f(t + 1/2 * h, y + 1/2 * h * k1);
+k3 = f(t + h, y + h * (-k1 + 2 * k2));
+ynew = y + h / 6 * (k1 + 4 * k2 + k3);
+
+end
+
+% ----------------------------------------------------------------------------
+function ynew = myrk4(f, t, y, h)
+
+k1 = f(t, y);
+k2 = f(t + 1/4 * h, y + 1/4 * h * k1);
+k3 = f(t + 1/2 * h, y + 1/2 * h * k2);
+k4 = f(t + h, y + h * (k1 - 2 * k2 + 2 * k3));
+ynew = y + h / 6 * (k1 + 4 * k3 + k4);
+
+end
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-5">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-error-comparison"> Exercise 2.10</a></p>
+<section id="solution-content">
+<p>Global truncation errors</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>   <span class="n">h</span>   <span class="o">|</span>  <span class="n">myRK2</span>   <span class="o">|</span>  <span class="n">myRK3</span>   <span class="o">|</span>  <span class="n">myRK4</span>   <span class="o">|</span>
+<span class="o">|</span><span class="p">:</span><span class="o">-----</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">--------</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">--------</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">--------</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.400</span> <span class="o">|</span> <span class="mf">2.01e-02</span> <span class="o">|</span> <span class="mf">1.99e-03</span> <span class="o">|</span> <span class="mf">1.61e-04</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.200</span> <span class="o">|</span> <span class="mf">4.23e-03</span> <span class="o">|</span> <span class="mf">2.12e-04</span> <span class="o">|</span> <span class="mf">8.53e-06</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.100</span> <span class="o">|</span> <span class="mf">9.74e-04</span> <span class="o">|</span> <span class="mf">2.44e-05</span> <span class="o">|</span> <span class="mf">4.90e-07</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.050</span> <span class="o">|</span> <span class="mf">2.34e-04</span> <span class="o">|</span> <span class="mf">2.93e-06</span> <span class="o">|</span> <span class="mf">2.94e-08</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.025</span> <span class="o">|</span> <span class="mf">5.75e-05</span> <span class="o">|</span> <span class="mf">3.60e-07</span> <span class="o">|</span> <span class="mf">1.80e-09</span> <span class="o">|</span>
+</pre></div>
+</div>
+<p>Plot</p>
+<figure class="align-default" style="width: 500px">
+<img alt="../_images/8ec40f8d4b1cc1fd65deb72f6a0fa0f2b7f5c48a25302e2b0ae5593468346e62.png" src="../_images/8ec40f8d4b1cc1fd65deb72f6a0fa0f2b7f5c48a25302e2b0ae5593468346e62.png" />
+</figure>
+<p>Estimating the order of the methods</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  \text{myRK2}: &amp;&amp; n &amp; \approx \frac{\log(2.01 \times 10^{-2}) - \log(5.75 \times 10^{-5})}{\log(0.4) - \log(0.025)} = 2.11 \approx 2, \\
+  \text{myRK3}: &amp;&amp; n &amp; \approx \frac{\log(1.99 \times 10^{-3}) - \log(8.53 \times 10^{-6})}{\log(0.4) - \log(0.025)} = 3.11 \approx 3, \\
+  \text{myRK4}: &amp;&amp; n &amp; \approx \frac{\log(1.61 \times 10^{-4}) - \log(1.80 \times 10^{-9})}{\log(0.4) - \log(0.025)} = 4.11 \approx 4.
+\end{align*} \end{split}\]</div>
+<p>Code</p>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+
+```python
+# Calculate solution for decreasing step lengths
+hvals = [0.4, 0.2, 0.1, 0.05, 0.025]
+tval = 2
+E_myrk2, E_myrk3, E_myrk4 = [], [], []
+for h in hvals:
+    t, y_myrk2 = solveIVP(f, tspan, y0, h, myrk2)
+    t, y_myrk3 = solveIVP(f, tspan, y0, h, myrk3)
+    t, y_myrk4 = solveIVP(f, tspan, y0, h, myrk4)
+    idx = np.argmin(abs(t - tval))
+    E_myrk2.append(abs(exact(tval) - y_myrk2[idx,0]))
+    E_myrk3.append(abs(exact(tval) - y_myrk3[idx,0]))
+    E_myrk4.append(abs(exact(tval) - y_myrk4[idx,0]))
+
+# Output table of errors
+print(&quot;|   h   |  myRK2   |  myRK3   |  myRK4   |&quot;)
+print(&quot;|:-----:|:--------:|:--------:|:--------:|&quot;)
+for n in range(len(hvals)):
+    print(f&quot;| {hvals[n]:0.3f} | {E_myrk2[n]:0.2e} | {E_myrk3[n]:0.2e} | {E_myrk4[n]:0.2e} |&quot;)
+
+# Plot errors on a log scale
+fig, ax = plt.subplots()
+plt.loglog(hvals, E_myrk2, &#39;ro-&#39;, label=&quot;myRK2&quot;)
+plt.loglog(hvals, E_myrk3, &#39;bo-&#39;, label=&quot;myRK3&quot;)
+plt.loglog(hvals, E_myrk4, &#39;go-&#39;, label=&quot;myRK4&quot;)
+plt.xlabel(r&quot;$\log(h)$&quot;, fontsize=12)
+plt.ylabel(r&quot;$\log(E(h))$&quot;, fontsize=12)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+
+```matlab
+% Calculate solution for decreasing step lengths
+hvals = [0.4, 0.2, 0.1, 0.05, 0.025];
+tval = 2;
+E_myrk2 = [];
+E_myrk3 = [];
+E_myrk4 = [];
+for h = hvals
+    [t, y_myrk2] = solveIVP(f, tspan, y0, h, @myrk2);
+    [t, y_myrk3] = solveIVP(f, tspan, y0, h, @myrk3);
+    [t, y_myrk4] = solveIVP(f, tspan, y0, h, @myrk4);
+    [~, idx] = min(abs(tval - t));
+    E_myrk2 = [E_myrk2, abs(exact(tval) - y_myrk2(idx))];
+    E_myrk3 = [E_myrk3, abs(exact(tval) - y_myrk3(idx))];
+    E_myrk4 = [E_myrk4, abs(exact(tval) - y_myrk4(idx))];
+end
+
+% Output table of errors (for loop is used to group print statements)
+for i = 1 : 1
+    fprintf(&#39;|   t   |  myRK2   |  myRK4   |  myRK4   |&#39;)
+    fprintf(&#39;|:-----:|:--------:|:--------:|:--------:|&#39;);
+    for n = 1 : length(hvals)
+        fprintf(&#39;\n| %1.3f | %1.2e | %1.2e | %1.2e |&#39;, hvals(n), E_myrk2(n), E_myrk3(n), E_myrk4(n))
+    end
+end
+
+% Plot errors on a loglog scale
+loglog(hvals, E_myrk2, &#39;ro-&#39;, MarkerFaceColor=&#39;r&#39;, LineWidth=2)
+hold on
+loglog(hvals, E_myrk3, &#39;bo-&#39;, MarkerFaceColor=&#39;b&#39;, LineWidth=2)
+loglog(hvals, E_myrk4, &#39;go-&#39;, MarkerFaceColor=&#39;g&#39;, LineWidth=2)
+hold off
+axis padded
+xlabel(&#39;$\log(h)$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+ylabel(&#39;$\log(E(h))$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+legend(&#39;myRK2&#39;, &#39;myRK3&#39;, &#39;myRK4&#39;, Location=&#39;southeast&#39;, FontSize=12)
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-6">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-rk23"> Exercise 2.11</a></p>
+<section id="solution-content">
+<p>Plot</p>
+<figure class="align-default" style="width: 600px">
+<img alt="../_images/e624c4386a9aee870c15bc0f08983904daa9b78bc353ac42530fbeed438a966b.png" src="../_images/e624c4386a9aee870c15bc0f08983904daa9b78bc353ac42530fbeed438a966b.png" />
+</figure>
+<p>There were 26 successful steps and 3 failed steps.</p>
+<p>Code</p>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams[&#39;text.usetex&#39;] = True  # allows use of LaTeX in labels
+
+
+def solveIVP_SSC(f, tspan, y0, h, solver, tol=1e-4):
+
+    # Define t and y arrays
+    t = np.zeros(10000)
+    y = np.zeros((10000,len(y0)))
+    t[0] = tspan[0]
+    y[0,:] = y0
+
+    # Solver loop
+    n = 0
+    while t[n] &lt; tspan[-1]:
+
+        # Ensure t does not exceed tmax
+        h = min(h, tspan[-1] - t[n])
+
+        # Calculate order p+1 and p solutions
+        yp1, yp, order = solver(f, t[n], y[n,:], h)
+
+        # Determine whether step was successful or not
+        delta = np.max(np.abs(yp1 - yp))
+        if delta &lt; tol:
+            y[n+1,:] = yp1
+            t[n+1] = t[n] + h
+            n += 1
+        
+        # Calculate new value of h
+        h *= max(0.5, min(2, 0.9 * (tol / delta) ** (1 / (order + 1))))
+
+    return t[:n+1], y[:n+1,:]
+
+
+def rk23(f, t, y, h):
+    k1 = f(t, y)
+    k2 = f(t + 1/2 * h, y + 1/2 * h * k1)
+    k3 = f(t + h, y + h * (-k1 + 2 * k2))
+    y3 = y + h / 6 * (k1 + 4 * k2 + k3)
+    y2 = y + h * k2
+    return y3, y2, 2
+
+
+# Define ODE function and exact solution
+def f(t, y):
+    return t - y
+
+
+def exact(t):
+    return t + 2 * np.exp(-t) - 1
+
+
+# Define IVP
+tspan = [0, 2]  # boundaries of the t domain
+y0 = [1]        # solution at the lower boundary
+h = 0.4         # step length
+tol = 1e-4      # accuracy tolerance
+
+# Calculate the solution to the IVP
+t, y = solveIVP_SSC(f, tspan, y0, h, rk23, tol)
+
+# Plot solutions
+t_exact = np.linspace(tspan[0], tspan[1], 200)
+y_exact = exact(t_exact)
+fig, ax = plt.subplots()
+plt.plot(t_exact, y_exact, &quot;k&quot;, label=&quot;Exact&quot;)
+plt.plot(t, y, &quot;bo-&quot;, label=&quot;RK23&quot;)
+plt.xlabel(&quot;$t$&quot;, fontsize=12)
+plt.ylabel(&quot;$y$&quot;, fontsize=12)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+```matlab
+% Define ODE function and exact solution
+f = @(t, y) t - y;
+exact = @(t) t + 2 * exp(-t) - 1;
+
+% Define IVP parameters
+tspan = [0, 2];     % boundaries of the t domain
+y0 = 1;             % initial value of the solution
+h0 = 0.4;           % step length
+tol = 1e-4;         % accuracy tolerance
+
+% Calculate the solution to the IVP
+[t, y] = solveIVP_SSC(f, tspan, y0, h0, @rk23, tol);
+
+% Output number of successful steps
+fprintf(&quot;%0i successful steps&quot;, length(t) - 1)
+
+% Calculate exact solution for plotting
+texact = linspace(tspan(1), tspan(2), 200);
+yexact = exact(texact);
+
+% Plot solution
+plot(texact, yexact, &#39;k-&#39;, LineWidth=2)
+hold on
+plot(t, y, &#39;b-o&#39;, LineWidth=2, MarkerFaceColor=&#39;b&#39;)
+hold off
+axis padded
+xlabel(&#39;$t$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+ylabel(&#39;$y$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+legend(&#39;Exact&#39;, &#39;myRK2&#39;, Location=&#39;northwest&#39;, FontSize=12)
+
+% ----------------------------------------------------------------------------
+function [t, y] = solveIVP_SSC(f, tspan, y0, h, solver, tol)
+
+% Define t and y arrays
+t = zeros(10000);
+y = zeros(10000, length(y0));
+t(1) = tspan(1);
+y(1,:) = y0;
+
+% Loop through the steps
+n = 1;
+while t(n) &lt; tspan(2)
+    
+    % Ensure t does not exceed tmax
+    h = min(h, tspan(2) - t(n));
+
+    % Calculate order p and p+1 solutions
+    [yp1, yp, p] = solver(f, t(n), y(n,:), h);
+
+    % Determine whether the step was successful or not
+    delta = max(abs(yp1 - yp));
+    if delta &lt; tol
+        y(n+1,:) = yp1;
+        t(n+1) = t(n) + h;
+        n = n + 1;
+    end
+
+    % Calculate new value of h
+    h = h * max(0.5, min(2, 0.9 * (tol / delta) ^ (1 / (p + 1))));
+
+end
+
+% Remove unused entries from t and y
+t(n+1:end) = [];
+y(n+1:end,:) = [];
+
+% Print number of successful and failed steps
+fprintf(&quot;%1i successful steps\n%1i failed steps&quot;, nsucc, nfail)
+
+end
+
+% ----------------------------------------------------------------------------
+function [y3, y2, order] = rk23(f, t, y, h)
+
+k1 = f(t, y);
+k2 = f(t + 1/2 * h, y + 1/2 * h * k1);
+k3 = f(t + h, y + h * (-k1 + 2 * k2));
+y3 = y + h * (1/6 * k1 + 2/3 * k2 + 1/6 * k3);
+y2 = y + h * k2;
+order = 2
+
+end
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_pages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="A.1_ODEs_solutions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Ordinary Differential Equations exercise solutions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="A.3_IRK_solutions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Implicit Runge-Kutta methods exercise solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Jon Shiach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

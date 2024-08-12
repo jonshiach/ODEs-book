@@ -1,0 +1,801 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>6.4. The Successive Over Relaxation (SOR) method &#8212; Runge-Kutta Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/6.4_SOR_method';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/6.4_SOR_method.html" />
+    <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.5. Indirect methods exercises" href="6.5_Indirect_methods_exercises.html" />
+    <link rel="prev" title="6.3. Convergence of indirect methods" href="6.3_Convergence_of_indirect_methods.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Runge-Kutta Methods</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_Matrix_decomposition.html">5. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.1_LU_decomposition.html">5.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2_Solving_systems_using_LU.html">5.2. Solving systems of linear equations using LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.3. LU decomposition with partial pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="6.1_Jacobi_method.html">6.1. Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_Gauss_Seidel_method.html">6.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Convergence_of_indirect_methods.html">6.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.4. The Successive Over Relaxation (SOR) method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Indirect_methods_exercises.html">6.5. Indirect methods exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_BVP_exercises.html">7.4. Boundary value problems exercises</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.6_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.7_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_pages/6.4_SOR_method.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Successive Over Relaxation (SOR) method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-iteration-matrix-for-the-sor-method">6.4.1. The iteration matrix for the SOR method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#under-and-over-relaxation">6.4.2. Under and over relaxation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-value-of-the-relaxation-parameter">6.4.3. Optimum value of the relaxation parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">6.4.4. Code</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-successive-over-relaxation-sor-method">
+<span id="sor-method-section"></span><h1><span class="section-number">6.4. </span>The Successive Over Relaxation (SOR) method<a class="headerlink" href="#the-successive-over-relaxation-sor-method" title="Permalink to this heading">#</a></h1>
+<p>The <strong>Successive Over Relaxation (SOR)</strong> method improves on the convergence rate of the <a class="reference internal" href="6.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel</span></a> method by applying a weighting factor to the updated estimates to adjust the extent of the change. Let <span class="math notranslate nohighlight">\(\omega\)</span> be a <strong>relaxation parameter</strong> in the range <span class="math notranslate nohighlight">\([0,2]\)</span> then the SOR method is</p>
+<div class="proof definition admonition" id="sor-method-definition">
+<p class="admonition-title"><span class="caption-number">Definition 6.5 </span> (The Successive Over Relaxation (SOR) method)</p>
+<section class="definition-content" id="proof-content">
+<p>The SOR method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-sor-method-equation">
+<span class="eqno">(6.9)<a class="headerlink" href="#equation-sor-method-equation" title="Permalink to this equation">#</a></span>\[ x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n. \]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span>.</p>
+</section>
+</div><section id="the-iteration-matrix-for-the-sor-method">
+<h2><span class="section-number">6.4.1. </span>The iteration matrix for the SOR method<a class="headerlink" href="#the-iteration-matrix-for-the-sor-method" title="Permalink to this heading">#</a></h2>
+<p>The iteration matrix for the SOR method is derived by writing the coefficient matrix of the linear system <span class="math notranslate nohighlight">\(A\vec{x}=\vec{b}\)</span> using</p>
+<div class="math notranslate nohighlight">
+\[ A = L+\left(1-\frac{1}{\omega }\right)D+\frac{1}{\omega }D+U. \]</div>
+<p>Substituting into the linear system <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> and rearranging</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \left(L+\left(1-\frac{1}{\omega }\right)D+\frac{1}{\omega }D+U\right)\vec{x}&amp;=\vec{b}\\
+    (D+\omega L)\vec{x}+((\omega -1)D+\omega U)\vec{x}&amp;=\omega \vec{b}\\
+    (D+\omega L)\vec{x}&amp;=((1-\omega )D-\omega U)\vec{x}+\omega \vec{b}\\
+    \vec{x}&amp;=(D+\omega L)^{-1} ((1-\omega )D-\omega U)\vec{x}+(D+\omega L)^{-1} \omega \vec{b}.
+\end{align*} \end{split}\]</div>
+<p>So the matrix form of the SOR method is</p>
+<div class="math notranslate nohighlight">
+\[ \vec{x}^{(k+1)} =(D+\omega L)^{-1} ((1-\omega )D-\omega U)\vec{x}^{(k)} +(D+\omega L)^{-1} \omega \vec{b} \]</div>
+<p>and the iteration matrix is</p>
+<div class="math notranslate nohighlight" id="equation-sor-method-iteration-matrix-equation">
+<span class="eqno">(6.10)<a class="headerlink" href="#equation-sor-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[ T_{SOR} =(D+\omega L)^{-1} ((1-\omega )D-\omega U). \]</div>
+</section>
+<section id="under-and-over-relaxation">
+<h2><span class="section-number">6.4.2. </span>Under and over relaxation<a class="headerlink" href="#under-and-over-relaxation" title="Permalink to this heading">#</a></h2>
+<p>The value of <span class="math notranslate nohighlight">\(\omega\)</span> affects the rate of convergence of the SOR method and is determined by how the Gauss-Seidel method converges to the exact solution. Consider the diagrams in <a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 6.4</span></a> and <a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 6.5</span></a> below that shows the two types of convergence of the Gauss-Seidel method. When we have monotonic convergence where each successive iteration approaches the exact solution from a single side (<a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 6.4</span></a>), the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &gt; 1\)</span> so that the change in subsequent approximations is increased. When we have oscillatory convergence where successive iterations overshoot the exact solution (<a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 6.5</span></a>) the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &lt; 1\)</span> so that the change in the subsequent approximation is decreased.</p>
+<figure class="align-default" id="over-relaxation-figure">
+<a class="reference internal image-reference" href="../_images/sor_1.svg"><img alt="../_images/sor_1.svg" src="../_images/sor_1.svg" width="400" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">The estimated solution approaches the exact solution monotonically.</span><a class="headerlink" href="#over-relaxation-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="under-relaxation-figure">
+<a class="reference internal image-reference" href="../_images/sor_2.svg"><img alt="../_images/sor_2.svg" src="../_images/sor_2.svg" width="400" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">The estimated solution oscillates about the exact solution.</span><a class="headerlink" href="#under-relaxation-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="optimum-value-of-the-relaxation-parameter">
+<span id="optimum-relaxation-parameter-section"></span><h2><span class="section-number">6.4.3. </span>Optimum value of the relaxation parameter<a class="headerlink" href="#optimum-value-of-the-relaxation-parameter" title="Permalink to this heading">#</a></h2>
+<p>The optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> will be the one that minimises the spectral radius of the iteration matrix. The iteration matrix will depend on the value of <span class="math notranslate nohighlight">\(\omega\)</span>. One way to estimate the optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> is to calculate <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for values in the range <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span> and choose the value of <span class="math notranslate nohighlight">\(\omega\)</span> which minimises this value. This has been done for the system of linear equations from <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Example 6.1</a> and the plot is shown in <a class="reference internal" href="#optimum-relaxation-parameter-figure"><span class="std std-numref">Fig. 6.6</span></a>.</p>
+<figure class="align-default" id="optimum-relaxation-parameter-figure" style="width: 600px">
+<img alt="../_images/4e70f214abafe39eb697d65f728471228e3d13a6e3e2c53fff5b0ca4717e5558.png" src="../_images/4e70f214abafe39eb697d65f728471228e3d13a6e3e2c53fff5b0ca4717e5558.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">Plot of the spectral radius <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> of the iteration matrix for the SOR method when used to solve the system of linear equations from <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Example 6.1</a>.</span><a class="headerlink" href="#optimum-relaxation-parameter-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>So an estimation of the optimum value of the relaxation parameters is <span class="math notranslate nohighlight">\(\omega = 1.25\)</span>. If the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> has real eigenvalues we can use the following theorem to calculate the exact value of <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
+<div class="proof theorem admonition" id="optimum-relaxation-parameter-theorem">
+<p class="admonition-title"><span class="caption-number">Theorem 6.2 </span> (Optimum relaxation parameter)</p>
+<section class="theorem-content" id="proof-content">
+<p>If a system of linear equations of the form <span class="math notranslate nohighlight">\(A\vec{x}=\vec{b}\)</span> has a coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> with all real eigenvalues then the optimum relaxation parameter for the SOR method can be calculated using</p>
+<div class="math notranslate nohighlight" id="equation-optimum-relaxation-parameter-equation">
+<span class="eqno">(6.11)<a class="headerlink" href="#equation-optimum-relaxation-parameter-equation" title="Permalink to this equation">#</a></span>\[ \omega_{opt} = 1+{\left(\frac{\rho (T_J )}{1+\sqrt{1-\rho (T_J )^2 }}\right)}^2, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the iteration matrix of the Jacobi method calculation using equation <a class="reference internal" href="6.1_Jacobi_method.html#equation-jacobi-method-iteration-matrix-equation">(6.4)</a>.</p>
+</section>
+</div><div class="proof example admonition" id="optimum-relaxation-parameter-example">
+<p class="admonition-title"><span class="caption-number">Example 6.4 </span></p>
+<section class="example-content" id="proof-content">
+<p>Determine the optimum relaxation parameter for the SOR method when applied to the system of linear equations from <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Example 6.1</a> using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(6.11)</a>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution (click to show)<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">We saw in <a class="reference internal" href="6.3_Convergence_of_indirect_methods.html#convergence-example">Example 6.3</a> that the spectral radius of the iteration matrix for the Jacobi method for this system is <span class="math notranslate nohighlight">\(\rho(T_J )=0.7906\)</span>.</p>
+<p class="sd-card-text">Using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(6.11)</a></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \omega = 1 + \left( \frac{0.7906}{1 + \sqrt{1 - 0.7906)^2}} \right)^2 \approx 1.2404.
+\end{align*} \]</div>
+</div>
+</details></section>
+</div><div class="proof example admonition" id="sor-method-example">
+<p class="admonition-title"><span class="caption-number">Example 6.5 </span></p>
+<section class="example-content" id="proof-content">
+<p>Solve the system of linear equations from from <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Example 6.1</a> using the SOR method with <span class="math notranslate nohighlight">\(\omega = 1.24\)</span> and an accuracy tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    4x_1 +3x_2 &amp;=-2,\\
+    3x_1 +4x_2 -x_3 &amp;=-8,\\
+    -x_2 +4x_3 &amp;=14.
+\end{align*} \end{split}\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution (click to show)<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The SOR method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_{1}^{(k+1)} &amp;= (1 - \omega)x_{1}^{(k)} + \frac{\omega}{4} \left( -2 - 3 x_{2}^{(k)} \right), \\
+    x_{2}^{(k+1)} &amp;= (1 - \omega)x_{2}^{(k)} + \frac{\omega}{4} \left( -8 - 3 x_{1}^{(k+1)} + x_{3}^{(k)} \right), \\
+    x_{3}^{(k+1)} &amp;= (1 - \omega)x_{3}^{(k)} + \frac{\omega}{4} \left( 14 + x_{2}^{(k+1)} \right).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\vec{x} = \vec{0}\)</span>. Calculating the first iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_{1}^{(1)} &amp;= (1 - 1.24)(-0.5) \frac{1.24}{4} \left( -2 - 3 (-1.625) \right) = -0.5, \\
+    x_{2}^{(1)} &amp;= (1 - 1.24)(-1.625) \frac{1.24}{4} \left( -8 - 3 (-0.5) + -3.09375 \right) = -1.625, \\
+    x_{3}^{(1)} &amp;= (1 - 1.24)(3.09375) \frac{1.24}{4} \left( 14 + 1.625 \right) = 3.09375.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Calculate the residual</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \vec{r}^{(1)} &amp;= \vec{b} - A \vec{x}^{(1)} = 
+    \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
+    \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
+    \begin{pmatrix} -0.5 \\ -1.625 \\ 3.09375 \end{pmatrix} \\
+    &amp;=
+    \begin{pmatrix} 4.875 \\ 3.09375 \\ 0.0 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(1)} |) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_{1}^{(2)} &amp;= (1 - 1.24)(0.71875) \frac{1.24}{4} \left( -2 - 3 (-1.765625) \right) = 0.71875, \\
+    x_{2}^{(2)} &amp;= (1 - 1.24)(-1.765625) \frac{1.24}{4} \left( -8 - 3 (0.71875) + -3.05859375 \right) \\
+    &amp;= -1.765625, \\
+    x_{3}^{(2)} &amp;= (1 - 1.24)(3.05859375) \frac{1.24}{4} \left( 14 + 1.765625 \right) = 3.05859375.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Calculate the residual</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \vec{r}^{(2)} &amp;= \vec{b} - A \vec{x}^{(1)} = 
+    \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
+    \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
+    \begin{pmatrix} 0.71875 \\ -1.765625 \\ 3.05859375 \end{pmatrix} \\
+    &amp;=
+    \begin{pmatrix} 0.421875 \\ -0.03515625 \\ 0.0 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The SOR method was iterated until <span class="math notranslate nohighlight">\(|\vec{r}| &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations and the <a class="reference internal" href="6.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Gauss-Seidel method</a> took 19 iterations to achieve the same accuracy.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\max(\vec{r})\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
+<td class="text-center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-center"><p class="sd-card-text">0.000000</p></td>
+<td class="text-center"><p class="sd-card-text">14.000000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
+<td class="text-center"><p class="sd-card-text">-0.620000</p></td>
+<td class="text-center"><p class="sd-card-text">-1.903400</p></td>
+<td class="text-center"><p class="sd-card-text">3.749946</p></td>
+<td class="text-center"><p class="sd-card-text">6.19e+00</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
+<td class="text-center"><p class="sd-card-text">1.298962</p></td>
+<td class="text-center"><p class="sd-card-text">-2.068735</p></td>
+<td class="text-center"><p class="sd-card-text">2.798705</p></td>
+<td class="text-center"><p class="sd-card-text">9.90e-01</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">3</p></td>
+<td class="text-center"><p class="sd-card-text">0.992173</p></td>
+<td class="text-center"><p class="sd-card-text">-2.038626</p></td>
+<td class="text-center"><p class="sd-card-text">3.036337</p></td>
+<td class="text-center"><p class="sd-card-text">2.14e-01</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">4</p></td>
+<td class="text-center"><p class="sd-card-text">1.037801</p></td>
+<td class="text-center"><p class="sd-card-text">-2.014620</p></td>
+<td class="text-center"><p class="sd-card-text">2.986747</p></td>
+<td class="text-center"><p class="sd-card-text">1.07e-01</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">5</p></td>
+<td class="text-center"><p class="sd-card-text">1.004524</p></td>
+<td class="text-center"><p class="sd-card-text">-2.004807</p></td>
+<td class="text-center"><p class="sd-card-text">3.001690</p></td>
+<td class="text-center"><p class="sd-card-text">1.16e-02</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">6</p></td>
+<td class="text-center"><p class="sd-card-text">1.003385</p></td>
+<td class="text-center"><p class="sd-card-text">-2.001470</p></td>
+<td class="text-center"><p class="sd-card-text">2.999139</p></td>
+<td class="text-center"><p class="sd-card-text">9.13e-03</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">7</p></td>
+<td class="text-center"><p class="sd-card-text">1.000555</p></td>
+<td class="text-center"><p class="sd-card-text">-2.000430</p></td>
+<td class="text-center"><p class="sd-card-text">3.000073</p></td>
+<td class="text-center"><p class="sd-card-text">9.29e-04</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">8</p></td>
+<td class="text-center"><p class="sd-card-text">1.000267</p></td>
+<td class="text-center"><p class="sd-card-text">-2.000122</p></td>
+<td class="text-center"><p class="sd-card-text">2.999944</p></td>
+<td class="text-center"><p class="sd-card-text">7.01e-04</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">9</p></td>
+<td class="text-center"><p class="sd-card-text">1.000050</p></td>
+<td class="text-center"><p class="sd-card-text">-2.000034</p></td>
+<td class="text-center"><p class="sd-card-text">3.000003</p></td>
+<td class="text-center"><p class="sd-card-text">9.65e-05</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details></section>
+</div></section>
+<section id="code">
+<h2><span class="section-number">6.4.4. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">sor()</span></code> which solves a linear system of equations of the for <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> using the SOR method with a relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">sum_</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                    <span class="n">sum_</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+            
+        <span class="n">r</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">break</span>
+    
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">sor</span><span class="p">(</span>A, b, omega, tol<span class="p">)</span>
+
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="nb">i</span>
+<span class="w">                </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sum_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">j</span><span class="p">);</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">omega</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sum_</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_pages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="6.3_Convergence_of_indirect_methods.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6.3. </span>Convergence of indirect methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6.5_Indirect_methods_exercises.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.5. </span>Indirect methods exercises</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-iteration-matrix-for-the-sor-method">6.4.1. The iteration matrix for the SOR method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#under-and-over-relaxation">6.4.2. Under and over relaxation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-value-of-the-relaxation-parameter">6.4.3. Optimum value of the relaxation parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">6.4.4. Code</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Jon Shiach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
