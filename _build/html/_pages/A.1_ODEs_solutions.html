@@ -1,0 +1,896 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Ordinary Differential Equations exercise solutions &#8212; Runge-Kutta Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/A.1_ODEs_solutions';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/A.1_ODEs_solutions.html" />
+    <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Explicit Runge-Kutta methods exercise solutions" href="A.2_ERK_solutions.html" />
+    <link rel="prev" title="Exercise Solutions" href="A_Solutions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Runge-Kutta Methods</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_Matrix_decomposition.html">5. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.1_LU_decomposition.html">5.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2_Solving_systems_using_LU.html">5.2. Solving systems of linear equations using LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.3. LU decomposition with partial pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4_Cholesky_decomposition.html">5.4. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.5_QR_decomposition.html">5.5. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.6_Calculating_eigenvalues_using_QR.html">5.6. Calculating eigenvalues using QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7_Matrix_decomposition_exercises.html">5.7. Matrix decomposition exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Indirect_methods.html">6. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_Jacobi_method.html">6.1. Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_Gauss_Seidel_method.html">6.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Convergence_of_indirect_methods.html">6.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_SOR_method.html">6.4. The Successive Over Relaxation (SOR) method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Indirect_methods_exercises.html">6.5. Indirect methods exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_BVPs.html">7. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Shooting_method.html">7.2. The shooting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Finite_difference_method.html">7.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_BVP_exercises.html">7.4. Boundary value problems exercises</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Ordinary Differential Equations exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.6_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.7_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_pages/A.1_ODEs_solutions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ordinary Differential Equations exercise solutions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ordinary-differential-equations-exercise-solutions">
+<span id="odes-solutions-section"></span><h1>Ordinary Differential Equations exercise solutions<a class="headerlink" href="#ordinary-differential-equations-exercise-solutions" title="Permalink to this heading">#</a></h1>
+<p>Solutions to the exercises on <a class="reference internal" href="1.6_ODEs_exercises.html#odes-exercises-section"><span class="std std-ref">ordinary differential equations</span></a>.</p>
+<div class="solution admonition" id="_pages/A.1_ODEs_solutions-solution-0">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="1.6_ODEs_exercises.html#ch1-ex1"> Exercise 1.1</a></p>
+<section id="solution-content">
+<p>Rearranging the ODE slightly gives <span class="math notranslate nohighlight">\(y' = 1 - y -e^{-t}\)</span>. The values of <span class="math notranslate nohighlight">\(t_n\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \vec{t} = \begin{pmatrix} 0.0 \\ 0.5 \\ 1.0 \\ 1.5 \\ 2.0 \\ 2.5 \\ 3.0 \\ 3.5 \\ 4.0 \end{pmatrix}, \end{split}\]</div>
+<p>and applying the Euler method with step length <span class="math notranslate nohighlight">\(h=0.5\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_0 &amp;= 1, \\
+    y_1 &amp;= y_0 + h (1 - y_0 - e^{-t_0}) \\
+    &amp;= 1.0 + 0.5 (1 - 1.0 - e^{-0.0}) = 0.5, \\
+    y_2 &amp;= y_1 + h (1 - y_1 - e^{-t_1}) \\
+    &amp;= 0.5 + 0.5 (1 - 0.5 - e^{-0.5}) = 0.446735, \\
+    y_3 &amp;= y_2 + h (1 - y_2 - e^{-t_2}) \\
+    &amp;= 0.446735 + 0.5 (1 - 0.446735 - e^{-1.0}) = 0.539428, \\
+    y_4 &amp;= y_3 + h (1 - y_3 - e^{-t_3}) \\
+    &amp;= 0.539428 + 0.5 (1 - 0.539428 - e^{-1.5}) = 0.658149, \\
+    y_5 &amp;= y_4 + h (1 - y_4 - e^{-t_4}) \\
+    &amp;= 0.658149 + 0.5 (1 - 0.658149 - e^{-2.0}) = 0.761407, \\
+    y_6 &amp;= y_5 + h (1 - y_5 - e^{-t_5}) \\
+    &amp;= 0.761407 + 0.5 (1 - 0.761407 - e^{-2.5}) = 0.839661, \\
+    y_7 &amp;= y_6 + h (1 - y_6 - e^{-t_6}) \\
+    &amp;= 0.839661 + 0.5 (1 - 0.839661 - e^{-3.0}) = 0.894937, \\
+    y_8 &amp;= y_7 + h (1 - y_7 - e^{-t_7}) \\
+    &amp;= 0.894937 + 0.5 (1 - 0.894937 - e^{-3.5}) = 0.93237, \\
+\end{align*} \end{split}\]</div>
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.1_ODEs_solutions-solution-1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="1.6_ODEs_exercises.html#ch1-ex2"> Exercise 1.2</a></p>
+<section id="solution-content">
+<p>Table</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>  <span class="n">t</span>   <span class="o">|</span>   <span class="n">Euler</span>  <span class="o">|</span>   <span class="n">Exact</span>  <span class="o">|</span>  <span class="n">Error</span>   <span class="o">|</span>
+<span class="o">|</span><span class="p">:</span><span class="o">----</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">--------</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">--------</span><span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">--------</span><span class="p">:</span><span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.00</span> <span class="o">|</span> <span class="mf">1.000000</span> <span class="o">|</span> <span class="mf">1.000000</span> <span class="o">|</span> <span class="mf">0.00e+00</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.50</span> <span class="o">|</span> <span class="mf">0.500000</span> <span class="o">|</span> <span class="mf">0.696735</span> <span class="o">|</span> <span class="mf">1.97e-01</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">1.00</span> <span class="o">|</span> <span class="mf">0.446735</span> <span class="o">|</span> <span class="mf">0.632121</span> <span class="o">|</span> <span class="mf">1.85e-01</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">1.50</span> <span class="o">|</span> <span class="mf">0.539428</span> <span class="o">|</span> <span class="mf">0.665305</span> <span class="o">|</span> <span class="mf">1.26e-01</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">2.00</span> <span class="o">|</span> <span class="mf">0.658149</span> <span class="o">|</span> <span class="mf">0.729329</span> <span class="o">|</span> <span class="mf">7.12e-02</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">2.50</span> <span class="o">|</span> <span class="mf">0.761407</span> <span class="o">|</span> <span class="mf">0.794788</span> <span class="o">|</span> <span class="mf">3.34e-02</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">3.00</span> <span class="o">|</span> <span class="mf">0.839661</span> <span class="o">|</span> <span class="mf">0.850639</span> <span class="o">|</span> <span class="mf">1.10e-02</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">3.50</span> <span class="o">|</span> <span class="mf">0.894937</span> <span class="o">|</span> <span class="mf">0.894309</span> <span class="o">|</span> <span class="mf">6.28e-04</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">4.00</span> <span class="o">|</span> <span class="mf">0.932370</span> <span class="o">|</span> <span class="mf">0.926737</span> <span class="o">|</span> <span class="mf">5.63e-03</span> <span class="o">|</span>
+</pre></div>
+</div>
+<p>Plot</p>
+<figure class="align-default" style="width: 600px">
+<img alt="../_images/06360dbb8f6f94156a21fce4216daeda8c8f79bfd96d569e52b976d6cc3d6b91.png" src="../_images/06360dbb8f6f94156a21fce4216daeda8c8f79bfd96d569e52b976d6cc3d6b91.png" />
+</figure>
+<p>Code</p>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} Python
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams[&#39;text.usetex&#39;] = True  # use LaTeX commands in plot
+
+
+def solveIVP(f, tspan, y0, h, solver):
+
+    # Initialise t and y arrays
+    t = np.arange(tspan[0], tspan[1] + h, h)
+    y = np.zeros((len(t),len(y0)))
+    t[0] = tspan[0]
+    y[0,:] = y0
+
+    # Loop through steps and calculate single step solver solution
+    for n in range(len(t) - 1):
+        y[n+1,:] = solver(f, t[n], y[n,:], h)
+              
+    return t, y
+
+
+def euler(f, t, y, h): 
+    return y + h * f(t, y)
+
+
+def f(t,y):
+    return 1 - y - np.exp(-t)
+
+
+def exact(t):
+    return 1 - t * np.exp(-t)
+
+
+# Define IVP parameters
+tspan = [0, 4]   # boundaries of the t domain
+y0 =  [1]        # initial value
+h = 0.5          # step length
+
+# Solve the IVP using the Euler method
+t, y = solveIVP(f, tspan, y0, h, euler)
+
+# Print table of solution values
+print(&quot;|  t   |   Euler  |   Exact  |  Error   |&quot;)
+print(&quot;|:----:|:--------:|:--------:|:--------:|&quot;)
+for n in range(len(t)):
+    print(f&quot;| {t[n]:0.2f} | {y[n,0]:0.6f} | {exact(t[n]):0.6f} | {abs(y[n,0] - exact(t[n])):0.2e} |&quot;)
+
+# Calculate exact solution
+texact = np.linspace(tspan[0], tspan[1], 200)
+yexact = exact(texact)
+
+# Plot solution
+fig, ax = plt.subplots()
+plt.plot(texact, yexact, &#39;k-&#39;, label=&#39;Exact&#39;)
+plt.plot(t, y[:,0], &quot;b-o&quot;, label=&#39;Euler&#39;)
+plt.xlabel(&quot;$t$&quot;, fontsize=12)
+plt.ylabel(&quot;$y$&quot;, fontsize=12)
+plt.legend()
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+
+```matlab
+% Define ODE function and exact solution
+f = @(t,y) 1 - y - exp(-t);
+exact = @(t) 1 - t .* exp(-t);
+
+% Define IVP parameters
+tspan = [0, 4];
+y0 = 1;
+h = 0.5;
+
+% Solve the IVP using the Euler method
+[t, y] = solveIVP(f, tspan, y0, h, @euler);
+
+% Print table of solution values
+for i = 1:1
+    fprintf(&quot;|  t   |   Euler   |   Exact   |  Error   |&quot;)
+    fprintf(&quot;|:----:|:---------:|:---------:|:--------:|&quot;)
+    for n = 1 : length(t)
+        fprintf(&quot;| %1.2f | %9.6f | %9.6f | %1.2e |\n&quot;, t(n), y(n), exact(t(n)), abs(y(n) - exact(t(n))));
+    end
+end
+% Calculate exact solution (for plotting)
+texact = linspace(tspan(1), tspan(2), 200);
+yexact = exact(texact);
+
+% Plot solution
+plot(texact, yexact, &#39;k-&#39;, LineWidth=1)
+hold on
+plot(t, y, &#39;b-o&#39;, LineWidth=1, MarkerFaceColor=&#39;b&#39;)
+hold off
+axis padded
+xlabel(&#39;$t$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+ylabel(&#39;$y$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+legend(&#39;Exact&#39;, &#39;Euler&#39;, fontsize=12)
+
+% --------------------------------------------------------
+function [t, y] = solveIVP(f, tspan, y0, h, solver)
+
+% Define t and y arrays
+t = (tspan(1) : h : tspan(2));
+y = zeros(length(t), length(y0));
+y(1,:) = y0;
+
+% Loop through the steps and calculate single step solver solution
+for n = 1 : length(t) - 1
+    y(n+1,:) = solver(f, t(n), y(n,:), h);
+end
+
+end
+
+% --------------------------------------------------------
+function y = euler(f, t, y, h)
+
+y = y + h * f(t, y);
+
+end
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.1_ODEs_solutions-solution-2">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="1.6_ODEs_exercises.html#ch1-ex3"> Exercise 1.3</a></p>
+<section id="solution-content">
+<p>(a)</p>
+<figure class="align-default" style="width: 600px">
+<img alt="../_images/a940eca169461ff822600a4debcf23da9634af37f0f90f82bbbf5f62511f7e23.png" src="../_images/a940eca169461ff822600a4debcf23da9634af37f0f90f82bbbf5f62511f7e23.png" />
+</figure>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+
+```python
+# Plot the exact solution
+fig, ax = plt.subplots()
+plt.plot(texact, yexact, &#39;k-&#39;, label=&#39;Exact&#39;)
+
+# Loop through h values and calculate the solutions
+hvals = [0.5, 0.25, 0.125, 0.0625]
+for h in hvals:
+    t, y = solveIVP(f, tspan, y0, h, euler)
+    plt.plot(t, y, &#39;.-&#39;, label=f&quot;$h = {h:0.3f}$&quot;)
+
+plt.xlabel(&quot;$t$&quot;, fontsize=12)
+plt.ylabel(&quot;$y$&quot;, fontsize=12)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+```matlab
+% Plot the exact solution
+plot(texact, yexact, &#39;k&#39;, LineWidth=1)
+hold on
+ 
+% Loop through h values and calculate the solutions
+hvals = [0.5, 0.25, 0.125, 0.0625];
+for h = hvals
+    [t, y] = solveIVP(f, tspan, y0, h, @euler);
+    plot(t, y, &#39;o-&#39;)
+end
+xlabel(&#39;$t$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+ylabel(&#39;$y$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+legend(&#39;Exact&#39;, &#39;$h=0.5$&#39;, &#39;$h=0.25$&#39;, &#39;$h=0.125$&#39;, &#39;$h=0.0625$&#39;, ...
+    Location=&#39;southeast&#39;, FontSize=12, Interpreter=&#39;latex&#39;)
+hold off
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+
+(b) Exact solution: $y(1) = 1 - e^{-1} = 0.632121$
+
+Table
+
+</pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>h</p></th>
+<th class="head text-center"><p>Euler</p></th>
+<th class="head text-center"><p>Error</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0.500</p></td>
+<td class="text-center"><p>0.446735</p></td>
+<td class="text-center"><p>1.85e-01</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0.250</p></td>
+<td class="text-center"><p>0.553196</p></td>
+<td class="text-center"><p>7.89e-02</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0.125</p></td>
+<td class="text-center"><p>0.595324</p></td>
+<td class="text-center"><p>3.68e-02</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0.062</p></td>
+<td class="text-center"><p>0.614319</p></td>
+<td class="text-center"><p>1.78e-02</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Plot
+
+```{glue:figure} ch1-ex3b-plot
+:figwidth: 600
+</pre></div>
+</div>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+
+```python
+errors = []
+print(f&quot;Exact solution: y(1) = {exact(1):0.6f}\n&quot;)
+print(&quot;|   h   |   Euler   |  Error   |&quot;)
+print(&quot;|:-----:|:---------:|:--------:|&quot;)
+for h in hvals:
+    t, y = ivp_solver(f, tspan, y0, h, euler)
+    idx = np.argmin(abs(t - 1))
+    errors.append(abs(y[idx,0] - exact(1)))
+    print(f&quot;| {h:0.3f} | {y[idx,0]:9.6f} | {errors[-1]:0.2e} |&quot;)
+
+# Plot errors
+fig, ax = plt.subplots()
+plt.plot(hvals, errors, &#39;b-o&#39;)
+plt.xlabel(&#39;$h$&#39;, fontsize=14)
+plt.ylabel(&#39;GTE at $y(1)$&#39;, fontsize=14)
+plt.show()
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+
+```matlab
+for i = 1 : 1
+    errors = [];
+    fprintf(&quot;Exact solution: y(1) = %1.6f\n&quot;, exact(1))
+    fprintf(&quot;|   h   |  Euler   |  Error   |&quot;)
+    fprintf(&quot;|:-----:|:--------:|:--------:|&quot;)
+    for h = hvals
+        [t, y] = solveIVP(f, tspan, y0, h, @euler);
+        [~, idx] = min(abs(t - 1));
+        errors = [errors, abs(y(idx,1) - exact(1))];
+        fprintf(&quot;| %1.2f | %9.6f | %1.2e |\n&quot;, h, y(idx), errors(end))
+    end
+end
+
+% Plot errors
+plot(hvals, errors, &#39;b-o&#39;, LineWidth=2, MarkerFaceColor=&#39;b&#39;)
+axis padded
+xlabel(&#39;$h$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+ylabel(&#39;GTE at $y(1)$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+
+(c) The plot of the global truncation error for $y(1)$ shows that the errors tend to zero as $h$ decreases in a roughly linear fashion indicating that the Euler method is first-order accurate.
+
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.1_ODEs_solutions-solution-3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="1.6_ODEs_exercises.html#ch1-ex4"> Exercise 1.4</a></p>
+<section id="solution-content">
+<p>Let <span class="math notranslate nohighlight">\(y_1 = \theta\)</span> and <span class="math notranslate nohighlight">\(y_2 = \dot{\theta}\)</span> then we can write the ODE as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_1' &amp;= y_2, \\
+    y_2' &amp;= -\frac{g}{L} \sin(y_1), 
+\end{align*} \end{split}\]</div>
+<p>so we have the IVP <span class="math notranslate nohighlight">\(\vec{y}' = \vec{f}(t, \vec{y})\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \vec{y} &amp;= \begin{pmatrix} y_1  \\ y_2 \end{pmatrix}, &amp;
+    \vec{f}(t, \vec{y}) &amp;= \begin{pmatrix} y_2 \\  -g \sin(y_1)/L \end{pmatrix}, &amp;
+    \vec{y}_0 &amp;= \begin{pmatrix} \pi/2 \\  0 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Plot</p>
+<figure class="align-default" style="width: 600px">
+<img alt="../_images/77d1384fb0601aa57d40cbd68f291e5233d8d445dd3e1864f050b6db7cdfeaa5.png" src="../_images/77d1384fb0601aa57d40cbd68f291e5233d8d445dd3e1864f050b6db7cdfeaa5.png" />
+</figure>
+<p>Code</p>
+<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+
+```python
+# Define ODE function
+def f(t, y):
+    return np.array([y[1], -g / L * np.sin(y[0])])
+
+
+# Define IVP
+tspan = [0, 5]
+y0 = [np.pi / 2, 0]
+h = 0.001
+g = 9.81             # acceleration due to gravity
+L = 1                # pendulum length
+
+# Calculate the solution to the IVP
+t, y = solveIVP(f, tspan, y0, h, euler)
+
+# Plot solution
+fig, ax = plt.subplots()
+plt.plot(t, y[:,0], &quot;b-&quot;)
+plt.xlabel(&quot;$t$&quot;, fontsize=14)
+plt.ylabel(&quot;$\\theta$&quot;, fontsize=14)
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
+```:{tab-item} MATLAB
+
+```matlab
+% Define ODE
+f = @(t, y) [y(2), -9.81 * sin(y(1))];
+
+% Define IVP
+tspan = [0, 5];
+y0 = [pi / 2, 0];
+h = 0.001;
+g = 9.81;
+L = 1;
+
+% Solve IVP
+[t, y] = solveIVP(f, tspan, y0, h, @euler);
+
+% Plot solution
+plot(t, y(:, 1), &quot;b-&quot;, LineWidth=2, MarkerFaceColor=&quot;b&quot;)
+xlabel(&quot;$t$&quot;, FontSize=16, Interpreter=&quot;latex&quot;)
+ylabel(&quot;$\theta$&quot;, FontSize=16, Interpreter=&quot;latex&quot;)
+</pre></div>
+</div>
+<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_pages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="A_Solutions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercise Solutions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="A.2_ERK_solutions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Explicit Runge-Kutta methods exercise solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Jon Shiach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

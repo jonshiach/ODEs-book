@@ -3,8 +3,8 @@
 
 title: Runge-Kutta Methods
 author: Dr Jon Shiach
-logo: images/logo.png
-copyright : "2023"  # Copyright year to be placed in the footer
+logo: ""
+copyright : "2024"  # Copyright year to be placed in the footer
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -29,7 +29,7 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  favicon                   : "/images/favicon.jpeg"  # A path to a favicon image
+  favicon                   : "/_images/favicon.jpeg"  # A path to a favicon image
   use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
   use_repository_button     : false  # Whether to add a link to your repository button
   use_issues_button         : false  # Whether to add an "open an issue" button
@@ -58,9 +58,13 @@ parse:
 
 sphinx:
   config:
-    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    html_favicon: "images/favicon.jpeg"
+    html_favicon: "_images/favicon.jpeg"
     bibtex_reference_style: author_year
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      tex:
+        macros:
+          "vec": ["\\mathbf{#1}", 1]
   extra_extensions:
     - sphinx_proof
     - sphinx_exercise
