@@ -444,96 +444,122 @@ document.write(`
     &amp; 1/3 &amp; 2/3
     \end{array}
 \end{align*}\]</div>
-<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
-```python
-from sympy import *
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
 
-# Declare symbolic variables
-a21, b1, b2, c2 = symbols(&#39;a21, b1, b2, c2&#39;)
-b1 = Rational(1,3)
+<span class="c1"># Declare symbolic variables</span>
+<span class="n">a21</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a21, b1, b2, c2&#39;</span><span class="p">)</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 
-# Define order conditions
-eq1 = b1 + b2 - 1
-eq2 = b2 * c2 - Rational(1,2)
-eq3 = a21 * b2 - Rational(1,2)
+<span class="c1"># Define order conditions</span>
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">*</span> <span class="n">b2</span> <span class="o">-</span> <span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 
-# Solve order conditions
-solve((eq1, eq2, eq3))
+<span class="c1"># Solve order conditions</span>
+<span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{tab-item} MATLAB
-```matlab
-% Declare symbolic variables
-syms a21 b1 b2 c2
-b1 = 1 / 3;
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Declare symbolic variables</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">c2</span>
+<span class="n">b1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 
-% Define order conditions
-eq1 = b1 + b2 == 1;
-eq2 = b2 * c2 == 1 / 2;
-eq3 = a21 == c2;
+<span class="c">% Define order conditions</span>
+<span class="n">eq1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c2</span><span class="p">;</span>
 
-% Solve order conditions
-solve(eq1, eq2, eq3)
+<span class="c">% Solve order conditions</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
-</pre></div>
+</div>
 </div>
 </section>
 </div>
-<div class="highlight-:{solution} notranslate"><div class="highlight"><pre><span></span>Adding the labels to the tree
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-3">
 
-```{figure} ../_images/rooted_tree_exercise_solution.svg
-:width: 500
-</pre></div>
-</div>
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-tree"> Exercise 2.4</a></p>
+<section id="solution-content">
+<p>Adding the labels to the tree</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/rooted_tree_exercise_solution.svg"><img alt="../_images/rooted_tree_exercise_solution.svg" src="../_images/rooted_tree_exercise_solution.svg" width="500" /></a>
+</figure>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     r &amp;= 10, \\
     \Phi &amp;= \sum_{i,j,k,\ell} b_i a_{ij} a_{ik} a_{k\ell} c_j^3 c_k c_\ell^2, \\
     \gamma &amp;= 10 \cdot 4 \cdot 5 \cdot 3 = 600.
 \end{align*} \end{split}\]</div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{solution} ch2-ex-rk3-order-conditions
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-4">
 
-The set of rooted trees up to and including order 3 are
-
-| Tree | $\Phi$ | $\gamma$ |
-|:----:|:------------------:|:-------:|
-| ![](/_images/tree_1.svg) | $\displaystyle\sum_i b_i$ | 1 |
-| ![](/_images/tree_2.svg) | $\displaystyle\sum_i b_ic_i$ | 2 |
-| ![](/_images/tree_3_1.svg) | $\displaystyle\sum_i b_ic_i^2$ | 3 | 
-| ![](/_images/tree_3_2.svg) | $\displaystyle\sum_{i,j} b_i a_{ij} c_j$ | 6 |
-
-Using $\Phi = \dfrac{1}{\gamma}$ we have
-
-$$ \begin{align*}
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-rk3-order-conditions"> Exercise 2.5</a></p>
+<section id="solution-content">
+<p>The set of rooted trees up to and including order 3 are</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Tree</p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\Phi\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><img alt="" src="../_images/tree_1.svg" /></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_i b_i\)</span></p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><img alt="" src="../_images/tree_2.svg" /></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_i b_ic_i\)</span></p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><img alt="" src="../_images/tree_3_1.svg" /></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_i b_ic_i^2\)</span></p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><img alt="" src="../_images/tree_3_2.svg" /></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j} b_i a_{ij} c_j\)</span></p></td>
+<td class="text-center"><p>6</p></td>
+</tr>
+</tbody>
+</table>
+<p>Using <span class="math notranslate nohighlight">\(\Phi = \dfrac{1}{\gamma}\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     b_1 + b_2 + b_3 &amp;= 1, \\
     \textcolor{red}{b_1 c_1} + b_2 c_2 + b_3 c_3 &amp;= \frac{1}{2}, \\
     \textcolor{red}{b_1 c_1^2} + b_2 c_2^2 + b_3 c_3^2 &amp;= \frac{1}{3}, \\
     \textcolor{red}{b_1 a_{11} c_1} + \textcolor{red}{b_1 a_{12} c_2} + \textcolor{red}{b_1 a_{13} c_3} \quad &amp; \\
     \textcolor{red}{b_2 a_{21} c_1} + \textcolor{red}{b_2 a_{22} c_2} + \textcolor{red}{b_2 a_{23} c_3} \quad &amp; \\
     \textcolor{red}{b_3 a_{31} c_1} + b_3 a_{32} c_2 + \textcolor{red}{b_3 a_{33} c_3} &amp;= \frac{1}{6}.
-\end{align*} $$ 
-
-Since for an ERK method $c_1 = 0$ and $a_{ij} = 0$ where $i \leq j$ then the terms in red are zero so the order conditions are (including the row sum conditions)
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p>Since for an ERK method <span class="math notranslate nohighlight">\(c_1 = 0\)</span> and <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> where <span class="math notranslate nohighlight">\(i \leq j\)</span> then the terms in red are zero so the order conditions are (including the row sum conditions)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     b_1 + b_2 + b_3 &amp;= 1, \\
     b_2 c_2 + b_3 c_3 &amp;= \frac{1}{2}, \\
     b_2 c_2^3 + b_3 c_3^2 &amp;= \frac{1}{3}, \\
     b_3 a_{32} c_2 &amp;= \frac{1}{6}, \\
     a_{21} &amp;= c_2, \\
     a_{31} + a_{32} &amp;= c_3.
-\end{align*} $$
-```:
+\end{align*} \end{split}\]</div>
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-5">
 
-``````{solution} ch2-ex-myrk4-derivation
-
-Substituting $c_2$, $c_3$ and $c_4$ into the order conditions gives
-
-$$ \begin{align*}
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-myrk4-derivation"> Exercise 2.6</a></p>
+<section id="solution-content">
+<p>Substituting <span class="math notranslate nohighlight">\(c_2\)</span>, <span class="math notranslate nohighlight">\(c_3\)</span> and <span class="math notranslate nohighlight">\(c_4\)</span> into the order conditions gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
     \frac{1}{4}b_2 + \frac{1}{2}b_3 + b_4 &amp;= \frac{1}{2}, \\
     \frac{1}{16}b_2 + \frac{1}{4}b_3 + b_4 &amp;= \frac{1}{3}, \\
@@ -542,11 +568,10 @@ $$ \begin{align*}
     \frac{1}{8}b_3a_{32} + \frac{1}{4}b_4a_{42} + \frac{1}{2}b_4a_{43} &amp;= \frac{1}{8}, \\
     \frac{1}{16}b_3a_{32} + \frac{1}{16}b_4a_{42} + \frac{1}{4}b_4a_{43} &amp;= \frac{1}{12}, \\
     \frac{1}{4}b_4a_{43}a_{32} &amp;= \frac{1}{24}.
-\end{align*} $$
-
-Solving the second, third and fourth equations using Gaussian elimination
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p>Solving the second, third and fourth equations using Gaussian elimination</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     &amp; \left( \begin{array}{ccc|c}
         1/4 &amp; 1/2 &amp; 1 &amp; 1/2 \\
         1/16 &amp; 1/4 &amp; 1 &amp; 1/3 \\
@@ -587,19 +612,17 @@ $$ \begin{align*}
         0 &amp; 1 &amp; 0 &amp; 2/3 \\
         0 &amp; 0 &amp; 1 &amp; 1/6
     \end{array} \right)
-\end{align*} $$
-
-So $b_2 = 0$, $b_3 = \frac{2}{3}$ and $b_4 = \frac{1}{6}$. Using the first order condition we have $b_1 = \frac{1}{6}$. Substituting these values into the fifth, sixth and seventh order conditions
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(b_2 = 0\)</span>, <span class="math notranslate nohighlight">\(b_3 = \frac{2}{3}\)</span> and <span class="math notranslate nohighlight">\(b_4 = \frac{1}{6}\)</span>. Using the first order condition we have <span class="math notranslate nohighlight">\(b_1 = \frac{1}{6}\)</span>. Substituting these values into the fifth, sixth and seventh order conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     \frac{1}{6}a_{32} + \frac{1}{24}a_{42} + \frac{1}{12}a_{43} &amp;= \frac{1}{6}, \\
     \frac{1}{12}a_{32} + \frac{1}{24}a_{42} + \frac{1}{12}a_{43} &amp;= \frac{1}{8}, \\
     \frac{1}{24}a_{32} + \frac{1}{96}a_{42} + \frac{1}{24}a_{43} &amp;= \frac{1}{12}, \\
-\end{align*} $$
-
-Solving using Gaussian elimination
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p>Solving using Gaussian elimination</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     &amp;\left( \begin{array}{ccc|c}
         1/6 &amp; 1/24 &amp; 1/12 &amp; 1/6 \\
         1/12 &amp; 1/24 &amp; 1/12 &amp; 1/8 \\
@@ -641,11 +664,10 @@ $$ \begin{align*}
         0 &amp; 0 &amp; 1 &amp; 2
     \end{array} \right)
     \begin{array}{l}  \\ R_2 - 2R_3 \\ \phantom{x} \end{array}
-\end{align*} $$
-
-So $a_{32} = \frac{1}{2}$, $a_{42} = -2$ and $a_{43} = 2$. Using the row sum condition gives $a_{31} = c_3 - a_{32} = \frac{1}{2} - \frac{1}{2} = 0$ and $a_{41} = c_4 - a_{42} - a_{43} = 1 - (-2) - 2 = 1$. The Butcher tableau for this method is
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(a_{42} = -2\)</span> and <span class="math notranslate nohighlight">\(a_{43} = 2\)</span>. Using the row sum condition gives <span class="math notranslate nohighlight">\(a_{31} = c_3 - a_{32} = \frac{1}{2} - \frac{1}{2} = 0\)</span> and <span class="math notranslate nohighlight">\(a_{41} = c_4 - a_{42} - a_{43} = 1 - (-2) - 2 = 1\)</span>. The Butcher tableau for this method is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     \begin{array}{c|cccc}
         0 &amp; \\
         1/4 &amp; 1/4 \\
@@ -653,93 +675,95 @@ $$ \begin{align*}
         1 &amp; 1 &amp; -2 &amp; 2 \\ \hline
         &amp; 1/6 &amp; 0 &amp; 2/3 &amp; 1/6
     \end{array}
-\end{align*} $$
+\end{align*} \end{split}\]</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 
-```::{tab-set}
-```:{tab-item} Python
+<span class="c1"># Declare symbolic variables</span>
+<span class="n">a21</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span><span class="p">,</span> <span class="n">a43</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a21, a31, a32, a41, a42, a43, b1, b2, b3, b4&quot;</span><span class="p">)</span>
 
-```python
-import sympy as sp
+<span class="c1"># Define c values</span>
+<span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span>
 
-# Declare symbolic variables
-a21, a31, a32, a41, a42, a43, b1, b2, b3, b4 = sp.symbols(&quot;a21, a31, a32, a41, a42, a43, b1, b2, b3, b4&quot;)
+<span class="c1"># Solve for the b values</span>
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 
-# Define c values
-c2, c3, c4 = sp.Rational(1,4), sp.Rational(1,2), 1
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="n">b1</span><span class="p">],</span> <span class="n">sol</span><span class="p">[</span><span class="n">b2</span><span class="p">],</span> <span class="n">sol</span><span class="p">[</span><span class="n">b3</span><span class="p">],</span> <span class="n">sol</span><span class="p">[</span><span class="n">b4</span><span class="p">]</span>
 
-# Solve for the b values
-eq1 = b1 + b2 + b3 + b4 - 1
-eq2 = b2 * c2 + b3 * c3 + b4 * c4 - sp.Rational(1,2)
-eq3 = b2 * c2 ** 2 + b3 * c3 ** 2 + b4 * c4 ** 2 - sp.Rational(1,3)
-eq4 = b2 * c2 ** 3 + b3 * c3 ** 3 + b4 * c4 ** 3 - sp.Rational(1,4)
+<span class="c1"># Solve for a32, a42 and a43</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">eq7</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
 
-sol = sp.solve((eq1, eq2, eq3, eq4)) 
-print(sol)
-b1, b2, b3, b4 = sol[b1], sol[b2], sol[b3], sol[b4]
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="n">a32</span><span class="p">,</span> <span class="n">a42</span><span class="p">,</span> <span class="n">a43</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="n">a32</span><span class="p">],</span> <span class="n">sol</span><span class="p">[</span><span class="n">a42</span><span class="p">],</span> <span class="n">sol</span><span class="p">[</span><span class="n">a43</span><span class="p">]</span>
 
-# Solve for a32, a42 and a43
-eq5 = b3 * a32 * c2 + b4 * a42 * c2 + b4 * a43 * c3 - sp.Rational(1,6)
-eq6 = b3 * a32 * c3 * c2 + b4 * c4 * a42 * c2 + b4 * c4 * a43 * c3 - sp.Rational(1,8)
-eq7 = b3 * a32 * c2 ** 2 + b4 * a42 * c2 ** 2 + b4 * a43 * c3 ** 2 - sp.Rational(1,12)
-
-sol = sp.solve((eq5, eq6, eq7)) 
-print(sol)
-a32, a42, a43 = sol[a32], sol[a42], sol[a43]
-
-# Solve for a21, a31 and a41
-eq8 = c2 - a21
-eq9 = c3 - a31 - a32
-eq10 = c4 - a41 - a42 - a43
-sol = sp.solve((eq8, eq9, eq10))
-print(sol)
+<span class="c1"># Solve for a21, a31 and a41</span>
+<span class="n">eq8</span> <span class="o">=</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">a21</span>
+<span class="n">eq9</span> <span class="o">=</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">a31</span> <span class="o">-</span> <span class="n">a32</span>
+<span class="n">eq10</span> <span class="o">=</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">a41</span> <span class="o">-</span> <span class="n">a42</span> <span class="o">-</span> <span class="n">a43</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{tab-item} MATLAB
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define symbolic variables</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a31</span><span class="w"> </span><span class="s">a32</span><span class="w"> </span><span class="s">a41</span><span class="w"> </span><span class="s">a42</span><span class="w"> </span><span class="s">a43</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">b3</span><span class="w"> </span><span class="s">b4</span>
 
-```matlab
-% Define symbolic variables
-syms a21 a31 a32 a41 a42 a43 b1 b2 b3 b4
+<span class="c">% Define c values</span>
+<span class="n">c2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span>
+<span class="n">c3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">c4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
-% Define c values
-c2 = 1/4;
-c3 = 1/2;
-c4 = 1;
+<span class="c">% Solve for the b values</span>
+<span class="n">eq1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span>^<span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">eq4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span>^<span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span>
 
-% Solve for the b values
-eq1 = b1 + b2 + b3 + b4 == 1;
-eq2 = b2 * c2 + b3 * c3 + b4 * c4 == 1/2;
-eq3 = b2 * c2^2 + b3 * c3^2 + b4 * c4^2 == 1/3;
-eq4 = b2 * c2^3 + b3 * c3^3 + b4 * c4^3 == 1/4;
+<span class="p">[</span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="n">b2</span><span class="p">,</span><span class="w"> </span><span class="n">b3</span><span class="p">,</span><span class="w"> </span><span class="n">b4</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">,</span><span class="w"> </span><span class="n">eq4</span><span class="p">)</span>
 
-[b1, b2, b3, b4] = solve(eq1, eq2, eq3, eq4)
+<span class="c">% Solve for a32 a42 and a43</span>
+<span class="n">eq5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">;</span>
+<span class="n">eq6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">;</span>
+<span class="n">eq7</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">;</span>
 
-% Solve for a32 a42 and a43
-eq5 = b3 * a32 * c2 + b4 * a42 * c2 + b4 * a43 * c3 == 1/6;
-eq6 = b3 * a32 * c3 * c2 + b4 * c4 * a42 * c2 + b4 * c4 * a43 * c3 == 1/8;
-eq7 = b3 * a32 * c2^2 + b4 * a42 * c2^2 + b4 * a43 * c3^2 == 1/12;
+<span class="p">[</span><span class="n">a32</span><span class="p">,</span><span class="w"> </span><span class="n">a42</span><span class="p">,</span><span class="w"> </span><span class="n">a43</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">eq5</span><span class="p">,</span><span class="w"> </span><span class="n">eq6</span><span class="p">,</span><span class="w"> </span><span class="n">eq7</span><span class="p">)</span>
 
-[a32, a42, a43] = solve(eq5, eq6, eq7)
+<span class="c">% Solve for a21, a31 and a41 using row sum conditions</span>
+<span class="n">eq9</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a21</span><span class="p">;</span>
+<span class="n">eq10</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a31</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a32</span><span class="p">;</span>
+<span class="n">eq11</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a41</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a43</span><span class="p">;</span>
 
-% Solve for a21, a31 and a41 using row sum conditions
-eq9 = c2 - a21;
-eq10 = c3 - a31 - a32;
-eq11 = c4 - a41 - a42 - a43;
-
-[a21, a31, a41] = solve(eq9, eq10, eq11)
+<span class="p">[</span><span class="n">a21</span><span class="p">,</span><span class="w"> </span><span class="n">a31</span><span class="p">,</span><span class="w"> </span><span class="n">a41</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">eq9</span><span class="p">,</span><span class="w"> </span><span class="n">eq10</span><span class="p">,</span><span class="w"> </span><span class="n">eq11</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
-</pre></div>
 </div>
-<div class="highlight-:{solution} notranslate"><div class="highlight"><pre><span></span>
-The $t_n$ values are
+</div>
+</section>
+</div>
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-6">
 
-$$ \vec{t} = \begin{pmatrix} 0.0 \\ 0.4 \\ 0.8 \\ 1.2 \\ 1.6 \\ 2.0 \end{pmatrix}. $$
-
-Using the second-order ERK method derived in {ref}`ch2-ex-myrk2-derivation`
-
-$$ \begin{align*}
+<p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-myrk2-hand-calc"> Exercise 2.7</a></p>
+<section id="solution-content">
+<p>The <span class="math notranslate nohighlight">\(t_n\)</span> values are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \vec{t} = \begin{pmatrix} 0.0 \\ 0.4 \\ 0.8 \\ 1.2 \\ 1.6 \\ 2.0 \end{pmatrix}. \end{split}\]</div>
+<p>Using the second-order ERK method derived in <a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-myrk2-derivation"><span class="std std-numref">Exercise 2.3</span></a></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     y_0 &amp;= 1, \\
     k_1 &amp;= f(t_0, y_0) = (0.0) - (1.0) = -1, \\
     k_2 &amp;= f(t_0 + \tfrac{3}{4}h, y_0 + \tfrac{3}{4}hk_1) \\
@@ -776,12 +800,10 @@ $$ \begin{align*}
     y_5 &amp;= y_4 + \frac{h}{3}(k_1 + k_2) \\
         &amp;= 1.028 + \frac{0.4}{3}(0.5724 + 2(0.7007)) \\
         &amp;= 1.291,\\ \\
-\end{align*} $$
-
-
-So the solution is
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p>So the solution is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     \vec{y} &amp;= 
     \begin{pmatrix}
         1 \\
@@ -791,12 +813,10 @@ $$ \begin{align*}
         1.0276 \\
         1.2908
     \end{pmatrix}.
-\end{align*} $$
-
-```:
-</pre></div>
+\end{align*} \end{split}\]</div>
+</section>
 </div>
-<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-3">
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-7">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-myrk2"> Exercise 2.8</a></p>
 <section id="solution-content">
@@ -816,138 +836,138 @@ $$ \begin{align*}
 <img alt="../_images/d8dfd969f0347f2e7b5ca4bfd95b8ecb7f77861687d51ba863cb5036d5ef4120.png" src="../_images/d8dfd969f0347f2e7b5ca4bfd95b8ecb7f77861687d51ba863cb5036d5ef4120.png" />
 </figure>
 <p>Code</p>
-<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-
-def myrk2(f, t, y, h): 
-    k1 = f(t, y)
-    k2 = f(t + 3/4 * h, y + 3 / 4 * h * k1)
-    return y + h / 3 * (k1 + 2 * k2)
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
-def solveIVP(f, tspan, y0, h, solver):
+<span class="k">def</span> <span class="nf">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span><span class="p">)</span>
 
-    # Initialise t and y arrays
-    t = np.arange(tspan[0], tspan[1] + h, h)
-    y = np.zeros((len(t),len(y0)))
-    t[0] = tspan[0]
-    y[0,:] = y0
 
-    # Loop through steps and calculate single step solver solution
-    for n in range(len(t) - 1):
-        y[n+1,:] = solver(f, t[n], y[n,:], h)
+<span class="k">def</span> <span class="nf">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">solver</span><span class="p">):</span>
+
+    <span class="c1"># Initialise t and y arrays</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
+    <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
+
+    <span class="c1"># Loop through steps and calculate single step solver solution</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:],</span> <span class="n">h</span><span class="p">)</span>
               
-    return t, y
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
 
 
-# Define ODE function and exact solution
-def f(t, y):
-    return t - y
+<span class="c1"># Define ODE function and exact solution</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">-</span> <span class="n">y</span>
 
 
-def exact(t):
-    return t + 2 * np.exp(-t) - 1
+<span class="k">def</span> <span class="nf">exact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
 
-# Define IVP
-tspan = [0, 2]  # boundaries of the t domain
-y0 = [1]        # solution at the lower boundary
-h = 0.4         # step length
+<span class="c1"># Define IVP</span>
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>        <span class="c1"># solution at the lower boundary</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span>         <span class="c1"># step length</span>
 
-# Calculate the solution to the IVP
-t, y = solveIVP(f, tspan, y0, h, myrk2)
+<span class="c1"># Calculate the solution to the IVP</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">myrk2</span><span class="p">)</span>
 
-# Print table of solution values
-print(&quot;|  t   |     y     |   Exact   |&quot;)
-print(&quot;|:----:|:---------:|:---------:|&quot;)
-for n in range(len(t)):
-    print(f&quot;| {t[n]:4.2f} | {y[n,0]:9.6f} | {exact(t[n]):9.6f} |&quot;)
+<span class="c1"># Print table of solution values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|  t   |     y     |   Exact   |&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|:----:|:---------:|:---------:|&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">9.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">exact</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="si">:</span><span class="s2">9.6f</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
     
-# Plot solutions
-t_exact = np.linspace(tspan[0], tspan[1], 200)
-y_exact = exact(t_exact)
-fig, ax = plt.subplots()
-plt.plot(t_exact, y_exact, &quot;k&quot;, label=&quot;Exact&quot;)
-plt.plot(t, y, &quot;bo-&quot;, label=&quot;myRK2&quot;)
-plt.xlabel(&quot;$t$&quot;, fontsize=12)
-plt.ylabel(&quot;$y$&quot;, fontsize=12)
-plt.legend()
-plt.show()
+<span class="c1"># Plot solutions</span>
+<span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{tab-item} MATLAB
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define ODE function and exact solution</span>
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="n">exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
-```matlab
-% Define ODE function and exact solution
-f = @(t, y) t - y;
-exact = @(t) t + 2 * exp(-t) - 1;
+<span class="c">% Define IVP parameters</span>
+<span class="n">tspan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span><span class="w">     </span><span class="c">% boundaries of the t domain</span>
+<span class="n">y0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">             </span><span class="c">% initial value of the solution</span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">;</span><span class="w">            </span><span class="c">% step length</span>
 
-% Define IVP parameters
-tspan = [0, 2];     % boundaries of the t domain
-y0 = 1;             % initial value of the solution
-h = 0.4;            % step length
+<span class="c">% Calculate the solution to the IVP</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">myrk2</span><span class="p">);</span>
 
-% Calculate the solution to the IVP
-[t, y_myrk2] = solveIVP(f, tspan, y0, h, @myrk2);
+<span class="c">% Calculate exact solution for plotting</span>
+<span class="n">texact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="n">yexact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">exact</span><span class="p">(</span><span class="n">texact</span><span class="p">);</span>
 
-% Calculate exact solution for plotting
-texact = linspace(tspan(1), tspan(2), 200);
-yexact = exact(texact);
+<span class="c">% Print table of solution values (for loop is used to group print statements)</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;|  t   |     y     |   Exact   |\n|:----:|:---------:|:---------:|&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;\n| %4.2f | %9.6f | %9.6f |&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y_myrk2</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">exact</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)));</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
 
-% Print table of solution values (for loop is used to group print statements)
-for i = 1 : 1
-    fprintf(&#39;|  t   |     y     |   Exact   |\n|:----:|:---------:|:---------:|&#39;);
-    for n = 1 : length(t)
-        fprintf(&#39;\n| %4.2f | %9.6f | %9.6f |&#39;, t(n), y_myrk2(n), exact(t(n)));
-    end
-end
+<span class="c">% Plot solution</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">texact</span><span class="p">,</span><span class="w"> </span><span class="n">yexact</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k-&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;b-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
+<span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;$t$&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;$y$&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Exact&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;myRK2&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&#39;northwest&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">12</span><span class="p">)</span>
 
-% Plot solution
-plot(texact, yexact, &#39;k-&#39;, LineWidth=2)
-hold on
-plot(t, y_myrk2, &#39;b-o&#39;, LineWidth=2, MarkerFaceColor=&#39;b&#39;)
-hold off
-axis padded
-xlabel(&#39;$t$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
-ylabel(&#39;$y$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
-legend(&#39;Exact&#39;, &#39;myRK2&#39;, Location=&#39;northwest&#39;, FontSize=12)
+<span class="c">% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP</span><span class="p">(</span>f, tspan, y0, h, solver<span class="p">)</span>
 
-% ----------------------------------------------------------------------------
-function [t, y] = solveIVP(f, tspan, y0, h, solver)
+<span class="c">% Define t and y arrays</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">));</span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
 
-% Define t and y arrays
-t = (tspan(1) : h : tspan(2));
-y = zeros(length(t), length(y0));
-y(1,:) = y0;
+<span class="c">% Loop through the steps and calculate single step solver solution</span>
+<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:),</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="k">end</span>
 
-% Loop through the steps and calculate single step solver solution
-for n = 1 : length(t) - 1
-    y(n+1,:) = solver(f, t(n), y(n,:), h);
-end
+<span class="k">end</span>
 
-end
+<span class="c">% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span>ynew<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">myrk2</span><span class="p">(</span>f, t, y, h<span class="p">)</span>
 
-% ----------------------------------------------------------------------------
-function ynew = myrk2(f, t, y, h)
+<span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
+<span class="n">ynew</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">);</span>
 
-k1 = f(t, y);
-k2 = f(t + 3/4 * h, y + 3/4 * h * k1);
-ynew = y + h / 3 * (k1 + 2 * k2);
-
-end
+<span class="k">end</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
-</pre></div>
+</div>
 </div>
 </section>
 </div>
-<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-4">
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-8">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-myrk4"> Exercise 2.9</a></p>
 <section id="solution-content">
@@ -956,169 +976,169 @@ end
 <img alt="../_images/6e495fad4076e295749e542e82c7a22234b7ca4a321d7e485e59bc45a19071ea.png" src="../_images/6e495fad4076e295749e542e82c7a22234b7ca4a321d7e485e59bc45a19071ea.png" />
 </figure>
 <p>Code</p>
-<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-plt.rcParams[&#39;text.usetex&#39;] = True  # allows use of LaTeX in labels
-
-
-def myrk2(f, t, y, h): 
-    k1 = f(t, y)
-    k2 = f(t + 3/4 * h, y + 3 / 4 * h * k1)
-    return y + h / 3 * (k1 + 2 * k2)
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># allows use of LaTeX in labels</span>
 
 
-def myrk3(f, t, y, h): 
-    k1 = f(t, y)
-    k2 = f(t + 1/2 * h, y + 1/2 * h * k1)
-    k3 = f(t + h, y + h * (-k1 + 2 * k2))
-    return y + h / 6 * (k1 + 4 * k2 + k3)
+<span class="k">def</span> <span class="nf">myrk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span><span class="p">)</span>
 
 
-def myrk4(f, t, y, h): 
-    k1 = f(t, y)
-    k2 = f(t + 1/4 * h, y + 1/4 * h * k1)
-    k3 = f(t + 1/2 * h, y + 1/2 * h * k2)
-    k4 = f(t + h, y + h * (k1 - 2 * k2 + 2 * k3))
-    return y + h / 6 * (k1 + 4 * k3 + k4)
+<span class="k">def</span> <span class="nf">myrk3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="n">k3</span><span class="p">)</span>
 
 
-def solveIVP(f, tspan, y0, h, solver):
+<span class="k">def</span> <span class="nf">myrk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span> 
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k2</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k3</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span>
 
-    # Initialise t and y arrays
-    t = np.arange(tspan[0], tspan[1] + h, h)
-    y = np.zeros((len(t),len(y0)))
-    t[0] = tspan[0]
-    y[0,:] = y0
 
-    # Loop through steps and calculate single step solver solution
-    for n in range(len(t) - 1):
-        y[n+1,:] = solver(f, t[n], y[n,:], h)
+<span class="k">def</span> <span class="nf">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">solver</span><span class="p">):</span>
+
+    <span class="c1"># Initialise t and y arrays</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
+    <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
+
+    <span class="c1"># Loop through steps and calculate single step solver solution</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:],</span> <span class="n">h</span><span class="p">)</span>
               
-    return t, y
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
 
 
-# Define ODE function and exact solution
-def f(t, y):
-    return t - y
+<span class="c1"># Define ODE function and exact solution</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">-</span> <span class="n">y</span>
 
 
-def exact(t):
-    return t + 2 * np.exp(-t) - 1
+<span class="k">def</span> <span class="nf">exact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
 
-# Define IVP
-tspan = [0, 2]  # boundaries of the t domain
-y0 = [1]        # solution at the lower boundary
-h = 0.4         # step length
+<span class="c1"># Define IVP</span>
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>        <span class="c1"># solution at the lower boundary</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span>         <span class="c1"># step length</span>
 
-# Calculate the solution to the IVP
-t, y_myrk2 = solveIVP(f, tspan, y0, h, myrk2)
-t, y_myrk3 = solveIVP(f, tspan, y0, h, myrk3)
-t, y_myrk4 = solveIVP(f, tspan, y0, h, myrk4)
+<span class="c1"># Calculate the solution to the IVP</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y_myrk2</span> <span class="o">=</span> <span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">myrk2</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y_myrk3</span> <span class="o">=</span> <span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">myrk3</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y_myrk4</span> <span class="o">=</span> <span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">myrk4</span><span class="p">)</span>
 
-# Plot solutions
-t_exact = np.linspace(tspan[0], tspan[1], 200)
-y_exact = exact(t_exact)
-fig, ax = plt.subplots()
-plt.plot(t_exact, y_exact, &quot;k&quot;, label=&quot;Exact&quot;)
-plt.plot(t, y_myrk2, &quot;bo-&quot;, label=&quot;myRK2&quot;)
-plt.plot(t, y_myrk3, &quot;ro-&quot;, label=&quot;myRK3&quot;)
-plt.plot(t, y_myrk4, &quot;go-&quot;, label=&quot;myRK4&quot;)
-plt.xlabel(&quot;$t$&quot;, fontsize=12)
-plt.ylabel(&quot;$y$&quot;, fontsize=12)
-plt.legend()
-plt.show()
+<span class="c1"># Plot solutions</span>
+<span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk2</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk3</span><span class="p">,</span> <span class="s2">&quot;ro-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_myrk4</span><span class="p">,</span> <span class="s2">&quot;go-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{tab-item} MATLAB
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define ODE function and exact solution</span>
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="n">exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
-```matlab
-% Define ODE function and exact solution
-f = @(t, y) t - y;
-exact = @(t) t + 2 * exp(-t) - 1;
+<span class="c">% Define IVP parameters</span>
+<span class="n">tspan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span><span class="w">     </span><span class="c">% boundaries of the t domain</span>
+<span class="n">y0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">             </span><span class="c">% initial value of the solution</span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">;</span><span class="w">            </span><span class="c">% step length</span>
 
-% Define IVP parameters
-tspan = [0, 2];     % boundaries of the t domain
-y0 = 1;             % initial value of the solution
-h = 0.4;            % step length
+<span class="c">% Calculate the solution to the IVP</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">myrk2</span><span class="p">);</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk3</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">myrk3</span><span class="p">);</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk4</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">myrk4</span><span class="p">);</span>
 
-% Calculate the solution to the IVP
-[t, y_myrk2] = solveIVP(f, tspan, y0, h, @myrk2);
-[t, y_myrk3] = solveIVP(f, tspan, y0, h, @myrk3);
-[t, y_myrk4] = solveIVP(f, tspan, y0, h, @myrk4);
+<span class="c">% Calculate exact solution for plotting</span>
+<span class="n">texact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="n">yexact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">exact</span><span class="p">(</span><span class="n">texact</span><span class="p">);</span>
 
-% Calculate exact solution for plotting
-texact = linspace(tspan(1), tspan(2), 200);
-yexact = exact(texact);
+<span class="c">% Plot solution</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">texact</span><span class="p">,</span><span class="w"> </span><span class="n">yexact</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k-&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;b-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk3</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;r-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk4</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;g-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
+<span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;$t$&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;$y$&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Exact&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;myRK2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;myRK3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;myRK4&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&#39;northwest&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">12</span><span class="p">)</span>
 
-% Plot solution
-plot(texact, yexact, &#39;k-&#39;, LineWidth=1)
-hold on
-plot(t, y_myrk2, &#39;b-o&#39;, LineWidth=2, MarkerFaceColor=&#39;b&#39;)
-plot(t, y_myrk3, &#39;r-o&#39;, LineWidth=2, MarkerFaceColor=&#39;r&#39;)
-plot(t, y_myrk4, &#39;g-o&#39;, LineWidth=2, MarkerFaceColor=&#39;g&#39;)
-hold off
-axis padded
-xlabel(&#39;$t$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
-ylabel(&#39;$y$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
-legend(&#39;Exact&#39;, &#39;myRK2&#39;, &#39;myRK3&#39;, &#39;myRK4&#39;, Location=&#39;northwest&#39;, FontSize=12)
+<span class="c">% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP</span><span class="p">(</span>f, tspan, y0, h, solver<span class="p">)</span>
 
-% ----------------------------------------------------------------------------
-function [t, y] = solveIVP(f, tspan, y0, h, solver)
+<span class="c">% Define t and y arrays</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">));</span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
 
-% Define t and y arrays
-t = (tspan(1) : h : tspan(2));
-y = zeros(length(t), length(y0));
-y(1,:) = y0;
+<span class="c">% Loop through the steps and calculate single step solver solution</span>
+<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:),</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="k">end</span>
 
-% Loop through the steps and calculate single step solver solution
-for n = 1 : length(t) - 1
-    y(n+1,:) = solver(f, t(n), y(n,:), h);
-end
+<span class="k">end</span>
 
-end
+<span class="c">% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span>ynew<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">myrk2</span><span class="p">(</span>f, t, y, h<span class="p">)</span>
 
-% ----------------------------------------------------------------------------
-function ynew = myrk2(f, t, y, h)
+<span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
+<span class="n">ynew</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">);</span>
 
-k1 = f(t, y);
-k2 = f(t + 3/4 * h, y + 3/4 * h * k1);
-ynew = y + h / 3 * (k1 + 2 * k2);
+<span class="k">end</span>
 
-end
+<span class="c">% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span>ynew<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">myrk3</span><span class="p">(</span>f, t, y, h<span class="p">)</span>
 
-% ----------------------------------------------------------------------------
-function ynew = myrk3(f, t, y, h)
+<span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
+<span class="n">k3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">));</span>
+<span class="n">ynew</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k3</span><span class="p">);</span>
 
-k1 = f(t, y);
-k2 = f(t + 1/2 * h, y + 1/2 * h * k1);
-k3 = f(t + h, y + h * (-k1 + 2 * k2));
-ynew = y + h / 6 * (k1 + 4 * k2 + k3);
+<span class="k">end</span>
 
-end
+<span class="c">% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span>ynew<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">myrk4</span><span class="p">(</span>f, t, y, h<span class="p">)</span>
 
-% ----------------------------------------------------------------------------
-function ynew = myrk4(f, t, y, h)
+<span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
+<span class="n">k3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">);</span>
+<span class="n">k4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="p">));</span>
+<span class="n">ynew</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k4</span><span class="p">);</span>
 
-k1 = f(t, y);
-k2 = f(t + 1/4 * h, y + 1/4 * h * k1);
-k3 = f(t + 1/2 * h, y + 1/2 * h * k2);
-k4 = f(t + h, y + h * (k1 - 2 * k2 + 2 * k3));
-ynew = y + h / 6 * (k1 + 4 * k3 + k4);
-
-end
+<span class="k">end</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
-</pre></div>
+</div>
 </div>
 </section>
 </div>
-<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-5">
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-9">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-error-comparison"> Exercise 2.10</a></p>
 <section id="solution-content">
@@ -1144,86 +1164,86 @@ end
   \text{myRK4}: &amp;&amp; n &amp; \approx \frac{\log(1.61 \times 10^{-4}) - \log(1.80 \times 10^{-9})}{\log(0.4) - \log(0.025)} = 4.11 \approx 4.
 \end{align*} \end{split}\]</div>
 <p>Code</p>
-<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate solution for decreasing step lengths</span>
+<span class="n">hvals</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">]</span>
+<span class="n">tval</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">E_myrk2</span><span class="p">,</span> <span class="n">E_myrk3</span><span class="p">,</span> <span class="n">E_myrk4</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hvals</span><span class="p">:</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">y_myrk2</span> <span class="o">=</span> <span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">myrk2</span><span class="p">)</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">y_myrk3</span> <span class="o">=</span> <span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">myrk3</span><span class="p">)</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">y_myrk4</span> <span class="o">=</span> <span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">myrk4</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">tval</span><span class="p">))</span>
+    <span class="n">E_myrk2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_myrk2</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">E_myrk3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_myrk3</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">E_myrk4</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_myrk4</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
 
-```python
-# Calculate solution for decreasing step lengths
-hvals = [0.4, 0.2, 0.1, 0.05, 0.025]
-tval = 2
-E_myrk2, E_myrk3, E_myrk4 = [], [], []
-for h in hvals:
-    t, y_myrk2 = solveIVP(f, tspan, y0, h, myrk2)
-    t, y_myrk3 = solveIVP(f, tspan, y0, h, myrk3)
-    t, y_myrk4 = solveIVP(f, tspan, y0, h, myrk4)
-    idx = np.argmin(abs(t - tval))
-    E_myrk2.append(abs(exact(tval) - y_myrk2[idx,0]))
-    E_myrk3.append(abs(exact(tval) - y_myrk3[idx,0]))
-    E_myrk4.append(abs(exact(tval) - y_myrk4[idx,0]))
+<span class="c1"># Output table of errors</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|   h   |  myRK2   |  myRK3   |  myRK4   |&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|:-----:|:--------:|:--------:|:--------:|&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hvals</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">hvals</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E_myrk2</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E_myrk3</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E_myrk4</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
 
-# Output table of errors
-print(&quot;|   h   |  myRK2   |  myRK3   |  myRK4   |&quot;)
-print(&quot;|:-----:|:--------:|:--------:|:--------:|&quot;)
-for n in range(len(hvals)):
-    print(f&quot;| {hvals[n]:0.3f} | {E_myrk2[n]:0.2e} | {E_myrk3[n]:0.2e} | {E_myrk4[n]:0.2e} |&quot;)
-
-# Plot errors on a log scale
-fig, ax = plt.subplots()
-plt.loglog(hvals, E_myrk2, &#39;ro-&#39;, label=&quot;myRK2&quot;)
-plt.loglog(hvals, E_myrk3, &#39;bo-&#39;, label=&quot;myRK3&quot;)
-plt.loglog(hvals, E_myrk4, &#39;go-&#39;, label=&quot;myRK4&quot;)
-plt.xlabel(r&quot;$\log(h)$&quot;, fontsize=12)
-plt.ylabel(r&quot;$\log(E(h))$&quot;, fontsize=12)
-plt.legend()
-plt.show()
+<span class="c1"># Plot errors on a log scale</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span> <span class="n">E_myrk2</span><span class="p">,</span> <span class="s1">&#39;ro-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span> <span class="n">E_myrk3</span><span class="p">,</span> <span class="s1">&#39;bo-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span> <span class="n">E_myrk4</span><span class="p">,</span> <span class="s1">&#39;go-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;myRK4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log(h)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log(E(h))$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{tab-item} MATLAB
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Calculate solution for decreasing step lengths</span>
+<span class="n">hvals</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.025</span><span class="p">];</span>
+<span class="n">tval</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="n">E_myrk2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="n">E_myrk3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="n">E_myrk4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="k">for</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">hvals</span>
+<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">myrk2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk3</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">myrk3</span><span class="p">);</span>
+<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_myrk4</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">myrk4</span><span class="p">);</span>
+<span class="w">    </span><span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">tval</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">));</span>
+<span class="w">    </span><span class="n">E_myrk2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">E_myrk2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_myrk2</span><span class="p">(</span><span class="n">idx</span><span class="p">))];</span>
+<span class="w">    </span><span class="n">E_myrk3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">E_myrk3</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_myrk3</span><span class="p">(</span><span class="n">idx</span><span class="p">))];</span>
+<span class="w">    </span><span class="n">E_myrk4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">E_myrk4</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_myrk4</span><span class="p">(</span><span class="n">idx</span><span class="p">))];</span>
+<span class="k">end</span>
 
-```matlab
-% Calculate solution for decreasing step lengths
-hvals = [0.4, 0.2, 0.1, 0.05, 0.025];
-tval = 2;
-E_myrk2 = [];
-E_myrk3 = [];
-E_myrk4 = [];
-for h = hvals
-    [t, y_myrk2] = solveIVP(f, tspan, y0, h, @myrk2);
-    [t, y_myrk3] = solveIVP(f, tspan, y0, h, @myrk3);
-    [t, y_myrk4] = solveIVP(f, tspan, y0, h, @myrk4);
-    [~, idx] = min(abs(tval - t));
-    E_myrk2 = [E_myrk2, abs(exact(tval) - y_myrk2(idx))];
-    E_myrk3 = [E_myrk3, abs(exact(tval) - y_myrk3(idx))];
-    E_myrk4 = [E_myrk4, abs(exact(tval) - y_myrk4(idx))];
-end
+<span class="c">% Output table of errors (for loop is used to group print statements)</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;|   t   |  myRK2   |  myRK4   |  myRK4   |&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;|:-----:|:--------:|:--------:|:--------:|&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">hvals</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;\n| %1.3f | %1.2e | %1.2e | %1.2e |&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">hvals</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">E_myrk2</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">E_myrk3</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">E_myrk4</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
 
-% Output table of errors (for loop is used to group print statements)
-for i = 1 : 1
-    fprintf(&#39;|   t   |  myRK2   |  myRK4   |  myRK4   |&#39;)
-    fprintf(&#39;|:-----:|:--------:|:--------:|:--------:|&#39;);
-    for n = 1 : length(hvals)
-        fprintf(&#39;\n| %1.3f | %1.2e | %1.2e | %1.2e |&#39;, hvals(n), E_myrk2(n), E_myrk3(n), E_myrk4(n))
-    end
-end
-
-% Plot errors on a loglog scale
-loglog(hvals, E_myrk2, &#39;ro-&#39;, MarkerFaceColor=&#39;r&#39;, LineWidth=2)
-hold on
-loglog(hvals, E_myrk3, &#39;bo-&#39;, MarkerFaceColor=&#39;b&#39;, LineWidth=2)
-loglog(hvals, E_myrk4, &#39;go-&#39;, MarkerFaceColor=&#39;g&#39;, LineWidth=2)
-hold off
-axis padded
-xlabel(&#39;$\log(h)$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
-ylabel(&#39;$\log(E(h))$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
-legend(&#39;myRK2&#39;, &#39;myRK3&#39;, &#39;myRK4&#39;, Location=&#39;southeast&#39;, FontSize=12)
+<span class="c">% Plot errors on a loglog scale</span>
+<span class="nb">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span><span class="w"> </span><span class="n">E_myrk2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ro-&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span><span class="w"> </span><span class="n">E_myrk3</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;bo-&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span><span class="w"> </span><span class="n">E_myrk4</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;go-&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
+<span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;$\log(h)$&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;$\log(E(h))$&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;myRK2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;myRK3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;myRK4&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&#39;southeast&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
-</pre></div>
+</div>
 </div>
 </section>
 </div>
-<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-6">
+<div class="solution admonition" id="_pages/A.2_ERK_solutions-solution-10">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="2.6_ERK_exercises.html#ch2-ex-rk23"> Exercise 2.11</a></p>
 <section id="solution-content">
@@ -1233,173 +1253,174 @@ legend(&#39;myRK2&#39;, &#39;myRK3&#39;, &#39;myRK4&#39;, Location=&#39;southeas
 </figure>
 <p>There were 26 successful steps and 3 failed steps.</p>
 <p>Code</p>
-<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># allows use of LaTeX in labels</span>
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-plt.rcParams[&#39;text.usetex&#39;] = True  # allows use of LaTeX in labels
 
+<span class="k">def</span> <span class="nf">solveIVP_SSC</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
 
-def solveIVP_SSC(f, tspan, y0, h, solver, tol=1e-4):
+    <span class="c1"># Define t and y arrays</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
+    <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
 
-    # Define t and y arrays
-    t = np.zeros(10000)
-    y = np.zeros((10000,len(y0)))
-    t[0] = tspan[0]
-    y[0,:] = y0
+    <span class="c1"># Solver loop</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
 
-    # Solver loop
-    n = 0
-    while t[n] &lt; tspan[-1]:
+        <span class="c1"># Ensure t does not exceed tmax</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
 
-        # Ensure t does not exceed tmax
-        h = min(h, tspan[-1] - t[n])
+        <span class="c1"># Calculate order p+1 and p solutions</span>
+        <span class="n">yp1</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:],</span> <span class="n">h</span><span class="p">)</span>
 
-        # Calculate order p+1 and p solutions
-        yp1, yp, order = solver(f, t[n], y[n,:], h)
-
-        # Determine whether step was successful or not
-        delta = np.max(np.abs(yp1 - yp))
-        if delta &lt; tol:
-            y[n+1,:] = yp1
-            t[n+1] = t[n] + h
-            n += 1
+        <span class="c1"># Determine whether step was successful or not</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yp1</span> <span class="o">-</span> <span class="n">yp</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">yp1</span>
+            <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
+            <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
         
-        # Calculate new value of h
-        h *= max(0.5, min(2, 0.9 * (tol / delta) ** (1 / (order + 1))))
+        <span class="c1"># Calculate new value of h</span>
+        <span class="n">h</span> <span class="o">*=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="p">(</span><span class="n">tol</span> <span class="o">/</span> <span class="n">delta</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))))</span>
 
-    return t[:n+1], y[:n+1,:]
-
-
-def rk23(f, t, y, h):
-    k1 = f(t, y)
-    k2 = f(t + 1/2 * h, y + 1/2 * h * k1)
-    k3 = f(t + h, y + h * (-k1 + 2 * k2))
-    y3 = y + h / 6 * (k1 + 4 * k2 + k3)
-    y2 = y + h * k2
-    return y3, y2, 2
+    <span class="k">return</span> <span class="n">t</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span>
 
 
-# Define ODE function and exact solution
-def f(t, y):
-    return t - y
+<span class="k">def</span> <span class="nf">rk23</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span><span class="p">))</span>
+    <span class="n">y3</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="n">k3</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k2</span>
+    <span class="k">return</span> <span class="n">y3</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="mi">2</span>
 
 
-def exact(t):
-    return t + 2 * np.exp(-t) - 1
+<span class="c1"># Define ODE function and exact solution</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">-</span> <span class="n">y</span>
 
 
-# Define IVP
-tspan = [0, 2]  # boundaries of the t domain
-y0 = [1]        # solution at the lower boundary
-h = 0.4         # step length
-tol = 1e-4      # accuracy tolerance
+<span class="k">def</span> <span class="nf">exact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
-# Calculate the solution to the IVP
-t, y = solveIVP_SSC(f, tspan, y0, h, rk23, tol)
 
-# Plot solutions
-t_exact = np.linspace(tspan[0], tspan[1], 200)
-y_exact = exact(t_exact)
-fig, ax = plt.subplots()
-plt.plot(t_exact, y_exact, &quot;k&quot;, label=&quot;Exact&quot;)
-plt.plot(t, y, &quot;bo-&quot;, label=&quot;RK23&quot;)
-plt.xlabel(&quot;$t$&quot;, fontsize=12)
-plt.ylabel(&quot;$y$&quot;, fontsize=12)
-plt.legend()
-plt.show()
+<span class="c1"># Define IVP</span>
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># boundaries of the t domain</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>        <span class="c1"># solution at the lower boundary</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span>         <span class="c1"># step length</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-4</span>      <span class="c1"># accuracy tolerance</span>
+
+<span class="c1"># Calculate the solution to the IVP</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">solveIVP_SSC</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">rk23</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
+
+<span class="c1"># Plot solutions</span>
+<span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">exact</span><span class="p">(</span><span class="n">t_exact</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK23&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{tab-item} MATLAB
-```matlab
-% Define ODE function and exact solution
-f = @(t, y) t - y;
-exact = @(t) t + 2 * exp(-t) - 1;
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-11">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define ODE function and exact solution</span>
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="n">exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
-% Define IVP parameters
-tspan = [0, 2];     % boundaries of the t domain
-y0 = 1;             % initial value of the solution
-h0 = 0.4;           % step length
-tol = 1e-4;         % accuracy tolerance
+<span class="c">% Define IVP parameters</span>
+<span class="n">tspan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span><span class="w">     </span><span class="c">% boundaries of the t domain</span>
+<span class="n">y0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">             </span><span class="c">% initial value of the solution</span>
+<span class="n">h0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">;</span><span class="w">           </span><span class="c">% step length</span>
+<span class="n">tol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-4</span><span class="p">;</span><span class="w">         </span><span class="c">% accuracy tolerance</span>
 
-% Calculate the solution to the IVP
-[t, y] = solveIVP_SSC(f, tspan, y0, h0, @rk23, tol);
+<span class="c">% Calculate the solution to the IVP</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solveIVP_SSC</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h0</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">rk23</span><span class="p">,</span><span class="w"> </span><span class="n">tol</span><span class="p">);</span>
 
-% Output number of successful steps
-fprintf(&quot;%0i successful steps&quot;, length(t) - 1)
+<span class="c">% Output number of successful steps</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;%0i successful steps&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 
-% Calculate exact solution for plotting
-texact = linspace(tspan(1), tspan(2), 200);
-yexact = exact(texact);
+<span class="c">% Calculate exact solution for plotting</span>
+<span class="n">texact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="n">yexact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">exact</span><span class="p">(</span><span class="n">texact</span><span class="p">);</span>
 
-% Plot solution
-plot(texact, yexact, &#39;k-&#39;, LineWidth=2)
-hold on
-plot(t, y, &#39;b-o&#39;, LineWidth=2, MarkerFaceColor=&#39;b&#39;)
-hold off
-axis padded
-xlabel(&#39;$t$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
-ylabel(&#39;$y$&#39;, FontSize=14, Interpreter=&#39;latex&#39;)
-legend(&#39;Exact&#39;, &#39;myRK2&#39;, Location=&#39;northwest&#39;, FontSize=12)
+<span class="c">% Plot solution</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">texact</span><span class="p">,</span><span class="w"> </span><span class="n">yexact</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k-&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;b-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
+<span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;$t$&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;$y$&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&#39;latex&#39;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Exact&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;myRK2&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&#39;northwest&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">12</span><span class="p">)</span>
 
-% ----------------------------------------------------------------------------
-function [t, y] = solveIVP_SSC(f, tspan, y0, h, solver, tol)
+<span class="c">% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP_SSC</span><span class="p">(</span>f, tspan, y0, h, solver, tol<span class="p">)</span>
 
-% Define t and y arrays
-t = zeros(10000);
-y = zeros(10000, length(y0));
-t(1) = tspan(1);
-y(1,:) = y0;
+<span class="c">% Define t and y arrays</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">));</span>
+<span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
 
-% Loop through the steps
-n = 1;
-while t(n) &lt; tspan(2)
-    
-    % Ensure t does not exceed tmax
-    h = min(h, tspan(2) - t(n));
+<span class="c">% Loop through the steps</span>
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c">% Ensure t does not exceed tmax</span>
+<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
 
-    % Calculate order p and p+1 solutions
-    [yp1, yp, p] = solver(f, t(n), y(n,:), h);
+<span class="w">    </span><span class="c">% Calculate order p and p+1 solutions</span>
+<span class="w">    </span><span class="p">[</span><span class="n">yp1</span><span class="p">,</span><span class="w"> </span><span class="n">yp</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:),</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 
-    % Determine whether the step was successful or not
-    delta = max(abs(yp1 - yp));
-    if delta &lt; tol
-        y(n+1,:) = yp1;
-        t(n+1) = t(n) + h;
-        n = n + 1;
-    end
+<span class="w">    </span><span class="c">% Determine whether the step was successful or not</span>
+<span class="w">    </span><span class="n">delta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yp1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yp</span><span class="p">));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">yp1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span>
 
-    % Calculate new value of h
-    h = h * max(0.5, min(2, 0.9 * (tol / delta) ^ (1 / (p + 1))));
+<span class="w">    </span><span class="c">% Calculate new value of h</span>
+<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">tol</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))));</span>
 
-end
+<span class="k">end</span>
 
-% Remove unused entries from t and y
-t(n+1:end) = [];
-y(n+1:end,:) = [];
+<span class="c">% Remove unused entries from t and y</span>
+<span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
 
-% Print number of successful and failed steps
-fprintf(&quot;%1i successful steps\n%1i failed steps&quot;, nsucc, nfail)
+<span class="c">% Print number of successful and failed steps</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;%1i successful steps\n%1i failed steps&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nsucc</span><span class="p">,</span><span class="w"> </span><span class="n">nfail</span><span class="p">)</span>
 
-end
+<span class="k">end</span>
 
-% ----------------------------------------------------------------------------
-function [y3, y2, order] = rk23(f, t, y, h)
+<span class="c">% ----------------------------------------------------------------------------</span>
+<span class="k">function</span><span class="w"> </span><span class="nf">[y3, y2, order] = rk23</span><span class="p">(</span>f, t, y, h<span class="p">)</span>
 
-k1 = f(t, y);
-k2 = f(t + 1/2 * h, y + 1/2 * h * k1);
-k3 = f(t + h, y + h * (-k1 + 2 * k2));
-y3 = y + h * (1/6 * k1 + 2/3 * k2 + 1/6 * k3);
-y2 = y + h * k2;
-order = 2
+<span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
+<span class="n">k3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">));</span>
+<span class="n">y3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="p">);</span>
+<span class="n">y2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">;</span>
+<span class="n">order</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span>
 
-end
+<span class="k">end</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
-</pre></div>
+</div>
 </div>
 </section>
 </div>

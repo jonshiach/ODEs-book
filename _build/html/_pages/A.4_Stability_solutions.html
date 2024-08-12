@@ -530,63 +530,65 @@ MATLAB</label><div class="sd-tab-content docutils">
 \end{align*}\]</div>
 <p>so <span class="math notranslate nohighlight">\(E(y) \geq 0\)</span> and the second condition for A-stability is satisfied. Since both conditions are satisfied then this method is A-stable</p>
 <p>Code</p>
-<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
-```python
-import sympy as sp
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 
-# Define numerator and denominator functions
-def P(z):
-    return (I - z * A + z * ebT).det()
+<span class="c1"># Define numerator and denominator functions</span>
+<span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">A</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">ebT</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
 
-def Q(z):
-    return (I - z * A).det()
+<span class="k">def</span> <span class="nf">Q</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
 
-# Define RK method
-A = sp.Matrix([[sp.Rational(7,24), -sp.Rational(1,24)], [sp.Rational(13,24), sp.Rational(5,24)]])
-ebT = sp.Matrix([[sp.Rational(1,2), 0], [0, sp.Rational(1,2)]])
-I = sp.eye(2)
+<span class="c1"># Define RK method</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">)],</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">24</span><span class="p">)]])</span>
+<span class="n">ebT</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)]])</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-# Calculate R(z)
-z, y = sp.symbols(&#39;z, y&#39;)
-R = P(z) / Q(z)
-print(&quot;R(z) = &quot;)
-display(R)
+<span class="c1"># Calculate R(z)</span>
+<span class="n">z</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z, y&#39;</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R(z) = &quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 
-# Check roots of Q have positive real parts
-print(&#39;roots of Q(z) = &#39;)
-display(sp.solve(Q(z)))
+<span class="c1"># Check roots of Q have positive real parts</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;roots of Q(z) = &#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)))</span>
 
-# Check E(y) &gt;= 0
-E = Q(1j * y) * Q(-1j * y) - P(1j * y) * P(-1j * y)
-print(&#39;E(y) = &#39;)
-display(sp.simplify(sp.nsimplify(E)))
+<span class="c1"># Check E(y) &gt;= 0</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">Q</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">P</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;E(y) = &#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="n">E</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{tab-item} MATLAB
-```matlab
-% Define IRK method
-A = [7/24, -1/24 ; 13/24, 5/24];
-ebT = [1/2, 0 ; 0, 1/2];
-I = eye(2);
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define IRK method</span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="o">/</span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">13</span><span class="o">/</span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">/</span><span class="mi">24</span><span class="p">];</span>
+<span class="n">ebT</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+<span class="n">I</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 
-% Calculate R(z)
-syms z y
+<span class="c">% Calculate R(z)</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">z</span><span class="w"> </span><span class="s">y</span>
 
-P = @(z) det(I - z * A + z * ebT);
-Q = @(z) det(I - z * A);
+<span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nb">det</span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ebT</span><span class="p">);</span>
+<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nb">det</span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
 
-Rz = P(z) / Q(z)
+<span class="n">Rz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 
-% Check roots of Q have positive real parts
-solve(Q(z) == 0)
+<span class="c">% Check roots of Q have positive real parts</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 
-% Check E(y) &gt;= 0
-E = Q(1i * y) * Q(-1i * y) - P(1i * y) * P(-1i * y)
+<span class="c">% Check E(y) &gt;= 0</span>
+<span class="n">E</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span>1<span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="o">-</span>1<span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">P</span><span class="p">(</span>1<span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="o">-</span>1<span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
-</pre></div>
+</div>
 </div>
 </section>
 </div>
@@ -613,31 +615,31 @@ E = Q(1i * y) * Q(-1i * y) - P(1i * y) * P(-1i * y)
 <img alt="../_images/7223602d4eaab3b1bd749bb13cabe23d2d01accde97c4f4f451c94fc5c19ea71.png" src="../_images/7223602d4eaab3b1bd749bb13cabe23d2d01accde97c4f4f451c94fc5c19ea71.png" />
 </figure>
 <p>Code</p>
-<div class="highlight-::{tab-set} notranslate"><div class="highlight"><pre><span></span>```:{tab-item} Python
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Python</label><div class="sd-tab-content docutils">
+<p>Determine stability function</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 
-Determine stability function
+<span class="c1"># Define RK method</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">ebT</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]])</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-```python
-import sympy as sp
+<span class="c1"># Define numerator and denominator functions</span>
+<span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">A</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">ebT</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
 
-# Define RK method
-A = sp.Matrix([[sp.Rational(1,3), 0], [1, 0]])
-ebT = sp.Matrix([[sp.Rational(3,4), 0], [0, sp.Rational(1,4)]])
-I = sp.eye(2)
-
-# Define numerator and denominator functions
-def P(z):
-    return (I - z * A + z * ebT).det()
-
-def Q(z):
-    return (I - z * A).det()
+<span class="k">def</span> <span class="nf">Q</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
 
 
-# Calculate R(z)
-z, y = sp.symbols(&#39;z, y&#39;)
-Rz = P(z) / Q(z)
-print(&quot;R(z) = &quot;)
-display(sp.nsimplify(Rz))
+<span class="c1"># Calculate R(z)</span>
+<span class="n">z</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z, y&#39;</span><span class="p">)</span>
+<span class="n">Rz</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R(z) = &quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">nsimplify</span><span class="p">(</span><span class="n">Rz</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Plot region of absolute stability</p>
@@ -665,23 +667,23 @@ display(sp.nsimplify(Rz))
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>
-```:{tab-item} MATLAB
-Determine stability function
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+MATLAB</label><div class="sd-tab-content docutils">
+<p>Determine stability function</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define IRK method</span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<span class="n">ebT</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">];</span>
+<span class="n">I</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 
-```matlab
-% Define IRK method
-A = [1/3, 0 ; 1, 0];
-ebT = [3/4, 0 ; 0, 1/4];
-I = eye(2);
+<span class="c">% Calculate R(z)</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">z</span><span class="w"> </span><span class="s">y</span>
 
-% Calculate R(z)
-syms z y
+<span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nb">det</span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ebT</span><span class="p">);</span>
+<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nb">det</span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
 
-P = @(z) det(I - z * A + z * ebT);
-Q = @(z) det(I - z * A);
-
-Rz = P(z) / Q(z)
+<span class="n">Rz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Plot region of absolute stability</p>
@@ -703,25 +705,25 @@ Rz = P(z) / Q(z)
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;$\mathrm{Im}(z)$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-: notranslate"><div class="highlight"><pre><span></span>```::
-</pre></div>
+</div>
 </div>
 </section>
 </div>
-<div class="highlight-:{solution} notranslate"><div class="highlight"><pre><span></span>
-Calculate the eigenvalues of the coefficient matrix
+<div class="solution admonition" id="_pages/A.4_Stability_solutions-solution-3">
 
-\begin{align*}
+<p class="admonition-title">Solution to<a class="reference internal" href="4.5_Stability_exercises.html#ch4-ex-stiffness-ratio"> Exercise 4.4</a></p>
+<section id="solution-content">
+<p>Calculate the eigenvalues of the coefficient matrix</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
     0 &amp;= \begin{vmatrix} -80.6 - \lambda &amp; 119.4 \\ 79.6 &amp; -120.4 - \lambda \end{vmatrix}
     = \lambda^2 + 201 \lambda + 200, \\
     \therefore \lambda &amp;= \frac{-201 \pm 199}{2} = -200, -1
-\end{align*}
-
-so the stiffness ratio is $S = 200$. The Euler method is stable for $h\lambda \in [-2, 0]$ so the maximum step length is 
-
-$$h = \frac{-2}{\min(-200, -1)} = \frac{-2}{-200} = 0.01.$$
-```:
-</pre></div>
+\end{align*}\]</div>
+<p>so the stiffness ratio is <span class="math notranslate nohighlight">\(S = 200\)</span>. The Euler method is stable for <span class="math notranslate nohighlight">\(h\lambda \in [-2, 0]\)</span> so the maximum step length is</p>
+<div class="math notranslate nohighlight">
+\[h = \frac{-2}{\min(-200, -1)} = \frac{-2}{-200} = 0.01.\]</div>
+</section>
 </div>
 </section>
 
