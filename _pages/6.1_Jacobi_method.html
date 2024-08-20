@@ -481,7 +481,7 @@ document.write(`
 </section>
 </div><p>As <span class="math notranslate nohighlight">\(\vec{x}^{(k)} \to \vec{x}\)</span>, <span class="math notranslate nohighlight">\(\vec{r} \to 0\)</span> so we can use the following convergence criteria</p>
 <div class="math notranslate nohighlight">
-\[  \max(|\vec{r}|) &lt; tol, \]</div>
+\[  \max(\|\vec{r}\|) &lt; tol, \]</div>
 <p>where <span class="math notranslate nohighlight">\(tol\)</span> is some small number. The smaller the value of <span class="math notranslate nohighlight">\(tol\)</span> the closer <span class="math notranslate nohighlight">\(\vec{x}^{(k)}\)</span> is to the exact solution but of course this will require more iterations. In practice a compromise is made between the accuracy required and the computational resources available. Typical values of <span class="math notranslate nohighlight">\(tol\)</span> are around <span class="math notranslate nohighlight">\(10^{-4}\)</span> or <span class="math notranslate nohighlight">\(10^{-6}\)</span>.</p>
 <div class="proof example admonition" id="jacobi-method-example">
 <p class="admonition-title"><span class="caption-number">Example 6.1 </span></p>
@@ -523,7 +523,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \begin{pmatrix} -0.5 \\ -2.0 \\ 3.5 \end{pmatrix} =
     \begin{pmatrix} 6.0 \\ 5.0 \\ -2.0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(1)} |) = 6.0 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(\| \vec{r}^{(1)} \|) = 6.0 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     x_{1}^{(2)} &amp;= \frac{1}{4} \left( -2 - 3 (-0.75) \right) = 1.0, \\
@@ -539,14 +539,14 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \begin{pmatrix} 1.0 \\ -0.75 \\ 3.0 \end{pmatrix} =
     \begin{pmatrix} -3.75 \\ -5.0 \\ 1.25 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(2)} |) = 5.0 &gt; 10^{-4}\)</span> we continue iterating. The Jacobi method was iterated until <span class="math notranslate nohighlight">\(\max(|\vec{r}|) &lt; 10^{-4}\)</span> and a selection of the iteration values are given in the table below.</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(\| \vec{r}^{(2)} \|) = 5.0 &gt; 10^{-4}\)</span> we continue iterating. The Jacobi method was iterated until <span class="math notranslate nohighlight">\(\max(\|\vec{r}\|) &lt; 10^{-4}\)</span> and a selection of the iteration values are given in the table below.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
 <th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
 <th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
 <th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\max(|\vec{r}|)\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\max(\|\vec{r}\|)\)</span></p></th>
 </tr>
 </thead>
 <tbody>

@@ -451,7 +451,7 @@ document.write(`
 <li><p>Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(A_{old} \gets A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(A \gets R Q\)</span></p></li>
-<li><p>If <span class="math notranslate nohighlight">\(\max(\operatorname{diag}(|A - A_{old}|)) &lt; tol\)</span></p>
+<li><p>If <span class="math notranslate nohighlight">\(\max(\operatorname{diag}(\|A - A_{old}\|)) &lt; tol\)</span></p>
 <ul>
 <li><p>Break</p></li>
 </ul>
@@ -540,11 +540,11 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <p class="sd-card-text">Calculate the maximum difference between the diagonal elements of <span class="math notranslate nohighlight">\(A_1\)</span> and <span class="math notranslate nohighlight">\(A_2\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \max(|\operatorname{diag}(A_2 - A_1)|) 
-    &amp;= \max \left ( \left|
+    \max(\|\operatorname{diag}(A_2 - A_1)\|) 
+    &amp;= \max \left ( \left\|
         \begin{pmatrix} 5.3796 \\ -0.3796 \end{pmatrix} -
         \begin{pmatrix} 5.2 \\ -0.2 \end{pmatrix}
-    \right| \right) \\
+    \right\| \right) \\
     &amp;= \max \begin{pmatrix}  0.1796 \\ 0.1796 \end{pmatrix} = 0.1796,
 \end{align*} \end{split}\]</div>
 <p class="sd-card-text">since <span class="math notranslate nohighlight">\(0.1796 &gt; 10^{-4}\)</span> we need to continue to iterate. The estimates of the eigenvalues obtained by iterating to an accuracy tolerance of <span class="math notranslate nohighlight">\(10^{-4}\)</span> are tabulated below.</p>
@@ -597,7 +597,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
-        <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">qrhh</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">qr_householder</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
         <span class="n">A</span><span class="p">,</span> <span class="n">Aold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">Q</span><span class="p">),</span> <span class="n">A</span>
         <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">Aold</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
             <span class="k">break</span>
@@ -612,7 +612,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>lambda<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">eigvals</span><span class="p">(</span>A, tol<span class="p">)</span>
 
 <span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
-<span class="w">    </span><span class="p">[</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">qrhh</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="w">    </span><span class="p">[</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">qr_householder</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
 <span class="w">    </span><span class="n">Aold</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
 <span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Aold</span><span class="p">)))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
