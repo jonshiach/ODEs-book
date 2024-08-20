@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>4. Stability &#8212; Runge-Kutta Methods</title>
+    <title>5. Boundary Value Problems &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -66,13 +66,13 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/4.0_Stability';</script>
-    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/4.0_Stability.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/5.0_BVPs';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/5.0_BVPs.html" />
     <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.2. Stability functions" href="4.1_Stability_functions.html" />
-    <link rel="prev" title="3.4. Implicit Runge-Kutta methods exercises" href="3.4_IRK_exercises.html" />
+    <link rel="next" title="5.2. The shooting method" href="5.1_Shooting_method.html" />
+    <link rel="prev" title="4.5. Stability exercises" href="4.5_Stability_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,14 +189,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Stability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. Boundary Value Problems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
@@ -290,7 +290,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/_pages/4.0_Stability.ipynb" target="_blank"
+      <li><a href="../_sources/_pages/5.0_BVPs.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -372,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Stability</h1>
+    <h1>Boundary Value Problems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -382,11 +382,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiffness">4.1. Stiffness</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stiffness-ratio">4.1.1. Stiffness ratio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-stiff-systems">4.1.2. Solving stiff systems</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existence-and-uniqueness-of-solutions-to-boundary-value-problems">5.1. Existence and uniqueness of solutions to boundary value problems</a></li>
 </ul>
             </nav>
         </div>
@@ -398,83 +394,82 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="stability">
-<span id="stability-chapter"></span><h1><span class="section-number">4. </span>Stability<a class="headerlink" href="#stability" title="Permalink to this heading">#</a></h1>
-<p>The stability of a numerical solver for ordinary differential equations refers to its ability to produce accurate and reliable solutions over a long interval, without the computed values of the solution becoming unbounded or oscillatory. In other words, a stable numerical solver for ODEs is one that does not produce solutions that blow up or oscillate wildly as time goes on.</p>
-<p>For example, consider the Euler method solution to the following initial value problem using step lengths of <span class="math notranslate nohighlight">\(h = 0.25\)</span> and <span class="math notranslate nohighlight">\(h = 0.125\)</span></p>
-<div class="math notranslate nohighlight">
-\[ y' = -15y, \qquad t \in [0, 1], \qquad y(0) = 1. \]</div>
-<p>The exact solution for this initial value problem is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
-<figure class="align-default" id="stability-plot-1-figure" style="width: 600px">
-<img alt="../_images/ec990aa19f2e790cfa373d4a503bab82bb3e057e3500abeaefc8aebe799d6765.png" src="../_images/ec990aa19f2e790cfa373d4a503bab82bb3e057e3500abeaefc8aebe799d6765.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> and <span class="math notranslate nohighlight">\(h=0.125\)</span>.</span><a class="headerlink" href="#stability-plot-1-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution where the numerical solution remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution which is unbounded. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="1.3_Error_Analysis.html#lte-definition">local truncation error</a>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="1.3_Error_Analysis.html#gte-definition">global truncation error</a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
-<div class="proof definition admonition" id="stability-definition">
-<p class="admonition-title"><span class="caption-number">Definition 4.1 </span> (Stability)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="boundary-value-problems">
+<span id="bvp-chapter"></span><h1><span class="section-number">5. </span>Boundary Value Problems<a class="headerlink" href="#boundary-value-problems" title="Permalink to this heading">#</a></h1>
+<p>The ODEs that we have encountered so far are initial value problems where we know the solution of the ODE at the lower boundary of the <span class="math notranslate nohighlight">\(t\)</span> domain. Another type of problem are <strong>Boundary Value Problems (BVP)</strong> which is where the solution at both boundaries of the <span class="math notranslate nohighlight">\(t\)</span> domain are known. Here we will be looking at solving two-point boundary value problems based on second-order ODEs.</p>
+<div class="proof definition admonition" id="bvp-definition">
+<p class="admonition-title"><span class="caption-number">Definition 5.1 </span> (General two-point boundary value problem)</p>
 <section class="definition-content" id="proof-content">
-<p>If <span class="math notranslate nohighlight">\(\tau_n\)</span> is the local truncation error of a numerical method defined by</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \tau_n = |y_n - \tilde{y}_n|,
-\end{align*}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\tilde{y}_n\)</span> is the exact solution and <span class="math notranslate nohighlight">\(y_n\)</span> the numerical approximation then the method is considered <strong>stable</strong> if</p>
-<div class="math notranslate nohighlight" id="equation-stability-equation">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-stability-equation" title="Permalink to this equation">#</a></span>\[ |\tau_{n+1} - \tau_n | \leq 1, \]</div>
-<p>for all steps of the method. If a method is not stable then it is <strong>unstable</strong>.</p>
+<p>A two-point boundary value problem is a second-order ODE where the solutions at the lower and upper boundaries of the domain are known</p>
+<div class="math notranslate nohighlight" id="equation-bvp-equation">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-bvp-equation" title="Permalink to this equation">#</a></span>\[y'' = f(t,y),\qquad  t\in [t_{\min}, t_{\max}],\qquad y(t_{\min}) = \alpha ,\qquad y(t_{\max}) = \beta,\]</div>
+<p>for some known values <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
 </section>
-</div><section id="stiffness">
-<span id="stiffness-section"></span><h2><span class="section-number">4.1. </span>Stiffness<a class="headerlink" href="#stiffness" title="Permalink to this heading">#</a></h2>
-<p>The stability of a numerical solver for ODEs is closely related to the stiffness of the ODEs being solved. Stiff ODEs are those where the solution varies over several orders of magnitude or changes rapidly over a small interval, compared to the domain of the ODEs. In such cases, standard numerical solvers may produce inaccurate or unstable solutions if the time step used in the computation is not small enough to capture the fast dynamics of the problem.</p>
-<p>There is no mathematical definition of what makes an ODE stiff, however, a useful description is provided by <span id="id1">Lambert [<a class="reference internal" href="D_References.html#id2" title="J.D. Lambert. Numerical Methods for Ordinary Differential Systems: The Initial Value Problem. Wiley, 1991.">1991</a>]</span></p>
-<blockquote>
-<div><p><em>If a numerical method with a finite region of absolute stability, applied to a system with any initial conditions, is forced to use in a certain interval of integration a step length which is excessively small in relation to the smoothness of the exact solution in that interval, then the system is said to be stiff in that interval.</em></p>
-</div></blockquote>
-<section id="stiffness-ratio">
-<h3><span class="section-number">4.1.1. </span>Stiffness ratio<a class="headerlink" href="#stiffness-ratio" title="Permalink to this heading">#</a></h3>
-<p>Stiffness is not strictly defined but we can attempt to define a metric to help us determine whether an ODE is stiff.  Consider a system of linear ODEs for the form</p>
+</div><section id="existence-and-uniqueness-of-solutions-to-boundary-value-problems">
+<span id="existence-and-uniqueness-of-bvp-solutions-section"></span><h2><span class="section-number">5.1. </span>Existence and uniqueness of solutions to boundary value problems<a class="headerlink" href="#existence-and-uniqueness-of-solutions-to-boundary-value-problems" title="Permalink to this heading">#</a></h2>
+<p>If an initial value problem has a solution it will be unique for a particular initial value. This is not true for boundary value problems which can have a unique solution, no solution or an infinite number of solutions. Consider the following boundary value problem</p>
 <div class="math notranslate nohighlight">
-\[ \vec{y}' = A \vec{y}, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\vec{y} = (y_1, y_2, \ldots, y_n)^T\)</span> and <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix of constants. Let <span class="math notranslate nohighlight">\(V = (\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n)\)</span> be a matrix containing the <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">eigenvalues</a> of <span class="math notranslate nohighlight">\(A\)</span> then</p>
+\[ y'' + 4y = 0, \qquad y(0) = 1, \qquad y\left(\dfrac{\pi}{4}\right) = 2. \]</div>
+<p>The general solution to the ODE <span class="math notranslate nohighlight">\(y'' + 4y = 0\)</span> is</p>
 <div class="math notranslate nohighlight">
-\[V = (A \vec{v}_1, A \vec{v}_2, \ldots, A \vec{v}_n).\]</div>
-<p>Since <span class="math notranslate nohighlight">\(A \vec{v}_i = \lambda_i \vec{v}_1\)</span> where <span class="math notranslate nohighlight">\(\lambda_i\)</span> is the eigenvalue corresponding to the eigenvector <span class="math notranslate nohighlight">\(\vec{v}_i\)</span> then</p>
-<div class="math notranslate nohighlight">
-\[ AV = (\lambda_1 \vec{v}_1, \lambda_2 \vec{v}_2, \ldots, \lambda_n \vec{v}_n) = V \Lambda \]</div>
-<p>where <span class="math notranslate nohighlight">\(\Lambda\)</span> is a diagonal matrix of the eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> (take care to make the distinction between <span class="math notranslate nohighlight">\(\Lambda\)</span> which is the the uppercase <span class="math notranslate nohighlight">\(\lambda\)</span> character and A). Multiplying both sides by <span class="math notranslate nohighlight">\(V^{-1}\)</span> gives</p>
-<div class="math notranslate nohighlight">
-\[ V^{-1} A V = \Lambda, \]</div>
-<p>which means that <span class="math notranslate nohighlight">\(V^{-1} A\)</span> is a linear transformation that that <strong>diagonalises</strong> the matrix <span class="math notranslate nohighlight">\(A\)</span>. Let <span class="math notranslate nohighlight">\(\vec{u} = V^{-1} A \vec{y}\)</span> then we have the transformed system <span class="math notranslate nohighlight">\(\vec{u}' = \Lambda \vec{u}\)</span> which is</p>
+\[ y = c_1 \cos(2 t) + c_2 \sin(2 t), \]</div>
+<p>so substituting the boundary values we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \begin{pmatrix} u_1' \\ u_2' \\ \vdots \\ u_n' \end{pmatrix} = 
-    \begin{pmatrix}
-        \lambda_1 \\
-        &amp; \lambda_2 \\
-        &amp;&amp; \ddots \\
-        &amp;&amp;&amp; \lambda_n
-    \end{pmatrix}
-    \begin{pmatrix} u_1 \\ u_2 \\ \vdots \\ u_n \end{pmatrix} =
-    \begin{pmatrix} \lambda_1 u_1 \\ \lambda_2 u_2 \\ \vdots \\ \lambda_n u_n \end{pmatrix}.
+    1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
+    2 &amp;= c_1 \cos\left(2\left(\frac{\pi}{4}\right)\right) + c_2 \sin\left(2\left(\frac{\pi}{4}\right)\right) = c_2.
 \end{align*} \end{split}\]</div>
-<p>Each equation in the transformed system has the solution <span class="math notranslate nohighlight">\(u_i = e^{\lambda_i t}\)</span> so the fastest growing solution will be for the equation with the largest value of <span class="math notranslate nohighlight">\(\lambda\)</span> and the slowest growing solution will be for the equation with the smallest value of <span class="math notranslate nohighlight">\(\lambda\)</span>. Stiffness occurs when there is a large variation in the solutions of equations in a system so we can gauge this by calculating the ratio between the largest and smallest eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
-<div class="proof definition admonition" id="stiffness-ratio-definition">
-<p class="admonition-title"><span class="caption-number">Definition 4.2 </span> (Stiffness ratio)</p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>stiffness ratio</strong> for a system of ODEs of the form <span class="math notranslate nohighlight">\(\vec{y}' = A \vec{y}\)</span> is</p>
+<p>Here we can determine the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> so this boundary value problem has the unique solution</p>
 <div class="math notranslate nohighlight">
-\[ S = \frac{\max_i(|\lambda_i|)}{\min_i(|\lambda_i|)} \]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda_i\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+\[ \begin{align*}
+    y = \cos(2t) + 2\sin(2t).
+\end{align*} \]</div>
+<p>Now consider the boundary value problem</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    y'' + 4y = 0, \qquad y(0) = 1, \qquad y(\pi) = 1.
+\end{align*} \]</div>
+<p>and substituting the boundary values we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
+    1 &amp;= c_1 \cos(2\pi) + c_2 \sin(2\pi) = c_1.
+\end{align*} \end{split}\]</div>
+<p>Here we have a solution for <span class="math notranslate nohighlight">\(c_1\)</span> but we cannot determine the value of <span class="math notranslate nohighlight">\(c_2\)</span> so the solution to the boundary value problem is</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    y = \cos(2t) + c_2 \sin(2t),
+\end{align*} \]</div>
+<p>where <span class="math notranslate nohighlight">\(c_2\)</span> can be any value. So we have infinitely many solutions. Finally consider the boundary value problem</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    y'' + 4y = 0, \qquad y(0) = 1, \qquad y(\pi) = 2.
+\end{align*} \]</div>
+<p>and substituting the boundary values we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
+    2 &amp;= c_1 \cos(2\pi) + c_2 \sin(2\pi) = c_1.
+\end{align*} \end{split}\]</div>
+<p>Here we have <span class="math notranslate nohighlight">\(c_1 = 1\)</span> and <span class="math notranslate nohighlight">\(c_2 = 2\)</span> which is a contradiction so this boundary value problem does not have a solution.</p>
+<div class="proof theorem admonition" id="theorem-1">
+<p class="admonition-title"><span class="caption-number">Theorem 5.1 </span> (Uniqueness of the solution to boundary value problems)</p>
+<section class="theorem-content" id="proof-content">
+<p>A linear boundary value problem of the form</p>
+<div class="math notranslate nohighlight" id="equation-bvp-uniqueness-equation">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-bvp-uniqueness-equation" title="Permalink to this equation">#</a></span>\[ y'' = p(t)y' + q(t)y + r(t), \qquad t \in [t_{\min},t_{\max}], \qquad y(t_{\min}) = \alpha , \qquad y(t_{\max}) = \beta , \]</div>
+<p>where <span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are some functions of <span class="math notranslate nohighlight">\(t\)</span> then it has a unique solution if the following are satisfied</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are continuous on <span class="math notranslate nohighlight">\([t_{\min}, t_{\max}]\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(q(t) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t\in [t_{\min},t_{\max}]\)</span>.</p></li>
+</ul>
 </section>
-</div><p>If the stiffness ratio of a system of ODEs is large<a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> then the system is considered to be stiff.</p>
-<div class="proof example admonition" id="example-2">
-<p class="admonition-title"><span class="caption-number">Example 4.1 </span></p>
+</div><div class="proof example admonition" id="bvp-uniqueness-example">
+<p class="admonition-title"><span class="caption-number">Example 5.1 </span></p>
 <section class="example-content" id="proof-content">
-<p>Determine the stiffness ratio of the following ODE</p>
+<p>Show that the following boundary value problem has a unique solution</p>
 <div class="math notranslate nohighlight">
-\[ y'' + 1001 y' + 1000 y = 0.\]</div>
+\[ y'' = (t^3 +5)y + \sin (t), \qquad t \in [0,1], \qquad y(0) = 0, \qquad y(1) = 1. \]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution (click to show)<div class="sd-summary-down docutils">
@@ -482,52 +477,17 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Rewriting the second-order ODE as a system of two first-order ODEs</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    y_1' &amp;= y_2, \\
-    y_2' &amp;= -1000 y_1 - 1001 y_2.
-\end{align*}\]</div>
-<p class="sd-card-text">which can be written as the matrix equation</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \begin{pmatrix} y_1' \\ y_2' \end{pmatrix} =
-    \begin{pmatrix} 0 &amp; 1 \\ -1000 &amp; -1001 \end{pmatrix}
-    \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}.
-\end{align*}\]</div>
-<p class="sd-card-text">Calculating the eigenvalues of the coefficient matrix</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    0 &amp;= \begin{vmatrix} -\lambda &amp; 1 \\ -1000 &amp; -1001 - \lambda \end{vmatrix} 
-    = \lambda^2 + 1001 \lambda + 1000 = (\lambda + 1000) (\lambda + 1),
-\end{align*}\]</div>
-<p class="sd-card-text">so the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = -1000\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = -1\)</span>. The stiffness ratio is</p>
+<p class="sd-card-text">Comparing this boundary value problem to equation <a class="reference internal" href="#equation-bvp-uniqueness-equation">(5.2)</a> we have</p>
 <div class="math notranslate nohighlight">
-\[S = \frac{|-1000|}{|-1|} = 1000.\]</div>
-<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(S = 1000\)</span> is not too large then this system is not considered to be stiff. For practical problems the stiffness ration of <span class="math notranslate nohighlight">\(10^{6}\)</span> can be common.</p>
+\[\begin{split} \begin{align*}
+    p(t) &amp;= 0,\\
+    q(t) &amp;= t^3 + 5,\\
+    r(t) &amp;= \sin(t),
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">which are all continuous on <span class="math notranslate nohighlight">\([0,1]\)</span> and <span class="math notranslate nohighlight">\(q(t)\geq \)</span> for all <span class="math notranslate nohighlight">\(t\in [0,1]\)</span> so this boundary value problem has a unique solution.</p>
 </div>
 </details></section>
 </div></section>
-<section id="solving-stiff-systems">
-<h3><span class="section-number">4.1.2. </span>Solving stiff systems<a class="headerlink" href="#solving-stiff-systems" title="Permalink to this heading">#</a></h3>
-<p>Different ODE solvers have different stability properties and are stable over larger values of <span class="math notranslate nohighlight">\(h\)</span>. For example the <a href="https://en.wikipedia.org/wiki/Backward_Euler_method" target="_blank">implicit Euler method</a> is an A-stable method meaning that it is stable for any value of <span class="math notranslate nohighlight">\(h\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[ y_{n+1} = y_n + h f(t_{n+1}, y_{n+1}) \]</div>
-<p>A comparison of the Euler and implicit Euler methods used to solve the same initial value problem as before is shown in <a class="reference internal" href="#stability-plot-2-figure"><span class="std std-numref">Fig. 4.2</span></a> where the implicit Euler method solutions remain bounded despite using the same step length.</p>
-<figure class="align-default" id="stability-plot-2-figure" style="width: 600px">
-<img alt="../_images/913c329d5552a9f0c7a9e8bae2e7874fc68a4c7d144903025ca42e5d520805bc.png" src="../_images/913c329d5552a9f0c7a9e8bae2e7874fc68a4c7d144903025ca42e5d520805bc.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler and implicit Euler methods with <span class="math notranslate nohighlight">\(h=0.25\)</span>.</span><a class="headerlink" href="#stability-plot-2-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>So if we were constrained with using a step length of <span class="math notranslate nohighlight">\(h=0.25\)</span> then we could choose the implicit Euler method to solve this initial value problem.</p>
-<hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>What constitutes “large” is vague and subjective. As a rule of thumb if <span class="math notranslate nohighlight">\(S\)</span> is in the hundreds or greater we can consider the system to be stiff.</p>
-</aside>
-</section>
-</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -564,20 +524,20 @@ Solution (click to show)<div class="sd-summary-down docutils">
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="3.4_IRK_exercises.html"
+       href="4.5_Stability_exercises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.4. </span>Implicit Runge-Kutta methods exercises</p>
+        <p class="prev-next-title"><span class="section-number">4.5. </span>Stability exercises</p>
       </div>
     </a>
     <a class="right-next"
-       href="4.1_Stability_functions.html"
+       href="5.1_Shooting_method.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.2. </span>Stability functions</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>The shooting method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -599,11 +559,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiffness">4.1. Stiffness</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stiffness-ratio">4.1.1. Stiffness ratio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-stiff-systems">4.1.2. Solving stiff systems</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existence-and-uniqueness-of-solutions-to-boundary-value-problems">5.1. Existence and uniqueness of solutions to boundary value problems</a></li>
 </ul>
   </nav></div>
 
