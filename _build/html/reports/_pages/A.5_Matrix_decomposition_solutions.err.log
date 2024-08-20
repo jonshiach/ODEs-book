@@ -1,0 +1,123 @@
+Traceback (most recent call last):
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/55093290/anaconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from functions import *
+import sympy as sp
+
+def lu_latex(A):
+    n = A.shape[0]
+    L, U = sp.eye(n), sp.zeros((n, n))
+    for j in range(n):
+        for i in range(n):
+            sum_ = 0
+            if i <= j:
+                for k in range(i):
+                    sum_ += L[i,k] * U[k,j]
+        
+                U[i,j] = A[i,j] - sum_   
+            
+            else:         
+                for k in range(j):
+                    sum_ += L[i,k] * U[k,j]
+                    
+                L[i,j] = (A[i,j] - sum_) / U[j,j]
+    
+    return L, U
+
+    
+# (a) 
+labels = ['a']
+A = [sp.Matrix([[2, 3, -1], [4, 9, -1], [0, 3, 2]])]
+b = [sp.Matrix([4, 18, 11])]
+
+# (b)
+labels.append('b')
+A.append(sp.Matrix([[3, 9, 5], [1, 2, 2], [2, 4, 5]]))
+b.append(sp.Matrix([20, 3, 4]))
+
+# (c)
+labels.append('c')
+A.append(sp.Matrix([[1, 0, 3, 2], [3, -2, 5, 1], [4, -1, -2, -3], [0, 2, 0, 3]]))
+b.append(sp.Matrix([21, 28, -12, 13]))
+
+# (d)
+labels.append('d')
+A.append(sp.Matrix([[1, 5, 2, 2], [-2, -4, 2, 0], [3, 1, -2, -1], [-3, -3, 4, -1]]))
+b.append(sp.Matrix([-10, 10, -2, 4]))
+
+# Calculate solutions
+string = ""
+for i in range(1):
+
+    # Calculate LU decomposition
+    L, U = lu_latex(A[i])
+
+    # Solve system
+    y = forward_substitution(L, b[i])
+    x = back_substitution(U, y)
+
+    # Generate LaTeX output
+    string += f"({labels[i]}) Calculate LU decomposition of the coefficient matrix $A = {sp.latex(A[i], mat_delim='(', mat_str='matrix')}$\n\n"
+    string += r"$$ \begin{align*}" + "\n"
+    string += rf"    L &= {sp.latex(L, mat_delim='(', mat_str='matrix')}, &" + "\n"
+    string += rf"    U &= {sp.latex(U, mat_delim='(', mat_str='matrix')}." + "\n"
+    string += r"\end{align*} $$" + "\n\n"
+    string += rf"Solving $L \vec{{y}} = \vec{{b}}$ gives $\vec{{y}} = {sp.latex(y.T, mat_delim='(', mat_str='matrix')}$ and solving $U \vec{{x}} = \vec{{y}}$ gives $\vec{{x}} = {sp.latex(x.T, mat_delim='(', mat_str='matrix')}$." + "\n\n"
+
+print(string)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[2], line 50[0m
+[1;32m     46[0m string [38;5;241m=[39m [38;5;124m"[39m[38;5;124m"[39m
+[1;32m     47[0m [38;5;28;01mfor[39;00m i [38;5;129;01min[39;00m [38;5;28mrange[39m([38;5;241m1[39m):
+[1;32m     48[0m 
+[1;32m     49[0m     [38;5;66;03m# Calculate LU decomposition[39;00m
+[0;32m---> 50[0m     L, U [38;5;241m=[39m lu_latex(A[i])
+[1;32m     52[0m     [38;5;66;03m# Solve system[39;00m
+[1;32m     53[0m     y [38;5;241m=[39m forward_substitution(L, b[i])
+
+Cell [0;32mIn[2], line 6[0m, in [0;36mlu_latex[0;34m(A)[0m
+[1;32m      4[0m [38;5;28;01mdef[39;00m [38;5;21mlu_latex[39m(A):
+[1;32m      5[0m     n [38;5;241m=[39m A[38;5;241m.[39mshape[[38;5;241m0[39m]
+[0;32m----> 6[0m     L, U [38;5;241m=[39m sp[38;5;241m.[39meye(n), sp[38;5;241m.[39mzeros((n, n))
+[1;32m      7[0m     [38;5;28;01mfor[39;00m j [38;5;129;01min[39;00m [38;5;28mrange[39m(n):
+[1;32m      8[0m         [38;5;28;01mfor[39;00m i [38;5;129;01min[39;00m [38;5;28mrange[39m(n):
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/sympy/matrices/dense.py:761[0m, in [0;36mzeros[0;34m(*args, **kwargs)[0m
+[1;32m    758[0m [38;5;28;01mif[39;00m [38;5;124m'[39m[38;5;124mc[39m[38;5;124m'[39m [38;5;129;01min[39;00m kwargs:
+[1;32m    759[0m     kwargs[[38;5;124m'[39m[38;5;124mcols[39m[38;5;124m'[39m] [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m'[39m[38;5;124mc[39m[38;5;124m'[39m)
+[0;32m--> 761[0m [38;5;28;01mreturn[39;00m Matrix[38;5;241m.[39mzeros([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/sympy/matrices/common.py:1211[0m, in [0;36mMatrixSpecial.zeros[0;34m(kls, rows, cols, **kwargs)[0m
+[1;32m   1209[0m [38;5;28;01mif[39;00m cols [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1210[0m     cols [38;5;241m=[39m rows
+[0;32m-> 1211[0m [38;5;28;01mif[39;00m rows [38;5;241m<[39m [38;5;241m0[39m [38;5;129;01mor[39;00m cols [38;5;241m<[39m [38;5;241m0[39m:
+[1;32m   1212[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mCannot create a [39m[38;5;132;01m{}[39;00m[38;5;124m x [39m[38;5;132;01m{}[39;00m[38;5;124m matrix. [39m[38;5;124m"[39m
+[1;32m   1213[0m                      [38;5;124m"[39m[38;5;124mBoth dimensions must be positive[39m[38;5;124m"[39m[38;5;241m.[39mformat(rows, cols))
+[1;32m   1214[0m klass [38;5;241m=[39m kwargs[38;5;241m.[39mget([38;5;124m'[39m[38;5;124mcls[39m[38;5;124m'[39m, kls)
+
+[0;31mTypeError[0m: '<' not supported between instances of 'tuple' and 'int'
+TypeError: '<' not supported between instances of 'tuple' and 'int'
+

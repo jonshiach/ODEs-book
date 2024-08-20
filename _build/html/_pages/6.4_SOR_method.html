@@ -448,7 +448,7 @@ document.write(`
 <span id="optimum-relaxation-parameter-section"></span><h2><span class="section-number">6.4.3. </span>Optimum value of the relaxation parameter<a class="headerlink" href="#optimum-value-of-the-relaxation-parameter" title="Permalink to this heading">#</a></h2>
 <p>The optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> will be the one that minimises the spectral radius of the iteration matrix. The iteration matrix will depend on the value of <span class="math notranslate nohighlight">\(\omega\)</span>. One way to estimate the optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> is to calculate <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for values in the range <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span> and choose the value of <span class="math notranslate nohighlight">\(\omega\)</span> which minimises this value. This has been done for the system of linear equations from <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Example 6.1</a> and the plot is shown in <a class="reference internal" href="#optimum-relaxation-parameter-figure"><span class="std std-numref">Fig. 6.6</span></a>.</p>
 <figure class="align-default" id="optimum-relaxation-parameter-figure" style="width: 600px">
-<img alt="../_images/4e70f214abafe39eb697d65f728471228e3d13a6e3e2c53fff5b0ca4717e5558.png" src="../_images/4e70f214abafe39eb697d65f728471228e3d13a6e3e2c53fff5b0ca4717e5558.png" />
+<img alt="../_images/48b61b4c81142a409196457a5d5be84003e532976ff26354c7a15360e0bd5c72.png" src="../_images/48b61b4c81142a409196457a5d5be84003e532976ff26354c7a15360e0bd5c72.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">Plot of the spectral radius <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> of the iteration matrix for the SOR method when used to solve the system of linear equations from <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Example 6.1</a>.</span><a class="headerlink" href="#optimum-relaxation-parameter-figure" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -522,7 +522,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     &amp;=
     \begin{pmatrix} 4.875 \\ 3.09375 \\ 0.0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(1)} |) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(\| \vec{r}^{(1)} \|) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     x_{1}^{(2)} &amp;= (1 - 1.24)(0.71875) \frac{1.24}{4} \left( -2 - 3 (-1.765625) \right) = 0.71875, \\
@@ -540,14 +540,14 @@ Solution (click to show)<div class="sd-summary-down docutils">
     &amp;=
     \begin{pmatrix} 0.421875 \\ -0.03515625 \\ 0.0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The SOR method was iterated until <span class="math notranslate nohighlight">\(|\vec{r}| &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations and the <a class="reference internal" href="6.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Gauss-Seidel method</a> took 19 iterations to achieve the same accuracy.</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(\| \vec{r}^{(2)} \|) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The SOR method was iterated until <span class="math notranslate nohighlight">\(\|\vec{r}\| &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="6.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations and the <a class="reference internal" href="6.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Gauss-Seidel method</a> took 19 iterations to achieve the same accuracy.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
 <th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
 <th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
 <th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\max(\vec{r})\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\max(\| \vec{r} \|)\)</span></p></th>
 </tr>
 </thead>
 <tbody>

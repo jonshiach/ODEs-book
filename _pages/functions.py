@@ -193,7 +193,7 @@ def cholesky(A):
     return L
 
 
-def qrgs(A):
+def qr_gramschmidt(A):
     n = A.shape[1]
     Q, R = np.zeros(A.shape), np.zeros((n,n))
     for j in range(n):
@@ -209,7 +209,7 @@ def qrgs(A):
     return Q, R
 
 
-def qrhh(A):
+def qr_householder(A):
     m, n = A.shape
     I = np.eye(m)
     Q, R = np.eye(m), np.copy(A)
