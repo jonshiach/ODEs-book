@@ -1,3 +1,3 @@
-# Linear algebra book
+# Runge-Kutta Methods Notes
 
-Lecture notes for first year linear algebra taught at the Manchester Metropolitan University.
+Lecture notes for Runge-Kutta methods and linear algebra.
