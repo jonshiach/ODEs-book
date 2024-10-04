@@ -200,6 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -229,6 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
 </ul>
@@ -411,7 +413,7 @@ document.write(`
 <p>So the Taylor series in equation <a class="reference internal" href="#equation-rk2-derivation-equation-1">(2.4)</a> becomes</p>
 <div class="math notranslate nohighlight" id="equation-ode-taylor-equation">
 <span class="eqno">(2.5)<a class="headerlink" href="#equation-ode-taylor-equation" title="Permalink to this equation">#</a></span>\[ y_{n+1} = y_n + \left( h f + \frac{h^2}{2}(f_t + f f_y) \right)(t_n, y_n) + O(h^3). \]</div>
-<p>This is the second-order Taylor series expansion for the ODE <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span>. To be able to solve this ODE we need the Taylor series expansion of a Runge-Kutta method to be equivalent to equation <a class="reference internal" href="#equation-ode-taylor-equation">(2.5)</a>. The general form of a 2-stage explicit Runge-Kutta method written as a single equation is</p>
+<p>This is the second-order Taylor series expansion for the ODE <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span>. To be able to solve this ODE we need the Taylor series expansion of a Runge-Kutta method to be equivalent to equation <a class="reference internal" href="#equation-ode-taylor-equation">(2.5)</a>. The general form of a 2-stage explicit Runge-Kutta method is</p>
 <div class="math notranslate nohighlight" id="equation-general-rk2-equation">
 <span class="eqno">(2.6)<a class="headerlink" href="#equation-general-rk2-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n + h(b_1 k_1 + b_2 k_2)), \\
@@ -420,13 +422,12 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>Using the <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem#Taylor's_theorem_for_multivariate_functions" target="_blank">bivariate Taylor series</a> which is</p>
 <div class="math notranslate nohighlight">
-\[ f(t + h, y + k) = (f + h f_t + k f_y)(t,y) + O(h^3) \]</div>
-<p>we can rewrite <span class="math notranslate nohighlight">\(k_2\)</span> as</p>
+\[ f(t + h, y + k) = (f + h f_t + k f_y)(t,y) + O(h^3), \]</div>
+<p>then replacing <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(k\)</span> with <span class="math notranslate nohighlight">\(c_2h\)</span> and <span class="math notranslate nohighlight">\(h_{a21}k_1\)</span> respectively, then we can rewrite <span class="math notranslate nohighlight">\(k_2\)</span> as</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    k_2 &amp;= f(t_n + c_2h, y_n + h a_{21} k_1) \\
-    &amp;= (f + c_2 h f_t + h a_{21} k_1 f_y)(t_n, y_n) + O(h^3).
-\end{align*} \end{split}\]</div>
+\[ \begin{align*}
+    k_2 &amp;= (f + c_2 h f_t + h a_{21} k_1 f_y)(t_n, y_n) + O(h^3).
+\end{align*} \]</div>
 <p>Substituting <span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> into the equation for <span class="math notranslate nohighlight">\(y_{n+1}\)</span> in equation <a class="reference internal" href="#equation-general-rk2-equation">(2.6)</a> gives</p>
 <div class="math notranslate nohighlight" id="equation-bivariate-rk2-equation">
 <span class="eqno">(2.7)<a class="headerlink" href="#equation-bivariate-rk2-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
@@ -442,7 +443,7 @@ y_{n+1} &amp;= y_n + (h b_1 f + h b_2 (f + h c_2 f_t + h a_{21} k_1 f_y))(t_n, y
 <p>and equating the coefficients of <span class="math notranslate nohighlight">\(ff_y\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[ a_{21}b_2 = \frac{1}{2}. \]</div>
-<p>From equation <a class="reference internal" href="#equation-rk2-order-condition-2-equation">(2.9)</a> we know that <span class="math notranslate nohighlight">\(b_2 = 1/(2c_2)\)</span> so</p>
+<p>From equation <a class="reference internal" href="#equation-rk2-order-condition-2-equation">(2.9)</a> we know that <span class="math notranslate nohighlight">\(b_2 = \dfrac{1}{2c_2}\)</span> so</p>
 <div class="math notranslate nohighlight" id="equation-rk2-order-condition-3-equation">
 <span class="eqno">(2.10)<a class="headerlink" href="#equation-rk2-order-condition-3-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     a_{21}\frac{1}{2c_2} &amp;= \frac{1}{2} \\
