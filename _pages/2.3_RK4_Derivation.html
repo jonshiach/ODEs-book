@@ -200,6 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -229,6 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
 </ul>
@@ -359,9 +361,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -377,14 +377,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-and-matlab-to-solve-the-order-conditions">2.5.1. Using Python and MATLAB to solve the order conditions</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -537,102 +529,86 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">To determine a unique solution we choose values for some of the coefficients and solve the order conditions for the remaining unknowns.</p>
-<p class="sd-card-text">Substituting <span class="math notranslate nohighlight">\(c_2\)</span>, <span class="math notranslate nohighlight">\(c_3\)</span> and <span class="math notranslate nohighlight">\(c_4\)</span> into the first four order conditions gives</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
-    \frac{1}{2} b_2 + \frac{1}{2}b_3 + b_4 &amp;= \frac{1}{2}, \\
-    \frac{1}{4} b_2 + \frac{1}{4}b_3 + b_4 &amp;= \frac{1}{3}, \\
-    \frac{1}{16} b_2 + \frac{1}{16}b_3 + b_4 &amp;= \frac{1}{4}.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Solving the second, third and fourth order conditions using Gaussian elimination</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-  &amp;\left( \begin{array}{ccc|c}
-    1/2 &amp; 1/2 &amp; 1 &amp; 1/2 \\
-    1/4 &amp; 1/4 &amp; 1 &amp; 1/3 \\
-    1/8 &amp; 1/8 &amp; 1 &amp; 1/4
-  \end{array} \right)
-  \begin{array}{l} 2R_1 \\ \phantom{x} \\ \phantom{x} \end{array} \\
-  \longrightarrow
-  &amp;\left( \begin{array}{ccc|c}
-    1 &amp; 1 &amp; 2 &amp; 1 \\
-    1/4 &amp; 1/4 &amp; 1 &amp; 1/3 \\
-    1/8 &amp; 1/8 &amp; 1 &amp; 1/4
-  \end{array} \right)
-  \begin{array}{l} \\ R_2 - \frac{1}{4}R_1 \\ R_3 - \frac{1}{8}R_3 \end{array} \\
-  \longrightarrow
-  &amp;\left( \begin{array}{ccc|c}
-    1 &amp; 1 &amp; 2 &amp; 1 \\
-    0 &amp; 0 &amp; 1/2 &amp; 1/12 \\
-    0 &amp; 0 &amp; 3/4 &amp; 1/8
-  \end{array} \right)
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">therefore <span class="math notranslate nohighlight">\(b_4 = \frac{1}{6}\)</span>, <span class="math notranslate nohighlight">\(b_2 + b_3 = \frac{2}{3}\)</span>. Let <span class="math notranslate nohighlight">\(b_2 = b_3 = \frac{1}{3}\)</span> and substituting <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span> into the first order condition gives <span class="math notranslate nohighlight">\(b_1 = \frac{1}{6}\)</span>.</p>
-<p class="sd-card-text">Substituting the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> coefficients into the fifth, sixth and seventh order conditions gives</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \frac{1}{6} a_{32} + \frac{1}{12} a_{42} + \frac{1}{12} a_{43} &amp;= \frac{1}{6}, \\
-    \frac{1}{12} a_{32} + \frac{1}{12} a_{42} + \frac{1}{12} a_{43} &amp;= \frac{1}{8}, \\
-    \frac{1}{12} a_{32} + \frac{1}{24} a_{42} + \frac{1}{24} a_{43}&amp;= \frac{1}{12}, \\
-    \frac{1}{12} a_{43}a_{32} &amp;= \frac{1}{24}. 
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Solving the first, second and third equations using Gaussian elimination</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    &amp; \left( \begin{array}{ccc|c}
-        1/6 &amp; 1/12 &amp; 1/12 &amp; 1/6 \\
-        1/12 &amp; 1/12 &amp; 1/12 &amp; 1/8 \\
-        1/12 &amp; 1/24 &amp; 1/24 &amp; 1/12
-    \end{array} \right)
-    \begin{array}{l} 6 R_1 \\ \phantom{x} \\ \phantom{x} \end{array} \\
-    \longrightarrow
-    &amp; \left( \begin{array}{ccc|c}
-        1 &amp; 1/2 &amp; 1/2 &amp; 1 \\
-        1/12 &amp; 1/12 &amp; 1/12 &amp; 1/8 \\
-        1/12 &amp; 1/24 &amp; 1/24 &amp; 1/12
-    \end{array} \right)
-    \begin{array}{l} \\ R_2 - \frac{1}{12}R_1 \\[1pt] R_3 - \frac{1}{12} R_1 \end{array} \\
-    \longrightarrow
-    &amp; \left( \begin{array}{ccc|c}
-        1 &amp; 1/2 &amp; 1/2 &amp; 1/3 \\
-        0 &amp; 1/24 &amp; 1/24 &amp; 1/24 \\
-        0 &amp; 0 &amp; 0 &amp; 0 
-    \end{array} \right)
-    \begin{array}{l} \\ 24R_2 \\ \phantom{x} \end{array} \\
-    \longrightarrow
-    &amp; \left( \begin{array}{ccc|c}
-        1 &amp; 1/2 &amp; 1/2 &amp; 1/3 \\
-        0 &amp; 1 &amp; 1 &amp; 1 \\
-        0 &amp; 0 &amp; 0 &amp; 0 
-    \end{array} \right)
-    \begin{array}{l} R_1 - \frac{1}{2}R_2 \\ \phantom{x} \\ \phantom{x} \end{array} \\
-    \longrightarrow
-    &amp; \left( \begin{array}{ccc|c}
-        1 &amp; 0 &amp; 0 &amp; 1/2 \\
-        0 &amp; 1 &amp; 1 &amp; 1 \\
-        0 &amp; 0 &amp; 0 &amp; 0 
-    \end{array} \right)
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{42} + a_{43} = 1\)</span>. Using the row sum condition for <span class="math notranslate nohighlight">\(c_3\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-  c_3 &amp;= a_{31} + a_{32} \\
-  \frac{1}{2} &amp;= a_{31} + \frac{1}{2},
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">which is satisfied when <span class="math notranslate nohighlight">\(a_{31} = 0\)</span>. Substituting <span class="math notranslate nohighlight">\(a_{32}\)</span> into the last order condition gives</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-  \frac{1}{12} a_{43}  \frac{1}{2} = \frac{1}{24},
-\end{align*}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(a_{43} = 1\)</span> and <span class="math notranslate nohighlight">\(a_{42} = 0\)</span>. Finally using the row sum condition for <span class="math notranslate nohighlight">\(c_4\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-  c_4 &amp;= a_{41} + a_{42} + a_{43} \\
-  1 &amp;= a_{41} + 0 + 1,
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">which is satisfied when <span class="math notranslate nohighlight">\(a_{41} = 0\)</span>. We now have the values of all of the coefficients so this fourth-order explicit Runge-Kutta method is</p>
+<p class="sd-card-text">Use Python or MATLAB to solve the order conditions and the row sum conditions.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="c1"># Declare symbolic variables</span>
+<span class="n">a21</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span><span class="p">,</span> <span class="n">a43</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span> \
+    <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a21, a31, a32, a41, a42, a43, b1, b2, b3, b4, c2, c3, c4&quot;</span><span class="p">)</span>
+
+<span class="c1"># Define known coefficients</span>
+<span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span>
+
+<span class="c1"># Define order conditions</span>
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">eq7</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">eq8</span> <span class="o">=</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span>
+
+<span class="c1"># Define row-sum conditions</span>
+<span class="n">eq9</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">c2</span>
+<span class="n">eq10</span> <span class="o">=</span> <span class="n">a31</span> <span class="o">+</span> <span class="n">a32</span> <span class="o">-</span> <span class="n">c3</span>
+<span class="n">eq11</span> <span class="o">=</span> <span class="n">a41</span> <span class="o">+</span> <span class="n">a42</span> <span class="o">+</span> <span class="n">a43</span> <span class="o">-</span> <span class="n">c4</span>
+
+<span class="c1"># Solve order conditions</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Declare symbolic variables</span>
+<span class="n">syms</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a31</span><span class="w"> </span><span class="s">a32</span><span class="w"> </span><span class="s">a41</span><span class="w"> </span><span class="s">a42</span><span class="w"> </span><span class="s">a43</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">b3</span><span class="w"> </span><span class="s">b4</span><span class="w"> </span><span class="s">c2</span><span class="w"> </span><span class="s">c3</span><span class="w"> </span><span class="s">c4</span>
+
+<span class="c">% Define known coefficients</span>
+<span class="n">c2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">c3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">c4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c">% Define order conditions</span>
+<span class="n">eq1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span>^<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span>^<span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">eq4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span>^<span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span>
+<span class="n">eq5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">;</span>
+<span class="n">eq6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">;</span>
+<span class="n">eq7</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">;</span>
+<span class="n">eq8</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">;</span>
+
+<span class="c">% Define row-sum conditions</span>
+<span class="n">eq9</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c2</span><span class="p">;</span>
+<span class="n">eq10</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a31</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c3</span><span class="p">;</span>
+<span class="n">eq11</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a41</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c4</span><span class="p">;</span>
+
+<span class="c">% Solve order conditions</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">,</span><span class="w"> </span><span class="n">eq4</span><span class="p">,</span><span class="w"> </span><span class="n">eq5</span><span class="p">,</span><span class="w"> </span><span class="n">eq6</span><span class="p">,</span><span class="w"> </span><span class="n">eq7</span><span class="p">,</span><span class="w"> </span><span class="n">eq8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p class="sd-card-text">Output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[{a21: 1/2,
+  a31: 0,
+  a32: 1/2,
+  a41: 0,
+  a42: 0,
+  a43: 1,
+  b1: 1/6,
+  b2: 1/3,
+  b3: 1/3,
+  b4: 1/6}]
+</pre></div>
+</div>
+<p class="sd-card-text">So the Butcher tableau for this fourth-order Runge-Kutta method is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{array}{c|cccc}
@@ -654,7 +630,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
 \end{align*} \end{split}\]</div>
 </div>
 </details></section>
-</div><p>This fourth-order explicit Runge-Kutta method we derived in <a class="reference internal" href="#rk4-derivation-example">Example 2.6</a> is often referred to as <em>the</em> Runge-Kutta method or <strong>RK4</strong> for short.</p>
+</div><p>This fourth-order explicit Runge-Kutta method we derived in <a class="reference internal" href="#rk4-derivation-example">Example 2.6</a> is often referred to as <em>the</em> Runge-Kutta method or <strong>RK4</strong> for short. It is simple, robust and accurate and has become the standard goto method for solving ODEs.</p>
 <div class="proof definition admonition" id="rk4-definition">
 <p class="admonition-title"><span class="caption-number">Definition 2.7 </span> (The fourth-order explicit Runge-Kutta method (RK4))</p>
 <section class="definition-content" id="proof-content">
@@ -666,78 +642,66 @@ Solution (click to show)<div class="sd-summary-down docutils">
     k_3 &amp;= f(t_n + \tfrac{1}{2} h, y_n + \tfrac{1}{2} h k_2), \\
     k_4 &amp;= f(t_n + h, y_n + h k_3).
 \end{align*} \end{split}\]</div>
-<p>or expressed as a Butcher tableau</p>
-<div class="math notranslate nohighlight" id="equation-rk4-butcher-tableau-equation">
-<span class="eqno">(2.17)<a class="headerlink" href="#equation-rk4-butcher-tableau-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{array}{c|cccc}
-  0 &amp; \\
-  1/2 &amp; 1/2 \\
-  1/2 &amp; 0 &amp; 1/2 \\
-  1 &amp; 0 &amp; 0 &amp; 1 \\ \hline
-  &amp; 1/6 &amp; 1/3 &amp; 1/3 &amp; 1/6
-\end{array} \end{split}\]</div>
 </section>
-</div><section id="using-python-and-matlab-to-solve-the-order-conditions">
-<h2><span class="section-number">2.5.1. </span>Using Python and MATLAB to solve the order conditions<a class="headerlink" href="#using-python-and-matlab-to-solve-the-order-conditions" title="Permalink to this heading">#</a></h2>
-<p>The code below derives the fourth-order explicit Runge-Kutta method from <a class="reference internal" href="#rk4-derivation-example">Example 2.6</a>.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+</div><!-- ## Using Python and MATLAB to solve the order conditions
 
-<span class="c1"># Declare symbolic variables</span>
-<span class="n">a21</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span><span class="p">,</span> <span class="n">a43</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span> \
-    <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a21, a31, a32, a41, a42, a43, b1, b2, b3, b4, c2, c3, c4&quot;</span><span class="p">)</span>
-<span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span>
+The code below derives the fourth-order explicit Runge-Kutta method from {prf:ref}`rk4-derivation-example`.
 
-<span class="c1"># Define order conditions</span>
-<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">eq4</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">eq5</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">eq6</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">eq7</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">eq8</span> <span class="o">=</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">eq9</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">c2</span>
-<span class="n">eq10</span> <span class="o">=</span> <span class="n">a31</span> <span class="o">+</span> <span class="n">a32</span> <span class="o">-</span> <span class="n">c3</span>
-<span class="n">eq11</span> <span class="o">=</span> <span class="n">a41</span> <span class="o">+</span> <span class="n">a42</span> <span class="o">+</span> <span class="n">a43</span> <span class="o">-</span> <span class="n">c4</span>
+`````{tab-set}
+````{tab-item} Python
+```python
+import sympy as sp
 
-<span class="c1"># Solve order conditions</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
-MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define symbolic variables</span>
-<span class="n">syms</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a31</span><span class="w"> </span><span class="s">a32</span><span class="w"> </span><span class="s">a41</span><span class="w"> </span><span class="s">a42</span><span class="w"> </span><span class="s">a43</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">b3</span><span class="w"> </span><span class="s">b4</span><span class="w"> </span><span class="s">c2</span><span class="w"> </span><span class="s">c3</span><span class="w"> </span><span class="s">c4</span>
-<span class="n">c2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-<span class="n">c3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-<span class="n">c4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+# Declare symbolic variables
+a21, a31, a32, a41, a42, a43, b1, b2, b3, b4, c2, c3, c4 \
+    = sp.symbols("a21, a31, a32, a41, a42, a43, b1, b2, b3, b4, c2, c3, c4")
+c2, c3, c4 = sp.Rational(1,2), sp.Rational(1,2), 1
 
-<span class="c">% Define order conditions</span>
-<span class="n">eq1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-<span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span>^<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span>^<span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
-<span class="n">eq4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span>^<span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span>
-<span class="n">eq5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">;</span>
-<span class="n">eq6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c4</span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">;</span>
-<span class="n">eq7</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c3</span>^<span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">;</span>
-<span class="n">eq8</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">;</span>
-<span class="n">eq9</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c2</span><span class="p">;</span>
-<span class="n">eq10</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a31</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a32</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c3</span><span class="p">;</span>
-<span class="n">eq11</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a41</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a42</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a43</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c4</span><span class="p">;</span>
+# Define order conditions
+eq1 = b1 + b2 + b3 + b4 - 1
+eq2 = b2 * c2 + b3 * c3 + b4 * c4 - sp.Rational(1,2)
+eq3 = b2 * c2 ** 2 + b3 * c3 ** 2 + b4 * c4 ** 2 - sp.Rational(1,3)
+eq4 = b2 * c2 ** 3 + b3 * c3 ** 3 + b4 * c4 ** 3 - sp.Rational(1,4)
+eq5 = b2 * a32 * c2 + b4 * a42 * c2 + b4 * a43 * c3 - sp.Rational(1,6)
+eq6 = b3 * a32 * c2 * c3 + b4 * a42 * c2 * c4 + b4 * a43 * c3 * c4 - sp.Rational(1,8)
+eq7 = b3 * a32 * c2 ** 2 + b4 * a42 * c2 ** 2 + b4 * a43 * c3 ** 2 - sp.Rational(1,12)
+eq8 = b4 * a43 * a32 * c2 - sp.Rational(1,24)
+eq9 = a21 - c2
+eq10 = a31 + a32 - c3
+eq11 = a41 + a42 + a43 - c4
 
-<span class="c">% Solve order conditions</span>
-<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">,</span><span class="w"> </span><span class="n">eq4</span><span class="p">,</span><span class="w"> </span><span class="n">eq5</span><span class="p">,</span><span class="w"> </span><span class="n">eq6</span><span class="p">,</span><span class="w"> </span><span class="n">eq7</span><span class="p">,</span><span class="w"> </span><span class="n">eq8</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
+# Solve order conditions
+sp.solve((eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8, eq9, eq10, eq11))
+```
+````
+
+````{tab-item} MATLAB
+```matlab
+% Define symbolic variables
+syms a21 a31 a32 a41 a42 a43 b1 b2 b3 b4 c2 c3 c4
+c2 = 1/2;
+c3 = 1/2;
+c4 = 1;
+
+% Define order conditions
+eq1 = b1 + b2 + b3 + b4 == 1;
+eq2 = b2 * c2 + b3 * c3 + b4 * c4 == 1/2;
+eq3 = b2 * c2 ^ 2 + b3 * c3^2 + b4 * c4^2 == 1/3;
+eq4 = b2 * c2^3 + b3 * c3^3 + b4 * c4^3 == 1/4;
+eq5 = b2 * a32 * c2 + b4 * a42 * c2 + b4 * a43 * c3 == 1/6;
+eq6 = b3 * a32 * c2 * c3 + b4 * a42 * c2 * c4 + b4 * a43 * c3 * c4== 1/8;
+eq7 = b3 * a32 * c2^2 + b4 * a42 * c2^2 + b4 * a43 * c3^2 == 1/12;
+eq8 = b4 * a43 * a32 * c2 == 1/24;
+eq9 = a21 == c2;
+eq10 = a31 + a32 == c3;
+eq11 = a41 + a42 + a43 == c4;
+
+% Solve order conditions
+solve(eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8)
+```
+
+````
+````` --></section>
 
     <script type="text/x-thebe-config">
     {
@@ -797,20 +761,6 @@ MATLAB</label><div class="sd-tab-content docutils">
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-and-matlab-to-solve-the-order-conditions">2.5.1. Using Python and MATLAB to solve the order conditions</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
