@@ -200,6 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -229,6 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
 </ul>
@@ -411,15 +413,15 @@ document.write(`
 <div class="proof definition admonition" id="legendre-polynomials-definition">
 <p class="admonition-title"><span class="caption-number">Definition 3.2 </span> (Legendre polynomials)</p>
 <section class="definition-content" id="proof-content">
-<p>The <span class="math notranslate nohighlight">\(s\)</span>-th order Legendre polynomial is</p>
+<p>The <span class="math notranslate nohighlight">\(n\)</span>-th order Legendre polynomial is</p>
 <div class="math notranslate nohighlight">
-\[ P_s (x)=\sum_{k=0}^s \binom{s}{k} \binom{s+k}{k} \left( \frac{x-1}{2} \right)^k, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\displaystyle{n \choose k}\)</span> is the <a href="https://en.wikipedia.org/wiki/Binomial_coefficient" target="_blank">binomial coefficient</a>.</p>
+\[ P_n (x)=\sum_{k=0}^n \binom{n}{k} \binom{n+k}{k} \left( \frac{x-1}{2} \right)^k, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\displaystyle{n \choose k} = \dfrac{n!}{k!(n - k)!}\)</span> is the <a href="https://en.wikipedia.org/wiki/Binomial_coefficient" target="_blank">binomial coefficient</a>.</p>
 </section>
 </div><div class="proof definition admonition" id="gauss-legendre-derivation-definition">
 <p class="admonition-title"><span class="caption-number">Definition 3.3 </span> (Gauss-Legendre method)</p>
 <section class="definition-content" id="proof-content">
-<p>A Gauss-Legendre implicit Runge-Kutta method of order <span class="math notranslate nohighlight">\(2s\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients that are the roots of the Legendre polynomial <span class="math notranslate nohighlight">\(P_s(2x - 1)=0\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are chosen to satisfy the <span class="math notranslate nohighlight">\(B(2s)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions.</p>
+<p>A Gauss-Legendre implicit Runge-Kutta method of order <span class="math notranslate nohighlight">\(2s\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients that are the roots of the Legendre polynomial <span class="math notranslate nohighlight">\(P_s(x)=0\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are chosen to satisfy the <span class="math notranslate nohighlight">\(B(2s)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions.</p>
 </section>
 </div><div class="proof example admonition" id="gauss-legendre-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 3.2 </span></p>
@@ -432,92 +434,37 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">A fourth-order Gauss-Legendre method has <span class="math notranslate nohighlight">\(s=2\)</span> stages. The <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_2(2x - 1)\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    0 &amp;= {2 \choose 0} {2 \choose 0} (x - 1)^0 + {2 \choose 1} {3 \choose 1} (x - 1)^1 + {2 \choose 2} {2 \choose 2} (x - 1)^2 \\
-    &amp;= 1 + 6(x - 1) + 6(x - 1)^2 \\
-    &amp;= 1 + 6x - 6 + 6x^2 - 12x + 6 \\
-    &amp;= 6x^2 - 6x + 1, \\
-    \therefore x &amp;= \frac{6 \pm \sqrt{12}}{12} = \frac{1}{2} \pm \frac{\sqrt{3}}{6},
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(c_1 = \frac{1}{2} - \frac{\sqrt{3}}{6}\)</span> and <span class="math notranslate nohighlight">\(c_2 = \frac{1}{2} + \frac{\sqrt{3}}{6}\)</span>. The <span class="math notranslate nohighlight">\(b\)</span> coefficients satisfy the <span class="math notranslate nohighlight">\(B(4)\)</span> condition, since this method has 2 stages we only need the first two order conditions</p>
+<p class="sd-card-text">A 4th order Gauss-Legendre method requires <span class="math notranslate nohighlight">\(s = 2\)</span> stages. The values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the roots of <span class="math notranslate nohighlight">\(P_2(x) = 0\)</span> and the values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> satisfy the <span class="math notranslate nohighlight">\(B(4)\)</span> and <span class="math notranslate nohighlight">\(C(2)\)</span> order conditions respectively which are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     b_1 + b_2 &amp;= 1, \\
-    b_1c_1 + b_2c_2 &amp;= \frac{1}{2},
+    c_1b_1 + c_2b_2 &amp;= \frac{1}{2}, \\
+    a_{11} + a_{12} &amp;= c_1, \\
+    a_{21} + a_{22} &amp;= c_2, \\
+    a_{11}c_1 + a_{12}c_2 &amp;= \frac{1}{2}c_1^2, \\
+    a_{21}c_1 + a_{22}c_2 &amp;= \frac{1}{2}c_1^2.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">substituting the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    b_1 + b_2 &amp;= 1, \\
-    \left(\frac{1}{2} - \frac{\sqrt{3}}{6}\right) b_1 + \left(\frac{1}{2} + \frac{\sqrt{3}}{6}\right)b_2 &amp;= \frac{1}{2}.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Subtracting <span class="math notranslate nohighlight">\(\frac{1}{2} - \frac{\sqrt{3}}{6}\)</span> times the first equation from the second gives</p>
-<div class="math notranslate nohighlight">
-\[ \frac{\sqrt{3}}{3}b_2 = \frac{\sqrt{3}}{6}, \]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(b_2 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(b_1 = \frac{1}{2}\)</span>. The <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients satisfy the <span class="math notranslate nohighlight">\(C(2)\)</span> order condition</p>
-<div class="math notranslate nohighlight" id="equation-gauss-legendre-example-c2-equation">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-gauss-legendre-example-c2-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
-    a_{11} + a_{12} &amp;= \frac{1}{2} - \frac{\sqrt{3}}{6}, \\
-    a_{21} + a_{22} &amp;= \frac{1}{2} + \frac{\sqrt{3}}{6}, \\
-    \left(\frac{1}{2} - \frac{\sqrt{3}}{6}\right) a_{11} +  \left(\frac{1}{2} + \frac{\sqrt{3}}{6}\right) a_{12} &amp;= \frac{1}{6} - \frac{\sqrt{3}}{12}, \\
-    \left(\frac{1}{2} - \frac{\sqrt{3}}{6}\right) a_{21} +  \left(\frac{1}{2} + \frac{\sqrt{3}}{6}\right) a_{22} &amp;= \frac{1}{6} + \frac{\sqrt{3}}{12}.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">The subtracting <span class="math notranslate nohighlight">\(\frac{1}{2} + \frac{\sqrt{3}}{6}\)</span> times the first equation from the third equation in equation <a class="reference internal" href="#equation-gauss-legendre-example-c2-equation">(3.1)</a></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    -\frac{\sqrt{3}}{3}a_{11} &amp;= -\frac{\sqrt{3}}{12}, \\
-    \therefore a_{11} &amp;= \frac{1}{4},
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">and substituting <span class="math notranslate nohighlight">\(a_{11}\)</span> into the first equation in equation <a class="reference internal" href="#equation-gauss-legendre-example-c2-equation">(3.1)</a></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \frac{1}{4} + a_{12} &amp;= \frac{1}{2} - \frac{\sqrt{3}}{6}, \\
-    \therefore a_{12} &amp;= \frac{1}{4} - \frac{\sqrt{3}}{6}.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">The subtracting <span class="math notranslate nohighlight">\(\frac{1}{2} - \frac{\sqrt{3}}{6}\)</span> times the second equation from the fourth equation in equation <a class="reference internal" href="#equation-gauss-legendre-example-c2-equation">(3.1)</a></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \frac{\sqrt{3}}{3} a_{22} &amp;= \frac{\sqrt{3}}{12}, \\
-    a_{22} &amp;= \frac{1}{4},
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">and substituting <span class="math notranslate nohighlight">\(a_{22}\)</span> into the second equation in equation <a class="reference internal" href="#equation-gauss-legendre-example-c2-equation">(3.1)</a></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    a_{21} + \frac{1}{4} &amp;= \frac{1}{2} + \frac{\sqrt{3}}{6}, \\
-    \therefore a_{21} &amp;= \frac{1}{4} + \frac{\sqrt{3}}{6}.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">So the fourth-order Gauss-Legendre method is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \begin{array}{c|cc}
-        \frac{1}{2} - \frac{\sqrt{3}}{6} &amp; \frac{1}{4} &amp; \frac{1}{4} - \frac{\sqrt{3}}{6} \\
-        \frac{1}{2} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4} \\ \hline
-        &amp; \frac{1}{2} &amp; \frac{1}{2}
-    \end{array}
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Code</p>
+<p class="sd-card-text">Solving the order conditions using Python or MATLAB:</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-  
+
+<span class="c1"># Define Legendre polynomial</span>
+<span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">Pn</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">Pn</span> <span class="o">+=</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="n">k</span>
+
+    <span class="k">return</span> <span class="n">Pn</span>
+
 <span class="c1"># Define symbolic variables</span>
 <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a11, a12, a21, a22, b1, b2, c1, c2&quot;</span><span class="p">)</span>
 
-<span class="c1"># Define Legendre polynomial</span>
-<span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="n">Ps</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">Ps</span> <span class="o">+=</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="n">k</span>
-    <span class="k">return</span> <span class="n">Ps</span>
-
-
 <span class="c1"># Calculate c values</span>
 <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c1 = </span><span class="si">{</span><span class="n">c1</span><span class="si">}</span><span class="se">\n</span><span class="s2">c2 = </span><span class="si">{</span><span class="n">c2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Define order conditions</span>
 <span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">-</span> <span class="mi">1</span>
@@ -535,7 +482,7 @@ Python</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">x</span><span class="w"> </span><span class="s">a11</span><span class="w"> </span><span class="s">a12</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a22</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">c1</span><span class="w"> </span><span class="s">c2</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">a11</span><span class="w"> </span><span class="s">a12</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a22</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span>
 
 <span class="c">% Calculate c coefficients</span>
 <span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
@@ -544,7 +491,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="c">% Define order conditions</span>
 <span class="n">eq1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
 <span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a12</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c1</span><span class="p">;</span>
 <span class="n">eq4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a22</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c2</span><span class="p">;</span>
 <span class="n">eq5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a12</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span>^<span class="mi">2</span><span class="p">;</span>
@@ -554,12 +501,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">,</span><span class="w"> </span><span class="n">eq4</span><span class="p">,</span><span class="w"> </span><span class="n">eq5</span><span class="p">,</span><span class="w"> </span><span class="n">eq6</span><span class="p">)</span>
 
 <span class="c">% -------------------------------------------------------------------</span>
-<span class="k">function</span><span class="w"> </span>Ps<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span>s<span class="p">)</span>
+<span class="k">function</span><span class="w"> </span>Pn<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span>n<span class="p">)</span>
 
 <span class="n">syms</span><span class="w"> </span><span class="s">x</span>
-<span class="n">Ps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">s</span>
-<span class="w">    </span><span class="n">Ps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Ps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<span class="n">Pn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">    </span><span class="n">Pn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Pn</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="n">k</span><span class="p">;</span>
 <span class="k">end</span>
 
 <span class="k">end</span>
@@ -567,6 +514,27 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
+<p class="sd-card-text">Output</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>c1 = 1/2 - sqrt(3)/6
+c2 = sqrt(3)/6 + 1/2
+
+{b1: 1/2,
+ b2: 1/2,
+ a11: 1/4,
+ a12: 1/4 - sqrt(3)/6,
+ a21: 1/4 + sqrt(3)/6,
+ a22: 1/4}
+</pre></div>
+</div>
+<p class="sd-card-text">So the fourth-order Gauss-Legendre method is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{array}{c|cc}
+        \frac{1}{2} - \frac{\sqrt{3}}{6} &amp; \frac{1}{4} &amp; \frac{1}{4} - \frac{\sqrt{3}}{6} \\
+        \frac{1}{2} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4} \\ \hline
+        &amp; \frac{1}{2} &amp; \frac{1}{2}
+    \end{array}
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div></section>
@@ -576,12 +544,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 <div class="proof definition admonition" id="radauIA-definition">
 <p class="admonition-title"><span class="caption-number">Definition 3.4 </span> (Radau IA methods)</p>
 <section class="definition-content" id="proof-content">
-<p>A Radau IA method of order <span class="math notranslate nohighlight">\(2s-1\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients where <span class="math notranslate nohighlight">\(c_1=0\)</span> and the remaining <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_s(2x - 1) + P_{s-1}(2x - 1) = 0\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(B(2s-1)\)</span> and <span class="math notranslate nohighlight">\(D(s)\)</span> order conditions.</p>
+<p>A Radau IA method of order <span class="math notranslate nohighlight">\(2s-1\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients where <span class="math notranslate nohighlight">\(c_1=0\)</span> and the remaining <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_s(x) + P_{s-1}(x) = 0\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(B(2s-1)\)</span> and <span class="math notranslate nohighlight">\(D(s)\)</span> order conditions respectively.</p>
 </section>
 </div><div class="proof definition admonition" id="radauIIA-definition">
 <p class="admonition-title"><span class="caption-number">Definition 3.5 </span> (Radau IIA methods)</p>
 <section class="definition-content" id="proof-content">
-<p>A Radau IIA method of order <span class="math notranslate nohighlight">\(2s-1\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients where <span class="math notranslate nohighlight">\(c_s=1\)</span> and the remaining <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_s(2x - 1) - P_{s-1}(2x - 1) = 0\)</span> and the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(B(2s-1)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions.</p>
+<p>A Radau IIA method of order <span class="math notranslate nohighlight">\(2s-1\)</span> has <span class="math notranslate nohighlight">\(c\)</span> coefficients where <span class="math notranslate nohighlight">\(c_s=1\)</span> and the remaining <span class="math notranslate nohighlight">\(c\)</span> coefficients are the roots of <span class="math notranslate nohighlight">\(P_s(x) - P_{s-1}(x) = 0\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> coefficients are chosen to satisfy <span class="math notranslate nohighlight">\(B(2s-1)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions respectively.</p>
 </section>
 </div><div class="proof example admonition" id="radauIA-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 3.3 </span></p>
@@ -594,78 +562,58 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">A third-order Radau IA method will have <span class="math notranslate nohighlight">\(s=2\)</span> stages. We know that <span class="math notranslate nohighlight">\(c_1=0\)</span> and the value of <span class="math notranslate nohighlight">\(c_2\)</span> is the non-zero root of <span class="math notranslate nohighlight">\(0=P_2(t)+P_1(t)\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    0 &amp;= 1 + \binom{2}{1} \binom{3}{1} (x - 1) + \binom{2}{2} \binom{4}{2} (x - 1)^2 + 1 + \binom{1}{1} \binom{2}{1} (x - 1) \\
-    &amp;= 2 + 8(x - 1) + 6(x - 1)^2 \\
-    &amp;= 2 + 8x - 8 + 6x^2 - 12x + 6 \\
-    &amp;= 6x^2 - 4x \\
-    &amp;= 2x(3x - 2),
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(c_2 = \frac{2}{3}\)</span>. The values of <span class="math notranslate nohighlight">\(b\)</span> need to satisfy the <span class="math notranslate nohighlight">\(B(3)\)</span> order conditions. Substituting the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> give</p>
+<p class="sd-card-text">A third-order Radau IA method will have <span class="math notranslate nohighlight">\(s=2\)</span> stages. We know that <span class="math notranslate nohighlight">\(c_1=0\)</span> and the value of <span class="math notranslate nohighlight">\(c_2\)</span> is the non-zero root of <span class="math notranslate nohighlight">\(0 = P_2(t) + P_1(t)\)</span>. The <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients need to satisfy the <span class="math notranslate nohighlight">\(B(3)\)</span> and <span class="math notranslate nohighlight">\(D(2)\)</span> order conditions respectively which are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     b_1 + b_2 &amp;= 1, \\
-    \frac{2}{3}b_2 &amp;= \frac{1}{2},
+    b_2c_2 &amp;= \frac{1}{2}, \\
+    b_2c_2^2 &amp;= \frac{1}{3}, \\
+    b_1a_{11} + b_2a_{21} &amp;= b_1(1 - c_1), \\
+    b_1a_{12} + b_2a_{22} &amp;= b_2(1 - c_2), \\
+    b_1c_1a_{11} + b_2c_2a_{21} &amp;= \frac{1}{2}b_1(1 - c_1^2), \\
+    b_1c_1a_{12} + b_2c_2a_{22} &amp;= \frac{1}{2}b_2(1 - c_2^2).
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(b_2 = \frac{3}{4}\)</span> and <span class="math notranslate nohighlight">\(b_1 = \frac{1}{4}\)</span>. The <span class="math notranslate nohighlight">\(a\)</span> coefficients satisfy the <span class="math notranslate nohighlight">\(C(2)\)</span> order condition</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    a_{11} + a_{12} &amp;= 0, \\
-    a_{21} + a_{22} &amp;= \frac{2}{3}, \\
-    \frac{1}{4}a_{11} + \frac{3}{4}a_{21} &amp;= \frac{1}{4}, \\
-    \frac{1}{4}a_{12} + \frac{3}{4}a_{22} &amp;= \frac{1}{4}, \\
-    \frac{1}{2}a_{21} &amp;= \frac{1}{8}, \\
-    \frac{1}{2}a_{22} &amp;= \frac{5}{24}.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">So <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{4}\)</span>, <span class="math notranslate nohighlight">\(a_{22} = \frac{5}{12}\)</span>, <span class="math notranslate nohighlight">\(a_{11} = \frac{1}{4}\)</span> and <span class="math notranslate nohighlight">\(a_{12} = -\frac{1}{4}\)</span>. So the third-order Radau IA method is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \begin{array}{c|cc}
-        0 &amp; 1/4 &amp; -1/4 \\
-        2/3 &amp; 1/4 &amp; 5/12 \\ \hline
-        &amp; 1/4 &amp; 3/4
-    \end{array}
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Code</p>
+<p class="sd-card-text">Solving the order conditions using Python or MATLAB</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 
+<span class="c1"># Define Legendre polynomial</span>
+<span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">Pn</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">Pn</span> <span class="o">+=</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="n">k</span>
+
+    <span class="k">return</span> <span class="n">Pn</span>
+
+
 <span class="c1"># Define symbolic variables</span>
 <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a11, a12, a21, a22, b1, b2, c1, c2&quot;</span><span class="p">)</span>
 
-<span class="c1"># Define Legendre polynomial</span>
-<span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="n">Ps</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">Ps</span> <span class="o">+=</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="n">k</span>
-    <span class="k">return</span> <span class="n">Ps</span>
-
 <span class="c1"># Calculate c coefficients</span>
 <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">P</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">P</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c1 = </span><span class="si">{</span><span class="n">c1</span><span class="si">}</span><span class="se">\n</span><span class="s2">c2 = </span><span class="si">{</span><span class="n">c2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Define order conditions</span>
 <span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">eq2</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">eq3</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">a11</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">b1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c1</span><span class="p">)</span>
-<span class="n">eq4</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">a12</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">a22</span> <span class="o">-</span> <span class="n">b2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c2</span><span class="p">)</span>
-<span class="n">eq5</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">a11</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">b1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c1</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">eq6</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">a12</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">a22</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">b2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">a11</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">b1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c1</span><span class="p">)</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">a12</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">a22</span> <span class="o">-</span> <span class="n">b2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c2</span><span class="p">)</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">a11</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">b1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c1</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">eq7</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">a12</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">a22</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">b2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Solve order conditions</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">))</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">x</span><span class="w"> </span><span class="s">a11</span><span class="w"> </span><span class="s">a12</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a22</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">c1</span><span class="w"> </span><span class="s">c2</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">a11</span><span class="w"> </span><span class="s">a12</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">a22</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">c1</span><span class="w"> </span><span class="s">c2</span>
 
 <span class="c">% Calculate c coefficients</span>
 <span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
@@ -674,28 +622,36 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="c">% Define order conditions</span>
 <span class="n">eq1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-<span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c1</span><span class="p">);</span>
-<span class="n">eq4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a22</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span>
-<span class="n">eq5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c1</span>^<span class="mi">2</span><span class="p">);</span>
-<span class="n">eq6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a22</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="p">);</span>
+<span class="n">eq2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">eq3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span>^<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">eq4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c1</span><span class="p">);</span>
+<span class="n">eq5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a22</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span>
+<span class="n">eq6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a21</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c1</span>^<span class="mi">2</span><span class="p">);</span>
+<span class="n">eq7</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a22</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c2</span>^<span class="mi">2</span><span class="p">);</span>
 
 <span class="c">% Solve order conditions</span>
-<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">,</span><span class="w"> </span><span class="n">eq4</span><span class="p">,</span><span class="w"> </span><span class="n">eq5</span><span class="p">,</span><span class="w"> </span><span class="n">eq6</span><span class="p">)</span>
+<span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">,</span><span class="w"> </span><span class="n">eq4</span><span class="p">,</span><span class="w"> </span><span class="n">eq5</span><span class="p">,</span><span class="w"> </span><span class="n">eq6</span><span class="p">,</span><span class="w"> </span><span class="n">eq7</span><span class="p">)</span>
 
 <span class="c">% -------------------------------------------------------------------</span>
-<span class="k">function</span><span class="w"> </span>Ps<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span>s<span class="p">)</span>
+<span class="k">function</span><span class="w"> </span>Pn<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span>n<span class="p">)</span>
 
 <span class="n">syms</span><span class="w"> </span><span class="s">x</span>
-<span class="n">Ps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">s</span>
-<span class="w">    </span><span class="n">Ps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Ps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<span class="n">Pn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">    </span><span class="n">Pn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Pn</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">nchoosek</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="n">k</span><span class="p">;</span>
 <span class="k">end</span>
 
 <span class="k">end</span>
 </pre></div>
 </div>
 </div>
+</div>
+<p class="sd-card-text">Output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>c1 = 0
+c2 = 2/3
+
+[{a11: 1/4, a12: -1/4, a21: 1/4, a22: 5/12, b1: 1/4, b2: 3/4}]
+</pre></div>
 </div>
 </div>
 </details></section>
