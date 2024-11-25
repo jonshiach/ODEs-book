@@ -496,73 +496,18 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \begin{pmatrix} 0.71875 \\ -1.765625 \\ 3.058594 \end{pmatrix} =
     \begin{pmatrix} 0.421875 \\ -0.035156 \\ 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(\| \vec{r}^{(2)} \|) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The Gauss-Seidel method was iterated until <span class="math notranslate nohighlight">\(\|\vec{r}\| &lt; 10^{-4}\)</span> and a selection of the iteration values are given in the table below. Note that the Gauss-Seidel method took 20 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations to achieve the same accuracy.</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\max( \| \vec{r} \|)\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">0.000000</p></td>
-<td class="text-center"><p class="sd-card-text">0.000000</p></td>
-<td class="text-center"><p class="sd-card-text">0.000000</p></td>
-<td class="text-center"><p class="sd-card-text">14.000000</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">-0.500000</p></td>
-<td class="text-center"><p class="sd-card-text">-1.625000</p></td>
-<td class="text-center"><p class="sd-card-text">3.093750</p></td>
-<td class="text-center"><p class="sd-card-text">4.88e+00</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">0.718750</p></td>
-<td class="text-center"><p class="sd-card-text">-1.765625</p></td>
-<td class="text-center"><p class="sd-card-text">3.058594</p></td>
-<td class="text-center"><p class="sd-card-text">4.22e-01</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">3</p></td>
-<td class="text-center"><p class="sd-card-text">0.824219</p></td>
-<td class="text-center"><p class="sd-card-text">-1.853516</p></td>
-<td class="text-center"><p class="sd-card-text">3.036621</p></td>
-<td class="text-center"><p class="sd-card-text">2.64e-01</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">4</p></td>
-<td class="text-center"><p class="sd-card-text">0.890137</p></td>
-<td class="text-center"><p class="sd-card-text">-1.908447</p></td>
-<td class="text-center"><p class="sd-card-text">3.022888</p></td>
-<td class="text-center"><p class="sd-card-text">1.65e-01</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">5</p></td>
-<td class="text-center"><p class="sd-card-text">0.931335</p></td>
-<td class="text-center"><p class="sd-card-text">-1.942780</p></td>
-<td class="text-center"><p class="sd-card-text">3.014305</p></td>
-<td class="text-center"><p class="sd-card-text">1.03e-01</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
-<td class="text-center"><p class="sd-card-text"></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">19</p></td>
-<td class="text-center"><p class="sd-card-text">0.999905</p></td>
-<td class="text-center"><p class="sd-card-text">-1.999921</p></td>
-<td class="text-center"><p class="sd-card-text">3.000020</p></td>
-<td class="text-center"><p class="sd-card-text">1.43e-04</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">20</p></td>
-<td class="text-center"><p class="sd-card-text">0.999940</p></td>
-<td class="text-center"><p class="sd-card-text">-1.999950</p></td>
-<td class="text-center"><p class="sd-card-text">3.000012</p></td>
-<td class="text-center"><p class="sd-card-text">8.93e-05</p></td>
-</tr>
-</tbody>
-</table>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The Gauss-Seidel method was iterated until <span class="math notranslate nohighlight">\(\max |\vec{r}| &lt; 10^{-4}\)</span> and a selection of the iteration values are given in the table below. Note that the Gauss-Seidel method took 20 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations to achieve the same accuracy.</p>
+<p class="sd-card-text">| <span class="math notranslate nohighlight">\(k\)</span> |  <span class="math notranslate nohighlight">\(x_{1}\)</span>  |  <span class="math notranslate nohighlight">\(x_{2}\)</span>  |  <span class="math notranslate nohighlight">\(x_{3}\)</span>  | <span class="math notranslate nohighlight">\(\max( | \vec{r} |)\)</span> |
+|:—:|:———:|:———:|:———:|:———:|
+|   0 |  0.000000 |  0.000000 |  0.000000 | 14.000000 |
+|   1 | -0.500000 | -1.625000 |  3.093750 |  4.88e+00 |
+|   2 |  0.718750 | -1.765625 |  3.058594 |  4.22e-01 |
+|   3 |  0.824219 | -1.853516 |  3.036621 |  2.64e-01 |
+|   4 |  0.890137 | -1.908447 |  3.022888 |  1.65e-01 |
+|   5 |  0.931335 | -1.942780 |  3.014305 |  1.03e-01 |
+| <span class="math notranslate nohighlight">\(\vdots\)</span> |  <span class="math notranslate nohighlight">\(\vdots\)</span> | <span class="math notranslate nohighlight">\(\vdots\)</span> | <span class="math notranslate nohighlight">\(\vdots\)</span> |
+|  19 |  0.999905 | -1.999921 |  3.000020 |  1.43e-04 |
+|  20 |  0.999940 | -1.999950 |  3.000012 |  8.93e-05 |</p>
 </div>
 </details></section>
 </div></section>
