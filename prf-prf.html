@@ -168,11 +168,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="_pages/1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="_pages/1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_pages/1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_pages/1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_pages/1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_pages/1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pages/1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pages/1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pages/1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pages/1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pages/1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="_pages/2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -350,7 +350,6 @@ document.write(`
    <a href="#cap-algorithm-0"><strong>algorithm-0</strong></a> | 
    <a href="#cap-algorithm-1"><strong>algorithm-1</strong></a> | 
    <a href="#cap-big-o-notation-definition"><strong>big-o-notation-definition</strong></a> | 
-   <a href="#cap-butcher-tableau-definition"><strong>butcher-tableau-definition</strong></a> | 
    <a href="#cap-butcher-tableau-example"><strong>butcher-tableau-example</strong></a> | 
    <a href="#cap-bvp-definition"><strong>bvp-definition</strong></a> | 
    <a href="#cap-bvp-finite-difference-example"><strong>bvp-finite-difference-example</strong></a> | 
@@ -365,7 +364,6 @@ document.write(`
    <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-definition-4"><strong>definition-4</strong></a> | 
    <a href="#cap-definition-6"><strong>definition-6</strong></a> | 
-   <a href="#cap-density-of-a-rooted-tree-definition"><strong>density-of-a-rooted-tree-definition</strong></a> | 
    <a href="#cap-determinant-test-for-positive-definite-matrix-theorem"><strong>determinant-test-for-positive-definite-matrix-theorem</strong></a> | 
    <a href="#cap-dirk-derivation-example"><strong>dirk-derivation-example</strong></a> | 
    <a href="#cap-eigenvalue-definition"><strong>eigenvalue-definition</strong></a> | 
@@ -382,8 +380,6 @@ document.write(`
    <a href="#cap-gauss-legendre-derivation-example"><strong>gauss-legendre-derivation-example</strong></a> | 
    <a href="#cap-gauss-seidel-method-definition"><strong>gauss-seidel-method-definition</strong></a> | 
    <a href="#cap-gauss-seidel-method-example"><strong>gauss-seidel-method-example</strong></a> | 
-   <a href="#cap-gte-definition"><strong>gte-definition</strong></a> | 
-   <a href="#cap-higher-order-odes-example"><strong>higher-order-odes-example</strong></a> | 
    <a href="#cap-indirect-methods-convergence-criteria-theorem"><strong>indirect-methods-convergence-criteria-theorem</strong></a> | 
    <a href="#cap-interval-of-absolute-stability-definition"><strong>interval-of-absolute-stability-definition</strong></a> | 
    <a href="#cap-irk-rz-definition"><strong>irk-rz-definition</strong></a> | 
@@ -391,7 +387,6 @@ document.write(`
    <a href="#cap-jacobi-method-definition"><strong>jacobi-method-definition</strong></a> | 
    <a href="#cap-jacobi-method-example"><strong>jacobi-method-example</strong></a> | 
    <a href="#cap-legendre-polynomials-definition"><strong>legendre-polynomials-definition</strong></a> | 
-   <a href="#cap-lte-definition"><strong>lte-definition</strong></a> | 
    <a href="#cap-lu-algorithm"><strong>lu-algorithm</strong></a> | 
    <a href="#cap-lu-example"><strong>lu-example</strong></a> | 
    <a href="#cap-lu-solution-algorithm"><strong>lu-solution-algorithm</strong></a> | 
@@ -403,7 +398,6 @@ document.write(`
    <a href="#cap-optimum-relaxation-parameter-theorem"><strong>optimum-relaxation-parameter-theorem</strong></a> | 
    <a href="#cap-order-definition"><strong>order-definition</strong></a> | 
    <a href="#cap-order-density-elementary-weight-example"><strong>order-density-elementary-weight-example</strong></a> | 
-   <a href="#cap-order-of-a-rooted-tree-definition"><strong>order-of-a-rooted-tree-definition</strong></a> | 
    <a href="#cap-orthogonal-matrix-definition"><strong>orthogonal-matrix-definition</strong></a> | 
    <a href="#cap-orthogonal-vector-definition"><strong>orthogonal-vector-definition</strong></a> | 
    <a href="#cap-permutation-matrix-definition"><strong>permutation-matrix-definition</strong></a> | 
@@ -423,7 +417,6 @@ document.write(`
    <a href="#cap-radauIIA-definition"><strong>radauIIA-definition</strong></a> | 
    <a href="#cap-region-of-absolute-stability-definition"><strong>region-of-absolute-stability-definition</strong></a> | 
    <a href="#cap-residual-definition"><strong>residual-definition</strong></a> | 
-   <a href="#cap-rk-definition"><strong>rk-definition</strong></a> | 
    <a href="#cap-rk2-derivation-example"><strong>rk2-derivation-example</strong></a> | 
    <a href="#cap-rk2-order-condition-derivation"><strong>rk2-order-condition-derivation</strong></a> | 
    <a href="#cap-rk2-order-conditions-definition"><strong>rk2-order-conditions-definition</strong></a> | 
@@ -434,15 +427,15 @@ document.write(`
    <a href="#cap-secant-method-algorithm"><strong>secant-method-algorithm</strong></a> | 
    <a href="#cap-secant-method-example"><strong>secant-method-example</strong></a> | 
    <a href="#cap-shooting-example-1"><strong>shooting-example-1</strong></a> | 
+   <a href="#cap-sir-example"><strong>sir-example</strong></a> | 
    <a href="#cap-sor-method-definition"><strong>sor-method-definition</strong></a> | 
    <a href="#cap-sor-method-example"><strong>sor-method-example</strong></a> | 
    <a href="#cap-spectral-radius-definition"><strong>spectral-radius-definition</strong></a> | 
+   <a href="#cap-spring-example"><strong>spring-example</strong></a> | 
    <a href="#cap-stability-definition"><strong>stability-definition</strong></a> | 
    <a href="#cap-stability-function-definition"><strong>stability-function-definition</strong></a> | 
    <a href="#cap-step-size-control-algorithm"><strong>step-size-control-algorithm</strong></a> | 
    <a href="#cap-stiffness-ratio-definition"><strong>stiffness-ratio-definition</strong></a> | 
-   <a href="#cap-system-odes-example"><strong>system-odes-example</strong></a> | 
-   <a href="#cap-taylor-series-definition"><strong>taylor-series-definition</strong></a> | 
    <a href="#cap-theorem-1"><strong>theorem-1</strong></a> | 
    <a href="#cap-thomas-method-definition"><strong>thomas-method-definition</strong></a>
    </div>
@@ -494,7 +487,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="_pages/2.4_Solving_IVPs_using_ERK_methods.html#algorithm-0"><code class="xref">algorithm-0</code></a> <em>(_pages/2.4_Solving_IVPs_using_ERK_methods)</em></td><td>
+       <a href="_pages/3.3_Solving_IVPs_using_IRK_methods.html#algorithm-0"><code class="xref">algorithm-0</code></a> <em>(_pages/3.3_Solving_IVPs_using_IRK_methods)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-algorithm-1"><td></td><td>
@@ -502,7 +495,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="_pages/1.2_Euler_Method.html#algorithm-1"><code class="xref">algorithm-1</code></a> <em>(_pages/1.2_Euler_Method)</em></td><td>
+       <a href="_pages/1.1_Euler_Method.html#algorithm-1"><code class="xref">algorithm-1</code></a> <em>(_pages/1.1_Euler_Method)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-big-o-notation-definition"><td></td><td>
@@ -510,15 +503,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="_pages/1.3_Error_Analysis.html#big-o-notation-definition"><code class="xref">big-o-notation-definition</code></a> <em>(_pages/1.3_Error_Analysis)</em></td><td>
-       <em>definition</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-butcher-tableau-definition"><td></td><td>
-       <strong>butcher-tableau-definition</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/2.0_ERKs.html#butcher-tableau-definition"><code class="xref">butcher-tableau-definition</code></a> <em>(_pages/2.0_ERKs)</em></td><td>
+       <a href="_pages/1.2_Error_Analysis.html#big-o-notation-definition"><code class="xref">big-o-notation-definition</code></a> <em>(_pages/1.2_Error_Analysis)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-butcher-tableau-example"><td></td><td>
@@ -633,14 +618,6 @@ document.write(`
        <a href="_pages/3.2_Deriving_IRK_methods.html#definition-6"><code class="xref">definition-6</code></a> <em>(_pages/3.2_Deriving_IRK_methods)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-density-of-a-rooted-tree-definition"><td></td><td>
-       <strong>density-of-a-rooted-tree-definition</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/2.2_Deriving_order_conditions_using_trees.html#density-of-a-rooted-tree-definition"><code class="xref">density-of-a-rooted-tree-definition</code></a> <em>(_pages/2.2_Deriving_order_conditions_using_trees)</em></td><td>
-       <em>definition</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-determinant-test-for-positive-definite-matrix-theorem"><td></td><td>
        <strong>determinant-test-for-positive-definite-matrix-theorem</strong></td><td></td></tr>
      <tr>
@@ -702,7 +679,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="_pages/1.2_Euler_Method.html#euler-example"><code class="xref">euler-example</code></a> <em>(_pages/1.2_Euler_Method)</em></td><td>
+       <a href="_pages/1.1_Euler_Method.html#euler-example"><code class="xref">euler-example</code></a> <em>(_pages/1.1_Euler_Method)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-euler-method-definition"><td></td><td>
@@ -710,7 +687,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="_pages/1.2_Euler_Method.html#euler-method-definition"><code class="xref">euler-method-definition</code></a> <em>(_pages/1.2_Euler_Method)</em></td><td>
+       <a href="_pages/1.1_Euler_Method.html#euler-method-definition"><code class="xref">euler-method-definition</code></a> <em>(_pages/1.1_Euler_Method)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-1"><td></td><td>
@@ -769,22 +746,6 @@ document.write(`
        <a href="_pages/7.2_Gauss_Seidel_method.html#gauss-seidel-method-example"><code class="xref">gauss-seidel-method-example</code></a> <em>(_pages/7.2_Gauss_Seidel_method)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-gte-definition"><td></td><td>
-       <strong>gte-definition</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/1.3_Error_Analysis.html#gte-definition"><code class="xref">gte-definition</code></a> <em>(_pages/1.3_Error_Analysis)</em></td><td>
-       <em>definition</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-higher-order-odes-example"><td></td><td>
-       <strong>higher-order-odes-example</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/1.5_Higher_Order_ODEs.html#higher-order-odes-example"><code class="xref">higher-order-odes-example</code></a> <em>(_pages/1.5_Higher_Order_ODEs)</em></td><td>
-       <em>example</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-indirect-methods-convergence-criteria-theorem"><td></td><td>
        <strong>indirect-methods-convergence-criteria-theorem</strong></td><td></td></tr>
      <tr>
@@ -839,14 +800,6 @@ document.write(`
        <td></td>
        <td>
        <a href="_pages/3.2_Deriving_IRK_methods.html#legendre-polynomials-definition"><code class="xref">legendre-polynomials-definition</code></a> <em>(_pages/3.2_Deriving_IRK_methods)</em></td><td>
-       <em>definition</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-lte-definition"><td></td><td>
-       <strong>lte-definition</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/1.3_Error_Analysis.html#lte-definition"><code class="xref">lte-definition</code></a> <em>(_pages/1.3_Error_Analysis)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-lu-algorithm"><td></td><td>
@@ -926,7 +879,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="_pages/1.3_Error_Analysis.html#order-definition"><code class="xref">order-definition</code></a> <em>(_pages/1.3_Error_Analysis)</em></td><td>
+       <a href="_pages/1.2_Error_Analysis.html#order-definition"><code class="xref">order-definition</code></a> <em>(_pages/1.2_Error_Analysis)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-order-density-elementary-weight-example"><td></td><td>
@@ -936,14 +889,6 @@ document.write(`
        <td>
        <a href="_pages/2.2_Deriving_order_conditions_using_trees.html#order-density-elementary-weight-example"><code class="xref">order-density-elementary-weight-example</code></a> <em>(_pages/2.2_Deriving_order_conditions_using_trees)</em></td><td>
        <em>example</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-order-of-a-rooted-tree-definition"><td></td><td>
-       <strong>order-of-a-rooted-tree-definition</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/2.2_Deriving_order_conditions_using_trees.html#order-of-a-rooted-tree-definition"><code class="xref">order-of-a-rooted-tree-definition</code></a> <em>(_pages/2.2_Deriving_order_conditions_using_trees)</em></td><td>
-       <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-orthogonal-matrix-definition"><td></td><td>
        <strong>orthogonal-matrix-definition</strong></td><td></td></tr>
@@ -1097,14 +1042,6 @@ document.write(`
        <a href="_pages/7.1_Jacobi_method.html#residual-definition"><code class="xref">residual-definition</code></a> <em>(_pages/7.1_Jacobi_method)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-rk-definition"><td></td><td>
-       <strong>rk-definition</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/2.0_ERKs.html#rk-definition"><code class="xref">rk-definition</code></a> <em>(_pages/2.0_ERKs)</em></td><td>
-       <em>definition</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-rk2-derivation-example"><td></td><td>
        <strong>rk2-derivation-example</strong></td><td></td></tr>
      <tr>
@@ -1185,6 +1122,14 @@ document.write(`
        <a href="_pages/5.1_Shooting_method.html#shooting-example-1"><code class="xref">shooting-example-1</code></a> <em>(_pages/5.1_Shooting_method)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-sir-example"><td></td><td>
+       <strong>sir-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="_pages/1.3_Systems_of_ODEs.html#sir-example"><code class="xref">sir-example</code></a> <em>(_pages/1.3_Systems_of_ODEs)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-sor-method-definition"><td></td><td>
        <strong>sor-method-definition</strong></td><td></td></tr>
      <tr>
@@ -1208,6 +1153,14 @@ document.write(`
        <td>
        <a href="_pages/7.3_Convergence_of_indirect_methods.html#spectral-radius-definition"><code class="xref">spectral-radius-definition</code></a> <em>(_pages/7.3_Convergence_of_indirect_methods)</em></td><td>
        <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-spring-example"><td></td><td>
+       <strong>spring-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="_pages/1.4_Higher_order_ODEs.html#spring-example"><code class="xref">spring-example</code></a> <em>(_pages/1.4_Higher_order_ODEs)</em></td><td>
+       <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-stability-definition"><td></td><td>
        <strong>stability-definition</strong></td><td></td></tr>
@@ -1239,22 +1192,6 @@ document.write(`
        <td></td>
        <td>
        <a href="_pages/4.0_Stability.html#stiffness-ratio-definition"><code class="xref">stiffness-ratio-definition</code></a> <em>(_pages/4.0_Stability)</em></td><td>
-       <em>definition</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-system-odes-example"><td></td><td>
-       <strong>system-odes-example</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/1.5_Higher_Order_ODEs.html#system-odes-example"><code class="xref">system-odes-example</code></a> <em>(_pages/1.5_Higher_Order_ODEs)</em></td><td>
-       <em>example</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-taylor-series-definition"><td></td><td>
-       <strong>taylor-series-definition</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/1.1_Taylor_Series.html#taylor-series-definition"><code class="xref">taylor-series-definition</code></a> <em>(_pages/1.1_Taylor_Series)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-theorem-1"><td></td><td>

@@ -64,7 +64,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/5.2_Finite_difference_method';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/5.2_Finite_difference_method.html" />
@@ -166,11 +166,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -399,7 +399,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="the-finite-difference-method">
 <span id="finite-difference-method-section"></span><h1><span class="section-number">5.3. </span>The finite-difference method<a class="headerlink" href="#the-finite-difference-method" title="Permalink to this heading">#</a></h1>
 <p>The finite-difference method for solving a boundary value problem replaces the derivatives in the ODE with <a href="https://en.wikipedia.org/wiki/Finite_difference" target="_blank">finite-difference approximations</a> derived from the Taylor series. This results in linear system of algebraic equations that can be solved to give an approximation of the solution to the BVP.</p>
-<p>The derivatives of <span class="math notranslate nohighlight">\(y_i\)</span> are approximated using values of neighbouring nodes <span class="math notranslate nohighlight">\(y_{i+1}\)</span>, <span class="math notranslate nohighlight">\(y_{i-1}\)</span> etc. using expressions derived by truncating the <a class="reference internal" href="1.1_Taylor_Series.html#taylor-series-definition">Taylor series</a> and rearranging to make the derivative term the subject. Some common finite-difference approximations are listed in <a class="reference internal" href="#finite-difference-approximations-table"><span class="std std-numref">Table 5.2</span></a>.</p>
+<p>The derivatives of <span class="math notranslate nohighlight">\(y_i\)</span> are approximated using values of neighbouring nodes <span class="math notranslate nohighlight">\(y_{i+1}\)</span>, <span class="math notranslate nohighlight">\(y_{i-1}\)</span> etc. using expressions derived by truncating the <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">Taylor</span> <span class="pre">series</span></code> and rearranging to make the derivative term the subject. Some common finite-difference approximations are listed in <a class="reference internal" href="#finite-difference-approximations-table"><span class="std std-numref">Table 5.2</span></a>.</p>
 <table class="table" id="finite-difference-approximations-table">
 <caption><span class="caption-number">Table 5.2 </span><span class="caption-text">Finite-difference approximations</span><a class="headerlink" href="#finite-difference-approximations-table" title="Permalink to this table">#</a></caption>
 <thead>

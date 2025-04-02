@@ -64,7 +64,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/2.3_RK4_Derivation';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/2.3_RK4_Derivation.html" />
@@ -166,11 +166,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -388,45 +388,40 @@ document.write(`
 <span id="derivation-of-rk4-section"></span><h1><span class="section-number">2.5. </span>Derivation of a fourth-order explicit Runge-Kutta method<a class="headerlink" href="#derivation-of-a-fourth-order-explicit-runge-kutta-method" title="Permalink to this heading">#</a></h1>
 <p>We saw in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a> that we derive a set of order conditions by listing all of the rooted trees up to a certain order and using the following relation between the elementary weight <span class="math notranslate nohighlight">\(\Phi\)</span> and density <span class="math notranslate nohighlight">\(\gamma\)</span> for each tree</p>
 <div class="math notranslate nohighlight" id="equation-tree-order-condition">
-<span class="eqno">(2.15)<a class="headerlink" href="#equation-tree-order-condition" title="Permalink to this equation">#</a></span>\[\Phi = \dfrac{1}{\gamma}.\]</div>
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-tree-order-condition" title="Permalink to this equation">#</a></span>\[\Phi(\tau) = \dfrac{1}{\gamma(\tau)}.\]</div>
 <p>To derive the order conditions for a fourth-order explicit method we consider all of the rooted trees up to and including order 4 which are tabulated below along with their elementary weights and densities.</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p>Tree</p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(\Phi\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></th>
-<th class="head text-center"><p>Tree</p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(\Phi\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></th>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(\tau\)</span></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/tree_1.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/tree_2.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/tree_3_1.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/tree_3_2.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/tree_4_1.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/tree_4_3.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/tree_4_2.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/tree_4_4.svg" /></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p><img alt="" src="../_images/tree_1.svg" /></p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\Phi(\tau)\)</span></p></td>
 <td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_i b_i\)</span></p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p><img alt="" src="../_images/tree_2.svg" /></p></td>
 <td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_i b_ic_i\)</span></p></td>
-<td class="text-center"><p>2</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><img alt="" src="../_images/tree_3_1.svg" /></p></td>
 <td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_i b_ic_i^2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j} b_ia_{ij}c_j\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_i b_ic_i^3\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j} b_ia_{ij}c_ic_j\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j} b_ia_{ij}c_j^2\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j,k} b_ia_{ij}a_{jk}c_k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\gamma(\tau)\)</span></p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>2</p></td>
 <td class="text-center"><p>3</p></td>
-<td class="text-center"><p><img alt="" src="../_images/tree_4_1.svg" /></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_i b_i c_i^3\)</span></p></td>
-<td class="text-center"><p>4</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><img alt="" src="../_images/tree_3_2.svg" /></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j} b_i a_{ij} c_j\)</span></p></td>
 <td class="text-center"><p>6</p></td>
-<td class="text-center"><p><img alt="" src="../_images/tree_4_3.svg" /></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j} b_i a_{ij} c_ic_j\)</span></p></td>
+<td class="text-center"><p>4</p></td>
 <td class="text-center"><p>8</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p><img alt="" src="../_images/tree_4_2.svg" /></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j} b_ia_{ij}c_j^3\)</span></p></td>
 <td class="text-center"><p>12</p></td>
-<td class="text-center"><p><img alt="" src="../_images/tree_4_4.svg" /></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\displaystyle\sum_{i,j,k} b_i a_{ij} a_{jk} c_k\)</span></p></td>
 <td class="text-center"><p>24</p></td>
 </tr>
 </tbody>
@@ -499,12 +494,12 @@ document.write(`
 \[ \begin{align*}
   b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}.
 \end{align*} \]</div>
-<p>We have now derived the order conditions for a fourth-order explicit Runge-Kutta method which are combined with the row sum condition equation <a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html#equation-row-sum-condition">(2.14)</a>. Using rooted trees to do this is much easier than expanding out the Taylor series for the ODE <span class="math notranslate nohighlight">\(y'=f(t, y)\)</span> and the general form of a 4-stage Runge-Kutta method which would require several pages of complicated calculus and algebra.</p>
+<p>We have now derived the order conditions for a fourth-order explicit Runge-Kutta method which are combined with the row sum condition. Using rooted trees to do this is much easier than expanding out the Taylor series for the ODE <span class="math notranslate nohighlight">\(y'=f(t, y)\)</span> and the general form of a 4-stage Runge-Kutta method which would require several pages of complicated calculus and algebra.</p>
 <div class="proof definition note admonition" id="rk4-order-conditions-definition">
-<p class="admonition-title"><span class="caption-number">Definition 2.6 </span> (Order conditions for a fourth-order explicit Runge-Kutta method)</p>
+<p class="admonition-title"><span class="caption-number">Definition 2.2 </span> (Order conditions for a fourth-order explicit Runge-Kutta method)</p>
 <section class="definition-content" id="proof-content">
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+<div class="math notranslate nohighlight" id="equation-rk4-order-conditions">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-rk4-order-conditions" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
     b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac{1}{2}, \\
     b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac{1}{3}, \\
@@ -512,10 +507,13 @@ document.write(`
     b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &amp;= \frac{1}{6}, \\
     b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &amp;= \frac{1}{8}, \\
     b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &amp;= \frac{1}{12}, \\
-    b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}.
+    b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}, \\
+    c_2 &amp;= a_{21}, \\
+    c_3 &amp;= a_{31} + a_{32}, \\
+    c_4 &amp;= a_{41} + a_{42} + a_{43}.
 \end{align*} \end{split}\]</div>
 </section>
-</div><p>A fourth-order explicit Runge-Kutta method has 8 order conditions expressed in 14 unknowns (6 <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients and 4 each of the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> coefficients). The row sum condition gives a further 3 order conditions so we have 11 order conditions and 14 unknowns. To derive a method we choose the value of 3 of the unknowns and solve for the rest.</p>
+</div><p>A fourth-order explicit Runge-Kutta method has 11 order conditions expressed in 14 unknowns (6 <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients and 4 each of the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> coefficients). To derive a method we need to select values for at least 3 of the unknowns and solve for the remaining.</p>
 <div class="proof example admonition" id="rk4-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 2.6 </span></p>
 <section class="example-content" id="proof-content">
@@ -650,12 +648,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 \end{align*} \end{split}\]</div>
 </div>
 </details></section>
-</div><p>This fourth-order explicit Runge-Kutta method we derived in <a class="reference internal" href="#rk4-derivation-example">Example 2.6</a> is often referred to as <em>the</em> Runge-Kutta method or <strong>RK4</strong> for short. It is simple, robust and accurate and has become the standard goto method for solving ODEs.</p>
+</div><p>This fourth-order explicit Runge-Kutta method we derived in <a class="reference internal" href="#rk4-derivation-example">Example 2.6</a> is often referred to as <em>the</em> Runge-Kutta method or RK4 for short. It is simple, robust and accurate and has become the standard goto method for solving ODEs.</p>
 <div class="proof definition admonition" id="rk4-definition">
-<p class="admonition-title"><span class="caption-number">Definition 2.7 </span> (The fourth-order explicit Runge-Kutta method (RK4))</p>
+<p class="admonition-title"><span class="caption-number">Definition 2.3 </span> (The fourth-order explicit Runge-Kutta method (RK4))</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight" id="equation-rk4-equation">
-<span class="eqno">(2.16)<a class="headerlink" href="#equation-rk4-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(2.18)<a class="headerlink" href="#equation-rk4-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{6}(k_1 + 2 k_2 + 2 k_3 + k_4), \\
     k_1 &amp;= f(t_n, y_n), \\
     k_2 &amp;= f(t_n + \tfrac{1}{2} h, y_n + \tfrac{1}{2} h k_1), \\
@@ -721,32 +719,7 @@ solve(eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8)
 ```
 
 ````
-````` --><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set b values</span>
-<span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-
-<span class="c1"># Define order conditions</span>
-<span class="n">eq5</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">eq6</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">eq7</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">eq8</span> <span class="o">=</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">eq9</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">c2</span>
-<span class="n">eq10</span> <span class="o">=</span> <span class="n">a31</span> <span class="o">+</span> <span class="n">a32</span> <span class="o">-</span> <span class="n">c3</span>
-<span class="n">eq11</span> <span class="o">=</span> <span class="n">a41</span> <span class="o">+</span> <span class="n">a42</span> <span class="o">+</span> <span class="n">a43</span> <span class="o">-</span> <span class="n">c4</span>
-
-<span class="c1"># Solve order conditions</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{a31: 0, a32: 1/2, a41: 0, a42: 0, a43: 1, a21: 1/2}
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+````` --></section>
 
     <script type="text/x-thebe-config">
     {

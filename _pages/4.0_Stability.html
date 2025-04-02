@@ -64,7 +64,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/4.0_Stability';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/4.0_Stability.html" />
@@ -166,11 +166,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -411,7 +411,7 @@ document.write(`
 <p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> and <span class="math notranslate nohighlight">\(h=0.125\)</span>.</span><a class="headerlink" href="#stability-plot-1-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution where the numerical solution remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution which is unbounded. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="1.3_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="1.3_Error_Analysis.html#lte-definition">local truncation error</a>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="1.3_Error_Analysis.html#gte-definition">global truncation error</a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
+<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution where the numerical solution remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution which is unbounded. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="1.2_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">local</span> <span class="pre">truncation</span> <span class="pre">error</span></code>, <span class="math notranslate nohighlight">\(\tau\)</span>, and the accumulation of these local truncation errors creates the <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">global</span> <span class="pre">truncation</span> <span class="pre">error</span></code>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
 <div class="proof definition admonition" id="stability-definition">
 <p class="admonition-title"><span class="caption-number">Definition 4.1 </span> (Stability)</p>
 <section class="definition-content" id="proof-content">

@@ -64,14 +64,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/1.0_ODEs';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/1.0_ODEs.html" />
     <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1. The Taylor Series" href="1.1_Taylor_Series.html" />
+    <link rel="next" title="1.1. The Euler method" href="1.1_Euler_Method.html" />
     <link rel="prev" title="Learning and teaching" href="0.3_Learning_and_teaching.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -166,11 +166,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">1. Ordinary Differential Equations (ODE)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -386,16 +386,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ordinary-differential-equations-ode">
 <span id="ode-chapter"></span><h1><span class="section-number">1. </span>Ordinary Differential Equations (ODE)<a class="headerlink" href="#ordinary-differential-equations-ode" title="Permalink to this heading">#</a></h1>
-<p>An Ordinary Differential Equation (ODE) is an equation which contains the derivatives of a function e.g., <span class="math notranslate nohighlight">\(y(t)\)</span>, of a single independent variable <span class="math notranslate nohighlight">\(t\)</span>. ODEs occur in many different applications so it is important that we are able to solve them. Simple ODEs can be solved using analytical methods such as integration and Laplace transforms, however, the vast majority of ODEs used in the real world cannot be solved using analytical methods which is why we need a numerical approach.</p>
+<p>An Ordinary Differential Equation (ODE) is an equation which contains the derivatives of a function of a single independent variable. ODEs occur in many applications, so it is important that we are able to solve them. A simple ODE can be solved using analytical methods such as integration and Laplace transforms, however the vast majority of ODEs used in the real world cannot be solved using analytical methods which is why we need a numerical approach.</p>
 <div class="proof definition admonition" id="definition-0">
 <p class="admonition-title"><span class="caption-number">Definition 1.1 </span> (Ordinary Differential Equation)</p>
 <section class="definition-content" id="proof-content">
 <p>An Ordinary Differential Equation (ODE) is an equation of the form</p>
 <div class="math notranslate nohighlight">
 \[ y^{(n)}(t) = f(t, y(t), y'(t), y''(t), \ldots, y^{(n-1)}(t)), \]</div>
-<p>where <span class="math notranslate nohighlight">\(t\)</span> is an independent variable, <span class="math notranslate nohighlight">\(y(t)\)</span> is some function of <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(y^{(n)}(t)\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th derivative of <span class="math notranslate nohighlight">\(y(t)\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is some function of <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(y(t)\)</span> and its derivatives.</p>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> is an independent variable, <span class="math notranslate nohighlight">\(y(t)\)</span> is a differentiable function and <span class="math notranslate nohighlight">\(y'(t)\)</span>, <span class="math notranslate nohighlight">\(y''(t)\)</span> etc. are derivatives of <span class="math notranslate nohighlight">\(y(t)\)</span>..</p>
 </section>
-</div><p>These notes will write <span class="math notranslate nohighlight">\(y(t)\)</span> as <span class="math notranslate nohighlight">\(y\)</span> from now on for convenience. The solution of an ODE is the function <span class="math notranslate nohighlight">\(y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
+</div><p>It is common to express the function <span class="math notranslate nohighlight">\(y(t)\)</span> as <span class="math notranslate nohighlight">\(y\)</span> for brevity. The solution of an ODE is the function <span class="math notranslate nohighlight">\(y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
 <div class="math notranslate nohighlight" id="equation-simple-ode-equation">
 <span class="eqno">(1.1)<a class="headerlink" href="#equation-simple-ode-equation" title="Permalink to this equation">#</a></span>\[y' = y, \]</div>
 <p>where <span class="math notranslate nohighlight">\(t \in \mathbb{R}\)</span>. Rewriting this using Leibniz notation and integrating both sides we have</p>
@@ -414,32 +414,32 @@ document.write(`
 \end{align*} \]</div>
 <p>The solution can be verified by differentiating <span class="math notranslate nohighlight">\(y\)</span> and check that it satisfies the original ODE. This solution has been plotted for various values of the constant <span class="math notranslate nohighlight">\(c\)</span> in <a class="reference internal" href="#ode-plot-figure"><span class="std std-numref">Fig. 1.1</span></a>. Note that there are an infinite number of solutions since <span class="math notranslate nohighlight">\(c\)</span> can be any value.</p>
 <figure class="align-default" id="ode-plot-figure" style="width: 600px">
-<img alt="../_images/b1a6ba8bb8b43cc0da6dfb3948ff751bb20603fadda6cf248a2138ee3ed6f0f1.png" src="../_images/b1a6ba8bb8b43cc0da6dfb3948ff751bb20603fadda6cf248a2138ee3ed6f0f1.png" />
+<img alt="../_images/7c959daa51b4b3607b7dd45bfd7b06a68891911514473519d2fdfad4300996cf.png" src="../_images/7c959daa51b4b3607b7dd45bfd7b06a68891911514473519d2fdfad4300996cf.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Plots of some of the possible solution to the ODE <span class="math notranslate nohighlight">\(y' = y\)</span>.</span><a class="headerlink" href="#ode-plot-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>However, if we know that the value of the solution <span class="math notranslate nohighlight">\(y\)</span> for some <span class="math notranslate nohighlight">\(t\)</span> then we can calculate <span class="math notranslate nohighlight">\(c\)</span>. For example, if the solution to the ODE in equation <a class="reference internal" href="#equation-simple-ode-equation">(1.1)</a> is known to be <span class="math notranslate nohighlight">\(y(0) = \alpha\)</span> then</p>
+<p>However, if we know that the value of the solution <span class="math notranslate nohighlight">\(y\)</span> for some <span class="math notranslate nohighlight">\(t\)</span> then we can calculate <span class="math notranslate nohighlight">\(c\)</span>. For example, if the solution to the ODE in equation <a class="reference internal" href="#equation-simple-ode-equation">(1.1)</a> is known to be <span class="math notranslate nohighlight">\(y(0) = y_0\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \alpha &amp;= e^{0 + c} = e^c \\
-    \therefore c &amp;= \ln(\alpha)
+    y_0 &amp;= e^{0 + c} = e^c \\
+    \therefore c &amp;= \ln(y_0)
 \end{align*} \end{split}\]</div>
 <p>so the ODE has the solution</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    y &amp;= e^{t + \ln(\alpha)}.
+    y &amp;= e^{t + \ln(y_0)}.
 \end{align*} \]</div>
-<p>Different values of <span class="math notranslate nohighlight">\(\alpha\)</span> in the initial solution <span class="math notranslate nohighlight">\(y(0)=\alpha\)</span> give different unique solutions to the ODE. Problems of this type are known as <strong>initial value problems</strong>.</p>
+<p>Different values of <span class="math notranslate nohighlight">\(y_0\)</span> in the initial solution <span class="math notranslate nohighlight">\(y(0)=y_0\)</span> give different unique solutions to the ODE. Problems of this type are known as <strong>Initial Value Problems (IVP)</strong>.</p>
 <div class="proof definition admonition" id="ivp-definition">
 <p class="admonition-title"><span class="caption-number">Definition 1.2 </span> (Initial value problem)</p>
 <section class="definition-content" id="proof-content">
 <p>An Initial Value Problem (IVP) is an ODE where the initial solution at the lower boundary of the domain is known. For example,</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    y' = f(t,y), \qquad t\in [t_{\min}, t_{\max}], \qquad y(a) = \alpha.
+    y' = f(t,y), \qquad t \in [t_0, t_{\max}], \qquad y(t_0) = y_0.
 \end{align*} \]</div>
-<p>Here a first-order ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> is defined over the domain <span class="math notranslate nohighlight">\(t\in [t_{\min} , t_{\max}]\)</span> and the initial solution <span class="math notranslate nohighlight">\(y(t_{\min})\)</span> is the known value <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>Here a first-order ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> is defined over the domain <span class="math notranslate nohighlight">\(t\in [t_0 , t_{\max}]\)</span> and the initial solution <span class="math notranslate nohighlight">\(y(t_0)\)</span> is the known value <span class="math notranslate nohighlight">\(y_0\)</span>.</p>
 </section>
 </div><p>For most real world practical applications initial value problems cannot be solved using analytical methods so instead we use numerical methods to approximate the solution. These notes will cover a common class of numerical methods used to solve initial value problems called Runge-Kutta methods.</p>
 <div class="toctree-wrapper compound">
@@ -487,11 +487,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="1.1_Taylor_Series.html"
+       href="1.1_Euler_Method.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.1. </span>The Taylor Series</p>
+        <p class="prev-next-title"><span class="section-number">1.1. </span>The Euler method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
