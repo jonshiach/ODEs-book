@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -177,23 +183,24 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -382,8 +389,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thomas-algorithm">5.3.1. The Thomas algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">5.3.2. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thomas-algorithm">5.3.1. The Thomas algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3.2. Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-vs-number-of-nodes">5.3.3. Order vs number of nodes</a></li>
 </ul>
             </nav>
@@ -399,50 +409,54 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="the-finite-difference-method">
 <span id="finite-difference-method-section"></span><h1><span class="section-number">5.3. </span>The finite-difference method<a class="headerlink" href="#the-finite-difference-method" title="Permalink to this heading">#</a></h1>
 <p>The finite-difference method for solving a boundary value problem replaces the derivatives in the ODE with <a href="https://en.wikipedia.org/wiki/Finite_difference" target="_blank">finite-difference approximations</a> derived from the Taylor series. This results in linear system of algebraic equations that can be solved to give an approximation of the solution to the BVP.</p>
-<p>The derivatives of <span class="math notranslate nohighlight">\(y_i\)</span> are approximated using values of neighbouring nodes <span class="math notranslate nohighlight">\(y_{i+1}\)</span>, <span class="math notranslate nohighlight">\(y_{i-1}\)</span> etc. using expressions derived by truncating the <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">Taylor</span> <span class="pre">series</span></code> and rearranging to make the derivative term the subject. Some common finite-difference approximations are listed in <a class="reference internal" href="#finite-difference-approximations-table"><span class="std std-numref">Table 5.2</span></a>.</p>
-<table class="table" id="finite-difference-approximations-table">
-<caption><span class="caption-number">Table 5.2 </span><span class="caption-text">Finite-difference approximations</span><a class="headerlink" href="#finite-difference-approximations-table" title="Permalink to this table">#</a></caption>
+<p>The derivatives of <span class="math notranslate nohighlight">\(y_i\)</span> are approximated using values of neighbouring nodes <span class="math notranslate nohighlight">\(y_{i+1}\)</span>, <span class="math notranslate nohighlight">\(y_{i-1}\)</span> etc. using expressions derived by truncating the Taylor series and rearranging to make the derivative term the subject. Some common finite-difference approximations are tabulated below.</p>
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Finite-difference approximation</p></th>
-<th class="head"><p>Order</p></th>
-<th class="head"><p>Name</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Finite-difference approximation</p></th>
+<th class="head text-center"><p>Error</p></th>
+<th class="head text-center"><p>Name</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_{i+1} - y_i}{h}\)</span></p></td>
-<td><p>first</p></td>
-<td><p>forward difference</p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_{i+1} - y_i}{h}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(O(h)\)</span></p></td>
+<td class="text-center"><p>Forward difference</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_i - y_{i-1}}{h}\)</span></p></td>
-<td><p>first</p></td>
-<td><p>backward difference</p></td>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_i - y_{i-1}}{h}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(O(h)\)</span></p></td>
+<td class="text-center"><p>Backward difference</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_{i+1} - y_{i-1}}{2h}\)</span></p></td>
-<td><p>second</p></td>
-<td><p>central difference</p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(y' = \dfrac{y_{i+1} - y_{i-1}}{2h}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(O(h^2)\)</span></p></td>
+<td class="text-center"><p>Central difference</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(y'' = \dfrac{y_{i-1} - 2 y_i + y_{i+1}}{h^2}\)</span></p></td>
-<td><p>second</p></td>
-<td><p>symmetric difference</p></td>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(y'' = \dfrac{y_{i-1} - 2 y_i + y_{i+1}}{h^2}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(O(h^2)\)</span></p></td>
+<td class="text-center"><p>Symmetric difference</p></td>
 </tr>
 </tbody>
 </table>
 <p>The solution to a boundary value problem using then finite-difference method is determined by approximating the derivatives in the ODE using finite-differences. Consider the following boundary value problem</p>
 <div class="math notranslate nohighlight">
-\[ y'' = f(t,y), \qquad t \in [t_{\min}, t_{\max}], \qquad y(t_{\min}) = \alpha, \qquad y(t_{\max}) = \beta. \]</div>
+\[ \begin{align*}
+    y'' = f(t,y), \qquad t \in [t_0, t_{\max}], \qquad y(t_0) = a, \qquad y(t_{\max}) = b. 
+\end{align*} \]</div>
 <p>Using the symmetric difference to approximate <span class="math notranslate nohighlight">\(y''\)</span> in the ODE we have</p>
 <div class="math notranslate nohighlight">
-\[ y_{i-1} - 2y_i + y_{i+1} = h^2 f(t_i ,y_i). \]</div>
-<p>Since we know that <span class="math notranslate nohighlight">\(y_0 = \alpha\)</span> and <span class="math notranslate nohighlight">\(y_n = \beta\)</span> then the first and last equations become we have a system of <span class="math notranslate nohighlight">\(n\)</span> equations</p>
+\[\begin{split} \begin{align*}
+    \frac{y_{i-1} - 2y_i + y_{i+1}}{h^2} &amp;= f(t_i ,y_i) \\
+    y_{i-1} - 2y_i + y_{i+1} &amp;= h^2f(t_i, y_i).
+\end{align*} \end{split}\]</div>
+<p>Since we know that <span class="math notranslate nohighlight">\(y_0 = a\)</span> and <span class="math notranslate nohighlight">\(y_n = b\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_0 &amp;= \alpha, \\
+    y_0 &amp;= a, \\
     y_0 - 2y_1 + y_2 &amp;= h^2 f(t_1, y_1), \\
     y_1 - 2y_2 + y_3 &amp;= h^2 f(t_2, y_2), \\
     &amp; \vdots \\
     y_{n-3} - 2y_{n-2} + y_{n-1} &amp;= h^2 f(t_{n-2}, y_{n-2}), \\
     y_{n-2} - 2y_{n-1} + y_{n} &amp;= h^2 f(t_{n-1}, y_{n-1}), \\
-    y_{n} &amp;= \beta,
+    y_{n} &amp;= b,
 \end{align*} \end{split}\]</div>
 <p>which can be written as the matrix equation</p>
 <div class="math notranslate nohighlight">
@@ -457,15 +471,16 @@ document.write(`
         &amp; &amp; &amp; &amp; &amp; 0 &amp; 1
     \end{pmatrix}
     \begin{pmatrix} y_0 \\ y_1 \\ y_2 \\ \vdots \\ y_{n-2} \\ y_{n-1} \\ y_n \end{pmatrix} =
-    \begin{pmatrix} \alpha \\ f(t_1, y_1) \\ f(t_2, y_2) \\ \vdots \\ f(t_{n-2}, y_{n-2} \\ f(t_{n-1}, y_{n-1}) \\ \beta \end{pmatrix}.
+    \begin{pmatrix} a \\ f(t_1, y_1) \\ f(t_2, y_2) \\ \vdots \\ f(t_{n-2}, y_{n-2} \\ f(t_{n-1}, y_{n-1}) \\ b \end{pmatrix}.
 \end{align*} \end{split}\]</div>
+<hr class="docutils" />
 <section id="the-thomas-algorithm">
 <span id="thomas-algorithm-section"></span><h2><span class="section-number">5.3.1. </span>The Thomas algorithm<a class="headerlink" href="#the-thomas-algorithm" title="Permalink to this heading">#</a></h2>
 <p>The coefficient matrix for the linear system that results from the application of the second-order symmetric finite-difference approximation of <span class="math notranslate nohighlight">\(y''\)</span> is <a href="https://en.wikipedia.org/wiki/Tridiagonal_matrix" target="_blank">tri-diagonal matrix</a> (the only non-zero elements are on the main, lower and upper diagonals). The usual methods for solving linear systems of equations such as <a href="https://jonshiach.github.io/LA-book/_pages/2.3_Gaussian_elimination.html" target="_blank">Gaussian elimination</a> and <a class="reference internal" href="6.2_Solving_systems_using_LU.html#solving-systems-using-lu-section"><span class="std std-ref">LU decomposition</span></a> could be applied here, however there is a more efficient method that can solve tri-diagonal systems called the <a href="https://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm" target="_blank">Thomas algorithm</a>).</p>
 <div class="proof definition note admonition" id="thomas-method-definition">
 <p class="admonition-title"><span class="caption-number">Definition 5.2 </span> (The Thomas algorithm)</p>
 <section class="definition-content" id="proof-content">
-<p>Given a tri-diagonal linear system of equations of the form</p>
+<p>Given a tri-diagonal linear system of equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix} 
@@ -491,7 +506,24 @@ document.write(`
     x_i &amp;= \frac{d_i - c_i x_{i+1}}{b_i}, \qquad i = n-1, n-2, \ldots, 1.
 \end{align*} \end{split}\]</div>
 </section>
-</div><div class="proof example seealso admonition" id="bvp-finite-difference-example">
+</div><section id="code">
+<h3>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tridiagonal_solver</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="proof example seealso admonition" id="bvp-finite-difference-example">
 <p class="admonition-title"><span class="caption-number">Example 5.4 </span></p>
 <section class="example-content" id="proof-content">
 <p>Use the finite-difference method to solve the boundary below using a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span></p>
@@ -499,24 +531,19 @@ document.write(`
 \[ \begin{align*}
     y'' - y' - y = 0, \qquad y(0) = 0, \qquad y(1) = 2.
 \end{align*} \]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Using a forward difference to approximate <span class="math notranslate nohighlight">\(y'\)</span> and a symmetric difference to approximate <span class="math notranslate nohighlight">\(y''\)</span> we have</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Using a forward difference to approximate <span class="math notranslate nohighlight">\(y'\)</span> and a symmetric difference to approximate <span class="math notranslate nohighlight">\(y''\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     \frac{y_{i-1} -2y_i +y_{i+1} }{h^2 }-\frac{y_{i+1} -y_i }{h}-y_i = 0,
 \end{align*} \]</div>
-<p class="sd-card-text">which can be simplified to</p>
+<p>which can be simplified to</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     y_{i-1} +(h-h^2 -2)y_i +(1-h)y_{i+1} = 0.
 \end{align*} \]</div>
-<p class="sd-card-text">This gives the following system of linear equations</p>
+<p>This gives the following system of linear equations</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_0 &amp;= 0, \\
@@ -527,7 +554,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     y_{n-2} + (h - h^2 - 2) y_{n-1} + (1 - h) y_n &amp;= 0, \\
     y_n &amp;= 2.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">which we can write the linear system as the matrix equation</p>
+<p>which we can write the linear system as the matrix equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix}
@@ -540,12 +567,12 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{n-1} \\ y_n \end{pmatrix}  =
     \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ 2  \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">If we use a step length of <span class="math notranslate nohighlight">\(h=0.2\)</span> we have</p>
+<p>If we use a step length of <span class="math notranslate nohighlight">\(h=0.2\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     \vec{t} = (0, 0.2, 0.4, 0.6, 0.8, 1),
 \end{align*} \]</div>
-<p class="sd-card-text">and</p>
+<p>and</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix}
@@ -559,7 +586,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \begin{pmatrix} y_0 \\ y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \end{pmatrix} = 
     \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 2 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Performing the forward sweep of the Thomas algorithm</p>
+<p>Performing the forward sweep of the Thomas algorithm</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     b_1 &amp;= 1, \\ 
@@ -575,7 +602,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     d_5 &amp;= d_5 - d_4 \left( \frac{a_5}{b_4} \right) = 0 - 0 \left( \frac{1}{-1.270693} \right) = 0, \\
     d_6 &amp;= d_6 - d_5 \left( \frac{a_6}{b_5} \right) = 2 - 0 \left( \frac{0}{-1.270693} \right) = 2, \\
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Performing the back substitution</p>
+<p>Performing the back substitution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_6 &amp;= \frac{d_6}{b_6} = \frac{2}{1} = 2, \\
@@ -585,53 +612,54 @@ Solution (click to show)<div class="sd-summary-down docutils">
     y_2 &amp;= \frac{d_2 - c_2 y_3}{b_2} = \frac{0 - 0.8(0.473782)}{-2.64} = 0.205992, \\
     y_1 &amp;= \frac{d_1 - c_1 y_2}{b_1} = \frac{0 - 0(0.205992)}{1} = 0, \\
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">The solutions to this boundary value problem using the finite-difference method are tabulated below.</p>
+<p>The solutions to this boundary value problem using the finite-difference method are tabulated below.</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_n\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text">Exact</p></th>
-<th class="head text-center"><p class="sd-card-text">Error</p></th>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(y_n\)</span></p></th>
+<th class="head text-center"><p>Exact</p></th>
+<th class="head text-center"><p>Error</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.0</p></td>
-<td class="text-center"><p class="sd-card-text">0.000000</p></td>
-<td class="text-center"><p class="sd-card-text">0.000000</p></td>
-<td class="text-center"><p class="sd-card-text">0.00e+00</p></td>
+<tr class="row-even"><td class="text-center"><p>0.0</p></td>
+<td class="text-center"><p>0.000000</p></td>
+<td class="text-center"><p>0.000000</p></td>
+<td class="text-center"><p>0.00e+00</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.2</p></td>
-<td class="text-center"><p class="sd-card-text">0.205992</p></td>
-<td class="text-center"><p class="sd-card-text">0.221296</p></td>
-<td class="text-center"><p class="sd-card-text">1.53e-02</p></td>
+<tr class="row-odd"><td class="text-center"><p>0.2</p></td>
+<td class="text-center"><p>0.205992</p></td>
+<td class="text-center"><p>0.221296</p></td>
+<td class="text-center"><p>1.53e-02</p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.4</p></td>
-<td class="text-center"><p class="sd-card-text">0.473782</p></td>
-<td class="text-center"><p class="sd-card-text">0.501419</p></td>
-<td class="text-center"><p class="sd-card-text">2.76e-02</p></td>
+<tr class="row-even"><td class="text-center"><p>0.4</p></td>
+<td class="text-center"><p>0.473782</p></td>
+<td class="text-center"><p>0.501419</p></td>
+<td class="text-center"><p>2.76e-02</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.6</p></td>
-<td class="text-center"><p class="sd-card-text">0.832209</p></td>
-<td class="text-center"><p class="sd-card-text">0.865840</p></td>
-<td class="text-center"><p class="sd-card-text">3.36e-02</p></td>
+<tr class="row-odd"><td class="text-center"><p>0.6</p></td>
+<td class="text-center"><p>0.832209</p></td>
+<td class="text-center"><p>0.865840</p></td>
+<td class="text-center"><p>3.36e-02</p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.8</p></td>
-<td class="text-center"><p class="sd-card-text">1.321853</p></td>
-<td class="text-center"><p class="sd-card-text">1.349412</p></td>
-<td class="text-center"><p class="sd-card-text">2.76e-02</p></td>
+<tr class="row-even"><td class="text-center"><p>0.8</p></td>
+<td class="text-center"><p>1.321853</p></td>
+<td class="text-center"><p>1.349412</p></td>
+<td class="text-center"><p>2.76e-02</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1.0</p></td>
-<td class="text-center"><p class="sd-card-text">2.000000</p></td>
-<td class="text-center"><p class="sd-card-text">2.000000</p></td>
-<td class="text-center"><p class="sd-card-text">0.00e+00</p></td>
+<tr class="row-odd"><td class="text-center"><p>1.0</p></td>
+<td class="text-center"><p>2.000000</p></td>
+<td class="text-center"><p>2.000000</p></td>
+<td class="text-center"><p>0.00e+00</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</details></section>
+</section>
 </div></section>
-<section id="code">
-<h2><span class="section-number">5.3.2. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h2><span class="section-number">5.3.2. </span>Code<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>The code below calculates the solution to the boundary value problem in  <a class="reference internal" href="#bvp-finite-difference-example">Example 5.4</a>. The coefficient arrays <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> along with the constant vector <code class="docutils literal notranslate"><span class="pre">d</span></code> are defined for this problem and the <code class="docutils literal notranslate"><span class="pre">tridiagonal_solver()</span></code> function is used to solve the linear system. Note that the values in <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> are specific to the problem being solved and will need to be changed when solving other boundary value problems.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -639,9 +667,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># allows use of LaTeX in labels</span>
 
-<span class="c1"># Define tridiagonal solver</span>
 <span class="k">def</span> <span class="nf">tridiagonal_solver</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -657,7 +683,6 @@ Python</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="n">x</span>
     
 
-<span class="c1"># Define exact solution</span>
 <span class="k">def</span> <span class="nf">exact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
  
@@ -788,13 +813,7 @@ MATLAB</label><div class="sd-tab-content docutils">
     \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{N-1} \\ y_N \end{pmatrix} \\
     = \begin{pmatrix} 1 \\ h^2 \cos(2t_1) \\ \vdots \\ h^2 \cos(2t_{N-1}) \\ 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>The solution of this BVP is shown in <a class="reference internal" href="#bvp-fdm-accuracy-figure-1"><span class="std std-numref">Fig. 5.2</span></a> for <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h = 0.005\)</span>. Since we used a first-order approximation for <span class="math notranslate nohighlight">\(y'\)</span> the error for this method is <span class="math notranslate nohighlight">\(O(h)\)</span> and we expect the solution using <span class="math notranslate nohighlight">\(h=0.005\)</span> to be more accurate.</p>
-<figure class="align-default" id="bvp-fdm-accuracy-figure-1" style="width: 600px">
-<img alt="../_images/60fce7f21b8b067f584659cc680897dcbd90680178ab0138e250f2c15a45e55e.png" src="../_images/60fce7f21b8b067f584659cc680897dcbd90680178ab0138e250f2c15a45e55e.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' + 3ty' + 7y = \cos (2t)\)</span>, <span class="math notranslate nohighlight">\(t \in [0,3]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span>, <span class="math notranslate nohighlight">\(y(3) = 0\)</span> using first-order finite-difference approximations with <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span>.</span><a class="headerlink" href="#bvp-fdm-accuracy-figure-1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p>The solution of this BVP is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">bvp-fdm-accuracy-figure-1</span></code> for <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h = 0.005\)</span>. Since we used a first-order approximation for <span class="math notranslate nohighlight">\(y'\)</span> the error for this method is <span class="math notranslate nohighlight">\(O(h)\)</span> and we expect the solution using <span class="math notranslate nohighlight">\(h=0.005\)</span> to be more accurate.</p>
 <p>To obtain a more accurate solution, instead of increasing the number of nodes we could use the <a class="reference internal" href="#finite-difference-method-section"><span class="std std-ref">central difference approximation</span></a> (which is second-order accurate) to approximate <span class="math notranslate nohighlight">\(y'\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -814,13 +833,7 @@ MATLAB</label><div class="sd-tab-content docutils">
     \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{N-1} \\ y_N \end{pmatrix} \\
     = \begin{pmatrix} 1 \\ 2h^2 \cos(2t_1) \\ \vdots \\ 2h^2 \cos(2t_{N-1}) \\ 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>The solution using the second-order finite difference method with <span class="math notranslate nohighlight">\(h=0.05\)</span> has been plotted against the first-order solution using <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span> in <a class="reference internal" href="#bvp-fdm-accuracy-figure-2"><span class="std std-numref">Fig. 5.3</span></a>. The second order solution gives good agreement with the first order solution using 10 times fewer nodes.</p>
-<figure class="align-default" id="bvp-fdm-accuracy-figure-2" style="width: 600px">
-<img alt="../_images/7ba20bf852072bd21109922916044b5d98c56a975a786c7f1f97b420becd1924.png" src="../_images/7ba20bf852072bd21109922916044b5d98c56a975a786c7f1f97b420becd1924.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' + 3ty' + 7y = \cos (2t)\)</span>, <span class="math notranslate nohighlight">\(t \in [0,3]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span>, <span class="math notranslate nohighlight">\(y(3) = 0\)</span> using first-order and second-order finite-difference approximations with <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span>.</span><a class="headerlink" href="#bvp-fdm-accuracy-figure-2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p>The solution using the second-order finite difference method with <span class="math notranslate nohighlight">\(h=0.05\)</span> has been plotted against the first-order solution using <span class="math notranslate nohighlight">\(h=0.05\)</span> and <span class="math notranslate nohighlight">\(h=0.005\)</span> in <code class="xref std std-numref docutils literal notranslate"><span class="pre">bvp-fdm-accuracy-figure-2</span></code>. The second order solution gives good agreement with the first order solution using 10 times fewer nodes.</p>
 </section>
 </section>
 
@@ -891,8 +904,11 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thomas-algorithm">5.3.1. The Thomas algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">5.3.2. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thomas-algorithm">5.3.1. The Thomas algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3.2. Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-vs-number-of-nodes">5.3.3. Order vs number of nodes</a></li>
 </ul>
   </nav></div>

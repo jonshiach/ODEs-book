@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -177,23 +183,24 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -407,20 +414,25 @@ document.write(`
     &amp; \vdots \\
     y_N' &amp;= f_N(t, y_1, y_2, \ldots, y_N),
 \end{align*} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(y_1, y_2, \ldots, y_N\)</span> are multiple dependent functions. An IVP involving a system of ODEs requires an initial value for each equation in the system, i.e., <span class="math notranslate nohighlight">\(y_1(t_0) = a_1\)</span>, <span class="math notranslate nohighlight">\(y_2(t_0) = a_2\)</span> etc. where <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_N\)</span> are constants.</p>
-<p>To apply a numerical method to solve a system of ODEs, we can write it in vector form <span class="math notranslate nohighlight">\(\mathbf{y}' = \mathbf{f}(t, \mathbf{y})\)</span> where</p>
+<p>where <span class="math notranslate nohighlight">\(y_1(t), y_2(t), \ldots, y_N(t)\)</span> are multiple dependent functions. An IVP involving a system of ODEs requires an initial value for each equation in the system, i.e., <span class="math notranslate nohighlight">\(y_1(t_0) = a_1\)</span>, <span class="math notranslate nohighlight">\(y_2(t_0) = a_2\)</span> etc. where <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_N\)</span> are constants.</p>
+<p>To apply a numerical method to solve a system of ODEs, we can write it in vector form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, \mathbf{y})\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{y} &amp;= (y_1, y_2, \ldots, y_N), \\
-    \vec{f}(t, \vec{y}) &amp;= (f_1(t, \vec{y}), f_2(t, \vec{y}), \ldots, f_N(t, \vec{y}).
+    \vec{y} &amp;= \begin{pmatrix} y_1 \\ \vdots \\ y_N \end{pmatrix}, &amp;
+    f(t, \vec{y}) &amp;= 
+    \begin{pmatrix} 
+        f_1(t, \vec{y}) \\
+        \vdots \\
+        f_N(t, \vec{y})
+    \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Recall that the Euler method for solving an IVP for a single ODE is</p>
 <div class="math notranslate nohighlight">
 \[ y_{n+1} = y_n + h f(t_n, y_n), \]</div>
-<p>then for solving a system of first-order ODEs we have</p>
+<p>then for solving a system of first-order ODEs we simply replace <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span> with <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span> and <span class="math notranslate nohighlight">\(f(t_n, \mathbf{y}_n)\)</span></p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    \vec{y}_{n+1} &amp;= \vec{y}_n + h \vec{f}(t_n, \vec{y}_n).
+    \vec{y}_{n+1} &amp;= \vec{y}_n + h f(t_n, \vec{y}_n).
 \end{align*} \]</div>
 <div class="proof example admonition" id="sir-example">
 <p class="admonition-title"><span class="caption-number">Example 1.2 </span></p>
@@ -428,76 +440,93 @@ document.write(`
 <p>The <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model" target="_blank">SIR model</a> is a simple model that describes the spread of an infectious disease in a population. The model divides the population into three compartments: those who have not yet contracted the disease but are susceptible (<span class="math notranslate nohighlight">\(S\)</span>) those who are infected (<span class="math notranslate nohighlight">\(I\)</span>) and those who have recovered and gained immunity (<span class="math notranslate nohighlight">\(R\)</span>). The formulation of the model is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \dydt{S}{t} &amp;= -\frac{\beta}{N} IS, \\
-    \dydt{I}{t} &amp; =\frac{\beta}{N} IS - \gamma I, \\
+    \dydt{S}{t} &amp;= -\dfrac{\beta}{N} IS, \\
+    \dydt{I}{t} &amp; =\dfrac{\beta}{N} IS - \gamma I, \\
     \dydt{R}{t} &amp;= \gamma I,
 \end{align*} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N = S + I + R\)</span> is the total population, <span class="math notranslate nohighlight">\(\beta\)</span> is the infection rate in the number of people per day who become infected, and <span class="math notranslate nohighlight">\(\gamma\)</span> is the recovery rate at which a person who is infected recovers per day.</p>
-<p>A disease breaks out in a population where <span class="math notranslate nohighlight">\(\beta = 0.5\)</span>, <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span> and <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span> and <span class="math notranslate nohighlight">\(R(0) = 0\)</span>. Calculate the solution to the SIR model over the first 50 days using the Euler method with a (relatively large) step length of <span class="math notranslate nohighlight">\(h = 1\)</span>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(y_1 = S\)</span>, <span class="math notranslate nohighlight">\(y_2 = I\)</span> and <span class="math notranslate nohighlight">\(y_3 = R\)</span> and writing the SIR model in vector form we have</p>
+<p>A disease breaks out in a population where <span class="math notranslate nohighlight">\(\beta = 0.5\)</span>, <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span> and <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span> and <span class="math notranslate nohighlight">\(R(0) = 0\)</span>. Calculate the solution to the SIR model over the first 50 days using the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 1\)</span>.</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Let <span class="math notranslate nohighlight">\(y_1 = S\)</span>, <span class="math notranslate nohighlight">\(y_2 = I\)</span> and <span class="math notranslate nohighlight">\(y_3 = R\)</span> and writing the SIR model in vector form we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{y} &amp;= (y_1, y_2, y_2), \\
-    \mathbf{f}(t, \mathbf{y}) &amp;= \left( -\frac{\beta}{N} y_1 y_2, \quad \frac{\beta}{N} y_1 y_2 - \gamma y_2 , \quad \gamma y_3 \right).
+    \mathbf{y} &amp;= \begin{pmatrix} y_1 \\ y_2 \\ y_3 \end{pmatrix}, &amp;
+    f(t, \mathbf{y}) &amp;= 
+    \begin{pmatrix}
+        -\dfrac{\beta}{N} y_1 y_2 \\
+        \dfrac{\beta}{N} y_1 y_2 - \gamma y_2 \\
+        \gamma y_3
+    \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">The initial conditions are <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (99, 1, 0)\)</span> and <span class="math notranslate nohighlight">\(N = 100\)</span>. Calculating the first few steps fo the Euler method with <span class="math notranslate nohighlight">\(h = 1\)</span></p>
+<p>The initial conditions are <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (99, 1, 0)\)</span> and <span class="math notranslate nohighlight">\(N = 100\)</span>, <span class="math notranslate nohighlight">\(\beta = 0.5\)</span>, <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span> and <span class="math notranslate nohighlight">\(\frac{\beta}{N} = 0.05\)</span>. Calculating the first few steps fo the Euler method with <span class="math notranslate nohighlight">\(h = 1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h \mathbf{f}(t_0, \mathbf{y}_0) \\
-    &amp;= (99, 1, 0) + 1 ( -0.005 (99)(1), \quad 0.005 (99)(1) - 0.1(0), \quad 0.1(0) ) \\
-    &amp;= (98.505, 1.395, 0.1), \\
+    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h f(t_0, \mathbf{y}_0) \\
+    &amp;= 
+    \begin{pmatrix} 99 \\ 1 \\ 0 \end{pmatrix} + 1 
+    \begin{pmatrix} 
+        -0.005 (99)(1) \\
+         0.005 (99)(1) - 0.1(0) \\
+         0.1(0) 
+    \end{pmatrix}
+    = 
+    \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix}, \\
     t_1 &amp;= t_0 + h = 0 + 1 = 1, \\ 
     \\
-    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h \mathbf{f}(t_1, \mathbf{y}_1) \\
-    &amp;= (98.505, 1.395, 0.1) + 1 (-0.005 (98.505)(1.395), \quad 0.005 (98.505)(1.395) - 0.1(0.1), \quad 0.1(0)) \\
-    &amp;= (97.8179,  1.9426,  0.2395), \\
+    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h f(t_1, \mathbf{y}_1) \\
+    &amp;= 
+    \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix} + 1 
+    \begin{pmatrix} 
+        -0.005 (98.505)(1.395) \\
+        0.005 (98.505)(1.395) - 0.1(0.1) \\
+        0.1(0)
+    \end{pmatrix} = 
+    \begin{pmatrix} 97.8179 \\  1.9426 \\  0.2395\end{pmatrix}, \\
     t_2 &amp;= t_1 + h = 1 + 1 = 2, \\
     \\
-    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h \mathbf{f}(t_2, \mathbf{y}_2) \\
-    &amp;= (97.8179,  1.9426,  0.2395) + 1 (-0.005 (97.8179)(1.9426), \quad 0.005 (97.8179)(1.9426) - 0.1(0.2395), \quad 0.1(0)) \\
-    &amp;= (96.8678,  2.6984,  0.4338), \\
+    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h f(t_2, \mathbf{y}_2) \\
+    &amp;= 
+    \begin{pmatrix} 97.8179 \\ 1.9426 \\ 0.2395 \end{pmatrix} + 1 
+    \begin{pmatrix} 
+        -0.005 (97.8179)(1.9426) \\
+         0.005 (97.8179)(1.9426) - 0.1(0.2395) \\ 
+         0.1(0)
+    \end{pmatrix}
+    = 
+    \begin{pmatrix} 96.8678 \\  2.6984 \\  0.4338 \end{pmatrix}, \\
     t_3 &amp;= t_2 + h = 2 + 1 = 3, \\
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">The plot of the solutions to the SIR model using the Euler method for the first 50 days of the infection is shown in <a class="reference internal" href="#sir-figure"><span class="std std-numref">Fig. 1.9</span></a></p>
+<p>The plot of the solutions to the SIR model using the Euler method for the first 50 days of the infection is shown in <a class="reference internal" href="#sir-figure"><span class="std std-numref">Fig. 1.9</span></a></p>
 <figure class="align-default" id="sir-figure" style="width: 600px">
 <img alt="Euler method solutions for the SIR model" src="../_images/a69f6bf921a5719be983bde5f62494cd61a9191d9621283c34a70e1cd4094510.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.9 </span><span class="caption-text">Euler method solutions for the SIR model with <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span>, <span class="math notranslate nohighlight">\(R(0) = 0\)</span>, <span class="math notranslate nohighlight">\(\beta = 0.5\)</span> and <span class="math notranslate nohighlight">\(\gamma = 1\)</span>.</span><a class="headerlink" href="#sir-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-</div>
-</details></section>
+</section>
 </div><section id="code">
 <h2><span class="section-number">1.3.1. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The function <code class="docutils literal notranslate"><span class="pre">euler()</span></code> which computes the solutions to a system of ODEs using the Euler method is shown below. This is very similar to the function used to solve a <a class="reference internal" href="1.1_Euler_Method.html#euler-code-section"><span class="std std-ref">single ODE</span></a> with the exception that <code class="docutils literal notranslate"><span class="pre">y</span></code> is initialised to be an <span class="math notranslate nohighlight">\(nsteps \times N\)</span> array if we have <span class="math notranslate nohighlight">\(N\)</span> equations in the system. The first row of <code class="docutils literal notranslate"><span class="pre">y</span></code> is set equal to the initial values <code class="docutils literal notranslate"><span class="pre">y0</span></code> and calculate the Euler method for all values across the rows.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">euler()</span></code> which computes the solutions to a system of ODEs using the Euler method is shown below. This is very similar to the function used to solve a <a class="reference internal" href="1.1_Euler_Method.html#euler-code-section"><span class="std std-ref">single ODE</span></a> with the exception that <code class="docutils literal notranslate"><span class="pre">y</span></code> is initialised to be a <span class="math notranslate nohighlight">\(N \times nsteps\)</span> array where <span class="math notranslate nohighlight">\(N\)</span> is the number of equations in the system. The first column of <code class="docutils literal notranslate"><span class="pre">y</span></code> is set equal to the initial values <code class="docutils literal notranslate"><span class="pre">y0</span></code> and calculate the Euler method for all values across the rows. Note that the function returns the transpose of <code class="docutils literal notranslate"><span class="pre">y</span></code> so that the columns of the returned array are the functions <span class="math notranslate nohighlight">\(y_1, y_2, \ldots\)</span> (this is done so that it replicates the ODE solvers built into MATLAB).</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-
+    
     <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        
     <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
+    <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
     
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
-        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
+        <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="p">])</span>
         <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
 
-    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
@@ -507,22 +536,24 @@ MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = euler</span><span class="p">(</span>f, tspan, y0, h<span class="p">)</span>
 
 <span class="n">nsteps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="k">if</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">));</span>
-<span class="k">else</span>
-<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="k">end</span>
-<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
 
 <span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">:));</span>
+<span class="w">    </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="p">));</span>
 <span class="w">    </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
 <span class="k">end</span>
+
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="o">&#39;</span><span class="p">;</span>
 
 <span class="k">end</span>
 </pre></div>
 </div>
+<p>Note that this function assumes that the ODE function returns an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector.</p>
 </div>
 </div>
 <p>The code below sets up and solves the SIR model example from <a class="reference internal" href="#sir-example">Example 1.2</a> using the Euler method</p>
@@ -535,34 +566,36 @@ Python</label><div class="sd-tab-content docutils">
 
 <span class="c1"># Define Euler method function</span>
 <span class="k">def</span> <span class="nf">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-
+    
     <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        
     <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
+    <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
     
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
-        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
+        <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="p">])</span>
         <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
 
-    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span>
 
 
 <span class="c1"># Define SIR model</span>
-<span class="k">def</span> <span class="nf">SIR</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">SIR</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">y</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">S</span> <span class="o">+</span> <span class="n">I</span> <span class="o">+</span> <span class="n">R</span>
     <span class="n">dS</span> <span class="o">=</span> <span class="o">-</span><span class="n">beta</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="n">I</span> <span class="o">*</span> <span class="n">S</span>
-    <span class="n">dI</span> <span class="o">=</span>  <span class="n">beta</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="n">I</span> <span class="o">*</span> <span class="n">S</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">I</span>
-    <span class="n">dR</span> <span class="o">=</span>  <span class="n">gamma</span> <span class="o">*</span> <span class="n">I</span>
+    <span class="n">dI</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="n">I</span> <span class="o">*</span> <span class="n">S</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">I</span>
+    <span class="n">dR</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">I</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">dS</span><span class="p">,</span> <span class="n">dI</span><span class="p">,</span> <span class="n">dR</span> <span class="p">])</span>
 
 
 <span class="c1"># Define IVP parameters</span>
 <span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>           <span class="c1"># boundaries of the t domain</span>
-<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>           <span class="c1"># initial values [S, I, R]</span>
-<span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span>    <span class="c1"># SIR model parameters</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>           <span class="c1"># initial values</span>
+<span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span>    <span class="c1"># Model parameters</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>                     <span class="c1"># step length</span>
 
 <span class="c1"># Solve the IVP using the Euler method</span>
@@ -573,8 +606,8 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;b-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Susceptible&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Infected&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;g-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Recovered&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time (days)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time (days)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Population&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -584,14 +617,14 @@ Python</label><div class="sd-tab-content docutils">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define IVP parameters</span>
-<span class="n">tspan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">];</span><span class="w">    </span><span class="c">% boundaries of the t domain</span>
-<span class="n">y0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span><span class="w">    </span><span class="c">% initial values [S, I, R]</span>
-<span class="nb">beta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w">         </span><span class="c">% infection rate</span>
-<span class="nb">gamma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w">        </span><span class="c">% recovery rate</span>
-<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">              </span><span class="c">% step length</span>
+<span class="n">tspan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">];</span><span class="w">   </span><span class="c">% boundaries of the t domain</span>
+<span class="n">y0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span><span class="w">  </span><span class="c">% initial values [S, I, R]</span>
+<span class="nb">beta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w">        </span><span class="c">% infection rate</span>
+<span class="nb">gamma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w">       </span><span class="c">% recovery rate</span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">             </span><span class="c">% step length</span>
 
 <span class="c">% Solve the IVP using the Euler method</span>
-<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">euler</span><span class="p">(@(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="n">SIR</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">,</span><span class="w"> </span><span class="nb">gamma</span><span class="p">),</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">euler</span><span class="p">(@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="n">SIR</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">,</span><span class="w"> </span><span class="nb">gamma</span><span class="p">),</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 
 <span class="c">% Plot solution</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;b-&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
@@ -608,14 +641,19 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = euler</span><span class="p">(</span>f, tspan, y0, h<span class="p">)</span>
 
 <span class="n">nsteps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">));</span>
-<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
 
 <span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="p">:));</span>
-<span class="w">    </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="w">    </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="p">));</span>
+<span class="w">    </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
 <span class="k">end</span>
+
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="o">&#39;</span><span class="p">;</span>
 
 <span class="k">end</span>
 
@@ -625,9 +663,9 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">I</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
-<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="nb">beta</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">S</span><span class="p">;</span>
-<span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="nb">beta</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">gamma</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="p">;</span>
-<span class="n">y</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">gamma</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="p">;</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="nb">beta</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="p">;</span>
+<span class="w">       </span><span class="nb">beta</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">gamma</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="p">;</span>
+<span class="w">       </span><span class="nb">gamma</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="p">];</span>
 
 <span class="k">end</span>
 </pre></div>

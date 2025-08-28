@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -177,23 +183,24 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -396,51 +403,54 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="derivation-of-explicit-runge-kutta-methods">
 <span id="rk2-derivation-section"></span><h1><span class="section-number">2.3. </span>Derivation of Explicit Runge-Kutta Methods<a class="headerlink" href="#derivation-of-explicit-runge-kutta-methods" title="Permalink to this heading">#</a></h1>
-<p>The derivation of an explicit Runge-Kutta (ERK) method is achieved by comparing the <a href="https://en.wikipedia.org/wiki/Taylor_series" target="_blank">Taylor series</a> for the first-order ODE <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span> to that of the general Runge-Kutta method and ensuring the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> match.</p>
-<p>We will consider the derivation of a second-order ERK method. The second-order Taylor series expansion of <span class="math notranslate nohighlight">\(y(t_n + h)\)</span> is</p>
+<p>The derivation of an explicit Runge-Kutta (ERK) method is achieved by comparing the <a href="https://en.wikipedia.org/wiki/Taylor_series" target="_blank">Taylor series</a> for the first-order ODE <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span> to that of the general Runge-Kutta method and ensuring the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> match. Here we will consider the derivation of a second-order ERK method, the second-order Taylor series expansion of <span class="math notranslate nohighlight">\(y(t_n + h)\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-2nd-order-taylor">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-2nd-order-taylor" title="Permalink to this equation">#</a></span>\[ y(t_n + h) = y(t_n) + h y'(t_n) + \frac{h^2}{2} y''(t_n) + O(h^3).\]</div>
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-2nd-order-taylor" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+    y(t_n + h) = y(t_n) + h y'(t_n) + \frac{h^2}{2} y''(t_n) + O(h^3).
+\end{align*}\]</div>
 <p>Since we are solving the ODE <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, we know that <span class="math notranslate nohighlight">\(y'(t_n) = f(t_n, y_n)\)</span>, and we can use the <a href="https://en.wikipedia.org/wiki/Chain_rule" target="_blank">chain rule</a> to determine <span class="math notranslate nohighlight">\(y''(t_n)\)</span></p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     y''(t_n) &amp;= f_t(t_n, y_n) + f_y(t_n, y_n) y_n' = f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n).
 \end{align*} \]</div>
-<p>Substituting <span class="math notranslate nohighlight">\(y'(t_n)\)</span> and <span class="math notranslate nohighlight">\(y''(t_n)\)</span> into equation <a class="reference internal" href="#equation-2nd-order-taylor">(2.4)</a> and using the notation <span class="math notranslate nohighlight">\(y_{n+1} = y(t_n + h)\)</span> and <span class="math notranslate nohighlight">\(y_n = y(t_n)\)</span> gives</p>
+<p>Substituting <span class="math notranslate nohighlight">\(y'(t_n)\)</span> and <span class="math notranslate nohighlight">\(y''(t_n)\)</span> into equation <a class="reference internal" href="#equation-2nd-order-taylor">(2.4)</a> and using the notation <span class="math notranslate nohighlight">\(y_{n+1} = y(t_n + h)\)</span> and <span class="math notranslate nohighlight">\(y_n = y(t_n)\)</span> we have</p>
 <div class="math notranslate nohighlight" id="equation-2nd-order-taylor-2-equation">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-2nd-order-taylor-2-equation" title="Permalink to this equation">#</a></span>\[ y_{n+1} = y_n + h f(t_n, y_n) + \frac{h^2}{2} [ f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n) ] + O(h^3) \]</div>
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-2nd-order-taylor-2-equation" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+    y_{n+1} = y_n + h f(t_n, y_n) + \frac{h^2}{2} [ f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n) ] + O(h^3)
+\end{align*} \]</div>
 <p>This is the Taylor expansion of the ODE we are attempting to solve. What we now need to do is determine an equivalent expansion for the 2-stage ERK method</p>
-<div class="math notranslate nohighlight" id="equation-2-stage-erk-equation">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-2-stage-erk-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n + h (b_1 k_1 + b_2 k_2), \\
     k_1 &amp;= f(t_n, y_n), \\
     k_2 &amp;= f(t_n + c_2h, y_n + a_{21} h k_1).
 \end{align*} \end{split}\]</div>
 <p>For a second-order method, we need to ensure that that values of <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> result in a method that has truncation errors <span class="math notranslate nohighlight">\(O(h^3)\)</span>. Substituting <span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> into <span class="math notranslate nohighlight">\(y_{n+1}\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-expansion-equation">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-rk2-expansion-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
-    y_{n+1} &amp;= y_n + h b_1 f(t_n, y_n) + h b_2 f(t_n + c_2h, y_n + a_{21} h k_1) + O(h^3) \\
-\end{align*} \end{split}\]</div>
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-rk2-expansion-equation" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+    y_{n+1} &amp;= y_n + h b_1 f(t_n, y_n) + h b_2 f(t_n + c_2h, y_n + a_{21} h k_1) + O(h^3).
+\end{align*} \]</div>
 <p>The <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem#Taylor's_theorem_for_multivariate_functions" target="_blank">bivariate Taylor</a> expansion of the two-variable function <span class="math notranslate nohighlight">\(f(t_n + c_2h, y_n + a_{21} h k_1)\)</span> correct to <span class="math notranslate nohighlight">\(O(h^3)\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     f(t_n + c_2 h, y_n + a_{21} h k_1) = f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f_y(t_n, y_n) f(t_n, y_n) + O(h^3).
 \end{align*} \]</div>
-<p>Substituting this into equation <a class="reference internal" href="#equation-rk2-expansion-equation">(2.7)</a></p>
+<p>Substituting this into equation <a class="reference internal" href="#equation-rk2-expansion-equation">(2.6)</a></p>
 <div class="math notranslate nohighlight" id="equation-rk2-expansion-equation-2">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-rk2-expansion-equation-2" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-rk2-expansion-equation-2" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f(t_n, y_n)] + O(h^3) \\
-    &amp;= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 [c_2f_t(t_n, y_n) + a_{21} f(t_n, y_n)] + O(h^3)
+    &amp;= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 [c_2f_t(t_n, y_n) + a_{21} f(t_n, y_n)] + O(h^3). \\
 \end{align*} \end{split}\]</div>
-<p>This is the Taylor expansion of a general 2-stage ERK method. We need equations<a class="reference internal" href="#equation-2nd-order-taylor-2-equation">(2.5)</a> and <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.8)</a> to be equal so that the local truncation errors in the ERK method are <span class="math notranslate nohighlight">\(O(h^3)\)</span>.</p>
+<p>This is the Taylor expansion of a general 2-stage ERK method. We need equations<a class="reference internal" href="#equation-2nd-order-taylor-2-equation">(2.5)</a> and <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.7)</a> to be equal so that the local truncation errors in the ERK method are <span class="math notranslate nohighlight">\(O(h^3)\)</span>.</p>
 <p>Equating the coefficients of <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-1">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-rk2-condition-1" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-rk2-condition-1" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     h( b_1 + b_2) &amp;= h, \\
     \therefore b_1 + b_2 &amp;= 1. 
 \end{align*} \end{split}\]</div>
-<p>Equating the cofficients of <span class="math notranslate nohighlight">\(f_t(t_n, y_n)\)</span></p>
+<p>Equating the coefficients of <span class="math notranslate nohighlight">\(f_t(t_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-2">
-<span class="eqno">(2.10)<a class="headerlink" href="#equation-rk2-condition-2" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-rk2-condition-2" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     h^2 b_2 c_2 &amp;= \frac{h^2}{2} \\
     \therefore b_2 c_2 &amp;= \frac{1}{2}.
 \end{align*} \end{split}\]</div>
@@ -450,16 +460,16 @@ document.write(`
     h^2 b_2 a_{21} &amp;= \frac{h^2}{2} \\
     \therefore b_2 a_{21} &amp;= \frac{1}{2},
 \end{align*} \end{split}\]</div>
-<p>since we know from equation <a class="reference internal" href="#equation-rk2-condition-2">(2.10)</a> that <span class="math notranslate nohighlight">\(b_2 = \dfrac{1}{2c_2}\)</span> then</p>
+<p>since we know from equation <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> that <span class="math notranslate nohighlight">\(b_2 = \dfrac{1}{2c_2}\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-3">
-<span class="eqno">(2.11)<a class="headerlink" href="#equation-rk2-condition-3" title="Permalink to this equation">#</a></span>\[ a_{21} = c_2 .\]</div>
-<p>So we have the three equations <a class="reference internal" href="#equation-rk2-condition-1">(2.9)</a>, <a class="reference internal" href="#equation-rk2-condition-2">(2.10)</a> and <a class="reference internal" href="#equation-rk2-condition-3">(2.11)</a> expressed in four unknowns <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>. Any set of values that satisfy these this system of equations give a ERK method with local truncation errors <span class="math notranslate nohighlight">\(O(h^3)\)</span>, so the global truncation errors are <span class="math notranslate nohighlight">\(O(h^2)\)</span> and we have a second-order method.</p>
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-rk2-condition-3" title="Permalink to this equation">#</a></span>\[ a_{21} = c_2 .\]</div>
+<p>So we have the three equations <a class="reference internal" href="#equation-rk2-condition-1">(2.8)</a>, <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> and <a class="reference internal" href="#equation-rk2-condition-3">(2.10)</a> expressed in four unknowns <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>. Any set of values that satisfy these this system of equations give a ERK method with local truncation errors <span class="math notranslate nohighlight">\(O(h^3)\)</span>, so the global truncation errors are <span class="math notranslate nohighlight">\(O(h^2)\)</span> and we have a second-order method.</p>
 <p>These conditions are known as the <strong>order conditions</strong> for a method. Since we have an <a href="https://en.wikipedia.org/wiki/Underdetermined_system" target="_blank">underdetermined system</a> to get a unique solution we choose a value for one of the unknowns and solve for the others.</p>
 <div class="proof definition admonition" id="rk2-order-conditions-definition">
 <p class="admonition-title"><span class="caption-number">Definition 2.1 </span> (Order conditions for a second-order explicit Runge-Kutta method)</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight" id="equation-rk2-order-conditions-equation">
-<span class="eqno">(2.12)<a class="headerlink" href="#equation-rk2-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-rk2-order-conditions-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     b_1 +b_2 &amp;=1,\\
     c_2 b_2 &amp;=\frac{1}{2},\\
     a_{21} &amp;= c_2.
@@ -470,66 +480,52 @@ document.write(`
 <section class="example-content" id="proof-content">
 <p>Derive two second-order Runge-Kutta ERK methods where</p>
 <p>(i)   <span class="math notranslate nohighlight">\(c_2 = 1\)</span>;</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Substituting <span class="math notranslate nohighlight">\(c_2 = 1\)</span> into the order conditions gives <span class="math notranslate nohighlight">\(b_2 = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(b_1 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = 1\)</span>. So this second-order ERK method is</p>
+<p>(ii)   <span class="math notranslate nohighlight">\(b_2 = 1\)</span>.</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>(i)   Substituting <span class="math notranslate nohighlight">\(c_2 = 1\)</span> into the order conditions gives <span class="math notranslate nohighlight">\(b_2 = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(b_1 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = 1\)</span>. So this second-order ERK method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;=y_n +\frac{h}{2}(k_1 +k_2 ),\\
     k_1 &amp;=f(t_n ,y_n ),\\
     k_2 &amp;=f(t_n +h,y_n +hk_1 ),
 \end{align*}\]</div>
-<p class="sd-card-text">or expressed using a Butcher tableau</p>
+<p>or expressed using a Butcher tableau</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cc}
     0 &amp; &amp; \\
     1 &amp; 1 &amp; \\ \hline
-    &amp; 1/2 &amp; 1/2
+    &amp; \frac{1}{2} &amp; \frac{1}{2}
     \end{array}
 \end{align*}\]</div>
-<p class="sd-card-text">This method is known as <a href="https://en.wikipedia.org/wiki/Heun%27s_method#" target="_blank">Heun’s method</a> or the RK2 method.</p>
-</div>
-</details><p>(ii)   <span class="math notranslate nohighlight">\(b_2 = 1\)</span>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Substituting <span class="math notranslate nohighlight">\(b_2=1\)</span> into the order conditions gives <span class="math notranslate nohighlight">\(b_1=0\)</span>, <span class="math notranslate nohighlight">\(c_2 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{2}\)</span> so this second-order ERK method is</p>
+<p>This method is known as <a href="https://en.wikipedia.org/wiki/Heun%27s_method#" target="_blank">Heun’s method</a> or the RK2 method.</p>
+<p>(ii)   Substituting <span class="math notranslate nohighlight">\(b_2=1\)</span> into the order conditions gives <span class="math notranslate nohighlight">\(b_1=0\)</span>, <span class="math notranslate nohighlight">\(c_2 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{2}\)</span> so this second-order ERK method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;= y_n + h k_2, \\
     k_1 &amp;= f(t_n, y_n), \\
     k_2 &amp;= f(t_n + \tfrac{1}{2}h, y_n + \tfrac{1}{2}hk_1),
 \end{align*}\]</div>
-<p class="sd-card-text">or expressed using a Butcher tableau</p>
+<p>or expressed using a Butcher tableau</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \begin{array}{c|cc}
         0 &amp; \\
-        1/2 &amp; 1/2 \\ \hline
+        \frac{1}{2} &amp; \frac{1}{2} \\ \hline
         &amp; 0 &amp; 1
     \end{array}
 \end{align*}\]</div>
-<p class="sd-card-text">This method is known as the <a href="https://en.wikipedia.org/wiki/Midpoint_method" target="_blank">midpoint method</a>.</p>
-</div>
-</details></section>
-</div><section id="using-python-and-matlab-to-solve-the-order-conditions">
+<p>This method is known as the <a href="https://en.wikipedia.org/wiki/Midpoint_method" target="_blank">midpoint method</a>.</p>
+</section>
+</div><hr class="docutils" />
+<section id="using-python-and-matlab-to-solve-the-order-conditions">
 <h2><span class="section-number">2.3.1. </span>Using Python and MATLAB to solve the order conditions<a class="headerlink" href="#using-python-and-matlab-to-solve-the-order-conditions" title="Permalink to this heading">#</a></h2>
-<p>The algebra used to solve the order conditions in <a class="reference internal" href="#rk2-derivation-example">Example 2.2</a> is quite simple but for higher order methods it can soon get more complicated (see the <a class="reference internal" href="2.3_RK4_Derivation.html#rk4-derivation-example">derivation of a fourth-order explicit Runge-Kutta method</a> for an example) and it is useful to use software to help with the algebra. The following code shows how Python and MATLAB can be used to solve the order conditions for <a class="reference internal" href="#rk2-derivation-example">Example 2.2</a>.</p>
+<p>The algebra used to solve the order conditions in <a class="reference internal" href="#rk2-derivation-example">Example 2.2</a> is quite simple but for higher order methods it can soon get more complicated and it is useful to use software to help with the algebra. The following code shows how Python and MATLAB can be used to solve the order conditions for <a class="reference internal" href="#rk2-derivation-example">Example 2.2</a>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
-<p>There is a Python library <a href="https://www.sympy.org/en/index.html" target="_blank">SymPy</a> (short for <em>Symbolic Python</em>) that has functions that can solve algebraic equations. After importing SymPy we need to declare each of the coefficients <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> as symbolic variables using the <code class="docutils literal notranslate"><span class="pre">sp.symbols()</span></code> command before setting <span class="math notranslate nohighlight">\(c_2=1\)</span>. Each order condition is then defined using these symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side. We have also used the <code class="docutils literal notranslate"><span class="pre">sp.Rational(1,2)</span></code> command for the fraction <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code>, <code class="docutils literal notranslate"><span class="pre">eq2</span></code> and <code class="docutils literal notranslate"><span class="pre">eq3</span></code> is then solved using the <code class="docutils literal notranslate"><span class="pre">sp.solve</span></code> command.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 
 <span class="c1"># Declare symbolic variables</span>
@@ -545,11 +541,11 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">))</span>
 </pre></div>
 </div>
+<p>Here we have used the Python library <a href="https://www.sympy.org/en/index.html" target="_blank">SymPy</a> (short for <em>Symbolic Python</em>) that has functions that can solve algebraic equations. After importing SymPy we have declared symbolic variables for each of the coefficients <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> using the <code class="docutils literal notranslate"><span class="pre">sp.symbols()</span></code> command before setting <span class="math notranslate nohighlight">\(c_2 = 1\)</span>. Each order condition is then defined using these symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side. We have also used the <code class="docutils literal notranslate"><span class="pre">sp.Rational(1,2)</span></code> command for the fraction <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code>, <code class="docutils literal notranslate"><span class="pre">eq2</span></code> and <code class="docutils literal notranslate"><span class="pre">eq3</span></code> is then solved using the <code class="docutils literal notranslate"><span class="pre">sp.solve</span></code> command.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 MATLAB</label><div class="sd-tab-content docutils">
-<p>We first declare each of the coefficients <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> as symbolic variables using the <code class="docutils literal notranslate"><span class="pre">syms</span></code> command before setting <span class="math notranslate nohighlight">\(c_2=1\)</span>. Each order condition is then defined using these symbolic variables. Note that the <code class="docutils literal notranslate"><span class="pre">==</span></code> command is used for the equals sign in each order condition. The system of three equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code>, <code class="docutils literal notranslate"><span class="pre">eq2</span></code> and <code class="docutils literal notranslate"><span class="pre">eq3</span></code> is then solved using the <code class="docutils literal notranslate"><span class="pre">solve</span></code> command.</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Declare symbolic variables</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">a21</span><span class="w"> </span><span class="s">b1</span><span class="w"> </span><span class="s">b2</span><span class="w"> </span><span class="s">c2</span>
 <span class="n">c2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -563,6 +559,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Here we have declared symbolic variables for each of the coefficients <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> using the <code class="docutils literal notranslate"><span class="pre">syms</span></code> command before setting <span class="math notranslate nohighlight">\(c_2 = 1\)</span>. Each order condition is then defined using these symbolic variables. Note that the <code class="docutils literal notranslate"><span class="pre">==</span></code> command is used for the equals sign in each order condition. The system of three equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code>, <code class="docutils literal notranslate"><span class="pre">eq2</span></code> and <code class="docutils literal notranslate"><span class="pre">eq3</span></code> is then solved using the <code class="docutils literal notranslate"><span class="pre">solve</span></code> command.</p>
 </div>
 </div>
 </section>

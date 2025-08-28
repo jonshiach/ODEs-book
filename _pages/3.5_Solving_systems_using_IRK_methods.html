@@ -1,0 +1,1017 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>3.3. Solving Systems of ODEs using IRK Methods &#8212; Runge-Kutta Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/3.5_Solving_systems_using_IRK_methods';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/3.5_Solving_systems_using_IRK_methods.html" />
+    <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.4. Implicit Runge-Kutta methods exercises" href="3.6_IRK_exercises.html" />
+    <link rel="prev" title="3.2. Determining the order of an implicit Runge-Kutta method" href="3.3_IRK_order.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Indirect methods exercises</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_pages/3.5_Solving_systems_using_IRK_methods.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Solving Systems of ODEs using IRK Methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.3.1. Newton’s Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-values-of-mathbf-z-i-using-newton-s-method">Computing the values of <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> using Newton’s method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-an-irk-to-solve-a-system-of-odes">3.3.2. Applying an IRK to solve a system of ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.3.3. Code</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="solving-systems-of-odes-using-irk-methods">
+<span id="solving-systems-using-irk-methods-section"></span><h1><span class="section-number">3.3. </span>Solving Systems of ODEs using IRK Methods<a class="headerlink" href="#solving-systems-of-odes-using-irk-methods" title="Permalink to this heading">#</a></h1>
+<p>Now that we know have to derive IRK methods we now move onto implementing them to solve IVPs. The stage values for a general 4-stage explicit Runge-Kutta method are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    k_1 &amp;= f(t_n, y_n), \\
+    k_2 &amp;= f(t_n + c_2h, y_n + ha_{21}k_1), \\
+    k_3 &amp;= f(t_n + c_3h, y_n + h(a_{31}k_1 + a_{32}k_2)), \\
+    k_4 &amp;= f(t_n + c_4h, y_n + h(a_{41}k_1 + a_{42}k_2 + a_{43}k_3)).
+\end{align*} \end{split}\]</div>
+<p>We have seen that it is straightforward to compute the stages sequentially since the value of <span class="math notranslate nohighlight">\(k_i\)</span> only depends on the values of <span class="math notranslate nohighlight">\(k_1, \ldots, k_{i-1}\)</span>. The stage values for 4-stage implicit Runge-Kutta method are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    k_1 &amp;= f(t_n + c_1h, y_n + h(a_{11}k_1 + a_{12}k_2 + a_{13}k_3 + a_{14}k_4)), \\
+    k_2 &amp;= f(t_n + c_2h, y_n + h(a_{21}k_1 + a_{22}k_2 + a_{23}k_3 + a_{24}k_4)), \\
+    k_3 &amp;= f(t_n + c_3h, y_n + h(a_{31}k_1 + a_{32}k_2 + a_{33}k_3 + a_{34}k_4)), \\
+    k_4 &amp;= f(t_n + c_4h, y_n + h(a_{41}k_1 + a_{42}k_2 + a_{43}k_3 + a_{44}k_4)).
+\end{align*} \end{split}\]</div>
+<p>Here is it not straightforward to compute the stage values since the value of <span class="math notranslate nohighlight">\(k_i\)</span> depends upon the values of all stage values <span class="math notranslate nohighlight">\(k_1, \ldots, k_s\)</span>. When using an implicit method we need to compute the values of <span class="math notranslate nohighlight">\(k_i\)</span> by solving a system of non-linear equations.</p>
+<p>Consider the solution of the IVP of the form</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{y}' = f(t, \mathbf{y}), \qquad t \in [t_0, t_{\max}], \qquad \mathbf{y}(0) = \mathbf{y}_0. \]</div>
+<p>If there are <span class="math notranslate nohighlight">\(N\)</span> equations in the system then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{y} &amp;= \begin{pmatrix} y_1 \\ \vdots \\ y_N \end{pmatrix}, &amp;
+    f(t, \mathbf{y}) &amp;= \begin{pmatrix} f_1(t, \mathbf{y}) \\ \vdots \\ f_N(t, \mathbf{y}) \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Recall that the general form of a Runge-Kutta method for solving a system of ODEs is</p>
+<div class="math notranslate nohighlight" id="equation-general-irk-system">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-general-irk-system" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+   \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i \mathbf{k}_i,\\
+   \mathbf{k}_i &amp;= f(t_n +c_i h,\mathbf{y}_n + h \sum_{j=1}^s a_{ij} \mathbf{k}_j),
+\end{align*} \end{split}\]</div>
+<p>To simplify the calculations to for implicit methods we introduce a vector <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span>, such that</p>
+<div class="math notranslate nohighlight" id="equation-irk-zi">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-irk-zi" title="Permalink to this equation">#</a></span>\[\mathbf{z}_i = h \displaystyle\sum_{j=1}^s a_{ij} \mathbf{k}_j, \]</div>
+<p>and the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> becomes</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{k}_i = f(\mathbf{t}_n + c_ih, \mathbf{y}_n + \mathbf{z}_i). \]</div>
+<p>Substituting this into equation <a class="reference internal" href="#equation-irk-zi">(3.3)</a> we have</p>
+<div class="math notranslate nohighlight" id="equation-irk-zi-2">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-irk-zi-2" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+    \mathbf{z}_i = h \sum_{j = 1}^s a_{ij} f(t_n + c_j h, \mathbf{y}_n + \mathbf{z}_j). 
+\end{align*} \]</div>
+<p>and also into equation <a class="reference internal" href="#equation-general-irk-system">(3.2)</a> gives</p>
+<div class="math notranslate nohighlight" id="equation-irk-yn-1">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-irk-yn-1" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+   \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i f(t_n + c_i h, \mathbf{y}_n + \mathbf{z}_i).
+\end{align*} \]</div>
+<p>Using an <span class="math notranslate nohighlight">\(s\)</span>-stage IRK method, the values of <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> given by equation <a class="reference internal" href="#equation-irk-zi-2">(3.4)</a> are</p>
+<div class="math notranslate nohighlight" id="equation-irk-zi-3">
+<span class="eqno">(3.6)<a class="headerlink" href="#equation-irk-zi-3" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+    \mathbf{z}_1 &amp;= h (a_{11} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) + \cdots + a_{1s} f(t_n + c_s h, \mathbf{y}_n + \mathbf{z}_s)), \\
+    \vdots \\
+    \mathbf{z}_s &amp;= h (a_{s1} f(t_n + c_sh, \mathbf{y}_n + \mathbf{z}_1) + \cdots + a_{ss} f(t_n + c_s h, \mathbf{y}_n + \mathbf{z}_s)).
+\end{align*}\end{split}\]</div>
+<p>Writing this as a matrix equation</p>
+<div class="math notranslate nohighlight" id="equation-irk-zi-matrix-form-1">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-irk-zi-matrix-form-1" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+    \begin{pmatrix} \mathbf{z}_1 \\ \vdots \\ \mathbf{z}_s \end{pmatrix}
+    =
+    \begin{pmatrix}
+        h a_{11} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) + \cdots + h a_{1s} f(t_n + c_sh, \mathbf{y}_n + \mathbf{z}_s) \\
+        \vdots \\
+        h a_{s1} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) + \cdots + h a_{ss} f(t_n + c_sh, \mathbf{y}_n + \mathbf{z}_s) \\
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> and <span class="math notranslate nohighlight">\(f(t_n + c_ih, \mathbf{y}_n + \mathbf{z}_i)\)</span> are <span class="math notranslate nohighlight">\(N \times 1\)</span> vectors then these matrices are <span class="math notranslate nohighlight">\(Ns \times 1\)</span>. We can replace the summation with matrix multiplications using a <strong>Kronecker product</strong>.</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 3.4 </span> (The Kronecker product)</p>
+<section class="definition-content" id="proof-content">
+<p>The <a href="https://en.wikipedia.org/wiki/Kronecker_product" target="_blank">Kronecker product</a> between an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> and another <span class="math notranslate nohighlight">\(p \times q\)</span> matix <span class="math notranslate nohighlight">\(B\)</span> is denoted by <span class="math notranslate nohighlight">\(A \otimes B\)</span> and defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    A \otimes B =
+    \begin{pmatrix} 
+        a_{11} B &amp; \cdots &amp; a_{1n} B \\
+        \vdots &amp; \ddots &amp; \vdots \\
+        a_{m1} B &amp; \cdots &amp; a_{mn} B
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+</section>
+</div><p>For example, if we have a 2-stage method so that <span class="math notranslate nohighlight">\(s = 2\)</span> and a system of <span class="math notranslate nohighlight">\(N = 3\)</span> ODEs</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix} \mathbf{z}_1  \\ \mathbf{z}_2 \end{pmatrix}
+    &amp;= h
+    \begin{pmatrix}
+        a_{11} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) + a_{12} f(t_n + c_2h, \mathbf{y}_n + \mathbf{z}_2) \\
+        a_{21} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) + a_{22} f(t_n + c_2h, \mathbf{y}_n + \mathbf{z}_2)
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Introducing a notation where <span class="math notranslate nohighlight">\(z_{i,j}\)</span> and <span class="math notranslate nohighlight">\(f_{i,j}\)</span> are the <span class="math notranslate nohighlight">\(j\)</span>-th elements of <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> and <span class="math notranslate nohighlight">\(f(t_n + c_ih, \mathbf{y}_n + \mathbf{z}_i)\)</span> respectively, then this can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix} z_{1,1} \\ z_{1,2} \\ z_{1,3} \\ z_{2,1} \\ z_{2,2} \\ z_{2,3}  \end{pmatrix}
+    &amp;= h
+    \begin{pmatrix}
+        a_{11} f_{1,1} + a_{12} f_{2,1} \\
+        a_{11} f_{1,2} + a_{12} f_{2,2} \\
+        a_{11} f_{1,3} + a_{12} f_{2,3} \\
+        a_{21} f_{1,1} + a_{22} f_{2,1} \\
+        a_{21} f_{1,2} + a_{22} f_{2,2} \\
+        a_{21} f_{1,3} + a_{22} f_{2,3}
+    \end{pmatrix}
+    = h
+    \begin{pmatrix} 
+        a_{11} &amp; 0 &amp; 0 &amp; a_{12} &amp; 0 &amp; 0 \\
+        0 &amp; a_{11} &amp; 0 &amp; 0 &amp; a_{12} &amp; 0 \\
+        0 &amp; 0 &amp; a_{11} &amp; 0 &amp; 0 &amp; a_{12} \\
+        a_{21} &amp; 0 &amp; 0 &amp; a_{22} &amp; 0 &amp; 0 \\
+        0 &amp; a_{21} &amp; 0 &amp; 0 &amp; a_{22} &amp; 0 \\
+        0 &amp; 0 &amp; a_{21} &amp; 0 &amp; 0 &amp; a_{22}
+    \end{pmatrix}
+    \begin{pmatrix}
+        f_{1,1} \\
+        f_{1,2} \\
+        f_{1,3} \\
+        f_{2,1} \\
+        f_{2,2} \\
+        f_{2,3}
+    \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>The <span class="math notranslate nohighlight">\(6\times 6\)</span> matrix is <span class="math notranslate nohighlight">\(A \otimes I_N\)</span> so we can write the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-irk-zi-matrix-form-2">
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-irk-zi-matrix-form-2" title="Permalink to this equation">#</a></span>\[ \mathbf{z} = h (A \otimes I_N) F(\mathbf{z}), \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{z} &amp;= \begin{pmatrix} \mathbf{z}_1 \\ \vdots \\ \mathbf{z}_s \end{pmatrix}, &amp;
+    F(\mathbf{z}) &amp;= \begin{pmatrix} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) \\ \vdots \\ f(t_n + c_s h, \mathbf{y}_n + \mathbf{z}_s) \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>We can also use a Kronecker product to simplify the expression for <span class="math notranslate nohighlight">\(\mathbf{y}_{n+1}\)</span> from equation <a class="reference internal" href="#equation-irk-yn-1">(3.5)</a></p>
+<div class="math notranslate nohighlight" id="equation-irk-matrix-form">
+<span class="eqno">(3.9)<a class="headerlink" href="#equation-irk-matrix-form" title="Permalink to this equation">#</a></span>\[ \mathbf{y}_{n+1} = \mathbf{y}_n + h (\mathbf{b}^\mathsf{T} \otimes I_N) F(\mathbf{z}). \]</div>
+<hr class="docutils" />
+<section id="newton-s-method">
+<h2><span class="section-number">3.3.1. </span>Newton’s Method<a class="headerlink" href="#newton-s-method" title="Permalink to this heading">#</a></h2>
+<p>The calculation of the stage values <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> using equation <a class="reference internal" href="#equation-irk-zi-matrix-form-2">(3.8)</a> requires the solution of a system of implicit equations. This is done using <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a> which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function. Newton’s method is written as</p>
+<div class="math notranslate nohighlight" id="equation-newtons-method">
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-newtons-method" title="Permalink to this equation">#</a></span>\[x^{(k+1)} = x^{(k)} - \frac{g(x^{(k)})}{g'(x^{(k)})}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(x^{(k)}\)</span> and <span class="math notranslate nohighlight">\(x^{(k+1)}\)</span> are current and improved estimates of the solution <span class="math notranslate nohighlight">\(x\)</span>. The implementation of Newton’s method begins with a guess value of <span class="math notranslate nohighlight">\(x^{(0)}\)</span>, and equation <a class="reference internal" href="#equation-newtons-method">(3.10)</a> is iterated until two successive estimates agree to some predefined tolerance.</p>
+<p>Given a system of equations <span class="math notranslate nohighlight">\(g(\mathbf{x}) = \mathbf{0}\)</span> where <span class="math notranslate nohighlight">\(g = (g_1, g_2, \ldots)\)</span> are differentiable functions, then the matrix form of Newton’s method is</p>
+<div class="math notranslate nohighlight" id="equation-newtons-method-system">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-newtons-method-system" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} - J^{-1}g(\mathbf{x}^{(k)}),\]</div>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the Jacobian matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    J = 
+    \begin{pmatrix}
+        \dfrac{\partial g_1}{\partial x_1} &amp; \cdots &amp; \dfrac{\partial g_1}{\partial x_N} \\
+        \vdots &amp; \ddots &amp; \vdots \\
+        \dfrac{\partial g_N}{\partial x_1} &amp; \cdots &amp; \dfrac{\partial g_N}{\partial x_N}
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>A problem we have here is that the calculation of the inverse <span class="math notranslate nohighlight">\(J^{-1}\)</span> is an expensive calculation. So to avoid calculating a matrix inverse we use a two-stage process, let <span class="math notranslate nohighlight">\(\Delta \mathbf{x} = \mathbf{x}^{(k+1)} - \mathbf{x}^{(k)}\)</span> then equation <a class="reference internal" href="#equation-newtons-method-system">(3.11)</a> can be written as</p>
+<div class="math notranslate nohighlight" id="equation-newton-1">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-newton-1" title="Permalink to this equation">#</a></span>\[ J \Delta \mathbf{x} = -g(\mathbf{x}^{(k)}), \]</div>
+<p>which is a linear system that can be solved to give <span class="math notranslate nohighlight">\(\Delta \mathbf{x}\)</span>. The improved estimate is then calculated using</p>
+<div class="math notranslate nohighlight" id="equation-newton-2">
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-newton-2" title="Permalink to this equation">#</a></span>\[ \mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} + \Delta \mathbf{x}. \]</div>
+<p>We cease iterating when the values of <span class="math notranslate nohighlight">\(\Delta x\)</span> are below a given tolerance</p>
+<div class="math notranslate nohighlight">
+\[ \| \Delta x \| &lt; tol.\]</div>
+<section id="computing-the-values-of-mathbf-z-i-using-newton-s-method">
+<h3>Computing the values of <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> using Newton’s method<a class="headerlink" href="#computing-the-values-of-mathbf-z-i-using-newton-s-method" title="Permalink to this heading">#</a></h3>
+<p>We apply Newton’s method for solving equation <a class="reference internal" href="#equation-irk-zi-matrix-form-2">(3.8)</a>. Writing it in the form <span class="math notranslate nohighlight">\(g(\mathbf{z}) = \mathbf{0}\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[ g(\mathbf{z}) = \mathbf{z} - h(A \otimes I) F(\mathbf{z}),\]</div>
+<p>and the Jacobian matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    J &amp;= I - h(A \otimes I) F'(\mathbf{z}) \\
+    &amp;= I - h
+    \begin{pmatrix}
+        a_{11} \frac{\partial}{\partial \mathbf{z}} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) &amp; 
+        \cdots &amp; 
+        a_{1s} \frac{\partial}{\partial \mathbf{z}} f(t_n + c_sh, \mathbf{y}_n + \mathbf{z}_s) \\ 
+        \vdots &amp; &amp; \vdots \\
+        a_{s1} \frac{\partial}{\partial \mathbf{Y}} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) &amp; 
+        \cdots &amp; 
+        a_{ss} \frac{\partial}{\partial \mathbf{z}} f(t_n + c_sh, \mathbf{y}_n + \mathbf{z}_s)
+    \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>Note that each of the derivatives <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \mathbf{z}}f(t_n + c_ih, \mathbf{y}_n +  \mathbf{z}_i)\)</span> are <span class="math notranslate nohighlight">\(N \times N\)</span> Jacobian matrices so <span class="math notranslate nohighlight">\(J\)</span> is a <span class="math notranslate nohighlight">\(Ns \times Ns\)</span> matrix. To save computational effort we can use the approximation</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial \mathbf{z}} f(t_n + c_ih, \mathbf{y}_n + \mathbf{z}_i) \approx \frac{\partial}{\partial \mathbf{y}} f(t_n, \mathbf{y}_n), \]</div>
+<p>so we only need to calculate a single Jacobian matrix for each step. Using an approximation of the Jacobians in this way means that we may need more iterates, but this his more efficient than having fewer iterates and calculating <span class="math notranslate nohighlight">\(s^2\)</span> Jacobians at each step. Another consideration we have is how to determine the derivatives in the Jacobian. We can approximate the derivatives using a second-order finite-difference approximation</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial}{\partial \mathbf{y}}f(t_n, \mathbf{y}_n) \approx \frac{f(t_n, \mathbf{y}_n + \epsilon) - f(t_n, \mathbf{y}_n - \epsilon)}{2\mathbf{\epsilon}},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> is some small value. The Jacobian matrix <span class="math notranslate nohighlight">\(J\)</span> is constant for all iterations of Newton’s method in the same step, so the solution of the linear sytem in equation <a class="reference internal" href="#equation-newton-1">(3.12)</a> is well suited to <a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="applying-an-irk-to-solve-a-system-of-odes">
+<h2><span class="section-number">3.3.2. </span>Applying an IRK to solve a system of ODEs<a class="headerlink" href="#applying-an-irk-to-solve-a-system-of-odes" title="Permalink to this heading">#</a></h2>
+<p>The steps used to solve an IVP using an IRK method are outlined in <a class="reference internal" href="#irk-algorithm">Algorithm 3.1</a>.</p>
+<div class="proof algorithm admonition" id="irk-algorithm">
+<p class="admonition-title"><span class="caption-number">Algorithm 3.1 </span> (Solving an IVP using an IRK method)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, \mathbf{y})\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, a vector of initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = y_0\)</span> and a value of the step length <span class="math notranslate nohighlight">\(h\)</span></p>
+<p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(nsteps \gets \operatorname{int}\left( \dfrac{t_{\max} - t_0}{h} \right)\)</span></p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, nsteps\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(J \gets \dfrac{\partial}{\partial \mathbf{y}} f(t_n, \mathbf{y}_n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{z} \gets \mathbf{0}\)</span></p></li>
+<li><p>For <span class="math notranslate nohighlight">\(k = 1, \ldots, 10\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(g(\mathbf{z}) \gets \mathbf{z} - h (A \otimes I_N) F(\mathbf{z})\)</span></p></li>
+<li><p>Solve the linear system <span class="math notranslate nohighlight">\((I - h (A \otimes J)) \Delta \mathbf{z} = -g(\mathbf{z})\)</span> for <span class="math notranslate nohighlight">\(\Delta \mathbf{z}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{z} \gets \mathbf{z} + \Delta \mathbf{z}\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\| \Delta \mathbf{z} \| &lt; tol\)</span></p>
+<ul>
+<li><p>break</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{y}_{n+1} \gets \mathbf{y}_n + h (\mathbf{b}^T \otimes I_N) F(\mathbf{z})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(t_{n+1} \gets t_n + h\)</span></p></li>
+</ul>
+</li>
+<li><p>Return <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span></p></li>
+</ul>
+</section>
+</div><div class="proof example admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 3.4 </span></p>
+<section class="example-content" id="proof-content">
+<p>The van der Pol oscillator is a well known model of an oscillating system with non-linear damping described by the second-order ODE</p>
+<div class="math notranslate nohighlight">
+\[ \ddot{y} - \mu (1 - y^2) \dot{y} + y = 0, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is a scalar parameter that governs the strength of the damping.</p>
+<p>Use the Radau IA method to compute the solution to the van der Pol oscillator over the first 50 seconds where <span class="math notranslate nohighlight">\(y(0) = 1\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span>.</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>We need to rewrite the second-order ODE as a system of first-order ODEs. Let <span class="math notranslate nohighlight">\(y_1 = y\)</span> and <span class="math notranslate nohighlight">\(y_2 = \dot{y}_1\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \dot{y}_1 &amp;= y_2, \\
+    \dot{y}_2 &amp;= \mu (1 - y_1^2) y_2 - y_1,
+\end{align*} \end{split}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{y}&amp;= \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}, &amp;
+    f(t, \mathbf{y}) &amp;= \begin{pmatrix} y_2 \\ \mu (1 - y_1^2) y_2 - y_1 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>The initial conditions are <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (2, 0)\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span> and the Jacobian matrix for the first step is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    J &amp;= 
+    \begin{pmatrix}
+        0 &amp; 1 \\
+        -2\mu y_1y_2 - 1 &amp; \mu(1 - y_1^2)
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0 &amp; 1 \\
+        -1 &amp; -30 
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>The coefficients for the Radau IA method are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    A &amp;= \begin{pmatrix} \frac{1}{4} &amp; -\frac{1}{4} \\ \frac{1}{4} &amp; \frac{5}{12} \end{pmatrix}, &amp;
+    \mathbf{b} &amp;= \begin{pmatrix} \frac{1}{4} \\ \frac{3}{4} \end{pmatrix} &amp;
+    \mathbf{c} &amp;= \begin{pmatrix} 0 \\ \frac{2}{3} \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Using Newton’s method to solve for <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> using zero starting values
+then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{z} &amp;= \begin{pmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix}, &amp;
+    F(\mathbf{z}) &amp;= 
+    \begin{pmatrix}
+        f(t_0 + 0h, \mathbf{y}_0 + \mathbf{z}_1) \\
+        f(t_0 + \frac{2}{3}h, \mathbf{y}_0 + \mathbf{z}_2)
+    \end{pmatrix}
+    =
+    \begin{pmatrix} 0 \\ -2 \\ 0 \\ -2 \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(g(\mathbf{z})\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    g(\mathbf{z}) &amp;= \mathbf{z} - (A \otimes I_2) F(\mathbf{z}) \\
+    &amp;= 
+    \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix} -
+    \begin{pmatrix} 
+        \frac{1}{4} &amp; 0 &amp; -\frac{1}{4} &amp; 0 \\
+        0 &amp; \frac{1}{4} &amp; 0 &amp; -\frac{1}{4} \\
+        \frac{1}{4} &amp; 0 &amp; \frac{5}{12} &amp; 0 \\
+        0 &amp; \frac{1}{4} &amp; 0 &amp; \frac{5}{12}
+    \end{pmatrix}
+    \begin{pmatrix} 0 \\ -2 \\ 0 \\ -2 \end{pmatrix}
+    =
+    \begin{pmatrix} 0 \\ 0 \\ 0 \\ -\frac{4}{3} \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Solving <span class="math notranslate nohighlight">\((I_2 - h(A \otimes J))\Delta \mathbf{z} = -g(\mathbf{z})\)</span> for <span class="math notranslate nohighlight">\(\Delta \mathbf{z}\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \Delta \mathbf{z}
+    &amp;=\begin{pmatrix} 0.0007 \\ -0.0222 \\ -0.0027 \\ -0.0518 \end{pmatrix},
+\end{align*} \end{split}\]</div>
+<p>so the new estimate of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{z} &amp;= \mathbf{z} + \Delta \mathbf{z}
+    =
+    \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix} +
+    \begin{pmatrix} 0.0007 \\ -0.0222 \\ -0.0027 \\ -0.0518 \end{pmatrix}
+    =
+    \begin{pmatrix} 0.0007 \\ -0.0222 \\ -0.0027 \\ -0.0518 \end{pmatrix}
+\end{align*}. \end{split}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\|\Delta \mathbf{z}\| = 0.0564 &gt; 10^{-6}\)</span> so we need to continue iterating. After three iterations <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> converges to the solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{z} &amp;= \begin{pmatrix} 0.0007 \\ -0.0222 \\ -0.0027 \\ -0.0519 \end{pmatrix}, &amp;
+    F(\mathbf{z}) &amp;= \begin{pmatrix} -0.0222 \\ -0.1339 \\ -0.0519 \\ -0.4456 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Calculating <span class="math notranslate nohighlight">\(\mathbf{y}_{1}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{y}_1 &amp;= \mathbf{y_0} + h(\mathbf{b}^\mathsf{T} \otimes I_2) F(\mathbf{z}) \\
+    &amp;= 
+    \begin{pmatrix} 2 \\ 0 \end{pmatrix} + 0.1
+    \begin{pmatrix}
+        \frac{1}{4} &amp; 0 &amp; \frac{1}{4} &amp; 0 \\
+        0 &amp; \frac{3}{4} &amp; 0 &amp; \frac{3}{4} 
+    \end{pmatrix}
+    \begin{pmatrix} -0.0222 \\ -0.1339 \\ -0.0519 \\ -0.4456 \end{pmatrix}
+    = \begin{pmatrix} 1.9956 \\ -0.0667 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>The solution over the full domain <span class="math notranslate nohighlight">\(t \in [0, 50]\)</span> is shown in <a class="reference internal" href="#vanderpol-plot-figure"><span class="std std-numref">Fig. 3.1</span></a>.</p>
+<figure class="align-default" id="vanderpol-plot-figure">
+<img alt="../_images/d6d5196d6cbf8c8161164b9efbb4baa39364c48d02a5e060c69c2b2c3db28f43.png" src="../_images/d6d5196d6cbf8c8161164b9efbb4baa39364c48d02a5e060c69c2b2c3db28f43.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Solution of the van der Pol oscillator where <span class="math notranslate nohighlight">\(\mu=10\)</span> using the Radau IA IRK method.</span><a class="headerlink" href="#vanderpol-plot-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="code">
+<h2><span class="section-number">3.3.3. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<p>The code below defines the functions <code class="docutils literal notranslate"><span class="pre">jac()</span></code> and <code class="docutils literal notranslate"><span class="pre">radauIA()</span></code> which computes the Jacobian of a function <span class="math notranslate nohighlight">\(f(t, y)\)</span> and the solution to an initial value problem using the Radau IA method respectively.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+        <span class="n">y_plus_epsilon</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">y_minus_epsilon</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">y_plus_epsilon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">epsilon</span>
+        <span class="n">y_minus_epsilon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">epsilon</span>
+        <span class="n">J</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_plus_epsilon</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y_minus_epsilon</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">epsilon</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">J</span>
+
+
+<span class="k">def</span> <span class="nf">radauIA</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tpsan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
+    <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
+    
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">12</span><span class="p">]])</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span>
+        <span class="n">J</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">F</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[:</span><span class="n">N</span><span class="p">])</span>
+            <span class="n">F</span><span class="p">[</span><span class="n">N</span><span class="p">:]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="n">N</span><span class="p">:])</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">z</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span><span class="p">)),</span> <span class="n">F</span><span class="p">)</span>
+            <span class="n">delta_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">J</span><span class="p">),</span> <span class="o">-</span><span class="n">g</span><span class="p">)</span>
+            <span class="n">z</span> <span class="o">+=</span> <span class="n">delta_z</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">delta_z</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">:</span>
+                <span class="k">break</span>
+        
+        <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span><span class="p">)),</span> <span class="n">F</span><span class="p">)</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
+
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>This code uses the following NumPy functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.dot(A,</span> <span class="pre">B)</span></code> – returns the matrix multiplication <span class="math notranslate nohighlight">\(AB\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.kron(A,</span> <span class="pre">B)</span></code> – returns the Kronecker product <span class="math notranslate nohighlight">\(A \otimes B\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.linalg.solve(A,</span> <span class="pre">b)</span></code> – returns the solution to the linear system <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.eye(n)</span></code> – returns the <span class="math notranslate nohighlight">\(n \times n\)</span> identity matrix</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.linalg.norm(a)</span></code> – returns the Euclidean norm of the vector <span class="math notranslate nohighlight">\(\mathbf{a}\)</span></p></li>
+</ul>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>J<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">jac</span><span class="p">(</span>f, t, y<span class="p">)</span>
+
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+<span class="n">J</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
+<span class="n">epsilon</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">N</span>
+<span class="w">    </span><span class="n">y_plus_epsilon</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">y_minus_epsilon</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">y_plus_epsilon</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y_plus_epsilon</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
+<span class="w">    </span><span class="n">y_minus_epsilon</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y_minus_epsilon</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
+<span class="w">    </span><span class="n">J</span><span class="p">(:,</span><span class="w"> </span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_plus_epsilon</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_minus_epsilon</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">epsilon</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="k">end</span>
+
+
+<span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = radauIA</span><span class="p">(</span>f, tspan, y0, h<span class="p">)</span>
+
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
+<span class="n">nsteps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
+
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">/</span><span class="mi">12</span><span class="w"> </span><span class="p">];</span>
+<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="p">];</span>
+<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="p">];</span>
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nsteps</span>
+
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="n">n</span><span class="p">));</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">        </span><span class="n">F</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">N</span><span class="p">))</span><span class="w"> </span><span class="p">;</span>
+<span class="w">             </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">end</span><span class="p">))];</span>
+<span class="w">        </span><span class="n">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">F</span><span class="p">;</span>
+<span class="w">        </span><span class="n">delta_z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">eye</span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">J</span><span class="p">))</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="p">;</span>
+<span class="w">        </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">delta_z</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">delta_z</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-6</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">b</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">F</span><span class="p">;</span>
+<span class="w">    </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="k">end</span>
+
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="o">&#39;</span><span class="p">;</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>This code uses the following functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kron(A,</span> <span class="pre">B)</span></code> – returns the Kronecker product <span class="math notranslate nohighlight">\(A \otimes B\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">\</span> <span class="pre">b</span></code> – returns the solution to the linear system <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eye(n)</span></code> – returns the <span class="math notranslate nohighlight">\(n \times n\)</span> identity matrix</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">norm(a)</span></code> – returns the Euclidean norm of the vector <span class="math notranslate nohighlight">\(\mathbf{a}\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The solution of the linear system for Newton’s method in the code above was done using NumPy’s and MATLAB’s linear system solvers. In practice, this is done using <a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a> which is more efficient in this case since the coefficient method is constant for all iterations in a step. I used NumPy’s and MATLAB’s solvers here since have yet to meet LU decomposition which is covered in <a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">chapter 6</span></a>.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_pages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3.3_IRK_order.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Determining the order of an implicit Runge-Kutta method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3.6_IRK_exercises.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Implicit Runge-Kutta methods exercises</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.3.1. Newton’s Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-values-of-mathbf-z-i-using-newton-s-method">Computing the values of <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> using Newton’s method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-an-irk-to-solve-a-system-of-odes">3.3.2. Applying an IRK to solve a system of ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.3.3. Code</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Jon Shiach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -177,23 +183,24 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -401,13 +408,14 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="deriving-order-conditions-using-trees">
 <span id="deriving-order-conditions-using-trees-section"></span><h1><span class="section-number">2.4. </span>Deriving order conditions using trees<a class="headerlink" href="#deriving-order-conditions-using-trees" title="Permalink to this heading">#</a></h1>
 <p>In the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a> we saw that to derive an Explicit Runge-Kutta (ERK) method we equate Taylor expansions of the ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> and the general form of a Runge-Kutta method to derive a set of order conditions which need to be satisfied. This means we need to evaluate the derivatives of the bivariate function <span class="math notranslate nohighlight">\(f(t,y)\)</span> which can soon get complicated as we increase the order. Fortunately there is an easier way that uses rooted trees.</p>
+<hr class="docutils" />
 <section id="trees">
 <h2><span class="section-number">2.4.1. </span>Trees<a class="headerlink" href="#trees" title="Permalink to this heading">#</a></h2>
 <p>A <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)#Rooted_tree" target="_blank"><strong>rooted tree</strong></a> is a tree where a single node is designated as the <strong>root</strong>. Rooted trees are usually drawn with the root node at the bottom of the tree.</p>
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/rooted_tree_example.svg"><img alt="../_images/rooted_tree_example.svg" src="../_images/rooted_tree_example.svg" width="150" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">An example of a rooted tree.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">An example of a rooted tree.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We now define the properties of order and density of a rooted tree</p>
@@ -428,26 +436,20 @@ document.write(`
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/rooted_tree_example.svg"><img alt="../_images/rooted_tree_example.svg" height="150" src="../_images/rooted_tree_example.svg" /></a>
 </figure>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">There are 7 nodes in this tree so <span class="math notranslate nohighlight">\(r(\tau)=7\)</span>.</p>
-<p class="sd-card-text">Assigning the weights to the nodes gives</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>There are 7 nodes in this tree so <span class="math notranslate nohighlight">\(r(\tau)=7\)</span>.</p>
+<p>Assigning the weights to the nodes gives</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/rooted_tree_example_density.svg"><img alt="../_images/rooted_tree_example_density.svg" height="150" src="../_images/rooted_tree_example_density.svg" /></a>
 </figure>
-<p class="sd-card-text">So <span class="math notranslate nohighlight">\(\gamma(\tau) = 7 \cdot 1 \cdot 3 \cdot 2 \cdot 1 \cdot 1 \cdot 1 = 42\)</span></p>
-</div>
-</details></section>
+<p>So <span class="math notranslate nohighlight">\(\gamma(\tau) = 7 \cdot 1 \cdot 3 \cdot 2 \cdot 1 \cdot 1 \cdot 1 = 42\)</span></p>
+</section>
 </div><section id="determining-derivatives-of-f-y-using-rooted-trees">
 <h3>Determining derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span> using rooted trees<a class="headerlink" href="#determining-derivatives-of-f-y-using-rooted-trees" title="Permalink to this heading">#</a></h3>
 <p>Consider the derivatives of the function <span class="math notranslate nohighlight">\(y = f(y)\)</span> using the product and chain rules</p>
 <div class="math notranslate nohighlight" id="equation-derivatives-of-fy">
-<span class="eqno">(2.13)<a class="headerlink" href="#equation-derivatives-of-fy" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-derivatives-of-fy" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     y' &amp;= f(y), \\
     y'' &amp;= f'(y)y' \\
     &amp;= (f'f)(y), \\
@@ -455,10 +457,10 @@ Solution (click to show)<div class="sd-summary-down docutils">
     &amp;= (f''(f,f) + f'f'f)(y) \\
     &amp;\vdots
 \end{align*}\end{split}\]</div>
-<p>As you can see this soon becomes complication, however, English mathematician Robert Merson <span id="id1">[<a class="reference internal" href="D_References.html#id5" title="R.H. Merson. An operational method for the study of intergration processes. In Proceedings of Conference on Data Processing and Automatic Computing Machives, volume 1, 1 - 25. Weapons Research Establishment, Salisbury, South Australia, 1957.">Merson, 1957</a>]</span> noticed that the structure of rooted trees matches that of the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>. Defining a rooted tree notation where <span class="math notranslate nohighlight">\(\vec{f}\)</span> denotes a node of the tree and the number of children the node has is denoted by a prime, e.g., <span class="math notranslate nohighlight">\(\vec{f}''\)</span> denotes a node has two children. A child node is written immediately following the parent node and sibling nodes are separated by a comma (using brackets if there are more than one child).</p>
+<p>As you can see this soon becomes complication, however, English mathematician Robert Merson <span id="id1">Merson [<a class="reference internal" href="D_References.html#id6" title="R.H. Merson. An operational method for the study of intergration processes. In Proceedings of Conference on Data Processing and Automatic Computing Machives, volume 1, 1 - 25. Weapons Research Establishment, Salisbury, South Australia, 1957.">1957</a>]</span> noticed that the structure of rooted trees matches that of the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>. Defining a rooted tree notation where <span class="math notranslate nohighlight">\(\vec{f}\)</span> denotes a node of the tree and the number of children the node has is denoted by a prime, e.g., <span class="math notranslate nohighlight">\(\vec{f}''\)</span> denotes a node has two children. A child node is written immediately following the parent node and sibling nodes are separated by a comma (using brackets if there are more than one child).</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(T\)</span></p></th>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(\tau\)</span></p></th>
 <th class="head text-center"><p><img alt="" src="../_images/rooted_tree_f.svg" /></p></th>
 <th class="head text-center"><p><img alt="" src="../_images/rooted_tree_fdashf.svg" /></p></th>
 <th class="head text-center"><p><img alt="" src="../_images/rooted_tree_fdashdashff.svg" /></p></th>
@@ -483,16 +485,16 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <p>So how do rooted trees relate to the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>? Consider the only rooted tree of order 2 which is <span class="math notranslate nohighlight">\(\vec{f}'\vec{f}\)</span>. If we write <span class="math notranslate nohighlight">\(\vec{f} = f(y)\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[\vec{f}'\vec{f} = (f'f)(y)\]</div>
-<p>which as we saw in equation <a class="reference internal" href="#equation-derivatives-of-fy">(2.13)</a> is equal to <span class="math notranslate nohighlight">\(y''\)</span>. We can extend this to determine the derivative <span class="math notranslate nohighlight">\(y'''\)</span>, the two rooted trees of order 3 are <span class="math notranslate nohighlight">\(\vec{f}''(\vec{f},\vec{f})\)</span> and <span class="math notranslate nohighlight">\(\vec{f}'\vec{f}'\vec{f}\)</span>. Summing these gives</p>
+<p>which as we saw in equation <a class="reference internal" href="#equation-derivatives-of-fy">(2.12)</a> is equal to <span class="math notranslate nohighlight">\(y''\)</span>. We can extend this to determine the derivative <span class="math notranslate nohighlight">\(y'''\)</span>, the two rooted trees of order 3 are <span class="math notranslate nohighlight">\(\vec{f}''(\vec{f},\vec{f})\)</span> and <span class="math notranslate nohighlight">\(\vec{f}'\vec{f}'\vec{f}\)</span>. Summing these gives</p>
 <div class="math notranslate nohighlight">
 \[ \vec{f}''(\vec{f},\vec{f}) + \vec{f}'\vec{f}'\vec{f} = (f''(f,f) + f'f'f)(y) = y'''\]</div>
-<p>So we can determine the <span class="math notranslate nohighlight">\(N\)</span>-th derivative <span class="math notranslate nohighlight">\(y^{(N)}\)</span> where <span class="math notranslate nohighlight">\(y'=f(y)\)</span> by summing the rooted tree notation of all the possible <span class="math notranslate nohighlight">\(N\)</span>-th order rooted trees.</p>
+<p>So we can determine the <span class="math notranslate nohighlight">\(n\)</span>-th derivative <span class="math notranslate nohighlight">\(y^{(n)}\)</span> where <span class="math notranslate nohighlight">\(y'=f(y)\)</span> by summing the rooted tree notation of all the possible <span class="math notranslate nohighlight">\(n\)</span>-th order rooted trees.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="order-conditions-of-an-erk-method-using-trees">
 <h2><span class="section-number">2.4.2. </span>Order conditions of an ERK method using trees<a class="headerlink" href="#order-conditions-of-an-erk-method-using-trees" title="Permalink to this heading">#</a></h2>
-<p>We can also derive the order conditions of a Runge-Kutta method using rooted trees. To determine the values of <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> in the Butcher tableau we define a set of <strong>elementary weights</strong>, denoted by <span class="math notranslate nohighlight">\(\Phi(\tau)\)</span>. To generate <span class="math notranslate nohighlight">\(\Phi(\tau)\)</span> we use the following steps:</p>
+<p>We can also derive the order conditions of a Runge-Kutta method using rooted trees. To determine the values of <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> in the Butcher tableau we define a set of <strong>elementary weights</strong>, denoted by <span class="math notranslate nohighlight">\(\Phi(\tau)\)</span> which are generated using the following steps:</p>
 <ul class="simple">
 <li><p>associate a label <span class="math notranslate nohighlight">\(i\)</span> to the root node and for all non-leaf nodes associate unique labels <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(\ell\)</span> etc;</p></li>
 <li><p>write down a sequence of factors for which the first is <span class="math notranslate nohighlight">\(b_i\)</span>;</p></li>
@@ -507,45 +509,34 @@ Solution (click to show)<div class="sd-summary-down docutils">
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/rooted_tree_example.svg"><img alt="../_images/rooted_tree_example.svg" height="150" src="../_images/rooted_tree_example.svg" /></a>
 </figure>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Assigning the labels to the non-leaf nodes gives</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Assigning the labels to the non-leaf nodes gives</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/rooted_tree_example_elementary_weight.svg"><img alt="../_images/rooted_tree_example_elementary_weight.svg" height="150" src="../_images/rooted_tree_example_elementary_weight.svg" /></a>
 </figure>
-<p class="sd-card-text">So the elementary weight is</p>
+<p>So the elementary weight is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     \Phi(\tau) &amp;= \sum_{i,j,k} b_ia_{ij} a_{ik} c_ic_jc_jc_k
     =  \sum_{i,j,k} b_ia_{ij} a_{ik} c_ic_j^2c_k.
 \end{align*} \]</div>
-</div>
-</details></section>
+</section>
 </div><p>Butcher noticed that comparing the Taylor series expansions for the autonomous ODE <span class="math notranslate nohighlight">\(y'=f(y)\)</span> and the general form of a Runge-Kutta method gives the order condition <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-order-condition-relation">
-<span class="eqno">(2.14)<a class="headerlink" href="#equation-order-condition-relation" title="Permalink to this equation">#</a></span>\[\Phi(\tau) = \dfrac{1}{\gamma(\tau)}.\]</div>
-<p>So to derive the order conditions for a <span class="math notranslate nohighlight">\(k\)</span>-th order <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method we determine the set <span class="math notranslate nohighlight">\(T\)</span> of all rooted trees of order up to and include <span class="math notranslate nohighlight">\(k\)</span>. We then use the condition from equation <a class="reference internal" href="#equation-order-condition-relation">(2.14)</a> for each tree in <span class="math notranslate nohighlight">\(T\)</span> to determine the order conditions. In addition to these order conditions there is also a condition placed on the value of <span class="math notranslate nohighlight">\(c_i\)</span></p>
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-order-condition-relation" title="Permalink to this equation">#</a></span>\[\Phi(\tau) = \dfrac{1}{\gamma(\tau)}.\]</div>
+<p>So to derive the order conditions for a <span class="math notranslate nohighlight">\(k\)</span>-th order <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method we determine the set <span class="math notranslate nohighlight">\(T\)</span> of all rooted trees of order up to and include <span class="math notranslate nohighlight">\(k\)</span>. We then use the condition from equation <a class="reference internal" href="#equation-order-condition-relation">(2.13)</a> for each tree in <span class="math notranslate nohighlight">\(T\)</span> to determine the order conditions. In addition to these order conditions there is also a condition placed on the value of <span class="math notranslate nohighlight">\(c_i\)</span></p>
 <div class="math notranslate nohighlight" id="equation-row-sum-condition">
-<span class="eqno">(2.15)<a class="headerlink" href="#equation-row-sum-condition" title="Permalink to this equation">#</a></span>\[c_i = \sum_{j=1}^sa_{ij}, \]</div>
-<p>i.e., the values of <span class="math notranslate nohighlight">\(c_i\)</span> are equal to the sum of the rows of the <span class="math notranslate nohighlight">\(A\)</span> matrix, hence this is called the **row sum condition.</p>
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-row-sum-condition" title="Permalink to this equation">#</a></span>\[c_i = \sum_{j=1}^sa_{ij}, \]</div>
+<p>i.e., the values of <span class="math notranslate nohighlight">\(c_i\)</span> are equal to the sum of the rows of the <span class="math notranslate nohighlight">\(A\)</span> matrix, hence this is called the <strong>row sum condition</strong>.</p>
 <div class="proof example admonition" id="rk2-order-condition-derivation">
 <p class="admonition-title"><span class="caption-number">Example 2.5 </span></p>
 <section class="example-content" id="proof-content">
 <p>Use trees to derive the order conditions for a 2-stage second-order explicit Runge-Kutta method.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The set of all rooted trees up to and including order 2 is <span class="math notranslate nohighlight">\(T = \left\{ \tau_1, \tau_2 \right\} = \left\{ \right.\)</span> <img alt="" src="../_images/tree_1.svg" /> <span class="math notranslate nohighlight">\(,\)</span><img alt="" src="../_images/tree_2.svg" /><span class="math notranslate nohighlight">\(\left. \right\}\)</span></p>
-<p class="sd-card-text">The elementary weights and densities of these trees are</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>The set of all rooted trees up to and including order 2 is <span class="math notranslate nohighlight">\(T = \left\{ \tau_1, \tau_2 \right\} = \left\{ \right.\)</span> <img alt="" src="../_images/tree_1.svg" /> <span class="math notranslate nohighlight">\(,\)</span><img alt="" src="../_images/tree_2.svg" /><span class="math notranslate nohighlight">\(\left. \right\}\)</span></p>
+<p>The elementary weights and densities of these trees are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \phi(\tau_1) &amp;= \sum_{j = 1}^2 b_i, &amp;
@@ -553,7 +544,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     \phi(\tau_2) &amp;= \sum_{j = 1}^2 b_ic_i, &amp;
     \gamma(\tau_2) &amp;= 2.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Using equation <a class="reference internal" href="#equation-order-condition-relation">(2.14)</a> and the row sum condition from equation <a class="reference internal" href="#equation-row-sum-condition">(2.15)</a> we have the following order conditions</p>
+<p>Using equation <a class="reference internal" href="#equation-order-condition-relation">(2.13)</a> and the row sum condition from equation <a class="reference internal" href="#equation-row-sum-condition">(2.14)</a> we have the following order conditions</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     b_1 + b_2 &amp;= 1, \\
@@ -561,20 +552,19 @@ Solution (click to show)<div class="sd-summary-down docutils">
     c_1 &amp;= a_{11} + a_{12}, \\
     c_2 &amp;= a_{21} + a_{22}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Since we are deriving an ERK method, <span class="math notranslate nohighlight">\(a_{11} = a_{12} = a_{22} = c_1 = 0\)</span> and these simplify to</p>
+<p>Since we are deriving an ERK method, <span class="math notranslate nohighlight">\(a_{11} = a_{12} = a_{22} = c_1 = 0\)</span> and the order conditions simplify to</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     b_1 + b_2 &amp;= 1, \\
-    b_2c_2 &amp;= \frac{!}{2}, \\
+    b_2c_2 &amp;= \frac{1}{2}, \\
     c_2 &amp;= a_{21}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">These are the same order condition derived in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a>.</p>
-</div>
-</details></section>
+<p>These are the same order conditions for a second-order ERK method derived in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a>.</p>
+</section>
 </div><hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id3" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>I’ve skipped the derivation here, for details see <span id="id4">Butcher [<a class="reference internal" href="D_References.html#id7" title="J.C. Butcher. Numerical Methods for Ordinary Differential Equations. John Wiley &amp; Sons, Ltd, second edition, 2008.">2008</a>]</span>.</p>
+<p>I’ve skipped the derivation here, for details see <span id="id4">Butcher [<a class="reference internal" href="D_References.html#id9" title="J.C. Butcher. Numerical Methods for Ordinary Differential Equations. John Wiley &amp; Sons, Ltd, second edition, 2008.">2008</a>]</span>.</p>
 </aside>
 </section>
 </section>
