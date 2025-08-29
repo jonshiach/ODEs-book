@@ -297,7 +297,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/_pages/5.3_BVP_exercises.md" target="_blank"
+      <li><a href="../_sources/_pages/5.3_BVP_exercises.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -411,30 +411,197 @@ document.write(`
 <section id="exercise-content">
 <p>Consider the following boundary value problem</p>
 <div class="math notranslate nohighlight">
-\[ y'' = 2t, \qquad y(0) = 1, \qquad y(2) = 3. \]</div>
-<p>Using a pen and calculator, calculate the Euler method solutions using a step length of <span class="math notranslate nohighlight">\(h=0.4\)</span> and guess values of <span class="math notranslate nohighlight">\(y'(0) = 1\)</span> and <span class="math notranslate nohighlight">\(y'(0) = -1\)</span>.</p>
-</section>
+\[ y'' + 4y = 0, \qquad y(0) = 0, \qquad y(1) = 1. \]</div>
+<p>Calculate the Euler method solutions using a step length of <span class="math notranslate nohighlight">\(h=0.2\)</span> and guess values of <span class="math notranslate nohighlight">\(y'(0) = 1\)</span> and <span class="math notranslate nohighlight">\(y'(0) = 2\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(s = 1\)</span>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_1\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_2\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.00</p></td>
+<td class="text-center"><p class="sd-card-text">0.0000</p></td>
+<td class="text-center"><p class="sd-card-text">1.0000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.20</p></td>
+<td class="text-center"><p class="sd-card-text">0.2000</p></td>
+<td class="text-center"><p class="sd-card-text">1.0000</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.40</p></td>
+<td class="text-center"><p class="sd-card-text">0.4000</p></td>
+<td class="text-center"><p class="sd-card-text">0.8400</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.60</p></td>
+<td class="text-center"><p class="sd-card-text">0.5680</p></td>
+<td class="text-center"><p class="sd-card-text">0.5200</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.80</p></td>
+<td class="text-center"><p class="sd-card-text">0.6720</p></td>
+<td class="text-center"><p class="sd-card-text">0.0656</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1.00</p></td>
+<td class="text-center"><p class="sd-card-text">0.6851</p></td>
+<td class="text-center"><p class="sd-card-text">-0.4720</p></td>
+</tr>
+</tbody>
+</table>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(s = 2\)</span>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_1\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_2\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.00</p></td>
+<td class="text-center"><p class="sd-card-text">0.0000</p></td>
+<td class="text-center"><p class="sd-card-text">2.0000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.20</p></td>
+<td class="text-center"><p class="sd-card-text">0.4000</p></td>
+<td class="text-center"><p class="sd-card-text">2.0000</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.40</p></td>
+<td class="text-center"><p class="sd-card-text">0.8000</p></td>
+<td class="text-center"><p class="sd-card-text">1.6800</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.60</p></td>
+<td class="text-center"><p class="sd-card-text">1.1360</p></td>
+<td class="text-center"><p class="sd-card-text">1.0400</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.80</p></td>
+<td class="text-center"><p class="sd-card-text">1.3440</p></td>
+<td class="text-center"><p class="sd-card-text">0.1312</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1.00</p></td>
+<td class="text-center"><p class="sd-card-text">1.3702</p></td>
+<td class="text-center"><p class="sd-card-text">-0.9440</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details></section>
 </div>
 <div class="exercise admonition" id="ch2-ex-bvp-secant">
 
 <p class="admonition-title"><span class="caption-number">Exercise 5.3 </span></p>
 <section id="exercise-content">
-<p>Use the Secant method to calculate the next value of <span class="math notranslate nohighlight">\(s\)</span> for your solutions to the boundary value problem in <a class="reference internal" href="#ch2-ex-bvp-hand-calc"><span class="std std-numref">Exercise 5.2</span></a> and hence calculate the Euler method using this new guess value.</p>
-</section>
+<p>Use the Secant method to calculate a guess value for <span class="math notranslate nohighlight">\(y'(0)\)</span> based on your solutions to the boundary value problem in <a class="reference internal" href="#ch2-ex-bvp-hand-calc"><span class="std std-numref">Exercise 5.2</span></a>. Calculate the solutions using the Euler method using this new guess value.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(s = 1.4596\)</span>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_1\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_2\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.00</p></td>
+<td class="text-center"><p class="sd-card-text">0.0000</p></td>
+<td class="text-center"><p class="sd-card-text">1.4596</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.20</p></td>
+<td class="text-center"><p class="sd-card-text">0.2919</p></td>
+<td class="text-center"><p class="sd-card-text">1.4596</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.40</p></td>
+<td class="text-center"><p class="sd-card-text">0.5838</p></td>
+<td class="text-center"><p class="sd-card-text">1.2261</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.60</p></td>
+<td class="text-center"><p class="sd-card-text">0.8291</p></td>
+<td class="text-center"><p class="sd-card-text">0.7590</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.80</p></td>
+<td class="text-center"><p class="sd-card-text">0.9809</p></td>
+<td class="text-center"><p class="sd-card-text">0.0957</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1.00</p></td>
+<td class="text-center"><p class="sd-card-text">1.0000</p></td>
+<td class="text-center"><p class="sd-card-text">-0.6889</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details></section>
 </div>
 <div class="exercise admonition" id="ch2-ex-bvp-finite-difference">
 
 <p class="admonition-title"><span class="caption-number">Exercise 5.4 </span></p>
 <section id="exercise-content">
-<p>Calculate the solution of the boundary value problem in <a class="reference internal" href="#ch2-ex-bvp-hand-calc"><span class="std std-numref">Exercise 5.2</span></a> using the finite-difference method with a step length <span class="math notranslate nohighlight">\(h=0.4\)</span>.</p>
-</section>
+<p>Calculate the solution of the boundary value problem in <a class="reference internal" href="#ch2-ex-bvp-hand-calc"><span class="std std-numref">Exercise 5.2</span></a> using the finite-difference method with a step length <span class="math notranslate nohighlight">\(h=0.2\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.00</p></td>
+<td class="text-center"><p class="sd-card-text">0.0000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.20</p></td>
+<td class="text-center"><p class="sd-card-text">0.4337</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.40</p></td>
+<td class="text-center"><p class="sd-card-text">0.7981</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.60</p></td>
+<td class="text-center"><p class="sd-card-text">1.0347</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.80</p></td>
+<td class="text-center"><p class="sd-card-text">1.1058</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1.00</p></td>
+<td class="text-center"><p class="sd-card-text">1.0000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details></section>
 </div>
 <div class="exercise admonition" id="ch5-ex-python">
 
 <p class="admonition-title"><span class="caption-number">Exercise 5.5 </span></p>
 <section id="exercise-content">
-<p>The exact solution to the boundary value problem in <a class="reference internal" href="#ch2-ex-bvp-hand-calc"><span class="std std-numref">Exercise 5.2</span></a> is <span class="math notranslate nohighlight">\(y = \frac{1}{3} t^3 - \frac{1}{3} t + 1\)</span>. Write a Python or MATLAB program to perform the numerical calculations for <a class="reference internal" href="#ch2-ex-bvp-secant"><span class="std std-numref">Exercise 5.3</span></a> and <a class="reference internal" href="#ch2-ex-bvp-finite-difference"><span class="std std-numref">Exercise 5.4</span></a> and produce a plot of the numerical solutions and the exact solutions on the same set of axes. Comment on your plot.</p>
-</section>
+<p>The exact solution to the boundary value problem in <a class="reference internal" href="#ch2-ex-bvp-hand-calc"><span class="std std-numref">Exercise 5.2</span></a> is <span class="math notranslate nohighlight">\(y = \dfrac{\sin(2t)}{\sin(2)}\)</span>. Produce a plot comparing the solutions to this BVP using the Euler method from <a class="reference internal" href="#ch2-ex-bvp-secant"><span class="std std-numref">Exercise 5.3</span></a> and the finite-difference method from <a class="reference internal" href="#ch2-ex-bvp-finite-difference"><span class="std std-numref">Exercise 5.4</span></a> against the exact solution.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<figure class="align-default">
+<img alt="../_images/05389462c44376131b33dff827a3f8f7ce535c6412a8401a8d0b552526366549.png" src="../_images/05389462c44376131b33dff827a3f8f7ce535c6412a8401a8d0b552526366549.png" />
+</figure>
+</div>
+</details></section>
 </div>
 </section>
 

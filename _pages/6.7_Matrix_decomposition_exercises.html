@@ -297,7 +297,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/_pages/6.7_Matrix_decomposition_exercises.md" target="_blank"
+      <li><a href="../_sources/_pages/6.7_Matrix_decomposition_exercises.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -393,53 +393,205 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matrix-decomposition-exercises">
 <span id="matrix-decomposition-exercises-section"></span><h1><span class="section-number">6.7. </span>Matrix decomposition exercises<a class="headerlink" href="#matrix-decomposition-exercises" title="Permalink to this heading">#</a></h1>
-<p>Answer the following exercises based on the content from this chapter. The solutions can be found in the <a class="reference internal" href="A.5_Matrix_decomposition_solutions.html#matrix-decomposition-solutions-section"><span class="std std-ref">appendices</span></a>.</p>
 <div class="exercise admonition" id="matrix-decomposition-ex-lu">
 
 <p class="admonition-title"><span class="caption-number">Exercise 6.1 </span></p>
 <section id="exercise-content">
-<p>Using pen and paper, solve the following systems of linear equations using <a class="reference internal" href="6.1_LU_decomposition.html#lu-theorem">LU decomposition</a>.</p>
-<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
-<div class="sd-row docutils">
-<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
-<p>(a)  
-<span class="math notranslate nohighlight">\( \begin{align*}
+<p>Using pen and paper, solve the following system of linear equations using <a class="reference internal" href="6.1_LU_decomposition.html#lu-theorem">LU decomposition</a>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
     2 x_1 + 3 x_2 -   x_3   &amp;=  4,\\
     4 x_1 + 9 x_2 -   x_3   &amp;= 18,\\
             3 x_2 + 2 x_3 &amp;= 11.
-\end{align*} \)</span></p>
-</div>
-<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
-<p>(b)  
-<span class="math notranslate nohighlight">\( \begin{align*}
-    3 x_1 + 9 x_2 + 5 x_3 &amp;= 20,\\
-      x_1 + 2 x_2 + 2 x_3 &amp;=  3,\\
-    2 x_1 + 4 x_2 + 5 x_3 &amp;=  4.
-\end{align*} \)</span></p>
-</div>
-<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+\end{align*} \end{split}\]</div>
+<!-- ````{grid}
+```{grid-item}
+:columns: 6
+(a) &emsp;
+$ \begin{align*}
+    2 x_1 + 3 x_2 -   x_3   &=  4,\\
+    4 x_1 + 9 x_2 -   x_3   &= 18,\\
+            3 x_2 + 2 x_3 &= 11.
+\end{align*} $
+```
+
+```{grid-item}
+:columns: 6 
+(b) &emsp;
+$ \begin{align*}
+    3 x_1 + 9 x_2 + 5 x_3 &= 20,\\
+      x_1 + 2 x_2 + 2 x_3 &=  3,\\
+    2 x_1 + 4 x_2 + 5 x_3 &=  4.
+\end{align*} $
+```
+
+```{grid-item}
+:columns: 6
 <br>
-<p>(c)   
-<span class="math notranslate nohighlight">\( \begin{align*}
-      x_1         + 3 x_3 + 2 x_4 &amp;=  21,\\
-    3 x_1 - 2 x_2 + 5 x_3 +   x_4 &amp;=  28,\\
-    4 x_1 -   x_2 - 2 x_3 - 3 x_4 &amp;= -12,\\
-            2 x_2         + 3 x_4 &amp;=  13.
-\end{align*} \)</span></p>
-</div>
-<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+
+(c)  &emsp;
+$ \begin{align*}
+      x_1         + 3 x_3 + 2 x_4 &=  21,\\
+    3 x_1 - 2 x_2 + 5 x_3 +   x_4 &=  28,\\
+    4 x_1 -   x_2 - 2 x_3 - 3 x_4 &= -12,\\
+            2 x_2         + 3 x_4 &=  13.
+\end{align*} $
+```
+
+```{grid-item}
+:columns: 6
 <br>
-<p>(d)  
-<span class="math notranslate nohighlight">\( \begin{align*}
-        x_1 + 5 x_2 + 2 x_3 + 2 x_4 &amp;= -10,\\
-    - 2 x_1 - 4 x_2 + 2 x_3         &amp;=  10,\\
-      3 x_1 +   x_2 - 2 x_3 -   x_4 &amp;= -2,\\
-    - 3 x_1 - 3 x_2 + 4 x_3 -   x_4 &amp;=  4.
-\end{align*} \)</span></p>
+
+(d) &emsp;
+$ \begin{align*}
+        x_1 + 5 x_2 + 2 x_3 + 2 x_4 &= -10,\\
+    - 2 x_1 - 4 x_2 + 2 x_3         &=  10,\\
+      3 x_1 +   x_2 - 2 x_3 -   x_4 &= -2,\\
+    - 3 x_1 - 3 x_2 + 4 x_3 -   x_4 &=  4.
+\end{align*} $
+```
+```` -->
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  L &amp;= \begin{pmatrix}
+    1 &amp; 0 &amp; 0 \\
+    2 &amp; 1 &amp; 0 \\
+    0 &amp; 1 &amp; 1
+  \end{pmatrix}, &amp;
+  U &amp;= \begin{pmatrix}
+    2 &amp; 3 &amp; -1 \\
+    0 &amp; 3 &amp; 1 \\
+    0 &amp; 0 &amp; 1
+  \end{pmatrix}, &amp;
+  \mathbf{x} &amp;= \begin{pmatrix} -2 \\ 3 \\ 1 \end{pmatrix}
+\end{align*} \end{split}\]</div>
+</div>
+</details></section>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">lu</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">sum_</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">j</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+                    <span class="n">sum_</span> <span class="o">+=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">U</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+        
+                <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span>   
+            
+            <span class="k">else</span><span class="p">:</span>         
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
+                    <span class="n">sum_</span> <span class="o">+=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">U</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+                    
+                <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span><span class="p">)</span> <span class="o">/</span> <span class="n">U</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span>
+
+<span class="c1"># (a)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">11</span><span class="p">])</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">U = </span><span class="si">{</span><span class="n">U</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># (b)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">(b)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">U = </span><span class="si">{</span><span class="n">U</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># (c)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">21</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">])</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">(c)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">U = </span><span class="si">{</span><span class="n">U</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># (d)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">(d)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">U = </span><span class="si">{</span><span class="n">U</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">x = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(a)
+L = [[1. 0. 0.]
+ [2. 1. 0.]
+ [0. 1. 1.]]
+
+U = [[ 2.  3. -1.]
+ [ 0.  3.  1.]
+ [ 0.  0.  1.]]
+
+x = [-2.  3.  1.]
+
+(b)
+L = [[1.         0.         0.        ]
+ [0.33333333 1.         0.        ]
+ [0.66666667 2.         1.        ]]
+
+U = [[ 3.          9.          5.        ]
+ [ 0.         -1.          0.33333333]
+ [ 0.          0.          1.        ]]
+
+x = [ 1.  3. -2.]
+
+(c)
+L = [[ 1.          0.          0.          0.        ]
+ [ 3.          1.          0.          0.        ]
+ [ 4.          0.5         1.          0.        ]
+ [ 0.         -1.          0.33333333  1.        ]]
+
+U = [[  1.           0.           3.           2.        ]
+ [  0.          -2.          -4.          -5.        ]
+ [  0.           0.         -12.          -8.5       ]
+ [  0.           0.           0.           0.83333333]]
+
+x = [ 2. -1.  3.  5.]
+
+(d)
+L = [[ 1.          0.          0.          0.        ]
+ [-2.          1.          0.          0.        ]
+ [ 3.         -2.33333333  1.          0.        ]
+ [-3.          2.         -0.33333333  1.        ]]
+
+U = [[ 1.          5.          2.          2.        ]
+ [ 0.          6.          6.          4.        ]
+ [ 0.          0.          6.          2.33333333]
+ [ 0.          0.          0.         -2.22222222]]
+
+x = [ 1.00000000e+00 -3.00000000e+00 -2.11951668e-16  2.00000000e+00]
+</pre></div>
 </div>
-</section>
+</div>
 </div>
 <div class="exercise admonition" id="matrix-decomposition-ex-lup">
 

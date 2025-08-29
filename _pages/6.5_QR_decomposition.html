@@ -517,23 +517,7 @@ document.write(`
 <p><strong>Inputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p><strong>Outputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and and <span class="math notranslate nohighlight">\(n \times n\)</span> upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
 <ul class="simple">
-<li><p>for <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{x} \gets (R_{i \ldots m,1})^\mathsf{T}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{u}_i \gets \mathbf{a}_i - \displaystyle\sum_{j=1}^{i-1} (\mathbf{a}_i \cdot \mathbf{q}_j) \mathbf{q}_j\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{q}_i \gets \dfrac{\mathbf{u}_i}{\| \mathbf{u}_i \|}\)</span></p></li>
-</ul>
-</li>
-<li><p><span class="math notranslate nohighlight">\(Q \gets (\mathbf{q}_1, \ldots, \mathbf{q}_n)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(R \gets Q^{\mathsf{T}}A\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(D \gets \operatorname{diag}(\operatorname{sign}(R_{11}), \operatorname{sign}(R_{22}), \ldots, \operatorname{sign}(R_{mm}))\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(R \gets DR\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(Q \gets QD\)</span></p></li>
-<li><p>Return <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
-</ul>
-</section>
-</div><ul class="simple">
-<li><p>for <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
+<li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{u}_i \gets \mathbf{a}_i - \displaystyle\sum_{j=1}^{i-1} (\mathbf{a}_i \cdot \mathbf{q}_j) \mathbf{q}_j\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{q}_i \gets \dfrac{\mathbf{u}_i}{\| \mathbf{u}_i \|}\)</span></p></li>
@@ -547,7 +531,8 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(Q \gets QD\)</span></p></li>
 <li><p>Return <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
 </ul>
-<div class="proof example admonition" id="qr-gramschmidt-example">
+</section>
+</div><div class="proof example admonition" id="qr-gramschmidt-example">
 <p class="admonition-title"><span class="caption-number">Example 6.8 </span></p>
 <section class="example-content" id="proof-content">
 <p>Calculate the QR decomposition of the following matrix using the Gram-Schmidt process</p>
@@ -636,7 +621,6 @@ Python</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
 </pre></div>
 </div>
-<p>The Numpy command <code class="docutils literal notranslate"><span class="pre">np.linalg.norm()</span></code> calculates the magnitude of a vector.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
@@ -694,7 +678,7 @@ MATLAB</label><div class="sd-tab-content docutils">
     0 &amp; a_{m2} &amp; a_{m3} &amp; \cdots &amp; a_{mn}
   \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p>We then look to do the same for the sub-matrix of <span class="math notranslate nohighlight">\(R\)</span> formed by omitted the first row and column. We do this by calculating a <span class="math notranslate nohighlight">\((m-1) \times (m-1)\)</span> Householder matrix <span class="math notranslate nohighlight">\(H'\)</span> using <span class="math notranslate nohighlight">\(\mathbf{x} = (a_{22}, a_{32}, \ldots, a_{m2})^\mathsf{T}\)</span></p>
+<p>We then look to do the same for the sub-matrix of <span class="math notranslate nohighlight">\(R\)</span> formed by omitted the first row and column. We do this by calculating a <span class="math notranslate nohighlight">\((m-1) \times (m-1)\)</span> Householder matrix <span class="math notranslate nohighlight">\(H'\)</span> using <span class="math notranslate nohighlight">\(\mathbf{x} = (a_{22}, a_{32}, \ldots, a_{m2})^\mathsf{T}\)</span>. This is used to form the <span class="math notranslate nohighlight">\(n \times n\)</span> Householder matrix <span class="math notranslate nohighlight">\(H_2\)</span> by padding out the first row and column of the identity matrix.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
   H_2 = \begin{pmatrix} 
@@ -702,7 +686,7 @@ MATLAB</label><div class="sd-tab-content docutils">
     0 &amp; H'
   \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p>The Householder matrix is then applied to <span class="math notranslate nohighlight">\(R\)</span> so that the second column barring the first row is parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</p>
+<p>The Householder matrix <span class="math notranslate nohighlight">\(H_2\)</span> is then applied to <span class="math notranslate nohighlight">\(R\)</span> so that the second column barring the first row is parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
   R = H_2 R = 
@@ -737,8 +721,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li><p><span class="math notranslate nohighlight">\(R \gets A\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{x} \gets (R_{ii}, R_{i+1,i}, \ldots, R_{mi})^\mathsf{T}\)</span>   (column <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(R\)</span> starting at the <span class="math notranslate nohighlight">\(i\)</span>-th row)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \mathbf{a}_1 + \|\mathbf{x}\|\mathbf{e}_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x} \gets\)</span> column <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(R\)</span> starting at the <span class="math notranslate nohighlight">\(i\)</span>-th row</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \mathbf{x} + \|\mathbf{x}\|\mathbf{e}_1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(H \gets I_m - 2 \dfrac{\mathbf{v} \mathbf{v} ^\mathsf{T}}{\mathbf{v} \cdot \mathbf{v}}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R \gets H R\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(Q \gets Q H\)</span></p></li>
@@ -748,19 +732,20 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li><p><span class="math notranslate nohighlight">\(D_{ii} \gets \operatorname{sign}(R_{ii})\)</span>   for <span class="math notranslate nohighlight">\(i = 1 \ldots n\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R \gets DR\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(Q \gets QD\)</span></p></li>
+<li><p>Return <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span></p></li>
 </ul>
 </section>
 </div><div class="proof example admonition" id="qr-householder-example">
 <p class="admonition-title"><span class="caption-number">Example 6.9 </span></p>
 <section class="example-content" id="proof-content">
-<p>Calculate the QR decomposition of the following matrix using the Householder reflections</p>
+<p>Calculate the QR decomposition of the following matrix using Householder reflections</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
   A=\begin{pmatrix}
     1 &amp; -4 \\
     2 &amp; 3 \\
     2 &amp; 2
-  \end{pmatrix}
+  \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
@@ -827,7 +812,7 @@ MATLAB</label><div class="sd-tab-content docutils">
   \begin{pmatrix} 4 \\ 3 \end{pmatrix} + 5 
   \begin{pmatrix} 1 \\ 0 \end{pmatrix} =
   \begin{pmatrix} 9 \\ 3 \end{pmatrix}, \\
-  H_2 &amp;= I - 2\frac{\mathbf{v}_2 \mathbf{v}_2^\mathsf{T}}{\mathbf{v}_2 \cdot \mathbf{v}_2} = 
+  H' &amp;= I - 2\frac{\mathbf{v}_2 \mathbf{v}_2^\mathsf{T}}{\mathbf{v}_2 \cdot \mathbf{v}_2} = 
   \begin{pmatrix} 
     1 &amp; 0 \\
     0 &amp; 1
@@ -839,6 +824,12 @@ MATLAB</label><div class="sd-tab-content docutils">
   \begin{pmatrix}
     -\frac{4}{5} &amp; -\frac{3}{5} \\
     -\frac{3}{5} &amp;  \frac{4}{5}
+  \end{pmatrix}, \\
+  H_2 &amp;=
+  \begin{pmatrix}
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; -\frac{4}{5} &amp; -\frac{3}{5} \\
+    0 &amp; -\frac{3}{5} &amp;  \frac{4}{5}
   \end{pmatrix}, \\
   R &amp;= H_2 R = 
   \begin{pmatrix} 
@@ -923,7 +914,6 @@ Python</label><div class="sd-tab-content docutils">
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">]</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="n">i</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
         <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
         <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">:]</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
@@ -937,7 +927,6 @@ Python</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
 </pre></div>
 </div>
-<p>The NumPy command <code class="docutils literal notranslate"><span class="pre">np.matmul(A,</span> <span class="pre">B)</span></code> calculates the matrix multiplication of two matrices <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code>.</p>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
@@ -978,7 +967,11 @@ MATLAB</label><div class="sd-tab-content docutils">
 <div class="math notranslate nohighlight">
 \[ \| Q^\mathsf{T}Q - I\| = E,\]</div>
 <p>which is known as the Frobenius norm and is a measure of the <strong>loss of orthogonality</strong>.</p>
-<p>The both QR decomposition methods shown here use an iterative approach where we orthoganlise the columns of the <span class="math notranslate nohighlight">\(A\)</span> matrix in turn based upon the previous iterations. So an error in column <span class="math notranslate nohighlight">\(i\)</span> will have a knock on effect on all subsequent columns. To anaylse the methods, the QR decomposition of a random <span class="math notranslate nohighlight">\(100 \times 100\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> was computed using the Gram-Schmidt process and Householder reflections. The Frobenius norm was calculated for the first <span class="math notranslate nohighlight">\(n\)</span> columns of <span class="math notranslate nohighlight">\(Q\)</span> where <span class="math notranslate nohighlight">\(n = 4 \ldots 100\)</span> giving the loss of orthogonality for those iterations and plotted in below.</p>
+<p>The both QR decomposition methods shown here use an iterative approach where we orthoganlise the columns of the <span class="math notranslate nohighlight">\(A\)</span> matrix in turn based upon the previous iterations. So an error in column <span class="math notranslate nohighlight">\(i\)</span> will have a knock on effect on all subsequent columns. To anaylse the methods, the QR decomposition of a random <span class="math notranslate nohighlight">\(100 \times 100\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> was computed using the Gram-Schmidt process and Householder reflections. The Frobenius norm was calculated for the first <span class="math notranslate nohighlight">\(n\)</span> columns of <span class="math notranslate nohighlight">\(Q\)</span> where <span class="math notranslate nohighlight">\(n = 1 \ldots 100\)</span> giving the loss of orthogonality for those iterations and plotted in below.</p>
+<figure class="align-default">
+<img alt="../_images/97502314c72606508441762c22e03077698e1f21cb48d143ae8a0cd07b322c70.png" src="../_images/97502314c72606508441762c22e03077698e1f21cb48d143ae8a0cd07b322c70.png" />
+</figure>
+<p>Here we can see that computing QR decomposition using Householder reflections is less prone to orthogonality errors than using the Gram-Schmidt process.</p>
 </section>
 </section>
 

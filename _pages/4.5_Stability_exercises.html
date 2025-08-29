@@ -401,11 +401,11 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|ccccc}
     0 &amp; 0 &amp;  &amp;  &amp;  &amp; \\
-    1/4 &amp; 1/4 &amp;  &amp;  &amp;  &amp; \\
-    1/2 &amp; 1/2 &amp; 0 &amp;  &amp;  &amp; \\
-    3/4 &amp; 0 &amp; 1/2 &amp; 1/4 &amp;  &amp;    \\
-    0 &amp; 0 &amp; 1/6 &amp; -1/3 &amp; 1/6 &amp; \\ \hline
-    &amp; -1 &amp; 2/3 &amp; -1/3 &amp; 2/3 &amp; 1
+    \frac{1}{4} &amp; \frac{1}{4} &amp;  &amp;  &amp;  &amp; \\
+    \frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp;  &amp;  &amp; \\
+    3/4 &amp; 0 &amp; \frac{1}{2} &amp; \frac{1}{4} &amp;  &amp;    \\
+    0 &amp; 0 &amp; \frac{1}{6} &amp; -\frac{1}{3} &amp; \frac{1}{6} &amp; \\ \hline
+    &amp; -1 &amp; \frac{2}{3} &amp; -\frac{1}{3} &amp; \frac{2}{3} &amp; 1
 \end{array} \end{split}\]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -426,24 +426,49 @@ Solution<div class="sd-summary-down docutils">
 <p>Determine the stability function of the following Runge-Kutta method. Is this an A-stable method?</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cc}
-    1/4 &amp; 7/24 &amp; -1/24\\
-    3/4 &amp; 13/24 &amp; 5/24\\ \hline
-    &amp; 1/2 &amp; 1/2
+    \frac{1}{4} &amp; \frac{7}{24} &amp; -\frac{1}{24} \\
+    \frac{3}{4} &amp; \frac{13}{24} &amp; \frac{5}{24} \\ \hline
+    &amp; \frac{1}{2} &amp; \frac{1}{2}
 \end{array} \end{split}\]</div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[R(z) = \frac{1 + \frac{1}{2}z + \frac{1}{12}z^2}{1 - \frac{1}{2}z + \frac{1}{12}z^2}\]</div>
+<p class="sd-card-text">The roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> are <span class="math notranslate nohighlight">\(3 \pm \sqrt{3}i\)</span> and <span class="math notranslate nohighlight">\(E(y) = 0\)</span> so this is an A-stable method.</p>
+</div>
+</details></section>
 </div>
 <div class="exercise admonition" id="ch2-ex-dirk-stability-function">
 
 <p class="admonition-title"><span class="caption-number">Exercise 4.3 </span></p>
 <section id="exercise-content">
-<p>Plot the region of absolute stability for the following Runge-Kutta method.</p>
+<p>Plot the region of absolute stability for the fourth-order Gauss-Legendre method. What does your plot suggest about the method?</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cc}
-    1/3 &amp; 1/3 &amp; 0\\
-    1 &amp; 1 &amp; 0\\ \hline
-    &amp; 3/4 &amp; 1/4
+    \frac{1}{2} - \frac{\sqrt{3}}{6} &amp; \frac{1}{4} &amp; \frac{1}{4} - \frac{\sqrt{3}}{6} \\
+    \frac{1}{2} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4} \\ \hline
+    &amp; \frac{1}{2} &amp; \frac{1}{2}
 \end{array} \end{split}\]</div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[R(z) = \frac{1 + \frac{1}{2}z + \frac{1}{12}z^2}{1 - \frac{1}{2}z + \frac{1}{12}z^2}\]</div>
+<figure class="align-default">
+<img alt="../_images/bd7bb7f07930be83986271f00bd143468b19b6c2960cbe7678aa62b18101c0ae.png" src="../_images/bd7bb7f07930be83986271f00bd143468b19b6c2960cbe7678aa62b18101c0ae.png" />
+</figure>
+<p class="sd-card-text">This is an A-stable method.</p>
+</div>
+</details></section>
 </div>
 <div class="exercise admonition" id="ch4-ex-stiffness-ratio">
 
@@ -452,11 +477,25 @@ Solution<div class="sd-summary-down docutils">
 <p>Calculate the stiffness ratio for the following system of ODEs.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    y_1' &amp;= -80.6 y_1 + 119.4 y_2,\\
-    y_2' &amp;= 79.6 y_1 - 120.4 y_2.
+    y_1' &amp;= -20y_1 + y_2, \\
+    y_2' &amp;= 500 y_2.
 \end{align*}\]</div>
-<p>What are the maximum step lengths that the Euler method is stable for solving each equation?</p>
-</section>
+<p>For the Euler method with step size <span class="math notranslate nohighlight">\(h = 0.05\)</span>, test the stability against both of the Eigenvalues of this system.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = -20\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = -500\)</span> so the stiffness ratio is</p>
+<div class="math notranslate nohighlight">
+\[ S = \frac{-500}{-20} = 25. \]</div>
+<p class="sd-card-text">The stability function for the Euler method is <span class="math notranslate nohighlight">\(R(z) = 1 + z = 1 + h \lambda\)</span>. For stability, <span class="math notranslate nohighlight">\(|1 + h \lambda| \leq 1\)</span>.</p>
+<p class="sd-card-text">For <span class="math notranslate nohighlight">\(\lambda_1\)</span>, <span class="math notranslate nohighlight">\(|R(-25 h)| = |1 - 25(0.05)| = 0 &lt; 1\)</span> so is stable.</p>
+<p class="sd-card-text">For <span class="math notranslate nohighlight">\(\lambda_2\)</span>, <span class="math notranslate nohighlight">\(|R(-500 h)| = |1 - 500(0.05)| = 24 &gt; 1\)</span> so is unstable.</p>
+</div>
+</details></section>
 </div>
 </section>
 
