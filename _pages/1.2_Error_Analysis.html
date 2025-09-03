@@ -230,19 +230,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
     </div>
@@ -529,17 +520,17 @@ document.write(`
 </section>
 <section id="local-truncation-error">
 <span id="local-truncation-error-section"></span><h2><span class="section-number">1.2.3. </span>Local truncation Error<a class="headerlink" href="#local-truncation-error" title="Permalink to this heading">#</a></h2>
-<p>The <strong>local truncation error</strong>, denoted by <span class="math notranslate nohighlight">\(e_n\)</span>, is the error over a single step of a method assuming that the solution at the previous step is exact. In the <a class="reference internal" href="1.1_Euler_Method.html#euler-method-section"><span class="std std-ref">derivation of the Euler method</span></a> we made the assumption that the computed value of <span class="math notranslate nohighlight">\(y_{n+1}\)</span> is an approximation of the exact solution <span class="math notranslate nohighlight">\(y(t_{n+1})\)</span>. The local truncation error for this step is the difference between <span class="math notranslate nohighlight">\(y_{n+1}\)</span> and <span class="math notranslate nohighlight">\(y(t_{n+1})\)</span></p>
+<p>The <strong>local truncation error</strong>, denoted by <span class="math notranslate nohighlight">\(e_n\)</span>, is the error over a single step of a method assuming that the solution at the previous step is exact. In the <a class="reference internal" href="1.1_Euler_Method.html#euler-method-section"><span class="std std-ref">derivation of the Euler method</span></a> we made the assumption that the computed value of <span class="math notranslate nohighlight">\(y_{n+1}\)</span> is an approximation of the exact solution <span class="math notranslate nohighlight">\(y(t_{n+1})\)</span>. The local truncation error <span class="math notranslate nohighlight">\(e_{n+1}\)</span> is the difference between <span class="math notranslate nohighlight">\(y_{n+1}\)</span> and <span class="math notranslate nohighlight">\(y(t_{n+1})\)</span></p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    e_{n} &amp;= y(t_{n+1}) - y_{n+1}.
+    e_{n+1} &amp;= y(t_{n+1}) - y_{n+1}.
 \end{align*} \]</div>
-<p>where <span class="math notranslate nohighlight">\(y_n = y(t_n)\)</span>. Substituting the Euler method solution of <span class="math notranslate nohighlight">\(y_{n+1}\)</span> gives</p>
+<p>Substituting the Euler method solution <span class="math notranslate nohighlight">\(y_{n+1} = y_n + h f(t_n, y_n)\)</span> gives</p>
 <div class="math notranslate nohighlight" id="equation-euler-tau-equation-1">
 <span class="eqno">(1.3)<a class="headerlink" href="#equation-euler-tau-equation-1" title="Permalink to this equation">#</a></span>\[ \begin{align*}
-   e_n &amp;= y(t_{n+1}) - y(t_n) - h f(t_n, y(t_n)).
+   e_{n+1} &amp;= y(t_{n+1}) - y(t_n) - h f(t_n, y(t_n)).
 \end{align*} \]</div>
-<p>Since <span class="math notranslate nohighlight">\(y(t_{n+1}) = y(t_n + h)\)</span>, we can expand <span class="math notranslate nohighlight">\(y(t_{n+1})\)</span> about <span class="math notranslate nohighlight">\(t_n\)</span> using the <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem" target="_blank">Taylor’s series</a></p>
+<p>Since <span class="math notranslate nohighlight">\(y(t_{n+1}) = y(t_n + h)\)</span>, we can expand <span class="math notranslate nohighlight">\(y(t_{n+1})\)</span> about <span class="math notranslate nohighlight">\(t_n\)</span> using the <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem" target="_blank">Taylor series</a></p>
 <div class="math notranslate nohighlight" id="equation-euler-taylor-equation">
 <span class="eqno">(1.4)<a class="headerlink" href="#equation-euler-taylor-equation" title="Permalink to this equation">#</a></span>\[ y(t_{n+1}) = y(t_n) + h y'(t_n) + \frac{h^2}{2} y''(\tilde{t_n}), \]</div>
 <p>where <span class="math notranslate nohighlight">\(\tilde{t_n}\)</span> is some point between <span class="math notranslate nohighlight">\(t_{n}\)</span> and <span class="math notranslate nohighlight">\(t_{n} + h\)</span>. Since <span class="math notranslate nohighlight">\(y'(t_n) = f(t_n, y_n)\)</span>, substituting equation <a class="reference internal" href="#equation-euler-taylor-equation">(1.4)</a> into equation <a class="reference internal" href="#equation-euler-tau-equation-1">(1.3)</a> gives</p>
@@ -569,7 +560,7 @@ document.write(`
 <p>so the upper bound of the global truncation error is</p>
 <div class="math notranslate nohighlight">
 \[ E_n \leq \frac{t_n - t_0}{h} \frac{Mh^2}{2} = \frac{(t_n - t_0 )M}{2} h. \]</div>
-<p>If <span class="math notranslate nohighlight">\(C = (t_n - t_0 ) M / 2\)</span> is some positive constant then <span class="math notranslate nohighlight">\(E_n \leq C h\)</span> so we say that <span class="math notranslate nohighlight">\(E_n = O(h)\)</span>. So as the step length <span class="math notranslate nohighlight">\(h\)</span> decreases, the global truncation error for Euler’s method will converge to zero in a linear fashion, that is, halving the step length should also approximately halve the global truncation error. This confirms what we saw in the plot of the errors against step length for the Euler method (<a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a>) where the errors formed a line with a gradient of approximately 2.</p>
+<p>If <span class="math notranslate nohighlight">\(C = (t_n - t_0 ) M / 2\)</span> is some positive constant then <span class="math notranslate nohighlight">\(E_n \leq C h\)</span> so we say that <span class="math notranslate nohighlight">\(E_n = O(h)\)</span>. So as the step length <span class="math notranslate nohighlight">\(h\)</span> decreases, the global truncation error for Euler’s method will converge to zero in a linear fashion, that is, halving the step length should also approximately halve the global truncation error. This confirms what we saw in the plot of the errors against step length for the Euler method (<a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a>) where the errors formed a line with a gradient of approximately 1.</p>
 </section>
 </section>
 
