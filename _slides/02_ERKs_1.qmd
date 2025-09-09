@@ -4,7 +4,7 @@ subtitle: 6G6Z3017 Computational Methods in ODEs
 author: "Dr Jon Shiach"
 format:
   revealjs:
-    theme: dracula
+    theme: white
     css: styles.css
     slide-level: 3
     transition: slide
@@ -25,10 +25,12 @@ The general form of a Runge-Kutta method for solving the initial value problem $
 $$ \begin{align}
     y_{n+1} &=y_n + h \sum_{i=1}^s b_i k_i,\\
     k_i &= f(t_n +c_i h,y_n + h \sum_{j=1}^s a_{ij} k_j ),
-\end{align} $$(general-rk-equation)
+\end{align} $$
 :::
 
 Runge-Kutta methods are known as **single step methods** because they only need information from a single step, e.g., $t_n$ and $y_n$ to compute the solution at the next step.
+
+The $k_i$ values are intermediate calculations known as **stage values**
 
 ## Heun's Method
 
@@ -48,7 +50,7 @@ $$ \begin{align*}
     k_2 &= f(t_n + c_2 h, y_n + h(a_{21} k_1 + a_{22} k_2)).
 \end{align*} $${#eq-2-stage-rk-method}
 
-So comparing equations @eq-heuns-method and @eq-2-stage-rk-method we can see that 
+Comparing @eq-heuns-method and @eq-2-stage-rk-method we can see that 
 
 $$ \begin{align*}
     b_1 &= \frac{1}{2}, &
@@ -87,7 +89,7 @@ $$ \begin{align*}
     k_2 &= f(t_n + h, y_n + h k_1), \\
 \end{align*} $$
 
-this can be expressed as the Butcher tableau
+where $a_{11} = a_{12} = a_{22} = 0$, $b_1 = b_2 = \frac{1}{2}$, $c_1 = 0$ and $c_2 = 1$. So this can be expressed as the Butcher tableau
 
 $$ \begin{align*}
     \begin{array}{c|cccc}
@@ -133,7 +135,7 @@ $$ \begin{align*}
     k_s &=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s )).
 \end{align*} $$
 
-These are <a href="https://en.wikipedia.org/wiki/Implicit_function" target="_blank">**implicit functions**</a>, i.e., the value $k_1$ appears on the right-hand side of the equation for $k_1$.
+These are <a href="https://en.wikipedia.org/wiki/Implicit_function" target="_blank">**implicit functions**</a>, e.g., the value $k_1$ appears on the right-hand side of the equation for $k_1$.
 
 Runge-Kutta methods where the stage values are expressed using implicit functions are known as **Implicit Runge-Kutta (IRK)** methods.
 
@@ -215,7 +217,7 @@ $$ \begin{align*}
     y_{n+1} = y_n + h f(t_n, y_n) + \frac{h^2}{2} [ f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n) ] + O(h^3)
 \end{align*} $$
 
-This is the Taylor expansion of the ODE we are attempting to solve.
+This is the Taylor expansion of the ODE $y' = f(t, y)$ which are attempting to solve.
 :::
 
 ---
@@ -248,8 +250,8 @@ $$ \begin{align*}
 Substituting this into equation @eq-rk2-expansion
 
 $$ \begin{align*}
-    y_{n+1} &= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f(t_n, y_n)] + O(h^3) \\
-    &= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 [c_2f_t(t_n, y_n) + a_{21} f(t_n, y_n)] + O(h^3). \\
+    y_{n+1} &= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f_y(t_n, y_n) f(t_n, y_n)] + O(h^3) \\
+    &= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 [c_2f_t(t_n, y_n) + a_{21} f_y(t_n, y_n) f(t_n, y_n)] + O(h^3). \\
 \end{align*} $$
 
 This is the Taylor expansion of a general 2-stage ERK method.
@@ -260,42 +262,37 @@ This is the Taylor expansion of a general 2-stage ERK method.
 We need the following two equations to be equivalent.
 
 $$ \begin{align*}
-  y_{n+1} &= y_n + \color{red}{h} f(t_n, y_n) + \color{green}{\frac{h^2}{2}} f_t(t_n, y_n) + \color{blue}{\frac{h^2}{2}} f_y(t_n, y_n)f(t_n, y_n) + O(h^3), \\
-  y_{n+1} &= y_n + \color{red}{h (b_1 + b_2)} f(t_n, y_n) + \color{green}{h^2 b_2 c_2} f_t(t_n, y_n) + \color{blue}{h^2 b_2a_{21}} f(t_n, y_n) + O(h^3).
+  y_{n+1} &= y_n + h f(t_n, y_n) + \frac{h^2}{2} f_t(t_n, y_n) + \frac{h^2}{2} f_y(t_n, y_n)f(t_n, y_n) + O(h^3), \\
+  y_{n+1} &= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 c_2 f_t(t_n, y_n) + h^2 b_2a_{21} f_y(t_n, y_n) f(t_n, y_n) + O(h^3).
 \end{align*} $$
 
 :::{.fragment}
-Equating the coefficients of $f(t_n, y_n)$
+Equating the coefficients of $hf(t_n, y_n)$
 
 $$ \begin{align*}
-    h( b_1 + b_2) &= h, &
-    \therefore b_1 + b_2 &= 1. 
+    b_1 + b_2 &= 1
 \end{align*} $$
 :::
 
 :::{.fragment}
-Equating the coefficients of $f_t(t_n, y_n)$
+Equating the coefficients of $h^2 f_t(t_n, y_n)$
 
 $$ \begin{align*}
-    h^2 b_2 c_2 &= \frac{h^2}{2} &
-    \therefore b_2 c_2 &= \frac{1}{2}.
+    b_2 c_2 & = \frac{1}{2}.
 \end{align*} $${#eq-rk2-condition-2}
 :::
 
 :::{.fragment}
-Equating the coefficients of $f_y(t_n, y_n)f(t_n, y_n)$
+Equating the coefficients of $h^2 f_y(t_n, y_n)f(t_n, y_n)$
 
 $$ \begin{align*}
-    h^2 b_2 a_{21} &= \frac{h^2}{2} &
-    \therefore b_2 a_{21} &= \frac{1}{2},
+    b_2 a_{21} &= \frac{1}{2},
 \end{align*} $$
 
 since we know from @eq-rk2-condition-2 that $b_2 = \dfrac{1}{2c_2}$ so $a_{21} = c_2$.
 :::
 
 ## Order Conditions for a Second-order ERK Method
-
-These three expressions are known as the **order conditions** for a method. 
 
 :::{.callout-note} 
 ## Order conditions for a second-order explicit Runge-Kutta method
@@ -312,7 +309,6 @@ We have three equations in four unknowns so to derive a second-order ERK method 
 ## Activity
 
 (i) &emsp; Derive a second-order Runge-Kutta ERK methods where $c_2 = 1$
-
 
 :::::{.fragment}
 **Solution**
@@ -412,22 +408,6 @@ eq3 = a21 - c2
 sp.solve((eq1, eq2, eq3))
 ```
 
-```{python}
-import sympy as sp
-
-# Declare symbolic variables
-a21, b1, b2, c2 = sp.symbols("a21, b1, b2, c2")
-c2 = 1
-
-# Define order conditions
-eq1 = b1 + b2 - 1
-eq2 = b2 * c2 - sp.Rational(1,2)
-eq3 = a21 - c2
-
-# Solve order conditions
-sp.solve((eq1, eq2, eq3))
-```
-
 ## Using MATLAB to solve the order conditions
 
 ```{.matlab code-line-numbers="0|1-3|5-8|10-11"}
@@ -443,3 +423,394 @@ eq3 = a21 == c2;
 % Solve order conditions
 solve(eq1, eq2, eq3)
 ```
+
+## Rooted Trees
+
+A <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)#Rooted_tree" target="_blank">**rooted tree**</a> is a tree where a single node is designated as the **root**. Rooted trees are usually drawn with the root node at the bottom of the tree.
+
+![](../_images/rooted_tree_example.svg){fig-align="center" width=400 height=200}
+
+The **order** of a rooted tree $\tau$, denoted by $r(\tau)$, is the total number of nodes in the tree.
+  
+The **density** of a rooted tree $\tau$, denoted by $\gamma(\tau)$, is a measure related to the number of nodes and the children of the notes in the tree. The density can be calculated using the following:
+
+  - assign a value of 1 to each leaf node in the tree;
+  - for all non-leaf nodes assign a value of 1 more than the sum of the values of their child nodes;
+  - calculate the product the values of all nodes in the tree which gives $\gamma(\tau)$.
+
+## Activity
+
+::::{.columns}
+:::{.column width=50%}
+Determine the order and density of this rooted tree.
+:::
+:::{.column width=50%}
+![](../_images/rooted_tree_example.svg){fig-align="center" width=400 height=150}
+:::
+::::
+
+
+:::{.fragment}
+**Solution**
+
+There are 7 nodes in this tree so $r(\tau)=7$.
+:::
+
+:::{.fragment}
+Assigning the weights to the nodes gives
+
+![](../_images/rooted_tree_example_density.svg){fig-align="center" width=400 height=200}
+
+So $\gamma(\tau) = 7 \cdot 1 \cdot 3 \cdot 2 \cdot 1 \cdot 1 \cdot 1 = 42$
+:::
+
+
+## Determining derivatives of $f(y)$ using rooted trees
+
+Consider the derivatives of the function $y = f(y)$ using the product and chain rules
+
+$$ \begin{align*}
+    y' &= f(y), \\
+    y'' &= f'(y)y' \\
+    &= (f'f)(y), \\
+    y''' &= f''(y)(f(y), f'(y)) + f'(y)f'(y)y' \\
+    &= (f''(f,f) + f'f'f)(y) \\
+    &\vdots
+\end{align*}$$
+
+As you can see this soon becomes complicated
+
+English mathematician Robert Merson noticed that the structure of rooted trees matches that of the derivatives of $f(y)$.
+
+---
+
+Defining a rooted tree notation where:
+
+- $\mathbf{f}$ denotes a node of the tree and the number of children the node has is denoted by a prime
+- a child node is written immediately following the parent node
+- sibling nodes are separated by a comma (using brackets if there are more than one child). 
+
+| $\tau$ | ![](../_images/rooted_tree_f.svg){height=50} | ![](../_images/rooted_tree_fdashf.svg){height=100} | ![](../_images/rooted_tree_fdashdashff.svg){height=100} |  ![](../_images/rooted_tree_fdashfdashf.svg){height=150} |
+|:--|:--:|:--:|:--:|:--:|
+| $r(\tau)$ | 1 | 2 | 3 | 3 |
+| $\gamma(\tau)$ | [$\mathbf{f}$]{.fragment} | [$\mathbf{f}'\mathbf{f}$]{.fragment} | [$\mathbf{f}''(\mathbf{f},\mathbf{f})$]{.fragment} | [$\mathbf{f}'\mathbf{f}'\mathbf{f}$]{.fragment} |
+
+:::{.fragment}
+If we sum the two order 3 trees then 
+
+$$ \mathbf{f}''(\mathbf{f},\mathbf{f}) + \mathbf{f}'\mathbf{f}'\mathbf{f} = (f''(f,f) + f'f'f)(y) = y'''$$
+:::
+
+## Elementary Weights
+
+To determine the values of $a_{ij}$, $b_i$ and $c_i$ in the Butcher tableau we define a set of **elementary weights**, denoted by $\Phi(\tau)$ which are generated using the following steps:
+
+- associate a label $i$ to the root node and for all non-leaf nodes associate unique labels $j$, $k$, $\ell$ etc;
+- write down a sequence of factors for which the first is $b_i$;
+- for each edge that does not terminate in a leaf node, write down another factor $a_{pq}$ where $p$ and $q$ are the labels associated with the parent and child node respectively;
+- for each leaf node write down a factor $c_p$ where $p$ is the label associated with the parent node;
+- sum the product of factors for all possible choices of the labels.
+
+## Activity
+
+::::{.columns}
+:::{.column width=50%}
+Determine the elementary weight of this rooted tree.
+:::
+:::{.column width=50%}
+![](../_images/rooted_tree_example.svg){fig-align="center" width=400 height=150}
+:::
+::::
+
+
+
+
+:::::{.columns}
+::::{.column width=50%}
+:::{.fragment}
+**Solution**
+Assigning the labels to the non-leaf nodes gives
+
+![](../_images/rooted_tree_example_elementary_weight.svg){fig-align="center" width=400 height=150}
+:::
+::::
+
+::::{.column wight=50%}
+:::{.fragment}
+<br>
+<br>
+
+$$ \begin{align*}
+    \Phi(\tau) &= \sum_{i,j,k} b_ia_{ij} a_{ik} c_ic_jc_jc_k
+    =  \sum_{i,j,k} b_ia_{ij} a_{ik} c_ic_j^2c_k.
+\end{align*} $$
+:::
+::::
+:::::
+
+
+
+## Deriving Order Conditions using Rooted Trees
+
+John Butcher noticed that comparing the Taylor series expansions for the autonomous ODE $y'=f(y)$ and the general form of a Runge-Kutta method gives the order condition
+
+$$\Phi(\tau) = \dfrac{1}{\gamma(\tau)}.$${#eq-order-condition-relation}
+
+To derive the order conditions for a $k$-th order $s$-stage Runge-Kutta method we determine the set $T$ of all rooted trees of order up to and include $k$ and use @eq-order-condition-relation for each tree in $T$.
+
+In addition to these order conditions there is also the following **row-sum condition** placed on the value of $c_i$
+
+$$c_i = \sum_{j=1}^sa_{ij},$$
+
+i.e., $c_i$ is equal to the sum of row $i$ of $A$
+
+## Activity
+
+Use trees to derive the order conditions for a 2-stage second-order explicit Runge-Kutta method.
+
+:::{.fragment}
+**Solution**
+
+| Tree | [![](../_images/tree_1.svg){height=20}]{.fragment} | [![](../_images/tree_2.svg){height=50}]{.fragment} |
+|:--:|:--:|:--:|
+| $\Phi(\tau)$ | [$\sum b_i$]{.fragment} | [$\sum b_ic_i$]{.fragment} |
+| $\gamma(\tau)$ | [1]{.fragment} | [2]{.fragment} |
+:::
+
+:::{.fragment}
+So the order conditions are (including the row-sum condition)
+$$ \begin{align*}
+    b_1 + b_2 &= 1, \\
+    b_1c_1 + b_2c_2 &= \frac{1}{2}, \\
+    c_1 &= a_{11} + a_{12}, \\
+    c_2 &= a_{21} + a_{22}.
+\end{align*} $$
+:::
+
+---
+
+For an ERK method, $c_1 = 0$ and $a_{11} = a_{12} = a_{22} = 0$ so the order conditions reduce to
+
+$$ \begin{align*}
+    b_1 + b_2 &= 1, \\
+    b_2c_2 &= \frac{1}{2}, \\
+    c_2 &= a_{21}.
+\end{align*} $$
+
+## Derivation of a Fourth-order ERK Method
+
+So to derive the order conditions for a fourth-order explicit method we consider all of the rooted trees up to and including order 4
+
+| $\tau$ | [![](../_images/tree_1.svg){height=20}]{.fragment} | [![](../_images/tree_2.svg){height=50}]{.fragment} | [![](../_images/tree_3_1.svg){height=50}]{.fragment} | [![](../_images/tree_3_2.svg){height=80}]{.fragment} | [![](../_images/tree_4_1.svg){height=50}]{.fragment} | [![](../_images/tree_4_3.svg){height=80}]{.fragment} | [![](../_images/tree_4_2.svg){height=80}]{.fragment} | [![](../_images/tree_4_4.svg){height=120}]{.fragment} |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| $r(\tau)$ | [1]{.fragment} | [2]{.fragment} | [3]{.fragment} | [3]{.fragment} | [4]{.fragment} | [4]{.fragment} | [4]{.fragment} | [4]{.fragment} |
+| $\Phi(\tau)$ | [$\displaystyle\sum_i b_i$]{.fragment}  | [$\displaystyle\sum_i b_ic_i$]{.fragment} | [$\displaystyle\sum_i b_ic_i^2$]{.fragment} | [$\displaystyle\sum_{i,j} b_ia_{ij}c_j$]{.fragment} | [$\displaystyle\sum_i b_ic_i^3$]{.fragment} | [$\displaystyle\sum_{i,j} b_ia_{ij}c_ic_j$]{.fragment} | [$\displaystyle\sum_{i,j} b_ia_{ij}c_j^2$]{.fragment} | [$\displaystyle\sum_{i,j,k} b_ia_{ij}a_{jk}c_k$]{.fragment} |
+| $\gamma(\tau)$ | [1]{.fragment} | [2]{.fragment} | [3]{.fragment} | [6]{.fragment} | [4]{.fragment} | [8]{.fragment} | [12]{.fragment} | [24]{.fragment} |
+
+---
+
+The fewest number of stages required for a fourth-order explicit Runge-Kutta method is 4, so $s = 4$
+
+$$ \begin{align*}
+  \sum_{i=1}^4 b_i &= 1, &
+  \sum_{i=1}^4 b_ic_i &= \frac{1}{2}, &
+  \sum_{i=1}^4 b_ic_i^2 &= \frac{1}{3}, &
+  \sum_{i=1}^4 b_ic_i^3 &= \frac{1}{4}, \\
+  \sum_{i,j=1}^4 b_ia_{ij}c_j &= \frac{1}{6}, &
+  \sum_{i,j=1}^4 b_ia_{ij}c_ic_j &= \frac{1}{8}, &
+  \sum_{i,j=1}^4 b_ia_{ij}c_j^2 &= \frac{1}{12}, &
+  \sum_{i,j,k=1}^4 b_ia_{ij}a_{jk} c_k &= \frac{1}{24}
+\end{align*} $$
+
+
+Since $c_1 = 0$, then for the first 4 order conditions on the top row
+
+$$ \begin{align}
+    b_1 + b_2 + b_3 + b_4 &= 1, \\
+    b_2c_2 + b_3c_3 + b_4c_4 &= \frac{1}{2}, \\
+    b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &= \frac{1}{3}, \\
+    b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &= \frac{1}{4}, \\
+\end{align} $$
+
+---
+
+For the next 3 order conditions the $a_{ij}c_j$ term is only non-zero when $i = 3, 4$ and $j = 2, 3$, so we have
+
+$$ \begin{align*}
+    b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &= \frac{1}{6}, \\
+    b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &= \frac{1}{8}, \\
+    b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &= \frac{1}{12}.
+\end{align*} $$
+
+:::{.fragment}
+For the final order condition the $a_{ij}a_{jk}c_j$ term is only non-zero when $i=4$, $j=3$ and $k=2$ so we have
+
+$$ \begin{align*}
+  b_4a_{43}a_{32}c_2 &= \frac{1}{24}.
+\end{align*} $$
+:::
+
+---
+
+:::{.callout-note}
+## Order conditions for a 4-stage fourth-order ERK method
+
+$$ \begin{align*}
+    b_1 + b_2 + b_3 + b_4 &= 1, \\
+    b_2c_2 + b_3c_3 + b_4c_4 &= \tfrac{1}{2}, \\
+    b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &= \tfrac{1}{3}, \\
+    b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &= \tfrac{1}{4}, \\
+    b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &= \tfrac{1}{6}, \\
+    b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &= \tfrac{1}{8}, \\
+    b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &= \tfrac{1}{12}, \\
+    b_4a_{43}a_{32}c_2 &= \tfrac{1}{24}, \\
+    c_2 &= a_{21}, \\
+    c_3 &= a_{31} + a_{32}, \\
+    c_4 &= a_{41} + a_{42} + a_{43}.
+\end{align*} $$
+:::
+
+Here we have 11 order conditions and 14 coefficients
+
+We choose values for 3 coefficients and solve for the rest
+
+## Derivation of the RK4 Method (Python)
+
+Derive a fourth-order Runge-Kutta method where $c_2 = c_3 = \frac{1}{2}$ and $c_4 = 1$.
+
+::::{.fragment}
+Using Python to solve the order conditions and the row sum conditions. Solving the first four order conditions for the $b_i$ coefficients.
+
+```{.python}
+import sympy as sp
+
+# Declare symbolic variables
+a21, a31, a32, a41, a42, a43, b1, b2, b3, b4 = sp.symbols("a21, a31, a32, a41, a42, a43, b1, b2, b3, b4")
+c2, c3, c4 = sp.Rational(1,2), sp.Rational(1,2), 1
+
+# Define order conditions
+eq1 = b1 + b2 + b3 + b4 - 1
+eq2 = b2 * c2 + b3 * c3 + b4 * c4 - sp.Rational(1,2)
+eq3 = b2 * c2 ** 2 + b3 * c3 ** 2 + b4 * c4 ** 2 - sp.Rational(1,3)
+eq4 = b2 * c2 ** 3 + b3 * c3 ** 3 + b4 * c4 ** 3 - sp.Rational(1,4)
+
+# Solve for the b coefficients
+sp.solve((eq1, eq2, eq3, eq4))
+```
+
+Which outputs $b_1 = b_4 = \frac{1}{6}$ and $b_2 = \frac{2}{3} - b_3$. Lets choose $b_3 = \frac{1}{3}$ so that $b_2 = \frac{1}{3}$.
+::::
+
+---
+
+Solve the remaining order conditions to determine the other coefficients
+
+```{.python}
+# Set b values
+b1, b2, b3, b4 = sp.Rational(1, 6), sp.Rational(1, 3), sp.Rational(1,3), sp.Rational(1, 6)
+
+# Define order conditions
+eq5 = b3 * a32 * c2 + b4 * a42 * c2 + b4 * a43 * c3 - sp.Rational(1,6)
+eq6 = b3 * a32 * c2 * c3 + b4 * a42 * c2 * c4 + b4 * a43 * c3 * c4 - sp.Rational(1,8)
+eq7 = b3 * a32 * c2 ** 2 + b4 * a42 * c2 ** 2 + b4 * a43 * c3 ** 2 - sp.Rational(1,12)
+eq8 = b4 * a43 * a32 * c2 - sp.Rational(1,24)
+eq9 = a21 - c2
+eq10 = a31 + a32 - c3
+eq11 = a41 + a42 + a43 - c4
+
+# Solve order conditions
+sp.solve((eq5, eq6, eq7, eq8, eq9, eq10, eq11))
+```
+
+Which outputs $a_{31} = a_{41} = a_{42} = 0$, $a_{21} = a_{32} = \frac{1}{2}$ and $a_{43} = 1$. 
+
+:::::{.fragment}
+So the RK4 method is
+
+::::{.columns}
+:::{.column width=50%}
+$$ \begin{align*}
+    \begin{array}{c|cccc}
+        0 &  &  &  & \\
+        \frac{1}{2} & \frac{1}{2} &  &  & \\
+        \frac{1}{2} & 0 & \frac{1}{2} &  & \\
+        1 & 0 & 0 & 1 & \\ \hline
+        & \frac{1}{6} & \frac{1}{3} & \frac{1}{3} & \frac{1}{6}
+    \end{array}
+\end{align*} $$
+:::
+:::{.column width=50%}
+$$ \begin{align*}
+    y_{n+1} &=y_n +\frac{h}{6}(k_1 +2 k_2 +2k_3 +k_4 ),\\
+    k_1 &=f(t_n ,y_n ),\\
+    k_2 &=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_1 ),\\
+    k_3 &=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_2 ),\\
+    k_4 &=f(t_n +h,y_n +hk_3 ).
+\end{align*} $$
+:::
+::::
+:::::
+
+## Derivation of the RK4 Method (MATLAB)
+
+Solve the first four order conditions
+
+```{.matlab}
+% Define symbolic variables
+syms a21 a31 a32 a41 a42 a43 b1 b2 b3 b4
+
+% Set c values
+c2 = \frac{1}{2};
+c3 = \frac{1}{2};
+c4 = 1;
+
+% Define order conditions
+eq1 = b1 + b2 + b3 + b4 == 1;
+eq2 = b2 * c2 + b3 * c3 + b4 * c4 == 1/2;
+eq3 = b2 * c2 ^ 2 + b3 * c3^2 + b4 * c4^2 == 1/3;
+eq4 = b2 * c2^3 + b3 * c3^3 + b4 * c4^3 == 1/4;
+
+% Solve for the b coefficients
+solve(eq1, eq2, eq3, eq4)
+```
+
+Which outputs $b_1 = b_4 = \frac{1}{6}$ and $b_2 = \frac{2}{3} - b_3$. Lets choose $b_3 = \frac{1}{3}$ so that $b_2 = \frac{1}{3}$.
+
+---
+
+Solve the remaining order conditions to determine the other coefficients
+
+
+```{.matlab}
+% Set b values
+b1 = 1/6;
+b2 = 1/3;
+b3 = 1/3;
+b4 = 1/6;
+
+% Define order conditions
+eq5 = b2 * a32 * c2 + b4 * a42 * c2 + b4 * a43 * c3 == 1/6;
+eq6 = b3 * a32 * c2 * c3 + b4 * a42 * c2 * c4 + b4 * a43 * c3 * c4== 1/8;
+eq7 = b3 * a32 * c2^2 + b4 * a42 * c2^2 + b4 * a43 * c3^2 == 1/12;
+eq8 = b4 * a43 * a32 * c2 == 1/24;
+
+% Define row-sum conditions
+eq9 = a21 == c2;
+eq10 = a31 + a32 == c3;
+eq11 = a41 + a42 + a43 == c4;
+
+% Solve order conditions
+solve(eq5, eq6, eq7, eq8, eq9, eq10, eq11)
+```
+
+Which outputs $a_{31} = a_{41} = a_{42} = 0$, $a_{21} = a_{32} = \frac{1}{2}$ and $a_{43} = 1$. 
+
+## Summary
+
+- Runge-Kutta methods are **single step methods** since they only require values from 1 step to compute the next step
+- Runge-Kutta methods are commonly presented in tabular form known as a **Butcher tableau**
+- Explicit Runge-Kutta (ERK) methods use **explicit** functions for the stage values (straight forward to calculate)
+- Implicit Runge-Kutta (IRK) methods use **implicit** functions for the stage values (more complex to calculate but can be applied to stiff problems)
+- The** Taylor series** expansion of the ODE $y' = f(t, y)$ and the general Runge-Kutta method are compared to give a set of **order conditions** the govern the coefficients of the method
+- **Rooted trees** present an easier way of deriving the order conditions
+- Choosing values for some of the coefficients allows us to solve the order conditions (using software) and derive Runge-Kutta methods

@@ -9,7 +9,6 @@ format:
     slide-level: 3
     transition: slide
     standalone: true
-    ## navigation-mode: vertical
     chalkboard: 
       buttons: true
       theme: whiteboard
@@ -761,6 +760,7 @@ $$ \begin{align*}
     \end{pmatrix}.
 \end{align*} $$
 
+:::{.fragment}
 The initial conditions are $\mathbf{y}_0 = (99, 1, 0)$ and $N = 100$, $\beta = 0.5$, $\gamma = 0.1$ and $\frac{\beta}{N} = 0.05$. 
 
 $$ \begin{align*}
@@ -768,22 +768,29 @@ $$ \begin{align*}
     = 
     \begin{pmatrix} 99 \\ 1 \\ 0 \end{pmatrix} + 1 
     \begin{pmatrix} 
-        -0.005 (99)(1) \\
-         0.005 (99)(1) - 0.1(0) \\
+        -0.05 (99)(1) \\
+         0.05 (99)(1) - 0.1(0) \\
          0.1(0) 
     \end{pmatrix}
     = 
-    \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix}, \\ \\
+    \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix},
+\end{align*} $$
+:::
+
+:::{.fragment}
+
+$$ \begin{align*}
     \mathbf{y}_2 &= \mathbf{y}_1 + h f(t_1, \mathbf{y}_1) 
     = 
     \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix} + 1 
     \begin{pmatrix} 
-        -0.005 (98.505)(1.395) \\
-        0.005 (98.505)(1.395) - 0.1(0.1) \\
+        -0.05 (98.505)(1.395) \\
+        0.05 (98.505)(1.395) - 0.1(0.1) \\
         0.1(0)
     \end{pmatrix} = 
     \begin{pmatrix} 97.8179 \\  1.9426 \\  0.2395\end{pmatrix},
 \end{align*} $$
+:::
 
 ---
 
