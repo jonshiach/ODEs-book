@@ -429,28 +429,25 @@ document.write(`
 <p>Substituting this into equation <a class="reference internal" href="#equation-rk2-expansion-equation">(2.6)</a></p>
 <div class="math notranslate nohighlight" id="equation-rk2-expansion-equation-2">
 <span class="eqno">(2.7)<a class="headerlink" href="#equation-rk2-expansion-equation-2" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
-    y_{n+1} &amp;= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f(t_n, y_n)] + O(h^3) \\
-    &amp;= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 [c_2f_t(t_n, y_n) + a_{21} f(t_n, y_n)] + O(h^3). \\
+    y_{n+1} &amp;= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f_y(t_n, y_n) f(t_n, y_n)] + O(h^3) \\
+    &amp;= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 c_2f_t(t_n, y_n) + h^2 a_{21} f_y(t_n, y_n) f(t_n, y_n) + O(h^3). \\
 \end{align*} \end{split}\]</div>
 <p>This is the Taylor expansion of a general 2-stage ERK method. We need equations<a class="reference internal" href="#equation-2nd-order-taylor-2-equation">(2.5)</a> and <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.7)</a> to be equal so that the local truncation errors in the ERK method are <span class="math notranslate nohighlight">\(O(h^3)\)</span>.</p>
-<p>Equating the coefficients of <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span></p>
+<p>Equating the coefficients of <span class="math notranslate nohighlight">\(hf(t_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-1">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-rk2-condition-1" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
-    h( b_1 + b_2) &amp;= h, \\
-    \therefore b_1 + b_2 &amp;= 1. 
-\end{align*} \end{split}\]</div>
-<p>Equating the coefficients of <span class="math notranslate nohighlight">\(f_t(t_n, y_n)\)</span></p>
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-rk2-condition-1" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+    b_1 + b_2 &amp;= 1. 
+\end{align*} \]</div>
+<p>Equating the coefficients of <span class="math notranslate nohighlight">\(h^2 f_t(t_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-2">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-rk2-condition-2" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
-    h^2 b_2 c_2 &amp;= \frac{h^2}{2} \\
-    \therefore b_2 c_2 &amp;= \frac{1}{2}.
-\end{align*} \end{split}\]</div>
-<p>Equating the coefficients of <span class="math notranslate nohighlight">\(f_y(t_n, y_n)f(t_n, y_n)\)</span></p>
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-rk2-condition-2" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+    b_2 c_2 &amp;= \frac{1}{2}.
+\end{align*} \]</div>
+<p>Equating the coefficients of <span class="math notranslate nohighlight">\(h^2f_y(t_n, y_n)f(t_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    h^2 b_2 a_{21} &amp;= \frac{h^2}{2} \\
-    \therefore b_2 a_{21} &amp;= \frac{1}{2},
-\end{align*} \end{split}\]</div>
+\[ \begin{align*}
+    b_2 a_{21} &amp;= \frac{1}{2},
+\end{align*} \]</div>
 <p>since we know from equation <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> that <span class="math notranslate nohighlight">\(b_2 = \dfrac{1}{2c_2}\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-3">
 <span class="eqno">(2.10)<a class="headerlink" href="#equation-rk2-condition-3" title="Permalink to this equation">#</a></span>\[ a_{21} = c_2 .\]</div>

@@ -1,0 +1,445 @@
+---
+title: "Week 2 -- Explicit Runge-Kutta Methods"
+subtitle: 6G6Z3017 Computational Methods in ODEs
+author: "Dr Jon Shiach"
+format:
+  revealjs:
+    theme: dracula
+    css: styles.css
+    slide-level: 3
+    transition: slide
+    standalone: true
+    ## navigation-mode: vertical
+    chalkboard: 
+      buttons: true
+      theme: whiteboard
+---
+
+## Runge-Kutta Methods
+
+::: {.callout-note}
+## Definition: General form of a Runge-Kutta Method
+
+The general form of a Runge-Kutta method for solving the initial value problem $y' =f(t,y)$, $t \in [t_0, t_{\max}]$, $y(0) = y_0$ is
+
+$$ \begin{align}
+    y_{n+1} &=y_n + h \sum_{i=1}^s b_i k_i,\\
+    k_i &= f(t_n +c_i h,y_n + h \sum_{j=1}^s a_{ij} k_j ),
+\end{align} $$(general-rk-equation)
+:::
+
+Runge-Kutta methods are known as **single step methods** because they only need information from a single step, e.g., $t_n$ and $y_n$ to compute the solution at the next step.
+
+## Heun's Method
+
+An example of a Runge-Kutta method is Heun's method which is 
+
+$$ \begin{align*}
+    y_{n+1} &= y_n + \frac{h}{2}(k_1 + k_2), \\
+    k_1 &= f(t_n, y_n), \\
+    k_2 &= f(t_n + h, y_n + h k_1), \\
+\end{align*} $${#eq-heuns-method}
+
+The general form of a 2-stage method is
+
+$$ \begin{align*}
+    y_{n+1} &= y_n + h (b_1k_1 + b_2 k_2 ), \\
+    k_1 &= f(t_n + c_1 h, y_n + h(a_{11} k_1 + a_{12} k_2)), \\
+    k_2 &= f(t_n + c_2 h, y_n + h(a_{21} k_1 + a_{22} k_2)).
+\end{align*} $${#eq-2-stage-rk-method}
+
+So comparing equations @eq-heuns-method and @eq-2-stage-rk-method we can see that 
+
+$$ \begin{align*}
+    b_1 &= \frac{1}{2}, &
+    b_2 &= \frac{1}{2}, &
+    c_1 &= 0, &
+    c_2 &= 1, \\
+    a_{11} &= 0, &
+    a_{12} &= 0, &
+    a_{21} &= 1, &
+    a_{22} &= 0.
+\end{align*} $$
+
+## Butcher Tableau
+
+Runge-Kutta methods are often summarised in a **Butcher tableau** named after the New Zealand mathematician [John Butcher](https://en.wikipedia.org/wiki/John_C._Butcher).
+
+A Butcher tableau is a table of values containing the coefficients $a_{ij}$, $b_i$ and $c_i$ for a Runge-Kutta method
+
+$$ \begin{align*}
+    \begin{array}{c|cccc}
+        c_1 & a_{11} & a_{12} & \cdots & a_{1s} \\ 
+        c_2 & a_{21} & a_{22} & \cdots & a_{2s} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        c_s & a_{s1} & a_{s2} & \cdots & a_{ss} \\ \hline
+        & b_1 & b_2 & \cdots & b_s
+    \end{array}
+\end{align*} $$
+
+---
+
+For example, recall Heun's method
+
+$$ \begin{align*}
+    y_{n+1} &= y_n + \frac{h}{2}(k_1 + k_2), \\
+    k_1 &= f(t_n, y_n), \\
+    k_2 &= f(t_n + h, y_n + h k_1), \\
+\end{align*} $$
+
+this can be expressed as the Butcher tableau
+
+$$ \begin{align*}
+    \begin{array}{c|cccc}
+        0 &  \\ 
+        1 & 1 \\ \hline
+        & \frac{1}{2} & \frac{1}{2}
+    \end{array}
+\end{align*} $$
+
+## Activity
+
+Write down the Butcher tableau for the 4-stage Runge-Kutta method given below as a Butcher tableau
+
+$$ \begin{align*}
+    y_{n+1} &= y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4), \\
+    k_1 &= f(t_n, y_n), \\
+    k_2 &= f(t_n + \tfrac{1}{2} h, y_n + \tfrac{1}{2} h k_1 ), \\
+    k_3 &= f(t_n + \tfrac{1}{2} h, y_n + \tfrac{1}{2} h k_2 ), \\
+    k_4 &= f(t_n + h, y_n + h k_3).
+\end{align*} $$
+
+::: {.fragment}
+**Solution**
+$$ \begin{align*}
+    \begin{array}{c|cc}
+        0 & 0 & 0 & 0 & 0 \\
+        \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 \\
+        \frac{1}{2} & 0 & \frac{1}{2} & 0 & 0 \\
+        1 & 0 & 0 & 1 & 0 \\ \hline
+        & \frac{1}{6} & \frac{1}{3} & \frac{1}{3} & \frac{1}{6}
+    \end{array}
+\end{align*} $$
+:::
+
+## Implicit Runge-Kutta Methods
+
+The stage values for an $s$-stage Runge-Kutta method are
+
+$$ \begin{align*}
+    k_1 &=f(t_n +c_1 h,y_n +h(a_{11} k_1 +a_{12} k_2 +\cdots +a_{1s} k_s )),\\
+    k_2 &=f(t_n +c_2 h,y_n +h(a_{21} k_1 +a_{22} k_2 +\cdots +a_{2s} k_s )),\\
+    &\vdots \\
+    k_s &=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s )).
+\end{align*} $$
+
+These are <a href="https://en.wikipedia.org/wiki/Implicit_function" target="_blank">**implicit functions**</a>, i.e., the value $k_1$ appears on the right-hand side of the equation for $k_1$.
+
+Runge-Kutta methods where the stage values are expressed using implicit functions are known as **Implicit Runge-Kutta (IRK)** methods.
+
+## Explicit Runge-Kutta Methods
+
+If the upper limit of the sum in the expression for $k_i$ is changed to $i-1$, i.e.,
+
+$$ \begin{align*}
+    k_i = f(t_n + c_i h,y_n + h\sum_{j=1}^{i-1} a_{ij} k_j)
+\end{align*} $$
+
+and let $c_1 = 0$, then we have the following equations for calculating the stage values
+
+$$ \begin{align*}
+    k_1 &=f(t_n ,y_n),\\
+    k_2 &=f(t_n +c_2 h,y_n +ha_{21} k_1 ),\\
+    k_3 &=f(t_n +c_3 h,y_n +h(a_{31} k_1 +a_{32} k_2 )),\\
+    &\vdots \\
+    k_s &=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{s,s-1} k_{s-1} )).
+\end{align*} $$
+
+These are **explicit functions** so Runge-Kutta methods and are the stage values for an **explicit Runge-Kutta method**.
+
+## Butcher Tableau of Explicit and Implicit Runge-Kutta Methods
+
+::::{.columns}
+:::{.column width=50%}
+<p style="text-align:center;">Explicit Method</p> 
+$$ \begin{array}{c|ccccc}
+    0 & 0 &  &  &  & \\
+    c_2  & a_{21}  &  &  &  & \\
+    c_3  & a_{31}  & a_{32}  &  &  & \\
+    \vdots  & \vdots  & \vdots  & \ddots  &  & \\
+    c_s  & a_{s1}  & a_{s2}  & \cdots  & a_{s,s-1}  & \\ \hline
+    & b_1  & b_2  & \cdots  & b_{s-1}  & b_s 
+\end{array} $$
+:::
+
+:::{.column width=50%}
+<p style="text-align:center;">Implicit Method</p> 
+$$ \begin{array}{c|ccccc}
+    c_1  & a_{11}  & a_{12}  & a_{13}  & \cdots  & a_{1s} \\
+    c_2  & a_{21}  & a_{22}  & a_{23}  & \cdots  & a_{2s} \\
+    c_3  & a_{31}  & a_{32}  & a_{33}  & \cdots  & a_{3s} \\
+    \vdots  & \vdots  & \vdots  & \vdots  & \ddots  & \vdots \\
+    c_s  & a_{s1}  & a_{s2}  & a_{s3}  & \cdots  & a_{ss} \\ \hline
+        & b_1  & b_2  & b_3  & \cdots  & b_s 
+\end{array} $$
+:::
+::::
+
+- Explicit methods are quicker and more straight forward to compute but do not perform well on *stiff* problems.
+- Implicit methods are more complicated to compute but can be used to solve stiff problems
+
+## Derivation of Explicit Runge-Kutta Methods
+
+The derivation of an explicit Runge-Kutta (ERK) method is achieved by comparing the <a href="https://en.wikipedia.org/wiki/Taylor_series" target="_blank">Taylor series</a> for the first-order ODE $y' = f(t,y)$ to that of the general Runge-Kutta method and ensuring the coefficients $a_{ij}$, $b_i$ and $c_i$ match
+
+:::{.fragment}
+The second-order Taylor series is
+
+$$ \begin{align*}
+    y(t_n + h) = y(t_n) + h y'(t_n) + \frac{h^2}{2} y''(t_n) + O(h^3).
+\end{align*}$${#eq-2nd-order-taylor}
+:::
+
+:::{.fragment}
+We know that $y'(t_n) = f(t_n, y_n)$, and we can use the <a href="https://en.wikipedia.org/wiki/Chain_rule" target="_blank">chain rule</a> to determine $y''(t_n)$
+
+$$ \begin{align*}
+    y''(t_n) &= f_t(t_n, y_n) + f_y(t_n, y_n) y_n' = f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n).
+\end{align*} $$
+:::
+
+:::{.fragment}
+Substituting $y'(t_n)$ and $y''(t_n)$ into equation @eq-2nd-order-taylor and using the notation $y_{n+1} = y(t_n + h)$ and $y_n = y(t_n)$ we have
+
+$$ \begin{align*}
+    y_{n+1} = y_n + h f(t_n, y_n) + \frac{h^2}{2} [ f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n) ] + O(h^3)
+\end{align*} $$
+
+This is the Taylor expansion of the ODE we are attempting to solve.
+:::
+
+---
+
+What we now need to do is determine an equivalent expansion for the 2-stage ERK method
+
+$$ \begin{align*}
+    y_{n+1} &= y_n + h (b_1 k_1 + b_2 k_2), \\
+    k_1 &= f(t_n, y_n), \\
+    k_2 &= f(t_n + c_2h, y_n + a_{21} h k_1).
+\end{align*} $$
+
+:::{.fragment}
+Substituting $k_1$ and $k_2$ into $y_{n+1}$
+
+$$ \begin{align*}
+    y_{n+1} &= y_n + h b_1 f(t_n, y_n) + h b_2 f(t_n + c_2h, y_n + a_{21} h k_1) + O(h^3).
+\end{align*} $${#eq-rk2-expansion}
+:::
+
+:::{.fragment}
+The <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem#Taylor's_theorem_for_multivariate_functions" target="_blank">bivariate Taylor</a> expansion of the two-variable function $f(t_n + c_2h, y_n + a_{21} h k_1)$ correct to $O(h^3)$ is
+
+$$ \begin{align*}
+    f(t_n + c_2 h, y_n + a_{21} h k_1) = f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f_y(t_n, y_n) f(t_n, y_n) + O(h^3).
+\end{align*} $$
+:::
+
+:::{.fragment}
+Substituting this into equation @eq-rk2-expansion
+
+$$ \begin{align*}
+    y_{n+1} &= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f(t_n, y_n)] + O(h^3) \\
+    &= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 [c_2f_t(t_n, y_n) + a_{21} f(t_n, y_n)] + O(h^3). \\
+\end{align*} $$
+
+This is the Taylor expansion of a general 2-stage ERK method.
+:::
+
+---
+
+We need the following two equations to be equivalent.
+
+$$ \begin{align*}
+  y_{n+1} &= y_n + \color{red}{h} f(t_n, y_n) + \color{green}{\frac{h^2}{2}} f_t(t_n, y_n) + \color{blue}{\frac{h^2}{2}} f_y(t_n, y_n)f(t_n, y_n) + O(h^3), \\
+  y_{n+1} &= y_n + \color{red}{h (b_1 + b_2)} f(t_n, y_n) + \color{green}{h^2 b_2 c_2} f_t(t_n, y_n) + \color{blue}{h^2 b_2a_{21}} f(t_n, y_n) + O(h^3).
+\end{align*} $$
+
+:::{.fragment}
+Equating the coefficients of $f(t_n, y_n)$
+
+$$ \begin{align*}
+    h( b_1 + b_2) &= h, &
+    \therefore b_1 + b_2 &= 1. 
+\end{align*} $$
+:::
+
+:::{.fragment}
+Equating the coefficients of $f_t(t_n, y_n)$
+
+$$ \begin{align*}
+    h^2 b_2 c_2 &= \frac{h^2}{2} &
+    \therefore b_2 c_2 &= \frac{1}{2}.
+\end{align*} $${#eq-rk2-condition-2}
+:::
+
+:::{.fragment}
+Equating the coefficients of $f_y(t_n, y_n)f(t_n, y_n)$
+
+$$ \begin{align*}
+    h^2 b_2 a_{21} &= \frac{h^2}{2} &
+    \therefore b_2 a_{21} &= \frac{1}{2},
+\end{align*} $$
+
+since we know from @eq-rk2-condition-2 that $b_2 = \dfrac{1}{2c_2}$ so $a_{21} = c_2$.
+:::
+
+## Order Conditions for a Second-order ERK Method
+
+These three expressions are known as the **order conditions** for a method. 
+
+:::{.callout-note} 
+## Order conditions for a second-order explicit Runge-Kutta method
+
+$$ \begin{align*}
+    b_1 +b_2 &=1,\\
+    c_2 b_2 &=\frac{1}{2},\\
+    a_{21} &= c_2.
+\end{align*} $$
+:::
+
+We have three equations in four unknowns so to derive a second-order ERK method we need to pick a value for one of $b_1$, $b_2$, $c_2$ or $a_{21}$ and solve for the rest.
+
+## Activity
+
+(i) &emsp; Derive a second-order Runge-Kutta ERK methods where $c_2 = 1$
+
+
+:::::{.fragment}
+**Solution**
+Substituting $c_2 = 1$ into the order conditions gives 
+
+$$ \begin{align*}
+    b_1 +b_2 &=1,\\
+    b_2 &=\frac{1}{2},\\
+    a_{21} &= c_2.
+\end{align*} $$
+
+so $b_2 = \frac{1}{2}$, $b_1 = \frac{1}{2}$ and $a_{21} = 1$. So this second-order ERK method is
+
+::::{.columns}
+:::{.column width=50%}
+\begin{align*}
+    y_{n+1} &=y_n +\frac{h}{2}(k_1 +k_2 ),\\
+    k_1 &=f(t_n ,y_n ),\\
+    k_2 &=f(t_n +h,y_n +hk_1 ),
+\end{align*}
+:::
+
+:::{.column width=50%}
+\begin{align*}
+    \begin{array}{c|cc}
+    0 & & \\
+    1 & 1 & \\ \hline
+    & \frac{1}{2} & \frac{1}{2}
+    \end{array}
+\end{align*}
+:::
+::::
+
+This is Heun's method seen earlier.
+:::::
+
+---
+
+(ii) &emsp; Derive a second-order Runge-Kutta ERK methods where $b_2 = 1$
+
+
+:::::{.fragment}
+**Solution**
+Substituting $b_2 = 1$ into the order conditions gives 
+
+$$ \begin{align*}
+    b_1 + 1 &= 1,\\
+    c_2 &=\frac{1}{2}, \\
+    a_{21} &= c_2.
+\end{align*} $$
+
+so $b_1=0$, $c_2 = \frac{1}{2}$ and $a_{21} = \frac{1}{2}$ so this second-order ERK method is
+
+::::{.columns}
+:::{.column width=50%}
+\begin{align*}
+    y_{n+1} &= y_n + h k_2, \\
+    k_1 &= f(t_n, y_n), \\
+    k_2 &= f(t_n + \tfrac{1}{2}h, y_n + \tfrac{1}{2}hk_1),
+\end{align*}
+:::
+
+:::{.column width=50%}
+\begin{align*}
+    \begin{array}{c|cc}
+        0 & \\
+        \frac{1}{2} & \frac{1}{2} \\ \hline
+        & 0 & 1
+    \end{array}
+\end{align*}
+:::
+::::
+
+This method is known as the <a href="https://en.wikipedia.org/wiki/Midpoint_method" target="_blank">midpoint method</a>.
+
+:::::
+
+## Using Python to solve the order conditions
+
+The algebra used to solve the order conditions for a second-order method is quite simple but for higher order methods it can soon get more complicated.
+
+The following code shows how Python and MATLAB can be used to solve the order conditions.
+
+```{.python code-line-numbers="0|1|3-5|7-10|12-13"}
+import sympy as sp
+
+# Declare symbolic variables
+a21, b1, b2, c2 = sp.symbols("a21, b1, b2, c2")
+c2 = 1
+
+# Define order conditions
+eq1 = b1 + b2 - 1
+eq2 = b2 * c2 - sp.Rational(1,2)
+eq3 = a21 - c2
+
+# Solve order conditions
+sp.solve((eq1, eq2, eq3))
+```
+
+```{python}
+import sympy as sp
+
+# Declare symbolic variables
+a21, b1, b2, c2 = sp.symbols("a21, b1, b2, c2")
+c2 = 1
+
+# Define order conditions
+eq1 = b1 + b2 - 1
+eq2 = b2 * c2 - sp.Rational(1,2)
+eq3 = a21 - c2
+
+# Solve order conditions
+sp.solve((eq1, eq2, eq3))
+```
+
+## Using MATLAB to solve the order conditions
+
+```{.matlab code-line-numbers="0|1-3|5-8|10-11"}
+% Declare symbolic variables
+syms a21 b1 b2 c2
+c2 = 1;
+
+% Define order conditions
+eq1 = b1 + b2 == 1;
+eq2 = b2 * c2 == 1/2;
+eq3 = a21 == c2;
+
+% Solve order conditions
+solve(eq1, eq2, eq3)
+```

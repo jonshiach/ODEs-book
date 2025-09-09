@@ -380,7 +380,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">2.4.1. Trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rooted-trees">2.4.1. Rooted Trees</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-derivatives-of-f-y-using-rooted-trees">Determining derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span> using rooted trees</a></li>
 </ul>
 </li>
@@ -400,8 +400,8 @@ document.write(`
 <span id="deriving-order-conditions-using-trees-section"></span><h1><span class="section-number">2.4. </span>Deriving order conditions using trees<a class="headerlink" href="#deriving-order-conditions-using-trees" title="Permalink to this heading">#</a></h1>
 <p>In the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a> we saw that to derive an Explicit Runge-Kutta (ERK) method we equate Taylor expansions of the ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> and the general form of a Runge-Kutta method to derive a set of order conditions which need to be satisfied. This means we need to evaluate the derivatives of the bivariate function <span class="math notranslate nohighlight">\(f(t,y)\)</span> which can soon get complicated as we increase the order. Fortunately there is an easier way that uses rooted trees.</p>
 <hr class="docutils" />
-<section id="trees">
-<h2><span class="section-number">2.4.1. </span>Trees<a class="headerlink" href="#trees" title="Permalink to this heading">#</a></h2>
+<section id="rooted-trees">
+<h2><span class="section-number">2.4.1. </span>Rooted Trees<a class="headerlink" href="#rooted-trees" title="Permalink to this heading">#</a></h2>
 <p>A <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)#Rooted_tree" target="_blank"><strong>rooted tree</strong></a> is a tree where a single node is designated as the <strong>root</strong>. Rooted trees are usually drawn with the root node at the bottom of the tree.</p>
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/rooted_tree_example.svg"><img alt="../_images/rooted_tree_example.svg" src="../_images/rooted_tree_example.svg" width="150" /></a>
@@ -448,7 +448,7 @@ document.write(`
     &amp;= (f''(f,f) + f'f'f)(y) \\
     &amp;\vdots
 \end{align*}\end{split}\]</div>
-<p>As you can see this soon becomes complication, however, English mathematician Robert Merson <span id="id1">Merson [<a class="reference internal" href="E_References.html#id6" title="R.H. Merson. An operational method for the study of intergration processes. In Proceedings of Conference on Data Processing and Automatic Computing Machives, volume 1, 1 - 25. Weapons Research Establishment, Salisbury, South Australia, 1957.">1957</a>]</span> noticed that the structure of rooted trees matches that of the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>. Defining a rooted tree notation where <span class="math notranslate nohighlight">\(\vec{f}\)</span> denotes a node of the tree and the number of children the node has is denoted by a prime, e.g., <span class="math notranslate nohighlight">\(\vec{f}''\)</span> denotes a node has two children. A child node is written immediately following the parent node and sibling nodes are separated by a comma (using brackets if there are more than one child).</p>
+<p>As you can see this soon becomes complicated, however, English mathematician Robert Merson <span id="id1">Merson [<a class="reference internal" href="E_References.html#id6" title="R.H. Merson. An operational method for the study of intergration processes. In Proceedings of Conference on Data Processing and Automatic Computing Machives, volume 1, 1 - 25. Weapons Research Establishment, Salisbury, South Australia, 1957.">1957</a>]</span> noticed that the structure of rooted trees matches that of the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>. Defining a rooted tree notation where <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> denotes a node of the tree and the number of children the node has is denoted by a prime, e.g., <span class="math notranslate nohighlight">\(\mathbf{f}''\)</span> denotes a node has two children. A child node is written immediately following the parent node and sibling nodes are separated by a comma (using brackets if there are more than one child).</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(\tau\)</span></p></th>
@@ -463,22 +463,22 @@ document.write(`
 <td class="text-center"><p>1</p></td>
 <td class="text-center"><p>2</p></td>
 <td class="text-center"><p>3</p></td>
-<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>3</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(\gamma(\tau)\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\vec{f}\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\vec{f}'\vec{f}\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\vec{f}''(\vec{f},\vec{f})\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(\vec{f}'\vec{f}'\vec{f}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mathbf{f}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mathbf{f}'\mathbf{f}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mathbf{f}''(\mathbf{f},\mathbf{f})\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mathbf{f}'\mathbf{f}'\mathbf{f}\)</span></p></td>
 </tr>
 </tbody>
 </table>
-<p>So how do rooted trees relate to the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>? Consider the only rooted tree of order 2 which is <span class="math notranslate nohighlight">\(\vec{f}'\vec{f}\)</span>. If we write <span class="math notranslate nohighlight">\(\vec{f} = f(y)\)</span> then</p>
+<p>So how do rooted trees relate to the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>? Consider the only rooted tree of order 2 which is <span class="math notranslate nohighlight">\(\mathbf{f}'\mathbf{f}\)</span>. If we write <span class="math notranslate nohighlight">\(\mathbf{f} = f(y)\)</span> then</p>
 <div class="math notranslate nohighlight">
-\[\vec{f}'\vec{f} = (f'f)(y)\]</div>
-<p>which as we saw in equation <a class="reference internal" href="#equation-derivatives-of-fy">(2.12)</a> is equal to <span class="math notranslate nohighlight">\(y''\)</span>. We can extend this to determine the derivative <span class="math notranslate nohighlight">\(y'''\)</span>, the two rooted trees of order 3 are <span class="math notranslate nohighlight">\(\vec{f}''(\vec{f},\vec{f})\)</span> and <span class="math notranslate nohighlight">\(\vec{f}'\vec{f}'\vec{f}\)</span>. Summing these gives</p>
+\[\mathbf{f}'\mathbf{f} = (f'f)(y)\]</div>
+<p>which as we saw in equation <a class="reference internal" href="#equation-derivatives-of-fy">(2.12)</a> is equal to <span class="math notranslate nohighlight">\(y''\)</span>. We can extend this to determine the derivative <span class="math notranslate nohighlight">\(y'''\)</span>, the two rooted trees of order 3 are <span class="math notranslate nohighlight">\(\mathbf{f}''(\mathbf{f},\mathbf{f})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{f}'\mathbf{f}'\mathbf{f}\)</span>. Summing these gives</p>
 <div class="math notranslate nohighlight">
-\[ \vec{f}''(\vec{f},\vec{f}) + \vec{f}'\vec{f}'\vec{f} = (f''(f,f) + f'f'f)(y) = y'''\]</div>
+\[ \mathbf{f}''(\mathbf{f},\mathbf{f}) + \mathbf{f}'\mathbf{f}'\mathbf{f} = (f''(f,f) + f'f'f)(y) = y'''\]</div>
 <p>So we can determine the <span class="math notranslate nohighlight">\(n\)</span>-th derivative <span class="math notranslate nohighlight">\(y^{(n)}\)</span> where <span class="math notranslate nohighlight">\(y'=f(y)\)</span> by summing the rooted tree notation of all the possible <span class="math notranslate nohighlight">\(n\)</span>-th order rooted trees.</p>
 </section>
 </section>
@@ -627,7 +627,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">2.4.1. Trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rooted-trees">2.4.1. Rooted Trees</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-derivatives-of-f-y-using-rooted-trees">Determining derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span> using rooted trees</a></li>
 </ul>
 </li>
