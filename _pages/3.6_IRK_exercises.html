@@ -427,25 +427,17 @@ Solution<div class="sd-summary-down docutils">
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="ch3-ex-robertson">
+<div class="exercise admonition" id="ch3-ex-stiff">
 
 <p class="admonition-title"><span class="caption-number">Exercise 3.3 </span></p>
 <section id="exercise-content">
-<p>The <span id="id1">Robertson [<a class="reference internal" href="E_References.html#id16" title="HH Robertson. The solution of a set of reaction rate equations. Numerical analysis: an introduction, 1966.">1966</a>]</span> model describes the following chemical reaction between three chemicals</p>
+<p>Consider following IVP</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    A &amp;\xrightarrow{k_1} B, \\
-    B &amp;\xrightarrow{k_2} C, \\
-    B + B &amp;\xrightarrow{k_3} C,
+  y_1' &amp;= -1000 y_1 + y_2, &amp; y_1(0) &amp;= 1, \\
+  y_2' &amp;= -y_2, &amp; y_2(0) &amp;= 1.
 \end{align*} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are the concentration of the three chemicals and <span class="math notranslate nohighlight">\(k_1 = 0.04\)</span>, <span class="math notranslate nohighlight">\(k_2 = 3 \times 10^{7}\)</span> and <span class="math notranslate nohighlight">\(k_3 = 10^{4}\)</span> are parameters determining the reaction rates. Writing these as a system of ODEs gives</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \frac{\mathrm{d}A}{\mathrm{d}t} &amp;= -k_1A, \\
-    \frac{\mathrm{d}B}{\mathrm{d}t} &amp;= k_1A - k_2B - k_3B^2, \\
-    \frac{\mathrm{d}C}{\mathrm{d}t} &amp;= k_2B + k_3B^2.
-\end{align*} \end{split}\]</div>
-<p>(a)   Write a Python or MATLAB program to solve the Robertson model over <span class="math notranslate nohighlight">\(t \in [0, 100]\)</span>, with initial values <span class="math notranslate nohighlight">\(A(0) = 1\)</span> and <span class="math notranslate nohighlight">\(B(0) = C(0) = 0\)</span> using the Radau IIA model from <a class="reference internal" href="#ch3-ex-radauIIA-derivation"><span class="std std-ref">Exercise</span></a> with a step length of <span class="math notranslate nohighlight">\(h = 1\)</span>. Produce a plot of the concentrations of the three chemicals over <span class="math notranslate nohighlight">\(t\)</span> on the same axes, with <span class="math notranslate nohighlight">\(B\)</span> multiplied by a scaling factor of <span class="math notranslate nohighlight">\(10^5\)</span> so that it is visible on the plot.</p>
+<p>(a)   Compute the solution to this IVP over <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> using the Radau IIA method from <a class="reference internal" href="#ch3-ex-radauIIA-derivation"><span class="std std-ref">Exercise</span></a> with a step length of <span class="math notranslate nohighlight">\(h = 1\)</span>. Produce a plot of the solutions to <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span> against <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -454,10 +446,10 @@ Solution<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/282a0ae1efe964e96553da738e5fe66f760c7468099e85c7f51c75533782a4d1.png" src="../_images/282a0ae1efe964e96553da738e5fe66f760c7468099e85c7f51c75533782a4d1.png" />
+<img alt="../_images/cc57ea2929e8bb795152bbf8f9f5469f80dc07aba40b6a097c3631d6a8b7f8e7.png" src="../_images/cc57ea2929e8bb795152bbf8f9f5469f80dc07aba40b6a097c3631d6a8b7f8e7.png" />
 </figure>
 </div>
-</details><p>(b)   Solve the same IVP using the <a class="reference internal" href="2.5_Adaptive_step_size_control.html#ssc-code-section"><span class="std std-ref">Fehlberg 5(4) ERK method</span></a>. Determine the smallest step length used throughout the solution.</p>
+</details><p>(b)   Attempt to solve this IVP using the RK4 method with the same step length. What do you notice about the result?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -465,9 +457,9 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The smallest step length used by the Fehlberg 5(4) method was <span class="math notranslate nohighlight">\(h = 1.48 \times 10^{-4}\)</span></p>
+<p class="sd-card-text">The solution is unstable (you should see an error message).</p>
 </div>
-</details><p>(c)   Comment on the applicability of the two methods used here to solve this IVP. Why do your think one method took longer than the other?</p>
+</details><p>(c)   Solve this IVP using the <a class="reference internal" href="2.5_Adaptive_step_size_control.html#fehlbergs-method-equation">Fehlberg 4(5)</a> explicit Runge-Kutta method. Record the time taken for both methods to compute the solution and determine value of the smallest step length used in the Fehlberg’s method solution. What does this suggest about this system?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -475,10 +467,49 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The Fehlberg 5(4) ERK method took much longer than the Radau IIA IRK method to compute the solution. This was because the chemical reaction is violent as indicated by the plot of the solution which shows the concentration of <span class="math notranslate nohighlight">\(B\)</span> increasing rapidly shortly after the start of the reaction. This means the Fehlberg 5(4) ERK method is having to use a very small step length to ensure a stable solution. The Robertson model is an example of a stiff problem which the Radau class of IRK methods are more suited to solving than an ERK method (stiffness is covered in the <span class="xref myst">next chapter</span>).</p>
+<p class="sd-card-text">The RadauIIA method took 0.005 seconds to compute whereas the Runge-Kutta Fehlberg 4(5) method took 0.265 seconds to compute (these times will vary depending on the machine used). The smallest step length used in Fehlberg’s method was <span class="math notranslate nohighlight">\(h = 8.8\times 10^{-07}\)</span>. This suggests that this is a stiff system since the minimum step length used in Fehlberg’s is very small compared to the one used for the Radau IIA method.</p>
 </div>
 </details></section>
 </div>
+<!-- `````{exercise}
+:label: ch3-ex-robertson
+
+The {cite:t}`robertson:1966` model describes the following chemical reaction between three chemicals
+
+$$ \begin{align*}
+    A &\xrightarrow{k_1} B, \\
+    B &\xrightarrow{k_2} C, \\
+    B + B &\xrightarrow{k_3} C,
+\end{align*} $$
+
+where $A$, $B$ and $C$ are the concentration of the three chemicals and $k_1 = 0.04$, $k_2 = 3 \times 10^{7}$ and $k_3 = 10^{4}$ are parameters determining the reaction rates. Writing these as a system of ODEs gives
+
+$$ \begin{align*}
+    \frac{\mathrm{d}A}{\mathrm{d}t} &= -k_1A, \\
+    \frac{\mathrm{d}B}{\mathrm{d}t} &= k_1A - k_2B - k_3B^2, \\
+    \frac{\mathrm{d}C}{\mathrm{d}t} &= k_2B + k_3B^2.
+\end{align*} $$
+
+(a) &emsp; Write a Python or MATLAB program to solve the Robertson model over $t \in [0, 100]$, with initial values $A(0) = 1$ and $B(0) = C(0) = 0$ using the Radau IIA model from {ref}`ch3-ex-radauIIA-derivation` with a step length of $h = 1$. Produce a plot of the concentrations of the three chemicals over $t$ on the same axes, with $B$ multiplied by a scaling factor of $10^5$ so that it is visible on the plot.
+
+````{dropdown} Solution
+```{glue:figure} ex3.3_plot
+```
+````
+
+(b) &emsp; Solve the same IVP using the [Fehlberg 5(4) ERK method](ssc-code-section). Determine the smallest step length used throughout the solution.
+
+```{dropdown} Solution
+The smallest step length used by the Fehlberg 5(4) method was $h = 1.48 \times 10^{-4}$
+```
+
+
+(c) &emsp; Comment on the applicability of the two methods used here to solve this IVP. Why do your think one method took longer than the other?
+
+```{dropdown} Solution
+The Fehlberg 5(4) ERK method took much longer than the Radau IIA IRK method to compute the solution. This was because the chemical reaction is violent as indicated by the plot of the solution which shows the concentration of $B$ increasing rapidly shortly after the start of the reaction. This means the Fehlberg 5(4) ERK method is having to use a very small step length to ensure a stable solution. The Robertson model is an example of a stiff problem which the Radau class of IRK methods are more suited to solving than an ERK method (stiffness is covered in the [next chapter](stiffness-section)).
+```
+````` -->
 </section>
 
     <script type="text/x-thebe-config">
