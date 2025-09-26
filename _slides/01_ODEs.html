@@ -268,7 +268,7 @@ Dr Jon Shiach
 </ul>
 <p>So we have a <em>family</em> of solutions that depend on the <strong>initial value</strong> <span class="math inline">\(y(0)\)</span>.</p>
 </div><div class="column" style="width:50%;">
-<div id="7a60b3a9" class="cell" data-execution_count="1">
+<div id="3885d075" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -553,7 +553,7 @@ Dr Jon Shiach
 <section class="slide level3">
 
 <p>Setup IVP and solve using the <code>euler()</code> function.</p>
-<div class="sourceCode" id="cb5" data-code-line-numbers="0|1-3|4-7|9-10|12-18|20-24"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href=""></a><span class="co">% Define ODE function</span></span>
+<div class="sourceCode" id="cb5" data-code-line-numbers="0|1-3|4-7|9-10|12-16|18-22"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href=""></a><span class="co">% Define ODE function</span></span>
 <span id="cb5-2"><a href=""></a><span class="va">f</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>) <span class="va">t</span> <span class="op">*</span> <span class="va">y</span><span class="op">;</span></span>
 <span id="cb5-3"><a href=""></a></span>
 <span id="cb5-4"><a href=""></a><span class="co">% Define IVP parameters</span></span>
@@ -564,23 +564,21 @@ Dr Jon Shiach
 <span id="cb5-9"><a href=""></a><span class="co">% Solve IVP using the Euler method</span></span>
 <span id="cb5-10"><a href=""></a>[<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">euler</span>(<span class="va">f</span><span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">h</span>)<span class="op">;</span></span>
 <span id="cb5-11"><a href=""></a></span>
-<span id="cb5-12"><a href=""></a><span class="co">% Print table of solution values (for loop is used to group print statements)</span></span>
-<span id="cb5-13"><a href=""></a><span class="kw">for</span> <span class="va">i</span> <span class="op">=</span> <span class="fl">1</span> <span class="op">:</span> <span class="fl">1</span></span>
-<span id="cb5-14"><a href=""></a>    <span class="va">fprintf</span>(<span class="st">"|  t   |     y     |\n|:----:|:---------:|"</span>)<span class="op">;</span></span>
-<span id="cb5-15"><a href=""></a>    <span class="kw">for</span> <span class="va">n</span> <span class="op">=</span> <span class="fl">1</span> <span class="op">:</span> <span class="va">length</span>(<span class="va">t</span>)</span>
-<span id="cb5-16"><a href=""></a>        <span class="va">fprintf</span>(<span class="st">"\n| %4.2f | %9.6f | %9.6f | %8.2e |"</span><span class="op">,</span> <span class="va">t</span>(<span class="va">n</span>)<span class="op">,</span> <span class="va">y</span>(<span class="va">n</span>))<span class="op">;</span></span>
-<span id="cb5-17"><a href=""></a>    <span class="kw">end</span></span>
-<span id="cb5-18"><a href=""></a><span class="kw">end</span></span>
-<span id="cb5-19"><a href=""></a></span>
-<span id="cb5-20"><a href=""></a><span class="co">% Plot solution</span></span>
-<span id="cb5-21"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span><span class="op">,</span> <span class="st">"b-o"</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span><span class="op">,</span> <span class="va">MarkerFaceColor</span><span class="op">=</span><span class="st">"b"</span>)</span>
-<span id="cb5-22"><a href=""></a><span class="va">axis</span> <span class="va">padded</span></span>
-<span id="cb5-23"><a href=""></a><span class="va">xlabel</span>(<span class="st">"$t$"</span><span class="op">,</span> <span class="va">FontSize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="st">"latex"</span>)</span>
-<span id="cb5-24"><a href=""></a><span class="va">ylabel</span>(<span class="st">"$y(t)$"</span><span class="op">,</span> <span class="va">FontSize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="st">"latex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-12"><a href=""></a><span class="co">% Print table of solution values</span></span>
+<span id="cb5-13"><a href=""></a><span class="va">fprintf</span>(<span class="st">"|  t   |     y     |\n|:----:|:---------:|"</span>)<span class="op">;</span></span>
+<span id="cb5-14"><a href=""></a><span class="kw">for</span> <span class="va">n</span> <span class="op">=</span> <span class="fl">1</span> <span class="op">:</span> <span class="va">length</span>(<span class="va">t</span>)</span>
+<span id="cb5-15"><a href=""></a>    <span class="va">fprintf</span>(<span class="st">"\n| %4.2f | %9.6f | %9.6f | %8.2e |"</span><span class="op">,</span> <span class="va">t</span>(<span class="va">n</span>)<span class="op">,</span> <span class="va">y</span>(<span class="va">n</span>))<span class="op">;</span></span>
+<span id="cb5-16"><a href=""></a><span class="kw">end</span></span>
+<span id="cb5-17"><a href=""></a></span>
+<span id="cb5-18"><a href=""></a><span class="co">% Plot solution</span></span>
+<span id="cb5-19"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span><span class="op">,</span> <span class="st">"b-o"</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span><span class="op">,</span> <span class="va">MarkerFaceColor</span><span class="op">=</span><span class="st">"b"</span>)</span>
+<span id="cb5-20"><a href=""></a><span class="va">axis</span> <span class="va">padded</span></span>
+<span id="cb5-21"><a href=""></a><span class="va">xlabel</span>(<span class="st">"$t$"</span><span class="op">,</span> <span class="va">FontSize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="st">"latex"</span>)</span>
+<span id="cb5-22"><a href=""></a><span class="va">ylabel</span>(<span class="st">"$y(t)$"</span><span class="op">,</span> <span class="va">FontSize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="st">"latex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section id="output" class="title-slide slide level2 center">
 <h2>Output</h2>
-<div id="227ab204" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="2">
+<div id="f18daa46" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>|  t   |     y     | 
 |:----:|:---------:|
@@ -610,7 +608,7 @@ Dr Jon Shiach
 \end{align*} \]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="f8e50591" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="3">
+<div id="98dcf1c3" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -680,7 +678,7 @@ Dr Jon Shiach
 <p>So the smaller the value of <span class="math inline">\(h\)</span> then the smaller the change in the error converging to zero when <span class="math inline">\(h\)</span> is infinitesimally small.</p>
 <div class="columns">
 <div class="column" style="width:70%;">
-<div id="882820c2" class="cell" data-execution_count="4">
+<div id="2ce5a619" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -799,7 +797,7 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
 <section id="global-truncation-error-gte" class="title-slide slide level2 center">
 <h2>Global Truncation Error (GTE)</h2>
 <p>The global truncation error denoted by <span class="math inline">\(E_n\)</span>, is the accumulation of the local truncation errors for the steps of the method to compute that solution from <span class="math inline">\(t=t_0\)</span> up to <span class="math inline">\(t = t_n\)</span></p>
-<div id="7577b8eb" class="cell" data-execution_count="6">
+<div id="290300e9" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -808,7 +806,7 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
 </div>
 </div>
 </div>
-<p>We saw that the local truncation error at each step is at most <span class="math inline">\(\frac{Mh^2}{2}\)</span> then after <span class="math inline">\(n\)</span> steps the upper bound of the global truncation error is at most <span class="math inline">\(\frac{nMh^2}{2}\)</span>.</p>
+<p>We saw that the local truncation error at each step is at most <span class="math inline">\(\dfrac{Mh^2}{2}\)</span> then after <span class="math inline">\(n\)</span> steps the upper bound of the global truncation error is at most <span class="math inline">\(\dfrac{nMh^2}{2}\)</span>.</p>
 </section>
 <section class="slide level3">
 
@@ -818,7 +816,20 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
 <p><span class="math display">\[ E_n \leq \frac{t_n - t_0}{h} \frac{Mh^2}{2} = \frac{(t_n - t_0 )M}{2} h. \]</span></p>
 <p>If <span class="math inline">\(C = \frac{(t_n - t_0 ) M}{2}\)</span> is some positive constant then <span class="math inline">\(E_n \leq C h\)</span> so we say that <span class="math inline">\(E_n = O(h)\)</span>.</p>
 <p>So as the step length <span class="math inline">\(h\)</span> decreases, the GTE will converge to zero in a linear fashion.</p>
-<p>This confirms what we saw in the plot of the errors against step length for the Euler method (<a href="#/fig-euler-errors" class="quarto-xref">Figure&nbsp;1</a>) where the errors formed a line with a gradient of about 1.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>If the error of a numerical method is <span class="math inline">\(O(h^n)\)</span>, then the method is said to be of order <span class="math inline">\(n\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Since the error of the Euler method is <span class="math inline">\(O(h)\)</span>, then it is a <strong>first-order</strong> method.</p>
 </section></section>
 <section id="systems-of-odes" class="title-slide slide level2 center">
 <h2>Systems of ODEs</h2>
@@ -860,9 +871,9 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
 <p>The model divides the population into three compartments: those who have not yet contracted the disease but are susceptible (<span class="math inline">\(S\)</span>) those who are infected (<span class="math inline">\(I\)</span>) and those who have recovered and gained immunity (<span class="math inline">\(R\)</span>).</p>
 <p>The formulation of the model is</p>
 <p><span class="math display">\[ \begin{align*}
-    \frac{\mathrm{d}y}{\mathrm{d}t} &amp;= -\dfrac{\beta}{N} IS, \\
-    \frac{\mathrm{d}y}{\mathrm{d}t} &amp; =\dfrac{\beta}{N} IS - \gamma I, \\
-    \frac{\mathrm{d}y}{\mathrm{d}t} &amp;= \gamma I,
+    \frac{\mathrm{d}S}{\mathrm{d}t} &amp;= -\dfrac{\beta}{N} IS, \\
+    \frac{\mathrm{d}I}{\mathrm{d}t} &amp; =\dfrac{\beta}{N} IS - \gamma I, \\
+    \frac{\mathrm{d}R}{\mathrm{d}t} &amp;= \gamma I,
 \end{align*} \]</span></p>
 <p>where <span class="math inline">\(N = S + I + R\)</span> is the total population, <span class="math inline">\(\beta\)</span> is the infection rate in the number of people per day who become infected, and <span class="math inline">\(\gamma\)</span> is the recovery rate at which a person who is infected recovers per day.</p>
 <p>A disease breaks out in a population where <span class="math inline">\(\beta = 0.5\)</span>, <span class="math inline">\(\gamma = 0.1\)</span> and <span class="math inline">\(S(0) = 99\)</span>, <span class="math inline">\(I(0) = 1\)</span> and <span class="math inline">\(R(0) = 0\)</span>. Calculate the solution to the SIR model over the first 50 days using the Euler method with a step length of <span class="math inline">\(h = 1\)</span>.</p>
@@ -886,7 +897,7 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
     \end{pmatrix}.
 \end{align*} \]</span></p>
 <div class="fragment">
-<p>The initial conditions are <span class="math inline">\(\mathbf{y}_0 = (99, 1, 0)\)</span> and <span class="math inline">\(N = 100\)</span>, <span class="math inline">\(\beta = 0.5\)</span>, <span class="math inline">\(\gamma = 0.1\)</span> and <span class="math inline">\(\frac{\beta}{N} = 0.05\)</span>.</p>
+<p>The initial conditions are <span class="math inline">\(\mathbf{y}_0 = (99, 1, 0)\)</span> and <span class="math inline">\(N = 100\)</span>, <span class="math inline">\(\beta = 0.5\)</span>, <span class="math inline">\(\gamma = 0.1\)</span> so <span class="math inline">\(\dfrac{\beta}{N} = 0.05\)</span>.</p>
 <p><span class="math display">\[ \begin{align*}
     \mathbf{y}_1 &amp;= \mathbf{y}_0 + h f(t_0, \mathbf{y}_0)
     =
@@ -935,21 +946,21 @@ Figure&nbsp;2: Plot of the solution to the SIR model using the Euler method.
 <section>
 <section id="code-python" class="title-slide slide level2 center">
 <h2>Code (Python)</h2>
-<div class="sourceCode" id="cb7" data-code-line-numbers="0|6,9,12|15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="kw">def</span> euler(f, tspan, y0, h):</span>
+<div class="sourceCode" id="cb7" data-code-line-numbers="0|6,9,12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="kw">def</span> euler(f, tspan, y0, h):</span>
 <span id="cb7-2"><a href=""></a>    </span>
 <span id="cb7-3"><a href=""></a>    nsteps <span class="op">=</span> <span class="bu">int</span>((tspan[<span class="dv">1</span>] <span class="op">-</span> tspan[<span class="dv">0</span>]) <span class="op">/</span> h)</span>
-<span id="cb7-4"><a href=""></a>    N <span class="op">=</span> <span class="bu">len</span>(y0)</span>
+<span id="cb7-4"><a href=""></a>    m <span class="op">=</span> <span class="bu">len</span>(y0)</span>
 <span id="cb7-5"><a href=""></a>    t <span class="op">=</span> np.zeros(nsteps <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb7-6"><a href=""></a>    y <span class="op">=</span> np.zeros((N, nsteps <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb7-6"><a href=""></a>    y <span class="op">=</span> np.zeros((m, nsteps <span class="op">+</span> <span class="dv">1</span>))</span>
 <span id="cb7-7"><a href=""></a>        </span>
 <span id="cb7-8"><a href=""></a>    t[<span class="dv">0</span>] <span class="op">=</span> tspan[<span class="dv">0</span>]</span>
-<span id="cb7-9"><a href=""></a>    y[:,<span class="dv">0</span>] <span class="op">=</span> y0</span>
+<span id="cb7-9"><a href=""></a>    y[<span class="dv">0</span>,:] <span class="op">=</span> y0</span>
 <span id="cb7-10"><a href=""></a>    </span>
 <span id="cb7-11"><a href=""></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(nsteps):</span>
-<span id="cb7-12"><a href=""></a>        y[:,n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> y[:,n] <span class="op">+</span> h <span class="op">*</span> f(t[n], y[:,n])</span>
+<span id="cb7-12"><a href=""></a>        y[n<span class="op">+</span><span class="dv">1</span>,:] <span class="op">=</span> y[n,:] <span class="op">+</span> h <span class="op">*</span> f(t[n], y[n,:])</span>
 <span id="cb7-13"><a href=""></a>        t[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> t[n] <span class="op">+</span> h</span>
 <span id="cb7-14"><a href=""></a></span>
-<span id="cb7-15"><a href=""></a>    <span class="cf">return</span> t, y.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-15"><a href=""></a>    <span class="cf">return</span> t, y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level3">
 
@@ -986,24 +997,22 @@ Figure&nbsp;2: Plot of the solution to the SIR model using the Euler method.
 <section>
 <section id="code-matlab" class="title-slide slide level2 center">
 <h2>Code (MATLAB)</h2>
-<div class="sourceCode" id="cb9" data-code-line-numbers="0|6,9,12|16"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb9-1"><a href=""></a><span class="kw">function</span> [<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">euler</span>(<span class="va">f</span><span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">h</span>)</span>
+<div class="sourceCode" id="cb9" data-code-line-numbers="0|6,9,12"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb9-1"><a href=""></a><span class="kw">function</span> [<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">euler</span>(<span class="va">f</span><span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">h</span>)</span>
 <span id="cb9-2"><a href=""></a></span>
 <span id="cb9-3"><a href=""></a><span class="va">nsteps</span> <span class="op">=</span> <span class="va">floor</span>((<span class="va">tspan</span>(<span class="fl">2</span>) <span class="op">-</span> <span class="va">tspan</span>(<span class="fl">1</span>)) <span class="op">/</span> <span class="va">h</span>)<span class="op">;</span></span>
-<span id="cb9-4"><a href=""></a><span class="va">N</span> <span class="op">=</span> <span class="va">length</span>(<span class="va">y0</span>)<span class="op">;</span></span>
+<span id="cb9-4"><a href=""></a><span class="va">m</span> <span class="op">=</span> <span class="va">length</span>(<span class="va">y0</span>)<span class="op">;</span></span>
 <span id="cb9-5"><a href=""></a><span class="va">t</span> <span class="op">=</span> <span class="va">zeros</span>(<span class="fl">1</span><span class="op">,</span> <span class="va">nsteps</span> <span class="op">+</span> <span class="fl">1</span>)<span class="op">;</span></span>
-<span id="cb9-6"><a href=""></a><span class="va">y</span> <span class="op">=</span> <span class="va">zeros</span>(<span class="va">N</span><span class="op">,</span> <span class="va">nsteps</span> <span class="op">+</span> <span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb9-6"><a href=""></a><span class="va">y</span> <span class="op">=</span> <span class="va">zeros</span>(<span class="va">m</span><span class="op">,</span> <span class="va">nsteps</span> <span class="op">+</span> <span class="fl">1</span>)<span class="op">;</span></span>
 <span id="cb9-7"><a href=""></a></span>
 <span id="cb9-8"><a href=""></a><span class="va">t</span>(<span class="fl">1</span>) <span class="op">=</span> <span class="va">tspan</span>(<span class="fl">1</span>)<span class="op">;</span></span>
 <span id="cb9-9"><a href=""></a><span class="va">y</span>(<span class="op">:,</span> <span class="fl">1</span>) <span class="op">=</span> <span class="va">y0</span><span class="op">;</span></span>
 <span id="cb9-10"><a href=""></a></span>
 <span id="cb9-11"><a href=""></a><span class="kw">for</span> <span class="va">n</span> <span class="op">=</span> <span class="fl">1</span> <span class="op">:</span> <span class="va">length</span>(<span class="va">t</span>) <span class="op">-</span> <span class="fl">1</span></span>
-<span id="cb9-12"><a href=""></a>    <span class="va">y</span>(<span class="op">:,</span> <span class="va">n</span><span class="op">+</span><span class="fl">1</span>) <span class="op">=</span> <span class="va">y</span>(<span class="op">:,</span> <span class="va">n</span>) <span class="op">+</span> <span class="va">h</span> <span class="op">*</span> <span class="va">f</span>(<span class="va">t</span>(<span class="va">n</span>)<span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span> <span class="va">n</span>))<span class="op">;</span></span>
+<span id="cb9-12"><a href=""></a>    <span class="va">y</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span><span class="op">,:</span>) <span class="op">=</span> <span class="va">y</span>(<span class="va">n</span><span class="op">,:</span>) <span class="op">+</span> <span class="va">h</span> <span class="op">*</span> <span class="va">f</span>(<span class="va">t</span>(<span class="va">n</span>)<span class="op">,</span> <span class="va">y</span>(<span class="va">n</span><span class="op">,:</span>))<span class="op">;</span></span>
 <span id="cb9-13"><a href=""></a>    <span class="va">t</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span>) <span class="op">=</span> <span class="va">t</span>(<span class="va">n</span>) <span class="op">+</span> <span class="va">h</span><span class="op">;</span></span>
 <span id="cb9-14"><a href=""></a><span class="kw">end</span></span>
 <span id="cb9-15"><a href=""></a></span>
-<span id="cb9-16"><a href=""></a><span class="va">y</span> <span class="op">=</span> <span class="va">y</span><span class="op">';</span></span>
-<span id="cb9-17"><a href=""></a></span>
-<span id="cb9-18"><a href=""></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-16"><a href=""></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level3">
 

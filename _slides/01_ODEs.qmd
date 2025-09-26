@@ -372,7 +372,7 @@ Functions must be defined at the bottom of the script file in MATLAB.
 
 Setup IVP and solve using the `euler()` function. 
 
-```{.matlab code-line-numbers="0|1-3|4-7|9-10|12-18|20-24"}
+```{.matlab code-line-numbers="0|1-3|4-7|9-10|12-16|18-22"}
 % Define ODE function
 f = @(t, y) t * y;
 
@@ -384,12 +384,10 @@ h = 0.2;        % step length
 % Solve IVP using the Euler method
 [t, y] = euler(f, tspan, y0, h);
 
-% Print table of solution values (for loop is used to group print statements)
-for i = 1 : 1
-    fprintf("|  t   |     y     |\n|:----:|:---------:|");
-    for n = 1 : length(t)
-        fprintf("\n| %4.2f | %9.6f | %9.6f | %8.2e |", t(n), y(n));
-    end
+% Print table of solution values
+fprintf("|  t   |     y     |\n|:----:|:---------:|");
+for n = 1 : length(t)
+    fprintf("\n| %4.2f | %9.6f | %9.6f | %8.2e |", t(n), y(n));
 end
 
 % Plot solution
@@ -666,7 +664,7 @@ plt.legend(loc="upper left")
 plt.show()
 ```
 
-We saw that the local truncation error at each step is at most $\frac{Mh^2}{2}$ then after $n$ steps the upper bound of the global truncation error is at most $\frac{nMh^2}{2}$.
+We saw that the local truncation error at each step is at most $\dfrac{Mh^2}{2}$ then after $n$ steps the upper bound of the global truncation error is at most $\dfrac{nMh^2}{2}$.
 
 ---
 
@@ -682,7 +680,12 @@ If $C = \frac{(t_n - t_0 ) M}{2}$ is some positive constant then $E_n \leq C h$ 
 
 So as the step length $h$ decreases, the GTE will converge to zero in a linear fashion.
 
-This confirms what we saw in the plot of the errors against step length for the Euler method (@fig-euler-errors) where the errors formed a line with a gradient of about 1. 
+::: {.callout-note}
+If the error of a numerical method is $O(h^n)$, then the method is said to be of order $n$.
+:::
+
+Since the error of the Euler method is $O(h)$, then it is a **first-order** method.
+
 
 ## Systems of ODEs
 
@@ -732,9 +735,9 @@ The model divides the population into three compartments: those who have not yet
 The formulation of the model is
 
 $$ \begin{align*}
-    \frac{\mathrm{d}y}{\mathrm{d}t} &= -\dfrac{\beta}{N} IS, \\
-    \frac{\mathrm{d}y}{\mathrm{d}t} & =\dfrac{\beta}{N} IS - \gamma I, \\
-    \frac{\mathrm{d}y}{\mathrm{d}t} &= \gamma I,
+    \frac{\mathrm{d}S}{\mathrm{d}t} &= -\dfrac{\beta}{N} IS, \\
+    \frac{\mathrm{d}I}{\mathrm{d}t} & =\dfrac{\beta}{N} IS - \gamma I, \\
+    \frac{\mathrm{d}R}{\mathrm{d}t} &= \gamma I,
 \end{align*} $$
 
 where $N = S + I + R$ is the total population, $\beta$ is the infection rate in the number of people per day who become infected, and $\gamma$ is the recovery rate at which a person who is infected recovers per day. 
@@ -763,7 +766,7 @@ $$ \begin{align*}
 \end{align*} $$
 
 :::{.fragment}
-The initial conditions are $\mathbf{y}_0 = (99, 1, 0)$ and $N = 100$, $\beta = 0.5$, $\gamma = 0.1$ and $\frac{\beta}{N} = 0.05$. 
+The initial conditions are $\mathbf{y}_0 = (99, 1, 0)$ and $N = 100$, $\beta = 0.5$, $\gamma = 0.1$ so $\dfrac{\beta}{N} = 0.05$. 
 
 $$ \begin{align*}
     \mathbf{y}_1 &= \mathbf{y}_0 + h f(t_0, \mathbf{y}_0) 
@@ -855,22 +858,22 @@ plt.show()
 
 ## Code (Python)
 
-```{.python code-line-numbers="0|6,9,12|15"}
+```{.python code-line-numbers="0|6,9,12"}
 def euler(f, tspan, y0, h):
     
     nsteps = int((tspan[1] - tspan[0]) / h)
-    N = len(y0)
+    m = len(y0)
     t = np.zeros(nsteps + 1)
-    y = np.zeros((N, nsteps + 1))
+    y = np.zeros((m, nsteps + 1))
         
     t[0] = tspan[0]
-    y[:,0] = y0
+    y[0,:] = y0
     
     for n in range(nsteps):
-        y[:,n+1] = y[:,n] + h * f(t[n], y[:,n])
+        y[n+1,:] = y[n,:] + h * f(t[n], y[n,:])
         t[n+1] = t[n] + h
 
-    return t, y.T
+    return t, y
 ```
 
 ---
@@ -910,23 +913,21 @@ plt.show()
 
 ## Code (MATLAB)
 
-```{.matlab code-line-numbers="0|6,9,12|16"}
+```{.matlab code-line-numbers="0|6,9,12"}
 function [t, y] = euler(f, tspan, y0, h)
 
 nsteps = floor((tspan(2) - tspan(1)) / h);
-N = length(y0);
+m = length(y0);
 t = zeros(1, nsteps + 1);
-y = zeros(N, nsteps + 1);
+y = zeros(m, nsteps + 1);
 
 t(1) = tspan(1);
 y(:, 1) = y0;
 
 for n = 1 : length(t) - 1
-    y(:, n+1) = y(:, n) + h * f(t(n), y(:, n));
+    y(n+1,:) = y(n,:) + h * f(t(n), y(n,:));
     t(n+1) = t(n) + h;
 end
-
-y = y';
 
 end
 ```
