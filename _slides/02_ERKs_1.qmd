@@ -211,7 +211,7 @@ $$ \begin{align*}
 :::
 
 :::{.fragment}
-Substituting $y'(t_n)$ and $y''(t_n)$ into equation @eq-2nd-order-taylor and using the notation $y_{n+1} = y(t_n + h)$ and $y_n = y(t_n)$ we have
+Substituting $y'(t_n)$ and $y''(t_n)$ into @eq-2nd-order-taylor and using the notation $y_{n+1} = y(t_n + h)$ and $y_n = y(t_n)$ we have
 
 $$ \begin{align*}
     y_{n+1} = y_n + h f(t_n, y_n) + \frac{h^2}{2} [ f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n) ] + O(h^3)
@@ -247,7 +247,7 @@ $$ \begin{align*}
 :::
 
 :::{.fragment}
-Substituting this into equation @eq-rk2-expansion
+Substituting this into @eq-rk2-expansion
 
 $$ \begin{align*}
     y_{n+1} &= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f_y(t_n, y_n) f(t_n, y_n)] + O(h^3) \\
@@ -760,8 +760,8 @@ Solve the first four order conditions
 syms a21 a31 a32 a41 a42 a43 b1 b2 b3 b4
 
 % Set c values
-c2 = \frac{1}{2};
-c3 = \frac{1}{2};
+c2 = 1/2;
+c3 = 1/2;
 c4 = 1;
 
 % Define order conditions
@@ -811,6 +811,6 @@ Which outputs $a_{31} = a_{41} = a_{42} = 0$, $a_{21} = a_{32} = \frac{1}{2}$ an
 - Runge-Kutta methods are commonly presented in tabular form known as a **Butcher tableau**
 - Explicit Runge-Kutta (ERK) methods use **explicit** functions for the stage values (straight forward to calculate)
 - Implicit Runge-Kutta (IRK) methods use **implicit** functions for the stage values (more complex to calculate but can be applied to stiff problems)
-- The** Taylor series** expansion of the ODE $y' = f(t, y)$ and the general Runge-Kutta method are compared to give a set of **order conditions** the govern the coefficients of the method
+- The **Taylor series** expansion of the ODE $y' = f(t, y)$ and the general Runge-Kutta method are compared to give a set of **order conditions** the govern the coefficients of the method
 - **Rooted trees** present an easier way of deriving the order conditions
 - Choosing values for some of the coefficients allows us to solve the order conditions (using software) and derive Runge-Kutta methods
