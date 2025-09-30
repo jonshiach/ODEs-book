@@ -268,7 +268,7 @@ Dr Jon Shiach
 </ul>
 <p>So we have a <em>family</em> of solutions that depend on the <strong>initial value</strong> <span class="math inline">\(y(0)\)</span>.</p>
 </div><div class="column" style="width:50%;">
-<div id="c09819c0" class="cell" data-execution_count="1">
+<div id="55fa40aa" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -565,7 +565,7 @@ Dr Jon Shiach
 </section></section>
 <section id="output" class="title-slide slide level2 center">
 <h2>Output</h2>
-<div id="47a10931" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="2">
+<div id="f8740e7c" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>|  t   |     y     | 
 |:----:|:---------:|
@@ -595,7 +595,7 @@ Dr Jon Shiach
 \end{align*} \]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="9b60aec9" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="3">
+<div id="c010f27d" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -665,7 +665,7 @@ Dr Jon Shiach
 <p>So the smaller the value of <span class="math inline">\(h\)</span> then the smaller the change in the error converging to zero when <span class="math inline">\(h\)</span> is infinitesimally small.</p>
 <div class="columns">
 <div class="column" style="width:70%;">
-<div id="becd6c05" class="cell" data-execution_count="4">
+<div id="9ed488c8" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -784,7 +784,7 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
 <section id="global-truncation-error-gte" class="title-slide slide level2 center">
 <h2>Global Truncation Error (GTE)</h2>
 <p>The global truncation error denoted by <span class="math inline">\(E_n\)</span>, is the accumulation of the local truncation errors for the steps of the method to compute that solution from <span class="math inline">\(t=t_0\)</span> up to <span class="math inline">\(t = t_n\)</span></p>
-<div id="06e55593" class="cell" data-execution_count="6">
+<div id="ed7e3dad" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -983,7 +983,7 @@ Figure&nbsp;2: Plot of the solution to the SIR model using the Euler method.
 </section></section>
 <section>
 <section id="code-matlab" class="title-slide slide level2 center">
-<h2>Code (MATLAB)–</h2>
+<h2>Code (MATLAB)</h2>
 <div class="sourceCode" id="cb9" data-code-line-numbers="0|6,9,12"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb9-1"><a href=""></a><span class="kw">function</span> [<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">euler</span>(<span class="va">f</span><span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">h</span>)</span>
 <span id="cb9-2"><a href=""></a></span>
 <span id="cb9-3"><a href=""></a><span class="va">nsteps</span> <span class="op">=</span> <span class="va">floor</span>((<span class="va">tspan</span>(<span class="fl">2</span>) <span class="op">-</span> <span class="va">tspan</span>(<span class="fl">1</span>)) <span class="op">/</span> <span class="va">h</span>)<span class="op">;</span></span>
@@ -1004,26 +1004,39 @@ Figure&nbsp;2: Plot of the solution to the SIR model using the Euler method.
 <section class="slide level3">
 
 <p>Define the SIR model function, setup the IVP and solve using the Euler method.</p>
-<div class="sourceCode" id="cb10" data-code-line-numbers="0|3-5|9"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb10-1"><a href=""></a><span class="co">% Define IVP parameters</span></span>
-<span id="cb10-2"><a href=""></a><span class="va">tspan</span> <span class="op">=</span> [<span class="fl">0</span><span class="op">,</span> <span class="fl">50</span>]<span class="op">;</span>   <span class="co">% boundaries of the t domain</span></span>
-<span id="cb10-3"><a href=""></a><span class="va">y0</span> <span class="op">=</span> [<span class="fl">99</span><span class="op">,</span> <span class="fl">1</span><span class="op">,</span> <span class="fl">0</span>]<span class="op">';</span>  <span class="co">% initial values [S, I, R]</span></span>
-<span id="cb10-4"><a href=""></a><span class="va">beta</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span>        <span class="co">% infection rate</span></span>
-<span id="cb10-5"><a href=""></a><span class="va">gamma</span> <span class="op">=</span> <span class="fl">0.1</span><span class="op">;</span>       <span class="co">% recovery rate</span></span>
-<span id="cb10-6"><a href=""></a><span class="va">h</span> <span class="op">=</span> <span class="fl">1</span><span class="op">;</span>             <span class="co">% step length</span></span>
-<span id="cb10-7"><a href=""></a></span>
-<span id="cb10-8"><a href=""></a><span class="co">% Solve the IVP using the Euler method</span></span>
-<span id="cb10-9"><a href=""></a>[<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">euler</span>(<span class="op">@</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>)<span class="va">SIR</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span><span class="op">,</span> <span class="va">beta</span><span class="op">,</span> <span class="va">gamma</span>)<span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">h</span>)<span class="op">;</span></span>
-<span id="cb10-10"><a href=""></a></span>
-<span id="cb10-11"><a href=""></a><span class="co">% Plot solution</span></span>
-<span id="cb10-12"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span><span class="fl">1</span>)<span class="op">,</span> <span class="ss">'b-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
-<span id="cb10-13"><a href=""></a><span class="va">hold</span> <span class="va">on</span></span>
-<span id="cb10-14"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span><span class="fl">2</span>)<span class="op">,</span> <span class="ss">'r-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
-<span id="cb10-15"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span><span class="fl">3</span>)<span class="op">,</span> <span class="ss">'g-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
-<span id="cb10-16"><a href=""></a><span class="va">hold</span> <span class="va">off</span></span>
-<span id="cb10-17"><a href=""></a><span class="va">xlabel</span>(<span class="ss">'$t$'</span><span class="op">,</span> <span class="va">Fontsize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="ss">'latex'</span>)</span>
-<span id="cb10-18"><a href=""></a><span class="va">ylabel</span>(<span class="ss">'$y$'</span><span class="op">,</span> <span class="va">Fontsize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="ss">'latex'</span>)</span>
-<span id="cb10-19"><a href=""></a><span class="va">legend</span>(<span class="ss">'Susceptible'</span><span class="op">,</span> <span class="ss">'Infected'</span><span class="op">,</span> <span class="ss">'Recovered'</span><span class="op">,</span> <span class="va">Location</span><span class="op">=</span><span class="st">"east"</span>)</span>
-<span id="cb10-20"><a href=""></a><span class="va">axis</span> <span class="va">padded</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10" data-code-line-numbers="0|1-12|16-18|22"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb10-1"><a href=""></a><span class="co">% Define SIR function</span></span>
+<span id="cb10-2"><a href=""></a><span class="kw">function</span> <span class="va">y</span> <span class="op">=</span> <span class="va">SIR</span>(<span class="op">~,</span> <span class="va">y</span><span class="op">,</span> <span class="va">beta</span><span class="op">,</span> <span class="va">gamma</span>)</span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a><span class="va">S</span> <span class="op">=</span> <span class="va">y</span>(<span class="fl">1</span>)<span class="op">;</span> </span>
+<span id="cb10-5"><a href=""></a><span class="va">I</span> <span class="op">=</span> <span class="va">y</span>(<span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb10-6"><a href=""></a><span class="va">R</span> <span class="op">=</span> <span class="va">y</span>(<span class="fl">3</span>)<span class="op">;</span></span>
+<span id="cb10-7"><a href=""></a><span class="va">N</span> <span class="op">=</span> <span class="va">S</span> <span class="op">+</span> <span class="va">I</span> <span class="op">+</span> <span class="va">R</span><span class="op">;</span></span>
+<span id="cb10-8"><a href=""></a><span class="va">y</span> <span class="op">=</span> [ <span class="op">-</span><span class="va">beta</span> <span class="op">/</span> <span class="va">N</span> <span class="op">*</span> <span class="va">I</span> <span class="op">*</span> <span class="va">S</span> <span class="op">;</span></span>
+<span id="cb10-9"><a href=""></a>       <span class="va">beta</span> <span class="op">/</span> <span class="va">N</span> <span class="op">*</span> <span class="va">I</span> <span class="op">*</span> <span class="va">S</span> <span class="op">-</span> <span class="va">gamma</span> <span class="op">*</span> <span class="va">I</span><span class="op">;</span></span>
+<span id="cb10-10"><a href=""></a>       <span class="va">gamma</span> <span class="op">*</span> <span class="va">I</span> ]<span class="op">;</span></span>
+<span id="cb10-11"><a href=""></a></span>
+<span id="cb10-12"><a href=""></a><span class="kw">end</span></span>
+<span id="cb10-13"><a href=""></a></span>
+<span id="cb10-14"><a href=""></a><span class="co">% Define IVP parameters</span></span>
+<span id="cb10-15"><a href=""></a><span class="va">tspan</span> <span class="op">=</span> [<span class="fl">0</span><span class="op">,</span> <span class="fl">50</span>]<span class="op">;</span>   <span class="co">% boundaries of the t domain</span></span>
+<span id="cb10-16"><a href=""></a><span class="va">y0</span> <span class="op">=</span> [<span class="fl">99</span><span class="op">,</span> <span class="fl">1</span><span class="op">,</span> <span class="fl">0</span>]<span class="op">';</span>  <span class="co">% initial values [S, I, R]</span></span>
+<span id="cb10-17"><a href=""></a><span class="va">beta</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span>        <span class="co">% infection rate</span></span>
+<span id="cb10-18"><a href=""></a><span class="va">gamma</span> <span class="op">=</span> <span class="fl">0.1</span><span class="op">;</span>       <span class="co">% recovery rate</span></span>
+<span id="cb10-19"><a href=""></a><span class="va">h</span> <span class="op">=</span> <span class="fl">1</span><span class="op">;</span>             <span class="co">% step length</span></span>
+<span id="cb10-20"><a href=""></a></span>
+<span id="cb10-21"><a href=""></a><span class="co">% Solve the IVP using the Euler method</span></span>
+<span id="cb10-22"><a href=""></a>[<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">euler</span>(<span class="op">@</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>)<span class="va">SIR</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span><span class="op">,</span> <span class="va">beta</span><span class="op">,</span> <span class="va">gamma</span>)<span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">h</span>)<span class="op">;</span></span>
+<span id="cb10-23"><a href=""></a></span>
+<span id="cb10-24"><a href=""></a><span class="co">% Plot solution</span></span>
+<span id="cb10-25"><a href=""></a><span class="va">hold</span> <span class="va">on</span></span>
+<span id="cb10-26"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span> <span class="fl">1</span>)<span class="op">,</span> <span class="ss">'b-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb10-27"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span> <span class="fl">2</span>)<span class="op">,</span> <span class="ss">'r-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb10-28"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span> <span class="fl">3</span>)<span class="op">,</span> <span class="ss">'g-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb10-29"><a href=""></a><span class="va">hold</span> <span class="va">off</span></span>
+<span id="cb10-30"><a href=""></a><span class="va">xlabel</span>(<span class="ss">'$t$'</span><span class="op">,</span> <span class="va">Fontsize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="ss">'latex'</span>)</span>
+<span id="cb10-31"><a href=""></a><span class="va">ylabel</span>(<span class="ss">'$y$'</span><span class="op">,</span> <span class="va">Fontsize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="ss">'latex'</span>)</span>
+<span id="cb10-32"><a href=""></a><span class="va">legend</span>(<span class="ss">'Susceptible'</span><span class="op">,</span> <span class="ss">'Infected'</span><span class="op">,</span> <span class="ss">'Recovered'</span><span class="op">,</span> <span class="va">Location</span><span class="op">=</span><span class="st">"east"</span>)</span>
+<span id="cb10-33"><a href=""></a><span class="va">axis</span> <span class="va">padded</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section id="higher-order-odes" class="title-slide slide level2 center">
 <h2>Higher-order ODEs</h2>

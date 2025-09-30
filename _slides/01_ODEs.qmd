@@ -906,7 +906,7 @@ plt.legend()
 plt.show()
 ```
 
-## Code (MATLAB)--
+## Code (MATLAB)
 
 ```{.matlab code-line-numbers="0|6,9,12"}
 function [t, y] = euler(f, tspan, y0, h)
@@ -931,7 +931,20 @@ end
 
 Define the SIR model function, setup the IVP and solve using the Euler method.
 
-```{.matlab code-line-numbers="0|3-5|9"}
+```{.matlab code-line-numbers="0|1-12|16-18|22"}
+% Define SIR function
+function y = SIR(~, y, beta, gamma)
+
+S = y(1); 
+I = y(2);
+R = y(3);
+N = S + I + R;
+y = [ -beta / N * I * S ;
+       beta / N * I * S - gamma * I;
+       gamma * I ];
+
+end
+
 % Define IVP parameters
 tspan = [0, 50];   % boundaries of the t domain
 y0 = [99, 1, 0]';  % initial values [S, I, R]
@@ -943,10 +956,10 @@ h = 1;             % step length
 [t, y] = euler(@(t, y)SIR(t, y, beta, gamma), tspan, y0, h);
 
 % Plot solution
-plot(t, y(:,1), 'b-', LineWidth=2)
 hold on
-plot(t, y(:,2), 'r-', LineWidth=2)
-plot(t, y(:,3), 'g-', LineWidth=2)
+plot(t, y(:, 1), 'b-', LineWidth=2)
+plot(t, y(:, 2), 'r-', LineWidth=2)
+plot(t, y(:, 3), 'g-', LineWidth=2)
 hold off
 xlabel('$t$', Fontsize=14, Interpreter='latex')
 ylabel('$y$', Fontsize=14, Interpreter='latex')
