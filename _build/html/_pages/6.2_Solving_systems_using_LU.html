@@ -64,7 +64,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/6.2_Solving_systems_using_LU';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/6.2_Solving_systems_using_LU.html" />
@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -166,41 +172,41 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -224,20 +230,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
     </div>
@@ -400,7 +396,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="solving-systems-of-linear-equations-using-lu-decomposition">
 <span id="solving-systems-using-lu-section"></span><h1><span class="section-number">6.2. </span>Solving systems of linear equations using LU decomposition<a class="headerlink" href="#solving-systems-of-linear-equations-using-lu-decomposition" title="Permalink to this heading">#</a></h1>
-<p><a href="https://en.wikipedia.org/wiki/System_of_linear_equations" target="_blank">Systems of linear equations</a> often appear in the topics of numerical analysis and numerical solutions to differential equations. Examples include the solution of the <a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html#solving-ivps-using-irk-methods-section"><span class="std std-ref">stage values of an implicit Runge-Kutta method</span></a> and the solution to a boundary value problem using the finite-difference method. The methods that are applied to solve systems of linear equations fall into one of two categories: <strong>direct methods</strong> that use an algebraic approach and <a class="reference internal" href="7.0_Indirect_methods.html#indirect-methods-chapter"><span class="std std-ref"><strong>indirect methods</strong></span></a> that use an iterative approach. Here we will look at some common direct methods.</p>
+<p><a href="https://en.wikipedia.org/wiki/System_of_linear_equations" target="_blank">Systems of linear equations</a> often appear in the topics of numerical analysis and numerical solutions to differential equations. Examples include the solution of the <span class="xref myst">stage values of an implicit Runge-Kutta method</span> and the solution to a boundary value problem using the finite-difference method. The methods that are applied to solve systems of linear equations fall into one of two categories: <strong>direct methods</strong> that use an algebraic approach and <a class="reference internal" href="7.0_Indirect_methods.html#indirect-methods-chapter"><span class="std std-ref"><strong>indirect methods</strong></span></a> that use an iterative approach. Here we will look at some common direct methods.</p>
 <section id="systems-of-linear-equations">
 <span id="systems-of-linear-equations-section"></span><h2><span class="section-number">6.2.1. </span>Systems of linear equations<a class="headerlink" href="#systems-of-linear-equations" title="Permalink to this heading">#</a></h2>
 <p>A system of linear equations with <span class="math notranslate nohighlight">\(m\)</span> equations and <span class="math notranslate nohighlight">\(n\)</span> unknowns is expressed as</p>
@@ -414,9 +410,9 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(x_i\)</span> are the unknown variables, <span class="math notranslate nohighlight">\(a_{ij}\)</span> are coefficients and <span class="math notranslate nohighlight">\(b_i\)</span> are constant terms. It is often more convenient to express a system of linear equations as a matrix equation</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    A \vec{x} = \vec{b},
+    A \mathbf{x} = \mathbf{b},
 \end{align*} \]</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span> is the <strong>coefficient matrix</strong>, <span class="math notranslate nohighlight">\(\vec{x}\)</span> is the <strong>variable vector</strong> and <span class="math notranslate nohighlight">\(b\)</span> is the <strong>constant vector</strong></p>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is the <strong>coefficient matrix</strong>, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the <strong>variable vector</strong> and <span class="math notranslate nohighlight">\(b\)</span> is the <strong>constant vector</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     A &amp;= \begin{pmatrix}
@@ -425,10 +421,10 @@ document.write(`
         \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
         a_{m1}  &amp; a_{m2}  &amp; \cdots  &amp; a_{mn} 
     \end{pmatrix},&amp; 
-    \vec{x} &amp;= \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_m \end{pmatrix}, &amp;
-    \vec{b} &amp;= \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}.
+    \mathbf{x} &amp;= \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_m \end{pmatrix}, &amp;
+    \mathbf{b} &amp;= \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>The solution (if it exists) is the vector <span class="math notranslate nohighlight">\(\vec{x}\)</span> for which the equation <span class="math notranslate nohighlight">\(A\vec{x} = \vec{b}\)</span> is satisfied. The solution to a linear system may be one of the following</p>
+<p>The solution (if it exists) is the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> for which the equation <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> is satisfied. The solution to a linear system may be one of the following</p>
 <ul class="simple">
 <li><p>The system has infinitely many solutions. This usually occurs when the number of unknown variables exceeds the number of equations in the system.</p></li>
 <li><p>The system has a single unique solution.</p></li>
@@ -437,19 +433,19 @@ document.write(`
 </section>
 <section id="id1">
 <h2><span class="section-number">6.2.2. </span>Solving systems of linear equations using LU decomposition<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Given a system of linear equations of the form <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> where LU decomposition has been applied to the coefficient matrix then since <span class="math notranslate nohighlight">\(A = LU\)</span> we have</p>
+<p>Given a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> where LU decomposition has been applied to the coefficient matrix then since <span class="math notranslate nohighlight">\(A = LU\)</span> we have</p>
 <div class="math notranslate nohighlight">
-\[ LU \vec{x} = \vec{b}.\]</div>
-<p>Let <span class="math notranslate nohighlight">\(\vec{y} = U \vec{x}\)</span> then</p>
+\[ LU \mathbf{x} = \mathbf{b}.\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{y} = U \mathbf{x}\)</span> then</p>
 <div class="math notranslate nohighlight">
-\[ L \vec{y} = \vec{b}. \]</div>
-<p><span class="math notranslate nohighlight">\(L\)</span> is a lower triangular matrix so the solution of <span class="math notranslate nohighlight">\(L \vec{y} = \vec{b}\)</span> is easily calculated using <a href="https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution" target="_blank">forward substitution</a>. Once <span class="math notranslate nohighlight">\(\vec{y}\)</span> has been calculated the solution to <span class="math notranslate nohighlight">\(U\vec{x} = \vec{y}\)</span> is calculated using <a href="https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution" target="_blank">back substitution</a>.</p>
-<p>The advantage of using LU decomposition to solve systems of linear equations is that once the LU decomposition of the coefficient matrix has been calculated it can be used for any values of the constant vector <span class="math notranslate nohighlight">\(\vec{b}\)</span>. This is unlike Gaussian elimination where row reduction will need to be repeated if the values of <span class="math notranslate nohighlight">\(\vec{b}\)</span> change.</p>
+\[ L \mathbf{y} = \mathbf{b}. \]</div>
+<p><span class="math notranslate nohighlight">\(L\)</span> is a lower triangular matrix so the solution of <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span> is easily calculated using <a href="https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution" target="_blank">forward substitution</a>. Once <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> has been calculated the solution to <span class="math notranslate nohighlight">\(U\mathbf{x} = \mathbf{y}\)</span> is calculated using <a href="https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution" target="_blank">back substitution</a>.</p>
+<p>The advantage of using LU decomposition to solve systems of linear equations is that once the LU decomposition of the coefficient matrix has been calculated it can be used for any values of the constant vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>. This is unlike Gaussian elimination where row reduction will need to be repeated if the values of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> change.</p>
 <div class="proof algorithm admonition" id="lu-solution-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.2 </span> (Solving systems of linear equations using LU decomposition)</p>
 <section class="algorithm-content" id="proof-content">
-<p><strong>Inputs:</strong> A system of linear equations expressed using the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> and variable vector <span class="math notranslate nohighlight">\(\vec{b}\)</span> such that <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span>.</p>
-<p><strong>Inputs:</strong> The variable vector <span class="math notranslate nohighlight">\(\vec{x}\)</span>.</p>
+<p><strong>Inputs:</strong> A system of linear equations expressed using the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> and variable vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> such that <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span>.</p>
+<p><strong>Inputs:</strong> The variable vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
 <ul class="simple">
 <li><p>Calculate the <a class="reference internal" href="6.1_LU_decomposition.html#lu-algorithm">LU decomposition</a> of <span class="math notranslate nohighlight">\(A\)</span> to determine  <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> such that <span class="math notranslate nohighlight">\(A = LU\)</span>.</p></li>
 <li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
@@ -463,7 +459,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(x_i \gets \dfrac{1}{u_{ii}} \left( y_i - \displaystyle \sum_{j=i+1}^{n} u_{ij} x_j \right)\)</span></p></li>
 </ul>
 </li>
-<li><p>Return <span class="math notranslate nohighlight">\(\vec{x} = (x_1, x_2, \ldots, x_n)\)</span>.</p></li>
+<li><p>Return <span class="math notranslate nohighlight">\(\mathbf{x} = (x_1, x_2, \ldots, x_n)\)</span>.</p></li>
 </ul>
 </section>
 </div><div class="proof example admonition" id="lu-solution-example">
@@ -473,78 +469,72 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix}
-        1 &amp; 3 &amp; 0 \\
-        2 &amp; -4 &amp; -1 \\
-        -3 &amp; 1 &amp; 2
+        2 &amp; 3 &amp; 1 \\
+        -4 &amp; -7 &amp; 0 \\
+        6 &amp; 7 &amp; 10
     \end{pmatrix}
     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix}=
-    \begin{pmatrix} -7 \\ 11 \\ 1 \end{pmatrix}.
+    \begin{pmatrix} -1 \\ 10 \\ 22 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">We saw in the <a class="reference internal" href="6.1_LU_decomposition.html#lu-example">Example 6.1</a> above that the LU decomposition of the coefficient matrix is</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>We saw in the <a class="reference internal" href="6.1_LU_decomposition.html#lu-example">Example 6.1</a> above that the LU decomposition of the coefficient matrix is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    L &amp; =\begin{pmatrix}
-        1 &amp; 0 &amp; 0 \\
-        2 &amp; 1 &amp; 0 \\
-        -3 &amp; -1 &amp; 1
-    \end{pmatrix}, &amp;
+    L &amp;= \begin{pmatrix}
+        1 &amp; 0 &amp; 0\\
+        -2 &amp; 1 &amp; 0\\
+        3 &amp; 2 &amp; 1
+    \end{pmatrix},&amp;
     U &amp;= \begin{pmatrix}
-        1 &amp; 3 &amp; 0 \\
-        0 &amp; -10 &amp; -1 \\
-        0 &amp; 0 &amp; 1
+        2 &amp; 3 &amp; 1 \\
+        0 &amp; -1 &amp; 2 \\
+        0 &amp; 0 &amp; 3
     \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(L \vec{y} = \vec{b}\)</span> using forward substitution</p>
+<p>Solving <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span> using forward substitution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix}
-        1 &amp; 0 &amp; 0 \\
-        2 &amp; 1 &amp; 0 \\
-        -3 &amp; -1 &amp; 1
+        1 &amp; 0 &amp; 0\\
+        -2 &amp; 1 &amp; 0\\
+        3 &amp; 2 &amp; 1
     \end{pmatrix}
     \begin{pmatrix} y_1 \\ y_2 \\ y_3 \end{pmatrix} =
-    \begin{pmatrix} -7\\ 11\\ 1
+    \begin{pmatrix} -1\\ 10 \\ 22
     \end{pmatrix},
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">gives</p>
+<p>gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_1 &amp;=-7,\\
-    y_2 &amp;=11-2y_1 =-2(-7)=25,\\
-    y_3 &amp;=-1+3y_1 +y_2 =-1+3(-7)+1(25)=5.
+    y_1 &amp;= -1,\\
+    y_2 &amp;= 10 + 2y_1 = 10 + 2(-1) = 8,\\
+    y_3 &amp;= 22 - 3y_1 - 2y_2 = 22 - 3(-1) - 2(8) = 9.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(U \vec{x} = \vec{y}\)</span> using back substitution</p>
+<p>Solving <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span> using back substitution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix}
-        1 &amp; 3 &amp; 0\\
-        0 &amp; -10 &amp; -1\\
-        0 &amp; 0 &amp; 1
+        2 &amp; 3 &amp; 1 \\
+        0 &amp; -1 &amp; 2 \\
+        0 &amp; 0 &amp; 3
     \end{pmatrix}
     \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} =
-    \begin{pmatrix} -7 \\ 25 \\ 5 \end{pmatrix},
+    \begin{pmatrix} -1 \\ 8 \\ 9 \end{pmatrix},
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">gives</p>
+<p>gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_3 &amp;= 5,\\
-    x_2 &amp;= \frac{1}{-10}(25 + x_3) = -\frac{1}{10}(25 + 5) = -3,\\
-    x_1 &amp;= -7 - 0x_3 - 3x_2 = -7 + 9 = 2.
+    x_3 &amp;= \frac{9}{3} = 3,\\
+    x_2 &amp;= -(8 - 2x_3) = -(8 - 2(3)) = -2, \\
+    x_1 &amp;= \frac{1}{2}(-1 - 3x_2 - x_3) = \frac{1}{2}(-1 - 3(-2) - 3) = 1.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">So the solution is <span class="math notranslate nohighlight">\(\vec{x}=(2,-3,5)\)</span>.</p>
-</div>
-</details></section>
+<p>So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(1, -2, 3)\)</span>.</p>
+</section>
 </div></section>
 <section id="code">
 <h2><span class="section-number">6.2.3. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The code below defines two functions called <code class="docutils literal notranslate"><span class="pre">forward_substitution()</span></code> and <code class="docutils literal notranslate"><span class="pre">back_substitution()</span></code> that calculate perform forward and back substitution. These are used to solve the system of linear equations from <a class="reference internal" href="#lu-solution-example">Example 6.2</a>.</p>
+<p>The code below defines two functions called <code class="docutils literal notranslate"><span class="pre">forward_substitution()</span></code> and <code class="docutils literal notranslate"><span class="pre">back_substitution()</span></code> that calculate perform forward and back substitution.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -574,43 +564,13 @@ Python</label><div class="sd-tab-content docutils">
         <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span><span class="p">)</span> <span class="o">/</span> <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
         
     <span class="k">return</span> <span class="n">x</span>
-
-
-<span class="c1"># Define system</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
-              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> 
-              <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-
-<span class="c1"># Calculate LU decomposition</span>
-<span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-
-<span class="c1"># Solve system</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">forward_substitution</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">back_substitution</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define system</span>
-<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span>
-<span class="w">     </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
-<span class="w">     </span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">];</span>
-<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">11</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
-
-<span class="c">% Calculate LUP decomposition</span>
-<span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">partial_pivot</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
-<span class="p">[</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">U</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">lu</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
-
-<span class="c">% Solve system</span>
-<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">forward_substitution</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
-<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">back_substitution</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
-
-<span class="c">% --------------------------------------------------------------</span>
-<span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">forward_substitution</span><span class="p">(</span>L, b<span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">forward_substitution</span><span class="p">(</span>L, b<span class="p">)</span>
 
 <span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
@@ -624,7 +584,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="k">end</span>
 
-<span class="c">% --------------------------------------------------------------</span>
 <span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">back_substitution</span><span class="p">(</span>U, b<span class="p">)</span>
 
 <span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>

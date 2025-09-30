@@ -64,7 +64,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/6.5_QR_decomposition';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/6.5_QR_decomposition.html" />
@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -166,41 +172,41 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -224,20 +230,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
     </div>
@@ -385,13 +381,15 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-the-gram-schmidt-process">6.5.1. QR decomposition using the Gram-Schmidt process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-diagonal-elements-of-r">Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-transformations">6.5.2. QR decomposition using Householder transformations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.5.2. QR decomposition using Householder reflections</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-orthogonality">6.5.3. Loss of orthogonality</a></li>
 </ul>
             </nav>
         </div>
@@ -414,7 +412,7 @@ document.write(`
 <div class="proof definition admonition" id="orthogonal-vector-definition">
 <p class="admonition-title"><span class="caption-number">Definition 6.2 </span> (Orthogonal vectors)</p>
 <section class="definition-content" id="proof-content">
-<p>A set of vectors <span class="math notranslate nohighlight">\(\lbrace \vec{v}_1 ,\vec{v}_2 ,\vec{v}_3 ,\dots \rbrace\)</span> is said to be <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\vec{v}_i \cdot \vec{v}_j =0\)</span> for <span class="math notranslate nohighlight">\(i\not= j\)</span>. Furthermore the set is said to be <strong>orthonormal</strong> if <span class="math notranslate nohighlight">\(\vec{v}_i\)</span> are all unit vectors.</p>
+<p>A set of vectors <span class="math notranslate nohighlight">\(\lbrace \mathbf{v}_1 ,\mathbf{v}_2 ,\mathbf{v}_3 ,\dots \rbrace\)</span> is said to be <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i \cdot \mathbf{v}_j =0\)</span> for <span class="math notranslate nohighlight">\(i\not= j\)</span>. Furthermore the set is said to be <strong>orthonormal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> are all unit vectors.</p>
 </section>
 </div><div class="proof definition admonition" id="orthogonal-matrix-definition">
 <p class="admonition-title"><span class="caption-number">Definition 6.3 </span> (Orthogonal matrix)</p>
@@ -422,7 +420,7 @@ document.write(`
 <p>An <strong>orthogonal matrix</strong> is a matrix where the columns are a set of orthonormal vectors. If <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix if</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    A^\mathrm{T} A=I.
+    A^\mathsf{T} A=I.
 \end{align*} \]</div>
 </section>
 </div><p>For example consider the matrix</p>
@@ -436,7 +434,7 @@ document.write(`
 <p>This is an orthogonal matrix since</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    A^\mathrm{T} A=\begin{pmatrix}
+    A^\mathsf{T} A=\begin{pmatrix}
         0.8 &amp; 0.6\\
         -0.6 &amp; 0.8
     \end{pmatrix}
@@ -450,9 +448,10 @@ document.write(`
     \end{pmatrix}=I.
 \end{align*} \end{split}\]</div>
 <p>Futhermore it is an orthonormal matrix since the magnitude of the columns for <span class="math notranslate nohighlight">\(A\)</span> are both 1.</p>
+<hr class="docutils" />
 <section id="qr-decomposition-using-the-gram-schmidt-process">
 <span id="qr-gramschmidt-section"></span><h2><span class="section-number">6.5.1. </span>QR decomposition using the Gram-Schmidt process<a class="headerlink" href="#qr-decomposition-using-the-gram-schmidt-process" title="Permalink to this heading">#</a></h2>
-<p>Consider the <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> represented as the concatenation of the column vectors <span class="math notranslate nohighlight">\(\vec{a}_1, \vec{a}_2, \vec{a}_3\)</span></p>
+<p>Consider the <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> represented as the concatenation of the column vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{pmatrix}
     a_{11} &amp; a_{12} &amp; a_{13} \\
@@ -461,77 +460,67 @@ document.write(`
 \end{pmatrix} =
 \begin{pmatrix}
     \uparrow &amp; \uparrow &amp; \uparrow \\
-    \vec{a}_1 &amp; \vec{a}_2 &amp; \vec{a}_3 \\
+    \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \mathbf{a}_3 \\
     \downarrow &amp; \downarrow &amp; \downarrow
 \end{pmatrix} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\vec{a}_i = (a_{1i}, a_{2i}, a_{3i})^\mathrm{T}\)</span>. To calculate the orthogonal <span class="math notranslate nohighlight">\(Q\)</span> matrix we need a set of vectors <span class="math notranslate nohighlight">\(\{\vec{q}_1, \vec{q}_2, \vec{q}_3\}\)</span> that span the same space as {<span class="math notranslate nohighlight">\(\vec{a}_1, \vec{a}_2, \vec{a}_3\}\)</span> but are orthogonal to each other. One way to do this is using the <strong>Gram-Schmidt process</strong>. Consider the diagram shown in <a class="reference internal" href="#gram-schmidt-figure"><span class="std std-numref">Fig. 6.1</span></a> that shows the first two non-orthogonal vectors <span class="math notranslate nohighlight">\(\vec{a}_1\)</span> and <span class="math notranslate nohighlight">\(\vec{a}_2\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{a}_j = (a_{1j}, a_{2j}, a_{3j})\)</span>. To calculate the orthogonal <span class="math notranslate nohighlight">\(Q\)</span> matrix we need a set of vectors <span class="math notranslate nohighlight">\(\{\mathbf{q}_1, \mathbf{q}_2, \mathbf{q}_3\}\)</span> that span the same space as <span class="math notranslate nohighlight">\(\{\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\}\)</span> but are orthogonal to each other. One way to do this is using the <strong>Gram-Schmidt process</strong>. Consider the diagram shown in <a class="reference internal" href="#gram-schmidt-figure"><span class="std std-numref">Fig. 6.1</span></a> that shows the first two non-orthogonal vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>.</p>
 <figure class="align-default" id="gram-schmidt-figure">
 <a class="reference internal image-reference" href="../_images/gram_schmidt.svg"><img alt="../_images/gram_schmidt.svg" src="../_images/gram_schmidt.svg" width="400" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">The Gram-Schmidt process</span><a class="headerlink" href="#gram-schmidt-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>We begin by letting <span class="math notranslate nohighlight">\(\vec{u}_1 = \vec{a}_1\)</span> and seek to find a vector <span class="math notranslate nohighlight">\(\vec{u}_2\)</span> that is orthogonal to <span class="math notranslate nohighlight">\(\vec{u}_1\)</span> and in the same span as <span class="math notranslate nohighlight">\(\vec{a}_2\)</span>. To do this we subtract the <a href="https://en.wikipedia.org/wiki/Vector_projection" target="_blank">vector projection</a> of <span class="math notranslate nohighlight">\(\vec{a}_2\)</span> onto <span class="math notranslate nohighlight">\(\vec{u}_1\)</span>, i.e.,</p>
+<p>We begin by letting <span class="math notranslate nohighlight">\(\mathbf{u}_1 = \mathbf{a}_1\)</span> and seek to find a vector <span class="math notranslate nohighlight">\(\mathbf{u}_2\)</span> that is orthogonal to <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span> and in the same span as <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>. To do this we subtract the <a href="https://en.wikipedia.org/wiki/Vector_projection" target="_blank">vector projection</a> of <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
-\[ \vec{u}_2 = \vec{a}_2 - \left( \frac{\vec{a}_2 \cdot \vec{u}_1}{\vec{u}_1 \cdot \vec{u}_1} \right) \vec{u}_1.\]</div>
-<p>We can simplify things by normalising <span class="math notranslate nohighlight">\(\vec{u}_1\)</span> such that <span class="math notranslate nohighlight">\(\vec{q}_1 = \vec{u}_1 / \|\vec{u}_1\|\)</span> so we have</p>
+\[ \mathbf{u}_2 = \mathbf{a}_2 - \left( \frac{\mathbf{a}_2 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \right) \mathbf{u}_1.\]</div>
+<p>We can simplify things by normalising <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{q}_1 = \dfrac{\mathbf{u}_1}{\|\mathbf{u}_1\|}\)</span> so we have</p>
 <div class="math notranslate nohighlight">
-\[ \vec{u}_2 = \vec{a}_2 - (\vec{a}_2 \cdot \vec{q}_1) \vec{q}_1, \]</div>
-<p>which is also normalised to give <span class="math notranslate nohighlight">\(\vec{q}_2 = \vec{u}_2 / \|\vec{u}_2|\)</span>. For the next vector <span class="math notranslate nohighlight">\(\vec{a}_3\)</span> we want the vector <span class="math notranslate nohighlight">\(\vec{u}_3\)</span> to be orthogonal to both <span class="math notranslate nohighlight">\(\vec{q}_1\)</span> and <span class="math notranslate nohighlight">\(\vec{q}_2\)</span> so we subtract both the vector projections of <span class="math notranslate nohighlight">\(\vec{a}_3\)</span> onto <span class="math notranslate nohighlight">\(\vec{q}_1\)</span> and <span class="math notranslate nohighlight">\(\vec{q}_2\)</span></p>
+\[ \mathbf{u}_2 = \mathbf{a}_2 - (\mathbf{a}_2 \cdot \mathbf{q}_1) \mathbf{q}_1, \]</div>
+<p>which we also normalise to give <span class="math notranslate nohighlight">\(\mathbf{q}_2 = \dfrac{\mathbf{u}_2}{\|\mathbf{u}_2\|}\)</span>. For the next vector <span class="math notranslate nohighlight">\(\mathbf{a}_3\)</span> we want the vector <span class="math notranslate nohighlight">\(\mathbf{u}_3\)</span> to be orthogonal to both <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span> so we subtract both the vector projections of <span class="math notranslate nohighlight">\(\mathbf{a}_3\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span></p>
 <div class="math notranslate nohighlight">
-\[ \vec{u}_3 = \vec{a}_3 - (\vec{a}_3 \cdot \vec{q}_1) \vec{q}_1 - (\vec{a}_3 \cdot \vec{q}_2) \vec{q}_2, \]</div>
-<p>which is normalised to give <span class="math notranslate nohighlight">\(\vec{q}_3\)</span>. Rerranging the expressions for <span class="math notranslate nohighlight">\(\vec{u}_1\)</span>, <span class="math notranslate nohighlight">\(\vec{u}_2\)</span> and <span class="math notranslate nohighlight">\(\vec{u}_3\)</span> gives</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \vec{a}_1 &amp;= \vec{u}_1, \\
-    \vec{a}_2 &amp;= (\vec{a}_2 \cdot \vec{q}_1) \vec{q}_1 + \vec{u}_2, \\
-    \vec{a}_3 &amp;= (\vec{a}_3 \cdot \vec{q}_1) \vec{q}_1 + (\vec{a}_3 \cdot \vec{q}_2)\vec{q}_2  + \vec{u}_3
-\end{align*} \end{split}\]</div>
-<p>and since <span class="math notranslate nohighlight">\(\vec{u}_i = (\vec{a}_i \cdot \vec{q}_i) \vec{q}_i\)</span> (the projection of <span class="math notranslate nohighlight">\(\vec{u}_i\)</span> onto a unit vector pointing in the same direction at <span class="math notranslate nohighlight">\(\vec{u}_i\)</span>) then</p>
+\[ \mathbf{u}_3 = \mathbf{a}_3 - (\mathbf{a}_3 \cdot \mathbf{q}_1) \mathbf{q}_1 - (\mathbf{a}_3 \cdot \mathbf{q}_2) \mathbf{q}_2, \]</div>
+<p>which is normalised to give <span class="math notranslate nohighlight">\(\mathbf{q}_3\)</span>. Continuing in this way we see that for the <span class="math notranslate nohighlight">\(i\)</span>-th orthogonal vector we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{a}_1 &amp;=  (\vec{a}_1 \cdot \vec{q}_1) \vec{q}_1, \\
-    \vec{a}_2 &amp;=  (\vec{a}_2 \cdot \vec{q}_1) \vec{q}_1 + (\vec{a}_2 \cdot \vec{q}_2) \vec{q}_2, \\
-    \vec{a}_3 &amp;= (\vec{a}_3 \cdot \vec{q}_1) \vec{q}_1 + (\vec{a}_3 \cdot \vec{q}_2) \vec{q}_2 + (\vec{a}_3 \cdot \vec{q}_3) \vec{q}_3 
+  \mathbf{u}_i &amp;= \mathbf{a}_i - \sum_{j=1}^{i-1} (\mathbf{a}_i \cdot \mathbf{q}_j) \mathbf{q}_j, \\
+  \mathbf{q}_i &amp;= \frac{\mathbf{u}_i}{\| \mathbf{u}_i \|}.
 \end{align*} \end{split}\]</div>
-<p>The matrix <span class="math notranslate nohighlight">\(A\)</span> can be written as the product of two matrices</p>
+<p>The columns of the <span class="math notranslate nohighlight">\(Q\)</span> matrix are formed using the vectors <span class="math notranslate nohighlight">\(\mathbf{q}_i\)</span></p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{pmatrix}
-    \uparrow &amp; \uparrow &amp; \uparrow \\
-    \vec{a}_1 &amp; \vec{a}_2 &amp; \vec{a}_3 \\
-    \downarrow &amp; \downarrow &amp; \downarrow
-\end{pmatrix} = 
+\[\begin{split} Q = 
 \begin{pmatrix}
-    \uparrow &amp; \uparrow &amp; \uparrow \\
-    \vec{q}_1 &amp; \vec{q}_2 &amp; \vec{q}_3 \\
-    \downarrow &amp; \downarrow &amp; \downarrow
-\end{pmatrix}
-\left( \begin{array}{ccc}
-    (\vec{q}_1 \cdot \vec{a}_1) &amp; (\vec{q}_1 \cdot \vec{a}_2) &amp; (\vec{q}_1 \cdot \vec{a}_3) \\
-    0 &amp; (\vec{q}_2 \cdot \vec{a}_2) &amp; (\vec{q}_2 \cdot \vec{a}_3) \\
-    0 &amp; 0 &amp; (\vec{q}_3 \cdot \vec{a}_3)
-\end{array} \right) \end{split}\]</div>
-<p>where the matrix on the left is an orthogonal matrix and the matrix on the right is an upper triangular matrix. Let <span class="math notranslate nohighlight">\(Q\)</span> denote the orthonormal matrix and <span class="math notranslate nohighlight">\(R\)</span> denote the upper triangular matrix then <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
+    \uparrow &amp; \uparrow &amp; &amp; \uparrow \\
+    \mathbf{q}_1 &amp; \mathbf{q}_2 &amp; \cdots &amp; \mathbf{q}_n \\
+    \downarrow &amp; \downarrow &amp; &amp; \downarrow
+\end{pmatrix}. \end{split}\]</div>
+<p>The <span class="math notranslate nohighlight">\(R\)</span> matrix is found by rearranging <span class="math notranslate nohighlight">\(A = QR\)</span>. Since <span class="math notranslate nohighlight">\(Q\)</span> is an orthogonal matrix, <span class="math notranslate nohighlight">\(Q^\mathsf{T} = Q^{-1}\)</span> so</p>
+<div class="math notranslate nohighlight">
+\[ R = Q^\mathsf{T} A.\]</div>
+<section id="positive-diagonal-elements-of-r">
+<h3>Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span><a class="headerlink" href="#positive-diagonal-elements-of-r" title="Permalink to this heading">#</a></h3>
+<p>When we compute the QR decomposition of a matrix we do not get a unique factorisation. Consider <span class="math notranslate nohighlight">\(A = QR\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[A = (QD)(D^{-1}R),\]</div>
+<p>for any diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> with entries <span class="math notranslate nohighlight">\(\pm 1\)</span>, i.e., multiplying a column of <span class="math notranslate nohighlight">\(Q\)</span> by -1 and the corresponding row of <span class="math notranslate nohighlight">\(R\)</span> by -1 doesn’t change the product <span class="math notranslate nohighlight">\(QR\)</span>. It has become standard convention to impose a condition that the diagonal elements of <span class="math notranslate nohighlight">\(R\)</span> must be positive. This is achieved by computing <span class="math notranslate nohighlight">\(D\)</span> where the diagonal elements are <span class="math notranslate nohighlight">\(D_{ii} = \operatorname{sign}(R_{ii})\)</span> and calculating <span class="math notranslate nohighlight">\(R = DR\)</span> and <span class="math notranslate nohighlight">\(Q = QD\)</span>.</p>
 <div class="proof algorithm admonition" id="qr-gramschmidt-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.7 </span> (QR decomposition using the Gram-Schmidt process)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p><strong>Outputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and and <span class="math notranslate nohighlight">\(n \times n\)</span> upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(R \gets \vec{0}_{n\times n}\)</span></p></li>
-<li><p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span> do</p>
+<li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
 <ul>
-<li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, j - 1\)</span> do</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(r_{ij} \gets \vec{q}_i \cdot \vec{a}_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u}_i \gets \mathbf{a}_i - \displaystyle\sum_{j=1}^{i-1} (\mathbf{a}_i \cdot \mathbf{q}_j) \mathbf{q}_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{q}_i \gets \dfrac{\mathbf{u}_i}{\| \mathbf{u}_i \|}\)</span></p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(\vec{u}_j \gets \vec{a}_j - \displaystyle\sum_{i=1}^{j-1} r_{ij} \vec{q}_i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(r_{jj} \gets |\vec{u}_j|\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\vec{q}_j \gets \dfrac{\vec{u}_j}{r_{jj}}\)</span></p></li>
-</ul>
-</li>
-<li><p>Return <span class="math notranslate nohighlight">\(Q = (\vec{q}_1, \vec{q}_2, \ldots , \vec{q}_n)\)</span> and <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q \gets (\mathbf{q}_1, \ldots, \mathbf{q}_n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R \gets Q^{\mathsf{T}}A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(D \gets I_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(D_{ii} \gets \operatorname{sign}(R_{ii})\)</span>   for <span class="math notranslate nohighlight">\(i = 1 \ldots n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R \gets DR\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q \gets QD\)</span></p></li>
+<li><p>Return <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
 </ul>
 </section>
 </div><div class="proof example admonition" id="qr-gramschmidt-example">
@@ -547,79 +536,59 @@ document.write(`
         1 &amp; 3 &amp; 7
     \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j=1\)</span>:</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    r_{11} &amp;= |\vec{a}_1| = \left| \begin{pmatrix} -1 \\ 1 \\ -1 \\ 1 \end{pmatrix} \right| = 2, \\
-    \vec{q}_1 &amp;= \frac{\vec{a}_1}{r_{11}} = \frac{1}{2} 
-    \begin{pmatrix} -1 \\ 1 \\ -1 \\ 1 \end{pmatrix} = 
-    \begin{pmatrix} -1/2 \\ 1/2 \\ -1/2 \\ 1/2 \end{pmatrix}.
+  \mathbf{u}_1 &amp;= \mathbf{a}_1 = \begin{pmatrix} -1 \\ 1 \\ -1 \\ 1 \end{pmatrix}, \\
+  \mathbf{q}_1 &amp;= \frac{\mathbf{u}_1}{\| \mathbf{u}_1 \|} = \frac{1}{2} \begin{pmatrix} -1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} -\frac{1}{2} \\ \frac{1}{2} \\ -\frac{1}{2} \\ \frac{1}{2} \end{pmatrix}, \\
+  \mathbf{u}_2 &amp;= \mathbf{a}_2 - (\mathbf{a}_1 \cdot \mathbf{q}_1) \mathbf{q}_1 =
+  \begin{pmatrix} -1 \\ 3 \\ -1 \\ 3 \end{pmatrix} - 4 
+  \begin{pmatrix} -\frac{1}{2} \\ \frac{1}{2} \\ -\frac{1}{2} \\ \frac{1}{2} \end{pmatrix} =
+  \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}, \\
+  \mathbf{q}_2 &amp;= \frac{\mathbf{u}_2}{\| \mathbf{u}_2 \|} = \frac{1}{2} 
+  \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = 
+  \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ \frac{1}{2} \\ \frac{1}{2} \end{pmatrix}, \\
+  \mathbf{u}_3 &amp;= \mathbf{a}_3 - (\mathbf{a}_3 \cdot \mathbf{q}_1) \mathbf{q}_1 - (\mathbf{a}_3 \cdot \mathbf{q}_2) \mathbf{q}_2 =
+  \begin{pmatrix} 1 \\ 3 \\ 5 \\ 7 \end{pmatrix} - 2 
+  \begin{pmatrix} -\frac{1}{2} \\ \frac{1}{2} \\ -\frac{1}{2} \\ \frac{1}{2} \end{pmatrix} - 8
+  \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ \frac{1}{2} \\ \frac{1}{2} \end{pmatrix} =
+  \begin{pmatrix} -2 \\ -2 \\ 2 \\ 2 \end{pmatrix}, \\
+  \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3}{\| \mathbf{u}_3 \|} = \frac{1}{4} 
+  \begin{pmatrix} -2 \\ -2 \\ 2 \\ 2 \end{pmatrix} =
+  \begin{pmatrix} -\frac{1}{2} \\ -\frac{1}{2} \\ \frac{1}{2} \\ \frac{1}{2} \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 2\)</span>:</p>
+<p>Therefore</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    r_{12} &amp;= \vec{q}_1 \cdot \vec{a}_2 = 
-    \begin{pmatrix} -1/2 \\ 1/2 \\ -1/2 \\ 1/2 \end{pmatrix} \cdot
-    \begin{pmatrix} -1 \\ 3 \\ -1 \\ 3 \end{pmatrix} = 4,\\
-    \vec{u}_2 &amp;= \vec{a}_2 - r_{12} \vec{q}_1 = 
-    \begin{pmatrix} -1 \\ 3 \\ -1 \\ 3 \end{pmatrix} - 4
-    \begin{pmatrix} -1/2 \\ 1/2 \\ -1/2 \\ 1/2 \end{pmatrix} = 
-    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}, \\
-    r_{22} &amp;= |\vec{u}_2| = \left| 
-        \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}
-    \right| = 2, \\
-    \vec{q}_2 &amp;= \frac{\vec{u}_2}{r_{22}} = \frac{1}{2}
-    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = 
-    \begin{pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end{pmatrix}.
+  Q &amp;= \begin{pmatrix}
+    -\frac{1}{2} &amp; \frac{1}{2} &amp; -\frac{1}{2} \\
+    \frac{1}{2} &amp; \frac{1}{2} &amp; -\frac{1}{2} \\
+    -\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} \\
+    \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}
+  \end{pmatrix}, \\
+  R &amp;= Q^\mathsf{T}A =
+  \begin{pmatrix}
+    -\frac{1}{2} &amp; \frac{1}{2} &amp; -\frac{1}{2} &amp; \frac{1}{2} \\
+    \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} \\
+    -\frac{1}{2} &amp; -\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    -1 &amp; -1 &amp; 1 \\
+    1 &amp; 3 &amp; 3 \\
+    -1 &amp; -1 &amp; 5 \\
+    1 &amp; 3 &amp; 7
+  \end{pmatrix} =
+  \begin{pmatrix}
+    2 &amp; 4 &amp; 2 \\
+    0 &amp; 2 &amp; 8 \\
+    0 &amp; 0 &amp; 4
+  \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 3\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    r_{13} &amp;= \vec{q}_1 \cdot \vec{a}_3 = 
-    \begin{pmatrix} -1/2 \\ 1/2 \\ -1/2 \\ 1/2 \end{pmatrix} \cdot
-    \begin{pmatrix} 1 \\ 3 \\ 5 \\ 7 \end{pmatrix} = 2, \\
-    r_{23} &amp;= \vec{q}_2 \cdot \vec{a}_3 = 
-    \begin{pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end{pmatrix} \cdot
-    \begin{pmatrix} 1 \\ 3 \\ 5 \\ 7 \end{pmatrix} = 8, \\
-    \vec{u}_3 &amp;= \vec{a}_3 - r_{13} \vec{q}_1 - r_{23} \vec{q}_2 = 
-    \begin{pmatrix} 1 \\ 3 \\ 5 \\ 7 \end{pmatrix} - 2
-    \begin{pmatrix} -1/2 \\ 1/2 \\ -1/2 \\ 1/2 \end{pmatrix} - 8
-    \begin{pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end{pmatrix} = 
-    \begin{pmatrix} -2 \\ -2 \\ 2 \\ 2 \end{pmatrix}, \\
-    r_{33} &amp;= | \vec{u}_3 | = \left|
-        \begin{pmatrix} -2 \\ -2 \\ 2 \\ 2 \end{pmatrix}
-    \right| = 4, \\
-    \vec{q}_3 &amp;= \frac{\vec{u}_3}{r_{33}} = \frac{1}{4}
-    \begin{pmatrix} -2 \\ -2 \\ 2 \\ 2 \end{pmatrix} = 
-    \begin{pmatrix} -1/2 \\ -1/2 \\ 1/2 \\ 1/2 \end{pmatrix}
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Therefore</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    Q &amp;= 
-    \begin{pmatrix}
-        -1/2 &amp; 1/2 &amp; -1/2 \\ 
-        1/2 &amp; 1/2 &amp; -1/2 \\
-        -1/2 &amp; 1/2 &amp; 1/2 \\
-        1/2 &amp; 1/2&amp; 1/2
-    \end{pmatrix}, &amp;
-    R &amp;= 
-    \begin{pmatrix}
-        2 &amp; 4 &amp; 2 \\ 
-        0 &amp; 2 &amp; 8 \\
-        0 &amp; 0 &amp; 4
-    \end{pmatrix}.
-\end{align*} \end{split}\]</div>
-</div>
-</details></section>
-</div><section id="code">
+<p>All diagonal elements of <span class="math notranslate nohighlight">\(R\)</span> are positive so we don’t need to calculate <span class="math notranslate nohighlight">\(D\)</span>.</p>
+</section>
+</div></section>
+<section id="code">
 <h3>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h3>
 <p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">qr_gramschmidt()</span></code> which calculates the QR decomposition of a matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> using the Gram-Schmidt process.</p>
 <div class="sd-tab-set docutils">
@@ -627,22 +596,22 @@ Solution (click to show)<div class="sd-summary-down docutils">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">qr_gramschmidt</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">sum_</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
-            <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[:,</span><span class="n">j</span><span class="p">])</span>
-            <span class="n">sum_</span> <span class="o">+=</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">])</span> <span class="o">*</span> <span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span>
 
-        <span class="n">u</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span>
-        <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span> <span class="o">/</span> <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-    
+        <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">R</span><span class="p">)))</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
 </pre></div>
 </div>
-<p>The Numpy command <code class="docutils literal notranslate"><span class="pre">np.linalg.norm()</span></code> calculates the magnitude of a vector.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
@@ -650,18 +619,16 @@ MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[Q, R] = qr_gramschmidt</span><span class="p">(</span>A<span class="p">)</span>
 
 <span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">));</span>
-<span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
-<span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
-<span class="w">    </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">        </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">),</span><span class="w"> </span><span class="n">A</span><span class="p">(:,</span><span class="nb">j</span><span class="p">));</span>
-<span class="w">        </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sum_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">);</span>
+<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
+
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span><span class="nb">i</span><span class="p">),</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">);</span>
 <span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(:,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sum_</span><span class="p">;</span>
-<span class="w">    </span><span class="n">R</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="nb">j</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">));</span>
 <span class="k">end</span>
+
+<span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="o">&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
 
 <span class="k">end</span>
 </pre></div>
@@ -670,271 +637,287 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
-<section id="qr-decomposition-using-householder-transformations">
-<span id="qr-householder-section"></span><h2><span class="section-number">6.5.2. </span>QR decomposition using Householder transformations<a class="headerlink" href="#qr-decomposition-using-householder-transformations" title="Permalink to this heading">#</a></h2>
-<p>Another method we can use to calculate the QR decomposition of a matrix is by the use of <strong>Householder transformations</strong>. Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 6.2</span></a> where the vector <span class="math notranslate nohighlight">\(\vec{x}\)</span> is reflected about the hyperplane represented by the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\vec{e}_1 = (1, 0, \ldots, 0)^\mathrm{T}\)</span>.</p>
-<figure class="align-default" id="householder-1-figure">
-<a class="reference internal image-reference" href="../_images/householder_1.svg"><img alt="../_images/householder_1.svg" src="../_images/householder_1.svg" width="250" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Householder transformation: the vector <span class="math notranslate nohighlight">\(\vec{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\vec{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The Householder matrix is an orthogonal matrix that performs the Householder transformation reflection</p>
+<section id="qr-decomposition-using-householder-reflections">
+<span id="qr-householder-section"></span><h2><span class="section-number">6.5.2. </span>QR decomposition using Householder reflections<a class="headerlink" href="#qr-decomposition-using-householder-reflections" title="Permalink to this heading">#</a></h2>
+<p>Another method we can use to calculate the QR decomposition of a matrix is by the use of <strong>Householder reflections</strong>.</p>
 <div class="proof definition admonition" id="definition-4">
 <p class="admonition-title"><span class="caption-number">Definition 6.4 </span> (Householder matrix)</p>
 <section class="definition-content" id="proof-content">
+<p>The Householder matrix is an orthogonal reflection matrix of the form</p>
 <div class="math notranslate nohighlight" id="equation-householder-equation">
-<span class="eqno">(6.3)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[ H = I - 2 \vec{v} \vec{v}^\mathrm{T}, \]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \vec{u} &amp;= \vec{x} - \|\vec{x}\| \vec{e}_1, \\
-    \vec{v} &amp;= \frac{\vec{u}}{\| \vec{u} \|}.
-\end{align*} \end{split}\]</div>
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-householder-equation" title="Permalink to this equation">#</a></span>\[ H = I - 2 \frac{\mathbf{v} \mathbf{v}^\mathsf{T}}{\mathbf{v} \cdot \mathbf{v}}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is a non-zero vector. The matrix <span class="math notranslate nohighlight">\(H\)</span> is symmetric and orthogonal.</p>
 </section>
-</div><p>If <span class="math notranslate nohighlight">\(\vec{x}\)</span> is nearly parallel to <span class="math notranslate nohighlight">\(\vec{e}_1\)</span> then the denominator in equation <a class="reference internal" href="#equation-householder-equation">(6.3)</a> is close to zero and computational rounding errors can occur. However, we can choose to reflect <span class="math notranslate nohighlight">\(\vec{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\vec{e}_1\)</span> instead.</p>
-<figure class="align-default" id="householder-2-figure">
-<a class="reference internal image-reference" href="../_images/householder_2.svg"><img alt="../_images/householder_2.svg" src="../_images/householder_2.svg" width="350" /></a>
+</div><figure class="align-default" id="householder-1-figure">
+<a class="reference internal image-reference" href="../_images/householder_1.svg"><img alt="../_images/householder_1.svg" src="../_images/householder_1.svg" width="350" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Householder transformation: the vector <span class="math notranslate nohighlight">\(\vec{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(-\vec{e}_1\)</span> to avoid computational rounding errors.</span><a class="headerlink" href="#householder-2-figure" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In <a class="reference internal" href="#householder-2-figure"><span class="std std-numref">Fig. 6.3</span></a> above, <span class="math notranslate nohighlight">\(\vec{x}\)</span> is to be transformed to <span class="math notranslate nohighlight">\(-\|\vec{x}\|\vec{e}_1\)</span> then</p>
+<p>Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 6.2</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane represented by the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathsf{T}\)</span>. The Householder matrix that achieves this reflection is based on the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> which is orthogonal to the dashed line and calculated using</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align*}
-    \vec{u} = \vec{x} + \|\vec{x}\| \vec{e}_1,
-\end{align*} \]</div>
-<p>so in order to always reflect in the direction that gives the largest value of <span class="math notranslate nohighlight">\(\|\vec{u}\|\)</span> we use</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    \vec{u} = \vec{x} + \operatorname{sign}(x)\|\vec{x}\|\vec{e}_1 
-\end{align*} \]</div>
-<p>where</p>
+\[ \mathbf{v} = \mathbf{x} - \|\mathbf{x}\|\mathbf{e}_1. \]</div>
+<p>To compute the QR decomposition of a matrix <span class="math notranslate nohighlight">\(A\)</span>, we reflect the first column of <span class="math notranslate nohighlight">\(A\)</span>, using Householder reflection so that it is parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>. This means the only non-zero element in the first row.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \operatorname{sign}(x) = \begin{cases}
-        1, &amp; x \geq 0,\\
-        -1, &amp; x &lt; 0.
-    \end{cases}
+  R = H_1 A = 
+  \begin{pmatrix}
+    r_{11} &amp; r_{12} &amp; r_{13} &amp; \cdots &amp; r_{1n} \\
+    0 &amp; a_{22} &amp; a_{23} &amp; \cdots &amp; r_{2n} \\
+    0 &amp; a_{32} &amp; a_{33} &amp; \cdots &amp; a_{3n} \\
+    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    0 &amp; a_{m2} &amp; a_{m3} &amp; \cdots &amp; a_{mn}
+  \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p>To calculate the QR decomposition of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> we let <span class="math notranslate nohighlight">\(Q = I_m\)</span> and <span class="math notranslate nohighlight">\(R = A = (\vec{r}_1, \vec{r}_2, \ldots , \vec{r}_n)\)</span> and use Householder transformations to transform each of the column vectors <span class="math notranslate nohighlight">\(\vec{r}_1\)</span> so that they are parallel to the basis vector <span class="math notranslate nohighlight">\(\vec{e}_j\)</span>. To do this we first calculate <span class="math notranslate nohighlight">\(\vec{v}\)</span> using</p>
+<p>We then look to do the same for the sub-matrix of <span class="math notranslate nohighlight">\(R\)</span> formed by omitted the first row and column. We do this by calculating a <span class="math notranslate nohighlight">\((m-1) \times (m-1)\)</span> Householder matrix <span class="math notranslate nohighlight">\(H'\)</span> using <span class="math notranslate nohighlight">\(\mathbf{x} = (a_{22}, a_{32}, \ldots, a_{m2})^\mathsf{T}\)</span>. This is used to form the <span class="math notranslate nohighlight">\(n \times n\)</span> Householder matrix <span class="math notranslate nohighlight">\(H_2\)</span> by padding out the first row and column of the identity matrix.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{u}_1 &amp;= \vec{r}_1 + \operatorname{sign}(r_{11})\| \vec{r}_1 \|\vec{e}_1 , \\
-    \vec{v}_1 &amp;= \frac{\vec{u}_1}{\| \vec{u}_1 \|},
+  H_2 = \begin{pmatrix} 
+    1 &amp; 0 \\
+    0 &amp; H'
+  \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p>and then we calculate the Householder matrix <span class="math notranslate nohighlight">\(H\)</span> using equation <a class="reference internal" href="#equation-householder-equation">(6.3)</a></p>
+<p>The Householder matrix <span class="math notranslate nohighlight">\(H_2\)</span> is then applied to <span class="math notranslate nohighlight">\(R\)</span> so that the second column barring the first row is parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  R = H_2 R = 
+  \begin{pmatrix}
+    r_{11} &amp; r_{12} &amp; r_{13} &amp; \cdots &amp; r_{1n} \\
+    0 &amp; r_{22} &amp; r_{23} &amp; \cdots &amp; r_{2n} \\
+    0 &amp; 0 &amp; a_{33} &amp; \cdots &amp; a_{3n} \\
+    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    0 &amp; 0 &amp; a_{m3} &amp; \cdots &amp; a_{mn}
+  \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>We repeat this process for all columns in <span class="math notranslate nohighlight">\(R\)</span> which results in a triangular matrix. If <span class="math notranslate nohighlight">\(A\)</span> has <span class="math notranslate nohighlight">\(n\)</span> columns then</p>
+<div class="math notranslate nohighlight">
+\[R = H_n\ldots H_2 H_1 A,\]</div>
+<p>rearranging gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+  H_1^{-1} H_2^{-1} \ldots H_n^{-1} R = A.
+\end{align*} \]</div>
+<p>The Householder matrices are symmetric and orthogonal so <span class="math notranslate nohighlight">\(H^{-1} = H\)</span> and since we want <span class="math notranslate nohighlight">\(A = QR\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    H_1 &amp;= I_m - 2 \vec{v}_1 \vec{v}_1^\mathrm{T},
+  Q = H_1H_2 \ldots H_n.
 \end{align*} \]</div>
-<p>and apply the Householder transformation to <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    Q &amp;= QH_1, \\
-    R &amp;= H_1 R =
-    \begin{pmatrix}
-        r_{11} &amp; r_{12}  &amp; \cdots  &amp; r_{1n} \\
-        0 &amp; r_{22} &amp; \cdots &amp; r_{2n} \\
-        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-        0 &amp; r_{n2} &amp; \cdots &amp; r_{nn}
-    \end{pmatrix}.
-\end{align*} \end{split}\]</div>
-<p>The first column of <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(\vec{r}_1\)</span>, is now parallel to <span class="math notranslate nohighlight">\(\vec{e}_1\)</span>. We now need to transform the second column of <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(\vec{r}_2\)</span>, without changing the first row and column so that it is parallel to the second basis vector <span class="math notranslate nohighlight">\(\vec{e}_2\)</span>. So we set the first element of <span class="math notranslate nohighlight">\(\vec{r}_2\)</span> to zero and calculate the Householder matrix</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \vec{r}_2 = \begin{pmatrix} 0 \\ r_{22} \\ \vdots \\ r_{n2} \end{pmatrix}\end{split}\]</div>
-<p>We repeat this process for the columns in <span class="math notranslate nohighlight">\(R\)</span> at which point <span class="math notranslate nohighlight">\(R\)</span> is an upper triangular matrix. The <span class="math notranslate nohighlight">\(Q\)</span> matrix is the product of all of the individual Householder transformations so by definition it is an orthogonal matrix.</p>
 <div class="proof algorithm admonition" id="qr-householder-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 6.8 </span> (QR decomposition using Householder transformations)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 6.8 </span> (QR decomposition using Householder reflections)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p><strong>Outputs:</strong> An <span class="math notranslate nohighlight">\(n \times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and and <span class="math notranslate nohighlight">\(n \times n\)</span> upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(Q \gets I_m\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R \gets A\)</span></p></li>
-<li><p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span> do</p>
+<li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\vec{u} \gets\)</span> column <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(R\)</span> with the first <span class="math notranslate nohighlight">\(j-1\)</span> elements set to zero</p></li>
-<li><p><span class="math notranslate nohighlight">\(\vec{u} \gets \vec{u} + \operatorname{sign}(r_{jj})\|\vec{u}\|\vec{e}_j\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\vec{v} \gets \dfrac{\vec{u}}{\| \vec{u} \|}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H \gets I_m - 2 \vec{v} \vec{v} ^\mathrm{T}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(Q \gets Q H\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x} \gets\)</span> column <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(R\)</span> starting at the <span class="math notranslate nohighlight">\(i\)</span>-th row</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \mathbf{x} + \|\mathbf{x}\|\mathbf{e}_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H \gets I_m - 2 \dfrac{\mathbf{v} \mathbf{v} ^\mathsf{T}}{\mathbf{v} \cdot \mathbf{v}}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R \gets H R\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q \gets Q H\)</span></p></li>
 </ul>
 </li>
+<li><p><span class="math notranslate nohighlight">\(D \gets I_{m}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(D_{ii} \gets \operatorname{sign}(R_{ii})\)</span>   for <span class="math notranslate nohighlight">\(i = 1 \ldots n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R \gets DR\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q \gets QD\)</span></p></li>
+<li><p>Return <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span></p></li>
 </ul>
 </section>
 </div><div class="proof example admonition" id="qr-householder-example">
 <p class="admonition-title"><span class="caption-number">Example 6.9 </span></p>
 <section class="example-content" id="proof-content">
-<p>Calculate the QR decomposition of the following matrix using the Householder transformations</p>
+<p>Calculate the QR decomposition of the following matrix using Householder reflections</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    A=\begin{pmatrix}
-        1 &amp; -4 \\ 
-        2 &amp; 3 \\
-        2 &amp; 2
-     \end{pmatrix}
+  A=\begin{pmatrix}
+    1 &amp; -4 \\
+    2 &amp; 3 \\
+    2 &amp; 2
+  \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(Q=I_3\)</span> and <span class="math notranslate nohighlight">\(R=A\)</span> and calculate Householder matrix for the first column of <span class="math notranslate nohighlight">\(R\)</span></p>
-<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 1\)</span>: calculate the Householder matrix</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Set <span class="math notranslate nohighlight">\(Q = I\)</span> and <span class="math notranslate nohighlight">\(R = A\)</span>. We want to zero out the elements below <span class="math notranslate nohighlight">\(R_{11}\)</span> so <span class="math notranslate nohighlight">\(\mathbf{x} = (1, 2, 2)^\mathsf{T}\)</span> and <span class="math notranslate nohighlight">\(\|\mathbf{x}\| = 3\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{u} &amp;= \vec{r}_1 + \operatorname{sign}(r_{11})|\vec{r}_1|\vec{e}_1
-    = \begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix} + 3 
-    \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
-    = \begin{pmatrix} 4 \\ 2 \\ 2 \end{pmatrix}, \\
-    \vec{v} &amp;= \frac{\vec{u}}{|\vec{u}|} 
-    = \frac{1}{2\sqrt{6}} \begin{pmatrix} 4 \\ 2 \\ 2 \end{pmatrix}
-    = \frac{\sqrt{6}}{6} \begin{pmatrix} 2 \\ 1 \\ 1 \end{pmatrix}, \\
-    H &amp;= I - 2 \vec{v} \vec{v}^\mathrm{T} 
-    = 
-    \begin{pmatrix}
-        1 &amp; 0 &amp; 0 \\
-        0 &amp; 1 &amp; 0 \\
-        0 &amp; 0 &amp; 1
-    \end{pmatrix} - \frac{1}{3}
-    \begin{pmatrix}
-        4 &amp; 2 &amp; 2 \\
-        2 &amp; 1 &amp; 1 \\
-        2 &amp; 1 &amp; 1
-    \end{pmatrix} \\
-    &amp;= \frac{1}{3}
-    \begin{pmatrix}
-        -1 &amp; -2 &amp; -2 \\
-        -2 &amp; 2 &amp; -1 \\
-        -2 &amp; -1 &amp; 2
-    \end{pmatrix}.
+  \mathbf{v}_1 &amp;= \mathbf{x} + \|\mathbf{x}\| \mathbf{e}_1 =
+  \begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix} + 3 
+  \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} =
+  \begin{pmatrix}  4 \\ 2 \\ 2 \end{pmatrix}, \\
+  H_1 &amp;= I - 2\frac{\mathbf{v}_1 \mathbf{v}_1^\mathsf{T}}{\mathbf{v}_1 \cdot \mathbf{v}_1} =
+  \begin{pmatrix} 
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; 1 &amp; 0 \\
+    0 &amp; 0 &amp; 1
+  \end{pmatrix} - \frac{2}{24}
+  \begin{pmatrix} 
+    16 &amp; 8 &amp; 8 \\
+    8 &amp; 4 &amp; 4 \\
+    8 &amp; 4 &amp; 4 
+  \end{pmatrix} =
+  \begin{pmatrix}
+    -\frac{1}{3} &amp; -\frac{2}{3} &amp; -\frac{2}{3} \\
+    -\frac{2}{3} &amp;  \frac{2}{3} &amp; -\frac{1}{3} \\
+    -\frac{2}{3} &amp; -\frac{1}{3} &amp;  \frac{2}{3}
+  \end{pmatrix}, \\
+  R &amp;= H_1R = 
+  \begin{pmatrix}
+    -\frac{1}{3} &amp; -\frac{2}{3} &amp; -\frac{2}{3} \\
+    -\frac{2}{3} &amp;  \frac{2}{3} &amp; -\frac{1}{3} \\
+    -\frac{2}{3} &amp; -\frac{1}{3} &amp;  \frac{2}{3}
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 &amp; -4 \\
+    2 &amp; 3 \\
+    2 &amp; 2
+  \end{pmatrix} =
+  \begin{pmatrix} 
+    -3 &amp; -2 \\
+    0 &amp; 4 \\
+    0 &amp; 3
+  \end{pmatrix}, \\
+  Q &amp;= QH_1 = 
+  \begin{pmatrix} 
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; 1 &amp; 0 \\
+    0 &amp; 0 &amp; 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    -\frac{1}{3} &amp; -\frac{2}{3} &amp; -\frac{2}{3} \\
+    -\frac{2}{3} &amp;  \frac{2}{3} &amp; -\frac{1}{3} \\
+    -\frac{2}{3} &amp; -\frac{1}{3} &amp;  \frac{2}{3}
+  \end{pmatrix} = 
+  \begin{pmatrix}
+    -\frac{1}{3} &amp; -\frac{2}{3} &amp; -\frac{2}{3} \\
+    -\frac{2}{3} &amp;  \frac{2}{3} &amp; -\frac{1}{3} \\
+    -\frac{2}{3} &amp; -\frac{1}{3} &amp;  \frac{2}{3}
+  \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Apply Householder transformations to <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span></p>
+<p>We want to zero out the elements below <span class="math notranslate nohighlight">\(R_{22}\)</span> so <span class="math notranslate nohighlight">\(\mathbf{x} = (4, 3)^\mathsf{T}\)</span> and <span class="math notranslate nohighlight">\(\| \mathbf{x} \| = 5\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    Q &amp;= QH = 
-    \begin{pmatrix}
-        1 &amp; 0 &amp; 0 \\
-        0 &amp; 1 &amp; 0 \\
-        0 &amp; 0 &amp; 1
-    \end{pmatrix} \frac{1}{3}
-    \begin{pmatrix}
-        -1 &amp; -2 &amp; -2 \\
-        -2 &amp; 2 &amp; -1 \\
-        -2 &amp; -1 &amp; 2
-    \end{pmatrix} = \frac{1}{3}
-    \begin{pmatrix}
-        -1 &amp; -2 &amp; -2 \\
-        -2 &amp; 2 &amp; -1 \\
-        -2 &amp; -1 &amp; 2
-    \end{pmatrix}, \\
-    R &amp;= HR = \frac{1}{3}
-    \begin{pmatrix}
-        -1 &amp; -2 &amp; -2 \\
-        -2 &amp; 2 &amp; -1 \\
-        -2 &amp; -1 &amp; 2
-    \end{pmatrix}
-    \begin{pmatrix}
-        1 &amp; -4 \\ 
-        2 &amp; 3 \\
-        2 &amp; 2
-     \end{pmatrix} =
-     \begin{pmatrix}
-        -3 &amp; -2 \\
-        0 &amp; 4 \\
-        0 &amp; 3 
-    \end{pmatrix}.
+  \mathbf{v}_2 &amp;= \mathbf{x} + \| \mathbf{x} \| \mathbf{e}_1 = 
+  \begin{pmatrix} 4 \\ 3 \end{pmatrix} + 5 
+  \begin{pmatrix} 1 \\ 0 \end{pmatrix} =
+  \begin{pmatrix} 9 \\ 3 \end{pmatrix}, \\
+  H' &amp;= I - 2\frac{\mathbf{v}_2 \mathbf{v}_2^\mathsf{T}}{\mathbf{v}_2 \cdot \mathbf{v}_2} = 
+  \begin{pmatrix} 
+    1 &amp; 0 \\
+    0 &amp; 1
+  \end{pmatrix} - \frac{2}{90} 
+  \begin{pmatrix}
+    81 &amp; 27 \\ 
+    27 &amp; 9
+  \end{pmatrix} =
+  \begin{pmatrix}
+    -\frac{4}{5} &amp; -\frac{3}{5} \\
+    -\frac{3}{5} &amp;  \frac{4}{5}
+  \end{pmatrix}, \\
+  H_2 &amp;=
+  \begin{pmatrix}
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; -\frac{4}{5} &amp; -\frac{3}{5} \\
+    0 &amp; -\frac{3}{5} &amp;  \frac{4}{5}
+  \end{pmatrix}, \\
+  R &amp;= H_2 R = 
+  \begin{pmatrix} 
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; -\frac{4}{5} &amp; -\frac{3}{5} \\
+    0 &amp; -\frac{3}{5} &amp;  \frac{4}{5}
+  \end{pmatrix}
+  \begin{pmatrix} 
+    -3 &amp; -2 \\
+    0 &amp; 4 \\
+    0 &amp; 3
+  \end{pmatrix} =
+  \begin{pmatrix}
+    -3 &amp; -2 \\
+     0 &amp; -5 \\
+     0 &amp;  0
+  \end{pmatrix}, \\
+  Q &amp;= Q H_2 =
+  \begin{pmatrix}
+    -\frac{1}{3} &amp; -\frac{2}{3} &amp; -\frac{2}{3} \\
+    -\frac{2}{3} &amp;  \frac{2}{3} &amp; -\frac{1}{3} \\
+    -\frac{2}{3} &amp; -\frac{1}{3} &amp;  \frac{2}{3}
+  \end{pmatrix}
+  \begin{pmatrix} 
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; -\frac{4}{5} &amp; -\frac{3}{5} \\
+    0 &amp; -\frac{3}{5} &amp;  \frac{4}{5}
+  \end{pmatrix} =
+  \begin{pmatrix}
+    -\frac{1}{3} &amp; \frac{14}{15} &amp; -\frac{2}{15} \\
+    -\frac{2}{3} &amp; -\frac{1}{3}  &amp; -\frac{2}{3} \\
+    -\frac{2}{3} &amp; -\frac{2}{15} &amp; \frac{11}{15}.
+  \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Column <span class="math notranslate nohighlight">\(j = 2\)</span>: calculate Householder matrix</p>
+<p>To make the diagonal elements in <span class="math notranslate nohighlight">\(R\)</span> positive we multiply <span class="math notranslate nohighlight">\(R\)</span> on the left by <span class="math notranslate nohighlight">\(D = \operatorname{diag}(-1, -1, 1)\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> on the right by <span class="math notranslate nohighlight">\(D\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{u} &amp;= \vec{r}_2 + \operatorname{sign}(r_{22})|\vec{r}_2|\vec{e}_2
-    = \begin{pmatrix}  0 \\ 4 \\ 3 \end{pmatrix} + 5 
-    \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
-    = \begin{pmatrix} 0 \\ 9 \\ 3 \end{pmatrix} , \\
-    \vec{v} &amp;= \frac{\vec{u}}{|\vec{u}|} 
-    = \frac{1}{3\sqrt{10}} \begin{pmatrix} 0 \\ 9 \\ 3 \end{pmatrix} 
-    = \frac{\sqrt{10}}{10} \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix}, \\
-    H &amp;= I - 2 \vec{v} \vec{v}^\mathrm{T} 
-    = 
-    \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
-     - \frac{1}{5} 
-    \begin{pmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 9 &amp; 3 \\ 0 &amp; 3 &amp; 1 \end{pmatrix} \\
-    &amp;= 
-    \begin{pmatrix}
-        5 &amp; 0 &amp; 0 \\
-        0 &amp; -4 &amp; -3 \\
-        0 &amp; -3 &amp; 4
-    \end{pmatrix}. \\
+  R &amp;= DR = 
+  \begin{pmatrix} 
+    -1 &amp; 0 &amp; 0 \\
+    0 &amp; -1 &amp; 0 \\
+    0 &amp; 0 &amp; 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    -3 &amp; -2 \\
+     0 &amp; -5 \\
+     0 &amp;  0
+  \end{pmatrix} =
+  \begin{pmatrix}
+     3 &amp;  2 \\
+     0 &amp;  5 \\
+     0 &amp;  0
+  \end{pmatrix}, \\
+  Q &amp;= QD = 
+  \begin{pmatrix}
+    -\frac{1}{3} &amp; \frac{14}{15} &amp; -\frac{2}{15} \\
+    -\frac{2}{3} &amp; -\frac{1}{3}  &amp; -\frac{2}{3} \\
+    -\frac{2}{3} &amp; -\frac{2}{15} &amp; \frac{11}{15}.
+  \end{pmatrix}
+  \begin{pmatrix} 
+    -1 &amp; 0 &amp; 0 \\
+    0 &amp; -1 &amp; 0 \\
+    0 &amp; 0 &amp; 1
+  \end{pmatrix} =
+  \begin{pmatrix}
+    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\
+    \frac{2}{3} &amp; \frac{1}{3}  &amp; -\frac{2}{3} \\
+    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15}.
+  \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Applying the Householder transformations to <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    Q = Q H &amp;= \frac{1}{3}
-    \begin{pmatrix}
-        -1 &amp; -2 &amp; -2 \\
-        -2 &amp; 2 &amp; -1 \\
-        -2 &amp; -1 &amp; 2
-    \end{pmatrix}
-    \frac{1}{5}  
-    \begin{pmatrix}
-        5 &amp; 0 &amp; 0 \\
-        0 &amp; -4 &amp; -3 \\
-        0 &amp; -3 &amp; 4
-    \end{pmatrix} \\
-    &amp;= \frac{1}{15}
-    \begin{pmatrix}
-        -5 &amp; 14 &amp; -2 \\
-        -10 &amp; -5 &amp; -10 \\
-        -10 &amp; -2 &amp; 11
-    \end{pmatrix}, \\
-    R = HR &amp;= \frac{1}{5}  
-    \begin{pmatrix}
-        5 &amp; 0 &amp; 0 \\
-        0 &amp; -4 &amp; -3 \\
-        0 &amp; -3 &amp; 4
-    \end{pmatrix}
-    \begin{pmatrix}
-        -3 &amp; -2 \\
-        0 &amp; 4 \\
-        0 &amp; 3 
-    \end{pmatrix} = 
-    \begin{pmatrix}
-        -3 &amp; -2 \\
-        0 &amp; -5 \\
-        0 &amp; 0 
-    \end{pmatrix}.
-\end{align*} \end{split}\]</div>
-</div>
-</details></section>
+</section>
 </div><section id="id1">
 <h3>Code<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">qr_householder()</span></code> that calculates the QR decomposition of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> using Householder transformations. This has been used to calculate the QR decomposition of the matrix from <a class="reference internal" href="#qr-householder-example">Example 6.9</a>.</p>
+<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">qr_householder()</span></code> that calculates the QR decomposition of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> using Householder reflections. This has been used to calculate the QR decomposition of the matrix from <a class="reference internal" href="#qr-householder-example">Example 6.9</a>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">qr_householder</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
     <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">u</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,[</span><span class="n">j</span><span class="p">]]</span>
-        <span class="n">u</span><span class="p">[:</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">u</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">*</span> <span class="n">I</span><span class="p">[:,[</span><span class="n">j</span><span class="p">]]</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">u</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">H</span> <span class="o">=</span> <span class="n">I</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="n">i</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">:]</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
         <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
-    
+
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">D</span><span class="p">[:</span><span class="n">n</span><span class="o">-</span><span class="n">m</span><span class="p">,:</span><span class="n">n</span><span class="o">-</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">R</span><span class="p">)))</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
 </pre></div>
 </div>
-<p>The NumPy command <code class="docutils literal notranslate"><span class="pre">np.matmul(A,</span> <span class="pre">B)</span></code> calculates the matrix multiplication of two matrices <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code>.</p>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
@@ -942,18 +925,24 @@ MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[Q, R] = qr_householder</span><span class="p">(</span>A<span class="p">)</span>
 
 <span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
-<span class="n">I</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
-<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">I</span><span class="p">;</span>
+<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
 <span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
-<span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
-<span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="p">(:,</span><span class="nb">j</span><span class="p">);</span>
-<span class="w">    </span><span class="n">u</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">sign</span><span class="p">(</span><span class="n">R</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="nb">j</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="p">(:,</span><span class="nb">j</span><span class="p">);</span>
-<span class="w">    </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
-<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">H</span><span class="p">;</span>
+<span class="n">D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">sign</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="o">&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
 <span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">H</span><span class="p">;</span>
+<span class="w">    </span><span class="n">D</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sign</span><span class="p">(</span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">));</span>
 <span class="k">end</span>
+
+<span class="n">D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="n">D</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="o">-</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="n">n</span><span class="p">),</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="o">-</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diag</span><span class="p">(</span><span class="nb">sign</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">R</span><span class="p">)));</span>
+<span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
+<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">D</span><span class="p">;</span>
 
 <span class="k">end</span>
 </pre></div>
@@ -961,6 +950,19 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
+</section>
+<hr class="docutils" />
+<section id="loss-of-orthogonality">
+<h2><span class="section-number">6.5.3. </span>Loss of orthogonality<a class="headerlink" href="#loss-of-orthogonality" title="Permalink to this heading">#</a></h2>
+<p>Like any numerical technique, the QR decomposition methods shown here are prone to computational rounding errors. If <span class="math notranslate nohighlight">\(Q\)</span> is perfectly orthogonal then <span class="math notranslate nohighlight">\(Q^\mathsf{T}Q = I\)</span>, but if there is bound to be some small error. If we let this error be <span class="math notranslate nohighlight">\(E\)</span> then <span class="math notranslate nohighlight">\(Q^\mathsf{T}Q = I + E\)</span>. Rearranging gives</p>
+<div class="math notranslate nohighlight">
+\[ \| Q^\mathsf{T}Q - I\| = E,\]</div>
+<p>which is known as the Frobenius norm and is a measure of the <strong>loss of orthogonality</strong>.</p>
+<p>The both QR decomposition methods shown here use an iterative approach where we orthoganlise the columns of the <span class="math notranslate nohighlight">\(A\)</span> matrix in turn based upon the previous iterations. So an error in column <span class="math notranslate nohighlight">\(i\)</span> will have a knock on effect on all subsequent columns. To anaylse the methods, the QR decomposition of a random <span class="math notranslate nohighlight">\(100 \times 100\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> was computed using the Gram-Schmidt process and Householder reflections. The Frobenius norm was calculated for the first <span class="math notranslate nohighlight">\(n\)</span> columns of <span class="math notranslate nohighlight">\(Q\)</span> where <span class="math notranslate nohighlight">\(n = 1 \ldots 100\)</span> giving the loss of orthogonality for those iterations and plotted in below.</p>
+<figure class="align-default">
+<img alt="../_images/97502314c72606508441762c22e03077698e1f21cb48d143ae8a0cd07b322c70.png" src="../_images/97502314c72606508441762c22e03077698e1f21cb48d143ae8a0cd07b322c70.png" />
+</figure>
+<p>Here we can see that computing QR decomposition using Householder reflections is less prone to orthogonality errors than using the Gram-Schmidt process.</p>
 </section>
 </section>
 
@@ -1032,13 +1034,15 @@ MATLAB</label><div class="sd-tab-content docutils">
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-the-gram-schmidt-process">6.5.1. QR decomposition using the Gram-Schmidt process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-diagonal-elements-of-r">Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-transformations">6.5.2. QR decomposition using Householder transformations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.5.2. QR decomposition using Householder reflections</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-orthogonality">6.5.3. Loss of orthogonality</a></li>
 </ul>
   </nav></div>
 

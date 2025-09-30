@@ -5,12 +5,13 @@ These are the lecture notes that accompany the teaching of Runge-Kutta methods a
 ## Contents
 
 1. [Ordinary Differential Equations](ode-chapter)
-2. [Explicit Runge-Kutta Methods](erk-chapter)
-3. [Implicit Runge-Kutta Methods](irk-chapter)
-4. [Stability](stability-chapter)
-5. [Matrix Decomposition Methods](matrix-decomposition-chapter)
-6. [Indirect Methods for Solving Systems of Linear Equations](indirect-methods-chapter)
-2. [Boundary Value Problems](bvp-chapter)
+1. [Explicit Runge-Kutta Methods](erk-chapter)
+1. [Implicit Runge-Kutta Methods](irk-chapter)
+1. [Stability](stability-chapter)
+1. [Boundary Value Problems](bvp-chapter)
+1. [Matrix Decomposition Methods](matrix-decomposition-chapter)
+1. [Indirect Methods for Solving Systems of Linear Equations](indirect-methods-chapter)
+
 
 Students are advised to read through the relevant section of the lecture notes prior to attending the lecture. Do not worry about trying to understand everything when you first read through them. Reading mathematics is not like reading a novel, it often requires repeated reading of a passage before you fully grasp the concepts that are being explained. In the lectures we will explain the various topics and provide more insight than what is written in the notes.
 

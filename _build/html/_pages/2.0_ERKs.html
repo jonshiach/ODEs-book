@@ -64,7 +64,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/2.0_ERKs';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/2.0_ERKs.html" />
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.3. Derivation of Explicit Runge-Kutta Methods" href="2.1_ERK_Derivation.html" />
-    <link rel="prev" title="1.5. ODEs Exercises" href="1.6_ODEs_exercises.html" />
+    <link rel="prev" title="1.5. ODEs Exercises" href="1.5_ODEs_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -166,41 +172,41 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">2. Chapter 2. Explicit Runge-Kutta Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -224,20 +230,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
     </div>
@@ -417,29 +413,19 @@ document.write(`
 <p><span class="caption-number">Fig. 2.2 </span><span class="caption-text"><a href="https://en.wikipedia.org/wiki/Martin_Kutta" target="_blank">Martin Kutta (1867 - 1944)</a></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="margin align-default" id="id3">
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/c/ce/Karl_Heun.jpg"><img alt="Karl Heun" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Karl_Heun.jpg" style="width: 200px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text"><a href="https://en.wikipedia.org/wiki/Karl_Heun" target="_blank">Karl Heun (1859 - 1929)</a></span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 <p>The Runge-Kutta method is the most common numerical method used to solve ODEs. It was developed independently by German mathematicians Carl Runge and Martin Kutta in the late 19th century. The method involves approximating the solution of an ODE by computing the values of the solution at a series of discrete steps. At each step, the method uses a weighted average of the derivative of the solution at different points in the interval to estimate the value of the solution at the next time step. The method is iterative, meaning that the solution at each time step depends on the solution at the previous time step. Runge-Kutta methods are known as <strong>single step methods</strong> because to advance the solution to the next step we only require the values of the current step, as opposed to <strong>multistep methods</strong> such as the <a href="https://en.wikipedia.org/wiki/Linear_multistep_method" target="_blank">linear multistep methods</a> family of methods that require values from multiple steps to compute the next step.</p>
 <section id="general-form-of-a-runge-kutta-method">
 <span id="general-form-of-a-rk-method-section"></span><h2><span class="section-number">2.1. </span>General form of a Runge-Kutta method<a class="headerlink" href="#general-form-of-a-runge-kutta-method" title="Permalink to this heading">#</a></h2>
-<div class="proof definition admonition" id="rk-definition">
-<p class="admonition-title"><span class="caption-number">Definition 2.1 </span> (General form of a Runge-Kutta method)</p>
-<section class="definition-content" id="proof-content">
-<p>The general form of a Runge-Kutta method for solving the initial value problem <span class="math notranslate nohighlight">\(y' =f(t,y)\)</span>, <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span>, <span class="math notranslate nohighlight">\(y_0 = y(t_{\min})\)</span> is</p>
-<div class="math notranslate nohighlight" id="equation-rk-equation">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-rk-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align}
+<p>The general form of a Runge-Kutta method for solving the initial value problem <span class="math notranslate nohighlight">\(y' =f(t,y)\)</span>, <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, <span class="math notranslate nohighlight">\(y(0) = y_0\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-general-rk-equation">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-general-rk-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align}
     y_{n+1} &amp;=y_n + h \sum_{i=1}^s b_i k_i,\\
     k_i &amp;= f(t_n +c_i h,y_n + h \sum_{j=1}^s a_{ij} k_j ),
 \end{align} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(k_i\)</span> for <span class="math notranslate nohighlight">\(i = 1,2, \ldots, s\)</span> are intermediate <strong>stage values</strong> used to calculate <span class="math notranslate nohighlight">\(y_{n+1}\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> are coefficients that define a particular Runge-Kutta method</p>
-</section>
-</div><p>For example, <a href="https://en.wikipedia.org/wiki/Heun%27s_method" target="_blank">Huen’s method</a> (also known as the modified Euler method) is a 2-stage Runge-Kutta method which is</p>
-<div class="math notranslate nohighlight" id="equation-heuns-method-equation">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-heuns-method-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<p>For example, <a href="https://en.wikipedia.org/wiki/Heun%27s_method" target="_blank">Huen’s method</a> is a 2-stage Runge-Kutta method which is written as</p>
+<div class="math notranslate nohighlight" id="equation-rk2-method-equation">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-rk2-method-equation" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{2}(k_1 + k_2), \\
     k_1 &amp;= f(t_n, y_n), \\
     k_2 &amp;= f(t_n + h, y_n + h k_1), \\
@@ -451,31 +437,21 @@ document.write(`
     k_1 &amp;= f(t_n + c_1 h, y_n + h(a_{11} k_1 + a_{12} k_2)), \\
     k_2 &amp;= f(t_n + c_2 h, y_n + h(a_{21} k_1 + a_{22} k_2)).
 \end{align*} \end{split}\]</div>
-<p>So comparing equations <a class="reference internal" href="#equation-heuns-method-equation">(2.2)</a> and <a class="reference internal" href="#equation-2-stage-rk-method">(2.3)</a> we can see that</p>
+<p>So comparing equations <a class="reference internal" href="#equation-rk2-method-equation">(2.2)</a> and <a class="reference internal" href="#equation-2-stage-rk-method">(2.3)</a> we can see that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    b_1 &amp;= \tfrac{1}{2}, &amp;
-    b_2 &amp;= \tfrac{1}{2}, &amp;
+    b_1 &amp;= \frac{1}{2}, &amp;
+    b_2 &amp;= \frac{1}{2}, \\
     c_1 &amp;= 0, &amp;
-    c_2 &amp;= 1, \\
     a_{11} &amp;= 0, &amp;
-    a_{12} &amp;= 0, &amp; 
+    a_{12} &amp;= 0, \\
+    c_2 &amp;= 1, &amp;
     a_{21} &amp;= 1, &amp;
-    a_{22} &amp;= 0, 
+    a_{22} &amp;= 0.
 \end{align*} \end{split}\]</div>
 <section id="butcher-tableau">
 <span id="butcher-tableau-section"></span><h3><span class="section-number">2.1.1. </span>Butcher tableau<a class="headerlink" href="#butcher-tableau" title="Permalink to this heading">#</a></h3>
-<figure class="margin align-default" id="id4">
-<a class="reference internal image-reference" href="https://www.math.auckland.ac.nz/~butcher/ODE-book-2008/JohnButcher.jpg"><img alt="John Butcher" src="https://www.math.auckland.ac.nz/~butcher/ODE-book-2008/JohnButcher.jpg" style="width: 200px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text"><a href="https://en.wikipedia.org/wiki/John_C._Butcher" target="_blank">John Butcher</a></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Runge-Kutta methods are often summarised in a <strong>Butcher tableau</strong> named after the New Zealand mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/John_C._Butcher">John Butcher</a>.</p>
-<div class="proof definition admonition" id="butcher-tableau-definition">
-<p class="admonition-title"><span class="caption-number">Definition 2.2 </span> (Butcher Tableau)</p>
-<section class="definition-content" id="proof-content">
-<p>A Butcher tableau is a table of values containing the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> for a Runge-Kutta method</p>
+<p>Runge-Kutta methods are often summarised in a <strong>Butcher tableau</strong> named after the New Zealand mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/John_C._Butcher">John Butcher</a>. A Butcher tableau is a table of values containing the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> for a Runge-Kutta method</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{array}{c|cccc}
@@ -486,14 +462,13 @@ document.write(`
         &amp; b_1 &amp; b_2 &amp; \cdots &amp; b_s
     \end{array}
 \end{align*} \end{split}\]</div>
-</section>
-</div><p>For example, the Butcher tableau for Huen’s method (equation <a class="reference internal" href="#equation-heuns-method-equation">(2.2)</a>) is</p>
+<p>For example, the Butcher tableau for the RK2 method in equation <a class="reference internal" href="#equation-rk2-method-equation">(2.2)</a> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{array}{c|cccc}
         0 &amp;  \\ 
         1 &amp; 1 \\ \hline
-        &amp; 1/2 &amp; 1/2
+        &amp; \frac{1}{2} &amp; \frac{1}{2}
     \end{array}
 \end{align*} \end{split}\]</div>
 <div class="proof example admonition" id="butcher-tableau-example">
@@ -508,35 +483,20 @@ document.write(`
     k_3 &amp;= f(t_n + \tfrac{1}{2} h, y_n + \tfrac{1}{2} h k_2 ), \\
     k_4 &amp;= f(t_n + h, y_n + h k_3).
 \end{align*} \end{split}\]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The general form of a 4-stage Runge-Kutta method is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    y_{n+1} &amp;= y_n + h(b_1 k_1 + b_2 k_2 + b_3 k_3 + b_4 k_4), \\
-    k_1 &amp;= f(t_n + c_1 h, y_n + h(a_{11}k_1 + a_{12}k_2 + a_{13}k_3 + a_{14}k_4)), \\
-    k_2 &amp;= f(t_n + c_2 h, y_n + h(a_{21}k_1 + a_{22}k_2 + a_{23}k_3 + a_{24}k_4)), \\
-    k_3 &amp;= f(t_n + c_3 h, y_n + h(a_{31}k_1 + a_{32}k_2 + a_{33}k_3 + a_{34}k_4)), \\
-    k_4 &amp;= f(t_n + c_4 h, y_n + h(a_{41}k_1 + a_{42}k_2 + a_{43}k_3 + a_{44}k_4)).
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Comparing the Runge-Kutta method above to the general form of a 4-stage Runge-Kutta method we can see that the Butcher tableau is</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Comparing the Runge-Kutta method above to the general form of a 4-stage Runge-Kutta method we can see that the Butcher tableau is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{array}{c|cc}
         0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-        1/2 &amp; 1/2 &amp; 0 &amp; 0 &amp; 0 \\
-        1/2 &amp; 0 &amp; 1/2 &amp; 0 &amp; 0 \\
+        \frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 0 &amp; 0 \\
+        \frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0 &amp; 0 \\
         1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ \hline
-        &amp; 1/6 &amp; 1/3 &amp; 1/3 &amp; 1/6
+        &amp; \frac{1}{6} &amp; \frac{1}{3} &amp; \frac{1}{3} &amp; \frac{1}{6}
     \end{array}
 \end{align*} \end{split}\]</div>
-</div>
-</details></section>
+</section>
 </div></section>
 </section>
 <section id="explicit-and-implicit-runge-kutta-methods">
@@ -550,7 +510,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
     k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{ss} k_s )).
 \end{align*} \end{split}\]</div>
 <p>In the first equation we are calculating <span class="math notranslate nohighlight">\(k_1\)</span> includes <span class="math notranslate nohighlight">\(k_1\)</span> on the right-hand side and in the second equation we are calculating <span class="math notranslate nohighlight">\(k_2\)</span> includes <span class="math notranslate nohighlight">\(k_2\)</span> on the right-hand side and so on. These are examples of <a href="https://en.wikipedia.org/wiki/Implicit_function" target="_blank"><strong>implicit functions</strong></a> and Runge-Kutta methods where the stage values are expressed using implicit functions are known as <strong>Implicit Runge-Kutta (IRK)</strong> methods. To calculate the solution of the stage values of an IRK method involves solving a system of equations (<a class="reference internal" href="3.0_IRKs.html#irk-chapter"><span class="std std-ref">see Implicit Runge-Kutta Methods</span></a>).</p>
-<p>If the summation in the stage value <span class="math notranslate nohighlight">\(k_i\)</span> in equation <a class="reference internal" href="#equation-rk-equation">(2.1)</a> is altered so the upper limit to the sum is <span class="math notranslate nohighlight">\(i-1\)</span>, i.e.,</p>
+<p>If the summation in the stage value <span class="math notranslate nohighlight">\(k_i\)</span> in equation <a class="reference internal" href="#equation-general-rk-equation">(2.1)</a> is altered so the upper limit to the sum is <span class="math notranslate nohighlight">\(i-1\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     k_i = f(t_n + c_i h,y_n + h\sum_{j=1}^{i-1} a_{ij} k_j)
@@ -644,7 +604,7 @@ Implicit Runge-Kutta method</div>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="1.6_ODEs_exercises.html"
+       href="1.5_ODEs_exercises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

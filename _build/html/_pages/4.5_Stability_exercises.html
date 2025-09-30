@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>4.5. Stability exercises &#8212; Runge-Kutta Methods</title>
+    <title>4.6. Stability exercises &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -64,7 +64,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/4.5_Stability_exercises';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/4.5_Stability_exercises.html" />
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5. Boundary Value Problems" href="5.0_BVPs.html" />
-    <link rel="prev" title="4.4. Stability functions of implicit methods" href="4.3_IRK_stability_function.html" />
+    <link rel="prev" title="4.5. A-stability" href="4.4_A_stability.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -166,41 +172,41 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -224,20 +230,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
     </div>
@@ -292,7 +288,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/_pages/4.5_Stability_exercises.md" target="_blank"
+      <li><a href="../_sources/_pages/4.5_Stability_exercises.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -387,8 +383,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="stability-exercises">
-<span id="stability-exercises-section"></span><h1><span class="section-number">4.5. </span>Stability exercises<a class="headerlink" href="#stability-exercises" title="Permalink to this heading">#</a></h1>
-<p>Answer the following exercises based on the content from this chapter. The solutions can be found in the <a class="reference internal" href="A.4_Stability_solutions.html#stability-solutions-section"><span class="std std-ref">appendices</span></a>.</p>
+<span id="stability-exercises-section"></span><h1><span class="section-number">4.6. </span>Stability exercises<a class="headerlink" href="#stability-exercises" title="Permalink to this heading">#</a></h1>
 <div class="exercise admonition" id="ch4-ex-erk-stability-function">
 
 <p class="admonition-title"><span class="caption-number">Exercise 4.1 </span></p>
@@ -396,14 +391,24 @@ document.write(`
 <p>Determine the stability function of the following Runge-Kutta method</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|ccccc}
-    0 &amp;  &amp;  &amp;  &amp;  &amp; \\
-    1/4 &amp; 1/4 &amp;  &amp;  &amp;  &amp; \\
-    1/2 &amp; 1/2 &amp; 0 &amp;  &amp;  &amp; \\
-    3/4 &amp; 0 &amp; 1/2 &amp; 1/4 &amp;  &amp;    \\
-    0 &amp; 0 &amp; 1/6 &amp; -1/3 &amp; 1/6 &amp; \\ \hline
-    &amp; -1 &amp; 2/3 &amp; -1/3 &amp; 2/3 &amp; 1
+    0 &amp; 0 &amp;  &amp;  &amp;  &amp; \\
+    \frac{1}{4} &amp; \frac{1}{4} &amp;  &amp;  &amp;  &amp; \\
+    \frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp;  &amp;  &amp; \\
+    3/4 &amp; 0 &amp; \frac{1}{2} &amp; \frac{1}{4} &amp;  &amp;    \\
+    0 &amp; 0 &amp; \frac{1}{6} &amp; -\frac{1}{3} &amp; \frac{1}{6} &amp; \\ \hline
+    &amp; -1 &amp; \frac{2}{3} &amp; -\frac{1}{3} &amp; \frac{2}{3} &amp; 1
 \end{array} \end{split}\]</div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[ R(z) = 1 + z + \frac{1}{2}z + \frac{1}{6}z^3 + \frac{1}{24}z^4 \]</div>
+</div>
+</details></section>
 </div>
 <div class="exercise admonition" id="ch4-ex-irk-stability-function">
 
@@ -412,24 +417,49 @@ document.write(`
 <p>Determine the stability function of the following Runge-Kutta method. Is this an A-stable method?</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cc}
-    1/4 &amp; 7/24 &amp; -1/24\\
-    3/4 &amp; 13/24 &amp; 5/24\\ \hline
-    &amp; 1/2 &amp; 1/2
+    \frac{1}{4} &amp; \frac{7}{24} &amp; -\frac{1}{24} \\
+    \frac{3}{4} &amp; \frac{13}{24} &amp; \frac{5}{24} \\ \hline
+    &amp; \frac{1}{2} &amp; \frac{1}{2}
 \end{array} \end{split}\]</div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[R(z) = \frac{1 + \frac{1}{2}z + \frac{1}{12}z^2}{1 - \frac{1}{2}z + \frac{1}{12}z^2}\]</div>
+<p class="sd-card-text">The roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> are <span class="math notranslate nohighlight">\(3 \pm \sqrt{3}i\)</span> and <span class="math notranslate nohighlight">\(E(y) = 0\)</span> so this is an A-stable method.</p>
+</div>
+</details></section>
 </div>
 <div class="exercise admonition" id="ch2-ex-dirk-stability-function">
 
 <p class="admonition-title"><span class="caption-number">Exercise 4.3 </span></p>
 <section id="exercise-content">
-<p>Plot the region of absolute stability for the following Runge-Kutta method.</p>
+<p>Plot the region of absolute stability for the fourth-order Gauss-Legendre method. What does your plot suggest about the method?</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cc}
-    1/3 &amp; 1/3 &amp; 0\\
-    1 &amp; 1 &amp; 0\\ \hline
-    &amp; 3/4 &amp; 1/4
+    \frac{1}{2} - \frac{\sqrt{3}}{6} &amp; \frac{1}{4} &amp; \frac{1}{4} - \frac{\sqrt{3}}{6} \\
+    \frac{1}{2} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4} \\ \hline
+    &amp; \frac{1}{2} &amp; \frac{1}{2}
 \end{array} \end{split}\]</div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[R(z) = \frac{1 + \frac{1}{2}z + \frac{1}{12}z^2}{1 - \frac{1}{2}z + \frac{1}{12}z^2}\]</div>
+<figure class="align-default">
+<img alt="../_images/bd7bb7f07930be83986271f00bd143468b19b6c2960cbe7678aa62b18101c0ae.png" src="../_images/bd7bb7f07930be83986271f00bd143468b19b6c2960cbe7678aa62b18101c0ae.png" />
+</figure>
+<p class="sd-card-text">This is an A-stable method.</p>
+</div>
+</details></section>
 </div>
 <div class="exercise admonition" id="ch4-ex-stiffness-ratio">
 
@@ -438,11 +468,25 @@ document.write(`
 <p>Calculate the stiffness ratio for the following system of ODEs.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    y_1' &amp;= -80.6 y_1 + 119.4 y_2,\\
-    y_2' &amp;= 79.6 y_1 - 120.4 y_2.
+    y_1' &amp;= -20y_1 + y_2, \\
+    y_2' &amp;= 500 y_2.
 \end{align*}\]</div>
-<p>What are the maximum step lengths that the Euler method is stable for solving each equation?</p>
-</section>
+<p>For the Euler method with step size <span class="math notranslate nohighlight">\(h = 0.05\)</span>, test the stability against both of the Eigenvalues of this system.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = -20\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = -500\)</span> so the stiffness ratio is</p>
+<div class="math notranslate nohighlight">
+\[ S = \frac{-500}{-20} = 25. \]</div>
+<p class="sd-card-text">The stability function for the Euler method is <span class="math notranslate nohighlight">\(R(z) = 1 + z = 1 + h \lambda\)</span>. For stability, <span class="math notranslate nohighlight">\(|1 + h \lambda| \leq 1\)</span>.</p>
+<p class="sd-card-text">For <span class="math notranslate nohighlight">\(\lambda_1\)</span>, <span class="math notranslate nohighlight">\(|R(-25 h)| = |1 - 25(0.05)| = 0 &lt; 1\)</span> so is stable.</p>
+<p class="sd-card-text">For <span class="math notranslate nohighlight">\(\lambda_2\)</span>, <span class="math notranslate nohighlight">\(|R(-500 h)| = |1 - 500(0.05)| = 24 &gt; 1\)</span> so is unstable.</p>
+</div>
+</details></section>
 </div>
 </section>
 
@@ -478,12 +522,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="4.3_IRK_stability_function.html"
+       href="4.4_A_stability.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.4. </span>Stability functions of implicit methods</p>
+        <p class="prev-next-title"><span class="section-number">4.5. </span>A-stability</p>
       </div>
     </a>
     <a class="right-next"

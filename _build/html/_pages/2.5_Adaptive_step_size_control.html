@@ -64,15 +64,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/2.5_Adaptive_step_size_control';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/2.5_Adaptive_step_size_control.html" />
     <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.8. Explicit Runge-Kutta Methods Exercises" href="2.6_ERK_exercises.html" />
-    <link rel="prev" title="2.6. Solving initial value problems using explicit Runge-Kutta methods" href="2.4_Solving_IVPs_using_ERK_methods.html" />
+    <link rel="next" title="2.8. Explicit Runge-Kutta Methods Exercises" href="2.7_ERK_exercises.html" />
+    <link rel="prev" title="2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods" href="2.4_Solving_IVPs_using_ERK_methods.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -166,41 +172,41 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -224,20 +230,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
     </div>
@@ -384,9 +380,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-new-step-length">2.7.1. Calculating the new step length</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-runge-kutta-methods">2.7.2. Embedded Runge-Kutta methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">2.7.3. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absolute-and-relative-tolerances">2.7.1. Absolute and relative tolerances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-new-step-length">2.7.2. Calculating the new step length</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-runge-kutta-methods">2.7.3. Embedded Runge-Kutta methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">2.7.4. Code</a></li>
 </ul>
             </nav>
         </div>
@@ -400,17 +397,46 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="adaptive-step-size-control">
 <span id="adaptive-step-size-control-section"></span><h1><span class="section-number">2.7. </span>Adaptive step size control<a class="headerlink" href="#adaptive-step-size-control" title="Permalink to this heading">#</a></h1>
-<p>The implementations of the Runge-Kutta methods that we have used previously in this chapter have used a constant value of the step length <span class="math notranslate nohighlight">\(h\)</span>. Using a fixed step length does not allow the method to take advantage of increasing <span class="math notranslate nohighlight">\(h\)</span> where the behaviour of the solution allows. Adaptive step size control is a method that attempts to control the value of <span class="math notranslate nohighlight">\(h\)</span> based on accuracy requirements. The accuracy of the approximation to the solution to the ODE is dependent upon three factors:</p>
+<p>The implementations of the Runge-Kutta methods that we have used previously in this chapter have used a constant value of the step length <span class="math notranslate nohighlight">\(h\)</span>. Using a fixed step length does not allow the method to take advantage of increasing the step length where the behaviour of the solution allows. Adaptive step size control is a method that attempts to control the value of the step length based on accuracy requirements. The accuracy of the approximation to the solution to the ODE is dependent upon three factors</p>
 <ul class="simple">
 <li><p>the order of accuracy of the computational method;</p></li>
-<li><p>the size of the step length h used to advance the solution;</p></li>
+<li><p>the size of the step length used to advance the solution;</p></li>
 <li><p>the behaviour of the solution.</p></li>
 </ul>
-<p>Improving the order of accuracy of the method is often not straightforward and can place restrictions on the applicability of the method. Reducing the step length used will improve the accuracy of the approximation but since more steps are required to advance through the domain, this will increase the computational cost. The behaviour of the solution will have an affect on the accuracy of the approximation because computational methods are more accurate where the solution is slowly varying and less accurate where there are rapid variations in the solution.</p>
-<p>With adaptive step size control we compute two solutions of the ODE over a single step using a step length <span class="math notranslate nohighlight">\(h\)</span> using an order <span class="math notranslate nohighlight">\(p\)</span> method and an order <span class="math notranslate nohighlight">\(p+1\)</span> method and calculate the difference between the two solutions. If this difference is less than a desired accuracy we say that the step has <strong>succeeded</strong> else we say that the step has <strong>failed</strong>. If the step was successful we increase <span class="math notranslate nohighlight">\(h\)</span> and move to the next step. If the step had failed we decrease <span class="math notranslate nohighlight">\(h\)</span> and repeat the same step.</p>
+<p>Improving the order of accuracy of the method is often not straightforward and can place restrictions on the applicability of the method. Reducing the step length used will improve the accuracy of the approximation but since more steps are required to advance through the domain, this will increase the computational cost. The behaviour of the solution will have an effect on the accuracy of the approximation because computational methods are more accurate where the solution is slowly varying and less accurate where there are rapid variations in the solution.</p>
+<p>For each step of the algorithm we compute two solutions of order <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(p+1\)</span> and calculate the difference between the two solutions. If this difference is within a desired accuracy tolerance, then the step is considered to be <strong>successful</strong> and the algorithm proceeds onto the next step and the step length is increased. If this is not the case then the step is considered to have <strong>failed</strong> and is repeated using a smaller step length.</p>
+<hr class="docutils" />
+<section id="absolute-and-relative-tolerances">
+<h2><span class="section-number">2.7.1. </span>Absolute and relative tolerances<a class="headerlink" href="#absolute-and-relative-tolerances" title="Permalink to this heading">#</a></h2>
+<p>When determining whether a solution step is accurate enough we need to consider the size of the values involved. Consider the case where we are applying a population model where the solution values are expected to be large. Let’s say that the solutions for a step are <span class="math notranslate nohighlight">\(y^{(p)} = 1000000\)</span> for the order <span class="math notranslate nohighlight">\(p\)</span> method and <span class="math notranslate nohighlight">\(y^{(p+1)} = 1000100\)</span> for the order <span class="math notranslate nohighlight">\(p + 1\)</span> method. If we were to use the <strong>absolute difference</strong> the two solutions then we have</p>
+<div class="math notranslate nohighlight">
+\[ \textsf{absolute difference} = | y^{(p+1)} - y^{(p)} | = | 1000100 - 1000000 | = 100. \]</div>
+<p>So if we set our accuracy tolerance to <span class="math notranslate nohighlight">\(10^{-3}\)</span> the step would consider to have failed and we would repeat the step. However, if we calculate the difference between <span class="math notranslate nohighlight">\(y^{(p+1)}\)</span> relative to <span class="math notranslate nohighlight">\(y^{(p)}\)</span>, known as the <strong>relative difference</strong>, we have</p>
+<div class="math notranslate nohighlight">
+\[ \textsf{relative difference} = \frac{|y^{(p+1)} - y^{(p)}|}{|y^{(p)}|} = \frac{|1000100 - 1000000|}{|1000000|} = 10^{-4}, \]</div>
+<p>which is less than <span class="math notranslate nohighlight">\(10^{-3}\)</span> and the step would consider to be successful.</p>
+<p>Now consider a case where we are applying a chemical kinetics model where the solution values are expected to be very small. If the solutions for a step are <span class="math notranslate nohighlight">\(y^{(p)} = 1 \times 10^{-6}\)</span> and <span class="math notranslate nohighlight">\(y^{(p+1)} = 2\times 10^{-6}\)</span> then relative difference is</p>
+<div class="math notranslate nohighlight">
+\[ \textsf{relative difference} = | y^{(p+1)} - y^{(p)} | = \frac{| 2\times 10^{-6} - 1 \times 10^{-6} |}{|1 \times 10^{-6}|} = 1, \]</div>
+<p>which is a lot greater than the accuracy tolerance of <span class="math notranslate nohighlight">\(10^{-3}\)</span> and the step would consider to have failed. But the absolute difference is</p>
+<div class="math notranslate nohighlight">
+\[ \textsf{absolute difference} = | y^{(p+1)} - y^{(p)} | = | 2\times 10^{-6} - 1 \times 10^{-6} | = 10^{-6}, \]</div>
+<p>which is a lot less than the accuracy tolerance and the step would consider to be successful.</p>
+<p>So when the values of the solution are large we use the relative difference between the two solutions, and when the values of the solution are small we use the absolute difference. But we want an algorithm that can deal with both cases. To do this we use two accuracy tolerances, <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span> for the absolute and relative differences respectively such that <span class="math notranslate nohighlight">\(atol &lt; rtol\)</span>, and compare the absolute difference between the two solutions so that a step is considered to have been successful if</p>
+<div class="math notranslate nohighlight">
+\[ |y^{(p+1)} - y^{(p)}| &lt; atol + rtol \cdot |y^{(p+1)}|. \]</div>
+<p>Using <span class="math notranslate nohighlight">\(atol = 10^{-6}\)</span> and <span class="math notranslate nohighlight">\(rtol = 10^{-3}\)</span> for the population model example we have</p>
+<div class="math notranslate nohighlight">
+\[ atol + rtol \cdot |y^{(p+1)}| = 10^{-6} + 10^{-3} \cdot |1000100| = 1000.100001. \]</div>
+<p>Since <span class="math notranslate nohighlight">\(100 &lt; 1000.100001\)</span> the step is considered to be successful. Alternatively, for the chemical kinetics example we have</p>
+<div class="math notranslate nohighlight">
+\[ atol + rtol \cdot |y^{(p+1)}| = 10^{-6} + 10^{-3} \cdot |2\times 10^{-6}| = 1.002\times 10^{-6}, \]</div>
+<p>and since <span class="math notranslate nohighlight">\(10^{-6} &lt; 1.002\times 10^{-6}\)</span> the step is considered to be successful.</p>
+</section>
+<hr class="docutils" />
 <section id="calculating-the-new-step-length">
-<h2><span class="section-number">2.7.1. </span>Calculating the new step length<a class="headerlink" href="#calculating-the-new-step-length" title="Permalink to this heading">#</a></h2>
-<p>At each step in the method we will be adjusting the value of the step length <span class="math notranslate nohighlight">\(h\)</span>. If a step has failed we want to reduce the value of <span class="math notranslate nohighlight">\(h\)</span> so that the solution using the <span class="math notranslate nohighlight">\(p\)</span> order method is more accurate and therefore closer to the <span class="math notranslate nohighlight">\(p+1\)</span> order solution. If a step has succeeded this indicates the the step length used could have been larger so we want to increase <span class="math notranslate nohighlight">\(h\)</span> but not too much as to result in a failed step in the next step.</p>
+<h2><span class="section-number">2.7.2. </span>Calculating the new step length<a class="headerlink" href="#calculating-the-new-step-length" title="Permalink to this heading">#</a></h2>
+<p>At each step in the method we will be adjusting the value of the step length. If a step has failed we want to reduce the value of the step length so that the solution is more accurate. If a step is successful this indicates the step length used could have been larger, so we want to increase it but not too much as to result in a failed step in the next step.</p>
 <p>Let <span class="math notranslate nohighlight">\(y^{(p)}\)</span> and <span class="math notranslate nohighlight">\(y^{(p+1)}\)</span> denote the numerical solutions calculated using the order <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(p+1\)</span> method respectively and <span class="math notranslate nohighlight">\(y\)</span> denote the exact solution then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -434,14 +460,18 @@ document.write(`
 \[\begin{split} \begin{align*}
     \frac{Ch_{new}^{p+1}}{Ch^{p+1}} &amp;= \frac{tol}{\Delta} \\
     r^{p+1} &amp;= \frac{tol}{\Delta} \\
-    r &amp;= \left( \frac{tol}{\Delta} \right)^{1/(p+1)}.
+    r &amp;= \left( \frac{tol}{\Delta} \right)^{\frac{1}{p+1}}.
 \end{align*} \end{split}\]</div>
-<p>If <span class="math notranslate nohighlight">\(\Delta &gt; tol\)</span> then we need to recalculate the current step which incurs additional computational cost. To guard against this as much as possible a <em>safety factor</em> is usually introduced into the computation. If <span class="math notranslate nohighlight">\(h_{new}\)</span> is the estimated step size to to give <span class="math notranslate nohighlight">\(\Delta = tol\)</span> then some smaller value, such as <span class="math notranslate nohighlight">\(0.9r\)</span> is typically used instead. Another consideration is that for robustness we do not want the step length to change too much from one step to the next so we limit <span class="math notranslate nohighlight">\(r\)</span> so that it is in the range <span class="math notranslate nohighlight">\([\frac{1}{2}, 2]\)</span>, i.e.,</p>
+<p>So when <span class="math notranslate nohighlight">\(\Delta &lt; tol\)</span>, <span class="math notranslate nohighlight">\(r &lt; 1\)</span> and the step length is decreased, and when <span class="math notranslate nohighlight">\(\Delta &gt; tol\)</span>, <span class="math notranslate nohighlight">\(r &gt; 1\)</span> and the step length is increased. To prevent the step length being decreased too much we limit the value of <span class="math notranslate nohighlight">\(r\)</span> to 0.1 so that the step length is decreased by a maximum of one tenth each step (the value of 0.1 is arbitrary). Also, we limit the amount by which the step length is increased by a <em>safety factor</em> of 0.8 to prevent the future step failing.</p>
 <div class="math notranslate nohighlight">
-\[ r = \max\left(0.5, \min \left(2, 0.9 \left( \dfrac{tol}{\Delta} \right) ^{1/(p+1)} \right) \right). \]</div>
+\[ r = \max\left(0.1, 0.8 \left( \dfrac{tol}{\Delta} \right)^{\frac{1}{p+1}} \right). \]</div>
+<p>We can use the value of <span class="math notranslate nohighlight">\(rtol\)</span> to give us an approximation for the initial value of <span class="math notranslate nohighlight">\(h\)</span></p>
+<div class="math notranslate nohighlight">
+\[ h = 0.8 \cdot rtol ^ {^\frac{1}{p+1}}. \]</div>
 </section>
+<hr class="docutils" />
 <section id="embedded-runge-kutta-methods">
-<h2><span class="section-number">2.7.2. </span>Embedded Runge-Kutta methods<a class="headerlink" href="#embedded-runge-kutta-methods" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.7.3. </span>Embedded Runge-Kutta methods<a class="headerlink" href="#embedded-runge-kutta-methods" title="Permalink to this heading">#</a></h2>
 <p>German mathematician Erwin Fehlberg (1911 - 1990) derived a Runge-Kutta method where different weightings applied to the stage values can result in a method of fourth or fifth-order without having to repeat the calculations of the ODE function. Since Fehlberg’s original method, several other Runge-Kutta methods that use the same stage values for producing solutions of different orders have been suggested and these methods are known as <a href="https://en.wikipedia.org/wiki/List_of_Runge%E2%80%93Kutta_methods#Embedded_methods" target="_blank"><strong>embedded Runge-Kutta methods</strong></a>.</p>
 <p>The Butcher tableau for an embedded Runge-Kutta method takes the form</p>
 <div class="math notranslate nohighlight">
@@ -462,9 +492,25 @@ document.write(`
     y_{n+1}^{(p+1)} &amp;= y_n + h (b_1 k_1 + b_2 k_2 + \cdots + b_s k_s), \\
     y_{n+1}^{(p)} &amp;= y_n + h (b_1^* k_1 + b_2^* k_2 + \cdots + b_s^* k_s),
 \end{align*} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(k_i\)</span> are the same for both equations. Some common embedded methods are defined below.</p>
-<div class="proof definition admonition" id="fehlbergs-method-equation">
-<p class="admonition-title"><span class="caption-number">Definition 2.8 </span> (Fehlberg’s order 4(5) Runge-Kutta method (RKF45))</p>
+<p>where <span class="math notranslate nohighlight">\(k_i\)</span> are the same for both equations. Examples of embedded Runge-Kutta methods are the Bogacki-Shampine 3(2) method and Fehlberg’s 5(4) method.</p>
+<div class="proof definition admonition" id="bogacki-shampine-equation">
+<p class="admonition-title"><span class="caption-number">Definition 2.3 </span> (Bogacki-Shampine 3(2) Runge-Kutta method (RK23))</p>
+<section class="definition-content" id="proof-content">
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{array}{c|cccc}
+        0 &amp; \\
+        1/2 &amp; 1/2 \\
+        3/4 &amp; 0 &amp; 3/4 \\
+        1 &amp; 2/9 &amp; 1/3 &amp; 4/9 \\ \hline
+        &amp; 2/9 &amp; 1/3 &amp; 4/9 &amp; 0 \\
+        &amp; 7/24 &amp; 1/4 &amp; 1/3 &amp; 1/8
+    \end{array}
+\end{align*} \end{split}\]</div>
+<p><span id="id1">Bogacki and Shampine [<a class="reference internal" href="E_References.html#id15" title="Przemyslaw Bogacki and Lawrence F Shampine. A 3(2) pair of runge-kutta formulas. Applied Mathematics Letters, 2(4):321–325, 1989.">1989</a>]</span></p>
+</section>
+</div><div class="proof definition admonition" id="fehlbergs-method-equation">
+<p class="admonition-title"><span class="caption-number">Definition 2.4 </span> (Fehlberg’s order 5(4) Runge-Kutta method (RKF45))</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cccccc}
@@ -477,353 +523,163 @@ document.write(`
     &amp; 16/135 &amp; 0 &amp; 6656/12825 &amp; 28561/56430 &amp; -9/50 &amp; 2/55 \\
     &amp; 25/216 &amp; 0 &amp; 1408/2565 &amp; 2197/4104 &amp; -1/5 &amp; 0 
 \end{array} \end{split}\]</div>
-<p><span id="id1">Fehlberg [<a class="reference internal" href="D_References.html#id8" title="E. Fehlberg. Klassische runge-kutta-formeln fünfter und siebenter ordnung mit schrittweiten-kontrolle (classical runge-kutta formulas of fifth and seventh order with step size control). Computing, 1969.">1969</a>]</span></p>
-</section>
-</div><div class="proof definition admonition" id="cash-karp-method-equation">
-<p class="admonition-title"><span class="caption-number">Definition 2.9 </span> (Cash-Karp order 4(5) Runge-Kutta method (RKCK45))</p>
-<section class="definition-content" id="proof-content">
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{array}{c|cccccc}
-    0 &amp; 0 \\
-    1/5 &amp; 1/5 \\
-    3/10 &amp; 3/40 &amp; 9/40 \\
-    3/5 &amp; 3/10 &amp; -9/10 &amp; 6/5 \\
-    1 &amp; -11/54 &amp; 5/2 &amp; -70/27 &amp; 35/27 \\
-    7/8 &amp; 1631/55296 &amp; 175/512 &amp; 575/13824 &amp; 44275/110592 &amp; 253/4096 \\ \hline
-    &amp; 37/378 &amp; 0 &amp; 250/621 &amp; 125/594 &amp; 0 &amp; 512/1771 \\
-    &amp; 2825/27648 &amp; 0 &amp; 18575/48384 &amp; 13525/55296 &amp; 277/14336 &amp; 1/4
-\end{array} \end{split}\]</div>
-<p><span id="id2">Cash and Karp [<a class="reference internal" href="D_References.html#id9" title="J.R. Cash and A.H. Karp. A variable order runge-kutta method for initial value problems with rapidly varying right-hand sides. ACM Transactions on Mathematical Software, (16):201 - 222, 1990.">1990</a>]</span></p>
+<p><span id="id2">Fehlberg [<a class="reference internal" href="E_References.html#id10" title="E. Fehlberg. Klassische runge-kutta-formeln fünfter und siebenter ordnung mit schrittweiten-kontrolle (classical runge-kutta formulas of fifth and seventh order with step size control). Computing, 1969.">1969</a>]</span></p>
 </section>
 </div><div class="proof algorithm admonition" id="step-size-control-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 2.2 </span> (Solving an IVP using a single step method with adaptive step size control)</p>
 <section class="algorithm-content" id="proof-content">
-<p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\vec{y}' = f(t,\vec{y})\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span>, a vector of initial values <span class="math notranslate nohighlight">\(\vec{y}(t_{\min})\)</span> an initial value of the step length <span class="math notranslate nohighlight">\(h\)</span> and a desired accuracy tolerance <span class="math notranslate nohighlight">\(tol\)</span>.</p>
-<p><strong>Outputs</strong> <span class="math notranslate nohighlight">\(\vec{t}\)</span> and <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p>
+<p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t,\mathbf{y})\)</span>, the domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, the initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = \mathbf{y}_0\)</span>, and desired accuracy tolerances <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span>.</p>
+<p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span>.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(t_0 \gets t_{\min}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\vec{y}_0 \gets \vec{y}(t_{\min})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h \gets 0.8 \cdot rtol^{^\frac{1}{p+1}}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(n \gets 0\)</span></p></li>
-<li><p>While <span class="math notranslate nohighlight">\(t_n &lt; t_{\max}\)</span></p>
+<li><p>While <span class="math notranslate nohighlight">\(t_n &lt; b\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(h \gets \min(h, t_{\max} - t_{n})\)</span></p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\(\vec{y}^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(\vec{y}^{(p)}\)</span> solutions</p></li>
-<li><p><span class="math notranslate nohighlight">\(\Delta \gets  \max | \vec{y}^{(p+1)} - \vec{y}^{(p)} |\)</span></p></li>
+<li><p>Calculate the <span class="math notranslate nohighlight">\(\mathbf{y}^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}^{(p)}\)</span> solutions</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta \gets \| \mathbf{y}^{(p+1)} - \mathbf{y}^{(p)} \|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(tol \gets atol + rtol \cdot \min (| \mathbf{y}^{(p+1)} |)\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\Delta &lt; tol\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\vec{y}_{n+1} \gets \textbf{y}^{(p+1)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{y}_{n+1} \gets \mathbf{y}^{(p+1)}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(t_{n+1} \gets t_n + h\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(n \gets n + 1\)</span></p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(h \gets \max\left(0.5, \min \left(2, 0.9 \left( \dfrac{tol}{\Delta} \right) ^{1/(p+1)} \right) \right)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r \gets \max \left(0.1, 0.8 \left( \dfrac{tol}{\Delta} \right) ^{1/(p+1)} \right)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h \gets \min(h, t_{\max} - t_n)\)</span></p></li>
 </ul>
 </li>
-<li><p>Return <span class="math notranslate nohighlight">\((t_0, t_1, \ldots, t_n)\)</span> and <span class="math notranslate nohighlight">\((\vec{y}_0, \vec{y}_1, \ldots, \vec{y}_n)\)</span></p></li>
+<li><p>Return <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span></p></li>
 </ul>
 </section>
 </div><div class="proof example admonition" id="embedded-rk-example">
 <p class="admonition-title"><span class="caption-number">Example 2.8 </span></p>
 <section class="example-content" id="proof-content">
-<p>The Bogacki-Shampine 2(3) embedded Runge-Kutta method has the Butcher tableau</p>
+<p>Use Bogacki-Shampine method to solve the following IVP using accuracy tolerances of <span class="math notranslate nohighlight">\(atol = 10^{-6}\)</span> and <span class="math notranslate nohighlight">\(rtol = 10^{-3}\)</span></p>
+<div class="math notranslate nohighlight">
+\[ y' = e^{t - y \sin(y)}, \qquad t \in [0, 5], \qquad y(0) = 0.\]</div>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Here <span class="math notranslate nohighlight">\(f(t, y) = e^{t - y\sin(y)}\)</span>, <span class="math notranslate nohighlight">\(t= 0\)</span> and <span class="math notranslate nohighlight">\(y_0 = 0\)</span>. Calculating the initial step length gives</p>
+<div class="math notranslate nohighlight">
+\[ h = 0.8 (rtol)^{^\frac{1}{3}} = 0.8(10^{-3})^{^\frac{1}{3}} = 0.8.\]</div>
+<p>Calculating the first step of the Bogacki-Shampine 3(2) method gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \begin{array}{c|cccc}
-        0 &amp; \\
-        1/2 &amp; 1/2 \\
-        3/4 &amp; 0 &amp; 3/4 \\
-        1 &amp; 2/9 &amp; 1/3 &amp; 4/9 \\ \hline
-        &amp; 2/9 &amp; 1/3 &amp; 4/9 &amp; 0 \\
-        &amp; 7/24 &amp; 1/4 &amp; 1/3 &amp; 1/8
-    \end{array}
+    y^{(3)} &amp;= 0.083096, \\
+    y^{(2)} &amp;= 0.083081.
 \end{align*} \end{split}\]</div>
-<p>where the first row of <span class="math notranslate nohighlight">\(b\)</span> values gives a third-order method and the second row gives a second-order method. Compute the first step of the Bogacki-Shampine method for the following initial value problem using an initial step length of <span class="math notranslate nohighlight">\(h_0 = 0.1\)</span> and an accuracy tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span></p>
-<div class="math notranslate nohighlight">
-\[ y' = -21 y + e^{-t}, \qquad t \in [0, 1], \qquad y(0) = 0.\]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Calculating the stage values</p>
+<p>Calculate <span class="math notranslate nohighlight">\(\Delta\)</span> and <span class="math notranslate nohighlight">\(tol\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    k_1 &amp;= f(t_0, y_0) 
-    = -21 y_0 + e^{-t_0} \\
-    &amp;= -21(0) + e^{-0} = 1, \\
-    k_2 &amp;= f(t_0 + \tfrac{1}{2}h, y_0 + \tfrac{1}{2}hk_1) 
-    = -21 (y_0 + \tfrac{1}{2}hk_1 ) + e^{-(t_0 + \tfrac{1}{2}h)}\\
-    &amp;= -21(0 + \tfrac{1}{2}(0.1)(1)) + e^{-(0 + \tfrac{1}{2}(0.1))} \\
-    &amp;= -0.098771, \\
-    k_3 &amp;= f(t_0 + \tfrac{3}{4}h, y_0 + \tfrac{3}{4}hk_2) 
-    = -21 (y_0 + \tfrac{3}{4}hk_2) + e^{-(t_0 + \tfrac{3}{4}h)}\\
-    &amp;= -21(0 + \tfrac{3}{4}(0.1)(-0.098771)) + e^{-(0 + \tfrac{3}{4}(0.1))} \\
-    &amp;= 1.083307, \\
-    k_4 &amp;= f(t_0 + h, y_0 + h(\tfrac{2}{9} k_1 + \tfrac{1}{3} k_2 + \tfrac{4}{9} k_3))  \\
-    &amp;= -21 (y_0 + h(\tfrac{2}{9} k_1 + \tfrac{1}{3} k_2 + \tfrac{4}{9} k_3)) + e^{-(t_0 + h)}\\
-    &amp;= -21(0 + 0.1(\tfrac{2}{9}(1) + \tfrac{1}{3}(-0.098771) + \tfrac{4}{9}(1.083307))) + e^{-(0 + 0.1)} \\
-    &amp;= -0.503777.
+    \Delta &amp;= \| y^{(3)} - y^{(2)} \| = 0.083096 - 0.083081 = 1.563 \times 10^{-5}, \\
+    tol &amp;= atol + rtol \cdot \|y^{(3)}\| = 10^{-6} + 10^{-3}(0.083096) = 8.410 \times 10^{-5},
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(y^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(y^{(p)}\)</span></p>
+<p>so <span class="math notranslate nohighlight">\(\Delta &lt; tol\)</span> and the step has been successful. Calculating the new value of <span class="math notranslate nohighlight">\(h\)</span></p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    y^{(p+1)} &amp;= y_0 + \frac{h}{9}(2 k_1 + 3k_2 + 4 k_3) \\
-    &amp;= 0 + \frac{0.1}{9}(2 (1) + 3(-0.098771) + 4 (1.083307)) \\
-    &amp;= 0.067077, \\
-    y^{(p)} &amp;= y_0 + \frac{h}{24} (7k_1 + 6 k_2 + 8 k_3 + 3 k_4) \\
-    &amp;= 0 + \frac{0.1}{24} (7 (1) + 6(-0.098771) + 8(1.083307) + 3(-0.503777)) \\
-    &amp;= 0.056510.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(\Delta\)</span></p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*} 
-    \Delta &amp;= | y^{(p+1)} - y^{(p)} | = | 0.067077 - 0.056510 | = 0.010566.
+\[ \begin{align*}
+    h = h \left( 0.1, 0.8 \left( \frac{tol}{\Delta} \right)^{^\frac{1}{3}} \right) = 0.8 \left(0.1, 0.8 \left( \frac{8.410 \times 10^{-5}}{1.563 \times 10^{-5}} \right)^{^\frac{1}{3}} \right) = 0.112145.
 \end{align*} \]</div>
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(\Delta = 0.010566 &gt; 10^{-4}\)</span> so the step has failed. Recalculating <span class="math notranslate nohighlight">\(h\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    h &amp;= 0.1 \max \left( 0.5, \min \left( 2, 0.9 \left( \frac{10^{-4}}{0.010566} \right)^{1/3} \right) \right) \\
-    &amp;= 0.1 \max ( 0.5, \min (2, 0.190373 )) \\
-    &amp;= 0.05.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculating the stage values using the new value of <span class="math notranslate nohighlight">\(h = 0.05\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    k_1 &amp;= f(t_0, y_0) 
-    = -21 y_0 + e^{-t_0} \\
-    &amp;= -21(0) + e^{-0} = 1, \\
-    k_2 &amp;= f(t_0 + \tfrac{1}{2}h, y_0 + \tfrac{1}{2}hk_1)
-    = -21 (y_0 + \tfrac{1}{2}hk_1 ) + e^{-(t_0 + \tfrac{1}{2}h)}\\
-    &amp;= -21(0 + \tfrac{1}{2}(0.05)(1)) + e^{-(0 + \tfrac{1}{2}(0.05))} \\
-    &amp;= 0.450310, \\
-    k_3 &amp;= f(t_0 + \tfrac{3}{4}h, y_0 + \tfrac{3}{4}hk_2) 
-    = -21 (y_0 + \tfrac{3}{4}hk_2) + e^{-(t_0 + \tfrac{3}{4}h)}\\
-    &amp;= -21(0 + \tfrac{3}{4}(0.05)(0.450310)) + e^{-(0 + \tfrac{3}{4}(0.05))} \\
-    &amp;= 0.608575, \\
-    k_4 &amp;= f(t_0 + h, y_0 + h(\tfrac{2}{9} k_1 + \tfrac{1}{3} k_2 + \tfrac{4}{9} k_3)) \\
-    &amp;= -21 (y_0 + h(\tfrac{2}{9} k_1 + \tfrac{1}{3} k_2 + \tfrac{4}{9} k_3)) + e^{-(t_0 + h)}\\
-    &amp;= -21(0 + 0.05(\tfrac{2}{9}(1) + \tfrac{1}{3}(0.450310) + \tfrac{4}{9}(0.608575))) + e^{-(0 + 0.05)} \\
-    &amp;= 0.276286.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(y^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(y^{(p)}\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    y^{(p+1)} &amp;= y_0 + \frac{h}{9}(2 k_1 + 3k_2 + 4 k_3) \\
-    &amp;= 0 + \frac{0.05}{9}(2 (1) + 3(-0.098771) + 4 (1.083307)) \\
-    &amp;= 0.032140, \\
-    y^{(p)} &amp;= y_0 + \frac{h}{24} (7k_1 + 6 k_2 + 8 k_3 + 3 k_4) \\
-    &amp;= 0 + \frac{0.05}{24} (7 (1) + 6(-0.098771) + 8(1.083307) + 3(-0.503777)) \\
-    &amp;= 0.032082.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculate <span class="math notranslate nohighlight">\(\Delta\)</span></p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*} 
-    \Delta &amp;= | y^{(p+1)} - y^{(p)} | = | 0.032140 - 0.032082 | = 5.83 \times 10^{-5}.
-\end{align*} \]</div>
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(\Delta = 5.83 \times 10^{-5} &lt; 10^{-4}\)</span> so the step has been successful and <span class="math notranslate nohighlight">\(y_1 = y^{(p+1)} = 0.032140\)</span>.</p>
-<p class="sd-card-text">Calculate the new value of <span class="math notranslate nohighlight">\(h\)</span> for the next step</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    h &amp;= 0.05 \max \left( 0.5, \min \left( 2, 0.9 \left( \frac{10^{-4}}{5.83 \times 10^{-5}} \right)^{1/3} \right) \right) \\
-    &amp;= 0.05 \max ( 0.5, \min (2, 1.077605)) \\
-    &amp;= 0.053880.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">The solution to this initial value problem using the Bogacki-Shampine 2(3) method is shown in the table below along with the step lengths used for each step.</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(n\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_n\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(h_n\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">0.000000</p></td>
-<td class="text-center"><p class="sd-card-text">0.000000</p></td>
-<td class="text-center"><p class="sd-card-text">-</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">0.050000</p></td>
-<td class="text-center"><p class="sd-card-text">0.032140</p></td>
-<td class="text-center"><p class="sd-card-text">0.050000</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">0.103880</p></td>
-<td class="text-center"><p class="sd-card-text">0.040939</p></td>
-<td class="text-center"><p class="sd-card-text">0.053880</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">3</p></td>
-<td class="text-center"><p class="sd-card-text">0.161862</p></td>
-<td class="text-center"><p class="sd-card-text">0.041599</p></td>
-<td class="text-center"><p class="sd-card-text">0.057982</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">4</p></td>
-<td class="text-center"><p class="sd-card-text">0.239599</p></td>
-<td class="text-center"><p class="sd-card-text">0.039342</p></td>
-<td class="text-center"><p class="sd-card-text">0.077737</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">5</p></td>
-<td class="text-center"><p class="sd-card-text">0.333844</p></td>
-<td class="text-center"><p class="sd-card-text">0.035754</p></td>
-<td class="text-center"><p class="sd-card-text">0.094244</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">6</p></td>
-<td class="text-center"><p class="sd-card-text">0.466041</p></td>
-<td class="text-center"><p class="sd-card-text">0.031259</p></td>
-<td class="text-center"><p class="sd-card-text">0.132197</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">7</p></td>
-<td class="text-center"><p class="sd-card-text">0.598661</p></td>
-<td class="text-center"><p class="sd-card-text">0.027477</p></td>
-<td class="text-center"><p class="sd-card-text">0.132620</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">8</p></td>
-<td class="text-center"><p class="sd-card-text">0.725978</p></td>
-<td class="text-center"><p class="sd-card-text">0.024064</p></td>
-<td class="text-center"><p class="sd-card-text">0.127317</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">9</p></td>
-<td class="text-center"><p class="sd-card-text">0.852679</p></td>
-<td class="text-center"><p class="sd-card-text">0.021364</p></td>
-<td class="text-center"><p class="sd-card-text">0.126701</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">10</p></td>
-<td class="text-center"><p class="sd-card-text">0.962172</p></td>
-<td class="text-center"><p class="sd-card-text">0.019014</p></td>
-<td class="text-center"><p class="sd-card-text">0.109494</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">11</p></td>
-<td class="text-center"><p class="sd-card-text">1.000000</p></td>
-<td class="text-center"><p class="sd-card-text">0.018354</p></td>
-<td class="text-center"><p class="sd-card-text">0.037828</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</details></section>
-</div></section>
+<p>The solution over the full domain <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> is shown in <a class="reference internal" href="#rk23-example-figure"><span class="std std-numref">Fig. 2.7</span></a>.</p>
+<figure class="align-default" id="rk23-example-figure">
+<img alt="../_images/ba05dfc080c41e47c03546b309341254b594abf33da930c084c682ae700c92eb.png" src="../_images/ba05dfc080c41e47c03546b309341254b594abf33da930c084c682ae700c92eb.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = -21y + e^{-t}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span> with an initial step length <span class="math notranslate nohighlight">\(h=0.1\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</span><a class="headerlink" href="#rk23-example-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A plot of the step lengths used across the domain is shown in <a class="reference internal" href="#rk23-example-step-size-plot-figure"><span class="std std-numref">Fig. 2.8</span></a>. Note how the step lengths decrease where the solution is steeper and increase where it is more slowly varying.</p>
+<figure class="align-default" id="rk23-example-step-size-plot-figure">
+<img alt="../_images/ccf804bf188ea8640e518c0f72ff19810a15bf27f26b3a4fbcc1ca7d2f94f3a4.png" src="../_images/ccf804bf188ea8640e518c0f72ff19810a15bf27f26b3a4fbcc1ca7d2f94f3a4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = -21y + e^{-t}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span> with an initial step length <span class="math notranslate nohighlight">\(h=0.1\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</span><a class="headerlink" href="#rk23-example-step-size-plot-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div><hr class="docutils" />
+</section>
 <section id="code">
-<span id="ssc-code-section"></span><h2><span class="section-number">2.7.3. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The code below defines the function <code class="docutils literal notranslate"><span class="pre">solveIVP_SSC()</span></code> which computes the solution to an initial value problem using step size control. This uses the same inputs as the <a class="reference internal" href="1.2_Euler_Method.html#euler-code-section"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code></span></a> with an additional input of <code class="docutils literal notranslate"><span class="pre">tol</span></code> which specifies the accuracy tolerance. Since we do not know beforehand how many steps will be required we assume the number steps will be large a while loop instead of a for loop for stepping through the solution.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">rkf45()</span></code> function computes a single step of the Fehlberg 4(5) method. This function returns the values of the fourth and fifth-order solutions <code class="docutils literal notranslate"><span class="pre">y4</span></code> and <code class="docutils literal notranslate"><span class="pre">y5</span></code> as well as the order of the lower order method <span class="math notranslate nohighlight">\(p\)</span> which in this case is 4. This is used to compute the value of the step length for the next step.</p>
+<span id="ssc-code-section"></span><h2><span class="section-number">2.7.4. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<p>The code below defines the function <code class="docutils literal notranslate"><span class="pre">rkf23()</span></code> which computes the solution to an initial value problem using the Bogacki-Shampine 3(2) embedded Runge-Kutta method. Since we do not know beforehand how many steps will be required, we assume the number steps will be large and use a while loop instead of a for loop for stepping through the solution.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solveIVP_SSC</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rk23</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
 
-    <span class="c1"># Define t and y arrays</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100000</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span> 
     <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
-
-    <span class="c1"># Solver loop</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">rtol</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
 
-        <span class="c1"># Ensure t does not exceed tmax</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+        <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+        <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k2</span><span class="p">)</span>
+        <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">9</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">/</span><span class="mi">9</span> <span class="o">*</span> <span class="n">k3</span><span class="p">))</span>
+        <span class="n">y3</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">9</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">/</span><span class="mi">9</span> <span class="o">*</span> <span class="n">k3</span><span class="p">)</span>
+        <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">7</span><span class="o">/</span><span class="mi">24</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">8</span> <span class="o">*</span> <span class="n">k4</span><span class="p">)</span>
 
-        <span class="c1"># Calculate order p and p+1 solutions</span>
-        <span class="n">yp1</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:],</span> <span class="n">h</span><span class="p">)</span>
-
-        <span class="c1"># Determine whether step was successful or not</span>
-        <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yp1</span> <span class="o">-</span> <span class="n">yp</span><span class="p">))</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y3</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span>
+        <span class="n">tol</span> <span class="o">=</span> <span class="n">atol</span> <span class="o">+</span> <span class="n">rtol</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y3</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
-            <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">yp1</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y3</span>
             <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
         
-        <span class="c1"># Calculate new value of h</span>
-        <span class="n">h</span> <span class="o">*=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="p">(</span><span class="n">tol</span> <span class="o">/</span> <span class="n">delta</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="p">(</span><span class="n">tol</span> <span class="o">/</span> <span class="n">delta</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">t</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span>
-
-
-<span class="k">def</span> <span class="nf">rkf45</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-
-    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
-    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">8</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">9</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="n">k2</span><span class="p">))</span>
-    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">12</span><span class="o">/</span><span class="mi">13</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1932</span><span class="o">/</span><span class="mi">2197</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">-</span> <span class="mi">7200</span><span class="o">/</span><span class="mi">2197</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">7296</span><span class="o">/</span><span class="mi">2197</span> <span class="o">*</span> <span class="n">k3</span><span class="p">))</span>
-    <span class="n">k5</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">439</span><span class="o">/</span><span class="mi">216</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">3680</span><span class="o">/</span><span class="mi">513</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">-</span> <span class="mi">845</span><span class="o">/</span><span class="mi">4104</span> <span class="o">*</span> <span class="n">k4</span><span class="p">))</span>
-    <span class="n">k6</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="o">/</span><span class="mi">27</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">-</span> <span class="mi">3544</span><span class="o">/</span><span class="mi">2565</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="mi">1859</span><span class="o">/</span><span class="mi">4104</span> <span class="o">*</span> <span class="n">k4</span> <span class="o">-</span> <span class="mi">11</span><span class="o">/</span><span class="mi">40</span> <span class="o">*</span> <span class="n">k5</span><span class="p">))</span>
-    <span class="n">y5</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">16</span><span class="o">/</span><span class="mi">135</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">6656</span><span class="o">/</span><span class="mi">12825</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="mi">28561</span><span class="o">/</span><span class="mi">56430</span> <span class="o">*</span> <span class="n">k4</span> <span class="o">-</span> <span class="mi">9</span><span class="o">/</span><span class="mi">50</span> <span class="o">*</span> <span class="n">k5</span> <span class="o">+</span> <span class="mi">2</span><span class="o">/</span><span class="mi">55</span> <span class="o">*</span> <span class="n">k6</span><span class="p">)</span>
-    <span class="n">y4</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">25</span><span class="o">/</span><span class="mi">216</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="mi">1408</span><span class="o">/</span><span class="mi">2565</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="mi">2197</span><span class="o">/</span><span class="mi">4104</span> <span class="o">*</span> <span class="n">k4</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span> <span class="o">*</span> <span class="n">k5</span><span class="p">);</span>
-
-    <span class="k">return</span> <span class="n">y5</span><span class="p">,</span> <span class="n">y4</span><span class="p">,</span> <span class="mi">4</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP_SSC</span><span class="p">(</span>f, tspan, y0, h, solver, tol<span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = rk23</span><span class="p">(</span>f, tspan, y0, atol, rtol<span class="p">)</span>
 
-<span class="c">% Define t and y arrays</span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
-<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">));</span>
+<span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
 <span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
 
-<span class="c">% Loop through the steps</span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rtol</span><span class="w"> </span>^<span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="k">while</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c">% Ensure t does not exceed tmax</span>
-<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
 
-<span class="w">    </span><span class="c">% Calculate order p and p+1 solutions</span>
-<span class="w">    </span><span class="p">[</span><span class="n">yp1</span><span class="p">,</span><span class="w"> </span><span class="n">yp</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:),</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:));</span>
+<span class="w">    </span><span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">k3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="n">k4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="o">/</span><span class="mi">9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="p">));</span>
+<span class="w">    </span><span class="n">y3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="o">/</span><span class="mi">9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="n">y2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">7</span><span class="o">/</span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k4</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c">% Determine whether the step was successful or not</span>
-<span class="w">    </span><span class="n">delta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yp1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yp</span><span class="p">));</span>
+<span class="w">    </span><span class="n">delta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">y3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">tol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">atol</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rtol</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">y3</span><span class="p">));</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
-<span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">yp1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y3</span><span class="p">;</span>
 <span class="w">        </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="w">        </span><span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k4</span><span class="p">;</span>
 <span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="k">end</span>
 
-<span class="w">    </span><span class="c">% Calculate new value of h</span>
-<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">tol</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))));</span>
-
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">tol</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span>^<span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">));</span>
+<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
 <span class="k">end</span>
 
-<span class="c">% Remove unused entries from t and y</span>
 <span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
 <span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
-
-<span class="k">end</span>
-
-
-<span class="k">function</span><span class="w"> </span><span class="nf">[y5, y4, order] = rkf45</span><span class="p">(</span>f, t, y, h<span class="p">)</span>
-
-<span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
-<span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
-<span class="n">k3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">9</span><span class="o">/</span><span class="mi">32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">));</span>
-<span class="n">k4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">12</span><span class="o">/</span><span class="mi">13</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1932</span><span class="o">/</span><span class="mi">2197</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">7200</span><span class="o">/</span><span class="mi">2197</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7296</span><span class="o">/</span><span class="mi">2197</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="p">));</span>
-<span class="n">k5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">439</span><span class="o">/</span><span class="mi">216</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3680</span><span class="o">/</span><span class="mi">513</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">845</span><span class="o">/</span><span class="mi">4104</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k4</span><span class="p">));</span>
-<span class="n">k6</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="o">/</span><span class="mi">27</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3544</span><span class="o">/</span><span class="mi">2565</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1859</span><span class="o">/</span><span class="mi">4104</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">11</span><span class="o">/</span><span class="mi">40</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k5</span><span class="p">));</span>
-<span class="n">y5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">16</span><span class="o">/</span><span class="mi">135</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6656</span><span class="o">/</span><span class="mi">12825</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">28561</span><span class="o">/</span><span class="mi">56430</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">9</span><span class="o">/</span><span class="mi">50</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">/</span><span class="mi">55</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k6</span><span class="p">);</span>
-<span class="n">y4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">25</span><span class="o">/</span><span class="mi">216</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1408</span><span class="o">/</span><span class="mi">2565</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2197</span><span class="o">/</span><span class="mi">4104</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k5</span><span class="p">);</span>
-<span class="n">order</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 
 <span class="k">end</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Fehlberg’s method has been applied to solve the initial value problem from <a class="reference internal" href="#embedded-rk-example">Example 2.8</a> and the solution is plotted in <a class="reference internal" href="#rkf45-example-figure"><span class="std std-numref">Fig. 2.9</span></a>. The solution had 11 successful steps, 3 failed steps and a total of 84 function evaluations.</p>
-<figure class="align-default" id="rkf45-example-figure">
-<img alt="../_images/cf84f1a1f85f9bf2128f7cd0b472dc3dabab75b4c9b24232efc1f50d35c4be5d.png" src="../_images/cf84f1a1f85f9bf2128f7cd0b472dc3dabab75b4c9b24232efc1f50d35c4be5d.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 2.9 </span><span class="caption-text">Fehlberg method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = -21y + e^{-t}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span> using Fehlberg’s method with an initial step length <span class="math notranslate nohighlight">\(h=0.1\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</span><a class="headerlink" href="#rkf45-example-figure" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 </section>
 </section>
 
@@ -864,11 +720,11 @@ MATLAB</label><div class="sd-tab-content docutils">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.6. </span>Solving initial value problems using explicit Runge-Kutta methods</p>
+        <p class="prev-next-title"><span class="section-number">2.6. </span>Solving Initial Value Problems using Explicit Runge-Kutta Methods</p>
       </div>
     </a>
     <a class="right-next"
-       href="2.6_ERK_exercises.html"
+       href="2.7_ERK_exercises.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -894,9 +750,10 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-new-step-length">2.7.1. Calculating the new step length</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-runge-kutta-methods">2.7.2. Embedded Runge-Kutta methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">2.7.3. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absolute-and-relative-tolerances">2.7.1. Absolute and relative tolerances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-new-step-length">2.7.2. Calculating the new step length</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-runge-kutta-methods">2.7.3. Embedded Runge-Kutta methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">2.7.4. Code</a></li>
 </ul>
   </nav></div>
 

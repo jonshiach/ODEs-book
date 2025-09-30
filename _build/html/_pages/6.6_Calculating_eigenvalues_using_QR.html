@@ -64,7 +64,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/6.6_Calculating_eigenvalues_using_QR';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/6.6_Calculating_eigenvalues_using_QR.html" />
@@ -143,8 +143,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Runge-Kutta Methods</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -166,41 +172,41 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="1.1_Taylor_Series.html">1.1. The Taylor Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.2_Euler_Method.html">1.2. The Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.3_Error_Analysis.html">1.3. Error analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5_Higher_Order_ODEs.html">1.4. Higher-order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.6_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving initial value problems using explicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.6_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="3.1_IRK_order.html">3.1. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Deriving_IRK_methods.html">3.2. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_IVPs_using_IRK_methods.html">3.3. Solving initial value problems using implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_Stability_functions.html">4.2. Stability functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_RK_stability_function.html">4.3. Stability function of a Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_IRK_stability_function.html">4.4. Stability functions of implicit methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.5. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.3_LUP_decomposition.html">5.5. LU decomposition with partial pivoting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -224,20 +230,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="A_Solutions.html">Exercise Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="A.1_ODEs_solutions.html">Ordinary Differential Equations exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.2_ERK_solutions.html">Explicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.3_IRK_solutions.html">Implicit Runge-Kutta methods exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.4_Stability_solutions.html">Stability exercises solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_BVP_solutions.html">Boundary value problems exercise solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.5_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.6_Matrix_decomposition_solutions.html">Matrix decomposition solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="A.7_Indirect_methods_solutions.html">Indirect methods solutions</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="B_Python_code.html">Python Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="C_MATLAB_code.html">MATLAB Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D_References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
     </div>
@@ -403,18 +399,18 @@ document.write(`
 <div class="proof definition admonition" id="eigenvalue-definition">
 <p class="admonition-title"><span class="caption-number">Definition 6.5 </span> (Eigenvalue)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix then <span class="math notranslate nohighlight">\(\lambda\)</span> is an <strong>eigenvalue</strong> of <span class="math notranslate nohighlight">\(A\)</span> if there exists a non-zero vector <span class="math notranslate nohighlight">\(\vec{v}\)</span> such that</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix then <span class="math notranslate nohighlight">\(\lambda\)</span> is an <strong>eigenvalue</strong> of <span class="math notranslate nohighlight">\(A\)</span> if there exists a non-zero vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-eigenvalue-definition-equation">
-<span class="eqno">(6.4)<a class="headerlink" href="#equation-eigenvalue-definition-equation" title="Permalink to this equation">#</a></span>\[A \vec{v} = \lambda \vec{v}.\]</div>
-<p>The vector <span class="math notranslate nohighlight">\(\vec{v}\)</span> is called the <strong>eigenvector</strong> associated with the eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-eigenvalue-definition-equation" title="Permalink to this equation">#</a></span>\[A \mathbf{v} = \lambda \mathbf{v}.\]</div>
+<p>The vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is called the <strong>eigenvector</strong> associated with the eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 </section>
 </div><p>Rearranging equation <a class="reference internal" href="#equation-eigenvalue-definition-equation">(6.4)</a> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    A \vec{v} &amp;= \lambda \vec{v} \\
-    (A - \lambda I) \vec{v} &amp;= \vec{0},
+    A \mathbf{v} &amp;= \lambda \mathbf{v} \\
+    (A - \lambda I) \mathbf{v} &amp;= \mathbf{0},
 \end{align*} \end{split}\]</div>
-<p>which has non-zero solutions for <span class="math notranslate nohighlight">\(\vec{v}\)</span> if and only if the determinant of the matrix <span class="math notranslate nohighlight">\((A - \lambda I)\)</span> is zero. Therefore we can calculate the eigenvaleus of <span class="math notranslate nohighlight">\(A\)</span> using</p>
+<p>which has non-zero solutions for <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> if and only if the determinant of the matrix <span class="math notranslate nohighlight">\((A - \lambda I)\)</span> is zero. Therefore we can calculate the eigenvaleus of <span class="math notranslate nohighlight">\(A\)</span> using</p>
 <div class="math notranslate nohighlight" id="equation-eigenvalue-determinant-formula-equation">
 <span class="eqno">(6.5)<a class="headerlink" href="#equation-eigenvalue-determinant-formula-equation" title="Permalink to this equation">#</a></span>\[ \det(A - \lambda I) = 0.\]</div>
 <p>For example, consider the eigenvalues of the matrix</p>
@@ -428,6 +424,7 @@ document.write(`
     (\lambda - 1)(\lambda - 4) &amp;= 0
 \end{align*} \end{split}\]</div>
 <p>so the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = 4\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = 1\)</span> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The problem with using determinants to calculate eigenvalues is that it is too computationally expensive for larger matrices.</p>
+<hr class="docutils" />
 <section id="the-qr-algorithm">
 <h2><span class="section-number">6.6.1. </span>The QR algorithm<a class="headerlink" href="#the-qr-algorithm" title="Permalink to this heading">#</a></h2>
 <p>The <strong>QR algorithm</strong> is a method of computing the eigenvalues of a square matrix. Let <span class="math notranslate nohighlight">\(A_0\)</span> be a matrix for which we wish to compute the eigenvalues and <span class="math notranslate nohighlight">\(A_1, \ldots, A_k, A_{k+1}, \ldots\)</span> be a sequence of matrices such that the <span class="math notranslate nohighlight">\(k\)</span>-th matrix in the sequence is calculated using <span class="math notranslate nohighlight">\(A_{k+1} = R_kQ_k\)</span> where <span class="math notranslate nohighlight">\(Q_kR_k = A_k\)</span> is the QR decomposition of <span class="math notranslate nohighlight">\(A_k\)</span>. Since <span class="math notranslate nohighlight">\(Q_k\)</span> is orthogonal then <span class="math notranslate nohighlight">\(Q^{-1} = Q^T\)</span> and</p>
@@ -453,7 +450,7 @@ document.write(`
 <li><p>Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(A_{old} \gets A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(A \gets R Q\)</span></p></li>
-<li><p>If <span class="math notranslate nohighlight">\(\max(\operatorname{diag}(\|A - A_{old}\|)) &lt; tol\)</span></p>
+<li><p>If <span class="math notranslate nohighlight">\(\max(\operatorname{diag}(|A - A_{old}|)) &lt; tol\)</span></p>
 <ul>
 <li><p>Break</p></li>
 </ul>
@@ -470,14 +467,9 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}, \end{split}\]</div>
 <p>using an accuracy tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A_0\)</span></p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A_0\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     Q_0 &amp;= \begin{pmatrix} 
@@ -489,7 +481,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
         0 &amp; 0.6325
     \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">and calculate <span class="math notranslate nohighlight">\(A_1 = R_0Q_0\)</span></p>
+<p>and calculate <span class="math notranslate nohighlight">\(A_1 = R_0Q_0\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     A_1 &amp;= 
@@ -507,7 +499,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
         -0.6 &amp; -0.2 
     \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A_1\)</span></p>
+<p>Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A_1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     Q_1 &amp;=
@@ -521,7 +513,7 @@ Solution (click to show)<div class="sd-summary-down docutils">
         0 &amp; 0.3821
     \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">and calculate <span class="math notranslate nohighlight">\(A_2 = R_1Q_1\)</span></p>
+<p>and calculate <span class="math notranslate nohighlight">\(A_2 = R_1Q_1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     A_2 &amp;=
@@ -539,56 +531,55 @@ Solution (click to show)<div class="sd-summary-down docutils">
         0.0438 &amp; -0.3796
     \end{pmatrix} .
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculate the maximum difference between the diagonal elements of <span class="math notranslate nohighlight">\(A_1\)</span> and <span class="math notranslate nohighlight">\(A_2\)</span></p>
+<p>Calculate the maximum difference between the diagonal elements of <span class="math notranslate nohighlight">\(A_1\)</span> and <span class="math notranslate nohighlight">\(A_2\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \max(\|\operatorname{diag}(A_2 - A_1)\|) 
-    &amp;= \max \left ( \left\|
+    \max(|\operatorname{diag}(A_2 - A_1)|) 
+    &amp;= \max \left ( \left|
         \begin{pmatrix} 5.3796 \\ -0.3796 \end{pmatrix} -
         \begin{pmatrix} 5.2 \\ -0.2 \end{pmatrix}
-    \right\| \right) \\
+    \right| \right) \\
     &amp;= \max \begin{pmatrix}  0.1796 \\ 0.1796 \end{pmatrix} = 0.1796,
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">since <span class="math notranslate nohighlight">\(0.1796 &gt; 10^{-4}\)</span> we need to continue to iterate. The estimates of the eigenvalues obtained by iterating to an accuracy tolerance of <span class="math notranslate nohighlight">\(10^{-4}\)</span> are tabulated below.</p>
+<p>since <span class="math notranslate nohighlight">\(0.1796 &gt; 10^{-4}\)</span> we need to continue to iterate. The estimates of the eigenvalues obtained by iterating to an accuracy tolerance of <span class="math notranslate nohighlight">\(10^{-4}\)</span> are tabulated below.</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\lambda_1\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(\lambda_2\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text">Max difference</p></th>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\lambda_1\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\lambda_2\)</span></p></th>
+<th class="head text-center"><p>Max difference</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">5.200000</p></td>
-<td class="text-center"><p class="sd-card-text">-0.200000</p></td>
-<td class="text-center"><p class="sd-card-text">4.20e+00</p></td>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>5.200000</p></td>
+<td class="text-center"><p>-0.200000</p></td>
+<td class="text-center"><p>4.20e+00</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">5.379562</p></td>
-<td class="text-center"><p class="sd-card-text">-0.379562</p></td>
-<td class="text-center"><p class="sd-card-text">1.80e-01</p></td>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>5.379562</p></td>
+<td class="text-center"><p>-0.379562</p></td>
+<td class="text-center"><p>1.80e-01</p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">5.371753</p></td>
-<td class="text-center"><p class="sd-card-text">-0.371753</p></td>
-<td class="text-center"><p class="sd-card-text">7.81e-03</p></td>
+<tr class="row-even"><td class="text-center"><p>2</p></td>
+<td class="text-center"><p>5.371753</p></td>
+<td class="text-center"><p>-0.371753</p></td>
+<td class="text-center"><p>7.81e-03</p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">3</p></td>
-<td class="text-center"><p class="sd-card-text">5.372318</p></td>
-<td class="text-center"><p class="sd-card-text">-0.372318</p></td>
-<td class="text-center"><p class="sd-card-text">5.65e-04</p></td>
+<tr class="row-odd"><td class="text-center"><p>3</p></td>
+<td class="text-center"><p>5.372318</p></td>
+<td class="text-center"><p>-0.372318</p></td>
+<td class="text-center"><p>5.65e-04</p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">4</p></td>
-<td class="text-center"><p class="sd-card-text">5.372279</p></td>
-<td class="text-center"><p class="sd-card-text">-0.372279</p></td>
-<td class="text-center"><p class="sd-card-text">3.90e-05</p></td>
+<tr class="row-even"><td class="text-center"><p>4</p></td>
+<td class="text-center"><p>5.372279</p></td>
+<td class="text-center"><p>-0.372279</p></td>
+<td class="text-center"><p>3.90e-05</p></td>
 </tr>
 </tbody>
 </table>
-<p class="sd-card-text">The exact values of the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = (5 + \sqrt{33})/2 \approx 5.372281\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = (5 - \sqrt{33}) / 2 \approx -0.372281\)</span> which shows the QR algorithm has calculated the eigenvalues correct to five decimal places.</p>
-</div>
-</details></section>
+<p>The exact values of the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = (5 + \sqrt{33})/2 \approx 5.372281\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = (5 - \sqrt{33}) / 2 \approx -0.372281\)</span> which shows the QR algorithm has calculated the eigenvalues correct to five decimal places.</p>
+</section>
 </div></section>
 <section id="code">
 <h2><span class="section-number">6.6.2. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
