@@ -363,11 +363,6 @@ end
 end
 ```
 
-:::{.callout-important}
-Functions must be defined at the bottom of the script file in MATLAB.
-:::
-
-
 ---
 
 Setup IVP and solve using the `euler()` function. 
@@ -766,15 +761,15 @@ $$ \begin{align*}
 \end{align*} $$
 
 :::{.fragment}
-The initial conditions are $\mathbf{y}_0 = (99, 1, 0)$ and $N = 100$, $\beta = 0.5$, $\gamma = 0.1$ so $\dfrac{\beta}{N} = 0.05$. 
+The initial conditions are $\mathbf{y}_0 = (99, 1, 0)$ and $N = 100$, $\beta = 0.5$, $\gamma = 0.1$ so $\dfrac{\beta}{N} = 0.005$. 
 
 $$ \begin{align*}
     \mathbf{y}_1 &= \mathbf{y}_0 + h f(t_0, \mathbf{y}_0) 
     = 
     \begin{pmatrix} 99 \\ 1 \\ 0 \end{pmatrix} + 1 
     \begin{pmatrix} 
-        -0.05 (99)(1) \\
-         0.05 (99)(1) - 0.1(0) \\
+        -0.005 (99)(1) \\
+         0.005 (99)(1) - 0.1(0) \\
          0.1(0) 
     \end{pmatrix}
     = 
@@ -789,8 +784,8 @@ $$ \begin{align*}
     = 
     \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix} + 1 
     \begin{pmatrix} 
-        -0.05 (98.505)(1.395) \\
-        0.05 (98.505)(1.395) - 0.1(0.1) \\
+        -0.005 (98.505)(1.395) \\
+        0.005 (98.505)(1.395) - 0.1(0.1) \\
         0.1(0)
     \end{pmatrix} = 
     \begin{pmatrix} 97.8179 \\  1.9426 \\  0.2395\end{pmatrix},
@@ -911,7 +906,7 @@ plt.legend()
 plt.show()
 ```
 
-## Code (MATLAB)
+## Code (MATLAB)--
 
 ```{.matlab code-line-numbers="0|6,9,12"}
 function [t, y] = euler(f, tspan, y0, h)
@@ -922,7 +917,7 @@ t = zeros(1, nsteps + 1);
 y = zeros(m, nsteps + 1);
 
 t(1) = tspan(1);
-y(:, 1) = y0;
+y(1,:) = y0;
 
 for n = 1 : length(t) - 1
     y(n+1,:) = y(n,:) + h * f(t(n), y(n,:));
@@ -948,10 +943,10 @@ h = 1;             % step length
 [t, y] = euler(@(t, y)SIR(t, y, beta, gamma), tspan, y0, h);
 
 % Plot solution
-plot(t, y(:, 1), 'b-', LineWidth=2)
+plot(t, y(:,1), 'b-', LineWidth=2)
 hold on
-plot(t, y(:, 2), 'r-', LineWidth=2)
-plot(t, y(:, 3), 'g-', LineWidth=2)
+plot(t, y(:,2), 'r-', LineWidth=2)
+plot(t, y(:,3), 'g-', LineWidth=2)
 hold off
 xlabel('$t$', Fontsize=14, Interpreter='latex')
 ylabel('$y$', Fontsize=14, Interpreter='latex')
@@ -1028,7 +1023,7 @@ Using the Euler method with a step length of $h = 0.1$
 $$ \begin{align*}
     \mathbf{y}_1 &= \mathbf{y}_0 + h f(t_0, \mathbf{y}_0), \\
     &= \begin{pmatrix} 1 \\ 0 \end{pmatrix} + 0.1 \begin{pmatrix} 0 \\ -2(0) - 4(1) \end{pmatrix} 
-    = \begin{pmatrix} 1 \\ -0.04 \end{pmatrix}, &
+    = \begin{pmatrix} 1 \\ -0.4 \end{pmatrix}, &
     t_1 &= t_0 + h = 0 + 0.1 = 0.1,
 \end{align*} $$
 :::
@@ -1036,7 +1031,7 @@ $$ \begin{align*}
 :::{.fragment}
 $$ \begin{align*}
     \mathbf{y}_2 &= \mathbf{y}_1 + h f(t_1, \mathbf{y}_1), \\
-    &= \begin{pmatrix} 1 \\ -0.04 \end{pmatrix} + 0.1 \begin{pmatrix} -0.04 \\ -2(-0.04) - 4(1) \end{pmatrix} 
+    &= \begin{pmatrix} 1 \\ -0.4 \end{pmatrix} + 0.1 \begin{pmatrix} -0.4 \\ -2(-0.04) - 4(1) \end{pmatrix} 
     = \begin{pmatrix} 0.96 \\ -0.72 \end{pmatrix}, &
     t_2 &= t_1 + h = 0.1 + 0.1 = 0.2,
 \end{align*} $$

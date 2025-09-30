@@ -268,7 +268,7 @@ Dr Jon Shiach
 </ul>
 <p>So we have a <em>family</em> of solutions that depend on the <strong>initial value</strong> <span class="math inline">\(y(0)\)</span>.</p>
 </div><div class="column" style="width:50%;">
-<div id="3885d075" class="cell" data-execution_count="1">
+<div id="c09819c0" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -536,19 +536,6 @@ Dr Jon Shiach
 <span id="cb4-12"><a href=""></a><span class="kw">end</span></span>
 <span id="cb4-13"><a href=""></a></span>
 <span id="cb4-14"><a href=""></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>Functions must be defined at the bottom of the script file in MATLAB.</p>
-</div>
-</div>
-</div>
 </section>
 <section class="slide level3">
 
@@ -578,7 +565,7 @@ Dr Jon Shiach
 </section></section>
 <section id="output" class="title-slide slide level2 center">
 <h2>Output</h2>
-<div id="f18daa46" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="2">
+<div id="47a10931" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>|  t   |     y     | 
 |:----:|:---------:|
@@ -608,7 +595,7 @@ Dr Jon Shiach
 \end{align*} \]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="98dcf1c3" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="3">
+<div id="9b60aec9" class="cell" data-fig-height="4" data-fig-width="6" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -678,7 +665,7 @@ Dr Jon Shiach
 <p>So the smaller the value of <span class="math inline">\(h\)</span> then the smaller the change in the error converging to zero when <span class="math inline">\(h\)</span> is infinitesimally small.</p>
 <div class="columns">
 <div class="column" style="width:70%;">
-<div id="2ce5a619" class="cell" data-execution_count="4">
+<div id="becd6c05" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -797,7 +784,7 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
 <section id="global-truncation-error-gte" class="title-slide slide level2 center">
 <h2>Global Truncation Error (GTE)</h2>
 <p>The global truncation error denoted by <span class="math inline">\(E_n\)</span>, is the accumulation of the local truncation errors for the steps of the method to compute that solution from <span class="math inline">\(t=t_0\)</span> up to <span class="math inline">\(t = t_n\)</span></p>
-<div id="290300e9" class="cell" data-execution_count="6">
+<div id="06e55593" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -897,14 +884,14 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
     \end{pmatrix}.
 \end{align*} \]</span></p>
 <div class="fragment">
-<p>The initial conditions are <span class="math inline">\(\mathbf{y}_0 = (99, 1, 0)\)</span> and <span class="math inline">\(N = 100\)</span>, <span class="math inline">\(\beta = 0.5\)</span>, <span class="math inline">\(\gamma = 0.1\)</span> so <span class="math inline">\(\dfrac{\beta}{N} = 0.05\)</span>.</p>
+<p>The initial conditions are <span class="math inline">\(\mathbf{y}_0 = (99, 1, 0)\)</span> and <span class="math inline">\(N = 100\)</span>, <span class="math inline">\(\beta = 0.5\)</span>, <span class="math inline">\(\gamma = 0.1\)</span> so <span class="math inline">\(\dfrac{\beta}{N} = 0.005\)</span>.</p>
 <p><span class="math display">\[ \begin{align*}
     \mathbf{y}_1 &amp;= \mathbf{y}_0 + h f(t_0, \mathbf{y}_0)
     =
     \begin{pmatrix} 99 \\ 1 \\ 0 \end{pmatrix} + 1
     \begin{pmatrix}
-        -0.05 (99)(1) \\
-         0.05 (99)(1) - 0.1(0) \\
+        -0.005 (99)(1) \\
+         0.005 (99)(1) - 0.1(0) \\
          0.1(0)
     \end{pmatrix}
     =
@@ -917,8 +904,8 @@ Figure&nbsp;1: Plot of the errors for <span class="math inline">\(y(1)\)</span> 
     =
     \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix} + 1
     \begin{pmatrix}
-        -0.05 (98.505)(1.395) \\
-        0.05 (98.505)(1.395) - 0.1(0.1) \\
+        -0.005 (98.505)(1.395) \\
+        0.005 (98.505)(1.395) - 0.1(0.1) \\
         0.1(0)
     \end{pmatrix} =
     \begin{pmatrix} 97.8179 \\  1.9426 \\  0.2395\end{pmatrix},
@@ -996,7 +983,7 @@ Figure&nbsp;2: Plot of the solution to the SIR model using the Euler method.
 </section></section>
 <section>
 <section id="code-matlab" class="title-slide slide level2 center">
-<h2>Code (MATLAB)</h2>
+<h2>Code (MATLAB)–</h2>
 <div class="sourceCode" id="cb9" data-code-line-numbers="0|6,9,12"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb9-1"><a href=""></a><span class="kw">function</span> [<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">euler</span>(<span class="va">f</span><span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">h</span>)</span>
 <span id="cb9-2"><a href=""></a></span>
 <span id="cb9-3"><a href=""></a><span class="va">nsteps</span> <span class="op">=</span> <span class="va">floor</span>((<span class="va">tspan</span>(<span class="fl">2</span>) <span class="op">-</span> <span class="va">tspan</span>(<span class="fl">1</span>)) <span class="op">/</span> <span class="va">h</span>)<span class="op">;</span></span>
@@ -1005,7 +992,7 @@ Figure&nbsp;2: Plot of the solution to the SIR model using the Euler method.
 <span id="cb9-6"><a href=""></a><span class="va">y</span> <span class="op">=</span> <span class="va">zeros</span>(<span class="va">m</span><span class="op">,</span> <span class="va">nsteps</span> <span class="op">+</span> <span class="fl">1</span>)<span class="op">;</span></span>
 <span id="cb9-7"><a href=""></a></span>
 <span id="cb9-8"><a href=""></a><span class="va">t</span>(<span class="fl">1</span>) <span class="op">=</span> <span class="va">tspan</span>(<span class="fl">1</span>)<span class="op">;</span></span>
-<span id="cb9-9"><a href=""></a><span class="va">y</span>(<span class="op">:,</span> <span class="fl">1</span>) <span class="op">=</span> <span class="va">y0</span><span class="op">;</span></span>
+<span id="cb9-9"><a href=""></a><span class="va">y</span>(<span class="fl">1</span><span class="op">,:</span>) <span class="op">=</span> <span class="va">y0</span><span class="op">;</span></span>
 <span id="cb9-10"><a href=""></a></span>
 <span id="cb9-11"><a href=""></a><span class="kw">for</span> <span class="va">n</span> <span class="op">=</span> <span class="fl">1</span> <span class="op">:</span> <span class="va">length</span>(<span class="va">t</span>) <span class="op">-</span> <span class="fl">1</span></span>
 <span id="cb9-12"><a href=""></a>    <span class="va">y</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span><span class="op">,:</span>) <span class="op">=</span> <span class="va">y</span>(<span class="va">n</span><span class="op">,:</span>) <span class="op">+</span> <span class="va">h</span> <span class="op">*</span> <span class="va">f</span>(<span class="va">t</span>(<span class="va">n</span>)<span class="op">,</span> <span class="va">y</span>(<span class="va">n</span><span class="op">,:</span>))<span class="op">;</span></span>
@@ -1028,10 +1015,10 @@ Figure&nbsp;2: Plot of the solution to the SIR model using the Euler method.
 <span id="cb10-9"><a href=""></a>[<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">euler</span>(<span class="op">@</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>)<span class="va">SIR</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span><span class="op">,</span> <span class="va">beta</span><span class="op">,</span> <span class="va">gamma</span>)<span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">h</span>)<span class="op">;</span></span>
 <span id="cb10-10"><a href=""></a></span>
 <span id="cb10-11"><a href=""></a><span class="co">% Plot solution</span></span>
-<span id="cb10-12"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span> <span class="fl">1</span>)<span class="op">,</span> <span class="ss">'b-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb10-12"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span><span class="fl">1</span>)<span class="op">,</span> <span class="ss">'b-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
 <span id="cb10-13"><a href=""></a><span class="va">hold</span> <span class="va">on</span></span>
-<span id="cb10-14"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span> <span class="fl">2</span>)<span class="op">,</span> <span class="ss">'r-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
-<span id="cb10-15"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span> <span class="fl">3</span>)<span class="op">,</span> <span class="ss">'g-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb10-14"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span><span class="fl">2</span>)<span class="op">,</span> <span class="ss">'r-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb10-15"><a href=""></a><span class="va">plot</span>(<span class="va">t</span><span class="op">,</span> <span class="va">y</span>(<span class="op">:,</span><span class="fl">3</span>)<span class="op">,</span> <span class="ss">'g-'</span><span class="op">,</span> <span class="va">LineWidth</span><span class="op">=</span><span class="fl">2</span>)</span>
 <span id="cb10-16"><a href=""></a><span class="va">hold</span> <span class="va">off</span></span>
 <span id="cb10-17"><a href=""></a><span class="va">xlabel</span>(<span class="ss">'$t$'</span><span class="op">,</span> <span class="va">Fontsize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="ss">'latex'</span>)</span>
 <span id="cb10-18"><a href=""></a><span class="va">ylabel</span>(<span class="ss">'$y$'</span><span class="op">,</span> <span class="va">Fontsize</span><span class="op">=</span><span class="fl">14</span><span class="op">,</span> <span class="va">Interpreter</span><span class="op">=</span><span class="ss">'latex'</span>)</span>
@@ -1098,14 +1085,14 @@ Figure&nbsp;3: The mass-spring-damper model.
 <p><span class="math display">\[ \begin{align*}
     \mathbf{y}_1 &amp;= \mathbf{y}_0 + h f(t_0, \mathbf{y}_0), \\
     &amp;= \begin{pmatrix} 1 \\ 0 \end{pmatrix} + 0.1 \begin{pmatrix} 0 \\ -2(0) - 4(1) \end{pmatrix}
-    = \begin{pmatrix} 1 \\ -0.04 \end{pmatrix}, &amp;
+    = \begin{pmatrix} 1 \\ -0.4 \end{pmatrix}, &amp;
     t_1 &amp;= t_0 + h = 0 + 0.1 = 0.1,
 \end{align*} \]</span></p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[ \begin{align*}
     \mathbf{y}_2 &amp;= \mathbf{y}_1 + h f(t_1, \mathbf{y}_1), \\
-    &amp;= \begin{pmatrix} 1 \\ -0.04 \end{pmatrix} + 0.1 \begin{pmatrix} -0.04 \\ -2(-0.04) - 4(1) \end{pmatrix}
+    &amp;= \begin{pmatrix} 1 \\ -0.4 \end{pmatrix} + 0.1 \begin{pmatrix} -0.4 \\ -2(-0.04) - 4(1) \end{pmatrix}
     = \begin{pmatrix} 0.96 \\ -0.72 \end{pmatrix}, &amp;
     t_2 &amp;= t_1 + h = 0.1 + 0.1 = 0.2,
 \end{align*} \]</span></p>
