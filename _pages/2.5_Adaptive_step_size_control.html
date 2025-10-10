@@ -494,8 +494,7 @@ document.write(`
 <div class="proof definition admonition" id="bogacki-shampine-equation">
 <p class="admonition-title"><span class="caption-number">Definition 2.3 </span> (Bogacki-Shampine 3(2) Runge-Kutta method (RK23))</p>
 <section class="definition-content" id="proof-content">
-</section>
-</div><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{array}{c|cccc}
         0 &amp; \\
@@ -507,11 +506,12 @@ document.write(`
     \end{array}
 \end{align*} \end{split}\]</div>
 <p><span id="id1">Bogacki and Shampine [<a class="reference internal" href="E_References.html#id15" title="Przemyslaw Bogacki and Lawrence F Shampine. A 3(2) pair of runge-kutta formulas. Applied Mathematics Letters, 2(4):321–325, 1989.">1989</a>]</span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-```{prf:definition} Fehlberg&#39;s order 5(4) Runge-Kutta method (RKF45)
-:label: fehlbergs-method-equation
-
-$$ \begin{array}{c|cccccc}
+</section>
+</div><div class="proof definition admonition" id="fehlbergs-method-equation">
+<p class="admonition-title"><span class="caption-number">Definition 2.4 </span> (Fehlberg’s order 5(4) Runge-Kutta method (RKF45))</p>
+<section class="definition-content" id="proof-content">
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|cccccc}
     0 &amp; 0 \\
     \frac{1}{4} &amp; \frac{1}{4} \\
     \frac{3}{8} &amp; \frac{3}{32} &amp; \frac{9}{32} \\
@@ -520,12 +520,10 @@ $$ \begin{array}{c|cccccc}
     \frac{1}{2} &amp; -\frac{8}{27} &amp; 2 &amp; -\frac{3544}{2565} &amp; \frac{1859}{4104} &amp; -\frac{11}{40} \\ \hline
     &amp; \frac{16}{135} &amp; 0 &amp; \frac{6656}{12825} &amp; \frac{28561}{56430} &amp; -\frac{9}{50} &amp; \frac{2}{55} \\
     &amp; \frac{25}{216} &amp; 0 &amp; \frac{1408}{2565} &amp; \frac{2197}{4104} &amp; -\frac{1}{5} &amp; 0 
-\end{array} $$
-
-{cite:t}`fehlberg:1969`
-</pre></div>
-</div>
-<div class="proof algorithm admonition" id="step-size-control-algorithm">
+\end{array} \end{split}\]</div>
+<p><span id="id2">Fehlberg [<a class="reference internal" href="E_References.html#id10" title="E. Fehlberg. Klassische runge-kutta-formeln fünfter und siebenter ordnung mit schrittweiten-kontrolle (classical runge-kutta formulas of fifth and seventh order with step size control). Computing, 1969.">1969</a>]</span></p>
+</section>
+</div><div class="proof algorithm admonition" id="step-size-control-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 2.2 </span> (Solving an IVP using a single step method with adaptive step size control)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t,\mathbf{y})\)</span>, the domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, the initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = \mathbf{y}_0\)</span>, and desired accuracy tolerances <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span>.</p>
