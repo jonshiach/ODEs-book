@@ -207,8 +207,8 @@ Dr Jon Shiach
 </div>
 
 </section>
-<section id="solving-systems-of-odes-using-irk-methods" class="title-slide slide level2 center">
-<h2>Solving Systems of ODEs using IRK Methods</h2>
+<section id="solving-systems-of-odes-using-erk-methods" class="title-slide slide level2 center">
+<h2>Solving Systems of ODEs using ERK Methods</h2>
 <p>The general form of an explicit Runge-Kutta method for solving an Initial Value Problem (IVP) is</p>
 <p><span class="math display">\[ \begin{align*}
     y_{n+1} &amp;= y_n + h(b_1k_1 + b_2k_2 + \cdots + b_sk_s), \\
@@ -235,7 +235,7 @@ Dr Jon Shiach
 <p><strong>Inputs</strong> A first-order ODE of the form <span class="math inline">\(y' = f(t, y)\)</span>, a domain <span class="math inline">\(t \in [t_0, t_{\max}]\)</span>, an initial value <span class="math inline">\(y(t_0) = y_0\)</span> and a step length <span class="math inline">\(h\)</span></p>
 <p><strong>Outputs</strong> <span class="math inline">\((t_0, t_1, \ldots)\)</span> and <span class="math inline">\((y_0, y_1, \ldots)\)</span></p>
 <ul>
-<li><span class="math inline">\(nsteps \gets \left\lfloor \frac{b - a}{h} \right\rfloor\)</span></li>
+<li><span class="math inline">\(nsteps \gets \left\lfloor \dfrac{t_{\max} - t_0}{h} \right\rfloor\)</span></li>
 <li>For <span class="math inline">\(n = 0, \ldots, nsteps\)</span>
 <ul>
 <li>For <span class="math inline">\(i = 1, \ldots, s\)</span>
@@ -428,7 +428,7 @@ Dr Jon Shiach
 </section>
 <section id="output" class="slide level3">
 <h3>Output</h3>
-<div id="885ab71b" class="cell" data-execution_count="1">
+<div id="2c82e71d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>|  t   |     y     |   Exact   |
 |:----:|:---------:|:---------:|
@@ -450,7 +450,7 @@ Dr Jon Shiach
 </section></section>
 <section id="comparison-of-first-second-and-fourth--order-solutions" class="title-slide slide level2 center">
 <h2>Comparison of first, second and fourth- order solutions</h2>
-<div id="f12860db" class="cell" data-execution_count="2">
+<div id="d7e95108" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -504,18 +504,16 @@ Dr Jon Shiach
 </section>
 <section class="slide level3">
 
-<div id="156ed580" class="cell" data-execution_count="3">
+<div id="4cd56a56" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="03_ERKs_2_files/figure-revealjs/cell-4-output-1.png" width="827" height="435"></p>
+<p><img data-src="03_ERKs_2_files/figure-revealjs/cell-4-output-1.png" width="825" height="433"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The order of the methods <span class="math inline">\(n\)</span> can be approximated using</p>
-<p><span class="math display">\[ n \approx \frac{\log(E_n(h_1) - \log(E_n(h_2))}{\log(h_1) - \log(h_2)}, \]</span></p>
-<p>For example, for the RK4 method</p>
+<p>The order of the methods <span class="math inline">\(n\)</span> can be approximated using <span class="math inline">\(n \approx \dfrac{\log(E_n(h_1)) - \log(E_n(h_2))}{\log(h_1) - \log(h_2)},\)</span> for example, for the RK4 method</p>
 <p><span class="math display">\[ \begin{align*}
   n &amp; \approx \frac{\log(4.59 \times 10^{-6}) - \log(9.33 \times 10^{-10})}{\log(0.2) - \log(0.025)} = 4.09 \approx 4,
 \end{align*} \]</span></p>
@@ -544,7 +542,7 @@ Dr Jon Shiach
 <section class="slide level3">
 
 <p>Now consider a case where we are applying a chemical kinetics model where the solution values are expected to be very small. If <span class="math inline">\(y^{(p)} = 1 \times 10^{-6}\)</span> and <span class="math inline">\(y^{(p+1)} = 2\times 10^{-6}\)</span> then</p>
-<p><span class="math display">\[ \textsf{relative difference} = | y^{(p+1)} - y^{(p)} | = \frac{| 2\times 10^{-6} - 1 \times 10^{-6} |}{|1 \times 10^{-6}|} = 1, \]</span></p>
+<p><span class="math display">\[ \textsf{relative difference} = \frac{| y^{(p+1)} - y^{(p)} |}{|y^{(p)}|} = \frac{| 2\times 10^{-6} - 1 \times 10^{-6} |}{|1 \times 10^{-6}|} = 1, \]</span></p>
 <p>which is greater than the accuracy tolerance of <span class="math inline">\(10^{-3}\)</span> and the step would consider to have failed. However,</p>
 <p><span class="math display">\[ \textsf{absolute difference} = | y^{(p+1)} - y^{(p)} | = | 2\times 10^{-6} - 1 \times 10^{-6} | = 10^{-6}, \]</span></p>
 <p>which is a lot less than the accuracy tolerance and the step would consider to be successful.</p>
@@ -585,9 +583,9 @@ Dr Jon Shiach
     r^{p+1} &amp;= \frac{tol}{\Delta} \\
     r &amp;= \left( \frac{tol}{\Delta} \right)^{\frac{1}{p+1}}.
 \end{align*} \]</span></p>
-<p>So when <span class="math inline">\(\Delta &lt; tol\)</span>, <span class="math inline">\(r &lt; 1\)</span> and the step length is decreased, and when <span class="math inline">\(\Delta &gt; tol\)</span>, <span class="math inline">\(r &gt; 1\)</span> and the step length is increased.</p>
+<p>So when <span class="math inline">\(\Delta &gt; tol\)</span>, <span class="math inline">\(r &lt; 1\)</span> and the step length is decreased, and when <span class="math inline">\(\Delta &lt; tol\)</span>, <span class="math inline">\(r &gt; 1\)</span> and the step length is increased.</p>
 <p>To prevent the step length being decreased too much we limit the value of <span class="math inline">\(r\)</span> so that <span class="math inline">\(h\)</span> is not increased or decreased too much</p>
-<p><span class="math display">\[ r = \max\left(0.1, 0.8 \left( \frac{tol}{\Delta} \right)^{\frac{1}{p+1}} \right). \]</span></p>
+<p><span class="math display">\[ h = h \max\left(0.1, 0.8 \left( \frac{tol}{\Delta} \right)^{\frac{1}{p+1}} \right). \]</span></p>
 <p>We can use the value of <span class="math inline">\(rtol\)</span> to give us an approximation for the initial value of <span class="math inline">\(h\)</span></p>
 <p><span class="math display">\[ h = 0.8 \cdot rtol ^ {^\frac{1}{p+1}}. \]</span></p>
 </section></section>
@@ -690,8 +688,7 @@ Dr Jon Shiach
 <li><span class="math inline">\(t_{n+1} \gets t_n + h\)</span></li>
 <li><span class="math inline">\(n \gets n + 1\)</span></li>
 </ul></li>
-<li><span class="math inline">\(r \gets \max \left(0.1, 0.8 \left( \frac{tol}{\Delta} \right) ^{1/(p+1)} \right)\)</span></li>
-<li><span class="math inline">\(h \gets \min(h, t_{\max} - t_n)\)</span></li>
+<li><span class="math inline">\(h \gets \min\left( h \max \left(0.1, 0.8 \left( \dfrac{tol}{\Delta} \right) ^{1/(p+1)} \right), t_{\max} - t_n \right)\)</span></li>
 </ul></li>
 <li>Return <span class="math inline">\((t_0, t_1, \ldots)\)</span> and <span class="math inline">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span></li>
 </ul>
@@ -708,11 +705,15 @@ Dr Jon Shiach
 <div class="fragment">
 <p>Here <span class="math inline">\(f(t, y) = e^{t - y\sin(y)}\)</span>, <span class="math inline">\(t= 0\)</span> and <span class="math inline">\(y_0 = 0\)</span>. Calculating the initial step length gives</p>
 <p><span class="math display">\[ h = 0.8 (rtol)^{^\frac{1}{3}} = 0.8(10^{-3})^{^\frac{1}{3}} = 0.8.\]</span></p>
+</div>
+<div class="fragment">
 <p>Calculating the first step of the Bogacki-Shampine 3(2) method gives</p>
 <p><span class="math display">\[ \begin{align*}
     y^{(3)} &amp;= 0.083096, &amp;
     y^{(2)} &amp;= 0.083081.
 \end{align*} \]</span></p>
+</div>
+<div class="fragment">
 <p>Calculate <span class="math inline">\(\Delta\)</span> and <span class="math inline">\(tol\)</span></p>
 <p><span class="math display">\[ \begin{align*}
     \Delta &amp;= \| y^{(3)} - y^{(2)} \| = 0.083096 - 0.083081 = 1.563 \times 10^{-5}, \\
@@ -725,10 +726,10 @@ Dr Jon Shiach
 
 <p>Calculating the new value of <span class="math inline">\(h\)</span></p>
 <p><span class="math display">\[ \begin{align*}
-    h = h \left( 0.1, 0.8 \left( \frac{tol}{\Delta} \right)^{^\frac{1}{3}} \right) = 0.8 \left(0.1, 0.8 \left( \frac{8.410 \times 10^{-5}}{1.563 \times 10^{-5}} \right)^{^\frac{1}{3}} \right) = 0.112145.
+    h = h \max \left( 0.1, 0.8 \left( \frac{tol}{\Delta} \right)^{^\frac{1}{3}} \right) = 0.8 \max \left(0.1, 0.8 \left( \frac{8.410 \times 10^{-5}}{1.563 \times 10^{-5}} \right)^{^\frac{1}{3}} \right) = 0.112145.
 \end{align*} \]</span></p>
 <p>The solution over the range <span class="math inline">\(t \in [0,1]\)</span> is</p>
-<div id="7e9ee00a" class="cell" data-execution_count="4">
+<div id="225961c1" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -741,7 +742,7 @@ Dr Jon Shiach
 <section class="slide level3">
 
 <p>Plot of the values of the step length <span class="math inline">\(h\)</span> across the <span class="math inline">\(t\)</span> domain</p>
-<div id="a7d45b0d" class="cell" data-execution_count="5">
+<div id="8168bc5c" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -758,7 +759,7 @@ Dr Jon Shiach
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Python</a></li><li><a href="#tabset-2-2">MATLAB</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div class="sourceCode" id="cb4" data-code-line-numbers="0|1|4-5|13-18|20-21|22-25|27-28|30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="kw">def</span> rk23(f, tspan, y0, atol<span class="op">=</span><span class="fl">1e-6</span>, rtol<span class="op">=</span><span class="fl">1e-3</span>):</span>
+<div class="sourceCode" id="cb4" data-code-line-numbers="0|1|4-5|9|13-18|20-21|22-25|27-28|30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="kw">def</span> rk23(f, tspan, y0, atol<span class="op">=</span><span class="fl">1e-6</span>, rtol<span class="op">=</span><span class="fl">1e-3</span>):</span>
 <span id="cb4-2"><a href=""></a></span>
 <span id="cb4-3"><a href=""></a>    m <span class="op">=</span> <span class="bu">len</span>(y0)</span>
 <span id="cb4-4"><a href=""></a>    t <span class="op">=</span> np.zeros(<span class="dv">100000</span>)</span>
@@ -784,13 +785,12 @@ Dr Jon Shiach
 <span id="cb4-24"><a href=""></a>            t[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> t[n] <span class="op">+</span> h</span>
 <span id="cb4-25"><a href=""></a>            n <span class="op">+=</span> <span class="dv">1</span></span>
 <span id="cb4-26"><a href=""></a>        </span>
-<span id="cb4-27"><a href=""></a>        r <span class="op">=</span> <span class="bu">max</span>(<span class="fl">0.1</span>, <span class="fl">0.8</span> <span class="op">*</span> (tol <span class="op">/</span> delta) <span class="op">**</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span>
-<span id="cb4-28"><a href=""></a>        h <span class="op">=</span> <span class="bu">min</span>(r <span class="op">*</span> h, tspan[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> t[n])</span>
-<span id="cb4-29"><a href=""></a></span>
-<span id="cb4-30"><a href=""></a>    <span class="cf">return</span> t[:n<span class="op">+</span><span class="dv">1</span>], y[:n<span class="op">+</span><span class="dv">1</span>,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-27"><a href=""></a>        h <span class="op">=</span> <span class="bu">min</span>(h <span class="op">*</span> <span class="bu">max</span>(<span class="fl">0.1</span>, <span class="fl">0.8</span> <span class="op">*</span> (tol <span class="op">/</span> delta) <span class="op">**</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>), tspan[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> t[n]))</span>
+<span id="cb4-28"><a href=""></a></span>
+<span id="cb4-29"><a href=""></a>    <span class="cf">return</span> t[:n<span class="op">+</span><span class="dv">1</span>], y[:n<span class="op">+</span><span class="dv">1</span>,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-2">
-<div class="sourceCode" id="cb5" data-code-line-numbers="0|4-5|13-18|20-21|22-27|29-30|33-34"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href=""></a><span class="kw">function</span> [<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">rk23</span>(<span class="va">f</span><span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">atol</span><span class="op">,</span> <span class="va">rtol</span>)</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource matlab number-lines code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href=""></a><span class="kw">function</span> [<span class="va">t</span><span class="op">,</span> <span class="va">y</span>] <span class="op">=</span> <span class="va">rk23</span>(<span class="va">f</span><span class="op">,</span> <span class="va">tspan</span><span class="op">,</span> <span class="va">y0</span><span class="op">,</span> <span class="va">atol</span><span class="op">,</span> <span class="va">rtol</span>)</span>
 <span id="cb5-2"><a href=""></a></span>
 <span id="cb5-3"><a href=""></a><span class="va">m</span> <span class="op">=</span> <span class="va">length</span>(<span class="va">y0</span>)<span class="op">;</span></span>
 <span id="cb5-4"><a href=""></a><span class="va">t</span> <span class="op">=</span> <span class="va">zeros</span>(<span class="fl">100000</span><span class="op">,</span> <span class="fl">1</span>)<span class="op">;</span></span>
@@ -814,18 +814,16 @@ Dr Jon Shiach
 <span id="cb5-22"><a href=""></a>    <span class="kw">if</span> <span class="va">delta</span> <span class="op">&lt;</span> <span class="va">tol</span></span>
 <span id="cb5-23"><a href=""></a>        <span class="va">y</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span><span class="op">,:</span>) <span class="op">=</span> <span class="va">y3</span><span class="op">;</span></span>
 <span id="cb5-24"><a href=""></a>        <span class="va">t</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span>) <span class="op">=</span> <span class="va">t</span>(<span class="va">n</span>) <span class="op">+</span> <span class="va">h</span><span class="op">;</span></span>
-<span id="cb5-25"><a href=""></a>        <span class="va">k1</span> <span class="op">=</span> <span class="va">k4</span><span class="op">;</span></span>
-<span id="cb5-26"><a href=""></a>        <span class="va">n</span> <span class="op">=</span> <span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">;</span></span>
-<span id="cb5-27"><a href=""></a>    <span class="kw">end</span></span>
-<span id="cb5-28"><a href=""></a></span>
-<span id="cb5-29"><a href=""></a>    <span class="va">r</span> <span class="op">=</span> <span class="va">max</span>(<span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.8</span> <span class="op">*</span> (<span class="va">tol</span> <span class="op">/</span> <span class="va">delta</span>) <span class="op">^</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>))<span class="op">;</span></span>
-<span id="cb5-30"><a href=""></a>    <span class="va">h</span> <span class="op">=</span> <span class="va">min</span>(<span class="va">r</span> <span class="op">*</span> <span class="va">h</span><span class="op">,</span> <span class="va">tspan</span>(<span class="fl">2</span>) <span class="op">-</span> <span class="va">t</span>(<span class="va">n</span>))<span class="op">;</span></span>
-<span id="cb5-31"><a href=""></a><span class="kw">end</span></span>
-<span id="cb5-32"><a href=""></a></span>
-<span id="cb5-33"><a href=""></a><span class="va">t</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span><span class="op">:</span><span class="kw">end</span>) <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb5-34"><a href=""></a><span class="va">y</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span><span class="op">:</span><span class="kw">end</span><span class="op">,:</span>) <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb5-35"><a href=""></a></span>
-<span id="cb5-36"><a href=""></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-25"><a href=""></a>        <span class="va">n</span> <span class="op">=</span> <span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">;</span></span>
+<span id="cb5-26"><a href=""></a>    <span class="kw">end</span></span>
+<span id="cb5-27"><a href=""></a></span>
+<span id="cb5-28"><a href=""></a>    <span class="va">h</span> <span class="op">=</span> <span class="va">min</span>(<span class="va">h</span> <span class="op">*</span> <span class="va">max</span>(<span class="fl">0.1</span><span class="op">,</span> <span class="fl">0.8</span> <span class="op">*</span> (<span class="va">tol</span> <span class="op">/</span> <span class="va">delta</span>) <span class="op">^</span> (<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>))<span class="op">,</span> <span class="va">tspan</span>(<span class="fl">2</span>) <span class="op">-</span> <span class="va">t</span>(<span class="va">n</span>))<span class="op">;</span></span>
+<span id="cb5-29"><a href=""></a><span class="kw">end</span></span>
+<span id="cb5-30"><a href=""></a></span>
+<span id="cb5-31"><a href=""></a><span class="va">t</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span><span class="op">:</span><span class="kw">end</span>) <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb5-32"><a href=""></a><span class="va">y</span>(<span class="va">n</span><span class="op">+</span><span class="fl">1</span><span class="op">:</span><span class="kw">end</span><span class="op">,:</span>) <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb5-33"><a href=""></a></span>
+<span id="cb5-34"><a href=""></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
