@@ -405,7 +405,7 @@ document.write(`
     k_3 &amp;= f(t_n + c_3h, y_n + h(a_{31}k_1 + a_{32}k_2)), \\
     k_4 &amp;= f(t_n + c_4h, y_n + h(a_{41}k_1 + a_{42}k_2 + a_{43}k_3)).
 \end{align*} \end{split}\]</div>
-<p>We have seen that it is straightforward to compute the stages sequentially since the value of <span class="math notranslate nohighlight">\(k_i\)</span> only depends on the values of <span class="math notranslate nohighlight">\(k_1, \ldots, k_{i-1}\)</span>. The stage values for 4-stage implicit Runge-Kutta method are</p>
+<p>We have seen that it is straightforward to compute the stages sequentially since the value of <span class="math notranslate nohighlight">\(k_i\)</span> only depends on the values of <span class="math notranslate nohighlight">\(k_1, \ldots, k_{i-1}\)</span>. The stage values for a 4-stage implicit Runge-Kutta method are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     k_1 &amp;= f(t_n + c_1h, y_n + h(a_{11}k_1 + a_{12}k_2 + a_{13}k_3 + a_{14}k_4)), \\
@@ -434,7 +434,7 @@ document.write(`
 <span class="eqno">(3.3)<a class="headerlink" href="#equation-irk-zi" title="Permalink to this equation">#</a></span>\[\mathbf{z}_i = h \displaystyle\sum_{j=1}^s a_{ij} \mathbf{k}_j, \]</div>
 <p>and the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> becomes</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{k}_i = f(\mathbf{t}_n + c_ih, \mathbf{y}_n + \mathbf{z}_i). \]</div>
+\[\mathbf{k}_i = f(t_n + c_ih, \mathbf{y}_n + \mathbf{z}_i). \]</div>
 <p>Substituting this into equation <a class="reference internal" href="#equation-irk-zi">(3.3)</a> we have</p>
 <div class="math notranslate nohighlight" id="equation-irk-zi-2">
 <span class="eqno">(3.4)<a class="headerlink" href="#equation-irk-zi-2" title="Permalink to this equation">#</a></span>\[ \begin{align*}
@@ -580,13 +580,13 @@ document.write(`
         a_{ss} \frac{\partial}{\partial \mathbf{z}} f(t_n + c_sh, \mathbf{y}_n + \mathbf{z}_s)
     \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p>Note that each of the derivatives <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \mathbf{z}}f(t_n + c_ih, \mathbf{y}_n +  \mathbf{z}_i)\)</span> are <span class="math notranslate nohighlight">\(N \times N\)</span> Jacobian matrices so <span class="math notranslate nohighlight">\(J\)</span> is a <span class="math notranslate nohighlight">\(Ns \times Ns\)</span> matrix. To save computational effort we can use the approximation</p>
+<p>Note that each of the derivatives <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \mathbf{z}}f(t_n + c_ih, \mathbf{y}_n +  \mathbf{z}_i)\)</span> are <span class="math notranslate nohighlight">\(N \times N\)</span> Jacobian matrices so <span class="math notranslate nohighlight">\(J\)</span> is a <span class="math notranslate nohighlight">\(Ns \times Ns\)</span> matrix. To save computational effort we use the approximation</p>
 <div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial \mathbf{z}} f(t_n + c_ih, \mathbf{y}_n + \mathbf{z}_i) \approx \frac{\partial}{\partial \mathbf{y}} f(t_n, \mathbf{y}_n), \]</div>
-<p>so we only need to calculate a single Jacobian matrix for each step. Using an approximation of the Jacobians in this way means that we may need more iterates, but this his more efficient than having fewer iterates and calculating <span class="math notranslate nohighlight">\(s^2\)</span> Jacobians at each step. Another consideration we have is how to determine the derivatives in the Jacobian. We can approximate the derivatives using a second-order finite-difference approximation</p>
+<p>so we only need to calculate a single Jacobian matrix for each step. Using an approximation of the Jacobians in this way means that we may need more iterates, but this his more efficient than having fewer iterates and calculating <span class="math notranslate nohighlight">\(s^2\)</span> Jacobians at each step. Another consideration we have is how to determine the derivatives in the Jacobian. We can approximate the derivatives using a first-order forward-difference approximation</p>
 <div class="math notranslate nohighlight">
-\[ \frac{\partial}{\partial \mathbf{y}}f(t_n, \mathbf{y}_n) \approx \frac{f(t_n, \mathbf{y}_n + \epsilon) - f(t_n, \mathbf{y}_n - \epsilon)}{2\mathbf{\epsilon}},\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> is some small value. The Jacobian matrix <span class="math notranslate nohighlight">\(J\)</span> is constant for all iterations of Newton’s method in the same step, so the solution of the linear sytem in equation <a class="reference internal" href="#equation-newton-1">(3.12)</a> is well suited to <a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a>.</p>
+\[ \frac{\partial}{\partial \mathbf{y}}f(t_n, \mathbf{y}_n) \approx \frac{f(t_n, \mathbf{y}_n + \epsilon) - f(t_n, \mathbf{y}_n)}{\epsilon},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> is some small value. The Jacobian matrix <span class="math notranslate nohighlight">\(J\)</span> is constant for all iterations of Newton’s method in the same step, so the solution of the linear system in equation <a class="reference internal" href="#equation-newton-1">(3.12)</a> is well suited to <a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a>.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -599,12 +599,12 @@ document.write(`
 <p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, \mathbf{y})\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, a vector of initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = y_0\)</span> and a value of the step length <span class="math notranslate nohighlight">\(h\)</span></p>
 <p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span>.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(nsteps \gets \operatorname{int}\left( \dfrac{t_{\max} - t_0}{h} \right)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(nsteps \gets \left\lfloor \dfrac{t_{\max} - t_0}{h} \right\rfloor\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, nsteps\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(J \gets \dfrac{\partial}{\partial \mathbf{y}} f(t_n, \mathbf{y}_n)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{z} \gets \mathbf{0}\)</span></p></li>
-<li><p>For <span class="math notranslate nohighlight">\(k = 1, \ldots, 10\)</span></p>
+<li><p>For <span class="math notranslate nohighlight">\(k = 1, \ldots, maxiter\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(g(\mathbf{z}) \gets \mathbf{z} - h (A \otimes I_N) F(\mathbf{z})\)</span></p></li>
 <li><p>Solve the linear system <span class="math notranslate nohighlight">\((I - h (A \otimes J)) \Delta \mathbf{z} = -g(\mathbf{z})\)</span> for <span class="math notranslate nohighlight">\(\Delta \mathbf{z}\)</span></p></li>
@@ -752,10 +752,8 @@ Python</label><div class="sd-tab-content docutils">
     <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
         <span class="n">y_plus_epsilon</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-        <span class="n">y_minus_epsilon</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
         <span class="n">y_plus_epsilon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">epsilon</span>
-        <span class="n">y_minus_epsilon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">epsilon</span>
-        <span class="n">J</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_plus_epsilon</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y_minus_epsilon</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">epsilon</span><span class="p">)</span>
+        <span class="n">J</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_plus_epsilon</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="n">epsilon</span>
 
     <span class="k">return</span> <span class="n">J</span>
 
@@ -813,10 +811,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">epsilon</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">;</span>
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">N</span>
 <span class="w">    </span><span class="n">y_plus_epsilon</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
-<span class="w">    </span><span class="n">y_minus_epsilon</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
 <span class="w">    </span><span class="n">y_plus_epsilon</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y_plus_epsilon</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
-<span class="w">    </span><span class="n">y_minus_epsilon</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y_minus_epsilon</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
-<span class="w">    </span><span class="n">J</span><span class="p">(:,</span><span class="w"> </span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_plus_epsilon</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_minus_epsilon</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">epsilon</span><span class="p">);</span>
+<span class="w">    </span><span class="n">J</span><span class="p">(:,</span><span class="w"> </span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_plus_epsilon</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
 <span class="k">end</span>
 
 <span class="k">end</span>
