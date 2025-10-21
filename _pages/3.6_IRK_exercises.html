@@ -435,7 +435,7 @@ Solution<div class="sd-summary-down docutils">
   y_1' &amp;= -1000 y_1 + y_2, &amp; y_1(0) &amp;= 1, \\
   y_2' &amp;= -y_2, &amp; y_2(0) &amp;= 1.
 \end{align*} \end{split}\]</div>
-<p>(a)   Compute the solution to this IVP over <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> using the Radau IIA method from <a class="reference internal" href="#ch3-ex-radauIIA-derivation"><span class="std std-ref">Exercise</span></a> with a step length of <span class="math notranslate nohighlight">\(h = 1\)</span>. Produce a plot of the solutions to <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span> against <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>(a)   Compute the solution to this IVP over <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> using the Radau IIA method from <a class="reference internal" href="#ch3-ex-radauIIA-derivation"><span class="std std-ref">Exercise</span></a> with a step length of <span class="math notranslate nohighlight">\(h = 0.1\)</span>. Produce a plot of the solutions to <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span> against <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -444,7 +444,7 @@ Solution<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/2a6ff9f7dd31751bcb45972a2304c12f298a0d5d1e7e9978f2d79c4f80fd2343.png" src="../_images/2a6ff9f7dd31751bcb45972a2304c12f298a0d5d1e7e9978f2d79c4f80fd2343.png" />
+<img alt="../_images/ff0bf5bc79ae5eef96925e11733824a1fcfaaaabe6ddbe04bb408e7a14cc867c.png" src="../_images/ff0bf5bc79ae5eef96925e11733824a1fcfaaaabe6ddbe04bb408e7a14cc867c.png" />
 </figure>
 </div>
 </details><p>(b)   Attempt to solve this IVP using the RK4 method with the same step length. What do you notice about the result?</p>
@@ -455,7 +455,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The solution is unstable (you should see an error message).</p>
+<p class="sd-card-text">The solution is unstable (your solution should have very large values for <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span>).</p>
 </div>
 </details><p>(c)   Solve this IVP using the <a class="reference internal" href="2.5_Adaptive_step_size_control.html#fehlbergs-method-equation">Fehlberg 4(5)</a> explicit Runge-Kutta method. Record the time taken for both methods to compute the solution and determine value of the smallest step length used in the Fehlberg’s method solution. What does this suggest about this system?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -465,7 +465,7 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The RadauIIA method took 0.005 seconds to compute whereas the Runge-Kutta Fehlberg 4(5) method took 0.265 seconds to compute (these times will vary depending on the machine used). The smallest step length used in Fehlberg’s method was <span class="math notranslate nohighlight">\(h = 8.8\times 10^{-07}\)</span>. This suggests that this is a stiff system since the minimum step length used in Fehlberg’s is very small compared to the one used for the Radau IIA method.</p>
+<p class="sd-card-text">The Radau IIA method took 0.005 seconds to compute whereas the Runge-Kutta Fehlberg 4(5) method took 0.051 seconds to compute (these times will vary depending on the machine used). The smallest step length used in Fehlberg’s method was <span class="math notranslate nohighlight">\(h = 0.000427\)</span>. This suggests that this is a stiff system since the minimum step length used in Fehlberg’s method is very small compared to the one used for the Radau IIA method.</p>
 </div>
 </details></section>
 </div>
