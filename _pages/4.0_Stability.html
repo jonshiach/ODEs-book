@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.2. Stability Function of a Runge-Kutta Method" href="4.1_ERK_stability_function.html" />
+    <link rel="next" title="4.3. Stability Function of a Runge-Kutta Method" href="4.1_ERK_stability_function.html" />
     <link rel="prev" title="3.4. Implicit Runge-Kutta methods exercises" href="3.6_IRK_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -196,11 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Stability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -378,7 +378,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-functions">4.1. Stability functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiffness">4.1. Stiffness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-functions">4.2. Stability functions</a></li>
 </ul>
             </nav>
         </div>
@@ -398,7 +399,7 @@ document.write(`
 \[ y' = -15y, \qquad t \in [0, 1], \qquad y(0) = 1. \]</div>
 <p>The exact solution for this initial value problem is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
 <figure class="align-default" id="stability-plot-1-figure" style="width: 600px">
-<img alt="../_images/4f3ae883708f2b527b45c551ddc7495354f2280b47c16821783a6b63260b707f.png" src="../_images/4f3ae883708f2b527b45c551ddc7495354f2280b47c16821783a6b63260b707f.png" />
+<img alt="../_images/e3340dc78eee2b8b6bd80c50056c74154ab2731580006af1b4d7318248ec2380.png" src="../_images/e3340dc78eee2b8b6bd80c50056c74154ab2731580006af1b4d7318248ec2380.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> and <span class="math notranslate nohighlight">\(h=0.125\)</span>.</span><a class="headerlink" href="#stability-plot-1-figure" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -418,8 +419,41 @@ document.write(`
 <p>for all steps of the method. If a method is not stable then it is <strong>unstable</strong>.</p>
 </section>
 </div><hr class="docutils" />
+<section id="stiffness">
+<h2><span class="section-number">4.1. </span>Stiffness<a class="headerlink" href="#stiffness" title="Permalink to this heading">#</a></h2>
+<p>When solving IVPs numerically, some problems behave well and they can be solved accurately using large values of the step length <span class="math notranslate nohighlight">\(h\)</span>. Other problems force us to use small step lengths use they become unstable. These problems as known as <strong>stiff</strong> problems.</p>
+<p>An <em>informal</em> definition of stiffness is provided by <span id="id1">Lambert [<a class="reference internal" href="E_References.html#id2" title="J.D. Lambert. Numerical Methods for Ordinary Differential Systems: The Initial Value Problem. Wiley, 1991.">1991</a>]</span></p>
+<blockquote>
+<div><p>“If a numerical method with a finite region of absolute stability, applied to a system with any initial conditions, is forced to use in a certain interval of integration a step length which is excessively small in relation to the smoothness of the exact solution in that interval, then the system is said to be stiff in that interval.”</p>
+</div></blockquote>
+<p>Given a linear system <span class="math notranslate nohighlight">\(\mathbf{y}' = A \mathbf{y}\)</span> then the stifness ratio is defined as</p>
+<div class="math notranslate nohighlight">
+\[ S= \frac{\max_i (Re(\lambda_i))}{\min_i (Re(\lambda_i))},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda_i\)</span> are the eigenvalues of the matrix <span class="math notranslate nohighlight">\(A\)</span>. If the value of <span class="math notranslate nohighlight">\(S\)</span> is <em>large</em>, then the system is stiff. For example, consider the system</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  y_1' &amp;= -1000y_1 + 999y_2, \\
+  y_2' &amp;= -y_2.
+\end{align*} \end{split}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(A = \begin{pmatrix} -1000 &amp; 999 \\ 0 &amp; -1 \end{pmatrix}\)</span>, so the eigenvalues satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  0 &amp;= | A - \lambda I | \\
+  &amp;= \begin{vmatrix}
+    -1000 - \lambda &amp; 999 \\
+    0 &amp; -1 - \lambda
+  \end{vmatrix} \\
+  &amp;= (-1000-\lambda) (-1 - \lambda).
+\end{align*} \end{split}\]</div>
+<p>So the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = -1000\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 =-1\)</span> and the stiffness ratio is</p>
+<div class="math notranslate nohighlight">
+\[ S = \frac{\lambda_1}{\lambda_2} = \frac{-1000}{-1} = 1000.\]</div>
+<p>Since <span class="math notranslate nohighlight">\(S\)</span> is <em>large</em> then this is a stiff system.</p>
+<p>A similar anaylsis can be performed for nonlinear systems using the Jacobian matrix to linearalise the system.</p>
+<hr class="docutils" />
+</section>
 <section id="stability-functions">
-<span id="stability-functions-section"></span><h2><span class="section-number">4.1. </span>Stability functions<a class="headerlink" href="#stability-functions" title="Permalink to this heading">#</a></h2>
+<span id="stability-functions-section"></span><h2><span class="section-number">4.2. </span>Stability functions<a class="headerlink" href="#stability-functions" title="Permalink to this heading">#</a></h2>
 <p>To examine the behaviour of the local truncation errors we use the following test equation</p>
 <div class="math notranslate nohighlight" id="equation-test-equation">
 <span class="eqno">(4.2)<a class="headerlink" href="#equation-test-equation" title="Permalink to this equation">#</a></span>\[ y' = \lambda y. \]</div>
@@ -488,7 +522,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.2. </span>Stability Function of a Runge-Kutta Method</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Stability Function of a Runge-Kutta Method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -510,7 +544,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-functions">4.1. Stability functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiffness">4.1. Stiffness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-functions">4.2. Stability functions</a></li>
 </ul>
   </nav></div>
 
