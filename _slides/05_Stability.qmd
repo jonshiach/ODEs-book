@@ -24,7 +24,6 @@ For example, consider the Euler method solution to the IVP $y'=-15y$, $t \in [0,
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
-plt.rcParams['text.usetex'] = True  # allows use of LaTeX in labels
 
 def euler(f, tspan, y0, h): 
 
@@ -105,9 +104,9 @@ plt.legend()
 plt.show()
 ```
 
-The solution using $h = 0.125$ remains bounded by the solution using $h=0.25$ diverges.
+The solution using $h = 0.125$ remains bounded but the solution using $h=0.25$ diverges.
 
-## Definition
+## Stability Definition
 
 ::: {.callout-note}
 If $e_n$ is the local truncation error of a numerical method defined by
@@ -232,7 +231,7 @@ $$ \begin{align*}
     \begin{pmatrix} Y_1 \\ Y_2 \\ \vdots \\ Y_s \end{pmatrix}. 
 \end{align*} $$
 
-Let $Y = (Y_1 ,Y_2 ,\dots ,Y_s )$ and $\mathbf{e}=(1,1,\dots ,1)^\mathsf{T}$ then
+Let $Y = (Y_1 ,Y_2 ,\dots ,Y_s )^\mathsf{T}$ and $\mathbf{e}=(1,1,\dots ,1)^\mathsf{T}$ then
 
 $$ Y = \mathbf{e} y_n + z A Y. $$
 
