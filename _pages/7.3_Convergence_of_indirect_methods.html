@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>7.3. Convergence of indirect methods &#8212; Runge-Kutta Methods</title>
   
@@ -433,24 +433,19 @@ document.write(`
     x_{2}^{(k+1)} &amp;= \frac{1}{4} \left( -8 - 3 x_{1}^{(k)} + x_{3}^{(k)} \right), \\
     x_{3}^{(k+1)} &amp;= \frac{1}{4} \left( 14 + x_{2}^{(k)} \right).
 \end{align*} \end{split}\]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solution (click to show)<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The coefficient matrix for this linear system is</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>The coefficient matrix for this linear system is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} A = \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}. \end{split}\]</div>
-<p class="sd-card-text">so</p>
+<p>so</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     L &amp;= \begin{pmatrix} 0 &amp; 0 &amp; 0 \\ 3 &amp; 0 &amp; 0 \\ 0 &amp; -1 &amp; 0 \end{pmatrix}, &amp;
-    D &amp;= \begin{pmatrix} 4 &amp; 0 &amp; 0 \\ 0 &amp; 4 &amp; 0 \\ 0 &amp; 0 &amp; 4 \end{pmatrix}, \\
+    D &amp;= \begin{pmatrix} 4 &amp; 0 &amp; 0 \\ 0 &amp; 4 &amp; 0 \\ 0 &amp; 0 &amp; 4 \end{pmatrix}, &amp;
     U &amp;= \begin{pmatrix} 0 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; -1 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">The iteration matrices for the Jacobi and Gauss-Seidel methods are given in equations <a class="reference internal" href="7.1_Jacobi_method.html#equation-jacobi-method-iteration-matrix-equation">(7.4)</a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#equation-gauss-seidel-method-iteration-matrix-equation">(7.7)</a> which for this system are</p>
+<p>The iteration matrices for the Jacobi and Gauss-Seidel methods are given in equations <a class="reference internal" href="7.1_Jacobi_method.html#equation-jacobi-method-iteration-matrix-equation">(7.4)</a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#equation-gauss-seidel-method-iteration-matrix-equation">(7.7)</a> which for this system are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     T_J &amp;= -D^{-1} ( L + U)  \\
@@ -474,9 +469,8 @@ Solution (click to show)<div class="sd-summary-down docutils">
     &amp; =
     \begin{pmatrix} 0 &amp; -\frac{3}{4} &amp; 0 \\ 0 &amp; \frac{9}{16} &amp; \frac{1}{4} \\ 0 &amp; \frac{9}{64} &amp; \frac{1}{16} \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Calculating the spectral radius for these iteration matrices gives <span class="math notranslate nohighlight">\(\rho(T_J )=0.7906\)</span> and <span class="math notranslate nohighlight">\(\rho (T_{GS})=0.625\)</span> which are both less than 1 so both of these methods are convergent for this system. Furthermore, the Gauss-Seidel method will converge faster than the Jacobi method since it has a smaller spectral radius.</p>
-</div>
-</details></section>
+<p>Calculating the spectral radius for these iteration matrices gives <span class="math notranslate nohighlight">\(\rho(T_J )=0.7906\)</span> and <span class="math notranslate nohighlight">\(\rho (T_{GS})=0.625\)</span> which are both less than 1 so both of these methods are convergent for this system. Furthermore, the Gauss-Seidel method will converge faster than the Jacobi method since it has a smaller spectral radius.</p>
+</section>
 </div></section>
 
     <script type="text/x-thebe-config">
