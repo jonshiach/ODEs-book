@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>1.2. Error analysis &#8212; Runge-Kutta Methods</title>
   
@@ -404,12 +404,12 @@ document.write(`
     \text{error} &amp;= | y_\text{exact} - y_\text{numerical} |.
 \end{align*} \]</div>
 <p>The numerical solution to this IVP computed using the Euler method, the exact solution for the same <span class="math notranslate nohighlight">\(t\)</span> values used in the Euler method and the absolute error are tabulated below, and the solutions plotted in <a class="reference internal" href="#euler-example-exact-figure"><span class="std std-numref">Fig. 1.5</span></a>.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
-<th class="text-center head"><p>Euler</p></th>
-<th class="text-center head"><p>Exact</p></th>
-<th class="text-center head"><p>Error</p></th>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
+<th class="head text-center"><p>Euler</p></th>
+<th class="head text-center"><p>Exact</p></th>
+<th class="head text-center"><p>Error</p></th>
 </tr>
 </thead>
 <tbody>
@@ -446,7 +446,7 @@ document.write(`
 </tbody>
 </table>
 <figure class="align-default" id="euler-example-exact-figure" style="width: 600px">
-<img alt="../_images/509e2d21c7ab4a8fd7c9c15c07918a472c45d793ab4a20cd04674896d076e16c.png" src="../_images/509e2d21c7ab4a8fd7c9c15c07918a472c45d793ab4a20cd04674896d076e16c.png" />
+<img alt="../_images/f29b1d0083330e081ffd8245e7d9d67f0df29064d67007c5afae5dcaea3b55b4.png" src="../_images/f29b1d0083330e081ffd8245e7d9d67f0df29064d67007c5afae5dcaea3b55b4.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Comparisons between the Euler method solutions and the exact solutions for the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span>.</span><a class="headerlink" href="#euler-example-exact-figure" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -460,16 +460,16 @@ document.write(`
 <p>The solution over a single time step is changed from the current solution <span class="math notranslate nohighlight">\(y_n\)</span> by <span class="math notranslate nohighlight">\(h\)</span> multiplied by the value of <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span>. If we assume that that value of <span class="math notranslate nohighlight">\(y_n\)</span> has some error associated to it then the error will also be changed by <span class="math notranslate nohighlight">\(h\)</span> multiplied by some value. Therefore, the smaller the value of <span class="math notranslate nohighlight">\(h\)</span> then the smaller the change in the error converging to zero when <span class="math notranslate nohighlight">\(h\)</span> is infinitesimally small.</p>
 <p>We can demonstrate this by looking at the solutions to the initial value problem from <a class="reference internal" href="1.1_Euler_Method.html#euler-example">Example 1.1</a> using different values of the step length <span class="math notranslate nohighlight">\(h\)</span>. The numerical solutions using <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span> have been plotted against the exact solution in <a class="reference internal" href="#euler-example-hvals-figure"><span class="std std-numref">Fig. 1.6</span></a>.</p>
 <figure class="align-default" id="euler-example-hvals-figure" style="width: 600px">
-<img alt="../_images/417d45c449653658704590ddbf6d75d797ab06dae4c8a3b3ba672c238db34e14.png" src="../_images/417d45c449653658704590ddbf6d75d797ab06dae4c8a3b3ba672c238db34e14.png" />
+<img alt="../_images/e2007095aa0be90563067a9ef172a78072e99922aceea5f9d9aa9c46a331040f.png" src="../_images/e2007095aa0be90563067a9ef172a78072e99922aceea5f9d9aa9c46a331040f.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-hvals-figure" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here we can see that as the step length is reduced, the solution gets closer to the exact solution as expected. The absolute errors between the exact solution <span class="math notranslate nohighlight">\(y(1) = e^{\frac{1}{2}}\)</span> and the Euler method solution calculated using the different step lengths are tabulated below.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p><span class="math notranslate nohighlight">\(h\)</span></p></th>
-<th class="text-center head"><p>Error</p></th>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(h\)</span></p></th>
+<th class="head text-center"><p>Error</p></th>
 </tr>
 </thead>
 <tbody>
@@ -489,7 +489,7 @@ document.write(`
 </table>
 <p>This shows that as the step length is halved, the error decreases by a factor of approximately one half. This behaviour can be seen in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a> where the absolute errors between the numerical solutions for <span class="math notranslate nohighlight">\(y(1)\)</span> and the exact solution is plotted against the step length.</p>
 <figure class="align-default" id="euler-example-errors-figure" style="width: 600px">
-<img alt="../_images/9383164c73cfce387e1aeabb4d9d800e305068c2bb28c954f0039bea092b4fda.png" src="../_images/9383164c73cfce387e1aeabb4d9d800e305068c2bb28c954f0039bea092b4fda.png" />
+<img alt="../_images/d66cc05c30bdc3fa67b25e4c82d2afbf5243c873998debf56167acefeffa5c0d.png" src="../_images/d66cc05c30bdc3fa67b25e4c82d2afbf5243c873998debf56167acefeffa5c0d.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span> using step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-errors-figure" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -547,7 +547,7 @@ document.write(`
 <span id="global-truncation-error-section"></span><h2><span class="section-number">1.2.4. </span>Global truncation error<a class="headerlink" href="#global-truncation-error" title="Permalink to this heading">#</a></h2>
 <p>The global truncation error denoted by <span class="math notranslate nohighlight">\(E_n\)</span>, is the accumulation of the local truncation errors for the steps of the method to compute that solution from <span class="math notranslate nohighlight">\(t=t_0\)</span> up to <span class="math notranslate nohighlight">\(t = t_n\)</span> (<a class="reference internal" href="#euler-global-errors-figure"><span class="std std-numref">Fig. 1.8</span></a>).</p>
 <figure class="align-default" id="euler-global-errors-figure" style="width: 600px">
-<img alt="../_images/2449bffb7a90d94554c724996ae6b35b9b9a765bd5d51a91f3954f8e01552399.png" src="../_images/2449bffb7a90d94554c724996ae6b35b9b9a765bd5d51a91f3954f8e01552399.png" />
+<img alt="../_images/39a718ff327b7a293524f0d336724dfb8de914bdf281a923607e1e1ba5b675e5.png" src="../_images/39a718ff327b7a293524f0d336724dfb8de914bdf281a923607e1e1ba5b675e5.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">The global truncation errors <span class="math notranslate nohighlight">\(E_n\)</span> for the Euler method solution to the IVP <span class="math notranslate nohighlight">\(y' = ty\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span>, <span class="math notranslate nohighlight">\(y(0)= 1\)</span> using a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span>.</span><a class="headerlink" href="#euler-global-errors-figure" title="Permalink to this image">#</a></p>
 </figcaption>

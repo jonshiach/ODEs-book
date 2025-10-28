@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3.4. Implicit Runge-Kutta methods exercises &#8212; Runge-Kutta Methods</title>
   
@@ -355,7 +355,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -371,6 +373,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">3.4.1. Solutions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -444,7 +454,7 @@ Solution<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/873fc29efa448e0dcd94b0ac311b0ead165df8e5dfb79209e3684e3cf05c15dc.png" src="../_images/873fc29efa448e0dcd94b0ac311b0ead165df8e5dfb79209e3684e3cf05c15dc.png" />
+<img alt="../_images/89541e927800f0ebe874ab016f3ab65bf3f9175b927a4aa865cf4189d9046da0.png" src="../_images/89541e927800f0ebe874ab016f3ab65bf3f9175b927a4aa865cf4189d9046da0.png" />
 </figure>
 </div>
 </details><p>(b)   Attempt to solve this IVP using the RK4 method with the same step length. What do you notice about the result?</p>
@@ -455,7 +465,10 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The solution is unstable (your solution should have very large values for <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span>).</p>
+<figure class="align-default">
+<img alt="../_images/8eb7579046e7d6f34c96a7e94c5129024fd684b413ffa97e26f0a75f271249f9.png" src="../_images/8eb7579046e7d6f34c96a7e94c5129024fd684b413ffa97e26f0a75f271249f9.png" />
+</figure>
+<p class="sd-card-text">The solution is unstable.</p>
 </div>
 </details><p>(c)   Solve this IVP using the <a class="reference internal" href="2.5_Adaptive_step_size_control.html#fehlbergs-method-equation">Fehlberg 4(5)</a> explicit Runge-Kutta method. Record the time taken for both methods to compute the solution and determine value of the smallest step length used in the Fehlberg’s method solution. What does this suggest about this system?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -508,6 +521,16 @@ The smallest step length used by the Fehlberg 5(4) method was $h = 1.48 \times 1
 The Fehlberg 5(4) ERK method took much longer than the Radau IIA IRK method to compute the solution. This was because the chemical reaction is violent as indicated by the plot of the solution which shows the concentration of $B$ increasing rapidly shortly after the start of the reaction. This means the Fehlberg 5(4) ERK method is having to use a very small step length to ensure a stable solution. The Robertson model is an example of a stiff problem which the Radau class of IRK methods are more suited to solving than an ERK method (stiffness is covered in the [next chapter](stiffness-section)).
 ```
 ````` -->
+<hr class="docutils" />
+<section id="solutions">
+<h2><span class="section-number">3.4.1. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<p>The solutions to these exercises downloaded below by right clicking on the link and select ‘Save Link As’:</p>
+<p><span class="xref myst"></span></p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/ed820ad06ab4e51e196048bd396a4f2a/chapter3_exercises.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Jupyer</span> <span class="pre">Notebook</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/feb15ea85749b855c3b0250c56411f7c/chapter3_exercises.mlx"><code class="xref download docutils literal notranslate"><span class="pre">MATLAB</span> <span class="pre">Live</span> <span class="pre">Script</span></code></a></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -568,6 +591,20 @@ The Fehlberg 5(4) ERK method took much longer than the Radau IIA IRK method to c
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">3.4.1. Solutions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
