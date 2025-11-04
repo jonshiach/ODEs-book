@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>2.4. Deriving order conditions using trees &#8212; Runge-Kutta Methods</title>
   
@@ -447,13 +447,13 @@ document.write(`
     &amp;\vdots
 \end{align*}\end{split}\]</div>
 <p>As you can see this soon becomes complicated, however, English mathematician Robert Merson <span id="id1">Merson [<a class="reference internal" href="E_References.html#id6" title="R.H. Merson. An operational method for the study of intergration processes. In Proceedings of Conference on Data Processing and Automatic Computing Machives, volume 1, 1 - 25. Weapons Research Establishment, Salisbury, South Australia, 1957.">1957</a>]</span> noticed that the structure of rooted trees matches that of the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>. Defining a rooted tree notation where <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> denotes a node of the tree and the number of children the node has is denoted by a prime, e.g., <span class="math notranslate nohighlight">\(\mathbf{f}''\)</span> denotes a node has two children. A child node is written immediately following the parent node and sibling nodes are separated by a comma (using brackets if there are more than one child).</p>
-<table class="table">
+<table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(\tau\)</span></p></th>
-<th class="head text-center"><p><img alt="" src="../_images/rooted_tree_f.svg" /></p></th>
-<th class="head text-center"><p><img alt="" src="../_images/rooted_tree_fdashf.svg" /></p></th>
-<th class="head text-center"><p><img alt="" src="../_images/rooted_tree_fdashdashff.svg" /></p></th>
-<th class="head text-center"><p><img alt="" src="../_images/rooted_tree_fdashfdashf.svg" /></p></th>
+<tr class="row-odd"><th class="text-left head"><p><span class="math notranslate nohighlight">\(\tau\)</span></p></th>
+<th class="text-center head"><p><img alt="" src="../_images/rooted_tree_f.svg" /></p></th>
+<th class="text-center head"><p><img alt="" src="../_images/rooted_tree_fdashf.svg" /></p></th>
+<th class="text-center head"><p><img alt="" src="../_images/rooted_tree_fdashdashff.svg" /></p></th>
+<th class="text-center head"><p><img alt="" src="../_images/rooted_tree_fdashfdashf.svg" /></p></th>
 </tr>
 </thead>
 <tbody>
@@ -511,7 +511,7 @@ document.write(`
     =  \sum_{i,j,k} b_ia_{ij} a_{ik} c_ic_j^2c_k.
 \end{align*} \]</div>
 </section>
-</div><p>Butcher noticed that comparing the Taylor series expansions for the autonomous ODE <span class="math notranslate nohighlight">\(y'=f(y)\)</span> and the general form of a Runge-Kutta method gives the order condition <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+</div><p>Butcher noticed that comparing the Taylor series expansions for the autonomous ODE <span class="math notranslate nohighlight">\(y'=f(y)\)</span> and the general form of a Runge-Kutta method gives the order condition <a class="footnote-reference brackets" href="#id3" id="id2">1</a></p>
 <div class="math notranslate nohighlight" id="equation-order-condition-relation">
 <span class="eqno">(2.13)<a class="headerlink" href="#equation-order-condition-relation" title="Permalink to this equation">#</a></span>\[\Phi(\tau) = \dfrac{1}{\gamma(\tau)}.\]</div>
 <p>So to derive the order conditions for a <span class="math notranslate nohighlight">\(k\)</span>-th order <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method we determine the set <span class="math notranslate nohighlight">\(T\)</span> of all rooted trees of order up to and include <span class="math notranslate nohighlight">\(k\)</span>. We then use the condition from equation <a class="reference internal" href="#equation-order-condition-relation">(2.13)</a> for each tree in <span class="math notranslate nohighlight">\(T\)</span> to determine the order conditions. In addition to these order conditions there is also a condition placed on the value of <span class="math notranslate nohighlight">\(c_i\)</span></p>
@@ -551,10 +551,11 @@ document.write(`
 <p>These are the same order conditions for a second-order ERK method derived in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a>.</p>
 </section>
 </div><hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>I’ve skipped the derivation here, for details see <span id="id4">Butcher [<a class="reference internal" href="E_References.html#id9" title="J.C. Butcher. Numerical Methods for Ordinary Differential Equations. John Wiley &amp; Sons, Ltd, second edition, 2008.">2008</a>]</span>.</p>
-</aside>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>I’ve skipped the derivation here, for details see <span id="id4">Butcher [<a class="reference internal" href="E_References.html#id9" title="J.C. Butcher. Numerical Methods for Ordinary Differential Equations. John Wiley &amp; Sons, Ltd, second edition, 2008.">2008</a>]</span>.</p>
+</dd>
+</dl>
 </section>
 </section>
 

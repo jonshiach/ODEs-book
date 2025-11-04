@@ -211,7 +211,7 @@ Dr Jon Shiach
 <h2>Stability</h2>
 <p>A stable solver is one that produces solutions that are bounded.</p>
 <p>For example, consider the Euler method solution to the IVP <span class="math inline">\(y'=-15y\)</span>, <span class="math inline">\(t \in [0, 1]\)</span>, <span class="math inline">\(y(0) = 1\)</span>.</p>
-<div id="2dfa86ad" class="cell" data-execution_count="1">
+<div id="7f71f0b5" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -612,7 +612,7 @@ Dr Jon Shiach
 <section class="slide level3">
 
 <p>The region of absolute stability for the Euler method has been plotted below</p>
-<div id="a91ef627" class="cell" data-execution_count="2">
+<div id="139e8615" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -700,7 +700,7 @@ Dr Jon Shiach
 </section>
 <section class="slide level3">
 
-<div id="3ce34aa9" class="cell" data-execution_count="3">
+<div id="15109079" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -732,7 +732,7 @@ Dr Jon Shiach
 </section></section>
 <section id="stability-regions-for-erk-methods" class="title-slide slide level2 center">
 <h2>Stability Regions for ERK Methods</h2>
-<div id="10f495da" class="cell" data-execution_count="4">
+<div id="7f75b8bd" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -749,7 +749,7 @@ Dr Jon Shiach
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>RK4</p>
-<div id="cdcbc4d7" class="cell" data-execution_count="5">
+<div id="055a854b" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -760,7 +760,7 @@ Dr Jon Shiach
 </div>
 </div><div class="column" style="width:50%;">
 <p>Radau IA</p>
-<div id="229d8964" class="cell" data-execution_count="6">
+<div id="286223bc" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -820,7 +820,7 @@ Dr Jon Shiach
 <p><span class="math display">\[ \begin{align*}
     R(z) = \frac{1 + \frac{1}{3}z + \frac{1}{16}z^2}{1 - \frac{2}{3}z + \frac{1}{6}z^2}.
 \end{align*} \]</span></p>
-<p>Here <span class="math inline">\(Q(z) = 1 - \frac{2}{3}z + \frac{1}{6}z^2\)</span> which has roots at <span class="math inline">\(z = 2 \pm \sqrt{2}\)</span> which both have positive real parts so condition A is satisfied.</p>
+<p>Here <span class="math inline">\(Q(z) = 1 - \frac{2}{3}z + \frac{1}{6}z^2\)</span> which has roots at <span class="math inline">\(z = 2 \pm i\sqrt{2}\)</span> which both have positive real parts so condition A is satisfied.</p>
 <p><span class="math display">\[ \begin{align*}
     E(y) &amp;= \left( 1 - \frac{2}{3} i y - \frac{1}{6}y^2 \right) \left( 1 + \frac{2}{3} i y - \frac{1}{6}y^2 \right)
     - \left( 1 + \frac{1}{3} i y - \frac{1}{16} y^2 \right) \left( 1 - \frac{1}{3}i y - \frac{1}{16}y^2 \right) \\
@@ -841,7 +841,7 @@ Dr Jon Shiach
 <li>The stability function for an IRK method is: <span class="math inline">\(R(z) = \dfrac{\det(I - zA + z\mathbf{e}\mathbf{b}^\mathsf{T})}{\det(I - zA)} = \dfrac{P(z)}{Q(z)}\)</span></li>
 <li>A method is considered <strong>absolutely stable</strong> if <span class="math inline">\(|R(z)| \leq 1\)</span></li>
 <li>An <strong>A-stable</strong> method is one where it is stable for any choice of <span class="math inline">\(h\)</span></li>
-<li>An IRK method is A-stable if the roots of the denomintor have positive real parts and <span class="math inline">\(E(y) = Q(iy)Q(-iy) - P(iy)P(-iy) \leq 0\)</span></li>
+<li>An IRK method is A-stable if the roots of the denomintor have positive real parts and <span class="math inline">\(E(y) = Q(iy)Q(-iy) - P(iy)P(-iy) \geq 0\)</span></li>
 </ul>
 
 </section>
