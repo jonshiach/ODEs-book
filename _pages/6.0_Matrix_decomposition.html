@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>6. Matrix Decomposition Methods &#8212; Runge-Kutta Methods</title>
   
@@ -382,28 +382,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matrix-decomposition-methods">
 <span id="matrix-decomposition-chapter"></span><h1><span class="section-number">6. </span>Matrix Decomposition Methods<a class="headerlink" href="#matrix-decomposition-methods" title="Permalink to this heading">#</a></h1>
-<p><strong>Matrix decomposition</strong>, also known as <strong>matrix factorization</strong>, is the process of breaking down a matrix into simpler components that can be more easily analyzed or manipulated. This involves expressing a matrix as a product of two or more matrices, each with their own properties and applications.</p>
-<p>For example, consider the matrix <span class="math notranslate nohighlight">\(A\)</span> below</p>
+<p><strong>Matrix decomposition</strong>, also known as <strong>matrix factorisation</strong>, is the process of breaking down a matrix into simpler components that can be more easily analyzed or manipulated. This involves expressing a matrix as a product of two or more matrices, each with their own properties and applications.</p>
+<p>For example,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} A = \begin{pmatrix}
-    1 &amp; 2 &amp; 3 \\
-    4 &amp; 5 &amp; 6 \\
-    7 &amp; 8 &amp; 9
-\end{pmatrix}. \end{split}\]</div>
-<p>This can be decomposed into two matrices <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> such that <span class="math notranslate nohighlight">\(A = LU\)</span> where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    L &amp;= \begin{pmatrix}
-        1 &amp; 0 &amp; 0 \\
-        4 &amp; 1 &amp; 0 \\
-        7 &amp; 2 &amp; 1
-    \end{pmatrix}, &amp; 
-    U &amp;= \begin{pmatrix} 
-        1 &amp; 2 &amp; 3 \\
-        0 &amp; -3 &amp; -6 \\
-        0 &amp; 0 &amp; 0 
-    \end{pmatrix}. 
-\end{align*} \end{split}\]</div>
+\[\begin{split} A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} =
+\begin{pmatrix} 1 &amp; 0 \\ 3 &amp; 1 \end{pmatrix}
+\begin{pmatrix} 1 &amp; 2 \\ 0 &amp; -2 \end{pmatrix} \end{split}\]</div>
 <p>Here we will be looking at three common matrix decomposition methods:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a></p></li>
