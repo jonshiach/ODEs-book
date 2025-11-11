@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>7.2. Gauss-Seidel method &#8212; Runge-Kutta Methods</title>
   
@@ -405,7 +405,7 @@ document.write(`
 <p><span class="caption-number">Fig. 7.3 </span><span class="caption-text"><a href="https://en.wikipedia.org/wiki/Philipp_Ludwig_von_Seidel" target="_blank">Philipp Ludwig von Seidel (1821 - 1896)</a></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In the previous section on the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">Jacobi method</span></a> we saw that the solution to the linear system of equations <span class="math notranslate nohighlight">\(A \vec{x} = \vec{x}\)</span> can be calculated by estimating the solution <span class="math notranslate nohighlight">\(\vec{x}\)</span> and calculate an improved estimation <span class="math notranslate nohighlight">\(\vec{x}^{(k+1)}\)</span> using values from the current estimation <span class="math notranslate nohighlight">\(\vec{x}^{(k)}\)</span>. We continue to calculate the improved estimates until the largest absolute value in the {prf:ref}residual<residual-definition>` is less than some convergence tolerance. When calculating the values in <span class="math notranslate nohighlight">\(\vec{x}^{(k+1)}\)</span> we only use values from the previous estimate <span class="math notranslate nohighlight">\(\vec{x}^{k}\)</span></p>
+<p>In the previous section on the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">Jacobi method</span></a> we saw that the solution to the linear system of equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{x}\)</span> can be calculated by estimating the solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and calculate an improved estimation <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> using values from the current estimation <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span>. We continue to calculate the improved estimates until the largest absolute value in the {prf:ref}residual<residual-definition>` is less than some convergence tolerance. When calculating the values in <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> we only use values from the previous estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{k}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     x_i^{(k+1)} &amp;= \frac{1}{a_{ii}} \left( b_i - \sum_{j=1}^n a_{ij} x_j^{(k)} \right), \\
@@ -415,23 +415,23 @@ document.write(`
 <div class="proof definition admonition" id="gauss-seidel-method-definition">
 <p class="admonition-title"><span class="caption-number">Definition 7.3 </span> (The Gauss-Seidel method)</p>
 <section class="definition-content" id="proof-content">
-<p>The Gauss-Seidel method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> is</p>
+<p>The Gauss-Seidel method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-gauss-seidel-method-equation">
 <span class="eqno">(7.6)<a class="headerlink" href="#equation-gauss-seidel-method-equation" title="Permalink to this equation">#</a></span>\[ x_i^{(k+1)} = \frac{1}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i=1, \ldots , n \]</div>
 </section>
 </div><section id="the-iteration-matrix-for-the-gauss-seidel-method">
 <h2><span class="section-number">7.2.1. </span>The iteration matrix for the Gauss-Seidel method<a class="headerlink" href="#the-iteration-matrix-for-the-gauss-seidel-method" title="Permalink to this heading">#</a></h2>
-<p>The iteration matrix for the Gauss-Seidel method can be found by rearranging <span class="math notranslate nohighlight">\((L+D+U)\vec{x}=\vec{b}\)</span></p>
+<p>The iteration matrix for the Gauss-Seidel method can be found by rearranging <span class="math notranslate nohighlight">\((L+D+U)\mathbf{x}=\mathbf{b}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    (L+D+U)\vec{x}&amp;=\vec{b}\\
-    (L+D)\vec{x}&amp;=\vec{b}-U\vec{x}\\
-    \vec{x}&amp;=-(L+D)^{-1} U\vec{x}+(L+D)^{-1} \vec{x}.
+    (L+D+U)\mathbf{x}&amp;=\mathbf{b}\\
+    (L+D)\mathbf{x}&amp;=\mathbf{b}-U\mathbf{x}\\
+    \mathbf{x}&amp;=-(L+D)^{-1} U\mathbf{x}+(L+D)^{-1} \mathbf{x}.
 \end{align*} \end{split}\]</div>
 <p>So the matrix equation for the Gauss-Seidel method is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    \vec{x}^{(k+1)} =-(L+D)^{-1} U\vec{x}^{(k)} +(L+D)^{-1} \vec{x}^{(k+1)},
+    \mathbf{x}^{(k+1)} =-(L+D)^{-1} U\mathbf{x}^{(k)} +(L+D)^{-1} \mathbf{x}^{(k+1)},
 \end{align*} \]</div>
 <p>and the iteration matrix is</p>
 <div class="math notranslate nohighlight" id="equation-gauss-seidel-method-iteration-matrix-equation">
@@ -455,7 +455,7 @@ document.write(`
     x_{2}^{(k+1)} &amp;= \frac{1}{4} \left( -8 - 3 x_{1}^{(k+1)} + x_{3}^{(k)} \right), \\
     x_{3}^{(k+1)} &amp;= \frac{1}{4} \left( 14 + x_{2}^{(k+1)} \right).
 \end{align*} \end{split}\]</div>
-<p>Using starting values of <span class="math notranslate nohighlight">\(\vec{x} = \vec{0}\)</span>. Calculating the first iteration</p>
+<p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     x_{1}^{(1)} &amp;= \frac{1}{4} \left( -2 - 3 (-1.625) \right) = -0.5, \\
@@ -465,13 +465,13 @@ document.write(`
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{r}^{(1)} = \vec{b} - A \vec{x}^{(1)} = 
+    \mathbf{r}^{(1)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
     \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
     \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
     \begin{pmatrix} -0.5 \\ -1.625 \\ 3.09375 \end{pmatrix} =
     \begin{pmatrix} 4.875 \\ 3.09375 \\ 0.0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(1)} |) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     x_{1}^{(2)} &amp;= \frac{1}{4} \left( -2 - 3 (-1.765625) \right) = 0.71875, \\
@@ -481,20 +481,20 @@ document.write(`
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{r}^{(2)} = \vec{b} - A \vec{x}^{(1)} = 
+    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
     \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
     \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
     \begin{pmatrix} 0.71875 \\ -1.765625 \\ 3.058594 \end{pmatrix} =
     \begin{pmatrix} 0.421875 \\ -0.035156 \\ 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The Gauss-Seidel method was iterated until <span class="math notranslate nohighlight">\(\max |\vec{r}| &lt; 10^{-4}\)</span> and a selection of the iteration values are given in the table below. Note that the Gauss-Seidel method took 20 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations to achieve the same accuracy.</p>
-<table class="colwidths-auto table">
+<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The Gauss-Seidel method was iterated until <span class="math notranslate nohighlight">\(\max |\mathbf{r}| &lt; 10^{-4}\)</span> and a selection of the iteration values are given in the table below. Note that the Gauss-Seidel method took 20 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations to achieve the same accuracy.</p>
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(\max( | \vec{r} |)\)</span></p></th>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\max( | \mathbf{r} |)\)</span></p></th>
 </tr>
 </thead>
 <tbody>
@@ -558,7 +558,7 @@ document.write(`
 </div></section>
 <section id="code">
 <h2><span class="section-number">7.2.2. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The code below defines the function <code class="docutils literal notranslate"><span class="pre">gauss_seidel()</span></code> which solves a linear system of equations of the for <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> using the Gauss-Seidel method.</p>
+<p>The code below defines the function <code class="docutils literal notranslate"><span class="pre">gauss_seidel()</span></code> which solves a linear system of equations of the for <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> using the Gauss-Seidel method.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">

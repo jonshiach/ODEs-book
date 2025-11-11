@@ -435,7 +435,7 @@ document.write(`
 <p>The MATLAB code used in this book is given here for reference.</p>
 <section id="initial-value-problem-solver">
 <h2>Initial value problem solver<a class="headerlink" href="#initial-value-problem-solver" title="Permalink to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code> function is used to solve an initial value problem of the form <span class="math notranslate nohighlight">\(\vec{y}' = f(t, \vec{y})\)</span>, <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span> and <span class="math notranslate nohighlight">\(\vec{y}_0 = \vec{\alpha}\)</span> using a single step method. The functions return arrays containing the values of <span class="math notranslate nohighlight">\(\vec{t}\)</span> and <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">solveIVP()</span></code> function is used to solve an initial value problem of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, \mathbf{y})\)</span>, <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}_0 = \mathbf{\alpha}\)</span> using a single step method. The functions return arrays containing the values of <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP</span><span class="p">(</span>f, tspan, y0, h, solver<span class="p">)</span>
 
 <span class="c">% Define t and y arrays</span>
@@ -508,7 +508,7 @@ document.write(`
 </section>
 <section id="adaptive-step-size-control">
 <h3>Adaptive step size control<a class="headerlink" href="#adaptive-step-size-control" title="Permalink to this heading">#</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">solveIVP_SSC()</span></code> function is used to solve an initial value problem of the form <span class="math notranslate nohighlight">\(\vec{y}' = f(t, \vec{y})\)</span>, <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span> and <span class="math notranslate nohighlight">\(\vec{y}_0 = \vec{\alpha}\)</span> using a single step method with adaptive step size control. The functions return arrays containing the values of <span class="math notranslate nohighlight">\(\vec{t}\)</span> and <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">solveIVP_SSC()</span></code> function is used to solve an initial value problem of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, \mathbf{y})\)</span>, <span class="math notranslate nohighlight">\(t \in [t_{\min}, t_{\max}]\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}_0 = \mathbf{\alpha}\)</span> using a single step method with adaptive step size control. The functions return arrays containing the values of <span class="math notranslate nohighlight">\(\mathbf{t}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = solveIVP_SSC</span><span class="p">(</span>f, tspan, y0, h, tol, solver<span class="p">)</span>
 
 <span class="c">% Define t and y arrays</span>
@@ -952,7 +952,7 @@ document.write(`
 </section>
 <section id="indirect-methods">
 <h2>Indirect methods<a class="headerlink" href="#indirect-methods" title="Permalink to this heading">#</a></h2>
-<p>The following methods calculate the solutions to the system of linear equations <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> ceasing iterations when the largest value of the residual is less than <code class="docutils literal notranslate"><span class="pre">tol</span></code>.</p>
+<p>The following methods calculate the solutions to the system of linear equations <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> ceasing iterations when the largest value of the residual is less than <code class="docutils literal notranslate"><span class="pre">tol</span></code>.</p>
 <section id="the-jacobi-method">
 <h3>The Jacobi method<a class="headerlink" href="#the-jacobi-method" title="Permalink to this heading">#</a></h3>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">jacobi</span><span class="p">(</span>A, b, tol<span class="p">)</span>

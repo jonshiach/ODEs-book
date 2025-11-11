@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>7.3. Convergence of indirect methods &#8212; Runge-Kutta Methods</title>
   
@@ -383,27 +383,27 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="convergence-of-indirect-methods">
 <span id="convergence-of-indirect-methods-section"></span><h1><span class="section-number">7.3. </span>Convergence of indirect methods<a class="headerlink" href="#convergence-of-indirect-methods" title="Permalink to this heading">#</a></h1>
 <p>We have seen that both the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">Jacobi</span></a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel</span></a> methods are iterated until the estimates of the solution converge to a given tolerance. In <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> required 49 iterations to converge to the solution of a system of linear equations whereas in <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Example 7.2</a> only required 20 iterations to converge to the solution for the same system.</p>
-<p>Not all indirect methods will converge for a given system of linear equations, we can establish whether a method will be convergent using the theorem below. Let <span class="math notranslate nohighlight">\(\vec{e}^{(k)} = \|\vec{x} - \vec{x}^{(k)}\|\)</span> be the error between the exact solution <span class="math notranslate nohighlight">\(\vec{x}\)</span> and the estimate <span class="math notranslate nohighlight">\(\vec{x}^{(k)}\)</span>. The error from one estimate to the next is updated using the iteration matrix for the method</p>
+<p>Not all indirect methods will converge for a given system of linear equations, we can establish whether a method will be convergent using the theorem below. Let <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)} = \|\mathbf{x} - \mathbf{x}^{(k)}\|\)</span> be the error between the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span>. The error from one estimate to the next is updated using the iteration matrix for the method</p>
 <div class="math notranslate nohighlight">
-\[ \vec{e}^{(k+1)} = T\vec{e}^{(k)}. \]</div>
-<p>We can write the first error, <span class="math notranslate nohighlight">\(\vec{e}^{(0)}\)</span> as a linear combination of some vectors <span class="math notranslate nohighlight">\(\vec{v}_i\)</span></p>
+\[ \mathbf{e}^{(k+1)} = T\mathbf{e}^{(k)}. \]</div>
+<p>We can write the first error, <span class="math notranslate nohighlight">\(\mathbf{e}^{(0)}\)</span> as a linear combination of some vectors <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span></p>
 <div class="math notranslate nohighlight">
-\[ \vec{e}^{(0)} =\alpha_1 \vec{v}_1 +\alpha_2 \vec{v}_2 +\cdots +\alpha_n \vec{v}_n =\sum_{i=1}^n \alpha_i \vec{v}_i, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha_i\)</span> are scalars. If <span class="math notranslate nohighlight">\(\vec{v}_i\)</span> are the <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">eigenvalues</a> of the iteration matrix <span class="math notranslate nohighlight">\(T\)</span> with eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> so <span class="math notranslate nohighlight">\(T\vec{v}_i = \lambda_i \vec{v}_i\)</span> then iterating <span class="math notranslate nohighlight">\(\vec{e}^{(k)}\)</span> gives</p>
+\[ \mathbf{e}^{(0)} =\alpha_1 \mathbf{v}_1 +\alpha_2 \mathbf{v}_2 +\cdots +\alpha_n \mathbf{v}_n =\sum_{i=1}^n \alpha_i \mathbf{v}_i, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_i\)</span> are scalars. If <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> are the <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">eigenvalues</a> of the iteration matrix <span class="math notranslate nohighlight">\(T\)</span> with eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> so <span class="math notranslate nohighlight">\(T\mathbf{v}_i = \lambda_i \mathbf{v}_i\)</span> then iterating <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)}\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{e}^{(1)} &amp;= T\vec{e}^{(0)} =T\left(\sum_{i=1}^n \alpha_i \vec{v}_i \right)=\sum_{i=1}^n \alpha_i T\vec{v}_i = \sum_{i=1}^n \alpha_i \lambda_i \vec{v}_i , \\
-    \vec{e}^{(2)} &amp;=T\vec{e}^{(1)} =T\left(\sum_{i=1}^n \alpha_i \lambda_i \vec{v}_i \right)=\sum_{i=1}^n \alpha_i \lambda_i T\vec{v}_i =\sum_{i=1}^n \alpha_i \lambda_i^2 \vec{v}_i , \\
+    \mathbf{e}^{(1)} &amp;= T\mathbf{e}^{(0)} =T\left(\sum_{i=1}^n \alpha_i \mathbf{v}_i \right)=\sum_{i=1}^n \alpha_i T\mathbf{v}_i = \sum_{i=1}^n \alpha_i \lambda_i \mathbf{v}_i , \\
+    \mathbf{e}^{(2)} &amp;=T\mathbf{e}^{(1)} =T\left(\sum_{i=1}^n \alpha_i \lambda_i \mathbf{v}_i \right)=\sum_{i=1}^n \alpha_i \lambda_i T\mathbf{v}_i =\sum_{i=1}^n \alpha_i \lambda_i^2 \mathbf{v}_i , \\
     &amp;\vdots \\
-    \vec{e}^{(k+1)} &amp;=\sum_{i=1}^n \alpha_i \lambda_i^{k+1} \vec{v}_i .
+    \mathbf{e}^{(k+1)} &amp;=\sum_{i=1}^n \alpha_i \lambda_i^{k+1} \mathbf{v}_i .
 \end{align*} \end{split}\]</div>
 <p>If <span class="math notranslate nohighlight">\(|\lambda_1|&gt;\lambda_2, \lambda_3, \ldots \lambda_n\)</span> then</p>
 <div class="math notranslate nohighlight">
-\[ \vec{e}^{(k+1)} =\alpha_1 \lambda_1^{k+1} \vec{v}_1 +\sum_{i=2}^n \alpha_i \lambda_i^{k+1} \vec{v}_i =\lambda_1^{k+1} \left(\alpha_1 \vec{v}_1 +\sum_{i=2}^n \alpha_i \vec{v}_i {\left(\frac{\lambda_i }{\lambda_1 }\right)}^{k+1} \right) \]</div>
+\[ \mathbf{e}^{(k+1)} =\alpha_1 \lambda_1^{k+1} \mathbf{v}_1 +\sum_{i=2}^n \alpha_i \lambda_i^{k+1} \mathbf{v}_i =\lambda_1^{k+1} \left(\alpha_1 \mathbf{v}_1 +\sum_{i=2}^n \alpha_i \mathbf{v}_i {\left(\frac{\lambda_i }{\lambda_1 }\right)}^{k+1} \right) \]</div>
 <p>and since <span class="math notranslate nohighlight">\(\lambda_i / \lambda_ 1 &lt; 1\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    \lim_{k\to \infty } \vec{e}^{(k+1)} =\alpha_1 \lambda_1^{k+1} \vec{v}_1 .
+    \lim_{k\to \infty } \mathbf{e}^{(k+1)} =\alpha_1 \lambda_1^{k+1} \mathbf{v}_1 .
 \end{align*} \]</div>
 <p>This means that as the number of iterations increases, the error varies by a factor of <span class="math notranslate nohighlight">\(\lambda_1^{k+1}\)</span> where <span class="math notranslate nohighlight">\(\lambda_1\)</span> is the largest eigenvalue of <span class="math notranslate nohighlight">\(T\)</span> which is known as the <strong>spectral radius</strong>.</p>
 <div class="proof definition admonition" id="spectral-radius-definition">

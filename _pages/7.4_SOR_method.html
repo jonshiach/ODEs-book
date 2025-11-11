@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>7.4. The Successive Over Relaxation (SOR) method &#8212; Runge-Kutta Methods</title>
   
@@ -399,27 +399,27 @@ document.write(`
 <div class="proof definition admonition" id="sor-method-definition">
 <p class="admonition-title"><span class="caption-number">Definition 7.5 </span> (The Successive Over Relaxation (SOR) method)</p>
 <section class="definition-content" id="proof-content">
-<p>The SOR method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> is</p>
+<p>The SOR method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-sor-method-equation">
 <span class="eqno">(7.9)<a class="headerlink" href="#equation-sor-method-equation" title="Permalink to this equation">#</a></span>\[ x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n. \]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span>.</p>
 </section>
 </div><section id="the-iteration-matrix-for-the-sor-method">
 <h2><span class="section-number">7.4.1. </span>The iteration matrix for the SOR method<a class="headerlink" href="#the-iteration-matrix-for-the-sor-method" title="Permalink to this heading">#</a></h2>
-<p>The iteration matrix for the SOR method is derived by writing the coefficient matrix of the linear system <span class="math notranslate nohighlight">\(A\vec{x}=\vec{b}\)</span> using</p>
+<p>The iteration matrix for the SOR method is derived by writing the coefficient matrix of the linear system <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> using</p>
 <div class="math notranslate nohighlight">
 \[ A = L+\left(1-\frac{1}{\omega }\right)D+\frac{1}{\omega }D+U. \]</div>
-<p>Substituting into the linear system <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> and rearranging</p>
+<p>Substituting into the linear system <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> and rearranging</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \left(L+\left(1-\frac{1}{\omega }\right)D+\frac{1}{\omega }D+U\right)\vec{x}&amp;=\vec{b}\\
-    (D+\omega L)\vec{x}+((\omega -1)D+\omega U)\vec{x}&amp;=\omega \vec{b}\\
-    (D+\omega L)\vec{x}&amp;=((1-\omega )D-\omega U)\vec{x}+\omega \vec{b}\\
-    \vec{x}&amp;=(D+\omega L)^{-1} ((1-\omega )D-\omega U)\vec{x}+(D+\omega L)^{-1} \omega \vec{b}.
+    \left(L+\left(1-\frac{1}{\omega }\right)D+\frac{1}{\omega }D+U\right)\mathbf{x}&amp;=\mathbf{b}\\
+    (D+\omega L)\mathbf{x}+((\omega -1)D+\omega U)\mathbf{x}&amp;=\omega \mathbf{b}\\
+    (D+\omega L)\mathbf{x}&amp;=((1-\omega )D-\omega U)\mathbf{x}+\omega \mathbf{b}\\
+    \mathbf{x}&amp;=(D+\omega L)^{-1} ((1-\omega )D-\omega U)\mathbf{x}+(D+\omega L)^{-1} \omega \mathbf{b}.
 \end{align*} \end{split}\]</div>
 <p>So the matrix form of the SOR method is</p>
 <div class="math notranslate nohighlight">
-\[ \vec{x}^{(k+1)} =(D+\omega L)^{-1} ((1-\omega )D-\omega U)\vec{x}^{(k)} +(D+\omega L)^{-1} \omega \vec{b} \]</div>
+\[ \mathbf{x}^{(k+1)} =(D+\omega L)^{-1} ((1-\omega )D-\omega U)\mathbf{x}^{(k)} +(D+\omega L)^{-1} \omega \mathbf{b} \]</div>
 <p>and the iteration matrix is</p>
 <div class="math notranslate nohighlight" id="equation-sor-method-iteration-matrix-equation">
 <span class="eqno">(7.10)<a class="headerlink" href="#equation-sor-method-iteration-matrix-equation" title="Permalink to this equation">#</a></span>\[ T_{SOR} =(D+\omega L)^{-1} ((1-\omega )D-\omega U). \]</div>
@@ -444,7 +444,7 @@ document.write(`
 <span id="optimum-relaxation-parameter-section"></span><h2><span class="section-number">7.4.3. </span>Optimum value of the relaxation parameter<a class="headerlink" href="#optimum-value-of-the-relaxation-parameter" title="Permalink to this heading">#</a></h2>
 <p>The optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> will be the one that minimises the spectral radius of the iteration matrix. The iteration matrix will depend on the value of <span class="math notranslate nohighlight">\(\omega\)</span>. One way to estimate the optimum value of <span class="math notranslate nohighlight">\(\omega\)</span> is to calculate <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> for values in the range <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span> and choose the value of <span class="math notranslate nohighlight">\(\omega\)</span> which minimises this value. This has been done for the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> and the plot is shown in <a class="reference internal" href="#optimum-relaxation-parameter-figure"><span class="std std-numref">Fig. 7.6</span></a>.</p>
 <figure class="align-default" id="optimum-relaxation-parameter-figure" style="width: 600px">
-<img alt="../_images/c5db698704b24b1e8911087e839b6216f5dcff5649bf0503632cc0a28e34d768.png" src="../_images/c5db698704b24b1e8911087e839b6216f5dcff5649bf0503632cc0a28e34d768.png" />
+<img alt="../_images/4e70f214abafe39eb697d65f728471228e3d13a6e3e2c53fff5b0ca4717e5558.png" src="../_images/4e70f214abafe39eb697d65f728471228e3d13a6e3e2c53fff5b0ca4717e5558.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Plot of the spectral radius <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> of the iteration matrix for the SOR method when used to solve the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a>.</span><a class="headerlink" href="#optimum-relaxation-parameter-figure" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -453,7 +453,7 @@ document.write(`
 <div class="proof theorem admonition" id="optimum-relaxation-parameter-theorem">
 <p class="admonition-title"><span class="caption-number">Theorem 7.2 </span> (Optimum relaxation parameter)</p>
 <section class="theorem-content" id="proof-content">
-<p>If a system of linear equations of the form <span class="math notranslate nohighlight">\(A\vec{x}=\vec{b}\)</span> has a coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> with all real eigenvalues then the optimum relaxation parameter for the SOR method can be calculated using</p>
+<p>If a system of linear equations of the form <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> has a coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> with all real eigenvalues then the optimum relaxation parameter for the SOR method can be calculated using</p>
 <div class="math notranslate nohighlight" id="equation-optimum-relaxation-parameter-equation">
 <span class="eqno">(7.11)<a class="headerlink" href="#equation-optimum-relaxation-parameter-equation" title="Permalink to this equation">#</a></span>\[ \omega_{opt} = 1+{\left(\frac{\rho (T_J )}{1+\sqrt{1-\rho (T_J )^2 }}\right)}^2, \]</div>
 <p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the iteration matrix of the Jacobi method calculation using equation <a class="reference internal" href="7.1_Jacobi_method.html#equation-jacobi-method-iteration-matrix-equation">(7.4)</a>.</p>
@@ -490,7 +490,7 @@ document.write(`
     x_{2}^{(k+1)} &amp;= (1 - \omega)x_{2}^{(k)} + \frac{\omega}{4} \left( -8 - 3 x_{1}^{(k+1)} + x_{3}^{(k)} \right), \\
     x_{3}^{(k+1)} &amp;= (1 - \omega)x_{3}^{(k)} + \frac{\omega}{4} \left( 14 + x_{2}^{(k+1)} \right).
 \end{align*} \end{split}\]</div>
-<p>Using starting values of <span class="math notranslate nohighlight">\(\vec{x} = \vec{0}\)</span>. Calculating the first iteration</p>
+<p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     x_{1}^{(1)} &amp;= (1 - 1.24)(-0.5) \frac{1.24}{4} \left( -2 - 3 (-1.625) \right) = -0.5, \\
@@ -500,14 +500,14 @@ document.write(`
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{r}^{(1)} &amp;= \vec{b} - A \vec{x}^{(1)} = 
+    \mathbf{r}^{(1)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
     \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
     \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
     \begin{pmatrix} -0.5 \\ -1.625 \\ 3.09375 \end{pmatrix} \\
     &amp;=
     \begin{pmatrix} 4.875 \\ 3.09375 \\ 0.0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(\| \vec{r}^{(1)} \|) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<p>Since <span class="math notranslate nohighlight">\(\max(\| \mathbf{r}^{(1)} \|) = 4.875 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     x_{1}^{(2)} &amp;= (1 - 1.24)(0.71875) \frac{1.24}{4} \left( -2 - 3 (-1.765625) \right) = 0.71875, \\
@@ -518,21 +518,21 @@ document.write(`
 <p>Calculate the residual</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \vec{r}^{(2)} &amp;= \vec{b} - A \vec{x}^{(1)} = 
+    \mathbf{r}^{(2)} &amp;= \mathbf{b} - A \mathbf{x}^{(1)} = 
     \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
     \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
     \begin{pmatrix} 0.71875 \\ -1.765625 \\ 3.05859375 \end{pmatrix} \\
     &amp;=
     \begin{pmatrix} 0.421875 \\ -0.03515625 \\ 0.0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \vec{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The SOR method was iterated until <span class="math notranslate nohighlight">\(\max(|\vec{r}|) &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations and the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Gauss-Seidel method</a> took 19 iterations to achieve the same accuracy.</p>
-<table class="colwidths-auto table">
+<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 0.421875 &gt; 10^{-4}\)</span> we continue iterating. The SOR method was iterated until <span class="math notranslate nohighlight">\(\max(|\mathbf{r}|) &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations and the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Gauss-Seidel method</a> took 19 iterations to achieve the same accuracy.</p>
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(\max(| \vec{r} |)\)</span></p></th>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\max(| \mathbf{r} |)\)</span></p></th>
 </tr>
 </thead>
 <tbody>
@@ -602,7 +602,7 @@ document.write(`
 </div></section>
 <section id="code">
 <h2><span class="section-number">7.4.4. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">sor()</span></code> which solves a linear system of equations of the for <span class="math notranslate nohighlight">\(A \vec{x} = \vec{b}\)</span> using the SOR method with a relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
+<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">sor()</span></code> which solves a linear system of equations of the for <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> using the SOR method with a relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
