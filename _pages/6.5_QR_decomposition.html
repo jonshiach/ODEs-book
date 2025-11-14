@@ -719,7 +719,17 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p>Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 6.2</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane represented by the dashed line so that it is parallel to the first basis vector of the standard basis <span class="math notranslate nohighlight">\(\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathsf{T}\)</span>. The Householder matrix that achieves this reflection is written in terms of the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> which is orthogonal to the dashed line and calculated using</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{v} = \mathbf{x} - \|\mathbf{x}\|\mathbf{e}_1. \]</div>
-<p>To compute the QR decomposition of a matrix <span class="math notranslate nohighlight">\(A\)</span>, we reflect the first column of <span class="math notranslate nohighlight">\(A\)</span>, using Householder reflection so that it is parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>. This means that <span class="math notranslate nohighlight">\(r_{11}\)</span> is the only non-zero element in the first column of <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<p>If the magnitude of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is close to being parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> will be close to <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> and the calculation of <a class="reference internal" href="#equation-householder-equation">(6.5)</a> will involve the division by a number close to zero. To overcome this we use a Householder transformation to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead of <span class="math notranslate nohighlight">\(+\mathbf{e}_1\)</span>.</p>
+<figure class="align-default" id="householder-2-figure">
+<a class="reference internal image-reference" href="../_images/householder_2.svg"><img alt="../_images/householder_2.svg" src="../_images/householder_2.svg" width="450" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-2-figure" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To do this we calculate <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> by adding <span class="math notranslate nohighlight">\(\| \mathbf{x} \| \mathbf{e}_1\)</span> to <span class="math notranslate nohighlight">\( \mathbf{x}\)</span> when the sign of <span class="math notranslate nohighlight">\(x_1\)</span> is negative, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{v} = \mathbf{x} - \operatorname{sign}(x_1) \| \mathbf{x} \| \mathbf{e}_1, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\operatorname{sign}(x)\)</span> returns <span class="math notranslate nohighlight">\(+1\)</span> if <span class="math notranslate nohighlight">\(x \geq 0\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> if <span class="math notranslate nohighlight">\(x &lt; 0\)</span>. To compute the QR decomposition of a matrix <span class="math notranslate nohighlight">\(A\)</span>, we reflect the first column of <span class="math notranslate nohighlight">\(A\)</span>, using Householder reflection so that it is parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>. This means that <span class="math notranslate nohighlight">\(r_{11}\)</span> is the only non-zero element in the first column of <span class="math notranslate nohighlight">\(R\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
   R = H_1 A = 
@@ -775,7 +785,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li><p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, m - 1\)</span> do</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{x} \gets\)</span> column <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(R\)</span> starting at the <span class="math notranslate nohighlight">\(j\)</span>-th row</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \mathbf{x} + \|\mathbf{x}\|\mathbf{e}_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \mathbf{x} - \operatorname{sign} (x_1) \|\mathbf{x}\|\mathbf{e}_1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(H' \gets I_{m-j+1} - 2 \dfrac{\mathbf{v} \mathbf{v} ^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(H(j:m, j:m) \gets H'\)</span> with the first <span class="math notranslate nohighlight">\(j-1\)</span> rows and columns of <span class="math notranslate nohighlight">\(H\)</span> set to those of <span class="math notranslate nohighlight">\(I_m\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R \gets H R\)</span></p></li>
@@ -814,7 +824,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 \[\begin{split} \begin{align*}
   j &amp;= 1: &amp; \mathbf{x} &amp;= 
   \begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix}, \\
-  &amp;&amp; \mathbf{v} &amp;= \mathbf{x} - \|\mathbf{x}\| \mathbf{e}_1 = 
+  &amp;&amp; \mathbf{v} &amp;= \mathbf{x} - \operatorname{sign}(x_1) \|\mathbf{x}\| \mathbf{e}_1 = 
   \begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix} - 3 
   \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = 
   \begin{pmatrix} -2 \\ 2 \\ 2 \end{pmatrix}, \\
@@ -868,28 +878,28 @@ MATLAB</label><div class="sd-tab-content docutils">
   \end{pmatrix}. \\
   j &amp;= 2: &amp; \mathbf{x} &amp;= 
   \begin{pmatrix} -3 \\ -4 \end{pmatrix}, \\
-  &amp;&amp; \mathbf{v} &amp;= \mathbf{x} - \|\mathbf{x}\| \mathbf{e}_1 = 
-  \begin{pmatrix} -3 \\ -4 \end{pmatrix} - 5 
+  &amp;&amp; \mathbf{v} &amp;= \mathbf{x} - \operatorname{sign}(x_1) \|\mathbf{x}\| \mathbf{e}_1 = 
+  \begin{pmatrix} -3 \\ -4 \end{pmatrix} + 5 
   \begin{pmatrix} 1 \\ 0 \end{pmatrix} = 
-  \begin{pmatrix} -8 \\ -4 \end{pmatrix}, \\
+  \begin{pmatrix} 2 \\ -4 \end{pmatrix}, \\
   &amp;&amp; H' &amp;= I - 2 \frac{\mathbf{v}\mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}} =
   \begin{pmatrix} 
     1 &amp; 0 \\ 
     0 &amp; 1 
-  \end{pmatrix} - \frac{2}{80}
+  \end{pmatrix} - \frac{2}{20}
   \begin{pmatrix} 
-    64 &amp; 32 \\ 
-    32 &amp; 16 
+    4 &amp; -8 \\ 
+    -8 &amp; 16 
   \end{pmatrix} =
   \begin{pmatrix} 
-    -\frac{3}{5} &amp; -\frac{4}{5} \\ 
-    -\frac{4}{5} &amp; \frac{3}{5} 
+    \frac{3}{5} &amp; \frac{4}{5} \\ 
+    \frac{4}{5} &amp; -\frac{3}{5} 
   \end{pmatrix}, \\
   &amp;&amp; H &amp;=
   \begin{pmatrix} 
     1 &amp; 0 &amp; 0 \\ 
-    0 &amp; -\frac{3}{5} &amp; -\frac{4}{5} \\ 
-    0 &amp; -\frac{4}{5} &amp; \frac{3}{5}
+    0 &amp; \frac{3}{5} &amp; \frac{4}{5} \\ 
+    0 &amp; \frac{4}{5} &amp; -\frac{3}{5}
   \end{pmatrix}, \\
   &amp;&amp; R &amp;= H R =
   \begin{pmatrix} 
@@ -899,12 +909,12 @@ MATLAB</label><div class="sd-tab-content docutils">
   \end{pmatrix}
   \begin{pmatrix} 
     3 &amp; 2 \\ 
-    0 &amp; -3 \\ 
+    0 &amp; 3 \\ 
     0 &amp; -4
   \end{pmatrix} =
   \begin{pmatrix} 
     3 &amp; 2 \\ 
-    0 &amp; 5 \\ 
+    0 &amp; -5 \\ 
     0 &amp; 0
   \end{pmatrix}, \\
   &amp;&amp; Q &amp;= Q H =
@@ -915,23 +925,23 @@ MATLAB</label><div class="sd-tab-content docutils">
   \end{pmatrix}
   \begin{pmatrix} 
     1 &amp; 0 &amp; 0 \\ 
-    0 &amp; -\frac{3}{5} &amp; -\frac{4}{5} \\ 
-    0 &amp; -\frac{4}{5} &amp; \frac{3}{5}
+    0 &amp; \frac{3}{5} &amp; \frac{4}{5} \\ 
+    0 &amp; \frac{4}{5} &amp; -\frac{3}{5}
   \end{pmatrix} =
   \begin{pmatrix} 
-    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\ 
-    \frac{2}{3} &amp;  \frac{1}{3} &amp; -\frac{2}{3} \\ 
-    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15} 
+    \frac{1}{3} &amp; \frac{14}{15} &amp; \frac{2}{15} \\ 
+    \frac{2}{3} &amp; -\frac{1}{3} &amp; \frac{2}{3} \\ 
+    \frac{2}{3} &amp; -\frac{2}{15} &amp; -\frac{11}{15} 
   \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since both diagonal elements of <span class="math notranslate nohighlight">\(R\)</span> are positive, we do not need to make any adjustments to <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span>. Therefore the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span> is</p>
+<p>The second diagonal element of <span class="math notranslate nohighlight">\(R\)</span> is negative, so we multiply row 2 of <span class="math notranslate nohighlight">\(R\)</span> and column 2 of <span class="math notranslate nohighlight">\(Q\)</span> by <span class="math notranslate nohighlight">\(-1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
   Q &amp;= 
   \begin{pmatrix} 
-    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\ 
-    \frac{2}{3} &amp;  \frac{1}{3} &amp; -\frac{2}{3} \\ 
-    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15} 
+    \frac{1}{3} &amp; -\frac{14}{15} &amp; \frac{2}{15} \\ 
+    \frac{2}{3} &amp;  \frac{1}{3} &amp; \frac{2}{3} \\ 
+    \frac{2}{3} &amp; \frac{2}{15} &amp; -\frac{11}{15} 
   \end{pmatrix}, &amp;
   R &amp;= 
   \begin{pmatrix} 
@@ -945,9 +955,9 @@ MATLAB</label><div class="sd-tab-content docutils">
 \[\begin{split} \begin{align*}
   QR &amp;= 
   \begin{pmatrix} 
-    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\ 
-    \frac{2}{3} &amp;  \frac{1}{3} &amp; -\frac{2}{3} \\ 
-    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15} 
+    \frac{1}{3} &amp; -\frac{14}{15} &amp; \frac{2}{15} \\ 
+    \frac{2}{3} &amp;  \frac{1}{3} &amp; \frac{2}{3} \\ 
+    \frac{2}{3} &amp; \frac{2}{15} &amp; -\frac{11}{15} 
   \end{pmatrix}
   \begin{pmatrix} 
     3 &amp; 2 \\ 
@@ -961,14 +971,14 @@ MATLAB</label><div class="sd-tab-content docutils">
   \end{pmatrix} = A, \\
   Q^\mathsf{T} Q &amp;= 
   \begin{pmatrix} 
-    \frac{1}{3} &amp; \frac{2}{3} &amp; \frac{2}{3} \\ 
-    -\frac{14}{15} &amp; \frac{1}{3} &amp; \frac{2}{15} \\ 
-    -\frac{2}{15} &amp; -\frac{2}{3} &amp; \frac{11}{15} 
+    \frac{1}{3} &amp; \frac{2}{3} &amp; \frac{2}{3} \\
+    -\frac{14}{15} &amp; \frac{1}{3} &amp; \frac{2}{15} \\
+    \frac{2}{15} &amp; \frac{2}{3} &amp; -\frac{11}{15}
   \end{pmatrix}
   \begin{pmatrix} 
-    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\ 
-    \frac{2}{3} &amp;  \frac{1}{3} &amp; -\frac{2}{3} \\ 
-    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15} 
+    \frac{1}{3} &amp; -\frac{14}{15} &amp; \frac{2}{15} \\ 
+    \frac{2}{3} &amp;  \frac{1}{3} &amp; \frac{2}{3} \\ 
+    \frac{2}{3} &amp; \frac{2}{15} &amp; -\frac{11}{15} 
   \end{pmatrix} =
   \begin{pmatrix}
     1 &amp; 0 &amp; 0 \\
@@ -987,11 +997,11 @@ Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">qr_householder</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     
     <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">i</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span>  <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">i</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
         <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
         <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">:]</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
@@ -999,8 +1009,8 @@ Python</label><div class="sd-tab-content docutils">
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>
-            <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
 </pre></div>
@@ -1017,7 +1027,11 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
 <span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
-<span class="w">    </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">sign</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+<span class="w">    </span><span class="k">end</span>
 <span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
 <span class="w">    </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="o">&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
 <span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
@@ -1047,7 +1061,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p>which is known as the Frobenius norm and is a measure of the <strong>loss of orthogonality</strong>.</p>
 <p>The both QR decomposition methods shown here use an iterative approach where we orthogonalised the columns of the <span class="math notranslate nohighlight">\(A\)</span> matrix in turn based upon the previous iterations. So an error in column <span class="math notranslate nohighlight">\(i\)</span> will have a knock on effect on all subsequent columns. To analyse the methods, the QR decomposition of a random <span class="math notranslate nohighlight">\(200 \times 200\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> was computed using the Gram-Schmidt process and Householder reflections. The Frobenius norm was calculated for the first <span class="math notranslate nohighlight">\(n\)</span> columns of <span class="math notranslate nohighlight">\(Q\)</span> where <span class="math notranslate nohighlight">\(n = 1 \ldots 200\)</span> giving the loss of orthogonality for those iterations and plotted in below.</p>
 <figure class="align-default">
-<img alt="../_images/ddb50c1ceaef65959c2bf640e4e065c44400d272d27937adf511f84cb0804a11.png" src="../_images/ddb50c1ceaef65959c2bf640e4e065c44400d272d27937adf511f84cb0804a11.png" />
+<img alt="../_images/f8e4bea26f0a7fcdfe8e7af04d0876efbcc4fd14c79969a0be2db268bac9a58f.png" src="../_images/f8e4bea26f0a7fcdfe8e7af04d0876efbcc4fd14c79969a0be2db268bac9a58f.png" />
 </figure>
 <p>Here we can see that computing QR decomposition using Householder reflections is less prone to orthogonality errors than using the Gram-Schmidt process.</p>
 </section>
