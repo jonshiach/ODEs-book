@@ -6,8 +6,8 @@
 <script src="08_Matrix_decomposition_2_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="08_Matrix_decomposition_2_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="08_Matrix_decomposition_2_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="08_Matrix_decomposition_2_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="08_Matrix_decomposition_2_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Dr Jon Shiach">
   <title>Week 8 — Matrix Decomposition II</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="08_Matrix_decomposition_2_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="08_Matrix_decomposition_2_files/libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
   <link rel="stylesheet" href="styles.css">
   <link href="08_Matrix_decomposition_2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="08_Matrix_decomposition_2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -204,7 +204,7 @@ Dr Jon Shiach
         0 &amp; 1
     \end{pmatrix}=I.
 \end{align*} \]</span></p>
-<p>Futhermore it is an orthonormal matrix since the magnitude of the columns for <span class="math inline">\(A\)</span> are both 1.</p>
+<p>Furthermore it is an orthonormal matrix since the magnitude of the columns for <span class="math inline">\(A\)</span> are both 1.</p>
 </section></section>
 <section id="qr-decomposition-using-the-gram-schmidt-process" class="title-slide slide level2 center">
 <h2>QR decomposition using the Gram-Schmidt process</h2>
@@ -450,6 +450,7 @@ Dr Jon Shiach
 \end{align*} \]</span></p>
 </div>
 </section></section>
+<section>
 <section id="householder-reflections" class="title-slide slide level2 center">
 <h2>Householder Reflections</h2>
 <p>A <strong>Householder reflection</strong> reflects a vector <span class="math inline">\(\mathbf{x}\)</span> about a hyperplane that is orthogonal to a given vector <span class="math inline">\(\mathbf{v}\)</span>.</p>
@@ -458,16 +459,27 @@ Dr Jon Shiach
 </p>
 <p>The Householder matrix is an orthogonal reflection matrix of the form</p>
 <p><span class="math display">\[ H = I - 2 \frac{\mathbf{v} \mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}. \]</span></p>
+<p>where <span class="math inline">\(\mathbf{v} = \mathbf{x} - \| \mathbf{x} \| \mathbf{e}_1\)</span>.</p>
 <p>The matrix <span class="math inline">\(H\)</span> is symmetric and orthogonal.</p>
 </section>
+<section class="slide level3">
 
+<p>If the magnitude of <span class="math inline">\(\mathbf{x}\)</span> is close to being parallel to <span class="math inline">\(\mathbf{e}_1\)</span> then the calculation of <span class="math inline">\(\mathbf{v}\)</span> will involve the division by a number close to zero.</p>
+<p>To overcome this we use a Householder transformation to reflect <span class="math inline">\(\mathbf{x}\)</span> so that it is parallel to <span class="math inline">\(-\mathbf{e}_1\)</span> instead of <span class="math inline">\(+\mathbf{e}_1\)</span>.</p>
+<p align="center">
+<img src="../_images/householder_2.svg" width="50%">
+</p>
+<p>To do this we calculate <span class="math inline">\(\mathbf{v}\)</span> by adding <span class="math inline">\(\| \mathbf{x} \| \mathbf{e}_1\)</span> to <span class="math inline">\(\mathbf{x}\)</span> when the sign of <span class="math inline">\(x_1\)</span> is negative, i.e.,</p>
+<p><span class="math display">\[ \mathbf{v} = \mathbf{x} - \operatorname{sign}(x_1) \| \mathbf{x} \| \mathbf{e}_1, \]</span></p>
+<p>where <span class="math inline">\(\operatorname{sign}(x)\)</span> returns <span class="math inline">\(+1\)</span> if <span class="math inline">\(x \geq 0\)</span> and <span class="math inline">\(-1\)</span> if <span class="math inline">\(x &lt; 0\)</span>.</p>
+</section></section>
 <section>
 <section id="qr-decomposition-using-householder-reflections" class="title-slide slide level2 center">
 <h2>QR Decomposition using Householder Reflections</h2>
 <p>To compute the QR decomposition of a matrix <span class="math inline">\(A\)</span>, we reflect the first column of <span class="math inline">\(A\)</span>, using Householder reflection so that it is parallel to <span class="math inline">\(\mathbf{e}_1\)</span>.</p>
 <p>The vector <span class="math inline">\(\mathbf{v}\)</span> is given by</p>
-<p><span class="math display">\[ \mathbf{v} = \mathbf{x} - \|\mathbf{x}\| \mathbf{e}_1, \]</span></p>
-<p>where <span class="math inline">\(\mathbf{x}\)</span> is the first column of <span class="math inline">\(A\)</span> and <span class="math inline">\(\mathbf{e}_1 = (1, 0, \ldots, 1)^\mathsf{T}\)</span> is the first basis vector.</p>
+<p><span class="math display">\[ \mathbf{v} = \mathbf{x} - \operatorname{sign}(x_1) \|\mathbf{x}\| \mathbf{e}_1, \]</span></p>
+<p>where <span class="math inline">\(\mathbf{x}\)</span> is the first column of <span class="math inline">\(A\)</span> and <span class="math inline">\(\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathsf{T}\)</span> is the first basis vector.</p>
 <p>The first Householder matrix is then given by</p>
 <p><span class="math display">\[ H_1 = I - 2 \frac{\mathbf{v} \mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}. \]</span></p>
 <p>Multiplying <span class="math inline">\(H_1\)</span> by <span class="math inline">\(A\)</span> reflects the first column of <span class="math inline">\(A\)</span> such that it is parallel to <span class="math inline">\(\mathbf{e}_1\)</span>.</p>
@@ -534,7 +546,7 @@ Dr Jon Shiach
 <li>For <span class="math inline">\(j = 1, \ldots, m - 1\)</span> do
 <ul>
 <li><span class="math inline">\(\mathbf{x} \gets\)</span> column <span class="math inline">\(j\)</span> of <span class="math inline">\(R\)</span> starting at the <span class="math inline">\(j\)</span>-th row</li>
-<li><span class="math inline">\(\mathbf{v} \gets \mathbf{x} + \|\mathbf{x}\|\mathbf{e}_1\)</span></li>
+<li><span class="math inline">\(\mathbf{v} \gets \mathbf{x} - \operatorname{sign} (x_1) \|\mathbf{x}\|\mathbf{e}_1\)</span></li>
 <li><span class="math inline">\(H' \gets I_{m-j+1} - 2 \dfrac{\mathbf{v} \mathbf{v} ^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}\)</span></li>
 <li><span class="math inline">\(H(j:m, j:m) \gets H'\)</span> with the first <span class="math inline">\(j-1\)</span> rows and columns of <span class="math inline">\(H\)</span> set to those of <span class="math inline">\(I_m\)</span></li>
 <li><span class="math inline">\(R \gets H R\)</span></li>
@@ -632,38 +644,38 @@ Dr Jon Shiach
 \end{align*} \]</span></p>
 <div class="fragment">
 <p><span class="math display">\[ \begin{align*}
-  j &amp;= 2: &amp; \mathbf{x} &amp;=
+j &amp;= 2: &amp; \mathbf{x} &amp;=
   \begin{pmatrix} -3 \\ -4 \end{pmatrix}, \\
-  &amp;&amp; \mathbf{v} &amp;= \mathbf{x} - \|\mathbf{x}\| \mathbf{e}_1 =
-  \begin{pmatrix} -3 \\ -4 \end{pmatrix} - 5
+  &amp;&amp; \mathbf{v} &amp;= \mathbf{x} + \|\mathbf{x}\| \mathbf{e}_1 =
+  \begin{pmatrix} -3 \\ -4 \end{pmatrix} + 5
   \begin{pmatrix} 1 \\ 0 \end{pmatrix} =
-  \begin{pmatrix} -8 \\ -4 \end{pmatrix}, \\
+  \begin{pmatrix} 2 \\ -4 \end{pmatrix}, \\
   &amp;&amp; H' &amp;= I - 2 \frac{\mathbf{v}\mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}} =
   \begin{pmatrix}
     1 &amp; 0 \\
     0 &amp; 1
-  \end{pmatrix} - \frac{2}{80}
+  \end{pmatrix} - \frac{2}{20}
   \begin{pmatrix}
-    64 &amp; 32 \\
-    32 &amp; 16
+    4 &amp; -8 \\
+    -8 &amp; 16
   \end{pmatrix} =
   \begin{pmatrix}
-    -\frac{3}{5} &amp; -\frac{4}{5} \\
-    -\frac{4}{5} &amp; \frac{3}{5}
+    \frac{3}{5} &amp; \frac{4}{5} \\
+    \frac{4}{5} &amp; -\frac{3}{5}
   \end{pmatrix}, \\
   &amp;&amp; H &amp;=
   \begin{pmatrix}
     1 &amp; 0 &amp; 0 \\
-    0 &amp; -\frac{3}{5} &amp; -\frac{4}{5} \\
-    0 &amp; -\frac{4}{5} &amp; \frac{3}{5}
-  \end{pmatrix}, \\
+    0 &amp; \frac{3}{5} &amp; \frac{4}{5} \\
+    0 &amp; \frac{4}{5} &amp; -\frac{3}{5}
+  \end{pmatrix},
 \end{align*} \]</span></p>
 </div>
 </section>
 <section id="section-1" class="slide level3">
 <h3></h3>
 <p><span class="math display">\[ \begin{align*}
-  &amp;&amp; R &amp;= H R =
+  R &amp;= H R =
   \begin{pmatrix}
     1 &amp; 0 &amp; 0 \\
     0 &amp; -\frac{3}{5} &amp; -\frac{4}{5} \\
@@ -671,15 +683,15 @@ Dr Jon Shiach
   \end{pmatrix}
   \begin{pmatrix}
     3 &amp; 2 \\
-    0 &amp; -3 \\
+    0 &amp; 3 \\
     0 &amp; -4
   \end{pmatrix} =
   \begin{pmatrix}
     3 &amp; 2 \\
-    0 &amp; 5 \\
+    0 &amp; -5 \\
     0 &amp; 0
   \end{pmatrix}, \\
-  &amp;&amp; Q &amp;= Q H =
+  Q &amp;= Q H =
   \begin{pmatrix}
     \frac{1}{3} &amp; \frac{2}{3} &amp; \frac{2}{3} \\
     \frac{2}{3} &amp; \frac{2}{3} &amp; -\frac{1}{3} \\
@@ -687,23 +699,23 @@ Dr Jon Shiach
   \end{pmatrix}
   \begin{pmatrix}
     1 &amp; 0 &amp; 0 \\
-    0 &amp; -\frac{3}{5} &amp; -\frac{4}{5} \\
-    0 &amp; -\frac{4}{5} &amp; \frac{3}{5}
+    0 &amp; \frac{3}{5} &amp; \frac{4}{5} \\
+    0 &amp; \frac{4}{5} &amp; -\frac{3}{5}
   \end{pmatrix} =
   \begin{pmatrix}
-    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\
-    \frac{2}{3} &amp;  \frac{1}{3} &amp; -\frac{2}{3} \\
-    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15}
+    \frac{1}{3} &amp; \frac{14}{15} &amp; \frac{2}{15} \\
+    \frac{2}{3} &amp; -\frac{1}{3} &amp; \frac{2}{3} \\
+    \frac{2}{3} &amp; -\frac{2}{15} &amp; -\frac{11}{15}
   \end{pmatrix}.
 \end{align*} \]</span></p>
 <div class="fragment">
-<p>Since both diagonal elements of <span class="math inline">\(R\)</span> are positive, we do not need to make any adjustments to <span class="math inline">\(Q\)</span> and <span class="math inline">\(R\)</span>. Therefore the QR decomposition of <span class="math inline">\(A\)</span> is</p>
+<p>The second diagonal element of <span class="math inline">\(R\)</span> is negative, so we multiply row 2 of <span class="math inline">\(R\)</span> and column 2 of <span class="math inline">\(Q\)</span> by <span class="math inline">\(-1\)</span></p>
 <p><span class="math display">\[ \begin{align*}
   Q &amp;=
   \begin{pmatrix}
-    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\
-    \frac{2}{3} &amp;  \frac{1}{3} &amp; -\frac{2}{3} \\
-    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15}
+    \frac{1}{3} &amp; -\frac{14}{15} &amp; \frac{2}{15} \\
+    \frac{2}{3} &amp;  \frac{1}{3} &amp; \frac{2}{3} \\
+    \frac{2}{3} &amp; \frac{2}{15} &amp; -\frac{11}{15}
   \end{pmatrix}, &amp;
   R &amp;=
   \begin{pmatrix}
@@ -720,9 +732,9 @@ Dr Jon Shiach
 <p><span class="math display">\[ \begin{align*}
   QR &amp;=
   \begin{pmatrix}
-    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\
-    \frac{2}{3} &amp;  \frac{1}{3} &amp; -\frac{2}{3} \\
-    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15}
+    \frac{1}{3} &amp; -\frac{14}{15} &amp; \frac{2}{15} \\
+    \frac{2}{3} &amp;  \frac{1}{3} &amp; \frac{2}{3} \\
+    \frac{2}{3} &amp; \frac{2}{15} &amp; -\frac{11}{15}
   \end{pmatrix}
   \begin{pmatrix}
     3 &amp; 2 \\
@@ -738,12 +750,12 @@ Dr Jon Shiach
   \begin{pmatrix}
     \frac{1}{3} &amp; \frac{2}{3} &amp; \frac{2}{3} \\
     -\frac{14}{15} &amp; \frac{1}{3} &amp; \frac{2}{15} \\
-    -\frac{2}{15} &amp; -\frac{2}{3} &amp; \frac{11}{15}
+    \frac{2}{15} &amp; \frac{2}{3} &amp; -\frac{11}{15}
   \end{pmatrix}
   \begin{pmatrix}
-    \frac{1}{3} &amp; -\frac{14}{15} &amp; -\frac{2}{15} \\
-    \frac{2}{3} &amp;  \frac{1}{3} &amp; -\frac{2}{3} \\
-    \frac{2}{3} &amp; \frac{2}{15} &amp; \frac{11}{15}
+    \frac{1}{3} &amp; -\frac{14}{15} &amp; \frac{2}{15} \\
+    \frac{2}{3} &amp;  \frac{1}{3} &amp; \frac{2}{3} \\
+    \frac{2}{3} &amp; \frac{2}{15} &amp; -\frac{11}{15}
   \end{pmatrix} =
   \begin{pmatrix}
     1 &amp; 0 &amp; 0 \\
@@ -763,7 +775,7 @@ Dr Jon Shiach
 </section>
 <section id="section-3" class="slide level3">
 <h3></h3>
-<div id="3a029091" class="cell" data-execution_count="1">
+<div id="400489db" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -777,7 +789,7 @@ Dr Jon Shiach
 <section id="eigenvalues" class="title-slide slide level2 center">
 <h2>Eigenvalues</h2>
 <p>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n \times n\)</span> matrix then <span class="math inline">\(\lambda\)</span> is an <strong>eigenvalue</strong> of <span class="math inline">\(A\)</span> if there exists a non-zero vector <span class="math inline">\(\mathbf{v}\)</span> such that</p>
-<p><span id="eq-eigenvalue-definition-equation"><span class="math display">\[A \mathbf{v} = \lambda \mathbf{v}. \tag{1}\]</span></span></p>
+<p><span id="eq-eigenvalue-definition-equation"><span class="math display">\[A \mathbf{v} = \lambda \mathbf{v}. \qquad(1)\]</span></span></p>
 <p>The vector <span class="math inline">\(\mathbf{v}\)</span> is called the <strong>eigenvector</strong> associated with the eigenvalue <span class="math inline">\(\lambda\)</span>.</p>
 <p>Rearranging equation <a href="#/eq-eigenvalue-definition-equation" class="quarto-xref">Equation&nbsp;1</a> we have</p>
 <p><span class="math display">\[ \begin{align*}
@@ -976,8 +988,22 @@ Dr Jon Shiach
 </tbody>
 </table>
 <p>The exact values of the eigenvalues are <span class="math inline">\(\lambda_1 = (5 + \sqrt{33})/2 \approx 5.372281\)</span> and <span class="math inline">\(\lambda_2 = (5 - \sqrt{33}) / 2 \approx -0.372281\)</span> which shows the QR algorithm has calculated the eigenvalues correct to five decimal places.</p>
-
 </section></section>
+<section id="summary" class="title-slide slide level2 center">
+<h2>Summary</h2>
+<ul>
+<li><strong>QR decomposition</strong> factorises an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> into the product of <span class="math inline">\(QR\)</span> where
+<ul>
+<li><span class="math inline">\(Q\)</span> is an <strong>orthogonal</strong> matrix (<span class="math inline">\(Q^\mathsf{T}Q = I\)</span>)</li>
+<li><span class="math inline">\(R\)</span> is an <strong>upper-triangular</strong> matrix</li>
+</ul></li>
+<li>QR decomposition using the <strong>Gram-Schmidt process</strong> forms a set of orthogonal vectors using the columns of <span class="math inline">\(A\)</span> and subtracting vector projections of <span class="math inline">\(\mathbf{a}_i\)</span> onto <span class="math inline">\(\mathbf{q}_i\)</span> from <span class="math inline">\(\mathbf{a}_i\)</span>.</li>
+<li>QR decomposition using <strong>Householder transformations</strong> applies a series of reflections to <span class="math inline">\(A\)</span> such that the columns of <span class="math inline">\(A\)</span> are parallel to the standard basis.</li>
+<li>Householder transformations are less prone to <strong>orthogonality errors</strong> than the Gram-Schmidt process.</li>
+<li>The QR algorithm is an efficient way to compute the <strong>eigenvalues</strong> of a matrix using QR decomposition.</li>
+</ul>
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -1169,7 +1195,7 @@ Dr Jon Shiach
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1196,173 +1222,190 @@ Dr Jon Shiach
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
-          }
-          return false;
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
         }
-        const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-        }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
-            } else {
-              return "";
-            }
-          });
-        }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
-            }
-          } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
-            });
-          }
-        }
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      </script>
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
     
 
 </body></html>

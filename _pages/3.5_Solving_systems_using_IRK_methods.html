@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3.3. Solving Systems of ODEs using IRK Methods &#8212; Runge-Kutta Methods</title>
   
@@ -15,60 +14,57 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/3.5_Solving_systems_using_IRK_methods';</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/3.5_Solving_systems_using_IRK_methods.html" />
-    <link rel="shortcut icon" href="../_static/favicon.jpeg"/>
+    <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3.4. Implicit Runge-Kutta methods exercises" href="3.6_IRK_exercises.html" />
@@ -82,19 +78,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -116,12 +116,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -136,9 +144,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -148,12 +160,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo2.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Runge-Kutta Methods - Home"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Runge-Kutta Methods - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -171,15 +194,15 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
@@ -187,29 +210,29 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. Solving Systems of ODEs using IRK Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
@@ -218,15 +241,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of indirect methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Indirect methods exercises</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -247,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -256,14 +279,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -338,26 +361,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -393,10 +418,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="solving-systems-of-odes-using-irk-methods">
-<span id="solving-systems-using-irk-methods-section"></span><h1><span class="section-number">3.3. </span>Solving Systems of ODEs using IRK Methods<a class="headerlink" href="#solving-systems-of-odes-using-irk-methods" title="Permalink to this heading">#</a></h1>
+<span id="solving-systems-using-irk-methods-section"></span><h1><span class="section-number">3.3. </span>Solving Systems of ODEs using IRK Methods<a class="headerlink" href="#solving-systems-of-odes-using-irk-methods" title="Link to this heading">#</a></h1>
 <p>Now that we know have to derive IRK methods we now move onto implementing them to solve IVPs. The stage values for a general 4-stage explicit Runge-Kutta method are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -425,36 +450,36 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>Recall that the general form of a Runge-Kutta method for solving a system of ODEs is</p>
 <div class="math notranslate nohighlight" id="equation-general-irk-system">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-general-irk-system" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-general-irk-system" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
    \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i \mathbf{k}_i,\\
    \mathbf{k}_i &amp;= f(t_n +c_i h,\mathbf{y}_n + h \sum_{j=1}^s a_{ij} \mathbf{k}_j),
 \end{align*} \end{split}\]</div>
 <p>To simplify the calculations to for implicit methods we introduce a vector <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span>, such that</p>
 <div class="math notranslate nohighlight" id="equation-irk-zi">
-<span class="eqno">(3.3)<a class="headerlink" href="#equation-irk-zi" title="Permalink to this equation">#</a></span>\[\mathbf{z}_i = h \displaystyle\sum_{j=1}^s a_{ij} \mathbf{k}_j, \]</div>
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-irk-zi" title="Link to this equation">#</a></span>\[\mathbf{z}_i = h \displaystyle\sum_{j=1}^s a_{ij} \mathbf{k}_j, \]</div>
 <p>and the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> becomes</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{k}_i = f(t_n + c_ih, \mathbf{y}_n + \mathbf{z}_i). \]</div>
 <p>Substituting this into equation <a class="reference internal" href="#equation-irk-zi">(3.3)</a> we have</p>
 <div class="math notranslate nohighlight" id="equation-irk-zi-2">
-<span class="eqno">(3.4)<a class="headerlink" href="#equation-irk-zi-2" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-irk-zi-2" title="Link to this equation">#</a></span>\[ \begin{align*}
     \mathbf{z}_i = h \sum_{j = 1}^s a_{ij} f(t_n + c_j h, \mathbf{y}_n + \mathbf{z}_j). 
 \end{align*} \]</div>
 <p>and also into equation <a class="reference internal" href="#equation-general-irk-system">(3.2)</a> gives</p>
 <div class="math notranslate nohighlight" id="equation-irk-yn-1">
-<span class="eqno">(3.5)<a class="headerlink" href="#equation-irk-yn-1" title="Permalink to this equation">#</a></span>\[ \begin{align*}
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-irk-yn-1" title="Link to this equation">#</a></span>\[ \begin{align*}
    \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i f(t_n + c_i h, \mathbf{y}_n + \mathbf{z}_i).
 \end{align*} \]</div>
 <p>Using an <span class="math notranslate nohighlight">\(s\)</span>-stage IRK method, the values of <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> given by equation <a class="reference internal" href="#equation-irk-zi-2">(3.4)</a> are</p>
 <div class="math notranslate nohighlight" id="equation-irk-zi-3">
-<span class="eqno">(3.6)<a class="headerlink" href="#equation-irk-zi-3" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(3.6)<a class="headerlink" href="#equation-irk-zi-3" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
     \mathbf{z}_1 &amp;= h (a_{11} f(t_n + c_1h, \mathbf{y}_n + \mathbf{z}_1) + \cdots + a_{1s} f(t_n + c_s h, \mathbf{y}_n + \mathbf{z}_s)), \\
     \vdots \\
     \mathbf{z}_s &amp;= h (a_{s1} f(t_n + c_sh, \mathbf{y}_n + \mathbf{z}_1) + \cdots + a_{ss} f(t_n + c_s h, \mathbf{y}_n + \mathbf{z}_s)).
 \end{align*}\end{split}\]</div>
 <p>Writing this as a matrix equation</p>
 <div class="math notranslate nohighlight" id="equation-irk-zi-matrix-form-1">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-irk-zi-matrix-form-1" title="Permalink to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-irk-zi-matrix-form-1" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
     \begin{pmatrix} \mathbf{z}_1 \\ \vdots \\ \mathbf{z}_s \end{pmatrix}
     =
     \begin{pmatrix}
@@ -521,7 +546,7 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>The <span class="math notranslate nohighlight">\(6\times 6\)</span> matrix is <span class="math notranslate nohighlight">\(A \otimes I_N\)</span> so we can write the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> as</p>
 <div class="math notranslate nohighlight" id="equation-irk-zi-matrix-form-2">
-<span class="eqno">(3.8)<a class="headerlink" href="#equation-irk-zi-matrix-form-2" title="Permalink to this equation">#</a></span>\[ \mathbf{z} = h (A \otimes I_N) F(\mathbf{z}), \]</div>
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-irk-zi-matrix-form-2" title="Link to this equation">#</a></span>\[ \mathbf{z} = h (A \otimes I_N) F(\mathbf{z}), \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -530,17 +555,17 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>We can also use a Kronecker product to simplify the expression for <span class="math notranslate nohighlight">\(\mathbf{y}_{n+1}\)</span> from equation <a class="reference internal" href="#equation-irk-yn-1">(3.5)</a></p>
 <div class="math notranslate nohighlight" id="equation-irk-matrix-form">
-<span class="eqno">(3.9)<a class="headerlink" href="#equation-irk-matrix-form" title="Permalink to this equation">#</a></span>\[ \mathbf{y}_{n+1} = \mathbf{y}_n + h (\mathbf{b}^\mathsf{T} \otimes I_N) F(\mathbf{z}). \]</div>
+<span class="eqno">(3.9)<a class="headerlink" href="#equation-irk-matrix-form" title="Link to this equation">#</a></span>\[ \mathbf{y}_{n+1} = \mathbf{y}_n + h (\mathbf{b}^\mathsf{T} \otimes I_N) F(\mathbf{z}). \]</div>
 <hr class="docutils" />
 <section id="newton-s-method">
-<h2><span class="section-number">3.3.1. </span>Newton’s Method<a class="headerlink" href="#newton-s-method" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.1. </span>Newton’s Method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h2>
 <p>The calculation of the stage values <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> using equation <a class="reference internal" href="#equation-irk-zi-matrix-form-2">(3.8)</a> requires the solution of a system of implicit equations. This is done using <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a> which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function. Newton’s method is written as</p>
 <div class="math notranslate nohighlight" id="equation-newtons-method">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-newtons-method" title="Permalink to this equation">#</a></span>\[x^{(k+1)} = x^{(k)} - \frac{g(x^{(k)})}{g'(x^{(k)})}, \]</div>
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-newtons-method" title="Link to this equation">#</a></span>\[x^{(k+1)} = x^{(k)} - \frac{g(x^{(k)})}{g'(x^{(k)})}, \]</div>
 <p>where <span class="math notranslate nohighlight">\(x^{(k)}\)</span> and <span class="math notranslate nohighlight">\(x^{(k+1)}\)</span> are current and improved estimates of the solution <span class="math notranslate nohighlight">\(x\)</span>. The implementation of Newton’s method begins with a guess value of <span class="math notranslate nohighlight">\(x^{(0)}\)</span>, and equation <a class="reference internal" href="#equation-newtons-method">(3.10)</a> is iterated until two successive estimates agree to some predefined tolerance.</p>
 <p>Given a system of equations <span class="math notranslate nohighlight">\(g(\mathbf{x}) = \mathbf{0}\)</span> where <span class="math notranslate nohighlight">\(g = (g_1, g_2, \ldots)\)</span> are differentiable functions, then the matrix form of Newton’s method is</p>
 <div class="math notranslate nohighlight" id="equation-newtons-method-system">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-newtons-method-system" title="Permalink to this equation">#</a></span>\[\mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} - J^{-1}g(\mathbf{x}^{(k)}),\]</div>
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-newtons-method-system" title="Link to this equation">#</a></span>\[\mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} - J^{-1}g(\mathbf{x}^{(k)}),\]</div>
 <p>where <span class="math notranslate nohighlight">\(J\)</span> is the Jacobian matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -553,15 +578,15 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>A problem we have here is that the calculation of the inverse <span class="math notranslate nohighlight">\(J^{-1}\)</span> is an expensive calculation. So to avoid calculating a matrix inverse we use a two-stage process, let <span class="math notranslate nohighlight">\(\Delta \mathbf{x} = \mathbf{x}^{(k+1)} - \mathbf{x}^{(k)}\)</span> then equation <a class="reference internal" href="#equation-newtons-method-system">(3.11)</a> can be written as</p>
 <div class="math notranslate nohighlight" id="equation-newton-1">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-newton-1" title="Permalink to this equation">#</a></span>\[ J \Delta \mathbf{x} = -g(\mathbf{x}^{(k)}), \]</div>
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-newton-1" title="Link to this equation">#</a></span>\[ J \Delta \mathbf{x} = -g(\mathbf{x}^{(k)}), \]</div>
 <p>which is a linear system that can be solved to give <span class="math notranslate nohighlight">\(\Delta \mathbf{x}\)</span>. The improved estimate is then calculated using</p>
 <div class="math notranslate nohighlight" id="equation-newton-2">
-<span class="eqno">(3.13)<a class="headerlink" href="#equation-newton-2" title="Permalink to this equation">#</a></span>\[ \mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} + \Delta \mathbf{x}. \]</div>
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-newton-2" title="Link to this equation">#</a></span>\[ \mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} + \Delta \mathbf{x}. \]</div>
 <p>We cease iterating when the values of <span class="math notranslate nohighlight">\(\Delta x\)</span> are below a given tolerance</p>
 <div class="math notranslate nohighlight">
 \[ \| \Delta x \| &lt; tol.\]</div>
 <section id="computing-the-values-of-mathbf-z-i-using-newton-s-method">
-<h3>Computing the values of <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> using Newton’s method<a class="headerlink" href="#computing-the-values-of-mathbf-z-i-using-newton-s-method" title="Permalink to this heading">#</a></h3>
+<h3>Computing the values of <span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span> using Newton’s method<a class="headerlink" href="#computing-the-values-of-mathbf-z-i-using-newton-s-method" title="Link to this heading">#</a></h3>
 <p>We apply Newton’s method for solving equation <a class="reference internal" href="#equation-irk-zi-matrix-form-2">(3.8)</a>. Writing it in the form <span class="math notranslate nohighlight">\(g(\mathbf{z}) = \mathbf{0}\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[ g(\mathbf{z}) = \mathbf{z} - h(A \otimes I) F(\mathbf{z}),\]</div>
@@ -591,7 +616,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="applying-an-irk-to-solve-a-system-of-odes">
-<h2><span class="section-number">3.3.2. </span>Applying an IRK to solve a system of ODEs<a class="headerlink" href="#applying-an-irk-to-solve-a-system-of-odes" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.2. </span>Applying an IRK to solve a system of ODEs<a class="headerlink" href="#applying-an-irk-to-solve-a-system-of-odes" title="Link to this heading">#</a></h2>
 <p>The steps used to solve an IVP using an IRK method are outlined in <a class="reference internal" href="#irk-algorithm">Algorithm 3.1</a>.</p>
 <div class="proof algorithm admonition" id="irk-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 3.1 </span> (Solving an IVP using an IRK method)</p>
@@ -732,22 +757,22 @@ then</p>
 \end{align*} \end{split}\]</div>
 <p>The solution over the full domain <span class="math notranslate nohighlight">\(t \in [0, 50]\)</span> is shown in <a class="reference internal" href="#vanderpol-plot-figure"><span class="std std-numref">Fig. 3.1</span></a>.</p>
 <figure class="align-default" id="vanderpol-plot-figure">
-<img alt="../_images/8bc7a2cc8e8a0a271e592bd321f5700248aecfad5588742145a9bc7cd98f5baf.png" src="../_images/8bc7a2cc8e8a0a271e592bd321f5700248aecfad5588742145a9bc7cd98f5baf.png" />
+<img alt="../_images/d6d5196d6cbf8c8161164b9efbb4baa39364c48d02a5e060c69c2b2c3db28f43.png" src="../_images/d6d5196d6cbf8c8161164b9efbb4baa39364c48d02a5e060c69c2b2c3db28f43.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Solution of the van der Pol oscillator where <span class="math notranslate nohighlight">\(\mu=10\)</span> using the Radau IA IRK method.</span><a class="headerlink" href="#vanderpol-plot-figure" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Solution of the van der Pol oscillator where <span class="math notranslate nohighlight">\(\mu=10\)</span> using the Radau IA IRK method.</span><a class="headerlink" href="#vanderpol-plot-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </div></section>
 <hr class="docutils" />
 <section id="code">
-<h2><span class="section-number">3.3.3. </span>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.3. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
 <p>The code below defines the functions <code class="docutils literal notranslate"><span class="pre">jac()</span></code> and <code class="docutils literal notranslate"><span class="pre">radauIA()</span></code> which computes the Jacobian of a function <span class="math notranslate nohighlight">\(f(t, y)\)</span> and the solution to an initial value problem using the Radau IA method respectively.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
+<label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
     <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
@@ -758,7 +783,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="n">J</span>
 
 
-<span class="k">def</span> <span class="nf">radauIA</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tpsan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">radauIA</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tpsan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
     
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
     <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
@@ -802,7 +827,7 @@ Python</label><div class="sd-tab-content docutils">
 </ul>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
+<label class="sd-tab-label" for="sd-tab-item-1">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>J<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">jac</span><span class="p">(</span>f, t, y<span class="p">)</span>
 
@@ -896,11 +921,10 @@ MATLAB</label><div class="sd-tab-content docutils">
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="3.3_IRK_order.html"
@@ -920,10 +944,7 @@ MATLAB</label><div class="sd-tab-content docutils">
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -931,6 +952,7 @@ MATLAB</label><div class="sd-tab-content docutils">
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -965,6 +987,7 @@ By Dr Jon Shiach
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -991,8 +1014,8 @@ By Dr Jon Shiach
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

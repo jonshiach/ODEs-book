@@ -65,7 +65,7 @@ $$ \begin{align*}
     \end{pmatrix}=I.
 \end{align*} $$
 
-Futhermore it is an orthonormal matrix since the magnitude of the columns for $A$ are both 1.
+Furthermore it is an orthonormal matrix since the magnitude of the columns for $A$ are both 1.
 
 ## QR decomposition using the Gram-Schmidt process
 
@@ -317,12 +317,29 @@ A **Householder reflection** reflects a vector $\mathbf{x}$ about a hyperplane t
   <img src="../_images/householder_1.svg" width="50%" />
 </p>
 
-
 The Householder matrix is an orthogonal reflection matrix of the form
 
 $$ H = I - 2 \frac{\mathbf{v} \mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}. $$
 
+where $\mathbf{v} = \mathbf{x} - \| \mathbf{x} \| \mathbf{e}_1$.
+
 The matrix $H$ is symmetric and orthogonal.
+
+---
+
+If the magnitude of $\mathbf{x}$ is close to being parallel to $\mathbf{e}_1$ then the calculation of $\mathbf{v}$ will involve the division by a number close to zero.
+
+To overcome this we use a Householder transformation to reflect $\mathbf{x}$ so that it is parallel to $-\mathbf{e}_1$ instead of $+\mathbf{e}_1$. 
+
+<p align="center">
+  <img src="../_images/householder_2.svg" width="50%" />
+</p>
+
+To do this we calculate $\mathbf{v}$ by adding $\| \mathbf{x} \| \mathbf{e}_1$ to $\mathbf{x}$ when the sign of $x_1$ is negative, i.e.,
+
+$$ \mathbf{v} = \mathbf{x} - \operatorname{sign}(x_1) \| \mathbf{x} \| \mathbf{e}_1, $$
+
+where $\operatorname{sign}(x)$ returns $+1$ if $x \geq 0$ and $-1$ if $x < 0$. 
 
 ## QR Decomposition using Householder Reflections
 
@@ -330,9 +347,9 @@ To compute the QR decomposition of a matrix $A$, we reflect the first column of 
 
 The vector $\mathbf{v}$ is given by
 
-$$ \mathbf{v} = \mathbf{x} - \|\mathbf{x}\| \mathbf{e}_1, $$
+$$ \mathbf{v} = \mathbf{x} - \operatorname{sign}(x_1) \|\mathbf{x}\| \mathbf{e}_1, $$
 
-where $\mathbf{x}$ is the first column of $A$ and $\mathbf{e}_1 = (1, 0, \ldots, 1)^\mathsf{T}$ is the first basis vector.
+where $\mathbf{x}$ is the first column of $A$ and $\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathsf{T}$ is the first basis vector.
 
 The first Householder matrix is then given by
 
@@ -401,7 +418,7 @@ $$ \begin{align*}
 - $R \gets A$
 - For $j = 1, \ldots, m - 1$ do
   - $\mathbf{x} \gets$ column $j$ of $R$ starting at the $j$-th row
-  - $\mathbf{v} \gets \mathbf{x} + \|\mathbf{x}\|\mathbf{e}_1$
+  - $\mathbf{v} \gets \mathbf{x} - \operatorname{sign} (x_1) \|\mathbf{x}\|\mathbf{e}_1$
   - $H' \gets I_{m-j+1} - 2 \dfrac{\mathbf{v} \mathbf{v} ^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}$
   - $H(j:m, j:m) \gets H'$ with the first $j-1$ rows and columns of $H$ set to those of $I_m$
   - $R \gets H R$
@@ -498,38 +515,38 @@ $$ \begin{align*}
 :::{.fragment}
 
 $$ \begin{align*}
-  j &= 2: & \mathbf{x} &= 
+j &= 2: & \mathbf{x} &= 
   \begin{pmatrix} -3 \\ -4 \end{pmatrix}, \\
-  && \mathbf{v} &= \mathbf{x} - \|\mathbf{x}\| \mathbf{e}_1 = 
-  \begin{pmatrix} -3 \\ -4 \end{pmatrix} - 5 
+  && \mathbf{v} &= \mathbf{x} + \|\mathbf{x}\| \mathbf{e}_1 = 
+  \begin{pmatrix} -3 \\ -4 \end{pmatrix} + 5 
   \begin{pmatrix} 1 \\ 0 \end{pmatrix} = 
-  \begin{pmatrix} -8 \\ -4 \end{pmatrix}, \\
+  \begin{pmatrix} 2 \\ -4 \end{pmatrix}, \\
   && H' &= I - 2 \frac{\mathbf{v}\mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}} =
   \begin{pmatrix} 
     1 & 0 \\ 
     0 & 1 
-  \end{pmatrix} - \frac{2}{80}
+  \end{pmatrix} - \frac{2}{20}
   \begin{pmatrix} 
-    64 & 32 \\ 
-    32 & 16 
+    4 & -8 \\ 
+    -8 & 16 
   \end{pmatrix} =
   \begin{pmatrix} 
-    -\frac{3}{5} & -\frac{4}{5} \\ 
-    -\frac{4}{5} & \frac{3}{5} 
+    \frac{3}{5} & \frac{4}{5} \\ 
+    \frac{4}{5} & -\frac{3}{5} 
   \end{pmatrix}, \\
   && H &=
   \begin{pmatrix} 
     1 & 0 & 0 \\ 
-    0 & -\frac{3}{5} & -\frac{4}{5} \\ 
-    0 & -\frac{4}{5} & \frac{3}{5}
-  \end{pmatrix}, \\
+    0 & \frac{3}{5} & \frac{4}{5} \\ 
+    0 & \frac{4}{5} & -\frac{3}{5}
+  \end{pmatrix},
 \end{align*} $$
 :::
 
 ###
 
 $$ \begin{align*}
-  && R &= H R =
+  R &= H R =
   \begin{pmatrix} 
     1 & 0 & 0 \\ 
     0 & -\frac{3}{5} & -\frac{4}{5} \\ 
@@ -537,15 +554,15 @@ $$ \begin{align*}
   \end{pmatrix}
   \begin{pmatrix} 
     3 & 2 \\ 
-    0 & -3 \\ 
+    0 & 3 \\ 
     0 & -4
   \end{pmatrix} =
   \begin{pmatrix} 
     3 & 2 \\ 
-    0 & 5 \\ 
+    0 & -5 \\ 
     0 & 0
   \end{pmatrix}, \\
-  && Q &= Q H =
+  Q &= Q H =
   \begin{pmatrix} 
     \frac{1}{3} & \frac{2}{3} & \frac{2}{3} \\ 
     \frac{2}{3} & \frac{2}{3} & -\frac{1}{3} \\ 
@@ -553,25 +570,25 @@ $$ \begin{align*}
   \end{pmatrix}
   \begin{pmatrix} 
     1 & 0 & 0 \\ 
-    0 & -\frac{3}{5} & -\frac{4}{5} \\ 
-    0 & -\frac{4}{5} & \frac{3}{5}
+    0 & \frac{3}{5} & \frac{4}{5} \\ 
+    0 & \frac{4}{5} & -\frac{3}{5}
   \end{pmatrix} =
   \begin{pmatrix} 
-    \frac{1}{3} & -\frac{14}{15} & -\frac{2}{15} \\ 
-    \frac{2}{3} &  \frac{1}{3} & -\frac{2}{3} \\ 
-    \frac{2}{3} & \frac{2}{15} & \frac{11}{15} 
+    \frac{1}{3} & \frac{14}{15} & \frac{2}{15} \\ 
+    \frac{2}{3} & -\frac{1}{3} & \frac{2}{3} \\ 
+    \frac{2}{3} & -\frac{2}{15} & -\frac{11}{15} 
   \end{pmatrix}.
 \end{align*} $$
 
 :::{.fragment}
-Since both diagonal elements of $R$ are positive, we do not need to make any adjustments to $Q$ and $R$. Therefore the QR decomposition of $A$ is
+The second diagonal element of $R$ is negative, so we multiply row 2 of $R$ and column 2 of $Q$ by $-1$
 
 $$ \begin{align*}
   Q &= 
   \begin{pmatrix} 
-    \frac{1}{3} & -\frac{14}{15} & -\frac{2}{15} \\ 
-    \frac{2}{3} &  \frac{1}{3} & -\frac{2}{3} \\ 
-    \frac{2}{3} & \frac{2}{15} & \frac{11}{15} 
+    \frac{1}{3} & -\frac{14}{15} & \frac{2}{15} \\ 
+    \frac{2}{3} &  \frac{1}{3} & \frac{2}{3} \\ 
+    \frac{2}{3} & \frac{2}{15} & -\frac{11}{15} 
   \end{pmatrix}, &
   R &= 
   \begin{pmatrix} 
@@ -589,9 +606,9 @@ We can check whether this is correct by verifying that $A = QR$ and $Q^\mathsf{T
 $$ \begin{align*}
   QR &= 
   \begin{pmatrix} 
-    \frac{1}{3} & -\frac{14}{15} & -\frac{2}{15} \\ 
-    \frac{2}{3} &  \frac{1}{3} & -\frac{2}{3} \\ 
-    \frac{2}{3} & \frac{2}{15} & \frac{11}{15} 
+    \frac{1}{3} & -\frac{14}{15} & \frac{2}{15} \\ 
+    \frac{2}{3} &  \frac{1}{3} & \frac{2}{3} \\ 
+    \frac{2}{3} & \frac{2}{15} & -\frac{11}{15} 
   \end{pmatrix}
   \begin{pmatrix} 
     3 & 2 \\ 
@@ -605,14 +622,14 @@ $$ \begin{align*}
   \end{pmatrix} = A, \\
   Q^\mathsf{T} Q &= 
   \begin{pmatrix} 
-    \frac{1}{3} & \frac{2}{3} & \frac{2}{3} \\ 
-    -\frac{14}{15} & \frac{1}{3} & \frac{2}{15} \\ 
-    -\frac{2}{15} & -\frac{2}{3} & \frac{11}{15} 
+    \frac{1}{3} & \frac{2}{3} & \frac{2}{3} \\
+    -\frac{14}{15} & \frac{1}{3} & \frac{2}{15} \\
+    \frac{2}{15} & \frac{2}{3} & -\frac{11}{15}
   \end{pmatrix}
   \begin{pmatrix} 
-    \frac{1}{3} & -\frac{14}{15} & -\frac{2}{15} \\ 
-    \frac{2}{3} &  \frac{1}{3} & -\frac{2}{3} \\ 
-    \frac{2}{3} & \frac{2}{15} & \frac{11}{15} 
+    \frac{1}{3} & -\frac{14}{15} & \frac{2}{15} \\ 
+    \frac{2}{3} &  \frac{1}{3} & \frac{2}{3} \\ 
+    \frac{2}{3} & \frac{2}{15} & -\frac{11}{15} 
   \end{pmatrix} =
   \begin{pmatrix}
     1 & 0 & 0 \\
@@ -887,3 +904,13 @@ The estimates of the eigenvalues obtained by iterating to an accuracy tolerance 
 |  4 | 5.372279 | -0.372279 | 3.90e-05 |
 
 The exact values of the eigenvalues are $\lambda_1 = (5 + \sqrt{33})/2 \approx 5.372281$ and $\lambda_2 = (5 - \sqrt{33}) / 2 \approx -0.372281$ which shows the QR algorithm has calculated the eigenvalues correct to five decimal places.
+
+## Summary
+
+- **QR decomposition** factorises an $m \times n$ matrix $A$ into the product of $QR$ where
+  - $Q$ is an **orthogonal** matrix ($Q^\mathsf{T}Q = I$)
+  - $R$ is an **upper-triangular** matrix
+- QR decomposition using the **Gram-Schmidt process** forms a set of orthogonal vectors using the columns of $A$ and subtracting vector projections of $\mathbf{a}_i$ onto $\mathbf{q}_i$ from $\mathbf{a}_i$. 
+- QR decomposition using **Householder transformations** applies a series of reflections to $A$ such that the columns of $A$ are parallel to the standard basis.
+- Householder transformations are less prone to **orthogonality errors** than the Gram-Schmidt process.
+- The QR algorithm is an efficient way to compute the **eigenvalues** of a matrix using QR decomposition.
