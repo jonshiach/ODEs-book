@@ -408,7 +408,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.5.2. QR decomposition using Householder reflections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.5.2. QR decomposition using Householder reflections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-orthogonality">6.5.3. Loss of orthogonality</a></li>
 </ul>
             </nav>
@@ -830,8 +833,9 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li><p>Return <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span>.</p></li>
 </ul>
 </section>
-</div><!-- ```{prf:example} -->
-<p>:label: qr-householder-example</p>
+</div><div class="proof example admonition" id="qr-householder-example">
+<p class="admonition-title"><span class="caption-number">Example 6.9 </span></p>
+<section class="example-content" id="proof-content">
 <p>Calculate the QR decomposition of the following matrix using Householder reflections</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -1010,71 +1014,71 @@ MATLAB</label><div class="sd-tab-content docutils">
     0 &amp; 0 &amp; 1
   \end{pmatrix} = I.
 \end{align*} \end{split}\]</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-### Code
-
-The code below defines a function called `qr_householder()` that calculates the QR decomposition of an $m \times n$ matrix $A$ using Householder reflections. This has been used to calculate the QR decomposition of the matrix from {prf:ref}`qr-householder-example`.
-
-`````{tab-set}
-````{tab-item} Python
-```python
-def qr_householder(A):
+</section>
+</div><section id="id1">
+<h3>Code<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">qr_householder()</span></code> that calculates the QR decomposition of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> using Householder reflections. This has been used to calculate the QR decomposition of the matrix from <a class="reference internal" href="#qr-householder-example">Example 6.9</a>.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">qr_householder</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     
-    m, n = A.shape
-    Q, R = np.eye(m), np.copy(A).astype(float)
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
-    for i in range(m - 1):
-        x = R[i:,i]
-        v = np.array([x + np.sign(x[0]) *  np.linalg.norm(x) * np.eye(m - i)[:,0]]).T
-        H = np.eye(m)
-        H[i:,i:] -= 2 * np.dot(v, v.T) / np.dot(v.T, v)
-        R = np.dot(H, R)
-        Q = np.dot(Q, H)
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span>  <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">i</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">:]</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
 
-    for i in range(n):
-        if R[i,i] &lt; 0:
-            R[i,:] *= -1
-            Q[:,i] *= -1
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
 
-    return Q, R
+    <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-````{tab-item} MATLAB
-```matlab
-function [Q, R] = qr_householder(A)
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[Q, R] = qr_householder</span><span class="p">(</span>A<span class="p">)</span>
 
-[m, n] = size(A);
-Q = eye(m);
-R = A;
+<span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
 
-for i = 1 : m - 1
-    x = R(i:end,i);
-    if sign(x(1)) &gt; 0
-        v = x + norm(x) * [1 ; zeros(m-i,1)];
-    else
-        v = x - norm(x) * [1 ; zeros(m-i,1)];
-    end
-    H = eye(m);
-    H(i:end,i:end) = H(i:end,i:end) - 2 * v * v&#39; / dot(v, v);
-    R = H * R;
-    Q = Q * H;
-end
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">sign</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="o">&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">H</span><span class="p">;</span>
+<span class="k">end</span>
 
-for i = 1 : n
-    if R(i,i) &lt; 0
-        R(i,:) = -R(i,:);
-        Q(:,i) = -Q(:,i);
-    end
-end
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,:);</span>
+<span class="w">        </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
 
-end
-```
+<span class="k">end</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
 </div>
+</div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="loss-of-orthogonality">
@@ -1160,7 +1164,10 @@ end
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.5.2. QR decomposition using Householder reflections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.5.2. QR decomposition using Householder reflections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-orthogonality">6.5.3. Loss of orthogonality</a></li>
 </ul>
   </nav></div>
