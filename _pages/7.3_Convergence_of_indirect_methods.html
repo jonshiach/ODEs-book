@@ -425,7 +425,7 @@ document.write(`
 <p>If <span class="math notranslate nohighlight">\(|\lambda_1|&gt;\lambda_2, \lambda_3, \ldots \lambda_n\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{e}^{(k+1)} =\alpha_1 \lambda_1^{k+1} \mathbf{v}_1 +\sum_{i=2}^n \alpha_i \lambda_i^{k+1} \mathbf{v}_i =\lambda_1^{k+1} \left(\alpha_1 \mathbf{v}_1 +\sum_{i=2}^n \alpha_i \mathbf{v}_i {\left(\frac{\lambda_i }{\lambda_1 }\right)}^{k+1} \right) \]</div>
-<p>and since <span class="math notranslate nohighlight">\(\lambda_i / \lambda_ 1 &lt; 1\)</span> then</p>
+<p>and since <span class="math notranslate nohighlight">\(\dfrac{\lambda_i}{\lambda_ 1} &lt; 1\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     \lim_{k\to \infty } \mathbf{e}^{(k+1)} =\alpha_1 \lambda_1^{k+1} \mathbf{v}_1 .
@@ -454,9 +454,9 @@ document.write(`
 <p>Show that the Jacobi and Gauss-Seidel methods are convergent of the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> (shown below)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(k+1)} &amp;= \frac{1}{4} \left( -2 - 3 x_{2}^{(k)} \right), \\
-    x_{2}^{(k+1)} &amp;= \frac{1}{4} \left( -8 - 3 x_{1}^{(k)} + x_{3}^{(k)} \right), \\
-    x_{3}^{(k+1)} &amp;= \frac{1}{4} \left( 14 + x_{2}^{(k)} \right).
+    4x_1 +3x_2 &amp;=-2, \\
+    3x_1 +4x_2 -x_3 &amp;=-8, \\
+    -x_2 +4x_3 &amp;=14.
 \end{align*} \end{split}\]</div>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
@@ -476,7 +476,7 @@ document.write(`
     T_J &amp;= -D^{-1} ( L + U)  \\
     &amp;= -\begin{pmatrix} 4 &amp; 0 &amp; 0 \\ 0 &amp; 4 &amp; 0 \\ 0 &amp; 0 &amp; 4 \end{pmatrix} ^{-1} \left(
     \begin{pmatrix} 0 &amp; 0 &amp; 0 \\ 3 &amp; 0 &amp; 0 \\ 0 &amp; -1 &amp; 0 \end{pmatrix} +
-    \begin{pmatrix} 4 &amp; 0 &amp; 0 \\ 0 &amp; 4 &amp; 0 \\ 0 &amp; 0 &amp; 4 \end{pmatrix} \right) \\
+    \begin{pmatrix} 0 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; -1 \\ 0 &amp; 0 &amp; 0 \end{pmatrix} \right) \\
     &amp;= - \begin{pmatrix} \frac{1}{4} &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{4} &amp; 0 \\ 0 &amp; 0 &amp; \frac{1}{4} \end{pmatrix}
     \begin{pmatrix} 0 &amp; 3 &amp; 0 \\ 3 &amp; 0 &amp; -1 \\ 0 &amp; -1 &amp; 0 \end{pmatrix} \\ 
     &amp;= \begin{pmatrix} 0 &amp; -\frac{3}{4} &amp; 0 \\ -\frac{3}{4} &amp; 0 &amp; \frac{1}{4} \\ 0 &amp; \frac{1}{4} &amp; 0 \end{pmatrix}, \\
