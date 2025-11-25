@@ -144,17 +144,12 @@ Dr Jon Shiach
 </section>
 <section id="indirect-methods" class="title-slide slide level2 center">
 <h2>Indirect Methods</h2>
-<p>A system of linear equations is of the form <span class="math inline">\(A \mathbf{x} = \mathbf{b}\)</span>.</p>
 <p>Over the two previous weeks we have looked at <strong>direct methods</strong> for solving systems of linear equations, so-called because a solution is directly obtained.</p>
-<p>This week we will look at <strong>indirect methods</strong>, which use an iterative approach</p>
+<p>This week we will look at <strong>indirect methods</strong>, which use an iterative approach.</p>
+<p>Given a system of linear equations <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span> and an estimate of the solution <span class="math inline">\(\mathbf{x}\)</span>, we calculate an improved estimate of <span class="math inline">\(\mathbf{x}\)</span> based on an <strong>iterative scheme</strong></p>
 <p><span class="math display">\[ \mathbf{x}^{(k+1)} = T \mathbf{x}^{(k)} + \mathbf{c}, \]</span></p>
-<p>where <span class="math inline">\(\mathbf{x}^{(k)}\)</span> and <span class="math inline">\(\mathbf{x}^{(k+1)}\)</span> are the current and improved estimates of <span class="math inline">\(\mathbf{x}\)</span> respectively, <span class="math inline">\(T\)</span> is an <strong>iteration matrix</strong> and <span class="math inline">\(\mathbf{c}\)</span> is some vector</p>
-<p>The three methods we will look at are:</p>
-<ul>
-<li>the Jacobi method</li>
-<li>the Gauss-Seidel method</li>
-<li>the SOR method</li>
-</ul>
+<p>where <span class="math inline">\(\mathbf{x}^{(k)}\)</span> denotes the <span class="math inline">\(k\)</span>-th estimate of <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(T\)</span> is an <strong>iteration matrix</strong> and <span class="math inline">\(\mathbf{c}\)</span> is some vector.</p>
+<p>The scheme is iterated until two successive solutions converge to a given tolerance.</p>
 </section>
 
 <section id="the-jacobi-method" class="title-slide slide level2 center">
@@ -180,18 +175,19 @@ Dr Jon Shiach
 
 <section id="the-iteration-matrix-for-the-jacobi-method" class="title-slide slide level2 center">
 <h2>The Iteration Matrix for the Jacobi Method</h2>
+<p>The iteration matrix is a matrix <span class="math inline">\(T\)</span> such that</p>
+<p><span class="math display">\[ \mathbf{x}^{(k+1)} = T \mathbf{x}^{(k)} + \mathbf{c}, \]</span></p>
 <p>To derive the iteration matrix for the Jacobi method we let <span class="math inline">\(A\)</span> be the sum of lower triangular matrix <span class="math inline">\(L\)</span>, a diagonal matrix <span class="math inline">\(D\)</span> and an upper triangular matrix <span class="math inline">\(U\)</span> such that <span class="math inline">\(A = L + D + U\)</span>.</p>
 <p>Substituting into <span class="math inline">\(A \mathbf{x} = \mathbf{b}\)</span> and rearranging gives</p>
 <p><span class="math display">\[ \begin{align*}
     (L+D+U)\mathbf{x} &amp;= \mathbf{b} \\
     D\mathbf{x} &amp;= \mathbf{b}-(L+U)\mathbf{x} \\
-    \mathbf{x} &amp; = -D^{-1}(L + x) \mathbf{x} + D^{-1} \mathbf{b}
+    \mathbf{x} &amp; = -D^{-1}(L + U) \mathbf{x} + D^{-1} \mathbf{b}
 \end{align*} \]</span></p>
 <p>Let the <span class="math inline">\(\mathbf{x}\)</span> vector on the left-hand side be the new estimate and the one on the right-hand side be the current estimate then the Jacobi method is</p>
-<p><span class="math display">\[ \mathbf{x}^{(k+1)}  = -D^{-1}(L + x^{(k)}) \mathbf{x} + D^{-1} \mathbf{b} \]</span></p>
+<p><span class="math display">\[ \mathbf{x}^{(k+1)}  = -D^{-1}(L + U) \mathbf{x}^{(k)} + D^{-1} \mathbf{b} \]</span></p>
 <p>Therefore the iteration matrix for the Jacobi method is</p>
-<p><span class="math display">\[T_J = -D^{-1}(L + x^{(k)}) \]</span></p>
-<p>(We’ll be needing this later)</p>
+<p><span class="math display">\[T_J = -D^{-1}(L + U) \]</span></p>
 </section>
 
 <section id="the-residual" class="title-slide slide level2 center">
@@ -260,7 +256,7 @@ Dr Jon Shiach
 <div class="fragment">
 <p>Calculate the residual</p>
 <p><span class="math display">\[ \begin{align*}
-    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} =
+    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(2)} =
     \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
     \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
     \begin{pmatrix} 1.0 \\ -0.75 \\ 3.0 \end{pmatrix} =
@@ -351,9 +347,9 @@ Dr Jon Shiach
 </section></section>
 <section id="the-gauss-seidel-method" class="title-slide slide level2 center">
 <h2>The Gauss-Seidel Method</h2>
-<p>With the Jacobi method we only every use the current estimates even when we have calculated new estimates in the current iteration</p>
+<p>With the Jacobi method we only every use the current estimates even when we have calculated new estimates in the current iteration, i.e., when calculating <span class="math inline">\(x_i^{(k+1)}\)</span> we already have new estimates for <span class="math inline">\(x_1^{(k+1)}, x_2^{(k+1)}, \ldots, x_{i-1}^{(k+1)}\)</span></p>
 <p><span class="math display">\[ \begin{align*}
-    x_i^{(k+1)} &amp;= \frac{1}{a_{ii}} \left( b_i - \underset{\mathsf{already\,calculated}}{(a_{i1} x_1^{(k)} - \cdots - a_{i,j-1} x_{j-1}^{(k)})} - \underset{\mathsf{yet\, to\, be\, calculated}}{(a_{i,j+1} x_{j+1}^{(k)} - \cdots - a_{in} x_n^{(k)})} \right)
+    x_i^{(k+1)} &amp;= \frac{1}{a_{ii}} \left( b_i - \underset{\mathsf{already\,calculated}}{\sum_{j=1}^{i-1} a_{ij}x_j^{(k)}} - \underset{\mathsf{yet\, to\, be\, calculated}}{\sum_{j=i+1}^{n} a_{ij}x_j^{(k)}} \,\, \right)
 \end{align*} \]</span></p>
 <p>We can improve the speed of which the Jacobi method converges by using these new values to calculate <span class="math inline">\(x_i^{(k+1)}\)</span> which is the <strong>Gauss-Seidel method</strong></p>
 <p><span class="math display">\[ x_i^{(k+1)} = \frac{1}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i=1, \ldots , n \]</span></p>
@@ -614,7 +610,7 @@ Dr Jon Shiach
 <h2>Optimum Value of <span class="math inline">\(\omega\)</span></h2>
 <p>The optimum value of <span class="math inline">\(\omega\)</span> will be the value that gives the smallest spectral radius of <span class="math inline">\(T_{SOR}\)</span>.</p>
 <p>The plot below is of <span class="math inline">\(\rho(T_{SOR})\)</span> against <span class="math inline">\(\omega\)</span> for the linear system solved in the preview examples.</p>
-<div id="3c218c11" class="cell" data-execution_count="1">
+<div id="d5f19fb8" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>

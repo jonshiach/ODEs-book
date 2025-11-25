@@ -17,21 +17,17 @@ format:
 
 ## Indirect Methods
 
-A system of linear equations is of the form $A \mathbf{x} = \mathbf{b}$. 
-
 Over the two previous weeks we have looked at **direct methods** for solving systems of linear equations, so-called because a solution is directly obtained.
 
-This week we will look at **indirect methods**, which use an iterative approach
+This week we will look at **indirect methods**, which use an iterative approach.
+
+Given a system of linear equations $A\mathbf{x} = \mathbf{b}$ and an estimate of the solution $\mathbf{x}$, we calculate an improved estimate of $\mathbf{x}$ based on an **iterative scheme**
 
 $$ \mathbf{x}^{(k+1)} = T \mathbf{x}^{(k)} + \mathbf{c}, $$
 
-where $\mathbf{x}^{(k)}$ and $\mathbf{x}^{(k+1)}$ are the current and improved estimates of $\mathbf{x}$ respectively, $T$ is an **iteration matrix** and $\mathbf{c}$ is some vector
+where $\mathbf{x}^{(k)}$ denotes the $k$-th estimate of $\mathbf{x}$, $T$ is an **iteration matrix** and $\mathbf{c}$ is some vector.
 
-The three methods we will look at are:
-
-- the Jacobi method
-- the Gauss-Seidel method
-- the SOR method
+The scheme is iterated until two successive solutions converge to a given tolerance.
 
 ## The Jacobi Method
 
@@ -59,6 +55,10 @@ where $x_i^{(k+1)}$ and $x_i^{(k)}$ are the next and current estimates of $x_i$.
 
 ## The Iteration Matrix for the Jacobi Method
 
+The iteration matrix is a matrix $T$ such that 
+
+$$ \mathbf{x}^{(k+1)} = T \mathbf{x}^{(k)} + \mathbf{c}, $$
+
 To derive the iteration matrix for the Jacobi method we let $A$ be the sum of lower triangular matrix $L$, a diagonal matrix $D$ and an upper triangular matrix $U$ such that $A = L + D + U$.
 
 Substituting into $A \mathbf{x} = \mathbf{b}$ and rearranging gives
@@ -66,18 +66,16 @@ Substituting into $A \mathbf{x} = \mathbf{b}$ and rearranging gives
 $$ \begin{align*}
     (L+D+U)\mathbf{x} &= \mathbf{b} \\
     D\mathbf{x} &= \mathbf{b}-(L+U)\mathbf{x} \\
-    \mathbf{x} & = -D^{-1}(L + x) \mathbf{x} + D^{-1} \mathbf{b}
+    \mathbf{x} & = -D^{-1}(L + U) \mathbf{x} + D^{-1} \mathbf{b}
 \end{align*} $$
 
 Let the $\mathbf{x}$ vector on the left-hand side be the new estimate and the one on the right-hand side be the current estimate then the Jacobi method is
 
-$$ \mathbf{x}^{(k+1)}  = -D^{-1}(L + x^{(k)}) \mathbf{x} + D^{-1} \mathbf{b} $$
+$$ \mathbf{x}^{(k+1)}  = -D^{-1}(L + U) \mathbf{x}^{(k)} + D^{-1} \mathbf{b} $$
 
 Therefore the iteration matrix for the Jacobi method is
 
-$$T_J = -D^{-1}(L + x^{(k)}) $$
-
-(We'll be needing this later)
+$$T_J = -D^{-1}(L + U) $$
 
 ## The Residual
 
@@ -163,7 +161,7 @@ $$ \begin{align*}
 Calculate the residual
 
 $$ \begin{align*}
-    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(2)} = 
     \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
     \begin{pmatrix} 4 & 3 & 0 \\ 3 & 4 & -1 \\ 0 & -1 & 4 \end{pmatrix}
     \begin{pmatrix} 1.0 \\ -0.75 \\ 3.0 \end{pmatrix} =
@@ -191,14 +189,13 @@ The Jacobi method was iterated until $\max(|\mathbf{r}|) < 10^{-4}$ and a select
 
 ## The Gauss-Seidel Method
 
-With the Jacobi method we only every use the current estimates even when we have calculated new estimates in the current iteration
+With the Jacobi method we only every use the current estimates even when we have calculated new estimates in the current iteration, i.e., when calculating $x_i^{(k+1)}$ we already have new estimates for $x_1^{(k+1)}, x_2^{(k+1)}, \ldots, x_{i-1}^{(k+1)}$
 
 $$ \begin{align*}
-    x_i^{(k+1)} &= \frac{1}{a_{ii}} \left( b_i - \underset{\mathsf{already\,calculated}}{(a_{i1} x_1^{(k)} - \cdots - a_{i,j-1} x_{j-1}^{(k)})} - \underset{\mathsf{yet\, to\, be\, calculated}}{(a_{i,j+1} x_{j+1}^{(k)} - \cdots - a_{in} x_n^{(k)})} \right)
+    x_i^{(k+1)} &= \frac{1}{a_{ii}} \left( b_i - \underset{\mathsf{already\,calculated}}{\sum_{j=1}^{i-1} a_{ij}x_j^{(k)}} - \underset{\mathsf{yet\, to\, be\, calculated}}{\sum_{j=i+1}^{n} a_{ij}x_j^{(k)}} \,\, \right)
 \end{align*} $$
 
 We can improve the speed of which the Jacobi method converges by using these new values to calculate $x_i^{(k+1)}$ which is the **Gauss-Seidel method**
-
 
 $$ x_i^{(k+1)} = \frac{1}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i=1, \ldots , n $$
 
