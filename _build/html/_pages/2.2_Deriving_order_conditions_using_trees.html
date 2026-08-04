@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.4. Deriving order conditions using trees &#8212; Runge-Kutta Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/2.2_Deriving_order_conditions_using_trees';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/2.2_Deriving_order_conditions_using_trees.html" />
+    <link rel="icon" href="../_static/favicon.jpeg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.5. Derivation of a fourth-order explicit Runge-Kutta method" href="2.3_RK4_Derivation.html" />
+    <link rel="prev" title="2.3. Derivation of Explicit Runge-Kutta Methods" href="2.1_ERK_Derivation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Runge-Kutta Methods - Home"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Runge-Kutta Methods - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.4. Deriving order conditions using trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Indirect methods exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_pages/2.2_Deriving_order_conditions_using_trees.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deriving order conditions using trees</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rooted-trees">2.4.1. Rooted Trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-derivatives-of-f-y-using-rooted-trees">Determining derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span> using rooted trees</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-conditions-of-an-erk-method-using-trees">2.4.2. Order conditions of an ERK method using trees</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deriving-order-conditions-using-trees">
+<span id="deriving-order-conditions-using-trees-section"></span><h1><span class="section-number">2.4. </span>Deriving order conditions using trees<a class="headerlink" href="#deriving-order-conditions-using-trees" title="Link to this heading">#</a></h1>
+<p>In the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a> we saw that to derive an Explicit Runge-Kutta (ERK) method we equate Taylor expansions of the ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> and the general form of a Runge-Kutta method to derive a set of order conditions which need to be satisfied. This means we need to evaluate the derivatives of the bivariate function <span class="math notranslate nohighlight">\(f(t,y)\)</span> which can soon get complicated as we increase the order. Fortunately there is an easier way that uses rooted trees.</p>
+<hr class="docutils" />
+<section id="rooted-trees">
+<h2><span class="section-number">2.4.1. </span>Rooted Trees<a class="headerlink" href="#rooted-trees" title="Link to this heading">#</a></h2>
+<p>A <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)#Rooted_tree" target="_blank"><strong>rooted tree</strong></a> is a tree where a single node is designated as the <strong>root</strong>. Rooted trees are usually drawn with the root node at the bottom of the tree.</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/rooted_tree_example.svg"><img alt="../_images/rooted_tree_example.svg" src="../_images/rooted_tree_example.svg" style="width: 150px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">An example of a rooted tree.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We now define the properties of order and density of a rooted tree</p>
+<ul class="simple">
+<li><p>The <strong>order</strong> of a rooted tree <span class="math notranslate nohighlight">\(\tau\)</span>, denoted by <span class="math notranslate nohighlight">\(r(\tau)\)</span>, is the total number of nodes in the tree. <span class="math notranslate nohighlight">\(\tau\)</span> is the Greek letter <em>tau</em> which is similer to the Latin letter <em>t</em></p></li>
+<li><p>The <strong>density</strong> of a rooted tree <span class="math notranslate nohighlight">\(\tau\)</span>, denoted by <span class="math notranslate nohighlight">\(\gamma(\tau)\)</span>, is a measure related to the number of nodes and the children of the notes in the tree. The density can be calculated using the following:</p>
+<ul>
+<li><p>assign a value of 1 to each leaf node in the tree;</p></li>
+<li><p>for all non-leaf nodes assign a value of 1 more than the sum of the values of their child nodes;</p></li>
+<li><p>calculate the product the values of all nodes in the tree which gives <span class="math notranslate nohighlight">\(\gamma(\tau)\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="proof example admonition" id="order-density-elementary-weight-example">
+<p class="admonition-title"><span class="caption-number">Example 2.3 </span></p>
+<section class="example-content" id="proof-content">
+<p>Determine the order and density of the rooted tree shown below.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/rooted_tree_example.svg"><img alt="../_images/rooted_tree_example.svg" src="../_images/rooted_tree_example.svg" style="height: 150px;" />
+</a>
+</figure>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>There are 7 nodes in this tree so <span class="math notranslate nohighlight">\(r(\tau)=7\)</span>.</p>
+<p>Assigning the weights to the nodes gives</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/rooted_tree_example_density.svg"><img alt="../_images/rooted_tree_example_density.svg" src="../_images/rooted_tree_example_density.svg" style="height: 150px;" />
+</a>
+</figure>
+<p>So <span class="math notranslate nohighlight">\(\gamma(\tau) = 7 \cdot 1 \cdot 3 \cdot 2 \cdot 1 \cdot 1 \cdot 1 = 42\)</span></p>
+</section>
+</div><section id="determining-derivatives-of-f-y-using-rooted-trees">
+<h3>Determining derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span> using rooted trees<a class="headerlink" href="#determining-derivatives-of-f-y-using-rooted-trees" title="Link to this heading">#</a></h3>
+<p>Consider the derivatives of the function <span class="math notranslate nohighlight">\(y = f(y)\)</span> using the product and chain rules</p>
+<div class="math notranslate nohighlight" id="equation-derivatives-of-fy">
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-derivatives-of-fy" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+    y' &amp;= f(y), \\
+    y'' &amp;= f'(y)y' \\
+    &amp;= (f'f)(y), \\
+    y''' &amp;= f''(y)(f(y), f'(y)) + f'(y)f'(y)y' \\
+    &amp;= (f''(f,f) + f'f'f)(y) \\
+    &amp;\vdots
+\end{align*}\end{split}\]</div>
+<p>As you can see this soon becomes complicated, however, English mathematician Robert Merson <span id="id1">Merson [<a class="reference internal" href="E_References.html#id6" title="R.H. Merson. An operational method for the study of intergration processes. In Proceedings of Conference on Data Processing and Automatic Computing Machives, volume 1, 1 - 25. Weapons Research Establishment, Salisbury, South Australia, 1957.">1957</a>]</span> noticed that the structure of rooted trees matches that of the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>. Defining a rooted tree notation where <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> denotes a node of the tree and the number of children the node has is denoted by a prime, e.g., <span class="math notranslate nohighlight">\(\mathbf{f}''\)</span> denotes a node has two children. A child node is written immediately following the parent node and sibling nodes are separated by a comma (using brackets if there are more than one child).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(\tau\)</span></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/rooted_tree_f.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/rooted_tree_fdashf.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/rooted_tree_fdashdashff.svg" /></p></th>
+<th class="head text-center"><p><img alt="" src="../_images/rooted_tree_fdashfdashf.svg" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(r(\tau)\)</span></p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(\gamma(\tau)\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mathbf{f}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mathbf{f}'\mathbf{f}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mathbf{f}''(\mathbf{f},\mathbf{f})\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\mathbf{f}'\mathbf{f}'\mathbf{f}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So how do rooted trees relate to the derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span>? Consider the only rooted tree of order 2 which is <span class="math notranslate nohighlight">\(\mathbf{f}'\mathbf{f}\)</span>. If we write <span class="math notranslate nohighlight">\(\mathbf{f} = f(y)\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{f}'\mathbf{f} = (f'f)(y)\]</div>
+<p>which as we saw in equation <a class="reference internal" href="#equation-derivatives-of-fy">(2.12)</a> is equal to <span class="math notranslate nohighlight">\(y''\)</span>. We can extend this to determine the derivative <span class="math notranslate nohighlight">\(y'''\)</span>, the two rooted trees of order 3 are <span class="math notranslate nohighlight">\(\mathbf{f}''(\mathbf{f},\mathbf{f})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{f}'\mathbf{f}'\mathbf{f}\)</span>. Summing these gives</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{f}''(\mathbf{f},\mathbf{f}) + \mathbf{f}'\mathbf{f}'\mathbf{f} = (f''(f,f) + f'f'f)(y) = y'''\]</div>
+<p>So we can determine the <span class="math notranslate nohighlight">\(n\)</span>-th derivative <span class="math notranslate nohighlight">\(y^{(n)}\)</span> where <span class="math notranslate nohighlight">\(y'=f(y)\)</span> by summing the rooted tree notation of all the possible <span class="math notranslate nohighlight">\(n\)</span>-th order rooted trees.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="order-conditions-of-an-erk-method-using-trees">
+<h2><span class="section-number">2.4.2. </span>Order conditions of an ERK method using trees<a class="headerlink" href="#order-conditions-of-an-erk-method-using-trees" title="Link to this heading">#</a></h2>
+<p>We can also derive the order conditions of a Runge-Kutta method using rooted trees. To determine the values of <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> in the Butcher tableau we define a set of <strong>elementary weights</strong>, denoted by <span class="math notranslate nohighlight">\(\Phi(\tau)\)</span> which are generated using the following steps:</p>
+<ul class="simple">
+<li><p>associate a label <span class="math notranslate nohighlight">\(i\)</span> to the root node and for all non-leaf nodes associate unique labels <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(\ell\)</span> etc;</p></li>
+<li><p>write down a sequence of factors for which the first is <span class="math notranslate nohighlight">\(b_i\)</span>;</p></li>
+<li><p>for each edge that does not terminate in a leaf node, write down another factor <span class="math notranslate nohighlight">\(a_{pq}\)</span> where <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> are the labels associated with the parent and child node respectively;</p></li>
+<li><p>for each leaf node write down a factor <span class="math notranslate nohighlight">\(c_p\)</span> where <span class="math notranslate nohighlight">\(p\)</span> is the label associated with the parent node;</p></li>
+<li><p>sum the product of factors for all possible choices of the labels.</p></li>
+</ul>
+<div class="proof example admonition" id="elementary-weights-example">
+<p class="admonition-title"><span class="caption-number">Example 2.4 </span></p>
+<section class="example-content" id="proof-content">
+<p>Determine the elementary weight for the rooted tree shown below.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/rooted_tree_example.svg"><img alt="../_images/rooted_tree_example.svg" src="../_images/rooted_tree_example.svg" style="height: 150px;" />
+</a>
+</figure>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Assigning the labels to the non-leaf nodes gives</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/rooted_tree_example_elementary_weight.svg"><img alt="../_images/rooted_tree_example_elementary_weight.svg" src="../_images/rooted_tree_example_elementary_weight.svg" style="height: 150px;" />
+</a>
+</figure>
+<p>So the elementary weight is</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \Phi(\tau) &amp;= \sum_{i,j,k} b_ia_{ij} a_{ik} c_ic_jc_jc_k
+    =  \sum_{i,j,k} b_ia_{ij} a_{ik} c_ic_j^2c_k.
+\end{align*} \]</div>
+</section>
+</div><p>Butcher noticed that comparing the Taylor series expansions for the autonomous ODE <span class="math notranslate nohighlight">\(y'=f(y)\)</span> and the general form of a Runge-Kutta method gives the order condition <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight" id="equation-order-condition-relation">
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-order-condition-relation" title="Link to this equation">#</a></span>\[\Phi(\tau) = \dfrac{1}{\gamma(\tau)}.\]</div>
+<p>So to derive the order conditions for a <span class="math notranslate nohighlight">\(k\)</span>-th order <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method we determine the set <span class="math notranslate nohighlight">\(T\)</span> of all rooted trees of order up to and include <span class="math notranslate nohighlight">\(k\)</span>. We then use the condition from equation <a class="reference internal" href="#equation-order-condition-relation">(2.13)</a> for each tree in <span class="math notranslate nohighlight">\(T\)</span> to determine the order conditions. In addition to these order conditions there is also a condition placed on the value of <span class="math notranslate nohighlight">\(c_i\)</span></p>
+<div class="math notranslate nohighlight" id="equation-row-sum-condition">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-row-sum-condition" title="Link to this equation">#</a></span>\[c_i = \sum_{j=1}^sa_{ij}, \]</div>
+<p>i.e., the values of <span class="math notranslate nohighlight">\(c_i\)</span> are equal to the sum of the rows of the <span class="math notranslate nohighlight">\(A\)</span> matrix, hence this is called the <strong>row sum condition</strong>.</p>
+<div class="proof example admonition" id="rk2-order-condition-derivation">
+<p class="admonition-title"><span class="caption-number">Example 2.5 </span></p>
+<section class="example-content" id="proof-content">
+<p>Use trees to derive the order conditions for a 2-stage second-order explicit Runge-Kutta method.</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>The set of all rooted trees up to and including order 2 is <span class="math notranslate nohighlight">\(T = \left\{ \tau_1, \tau_2 \right\} = \left\{ \right.\)</span> <img alt="" src="../_images/tree_1.svg" /> <span class="math notranslate nohighlight">\(,\)</span><img alt="" src="../_images/tree_2.svg" /><span class="math notranslate nohighlight">\(\left. \right\}\)</span></p>
+<p>The elementary weights and densities of these trees are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \phi(\tau_1) &amp;= \sum_{j = 1}^2 b_i, &amp;
+    \gamma(\tau_1) &amp;= 1, \\
+    \phi(\tau_2) &amp;= \sum_{j = 1}^2 b_ic_i, &amp;
+    \gamma(\tau_2) &amp;= 2.
+\end{align*} \end{split}\]</div>
+<p>Using equation <a class="reference internal" href="#equation-order-condition-relation">(2.13)</a> and the row sum condition from equation <a class="reference internal" href="#equation-row-sum-condition">(2.14)</a> we have the following order conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    b_1 + b_2 &amp;= 1, \\
+    b_1c_1 + b_2c_2 &amp;= \frac{1}{2}, \\
+    c_1 &amp;= a_{11} + a_{12}, \\
+    c_2 &amp;= a_{21} + a_{22}.
+\end{align*} \end{split}\]</div>
+<p>Since we are deriving an ERK method, <span class="math notranslate nohighlight">\(a_{11} = a_{12} = a_{22} = c_1 = 0\)</span> and the order conditions simplify to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    b_1 + b_2 &amp;= 1, \\
+    b_2c_2 &amp;= \frac{1}{2}, \\
+    c_2 &amp;= a_{21}.
+\end{align*} \end{split}\]</div>
+<p>These are the same order conditions for a second-order ERK method derived in the <a class="reference internal" href="2.1_ERK_Derivation.html#rk2-derivation-section"><span class="std std-ref">previous section</span></a>.</p>
+</section>
+</div><hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>I’ve skipped the derivation here, for details see <span id="id4">Butcher [<a class="reference internal" href="E_References.html#id9" title="J.C. Butcher. Numerical Methods for Ordinary Differential Equations. John Wiley &amp; Sons, Ltd, second edition, 2008.">2008</a>]</span>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_pages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2.1_ERK_Derivation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Derivation of Explicit Runge-Kutta Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2.3_RK4_Derivation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.5. </span>Derivation of a fourth-order explicit Runge-Kutta method</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rooted-trees">2.4.1. Rooted Trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-derivatives-of-f-y-using-rooted-trees">Determining derivatives of <span class="math notranslate nohighlight">\(f(y)\)</span> using rooted trees</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-conditions-of-an-erk-method-using-trees">2.4.2. Order conditions of an ERK method using trees</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Jon Shiach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
