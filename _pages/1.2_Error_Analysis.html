@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -428,7 +427,7 @@ document.write(`
 \[ \begin{align*}
     \text{error} &amp;= | y_\text{exact} - y_\text{numerical} |.
 \end{align*} \]</div>
-<p>The numerical solution to this IVP computed using the Euler method, the exact solution for the same <span class="math notranslate nohighlight">\(t\)</span> values used in the Euler method and the absolute error are tabulated below, and the solutions plotted in <a class="reference internal" href="#euler-example-exact-figure"><span class="std std-numref">Fig. 1.5</span></a>.</p>
+<p>The numerical solution to this IVP computed using the Euler method, the exact solution for the same <span class="math notranslate nohighlight">\(t\)</span> values used in the Euler method and the absolute error are tabulated below, and the solutions plotted in <a class="reference internal" href="#euler-example-exact-figure"><span class="std std-numref">Fig. 1.4</span></a>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
@@ -472,9 +471,9 @@ document.write(`
 </table>
 </div>
 <figure class="align-default" id="euler-example-exact-figure" style="width: 600px">
-<img alt="../_images/f29b1d0083330e081ffd8245e7d9d67f0df29064d67007c5afae5dcaea3b55b4.png" src="../_images/f29b1d0083330e081ffd8245e7d9d67f0df29064d67007c5afae5dcaea3b55b4.png" />
+<img alt="../_images/c299b996af39251f55d641833bd7767ada1b29791959f363b1294cda1cd241aa.png" src="../_images/c299b996af39251f55d641833bd7767ada1b29791959f363b1294cda1cd241aa.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Comparisons between the Euler method solutions and the exact solutions for the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span>.</span><a class="headerlink" href="#euler-example-exact-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">Comparisons between the Euler method solutions and the exact solutions for the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span>.</span><a class="headerlink" href="#euler-example-exact-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>It is clear that the numerical solution computed using the Euler method becomes increasingly inaccurate as <span class="math notranslate nohighlight">\(t\)</span> increases.</p>
@@ -484,11 +483,11 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[y_{n+1} = y_n + h f(t_n, y_n).\]</div>
 <p>The solution over a single time step is changed from the current solution <span class="math notranslate nohighlight">\(y_n\)</span> by <span class="math notranslate nohighlight">\(h\)</span> multiplied by the value of <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span>. If we assume that that value of <span class="math notranslate nohighlight">\(y_n\)</span> has some error associated to it then the error will also be changed by <span class="math notranslate nohighlight">\(h\)</span> multiplied by some value. Therefore, the smaller the value of <span class="math notranslate nohighlight">\(h\)</span> then the smaller the change in the error converging to zero when <span class="math notranslate nohighlight">\(h\)</span> is infinitesimally small.</p>
-<p>We can demonstrate this by looking at the solutions to the initial value problem from <a class="reference internal" href="1.1_Euler_Method.html#euler-example">Example 1.1</a> using different values of the step length <span class="math notranslate nohighlight">\(h\)</span>. The numerical solutions using <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span> have been plotted against the exact solution in <a class="reference internal" href="#euler-example-hvals-figure"><span class="std std-numref">Fig. 1.6</span></a>.</p>
+<p>We can demonstrate this by looking at the solutions to the initial value problem from <a class="reference internal" href="1.1_Euler_Method.html#euler-example">Example 1.1</a> using different values of the step length <span class="math notranslate nohighlight">\(h\)</span>. The numerical solutions using <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span> have been plotted against the exact solution in <a class="reference internal" href="#euler-example-hvals-figure"><span class="std std-numref">Fig. 1.5</span></a>.</p>
 <figure class="align-default" id="euler-example-hvals-figure" style="width: 600px">
-<img alt="../_images/e2007095aa0be90563067a9ef172a78072e99922aceea5f9d9aa9c46a331040f.png" src="../_images/e2007095aa0be90563067a9ef172a78072e99922aceea5f9d9aa9c46a331040f.png" />
+<img alt="../_images/50de02b42995ef5a95271531fb31f8a9da7a6b128616b5275b76ac4fe965c38b.png" src="../_images/50de02b42995ef5a95271531fb31f8a9da7a6b128616b5275b76ac4fe965c38b.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-hvals-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the Euler method with step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-hvals-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here we can see that as the step length is reduced, the solution gets closer to the exact solution as expected. The absolute errors between the exact solution <span class="math notranslate nohighlight">\(y(1) = e^{\frac{1}{2}}\)</span> and the Euler method solution calculated using the different step lengths are tabulated below.</p>
@@ -514,17 +513,17 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>This shows that as the step length is halved, the error decreases by a factor of approximately one half. This behaviour can be seen in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a> where the absolute errors between the numerical solutions for <span class="math notranslate nohighlight">\(y(1)\)</span> and the exact solution is plotted against the step length.</p>
+<p>This shows that as the step length is halved, the error decreases by a factor of approximately one half. This behaviour can be seen in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.6</span></a> where the absolute errors between the numerical solutions for <span class="math notranslate nohighlight">\(y(1)\)</span> and the exact solution is plotted against the step length.</p>
 <figure class="align-default" id="euler-example-errors-figure" style="width: 600px">
-<img alt="../_images/d66cc05c30bdc3fa67b25e4c82d2afbf5243c873998debf56167acefeffa5c0d.png" src="../_images/d66cc05c30bdc3fa67b25e4c82d2afbf5243c873998debf56167acefeffa5c0d.png" />
+<img alt="../_images/757a0d1d722ade4e3db3dfa2e54f0e8eee75effc643a5acc8c7139d6bdad3c4b.png" src="../_images/757a0d1d722ade4e3db3dfa2e54f0e8eee75effc643a5acc8c7139d6bdad3c4b.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span> using step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-errors-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Solutions to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span> using step lengths <span class="math notranslate nohighlight">\(h=0.2, 0.1, 0.05, 0.005\)</span>.</span><a class="headerlink" href="#euler-example-errors-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="big-o-notation">
 <span id="big-o-notation-section"></span><h2><span class="section-number">1.2.2. </span>Big-O notation<a class="headerlink" href="#big-o-notation" title="Link to this heading">#</a></h2>
-<p>We saw in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a> that has the step length <span class="math notranslate nohighlight">\(h\)</span> decreases, the error tends to zero. Different numerical methods will converge to zero at different rates, and it is advantageous for us to use methods that converge raster so that we have more accurate solutions. Since in most cases we do not know the exact solution and therefore cannot calculate the errors, we compare the accuracy of different methods using the expected rate of convergence to zero depending on the step length <span class="math notranslate nohighlight">\(h\)</span>, which is known as <a href="https://en.wikipedia.org/wiki/Big_O_notation" target="_blank">big-O notation</a>.</p>
+<p>We saw in <a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.6</span></a> that has the step length <span class="math notranslate nohighlight">\(h\)</span> decreases, the error tends to zero. Different numerical methods will converge to zero at different rates, and it is advantageous for us to use methods that converge raster so that we have more accurate solutions. Since in most cases we do not know the exact solution and therefore cannot calculate the errors, we compare the accuracy of different methods using the expected rate of convergence to zero depending on the step length <span class="math notranslate nohighlight">\(h\)</span>, which is known as <a href="https://en.wikipedia.org/wiki/Big_O_notation" target="_blank">big-O notation</a>.</p>
 <div class="proof definition admonition" id="big-o-notation-definition">
 <p class="admonition-title"><span class="caption-number">Definition 1.4 </span> (Big-O notation)</p>
 <section class="definition-content" id="proof-content">
@@ -572,11 +571,11 @@ document.write(`
 </section>
 <section id="global-truncation-error">
 <span id="global-truncation-error-section"></span><h2><span class="section-number">1.2.4. </span>Global truncation error<a class="headerlink" href="#global-truncation-error" title="Link to this heading">#</a></h2>
-<p>The global truncation error denoted by <span class="math notranslate nohighlight">\(E_n\)</span>, is the accumulation of the local truncation errors for the steps of the method to compute that solution from <span class="math notranslate nohighlight">\(t=t_0\)</span> up to <span class="math notranslate nohighlight">\(t = t_n\)</span> (<a class="reference internal" href="#euler-global-errors-figure"><span class="std std-numref">Fig. 1.8</span></a>).</p>
+<p>The global truncation error denoted by <span class="math notranslate nohighlight">\(E_n\)</span>, is the accumulation of the local truncation errors for the steps of the method to compute that solution from <span class="math notranslate nohighlight">\(t=t_0\)</span> up to <span class="math notranslate nohighlight">\(t = t_n\)</span> (<a class="reference internal" href="#euler-global-errors-figure"><span class="std std-numref">Fig. 1.7</span></a>).</p>
 <figure class="align-default" id="euler-global-errors-figure" style="width: 600px">
-<img alt="../_images/39a718ff327b7a293524f0d336724dfb8de914bdf281a923607e1e1ba5b675e5.png" src="../_images/39a718ff327b7a293524f0d336724dfb8de914bdf281a923607e1e1ba5b675e5.png" />
+<img alt="../_images/2dc113bd281a99ad73f99db244d42ab96363ff1714a545ba3596c5dccdc4b712.png" src="../_images/2dc113bd281a99ad73f99db244d42ab96363ff1714a545ba3596c5dccdc4b712.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">The global truncation errors <span class="math notranslate nohighlight">\(E_n\)</span> for the Euler method solution to the IVP <span class="math notranslate nohighlight">\(y' = ty\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span>, <span class="math notranslate nohighlight">\(y(0)= 1\)</span> using a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span>.</span><a class="headerlink" href="#euler-global-errors-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">The global truncation errors <span class="math notranslate nohighlight">\(E_n\)</span> for the Euler method solution to the IVP <span class="math notranslate nohighlight">\(y' = ty\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span>, <span class="math notranslate nohighlight">\(y(0)= 1\)</span> using a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span>.</span><a class="headerlink" href="#euler-global-errors-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We saw that the local truncation error at each step is at most <span class="math notranslate nohighlight">\(\dfrac{Mh^2}{2}\)</span> then after <span class="math notranslate nohighlight">\(n\)</span> steps the upper bound of the global truncation error is at most <span class="math notranslate nohighlight">\(\dfrac{nMh^2}{2}\)</span>. Using a constant step length <span class="math notranslate nohighlight">\(h\)</span> then</p>
@@ -585,7 +584,7 @@ document.write(`
 <p>so the upper bound of the global truncation error is</p>
 <div class="math notranslate nohighlight">
 \[ E_n \leq \frac{t_n - t_0}{h} \frac{Mh^2}{2} = \frac{(t_n - t_0 )M}{2} h. \]</div>
-<p>If <span class="math notranslate nohighlight">\(C = (t_n - t_0 ) M / 2\)</span> is some positive constant then <span class="math notranslate nohighlight">\(E_n \leq C h\)</span> so we say that <span class="math notranslate nohighlight">\(E_n = O(h)\)</span>. So as the step length <span class="math notranslate nohighlight">\(h\)</span> decreases, the global truncation error for Euler’s method will converge to zero in a linear fashion, that is, halving the step length should also approximately halve the global truncation error. This confirms what we saw in the plot of the errors against step length for the Euler method (<a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.7</span></a>) where the errors formed a line with a gradient of approximately 1.</p>
+<p>If <span class="math notranslate nohighlight">\(C = (t_n - t_0 ) M / 2\)</span> is some positive constant then <span class="math notranslate nohighlight">\(E_n \leq C h\)</span> so we say that <span class="math notranslate nohighlight">\(E_n = O(h)\)</span>. So as the step length <span class="math notranslate nohighlight">\(h\)</span> decreases, the global truncation error for Euler’s method will converge to zero in a linear fashion, that is, halving the step length should also approximately halve the global truncation error. This confirms what we saw in the plot of the errors against step length for the Euler method (<a class="reference internal" href="#euler-example-errors-figure"><span class="std std-numref">Fig. 1.6</span></a>) where the errors formed a line with a gradient of approximately 1.</p>
 </section>
 </section>
 
@@ -681,7 +680,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

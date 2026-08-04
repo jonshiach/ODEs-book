@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -309,7 +308,7 @@
       
       
       
-      <li><a href="../_sources/_pages/5.0_BVPs.ipynb" target="_blank"
+      <li><a href="../_sources/_pages/5.0_BVPs.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +318,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -417,24 +416,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="boundary-value-problems">
 <span id="bvp-chapter"></span><h1><span class="section-number">5. </span>Boundary Value Problems<a class="headerlink" href="#boundary-value-problems" title="Link to this heading">#</a></h1>
-<p>The ODEs that we have encountered so far are initial value problems where we know the solution of the ODE at the lower boundary of the <span class="math notranslate nohighlight">\(t\)</span> domain. Another type of problem are <strong>Boundary Value Problems (BVP)</strong> which is where the solution at both boundaries of the <span class="math notranslate nohighlight">\(t\)</span> domain are known. Here we will be looking at solving two-point boundary value problems based on second-order ODEs.</p>
+<p>The ordinary differential equations (ODEs) considered so far have been initial value problems (IVPs), where the value of the solution and, for higher-order equations, its derivatives are specified at a single point in the domain. Another important class of problems are <strong>boundary value problems (BVPs)</strong>, where conditions are specified at the endpoints of the interval. In this chapter, we consider two-point boundary value problems governed by second-order ODEs.</p>
 <div class="proof definition admonition" id="bvp-definition">
 <p class="admonition-title"><span class="caption-number">Definition 5.1 </span> (General two-point boundary value problem)</p>
 <section class="definition-content" id="proof-content">
-<p>A two-point boundary value problem is a second-order ODE where the solutions at the lower and upper boundaries of the domain are known</p>
+<p>A two-point boundary value problem is a second-order ODE together with boundary conditions specified at two distinct points of the domain</p>
 <div class="math notranslate nohighlight" id="equation-bvp-equation">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-bvp-equation" title="Link to this equation">#</a></span>\[y'' = f(t,y),\qquad  t\in [t_{0}, t_{\max}],\qquad y(t_{0}) = a ,\qquad y(t_{\max}) = b,\]</div>
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-bvp-equation" title="Link to this equation">#</a></span>\[ y' = f(t,y),\qquad  t\in [t_{0}, t_{\max}],\qquad y(t_{0}) = a ,\qquad y(t_{\max}) = b, \]</div>
 <p>for some known values <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 </section>
 </div><section id="existence-and-uniqueness-of-solutions-to-boundary-value-problems">
 <span id="existence-and-uniqueness-of-bvp-solutions-section"></span><h2><span class="section-number">5.1. </span>Existence and uniqueness of solutions to boundary value problems<a class="headerlink" href="#existence-and-uniqueness-of-solutions-to-boundary-value-problems" title="Link to this heading">#</a></h2>
-<p>If an initial value problem has a solution it will be unique for a particular initial value. This is not true for boundary value problems which can have a unique solution, no solution or an infinite number of solutions. Consider the following boundary value problem</p>
+<p>For well-posed linear initial value problems satisfying the conditions of the existence and uniqueness theorem, a solution is unique. Boundary value problems behave differently and may possess a unique solution, no solution, or infinitely many solutions.</p>
+<p>To illustrate the different possibilities, consider the following examples.</p>
 <div class="math notranslate nohighlight">
 \[ y'' + 4y = 0, \qquad y(0) = 1, \qquad y\left(\dfrac{\pi}{4}\right) = 2. \]</div>
 <p>The general solution to the ODE <span class="math notranslate nohighlight">\(y'' + 4y = 0\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[ y = c_1 \cos(2 t) + c_2 \sin(2 t), \]</div>
-<p>so substituting the boundary values we have</p>
+<div class="math notranslate nohighlight" id="equation-bvp-general-solution">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-bvp-general-solution" title="Link to this equation">#</a></span>\[ y = c_1 \cos(2 t) + c_2 \sin(2 t). \]</div>
+<p>Substituting the boundary values we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
@@ -445,12 +445,12 @@ document.write(`
 \[ \begin{align*}
     y = \cos(2t) + 2\sin(2t).
 \end{align*} \]</div>
-<p>Now consider the boundary value problem</p>
+<p>Changing the boundary conditions produces a very different outcome.</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     y'' + 4y = 0, \qquad y(0) = 1, \qquad y(\pi) = 1.
 \end{align*} \]</div>
-<p>and substituting the boundary values we have</p>
+<p>Substituting the boundary values into equation <a class="reference internal" href="#equation-bvp-general-solution">(5.2)</a> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
@@ -461,28 +461,29 @@ document.write(`
 \[ \begin{align*}
     y = \cos(2t) + c_2 \sin(2t),
 \end{align*} \]</div>
-<p>where <span class="math notranslate nohighlight">\(c_2\)</span> can be any value. So we have infinitely many solutions. Finally consider the boundary value problem</p>
+<p>where <span class="math notranslate nohighlight">\(c_2\)</span> can be any value. So we have infinitely many solutions.</p>
+<p>Finally, a slight modification of the upper boundary condition leads to an inconsistent system</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     y'' + 4y = 0, \qquad y(0) = 1, \qquad y(\pi) = 2.
 \end{align*} \]</div>
-<p>and substituting the boundary values we have</p>
+<p>and substituting the boundary values equation <a class="reference internal" href="#equation-bvp-general-solution">(5.2)</a> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
     2 &amp;= c_1 \cos(2\pi) + c_2 \sin(2\pi) = c_1.
 \end{align*} \end{split}\]</div>
-<p>Here we have <span class="math notranslate nohighlight">\(c_1 = 1\)</span> and <span class="math notranslate nohighlight">\(c_1 = 2\)</span> which is a contradiction so this boundary value problem does not have a solution.</p>
+<p>Here we have <span class="math notranslate nohighlight">\(c_1 = 1\)</span> and <span class="math notranslate nohighlight">\(c_1 = 2\)</span> which is a contradiction, so this boundary value problem does not have a solution.</p>
 <div class="proof theorem admonition" id="theorem-1">
 <p class="admonition-title"><span class="caption-number">Theorem 5.1 </span> (Uniqueness of the solution to boundary value problems)</p>
 <section class="theorem-content" id="proof-content">
 <p>A linear boundary value problem of the form</p>
 <div class="math notranslate nohighlight" id="equation-bvp-uniqueness-equation">
-<span class="eqno">(5.2)<a class="headerlink" href="#equation-bvp-uniqueness-equation" title="Link to this equation">#</a></span>\[ y'' = p(t)y' + q(t)y + r(t), \qquad t \in [t_{\min},t_{\max}], \qquad y(t_0) = b , \qquad y(t_{\max}) = b , \]</div>
-<p>where <span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are some functions of <span class="math notranslate nohighlight">\(t\)</span> then it has a unique solution if the following are satisfied</p>
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-bvp-uniqueness-equation" title="Link to this equation">#</a></span>\[ y'' = p(t)y' + q(t)y + r(t), \qquad t \in [t_0,t_{\max}], \qquad y(t_0) = a , \qquad y(t_{\max}) = b , \]</div>
+<p>where <span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are continuous functions on the interval. The boundary value problem has a unique solution provided that the following conditions are satisfied</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are continuous on <span class="math notranslate nohighlight">\([t_{\min}, t_{\max}]\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(q(t) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t\in [t_{\min},t_{\max}]\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are continuous on <span class="math notranslate nohighlight">\([t_0, t_{\max}]\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(q(t) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t\in [t_0,t_{\max}]\)</span>.</p></li>
 </ul>
 </section>
 </div><div class="proof example admonition" id="bvp-uniqueness-example">
@@ -493,15 +494,15 @@ document.write(`
 \[ y'' = (t^3 +5)y + \sin (t), \qquad t \in [0,1], \qquad y(0) = 0, \qquad y(1) = 1. \]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solution (click to show)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Comparing this boundary value problem to equation <a class="reference internal" href="#equation-bvp-uniqueness-equation">(5.2)</a> we have</p>
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Comparing this boundary value problem to equation <a class="reference internal" href="#equation-bvp-uniqueness-equation">(5.3)</a> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     p(t) &amp;= 0,\\
     q(t) &amp;= t^3 + 5,\\
     r(t) &amp;= \sin(t),
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">which are all continuous on <span class="math notranslate nohighlight">\([0,1]\)</span> and <span class="math notranslate nohighlight">\(q(t)\geq 0\)</span> for all <span class="math notranslate nohighlight">\(t\in [0,1]\)</span> so this boundary value problem has a unique solution.</p>
+<p class="sd-card-text">which are all continuous on <span class="math notranslate nohighlight">\([0,1]\)</span> and <span class="math notranslate nohighlight">\(q(t) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t\in [0,1]\)</span> so this boundary value problem has a unique solution.</p>
 </div>
 </details></section>
 </div></section>
@@ -598,7 +599,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

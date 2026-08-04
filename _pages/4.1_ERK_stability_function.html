@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -424,7 +423,7 @@ document.write(`
     y_{n+1}&amp;=y_n + h \sum_{i=1}^s b_i k_i ,\\
     k_i &amp;=f(t_n +c_i h,y_n +h\sum_{j=1}^s a_{ij} k_j ).
 \end{align*} \end{split}\]</div>
-<p>Let <span class="math notranslate nohighlight">\(Y_i = y_n + h \displaystyle \sum_{j=1}^s a_{ij} k_i\)</span> and applying the method to the test equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span> we have</p>
+<p>Let <span class="math notranslate nohighlight">\(Y_i = y_n + h \displaystyle \sum_{j=1}^s a_{ij} k_j\)</span> and applying the method to the test equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_{n+1} &amp;=y_n +h\lambda \sum_{i=1}^s b_i Y_i ,\\
@@ -461,18 +460,14 @@ document.write(`
 <p>which can be written as the matrix equation</p>
 <div class="math notranslate nohighlight" id="equation-rk-stability-yn-1-equation">
 <span class="eqno">(4.4)<a class="headerlink" href="#equation-rk-stability-yn-1-equation" title="Link to this equation">#</a></span>\[ y_{n+1} =y_n + z \mathbf{b}^\mathsf{T} Y. \]</div>
-<p>The stability functions for explicit and implicit Runge-Kutta methods are derived using different approaches.</p>
-<hr class="docutils" />
-<section id="stability-function-of-an-explicit-runge-kutta-method">
-<span id="erk-rz-section"></span><h2><span class="section-number">4.3.1. </span>Stability function of an explicit Runge-Kutta method<a class="headerlink" href="#stability-function-of-an-explicit-runge-kutta-method" title="Link to this heading">#</a></h2>
-<p>To derive the stability function of an explicit Runge-Kutta method we rearrange equation <a class="reference internal" href="#equation-rk-stability-y-equation">(4.3)</a></p>
+<p>Rearranging equation <a class="reference internal" href="#equation-rk-stability-y-equation">(4.3)</a> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     Y - zAY &amp;= \mathbf{e}y_n \\
     (I - zA)Y &amp;= \mathbf{e}y_n\\
-    Y &amp;= (I - zA)^{-1} \mathbf{e}y_n,
+    Y &amp;= (I - zA)^{-1} \mathbf{e}y_n.
 \end{align*} \end{split}\]</div>
-<p>and substituting into equation <a class="reference internal" href="#equation-rk-stability-yn-1-equation">(4.4)</a> gives</p>
+<p>Substituting into equation <a class="reference internal" href="#equation-rk-stability-yn-1-equation">(4.4)</a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n +z\mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e} y_n \\
@@ -483,35 +478,60 @@ document.write(`
 \[ \begin{align*}
     R(z) = 1 + z\mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e}
 \end{align*} \]</div>
-<p>Using the geometric series of matrices</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    (I - zA)^{-1} = \sum_{k=0}^{\infty} (zA)^k 
-\end{align*} \]</div>
-<p>then</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    R(z) &amp;= 1 + z \mathbf{b}^\mathsf{T} \sum_{k=0}^{\infty} (zA)^k \mathbf{e} = 1 + \sum_{k=0}^{\infty} \mathbf{b}^\mathsf{T} A^k \mathbf{e}\,z^{k+1}.
-\end{align*} \]</div>
-<p>This is the stability function for an ERK method.</p>
-<div class="proof definition admonition" id="erk-rz-definition">
-<p class="admonition-title"><span class="caption-number">Definition 4.3 </span> (Stability function of an explicit Runge-Kutta method)</p>
+<p>This formula is valid for any Runge-Kutta method.</p>
+<div class="proof definition admonition" id="rk-rz-definition">
+<p class="admonition-title"><span class="caption-number">Definition 4.3 </span> (Stability function for a general Runge-Kutta method)</p>
 <section class="definition-content" id="proof-content">
-<div class="math notranslate nohighlight" id="equation-erk-stability-rz-equation">
-<span class="eqno">(4.5)<a class="headerlink" href="#equation-erk-stability-rz-equation" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
-    R(z) &amp;= 1 + \sum_{k=0}^{\infty} \mathbf{b}^\mathsf{T} A^k \mathbf{e}\,z^{k+1} \\
-    &amp;= 1 + \mathbf{b}^\mathsf{T} \mathbf{e}\,z+\mathbf{b}^\mathsf{T} A\mathbf{e}\,z^2 +\mathbf{b}^\mathsf{T} A^2 \mathbf{e}\,z^3 + \cdots
-\end{align*} \end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-stability-function">
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-stability-function" title="Link to this equation">#</a></span>\[ \begin{align*}
+    R(z) = 1 + z\mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e}
+\end{align*} \]</div>
 </section>
-</div><p>Since the solution to the test equation is <span class="math notranslate nohighlight">\(y = e^{\lambda t}\)</span>, over one step of an explicit Runge-Kutta method we would expect the local truncation errors to change at a rate of <span class="math notranslate nohighlight">\(e^z\)</span>. The series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> is</p>
-<div class="math notranslate nohighlight" id="equation-erk-stability-ez-equation">
-<span class="eqno">(4.6)<a class="headerlink" href="#equation-erk-stability-ez-equation" title="Link to this equation">#</a></span>\[ e^z = \sum_{k=0}^{\infty} \frac{1}{k!} z^k = 1 + z + \frac{1}{2!}z^2 + \frac{1}{3!}z^3 + \frac{1}{4!}z^4 + \cdots \]</div>
-<p>Comparing the coefficients of <span class="math notranslate nohighlight">\(z^k\)</span> in equations <a class="reference internal" href="#equation-erk-stability-rz-equation">(4.5)</a> and <a class="reference internal" href="#equation-erk-stability-ez-equation">(4.6)</a> we have</p>
+</div><hr class="docutils" />
+<section id="stability-function-of-an-explicit-runge-kutta-method">
+<span id="erk-rz-section"></span><h2><span class="section-number">4.3.1. </span>Stability function of an explicit Runge-Kutta method<a class="headerlink" href="#stability-function-of-an-explicit-runge-kutta-method" title="Link to this heading">#</a></h2>
+<p>The <a href="https://en.wikipedia.org/wiki/Neumann_series" target="_blank">Neumann series</a> for matrices is</p>
+<div class="math notranslate nohighlight">
+\[ (I - A)^{-1} = \sum_{k=0}^\infty A^k, \]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[ (I - zA)^{-1} = \sum_{k=0}^\infty (zA)^k. \]</div>
+<p>Since for an explicit method, the matrix <span class="math notranslate nohighlight">\(A\)</span> is strictly lower triangular then</p>
+<div class="math notranslate nohighlight">
+\[A^s = 0,\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ (I - zA)^{-1} = \sum_{k=1}^{s-1} (zA)^k = I + zA + z^2A^2 + \cdots + z^{s-1}A^{s-1}.\]</div>
+<p>Substituting into equation <a class="reference internal" href="#equation-stability-function">(4.5)</a></p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    \frac{1}{k!}= \mathbf{b}^\mathsf{T} A^{k-1} \mathbf{e},
+    R(z) &amp;= 1 + z \mathbf{b}^\mathsf{T} \sum_{k=0}^{s-1} (zA)^k \mathbf{e}
+    = 1 + \sum_{k=0}^{s-1} \mathbf{b}^\mathsf{T}A^k\mathbf{e}z^{k+1},
 \end{align*} \]</div>
-<p>which must be satisfied up to the <span class="math notranslate nohighlight">\(k\)</span>th term for an order <span class="math notranslate nohighlight">\(k\)</span> explicit method to be stable.</p>
+<p>which is the stability function for an ERK method.</p>
+<div class="proof definition admonition" id="erk-rz-definition">
+<p class="admonition-title"><span class="caption-number">Definition 4.4 </span> (Stability function of an explicit Runge-Kutta method)</p>
+<section class="definition-content" id="proof-content">
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    R(z) &amp;= 1 + z \mathbf{b}^\mathsf{T} \sum_{k=0}^{s-1} (zA)^k \mathbf{e}.
+\end{align*} \]</div>
+</section>
+</div><p>So the stability function of an <span class="math notranslate nohighlight">\(s\)</span>-stage explicit method is a polynomial function of at most degree <span class="math notranslate nohighlight">\(s\)</span></p>
+<div class="math notranslate nohighlight" id="equation-erk-stability-rz-equation">
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-erk-stability-rz-equation" title="Link to this equation">#</a></span>\[  R(z) = 1 + \mathbf{b}^\mathsf{T}\mathbf{e}z + \mathbf{b}^\mathsf{T}A \mathbf{e} z^2 + \mathbf{b}^\mathsf{T} A^2 \mathbf{e} z^3 + \cdots + \mathbf{b}^\mathsf{T} A^{s-1} \mathbf{e} z^s. \]</div>
+<p>The exact solution satisfies</p>
+<div class="math notranslate nohighlight">
+\[ y_{n+1} = e^z y_n, \]</div>
+<p>therefore, for an order <span class="math notranslate nohighlight">\(p\)</span> method, the stability function should approximate <span class="math notranslate nohighlight">\(e^z\)</span> with an error of <span class="math notranslate nohighlight">\(O(z^{p+1})\)</span> as <span class="math notranslate nohighlight">\(z \to 0\)</span>. The series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-erk-stability-ez-equation">
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-erk-stability-ez-equation" title="Link to this equation">#</a></span>\[ e^z = \sum_{k=0}^{\infty} \frac{1}{k!} z^k = 1 + z + \frac{1}{2!}z^2 + \cdots + \frac{z^p}{p!} + O(z^{p+1}). \]</div>
+<p>Comparing the coefficients of <span class="math notranslate nohighlight">\(z^k\)</span> in equations <a class="reference internal" href="#equation-erk-stability-rz-equation">(4.6)</a> and <a class="reference internal" href="#equation-erk-stability-ez-equation">(4.7)</a> we have</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \frac{1}{k!}= \mathbf{b}^\mathsf{T} A^{k-1} \mathbf{e}.
+\end{align*} \]</div>
+<p>These are necessary conditions for an ERK method to have order <span class="math notranslate nohighlight">\(k\)</span>. For general Runge-Kutta methods additional order conditions are also required.</p>
 <div class="proof example admonition" id="erk-stability-example">
 <p class="admonition-title"><span class="caption-number">Example 4.1 </span></p>
 <section class="example-content" id="proof-content">
@@ -528,7 +548,7 @@ document.write(`
 <p>Determine the stability function for this Runge-Kutta method and hence find its order.</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
-<p>Calculating <span class="math notranslate nohighlight">\(\mathbf{b}^\mathsf{T}A^{k - 1}\mathbf{e}\)</span> for <span class="math notranslate nohighlight">\(k = 1, \ldots, 4\)</span>.</p>
+<p>Calculating <span class="math notranslate nohighlight">\(\mathbf{b}^\mathsf{T}A^{k - 1}\mathbf{e}\)</span> for <span class="math notranslate nohighlight">\(k = 1, \ldots, 3\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     k &amp;= 1: &amp; \mathbf{b}^\mathsf{T}A^{0}\mathbf{e} &amp;= 1, \\
@@ -551,24 +571,14 @@ document.write(`
         \frac{3}{8} &amp; 0 &amp; 0 &amp; 0 \\
         \frac{1}{6} &amp; \frac{1}{3} &amp; 0 &amp; 0
     \end{pmatrix}
-    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \frac{3}{16}, \\
-    k &amp;= 4: &amp; \mathbf{b}^\mathsf{T}A^{3}\mathbf{e}
-    &amp;=
-    (\tfrac{7}{24}, \tfrac{1}{4}, \tfrac{1}{3}, \tfrac{1}{8})
-    \begin{pmatrix}
-        0 &amp; 0 &amp; 0 &amp; 0 \\
-        0 &amp; 0 &amp; 0 &amp; 0 \\
-        0 &amp; 0 &amp; 0 &amp; 0 \\
-        \frac{1}{6} &amp; 0 &amp; 0 &amp; 0
-    \end{pmatrix}
-    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \frac{1}{48}. \\
+    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \frac{3}{16},
 \end{align*} \end{split}\]</div>
-<p>Therefore the stability function is</p>
+<p>therefore the stability function is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     R(z) = 1 + z + \frac{1}{2} z^2 + \frac{3}{16} z^3 + \frac{1}{48} z^4,
 \end{align*} \]</div>
-<p>which agrees to the series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> from equation <a class="reference internal" href="#equation-erk-stability-ez-equation">(4.6)</a> up to and including the <span class="math notranslate nohighlight">\(z^2\)</span> term. Therefore this method is of order 2.</p>
+<p>which agrees to the series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> from equation <a class="reference internal" href="#equation-erk-stability-ez-equation">(4.7)</a> up to and including the <span class="math notranslate nohighlight">\(z^2\)</span> term showing that the method has linear order 2.</p>
 </section>
 </div></section>
 <hr class="docutils" />
@@ -585,13 +595,13 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-               <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="mi">0</span><span class="p">]])</span>
+               <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="mi">0</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)])</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Determine coefficients of the stability function</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">A</span> <span class="o">**</span> <span class="n">k</span> <span class="o">*</span> <span class="n">e</span><span class="p">)</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">A</span><span class="o">**</span><span class="n">k</span> <span class="o">*</span> <span class="n">e</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -602,7 +612,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span>
 <span class="w">     </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span>
 <span class="w">     </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span>
-<span class="w">     </span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<span class="w">     </span><span class="mi">2</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
 <span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="o">/</span><span class="mi">24</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">];</span>
 <span class="n">e</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 
@@ -707,7 +717,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

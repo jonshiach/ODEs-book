@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -380,9 +379,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -398,14 +395,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">4.7.1. Solutions</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -435,7 +424,63 @@ document.write(`
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="math notranslate nohighlight">
-\[ R(z) = 1 + z + \frac{1}{2}z + \frac{1}{6}z^3 + \frac{1}{24}z^4 \]</div>
+\[\begin{split} \begin{align*}
+    A &amp;= \begin{pmatrix} 
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        \frac{1}{4} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        \frac{1}{2} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; \frac{1}{2} &amp; \frac{1}{4} &amp; 0 &amp; 0 \\
+        0 &amp; \frac{1}{6} &amp; -\frac{1}{3} &amp; \frac{1}{6} &amp; 0 
+    \end{pmatrix}, &amp;
+    \mathbf{b} &amp;= \begin{pmatrix} -1 \\ \frac{2}{3} \\ -\frac{1}{3} \\ \frac{2}{3} \\ 1 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Computing the ceofficients</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{b}^\mathsf{T}A^0\mathbf{e} &amp;= 
+    \begin{pmatrix} -1 &amp; \frac{2}{3} &amp; -\frac{1}{3} &amp; \frac{2}{3} &amp; 1 \end{pmatrix}
+    \begin{pmatrix} 
+        1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 
+    \end{pmatrix}
+    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = 1, \\
+    \mathbf{b}^\mathsf{T}A\mathbf{e} &amp;= 
+    \begin{pmatrix} -1 &amp; \frac{2}{3} &amp; -\frac{1}{3} &amp; \frac{2}{3} &amp; 1 \end{pmatrix}
+    \begin{pmatrix} 
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        \frac{1}{4} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        \frac{1}{2} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; \frac{1}{2} &amp; \frac{1}{4} &amp; 0 &amp; 0 \\
+        0 &amp; \frac{1}{6} &amp; -\frac{1}{3} &amp; \frac{1}{6} &amp; 0 
+    \end{pmatrix}
+    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \frac{1}{2}, \\
+    \mathbf{b}^\mathsf{T}A^2\mathbf{e} &amp;= 
+    \begin{pmatrix} -1 &amp; \frac{2}{3} &amp; -\frac{1}{3} &amp; \frac{2}{3} &amp; 1 \end{pmatrix}
+    \begin{pmatrix} 
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        \frac{1}{4} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        -\frac{1}{8} &amp; \frac{1}{12} &amp; \frac{1}{24} &amp; 0 &amp; 0 
+    \end{pmatrix}
+    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \frac{1}{6}, \\
+    \mathbf{b}^\mathsf{T} A^3 \mathbf{e} &amp;= 
+    \begin{pmatrix} -1 &amp; \frac{2}{3} &amp; -\frac{1}{3} &amp; \frac{2}{3} &amp; 1 \end{pmatrix}
+    \begin{pmatrix} 
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+        \frac{1}{24} &amp; 0 &amp; 0 &amp; 0 &amp; 0 
+    \end{pmatrix}
+    \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \frac{1}{24}, \\
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">therefore the stability function is</p>
+<div class="math notranslate nohighlight">
+\[ R(z) = 1 + z + \frac{1}{2}z + \frac{1}{6}z^3 + \frac{1}{24}z^4. \]</div>
 </div>
 </details></section>
 </div>
@@ -454,8 +499,65 @@ document.write(`
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="math notranslate nohighlight">
-\[R(z) = \frac{1 + \frac{1}{2}z + \frac{1}{12}z^2}{1 - \frac{1}{2}z + \frac{1}{12}z^2}\]</div>
-<p class="sd-card-text">The roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> are <span class="math notranslate nohighlight">\(3 \pm \sqrt{3}i\)</span> and <span class="math notranslate nohighlight">\(E(y) = 0\)</span> so this is an A-stable method.</p>
+\[\begin{split} \begin{align*}
+    A &amp;= \begin{pmatrix}
+        \frac{7}{24} &amp; -\frac{1}{24} \\
+        \frac{13}{24} &amp; \frac{5}{24}
+    \end{pmatrix}, &amp;
+    \mathbf{b} &amp;= \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Determining the stability function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    R(z) &amp;= \frac{\det(I - zA + z \mathbf{eb}^T)}{\det(I - zA)} \\
+    &amp;= \frac{\det \left( 
+    \begin{pmatrix}
+        1 &amp; 0 \\
+        0 &amp; 1
+    \end{pmatrix} - z
+    \begin{pmatrix}
+        \frac{7}{24} &amp; -\frac{1}{24} \\
+        \frac{13}{24} &amp; \frac{5}{24}
+    \end{pmatrix} + z
+    \begin{pmatrix}
+        \frac{1}{2} &amp; \frac{1}{2} \\
+        \frac{1}{2} &amp; \frac{1}{2}
+    \end{pmatrix}   
+    \right)}{
+        \det \left( 
+            \begin{pmatrix}
+                1 &amp; 0 \\
+                0 &amp; 1
+            \end{pmatrix} - z
+            \begin{pmatrix}
+                \frac{7}{24} &amp; -\frac{1}{24} \\
+                \frac{13}{24} &amp; \frac{5}{24}
+            \end{pmatrix}
+        \right)
+    } \\
+    &amp;= \frac{\det
+        \begin{pmatrix}
+            1 + \frac{5}{24}z &amp; \frac{13}{24}z \\
+            -\frac{1}{24}z &amp; 1 + \frac{7}{24}z
+        \end{pmatrix}
+        }{\det
+        \begin{pmatrix}
+            1 - \frac{7}{24}z &amp; \frac{1}{24}z \\
+            -\frac{13}{24}z &amp; 1 - \frac{5}{24}z
+        \end{pmatrix}
+        }
+    = \frac{1 + \frac{1}{2}z + \frac{1}{12}z^2}{1 - \frac{1}{2}z + \frac{1}{12}z^2}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">The roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> are <span class="math notranslate nohighlight">\( 3 \pm  \sqrt{3}i\)</span> so condition A is satisfied.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2 \\
+    &amp;= \left| 1 - \frac{1}{2}iy - \frac{1}{12} y^2 \right|^2 - \left| 1 + \frac{1}{2}iy - \frac{1}{12}y^2 \right| \\
+    &amp;= \left( 1 - \frac{1}{12}y^2 \right)^2 + \frac{1}{4}y^2 - \left( 1 - \frac{1}{12}y^2 \right)^2 - \frac{1}{4}y^2 \\
+    &amp;= 1 - \frac{1}{6}y^2 + \frac{1}{24}y^4 + \frac{1}{4}y^4 - 1 + \frac{1}{6}y^2 - \frac{1}{24}y^4 - \frac{1}{4}y^2 \\
+    &amp;= 0.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">so condition B is also satisfied, so this is an A-stable method.</p>
 </div>
 </details></section>
 </div>
@@ -474,9 +576,49 @@ document.write(`
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="math notranslate nohighlight">
-\[R(z) = \frac{1 + \frac{1}{2}z + \frac{1}{12}z^2}{1 - \frac{1}{2}z + \frac{1}{12}z^2}\]</div>
+\[\begin{split} \begin{align*}
+    A &amp;= \begin{pmatrix}
+        \frac{1}{4} &amp; \frac{1}{4} - \frac{\sqrt{3}}{6} \\
+        \frac{1}{4} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4}
+    \end{pmatrix}, &amp;
+    \mathbf{b} &amp;= \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Determining the stability function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    R(z) &amp;= \frac{\det (I - zA + z \mathbf{eb}^\mathsf{T})}{\det(I - zA)} \\
+    &amp;= \frac{
+        \det\left(
+            \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
+            \begin{pmatrix}
+                \frac{1}{4} &amp; \frac{1}{4} - \frac{\sqrt{3}}{6} \\
+                \frac{1}{4} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4}
+            \end{pmatrix} + z
+            \begin{pmatrix} \frac{1}{2} &amp; \frac{1}{2} \\ \frac{1}{2} &amp; \frac{1}{2} \end{pmatrix}
+        \right)
+    }{
+        \det\left(
+            \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
+            \begin{pmatrix}
+                \frac{1}{4} &amp; \frac{1}{4} - \frac{\sqrt{3}}{6} \\
+                \frac{1}{4} + \frac{\sqrt{3}}{6} &amp; \frac{1}{4}
+            \end{pmatrix} 
+        \right)
+    } \\
+    &amp;= \frac{\det \begin{pmatrix}
+        1 + \frac14 z &amp; \left( \frac{1}{4} + \frac{\sqrt{3}}{36} \right)z \\
+        \left( \frac14 - \frac{\sqrt{3}}{6} \right)z &amp; 1 + \frac14 z
+        \end{pmatrix}}
+    {
+        \det \begin{pmatrix}
+            1 - \frac14 z &amp; \left(-\frac14 + \frac{\sqrt{3}}{6} \right) z \\
+            \left( -\frac14 - \frac{\sqrt{3}}{6} \right) z &amp; 1 + \frac14 z
+        \end{pmatrix}
+    } \\
+    &amp;= \frac{1 + \frac{1}{2}z + \frac{1}{12}z^2}{1 - \frac{1}{2}z + \frac{1}{12}z^2}.
+\end{align*} \end{split}\]</div>
 <figure class="align-default">
-<img alt="../_images/bd7bb7f07930be83986271f00bd143468b19b6c2960cbe7678aa62b18101c0ae.png" src="../_images/bd7bb7f07930be83986271f00bd143468b19b6c2960cbe7678aa62b18101c0ae.png" />
+<img alt="../_images/30c382dd70801af00b4f8ecf258ab92bc1665ccf4981c4e90fd02bacdb835c7d.png" src="../_images/30c382dd70801af00b4f8ecf258ab92bc1665ccf4981c4e90fd02bacdb835c7d.png" />
 </figure>
 <p class="sd-card-text">This is an A-stable method.</p>
 </div>
@@ -505,15 +647,6 @@ document.write(`
 </div>
 </details></section>
 </div>
-<hr class="docutils" />
-<section id="solutions">
-<h2><span class="section-number">4.7.1. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
-<p>The solutions to these exercises downloaded below by right clicking on the link and select ‘Save Link As’:</p>
-<ul class="simple">
-<li><p><a class="reference download internal" download="" href="../_downloads/f3c2f9cf5a743e1a47b870cf24d9a8b3/chapter4_exercises.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Jupyer</span> <span class="pre">Notebook</span></code></a></p></li>
-<li><p><a class="reference download internal" download="" href="../_downloads/2f8edb1568f41b96fa1e4ba15799a1c6/chapter4_exercises.mlx"><code class="xref download docutils literal notranslate"><span class="pre">MATLAB</span> <span class="pre">Live</span> <span class="pre">Script</span></code></a></p></li>
-</ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -571,21 +704,6 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">4.7.1. Solutions</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
             
           </div>
           <footer class="bd-footer-content">
@@ -605,7 +723,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

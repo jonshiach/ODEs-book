@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -403,7 +402,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-and-matlab-to-solve-the-order-conditions">2.3.1. Using Python and MATLAB to solve the order conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-conditions">2.3.1. Order conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-a-second-order-erk-method">2.3.2. Deriving a second-order ERK method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-and-matlab-to-solve-the-order-conditions">2.3.3. Using Python and MATLAB to solve the order conditions</a></li>
 </ul>
             </nav>
         </div>
@@ -455,18 +456,21 @@ document.write(`
     y_{n+1} &amp;= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f_y(t_n, y_n) f(t_n, y_n)] + O(h^3) \\
     &amp;= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 c_2f_t(t_n, y_n) + h^2 a_{21} f_y(t_n, y_n) f(t_n, y_n) + O(h^3). \\
 \end{align*} \end{split}\]</div>
-<p>This is the Taylor expansion of a general 2-stage ERK method. We need equations<a class="reference internal" href="#equation-2nd-order-taylor-2-equation">(2.5)</a> and <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.7)</a> to be equal so that the local truncation errors in the ERK method are <span class="math notranslate nohighlight">\(O(h^3)\)</span>.</p>
-<p>Equating the coefficients of <span class="math notranslate nohighlight">\(hf(t_n, y_n)\)</span></p>
+<p>This is the Taylor expansion of a general 2-stage ERK method.</p>
+<section id="order-conditions">
+<h2><span class="section-number">2.3.1. </span>Order conditions<a class="headerlink" href="#order-conditions" title="Link to this heading">#</a></h2>
+<p>To derive a second-order ERK method to solve the ODE <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, we need equations<a class="reference internal" href="#equation-2nd-order-taylor-2-equation">(2.5)</a> and <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.7)</a> to be equal so that the local truncation errors in the ERK method are <span class="math notranslate nohighlight">\(O(h^3)\)</span>. We have four unknowns in <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.7)</a>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(c_2\)</span> and <span class="math notranslate nohighlight">\(a_{21}\)</span>, so that the two expressions are equal.</p>
+<p>To determine the values of <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> we can equate the coefficients of <span class="math notranslate nohighlight">\(hf(t_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-1">
 <span class="eqno">(2.8)<a class="headerlink" href="#equation-rk2-condition-1" title="Link to this equation">#</a></span>\[ \begin{align*}
     b_1 + b_2 &amp;= 1. 
 \end{align*} \]</div>
-<p>Equating the coefficients of <span class="math notranslate nohighlight">\(h^2 f_t(t_n, y_n)\)</span></p>
+<p>To determine the value of <span class="math notranslate nohighlight">\(c_2\)</span> we can equate the coefficients of <span class="math notranslate nohighlight">\(h^2 f_t(t_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-2">
 <span class="eqno">(2.9)<a class="headerlink" href="#equation-rk2-condition-2" title="Link to this equation">#</a></span>\[ \begin{align*}
     b_2 c_2 &amp;= \frac{1}{2}.
 \end{align*} \]</div>
-<p>Equating the coefficients of <span class="math notranslate nohighlight">\(h^2f_y(t_n, y_n)f(t_n, y_n)\)</span></p>
+<p>To determine the value of <span class="math notranslate nohighlight">\(a_{21}\)</span> we can equate the coefficients of <span class="math notranslate nohighlight">\(h^2f_y(t_n, y_n)f(t_n, y_n)\)</span></p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     b_2 a_{21} &amp;= \frac{1}{2},
@@ -474,8 +478,8 @@ document.write(`
 <p>since we know from equation <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> that <span class="math notranslate nohighlight">\(b_2 = \dfrac{1}{2c_2}\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-3">
 <span class="eqno">(2.10)<a class="headerlink" href="#equation-rk2-condition-3" title="Link to this equation">#</a></span>\[ a_{21} = c_2 .\]</div>
-<p>So we have the three equations <a class="reference internal" href="#equation-rk2-condition-1">(2.8)</a>, <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> and <a class="reference internal" href="#equation-rk2-condition-3">(2.10)</a> expressed in four unknowns <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span>. Any set of values that satisfy these this system of equations give a ERK method with local truncation errors <span class="math notranslate nohighlight">\(O(h^3)\)</span>, so the global truncation errors are <span class="math notranslate nohighlight">\(O(h^2)\)</span> and we have a second-order method.</p>
-<p>These conditions are known as the <strong>order conditions</strong> for a method. Since we have an <a href="https://en.wikipedia.org/wiki/Underdetermined_system" target="_blank">underdetermined system</a> to get a unique solution we choose a value for one of the unknowns and solve for the others.</p>
+<p>So we have the three equations <a class="reference internal" href="#equation-rk2-condition-1">(2.8)</a>, <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> and <a class="reference internal" href="#equation-rk2-condition-3">(2.10)</a> expressed in the four unknowns. Any set of values that satisfy these this system of equations give an ERK method with local truncation errors <span class="math notranslate nohighlight">\(O(h^3)\)</span>, so the global truncation errors are <span class="math notranslate nohighlight">\(O(h^2)\)</span>, and we have a second-order method.</p>
+<p>These conditions are known as the <strong>order conditions</strong> for a method. Since we have an <a href="https://en.wikipedia.org/wiki/Underdetermined_system" target="_blank">under determined system</a> to get a unique solution we choose a value for one of the unknowns and solve for the others.</p>
 <div class="proof definition admonition" id="rk2-order-conditions-definition">
 <p class="admonition-title"><span class="caption-number">Definition 2.1 </span> (Order conditions for a second-order explicit Runge-Kutta method)</p>
 <section class="definition-content" id="proof-content">
@@ -486,32 +490,39 @@ document.write(`
     a_{21} &amp;= c_2.
 \end{align*} \end{split}\]</div>
 </section>
-</div><div class="proof example admonition" id="rk2-derivation-example">
+</div></section>
+<section id="deriving-a-second-order-erk-method">
+<h2><span class="section-number">2.3.2. </span>Deriving a second-order ERK method<a class="headerlink" href="#deriving-a-second-order-erk-method" title="Link to this heading">#</a></h2>
+<p>Let’s derive a second-order ERK where <span class="math notranslate nohighlight">\(c_2 = 1\)</span>, so the order conditions are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    b_1 + b_2 &amp;= 1, \\
+    b_2 &amp;= \frac{1}{2}, \\
+    a_{21} &amp;= 1.
+\end{align*} \end{split}\]</div>
+<p>So here we already have the solution <span class="math notranslate nohighlight">\(b_2 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = 1\)</span> and we just need to solve the first order condition to give <span class="math notranslate nohighlight">\(b_1 = 1 - \frac{1}{2} = \frac{1}{2}\)</span>. Now we have values for the four unknowns we can write the ERK method</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_{n+1} &amp;= y_n + \frac{h}{2}(k_1 + k_2), \\
+    k_1 &amp;= f(t_n, y_n), \\
+    k_2 &amp;= f(t_n + h, y_n + hk_1),
+\end{align*} \end{split}\]</div>
+<p>or alternatively as the Butcher tableau</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|cc}
+    0 &amp; 0 &amp; 0 \\
+    1 &amp; 1 &amp; 0 \\
+    \hline
+    &amp; \frac{1}{2} &amp; \frac{!}{2} 
+\end{array} \end{split}\]</div>
+<p>This method is known as <a href="https://en.wikipedia.org/wiki/Heun%27s_method#" target="_blank">Heun’s method</a> or the RK2 method.</p>
+<div class="proof example admonition" id="rk2-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 2.2 </span></p>
 <section class="example-content" id="proof-content">
-<p>Derive two second-order Runge-Kutta ERK methods where</p>
-<p>(i)   <span class="math notranslate nohighlight">\(c_2 = 1\)</span>;</p>
-<p>(ii)   <span class="math notranslate nohighlight">\(b_2 = 1\)</span>.</p>
+<p>Derive a second-order ERK method where <span class="math notranslate nohighlight">\(b_2 = 1\)</span>.</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
-<p>(i)   Substituting <span class="math notranslate nohighlight">\(c_2 = 1\)</span> into the order conditions gives <span class="math notranslate nohighlight">\(b_2 = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(b_1 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = 1\)</span>. So this second-order ERK method is</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    y_{n+1} &amp;=y_n +\frac{h}{2}(k_1 +k_2 ),\\
-    k_1 &amp;=f(t_n ,y_n ),\\
-    k_2 &amp;=f(t_n +h,y_n +hk_1 ),
-\end{align*}\]</div>
-<p>or expressed using a Butcher tableau</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    \begin{array}{c|cc}
-    0 &amp; &amp; \\
-    1 &amp; 1 &amp; \\ \hline
-    &amp; \frac{1}{2} &amp; \frac{1}{2}
-    \end{array}
-\end{align*}\]</div>
-<p>This method is known as <a href="https://en.wikipedia.org/wiki/Heun%27s_method#" target="_blank">Heun’s method</a> or the RK2 method.</p>
-<p>(ii)   Substituting <span class="math notranslate nohighlight">\(b_2=1\)</span> into the order conditions gives <span class="math notranslate nohighlight">\(b_1=0\)</span>, <span class="math notranslate nohighlight">\(c_2 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{2}\)</span> so this second-order ERK method is</p>
+<p>Substituting <span class="math notranslate nohighlight">\(b_2=1\)</span> into the order conditions gives <span class="math notranslate nohighlight">\(b_1=0\)</span>, <span class="math notranslate nohighlight">\(c_2 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{2}\)</span> so this second-order ERK method is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     y_{n+1} &amp;= y_n + h k_2, \\
@@ -529,10 +540,11 @@ document.write(`
 \end{align*}\]</div>
 <p>This method is known as the <a href="https://en.wikipedia.org/wiki/Midpoint_method" target="_blank">midpoint method</a>.</p>
 </section>
-</div><hr class="docutils" />
+</div></section>
+<hr class="docutils" />
 <section id="using-python-and-matlab-to-solve-the-order-conditions">
-<h2><span class="section-number">2.3.1. </span>Using Python and MATLAB to solve the order conditions<a class="headerlink" href="#using-python-and-matlab-to-solve-the-order-conditions" title="Link to this heading">#</a></h2>
-<p>The algebra used to solve the order conditions in <a class="reference internal" href="#rk2-derivation-example">Example 2.2</a> is quite simple but for higher order methods it can soon get more complicated and it is useful to use software to help with the algebra. The following code shows how Python and MATLAB can be used to solve the order conditions for <a class="reference internal" href="#rk2-derivation-example">Example 2.2</a>.</p>
+<h2><span class="section-number">2.3.3. </span>Using Python and MATLAB to solve the order conditions<a class="headerlink" href="#using-python-and-matlab-to-solve-the-order-conditions" title="Link to this heading">#</a></h2>
+<p>The algebra used to solve the order conditions for a second-order method is quite simple but for higher order methods it can soon get more complicated. Therefore it is useful to use software to help with the algebra, the following code shows how Python and MATLAB can be used to solve the order conditions for <a class="reference internal" href="#rk2-derivation-example">Example 2.2</a>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
@@ -640,7 +652,9 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-and-matlab-to-solve-the-order-conditions">2.3.1. Using Python and MATLAB to solve the order conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-conditions">2.3.1. Order conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-a-second-order-erk-method">2.3.2. Deriving a second-order ERK method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-and-matlab-to-solve-the-order-conditions">2.3.3. Using Python and MATLAB to solve the order conditions</a></li>
 </ul>
   </nav></div>
 
@@ -665,7 +679,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

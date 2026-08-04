@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -417,75 +416,39 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="stability-functions-for-implicit-runge-kutta-methods">
 <span id="irk-stability-function-section"></span><h1><span class="section-number">4.4. </span>Stability Functions for Implicit Runge-Kutta Methods<a class="headerlink" href="#stability-functions-for-implicit-runge-kutta-methods" title="Link to this heading">#</a></h1>
-<p>To determine the stability function for an implicit Runge-Kutta method we consider the stability function of a general Runge-Kutta method given in equations <a class="reference internal" href="4.1_ERK_stability_function.html#equation-rk-stability-y-equation">(4.3)</a> and <a class="reference internal" href="4.1_ERK_stability_function.html#equation-rk-stability-yn-1-equation">(4.4)</a> which are repeated below</p>
+<p>In the <a class="reference internal" href="#rk-rz-definition"><span class="xref myst">previous section</span></a>, we derived the stability function for a general Runge-Kutta method</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    y_{n+1} &amp; = y_n + z \mathbf{b}^\mathsf{T} Y, \\
-    Y &amp;= \mathbf{e} y_n + z A Y,
-\end{align*} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(Y = (Y_1, Y_2, \ldots, Y_s)^\mathsf{T}\)</span>. Rewriting these gives</p>
+\[ R(z) = 1 + z \mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e}. \]</div>
+<p>The <a href="https://en.wikipedia.org/wiki/Matrix_determinant_lemma" target="_blank">matrix determinant lemma</a> is</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    y_{n+1} - z \mathbf{b}^\mathsf{T} Y &amp;= y_n \\
-    (I - z A) Y &amp;= \mathbf{e}y_n.
-\end{align*} \end{split}\]</div>
-<p>We can write these as a matrix equation</p>
+\[ \det(M + \mathbf{uv}^{\mathsf{T}}) = (1 + \mathbf{v}^\mathsf{T}M^{-1}\mathbf{u}) \det(M), \]</div>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> is an invertible square matrix. Let <span class="math notranslate nohighlight">\(M = I - zA\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u} = z \mathbf{e}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v} = \mathbf{b}\)</span> then</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \begin{pmatrix}
-        1 &amp; -z b_1 &amp; -z b_2 &amp; \cdots &amp; -z b_s \\
-        0 &amp; 1-z a_{11} &amp; -z a_{12} &amp; \cdots &amp; -z a_{1s} \\
-        0 &amp; -z a_{21} &amp; 1-z a_{22} &amp; \cdots &amp; -z a_{2s} \\
-        \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-        0 &amp; -z a_{s1} &amp; -z a_{s2} &amp; \cdots &amp; 1-z a_{ss} 
-    \end{pmatrix}
-    \begin{pmatrix} y_{n+1} \\ Y_1 \\ Y_2 \\ \vdots \\ Y_s \end{pmatrix}=
-    \begin{pmatrix} y_n \\ y_n \\ y_n \\ \vdots \\ y_n \end{pmatrix}.
-\end{align*} \end{split}\]</div>
-<p>Using <a href="https://en.wikipedia.org/wiki/Cramer%27s_rule" target="_blank">Cramer’s rule</a> to solve this system for <span class="math notranslate nohighlight">\(y_{n+1}\)</span> we have</p>
+\[ \det(I - zA + z \mathbf{eb}^\mathsf{T}) = (1 + z \mathbf{b}^\mathsf{T}(I - zA)^{-1} \mathbf{e}) \det(I - zA), \]</div>
+<p>therefore</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    y_{n+1} = \frac{\det 
-    \begin{pmatrix}
-        y_n  &amp; -zb_1  &amp; -zb_2  &amp; \cdots  &amp; -zb_s \\
-        y_n  &amp; 1-za_{11}  &amp; -za_{12}  &amp; \cdots  &amp; -za_{1s} \\
-        y_n  &amp; -za_{21}  &amp; 1-za_{22}  &amp; \cdots  &amp; -za_{2s} \\
-        \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
-        y_n  &amp; -za_{s1}  &amp; -za_{s2}  &amp; \cdots  &amp; 1-za_{ss} 
-    \end{pmatrix}}{\det (I-zA)}.
-\end{align*} \end{split}\]</div>
-<p>Performing a row operation of subtracting the first row of matrix from all other rows gives</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    y_{n+1} =\frac{\det 
-    \begin{pmatrix}
-        y_n  &amp; -zb_1  &amp; -zb_2  &amp; \cdots  &amp; -zb_s \\
-        0 &amp; 1-za_{11} +zb_1  &amp; -za_{12} +zb_2  &amp; \cdots  &amp; -za_{1s} +zb_s \\
-        0 &amp; -za_{21} +zb_1  &amp; 1-za_{22} +zb_2  &amp; \cdots  &amp; -za_{2s} +zb_s \\
-        \vdots &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
-        0 &amp; -za_{s1} +zb_1  &amp; -za_{s2} +zb_2  &amp; \cdots  &amp; 1-za_{ss} +zb_s 
-    \end{pmatrix}}{\det(I-zA)}.
-\end{align*} \end{split}\]</div>
-<p>This provides the following definition of the stability function for an implicit Runge-Kutta method.</p>
+\[ R(z) = \frac{\det(I - zA + z \mathbf{eb}^\mathsf{T})}{\det(I - zA)}. \]</div>
+<p>This is the stability function for an implicit Runge-Kutta method.</p>
 <div class="proof definition admonition" id="irk-rz-definition">
-<p class="admonition-title"><span class="caption-number">Definition 4.4 </span> (Stability function of an implicit Runge-Kutta method)</p>
+<p class="admonition-title"><span class="caption-number">Definition 4.5 </span> (Stability function of an implicit Runge-Kutta method)</p>
 <section class="definition-content" id="proof-content">
 <p>The stability function of an implicit Runge-Kutta method is</p>
 <div class="math notranslate nohighlight" id="equation-irk-stability-rz-equation">
-<span class="eqno">(4.7)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Link to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathsf{T})}{\det(I - zA)}.\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{e}\mathbf{b}^\mathsf{T}\)</span> is a diagonal matrix with the elements of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> on the main diagonal</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \mathbf{e}\mathbf{b}^\mathsf{T} = 
-    \begin{pmatrix}
-        b_1 &amp; 0 &amp; \cdots &amp; 0 \\
-        0 &amp; b_2 &amp; \ddots &amp; \vdots \\
-        \vdots &amp; \ddots &amp; \ddots &amp; 0 \\
-        0 &amp; \cdots &amp; 0 &amp; b_s
-    \end{pmatrix}.
-\end{align*} \end{split}\]</div>
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-irk-stability-rz-equation" title="Link to this equation">#</a></span>\[R(z) = \frac{\det (I - zA + z\mathbf{e}\mathbf{b}^\mathsf{T})}{\det(I - zA)}.\]</div>
 </section>
-</div><div class="proof example admonition" id="irk-stability-function-example">
+</div><p>Note that <span class="math notranslate nohighlight">\(\mathbf{eb}^\mathsf{T}\)</span> is the <a href="https://en.wikipedia.org/wiki/Outer_product" target="_blank">outer product</a> of the column vector <span class="math notranslate nohighlight">\(\mathbf{e} = (1, \ldots, 1)^\mathsf{T}\)</span> and the row vector <span class="math notranslate nohighlight">\(\mathbf{b}^\mathsf{T} = (b_1, b_2, \ldots, b_s)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{eb}^\mathsf{T} = \begin{pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{pmatrix} \begin{pmatrix} b_1 &amp; b_2 &amp; \cdots &amp; b_s \end{pmatrix} = 
+\begin{pmatrix}
+    b_1 &amp; b_2 &amp; \cdots &amp; b_s \\
+    b_1 &amp; b_2 &amp; \cdots &amp; b_s \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    b_1 &amp; b_2 &amp; \cdots &amp; b_s 
+\end{pmatrix}. \end{split}\]</div>
+<p>Since each entry of <span class="math notranslate nohighlight">\(I - zA\)</span> is a polynomial in <span class="math notranslate nohighlight">\(z\)</span>, both the numerator and denominator are polynomials. Therefore the stability function of an implicit Runge-Kutta method is a rational function</p>
+<div class="math notranslate nohighlight">
+\[R(z) = \frac{P(z)}{Q(z)}. \]</div>
+<div class="proof example admonition" id="irk-stability-function-example">
 <p class="admonition-title"><span class="caption-number">Example 4.2 </span></p>
 <section class="example-content" id="proof-content">
 <p>The Radau IA IRK method is defined by the following Butcher tableau</p>
@@ -498,14 +461,14 @@ document.write(`
 <p>Determine the stability function of this method</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
-<p>Using equation <a class="reference internal" href="#equation-irk-stability-rz-equation">(4.7)</a></p>
+<p>Using equation <a class="reference internal" href="#equation-irk-stability-rz-equation">(4.8)</a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     R(z) &amp;= \frac{\det 
         \left(
             \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
             \begin{pmatrix} \frac{1}{4} &amp; -\frac{1}{4} \\ \frac{1}{4} &amp; \frac{5}{12} \end{pmatrix} + z
-            \begin{pmatrix} \frac{1}{4} &amp; 0 \\ 0 &amp; \frac{3}{4} \end{pmatrix}
+            \begin{pmatrix} \frac{1}{4} &amp; \frac{3}{4} \\ \frac{1}{4} &amp; \frac{3}{4} \end{pmatrix}
         \right)
         }
         { \det \left(
@@ -516,8 +479,8 @@ document.write(`
         &amp;= \frac{
             \det 
             \begin{pmatrix}
-                1 &amp; \frac{1}{4}z \\
-                -\frac{1}{4}z &amp; 1 + \frac{1}{3}z
+                1 &amp; z \\
+                0 &amp; 1 + \frac{1}{3}z
             \end{pmatrix}
         }
         { 
@@ -528,7 +491,7 @@ document.write(`
             \end{pmatrix}
         }
         =
-        \frac{1 + \frac{1}{3}z + \frac{1}{16}z^2}{1 - \frac{2}{3}z + \frac{1}{6}z^2}.
+        \frac{1 + \frac{1}{3}z}{1 - \frac{2}{3}z + \frac{1}{6}z^2}.
 \end{align*} \end{split}\]</div>
 </section>
 </div><hr class="docutils" />
@@ -544,17 +507,21 @@ Python</label><div class="sd-tab-content docutils">
 <span class="c1"># Define IRK method</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)],</span>
             <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">12</span><span class="p">)]])</span>
-<span class="n">ebT</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)],</span> 
+               <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]])</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># Calculate R(z)</span>
+<span class="c1"># Define P(z) and Q(z) functions</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">A</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">ebT</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">A</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">e</span> <span class="o">*</span> <span class="n">b</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">Q</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
 
 
+<span class="c1"># Determine R(z)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 </pre></div>
@@ -565,12 +532,15 @@ Python</label><div class="sd-tab-content docutils">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define IRK method</span>
 <span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">/</span><span class="mi">12</span><span class="p">];</span>
-<span class="n">ebT</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">];</span>
+<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">];</span>
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="n">e</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">ones</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 
-<span class="c">% Calculate R(z)</span>
-<span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nb">det</span><span class="p">(</span><span class="nb">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ebT</span><span class="p">);</span>
-<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nb">det</span><span class="p">(</span><span class="nb">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
+<span class="c">% Define P(z) and Q(z) functions</span>
+<span class="n">P</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nb">det</span><span class="p">(</span><span class="nb">eye</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="o">&#39;</span><span class="p">);</span>
+<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nb">det</span><span class="p">(</span><span class="nb">eye</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
 
+<span class="c">% Determine R(z)</span>
 <span class="n">syms</span><span class="w"> </span><span class="s">z</span>
 <span class="n">Rz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 </pre></div>
@@ -669,7 +639,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -407,25 +406,26 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ordinary-differential-equations-ode">
 <span id="ode-chapter"></span><h1><span class="section-number">1. </span>Ordinary Differential Equations (ODE)<a class="headerlink" href="#ordinary-differential-equations-ode" title="Link to this heading">#</a></h1>
-<p>An Ordinary Differential Equation (ODE) is an equation which relates a function of a single independent variable to its derivatives and describe how a quantity changes with respect to another. ODEs are called <em>ordinary</em> to distinguish them from Partial Differential Equations (PDEs), which involve functions of multiple variables and their partial derivative.</p>
+<p>An Ordinary Differential Equation (ODE) is an equation which relates a function of a single independent variable to its derivatives and describe how a quantity changes with respect to another. ODEs are called <strong>ordinary</strong> to distinguish them from Partial Differential Equations (PDEs), which involve functions of multiple variables and their partial derivative.</p>
 <p>A simple ODE can be solved using analytical methods such as integration and Laplace transforms, however the vast majority of ODEs used in the real world cannot be solved using analytical methods which is why we need a numerical approach.</p>
 <div class="proof definition admonition" id="odes-definition">
 <p class="admonition-title"><span class="caption-number">Definition 1.1 </span> (Ordinary Differential Equation)</p>
 <section class="definition-content" id="proof-content">
 <p>An Ordinary Differential Equation (ODE) is an equation of the form</p>
 <div class="math notranslate nohighlight">
-\[ y^{(n)}(t) = f(t, y, y', y'', \ldots, y^{(n-1)}), \]</div>
-<p>where <span class="math notranslate nohighlight">\(t\)</span> is an independent variable, <span class="math notranslate nohighlight">\(y\)</span> is a differentiable function of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(y'\)</span>, <span class="math notranslate nohighlight">\(y''\)</span> etc. are derivatives of <span class="math notranslate nohighlight">\(y\)</span>.</p>
+\[ y^{(n)}(t) = f(t, y(t), y'(t), y''(t), \ldots, y^{(n-1)}(t)), \]</div>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> is an independent variable, <span class="math notranslate nohighlight">\(y(t)\)</span> is a differentiable function of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(y'(t)\)</span>, <span class="math notranslate nohighlight">\(y''(t)\)</span> etc. are derivatives of <span class="math notranslate nohighlight">\(y(t)\)</span>.</p>
+<p>Note that it is common to represent the function <span class="math notranslate nohighlight">\(y(t)\)</span> as <span class="math notranslate nohighlight">\(y\)</span> for brevity.</p>
 </section>
-</div><p>The solution of an ODE is the function <span class="math notranslate nohighlight">\(y\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
+</div><p>The solution of an ODE is the function <span class="math notranslate nohighlight">\(y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
 <div class="math notranslate nohighlight" id="equation-simple-ode-equation">
 <span class="eqno">(1.1)<a class="headerlink" href="#equation-simple-ode-equation" title="Link to this equation">#</a></span>\[y' = ky, \]</div>
 <p>where <span class="math notranslate nohighlight">\(t \in \mathbb{R}\)</span>. Rewriting this using Leibniz notation and integrating both sides we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \frac{\mathrm{d} y}{\mathrm{d} t} &amp; = ky \\
-    \frac{\mathrm{d} y}{y} &amp;= k \mathrm{d} t \\
-    \int \frac{1}{y} \mathrm{d} y &amp;= \int k \mathrm{d} t \\
+    \frac{\mathrm{d} y}{y} &amp;= k \, \mathrm{d} t \\
+    \int \frac{1}{y} \mathrm{d} y &amp;= \int k \, \mathrm{d} t \\
     \ln (y) + c_1 &amp;= kt + c_2 \\
     \ln (y) &amp;= kt + c_2 - c_1
 \end{align*} \end{split}\]</div>
@@ -444,9 +444,9 @@ document.write(`
 \[ \begin{align*}
     y &amp;= y_0 e^{kt}.
 \end{align*} \]</div>
-<p>So if <span class="math notranslate nohighlight">\(y(0) = 1\)</span> then the solution is <span class="math notranslate nohighlight">\(y = e^{kt}\)</span>, and if <span class="math notranslate nohighlight">\(y(0) = 2\)</span> then the solution is <span class="math notranslate nohighlight">\(y = 2e^{kt}\)</span>.</p>
+<p>So if <span class="math notranslate nohighlight">\(y_0 = 1\)</span> then the solution is <span class="math notranslate nohighlight">\(y = e^{kt}\)</span>, and if <span class="math notranslate nohighlight">\(y_0 = 2\)</span> then the solution is <span class="math notranslate nohighlight">\(y = 2e^{kt}\)</span>.</p>
 <figure class="align-default" id="ode-plot-figure" style="width: 600px">
-<img alt="../_images/25c41b917df0f0fb53d698f31ab6dd618eceae36c23b1588e96380704802d095.png" src="../_images/25c41b917df0f0fb53d698f31ab6dd618eceae36c23b1588e96380704802d095.png" />
+<img alt="../_images/410e934460f3140b0d5e4fbaec81dfd842579d56f59717ecc73ab101c5e206d2.png" src="../_images/410e934460f3140b0d5e4fbaec81dfd842579d56f59717ecc73ab101c5e206d2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Plots of some of the possible solution to the ODE <span class="math notranslate nohighlight">\(y' = y\)</span>.</span><a class="headerlink" href="#ode-plot-figure" title="Link to this image">#</a></p>
 </figcaption>
@@ -541,7 +541,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

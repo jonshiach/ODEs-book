@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -403,8 +402,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-stability-regions">4.5.1. Plotting stability regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#region-of-absolute-stability">4.5.1. Region of absolute stability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-of-absolute-stability">4.5.2. Interval of absolute stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-stability-regions">4.5.3. Plotting stability regions</a></li>
 </ul>
             </nav>
         </div>
@@ -418,30 +418,104 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="absolute-stability">
 <span id="absolute-stability-section"></span><h1><span class="section-number">4.5. </span>Absolute stability<a class="headerlink" href="#absolute-stability" title="Link to this heading">#</a></h1>
-<p>We have seen that a necessary <a class="reference internal" href="4.0_Stability.html#stability-definition">condition for stability</a> of a method is that the local truncation errors must not grow from one step to the next. A method satisfying this basic condition is considered to be <strong>absolutely stable</strong>. Since the stability function <span class="math notranslate nohighlight">\(R(z)\)</span> is expressed using <span class="math notranslate nohighlight">\(z=h\lambda\)</span> then a method may be stable for some value of <span class="math notranslate nohighlight">\(h\)</span> and unstable for others. This provides the definition for absolute stability.</p>
-<div class="proof definition admonition" id="absolute-stability-definition">
-<p class="admonition-title"><span class="caption-number">Definition 4.5 </span> (Absolute stability)</p>
-<section class="definition-content" id="proof-content">
-<p>A method is considered to be <strong>absolutely stable</strong> if <span class="math notranslate nohighlight">\(|R(z)| \leq 1\)</span> for <span class="math notranslate nohighlight">\(z\in \mathbb{C}\)</span>.</p>
-</section>
-</div><p>Of course, we require our methods to be stable, so it is useful to know for what values of <span class="math notranslate nohighlight">\(h\)</span> we have a stable method. This gives the definition of the <strong>region of absolute stability</strong>.</p>
-<div class="proof definition admonition" id="region-of-absolute-stability-definition">
-<p class="admonition-title"><span class="caption-number">Definition 4.6 </span> (Region of absolute stability)</p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>region of absolute stability</strong> is the set of <span class="math notranslate nohighlight">\(z\in \mathbb{C}\)</span> for which a method is absolutely stable</p>
+<p>We have seen that a necessary <a class="reference internal" href="4.0_Stability.html#stability-definition">condition for stability</a> of a method is that the local truncation errors must not grow from one step to the next.</p>
+<p>Consider the test equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span>, the numerical solution satisfies</p>
 <div class="math notranslate nohighlight">
-\[ \{ z:z\in \mathbb{C},|R(z)|\leq 1 \} \]</div>
+\[ y_{n+1} = R(z) y_n. \]</div>
+<p>After <span class="math notranslate nohighlight">\(n\)</span> steps</p>
+<div class="math notranslate nohighlight">
+\[ y_n = R(z)^n y_0. \]</div>
+<p>Therefore, any perturbations, rounding errors, or local truncation errors are multiplied by approximately <span class="math notranslate nohighlight">\(R(z)^n\)</span>. To prevent these disturbances from growing, we require</p>
+<div class="math notranslate nohighlight">
+\[ |R(z)| \leq 1, \]</div>
+<p>which provides the definition of <strong>absolute stability</strong>.</p>
+<div class="proof definition admonition" id="absolute-stability-definition">
+<p class="admonition-title"><span class="caption-number">Definition 4.6 </span> (Absolute stability)</p>
+<section class="definition-content" id="proof-content">
+<p>A method is considered to be <strong>absolutely stable</strong> for a particular value of <span class="math notranslate nohighlight">\(z\)</span> if</p>
+<div class="math notranslate nohighlight">
+\[ |R(z)| \leq 1, \qquad z \in \mathbb{C}. \]</div>
 </section>
-</div><p>The region of absolute stability for the Euler method is shown in <a class="reference internal" href="#euler-stability-region-figure"><span class="std std-numref">Fig. 4.2</span></a>.</p>
+</div><p>Since <span class="math notranslate nohighlight">\(z = h \lambda\)</span>, changing the step size <span class="math notranslate nohighlight">\(h\)</span> will change <span class="math notranslate nohighlight">\(R(z)\)</span> and therefore a method may be stable for some values of <span class="math notranslate nohighlight">\(h\)</span> and unstable for others. Absolute stability therefore determines which step sizes can be used safely.</p>
+<hr class="docutils" />
+<section id="region-of-absolute-stability">
+<h2><span class="section-number">4.5.1. </span>Region of absolute stability<a class="headerlink" href="#region-of-absolute-stability" title="Link to this heading">#</a></h2>
+<p>Of course we require our methods to be stable, so it is useful to know for what values of <span class="math notranslate nohighlight">\(h\)</span> we have a stable method. This gives the definition of the <strong>region of absolute stability</strong>.</p>
+<div class="proof definition admonition" id="region-of-absolute-stability-definition">
+<p class="admonition-title"><span class="caption-number">Definition 4.7 </span> (Region of absolute stability)</p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>region of absolute stability</strong> is the subset of the complex plane that satisfies</p>
+<div class="math notranslate nohighlight">
+\[ S = \{ z\in \mathbb{C} : |R(z)|\leq 1 \} \]</div>
+</section>
+</div><p>The boundary of the stability region is given by</p>
+<div class="math notranslate nohighlight">
+\[ |R(z)| = 1. \]</div>
+<p>Inside the boundary the method is stable, while outside it is unstable.</p>
+<p>For example, consider the stabiltiy function for the Euler method which is</p>
+<div class="math notranslate nohighlight">
+\[ R(z) = 1 + z, \]</div>
+<p>therefore the stability region is</p>
+<div class="math notranslate nohighlight">
+\[ |1 + z| \leq 1. \]</div>
+<p>Let <span class="math notranslate nohighlight">\(z = x + iy\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+  (1 + x)^2 + y^2 \leq 1.
+\end{align*} \]</div>
+<p>The equation of a circle is</p>
+<div class="math notranslate nohighlight">
+\[ x^2 + y^2 = r^2, \]</div>
+<p>so the stability region of the Euler method is a circle of radius 1 centred at <span class="math notranslate nohighlight">\((-1, 0)\)</span>.</p>
+<p>The region of absolute stability for the Euler method is shown in <a class="reference internal" href="#euler-stability-region-figure"><span class="std std-numref">Fig. 4.2</span></a>.</p>
 <figure class="align-default" id="euler-stability-region-figure" style="width: 600px">
-<img alt="../_images/16700f77d6a870ca6204e5d84d9e5ea613031a48f31fcaeb979b97e1a34149a9.png" src="../_images/16700f77d6a870ca6204e5d84d9e5ea613031a48f31fcaeb979b97e1a34149a9.png" />
+<img alt="../_images/9cf05ee2909c98c25c43ac4bd9f8902517b3fe74f718e2d037b8bce738ea80e8.png" src="../_images/9cf05ee2909c98c25c43ac4bd9f8902517b3fe74f718e2d037b8bce738ea80e8.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">The region of absolute stability for the Euler method.</span><a class="headerlink" href="#euler-stability-region-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>The size and shape of the stability region provide important measures of the performance of a numerical method. In particular, when solving stiff equations we seek methods whose stability regions contain a large portion of the left half-plane.</p>
+</section>
 <hr class="docutils" />
+<section id="interval-of-absolute-stability">
+<h2><span class="section-number">4.5.2. </span>Interval of absolute stability<a class="headerlink" href="#interval-of-absolute-stability" title="Link to this heading">#</a></h2>
+<p>The <strong>interval of absolute stability</strong> is the portion of the real axis that liess inside the region of absolute stability.</p>
+<div class="proof definition admonition" id="interval-of-absolute-stability-definition">
+<p class="admonition-title"><span class="caption-number">Definition 4.8 </span> (Interval of absolute stability)</p>
+<section class="definition-content" id="proof-content">
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \{ z \in \mathbb{R} : |R(z)| \leq 1 \}
+\end{align*} \]</div>
+</section>
+</div><figure class="align-default" id="stability-interval-plot-figure" style="width: 600px">
+<img alt="../_images/40f986bdc5e18fd1c65692650ea6b016297bd564244f758999826cc952b37ab8.png" src="../_images/40f986bdc5e18fd1c65692650ea6b016297bd564244f758999826cc952b37ab8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Interval of absolute stability for the Euler method.</span><a class="headerlink" href="#stability-interval-plot-figure" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We saw above that the region of absolute stability for the Euler method is a unit circle centred at <span class="math notranslate nohighlight">\((-1,0)\)</span>, so the region of absolute stability is</p>
+<div class="math notranslate nohighlight">
+\[ -2 \leq z \leq 0.\]</div>
+<p>Since <span class="math notranslate nohighlight">\(z = h\lambda\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[ 0 \leq h \leq \frac{2}{|\lambda|}. \]</div>
+<p>So the Euler method is stable for the test equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span> using a step length <span class="math notranslate nohighlight">\(h \leq \dfrac{2}{|\lambda|}\)</span>.</p>
+<p>Consider the solution to the ODE <span class="math notranslate nohighlight">\(y' = -15y\)</span> that we saw earlier in this chapter.</p>
+<figure class="align-default" id="stability-plot-1-figure" style="width: 600px">
+<img alt="../_images/bc0ae77b220a71662a443987f658771594e40b3a3647f813f0b9fc896c00d50e.png" src="../_images/bc0ae77b220a71662a443987f658771594e40b3a3647f813f0b9fc896c00d50e.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> and <span class="math notranslate nohighlight">\(h=0.125\)</span>.</span><a class="headerlink" href="#stability-plot-1-figure" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Here <span class="math notranslate nohighlight">\(\lambda = -15\)</span> so the stability interval for the Euler method is</p>
+<div class="math notranslate nohighlight">
+\[ h \leq \frac{2}{|-15|} = 0.1333. \]</div>
+<p>So <span class="math notranslate nohighlight">\(h = 0.25\)</span> is outside the stability interval and results in an unstable solution whereas <span class="math notranslate nohighlight">\(h = 0.125\)</span> is inside the stability interval and results in a stable (albeit oscillatory) solution.</p>
+<hr class="docutils" />
+</section>
 <section id="plotting-stability-regions">
-<span id="plot-stability-region-section"></span><h2><span class="section-number">4.5.1. </span>Plotting stability regions<a class="headerlink" href="#plotting-stability-regions" title="Link to this heading">#</a></h2>
+<span id="plot-stability-region-section"></span><h2><span class="section-number">4.5.3. </span>Plotting stability regions<a class="headerlink" href="#plotting-stability-regions" title="Link to this heading">#</a></h2>
 <p>We can plot the region of absolute stability by generate a set of points for <span class="math notranslate nohighlight">\(z\)</span> in the complex plane and plot the contour where <span class="math notranslate nohighlight">\(|R(z)| = 1\)</span> which is the boundary of the stability region. The code for producing a plot of the region of absolute stability of the Euler method using Python is shown below.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -499,47 +573,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</section>
-<section id="interval-of-absolute-stability">
-<span id="interval-of-absolute-stability-section"></span><h2><span class="section-number">4.5.2. </span>Interval of absolute stability<a class="headerlink" href="#interval-of-absolute-stability" title="Link to this heading">#</a></h2>
-<p>The choice of step length used in a method will depend on accuracy requirements, the computational resources available, the stability properties of the method and the ODE being solved. It is often necessary to use as large a value of the step length as possible permitted by the stability requirements to minimise the computational effort required to solve an ODE. The range values of the step length that can be chosen is governed by the stability region and provides use with the following definition.</p>
-<div class="proof definition admonition" id="interval-of-absolute-stability-definition">
-<p class="admonition-title"><span class="caption-number">Definition 4.7 </span> (Interval of absolute stability)</p>
-<section class="definition-content" id="proof-content">
-<p>The range of real values that the step length <span class="math notranslate nohighlight">\(h\)</span> of a method can take that ensures a method remains absolutely stable is known as the <strong>interval of absolute stability</strong></p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    \{ z : z \in \mathbb{R}, |R(z)| \leq 1 \}
-\end{align*} \]</div>
-</section>
-</div><p>The interval of absolute stability for the Euler method can be seen in <a class="reference internal" href="#stability-interval-plot-figure"><span class="std std-numref">Fig. 4.3</span></a>.</p>
-<figure class="align-default" id="stability-interval-plot-figure" style="width: 600px">
-<img alt="../_images/eb4cbf311fe81f847d6498e407eb33b2a376f494396187e05ec9097c3094e11c.png" src="../_images/eb4cbf311fe81f847d6498e407eb33b2a376f494396187e05ec9097c3094e11c.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Interval of absolute stability for the Euler method.</span><a class="headerlink" href="#stability-interval-plot-figure" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The region of absolute stability for the Euler method shows that the interval of absolute stability for the test ODE <span class="math notranslate nohighlight">\(y'=\lambda y\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    z \in [-2,0],
-\end{align*} \]</div>
-<p>Since <span class="math notranslate nohighlight">\(z = h\lambda\)</span> then</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    h \in \left[ -\frac{2}{\lambda},0 \right],
-\end{align*} \]</div>
-<p>so we have the condition</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    h \leq -\frac{2}{\lambda}.
-\end{align*} \]</div>
-<p>We saw in <a class="reference internal" href="4.0_Stability.html#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a> that solving the ODE <span class="math notranslate nohighlight">\(y' = -15y\)</span> using <span class="math notranslate nohighlight">\(h=0.25\)</span> resulted in an unstable solution whereas using <span class="math notranslate nohighlight">\(h=0.125\)</span> resulted in a stable (albeit oscillatory) solution. This is because for this ODE <span class="math notranslate nohighlight">\(\lambda = -15\)</span> and the step length for the Euler method must satisfy</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    h \leq -\frac{2}{-15} = 0.1\dot{3}.
-\end{align*} \]</div>
-<p>This is why the solution using <span class="math notranslate nohighlight">\(h=0.25\)</span> was unstable since <span class="math notranslate nohighlight">\(0.25 &gt; 0.1\dot{3}\)</span> and the solution using <span class="math notranslate nohighlight">\(h=0.125\)</span> was stable since <span class="math notranslate nohighlight">\(0.125 &lt; 0.1\dot{3}\)</span>.</p>
 </section>
 </section>
 
@@ -607,8 +640,9 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-stability-regions">4.5.1. Plotting stability regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#region-of-absolute-stability">4.5.1. Region of absolute stability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-of-absolute-stability">4.5.2. Interval of absolute stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-stability-regions">4.5.3. Plotting stability regions</a></li>
 </ul>
   </nav></div>
 
@@ -633,7 +667,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

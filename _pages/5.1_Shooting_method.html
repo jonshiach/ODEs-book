@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -422,16 +421,17 @@ document.write(`
 <p>Consider the two-point boundary value problem</p>
 <div class="math notranslate nohighlight">
 \[ y'' = f(t,y), \qquad t \in [t_0, t_{\max}], \qquad y(t_0) = a ,\qquad y(t_{\max}) = b. \]</div>
-<p>Since the ODE solvers we use can only be applied to a first-order ODE we need to rewrite the second-order ODE as a system of two first-order ODEs</p>
+<p>To solve a second-order boundary value problem numerically, we first rewrite it as a system of first-order ODEs. This allows us to apply the initial value problem solvers developed in earlier chapters.</p>
+<p>Let</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_1' &amp;= y_2 ,\\
     y_2' &amp;= f(t, y_1, y_2).
 \end{align*} \end{split}\]</div>
-<p>Since we have let <span class="math notranslate nohighlight">\(y_1 = y\)</span> we know that <span class="math notranslate nohighlight">\(y_1(t_0) = a\)</span> from the definition of the boundary value problem but we do not know the value of <span class="math notranslate nohighlight">\(y_2(t_0)\)</span>. To overcome this problem we simply guess this value and compute the solutions to the initial value problem and compare the solution of <span class="math notranslate nohighlight">\(y_1(t_{\max})\)</span> to <span class="math notranslate nohighlight">\(b\)</span> and then adjust the guess value accordingly. This method is called the <strong>shooting method</strong> because someone shooting at a target will adjust their next shot based where their previous shot landed.</p>
-<div class="proof example admonition" id="shooting-example-1">
-<p class="admonition-title"><span class="caption-number">Example 5.2 </span></p>
-<section class="example-content" id="proof-content">
+<p>Then the boundary condition <span class="math notranslate nohighlight">\(y(t_0) = a\)</span> gives <span class="math notranslate nohighlight">\(y_1(t_0) = a\)</span>, but the initial value <span class="math notranslate nohighlight">\(y_2(t_0) = y'(t_0)\)</span> is unknown. The <strong>shooting method</strong> treats this missing value as an unknown parameter <span class="math notranslate nohighlight">\(s\)</span>. For a chosen value of <span class="math notranslate nohighlight">\(s\)</span>, we solve the resulting initial values problem and compare the computed value of <span class="math notranslate nohighlight">\(y_1(t_{\max})\)</span> with the required boundary condition <span class="math notranslate nohighlight">\(b\)</span>. The value of <span class="math notranslate nohighlight">\(s\)</span> is then adjusted until the boundary condition at <span class="math notranslate nohighlight">\(t = t_{\max}\)</span> is satisfied.</p>
+<p>The method is called the <em>shooting method</em> because it resembles aiming at a target. If the computed solution misses the required boundary value, the initial slope is adjusted and another “shot” is taken until the target is hit.</p>
+<!-- ````{prf:example} -->
+<p>:label: shooting-example-1</p>
 <p>Use the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span> and the shooting method to solve the following boundary value problem</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
@@ -442,11 +442,11 @@ document.write(`
 <p>Rewriting this as a system of first-order ODEs gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_1' &amp;= y_2, &amp; y_1 (0) &amp;= 1, &amp;&amp;\\
+    y_1' &amp;= y_2, &amp; y_1 (0) &amp;= 0, &amp;&amp;\\
     y_2' &amp;= y_1 +y_2, &amp; y_2 (0) &amp;= s, &amp;&amp;
 \end{align*} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(s\)</span> is a guess of <span class="math notranslate nohighlight">\(y'(0)\)</span>.</p>
-<p>The Euler method solutions using a guess value of <span class="math notranslate nohighlight">\(y_2(0) = 1\)</span> is tabulated below.</p>
+<p>The Euler method solutions using a guess value of <span class="math notranslate nohighlight">\(s = 1\)</span> is tabulated below.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
@@ -482,7 +482,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>The numerical solution at the upper boundary is <span class="math notranslate nohighlight">\(y_1(1) = 1.585600\)</span> which is less than the boundary value of 2. Lets try again but with an increased guess value of <span class="math notranslate nohighlight">\(y_2(0) = 2\)</span>.</p>
+<p>The numerical solution at the upper boundary is <span class="math notranslate nohighlight">\(y_1(1) = 1.585600\)</span>. Lets try again but with an increased guess value of <span class="math notranslate nohighlight">\(s = 2\)</span>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
@@ -518,7 +518,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Here we have <span class="math notranslate nohighlight">\(y_1(5) = 3.171200\)</span> which is greater than 2. Let’s try again but with a decreased guess value of <span class="math notranslate nohighlight">\(y_2(0) = 1.5\)</span>.</p>
+<p>Here we have <span class="math notranslate nohighlight">\(y_1(1) = 3.171200\)</span>. Since the solution obtained with <span class="math notranslate nohighlight">\(s\)</span> gives <span class="math notranslate nohighlight">\(y_1(1) &lt; 2\)</span> and the solution obtained with <span class="math notranslate nohighlight">\(s=2\)</span> gives <span class="math notranslate nohighlight">\(y_1(1) &gt; 2\)</span>, the correct value of <span class="math notranslate nohighlight">\(s\)</span> must lie between 1 and 2. Since the desired initial slope lies between 1 and 2, a natural next choice is <span class="math notranslate nohighlight">\(s = 1.5\)</span>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
@@ -556,34 +556,54 @@ document.write(`
 </div>
 <p>The solutions using the three guess values of <span class="math notranslate nohighlight">\(s=1\)</span>, <span class="math notranslate nohighlight">\(s=2\)</span> and <span class="math notranslate nohighlight">\(s=1.5\)</span> are plotted below.</p>
 <figure class="align-default" id="bvp-example-figure" style="width: 600px">
-<img alt="../_images/ce840ccb0a3fd1148060fbfe070d9390ba9023ab5ebf56e70f55ece3c88fb7a7.png" src="../_images/ce840ccb0a3fd1148060fbfe070d9390ba9023ab5ebf56e70f55ece3c88fb7a7.png" />
+<img alt="../_images/53f2541db909db8e7746e6d8154f01ff44d1fe4986058df523b9bf5465009686.png" src="../_images/53f2541db909db8e7746e6d8154f01ff44d1fe4986058df523b9bf5465009686.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Solutions of the BVP <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using initial values for <span class="math notranslate nohighlight">\(y'(0) = s\)</span> where <span class="math notranslate nohighlight">\(s = 1\)</span>, <span class="math notranslate nohighlight">\(s = 2\)</span> and <span class="math notranslate nohighlight">\(s = 1.5\)</span>.</span><a class="headerlink" href="#bvp-example-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-</div><section id="improving-the-guess-value-using-the-secant-method">
+<p>The approximation obtained using <span class="math notranslate nohighlight">\(s=1.5\)</span> is closer to satisfying the boundary condition at <span class="math notranslate nohighlight">\(t=1\)</span> than the previous guesses. In practice, the shooting method is usually combined with a root-finding algorithm such as the secant method to determine the value of <span class="math notranslate nohighlight">\(s\)</span> automatically.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<section id="improving-the-guess-value-using-the-secant-method">
 <span id="secant-method-section"></span><h2><span class="section-number">5.2.1. </span>Improving the guess value using the secant method<a class="headerlink" href="#improving-the-guess-value-using-the-secant-method" title="Link to this heading">#</a></h2>
-<p>In <a class="reference internal" href="#shooting-example-1">Example 5.2</a> we saw that by adjusting the guess value of <span class="math notranslate nohighlight">\(y_2(0)\)</span> we obtained solutions at the upper boundary that were closer to the target value at the upper boundary <span class="math notranslate nohighlight">\(b\)</span>. We could continue in this way by increasing or decreasing our guess value halfway towards the previous guess value depending on whether the solution at the upper boundary was higher or lower than the target (this method is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Bisection_method">bisection method</a>), however a more efficient approach is to use the <a class="reference external" href="https://en.wikipedia.org/wiki/Secant_method">Secant method</a>. The Secant method is a root finding algorithm that calculates the value of <span class="math notranslate nohighlight">\(s\)</span> where <span class="math notranslate nohighlight">\(g(s)=0\)</span> for some function <span class="math notranslate nohighlight">\(g\)</span></p>
-<div class="math notranslate nohighlight" id="equation-secant-method-equation">
-<span class="eqno">(5.3)<a class="headerlink" href="#equation-secant-method-equation" title="Link to this equation">#</a></span>\[s_{i+1} = s_i - g(s_i)\frac{s_i - s_{i-1}}{g(s_i) - g(s_{i-1})}.\]</div>
-<p>This expression is iterated until two successive values of <span class="math notranslate nohighlight">\(s\)</span> are less than some small number, i.e., <span class="math notranslate nohighlight">\(|s_i - s_{i-1}| &lt; tol\)</span>. Since we want the solution of <span class="math notranslate nohighlight">\(y_1(t_{\max})\)</span> to be equal to the upper boundary value <span class="math notranslate nohighlight">\(b\)</span> we can define the function</p>
+<p>In <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">shooting-example-1</span></code>, successive guesses for the unknown initial slope produced numerical solutions that moved closer to the required boundary value at <span class="math notranslate nohighlight">\(t = t_{\max}\)</span>. One approach would be to repeatedly halve the interval containing the correct value of <span class="math notranslate nohighlight">\(s\)</span>, a strategy known as the <em>bisection method</em>. A more efficient alternative is the <strong>secant method</strong> which uses previous approximations to predict and improved value of <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>The goal of the shooting method is to determine the value of <span class="math notranslate nohighlight">\(s = y'(t_0)\)</span> that satisfies the boundary condition</p>
 <div class="math notranslate nohighlight">
-\[ g(s) = b - y_n. \]</div>
-<p>Using the Secant method to find the root <span class="math notranslate nohighlight">\(g(s) = 0\)</span> will give the value of <span class="math notranslate nohighlight">\(y_2(0)\)</span>.</p>
+\[ y(t_{\max}) = b. \]</div>
+<p>Define the residual function</p>
+<div class="math notranslate nohighlight">
+\[ g(s) = b - y(t_{\max}, s), \]</div>
+<p>where <span class="math notranslate nohighlight">\(y(t_{\max}, s)\)</span> denotes the numerical solution obtained using the initial slope <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(g(s) = 0\)</span>, then the computed solution satisfies the boundary condition exact. Therefore, solving the boundary value problem reduces to finding the root of <span class="math notranslate nohighlight">\(g(s)\)</span>.</p>
+<p>The secant method generates a series of approximations</p>
+<div class="math notranslate nohighlight">
+\[s_0, \; s_1, \; s_2, \; \ldots \]</div>
+<p>that converge to a root of <span class="math notranslate nohighlight">\(g(s) = 0\)</span>. Given two previous approximations <span class="math notranslate nohighlight">\(s_{n - 1}\)</span> and <span class="math notranslate nohighlight">\(s_{n - 2}\)</span>, the next approximation is computed using</p>
+<div class="math notranslate nohighlight" id="equation-secant-method-equation">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-secant-method-equation" title="Link to this equation">#</a></span>\[ s_{n+1} = s_n - g(s_n)\frac{s_n - s_{n-1}}{g(s_n) - g(s_{n-1})}. \]</div>
+<p>The iteration continues until successive approximations differ by less than a prescribed tolerance, that is,</p>
+<div class="math notranslate nohighlight">
+\[ |s_n - s_{n-1}| &lt; tol. \]</div>
 <div class="proof example admonition" id="secant-method-example">
-<p class="admonition-title"><span class="caption-number">Example 5.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 5.2 </span></p>
 <section class="example-content" id="proof-content">
-<p>Use the secant method to calculate the next guess value <span class="math notranslate nohighlight">\(s\)</span> for the solution of the boundary value problem <a class="reference internal" href="#shooting-example-1">Example 5.2</a> and calculate the solution to the BVP using this guess value.</p>
+<p>Use the secant method to calculate the next guess value <span class="math notranslate nohighlight">\(s\)</span> for the solution of the boundary value problem <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">shooting-example-1</span></code> and calculate the solution to the BVP using this guess value.</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
-<p>From <a class="reference internal" href="#shooting-example-1">Example 5.2</a> we have solutions at the upper boundary of <span class="math notranslate nohighlight">\(y_2(t_{\max}) = 3.1712\)</span> and <span class="math notranslate nohighlight">\(y_2(t_{\max}) = 2.3784\)</span> for guess values  when <span class="math notranslate nohighlight">\(s_1 = 2\)</span> and <span class="math notranslate nohighlight">\(s_2 = 1.5\)</span> respectively. The values of <span class="math notranslate nohighlight">\(g(s_1)\)</span> and <span class="math notranslate nohighlight">\(g(s_2)\)</span> are</p>
+<p>From <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">shooting-example-1</span></code> we have solutions at the upper boundary of</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-        g(s_1) &amp;= 2 - 3.1712 = -1.1712, \\
-        g(s_2) &amp;= 2 - 2.3784 = -0.3784, 
+    y_1(1) &amp;= 3.1712, &amp; s_1 &amp;= 2, \\
+    y_1(1) &amp;= 2.3784, &amp; s_2 &amp;= 1.5.
 \end{align*} \end{split}\]</div>
-<p>therefore using equation <a class="reference internal" href="#equation-secant-method-equation">(5.3)</a> the next guess value calculated using the secant method is</p>
+<p>The values of <span class="math notranslate nohighlight">\(g(s_1)\)</span> and <span class="math notranslate nohighlight">\(g(s_2)\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    g(s_1) &amp;= 2 - 3.1712 = -1.1712, \\
+    g(s_2) &amp;= 2 - 2.3784 = -0.3784, 
+\end{align*} \end{split}\]</div>
+<p>therefore, using equation <a class="reference internal" href="#equation-secant-method-equation">(5.4)</a> the next guess value calculated using the secant method is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     s_3 &amp;= s_2 - g(s_2) \left( \frac{s_2 - s_1}{g(s_2) - g(s_1)} \right) \\
@@ -625,35 +645,13 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Here the solution at the upper boundary is <span class="math notranslate nohighlight">\(y(t_{\max}) = 2\)</span> which is equal to <span class="math notranslate nohighlight">\(2\)</span> correct to 4 decimal places.</p>
+<p>Here the solution at the upper boundary is <span class="math notranslate nohighlight">\(y(t_{\max}) = 2\)</span> which agrees to the required boundary condition <span class="math notranslate nohighlight">\(y(1) = 2\)</span> correct to 4 decimal places.</p>
 <figure class="align-default" id="bvp-example-figure-2" style="width: 600px">
-<img alt="../_images/d5668acfc36276a0ba4b427b7ddd1475d9900d72da8ae1d0cf0aa385f54244e8.png" src="../_images/d5668acfc36276a0ba4b427b7ddd1475d9900d72da8ae1d0cf0aa385f54244e8.png" />
+<img alt="../_images/0bc20446795f2f2368d97922392abdb73e7f5bfa955583533a66c86d2ab43175.png" src="../_images/0bc20446795f2f2368d97922392abdb73e7f5bfa955583533a66c86d2ab43175.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Solution of the BVP <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(y(0) = 1\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using the shooting method.</span><a class="headerlink" href="#bvp-example-figure-2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Solution of the BVP <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using the shooting method.</span><a class="headerlink" href="#bvp-example-figure-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
-</div><div class="proof algorithm admonition" id="secant-method-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 5.1 </span> (Shooting method for solving boundary value problems)</p>
-<section class="algorithm-content" id="proof-content">
-<p><strong>Inputs</strong> A system of two first-order ODEs <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, y_1, y_2)\)</span>, a domain <span class="math notranslate nohighlight">\(t\in [t_{\min}, t_{\max}]\)</span>, the boundary values <span class="math notranslate nohighlight">\(y(t_{\min}) = a\)</span> and <span class="math notranslate nohighlight">\(y(t_{\max}) = b\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol\)</span>.</p>
-<p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots, t_n)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots, \mathbf{y}_n)\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(s_0 \gets 1\)</span>, <span class="math notranslate nohighlight">\(s_1 \gets 2\)</span>, <span class="math notranslate nohighlight">\(g(s_0) \gets 1\)</span></p></li>
-<li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, 10\)</span></p>
-<ul>
-<li><p>Solve ODE using initial values <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (a, s_i)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(g(s_{i}) \gets b - y_1(t_{\max})\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(s_{i+1} \gets s_i - g(s_i) \dfrac{s_i - s_{i-1}}{g(s_i) - g(s_{i-1})}\)</span></p></li>
-<li><p>If <span class="math notranslate nohighlight">\(|s_{i+1} - s_{i}| &lt; tol\)</span></p>
-<ul>
-<li><p>Break</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Return <span class="math notranslate nohighlight">\((t_0, t_1, \ldots, t_n)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots, \mathbf{y}_n)\)</span></p></li>
-</ul>
 </section>
 </div></section>
 <section id="code">
@@ -663,39 +661,48 @@ document.write(`
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
 Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">shooting_method</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">bvals</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">shooting_method</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">bvals</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="p">[</span><span class="n">bvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s0</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">g0</span> <span class="o">=</span> <span class="n">bvals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">s</span><span class="p">,</span> <span class="n">s_old</span><span class="p">,</span> <span class="n">g_old</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="p">[</span><span class="n">bvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span>
-        <span class="n">g</span> <span class="o">=</span> <span class="n">bvals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">s_new</span> <span class="o">=</span> <span class="n">s</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">s_old</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">g</span> <span class="o">-</span> <span class="n">g_old</span><span class="p">)</span>
-        <span class="n">s</span><span class="p">,</span> <span class="n">s_old</span><span class="p">,</span> <span class="n">g_old</span> <span class="o">=</span> <span class="n">s_new</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">g</span>
-        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">s_old</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
-            <span class="k">break</span>
-        
-    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxiter</span><span class="p">):</span>
+        <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="p">[</span><span class="n">bvals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s1</span><span class="p">],</span> <span class="n">h</span><span class="p">)</span>
+        <span class="n">g1</span> <span class="o">=</span> <span class="n">bvals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">s2</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">-</span> <span class="n">g1</span> <span class="o">*</span> <span class="p">(</span><span class="n">s1</span> <span class="o">-</span> <span class="n">s0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">g1</span> <span class="o">-</span> <span class="n">g0</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s2</span> <span class="o">-</span> <span class="n">s1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+
+        <span class="n">s0</span> <span class="o">=</span> <span class="n">s1</span>
+        <span class="n">g0</span> <span class="o">=</span> <span class="n">g1</span>
+        <span class="n">s1</span> <span class="o">=</span> <span class="n">s2</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = shooting_method</span><span class="p">(</span>f, tspan, bvals, h, solver, tol<span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = shooting_method</span><span class="p">(</span>f, tspan, bvals, h, solver<span class="p">)</span>
 
-<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="n">sold</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="n">gold</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">s0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">s1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">bvals</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">s0</span><span class="p">],</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="n">g0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bvals</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
-<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">bvals</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">s</span><span class="p">],</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="w">    </span><span class="n">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bvals</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">s_new</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sold</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gold</span><span class="p">);</span>
-<span class="w">    </span><span class="n">sold</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s_new</span><span class="p">;</span>
-<span class="w">    </span><span class="n">gold</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sold</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
-<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">bvals</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">s1</span><span class="p">],</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bvals</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">g1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">g1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">g0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">s2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-8</span>
+<span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">s0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">g0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">g1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">s2</span><span class="p">;</span>
 <span class="k">end</span>
 
 <span class="k">end</span>
@@ -710,12 +717,11 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li><p><code class="docutils literal notranslate"><span class="pre">bvals</span></code> - an array of two values defining the upper and lower boundary values</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">h</span></code> - the step length used in the <code class="docutils literal notranslate"><span class="pre">solver</span></code> function</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">solver</span></code> - the name of the solver function, e.g., <code class="docutils literal notranslate"><span class="pre">euler</span></code>, <code class="docutils literal notranslate"><span class="pre">rk4</span></code> etc. (this needs to be defined elsewhere)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tol</span></code> - the convergence tolerance for the Secant method</p></li>
 </ul>
 </section>
 <section id="a-note-about-accuracy">
 <h2><span class="section-number">5.2.3. </span>A note about accuracy<a class="headerlink" href="#a-note-about-accuracy" title="Link to this heading">#</a></h2>
-<p>In <a class="reference internal" href="#secant-method-example">Example 5.3</a> we iterated the Secant method until convergence and got a very accurate solution for the value of <span class="math notranslate nohighlight">\(y(b)\)</span>. We must be careful not to forget that this solution was obtained using the Euler method which being only first-order so expect it to be relatively inaccurate for the other values in the domain.</p>
+<p>In <a class="reference internal" href="#secant-method-example">Example 5.2</a> we iterated the Secant method until convergence and got a very accurate solution for the value of <span class="math notranslate nohighlight">\(y(b)\)</span>. We must be careful not to forget that this solution was obtained using the Euler method which being only first-order so expect it to be relatively inaccurate for the other values in the domain.</p>
 <p>The exact solution to the boundary value problem used here is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
@@ -779,7 +785,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </table>
 </div>
 <figure class="align-default" id="bvp-euler-rk4-figure" style="width: 600px">
-<img alt="../_images/05e142675a96c77a5e7913ae0795f1a2c81fa6cb00eeac2cbc7f107ac530f532.png" src="../_images/05e142675a96c77a5e7913ae0795f1a2c81fa6cb00eeac2cbc7f107ac530f532.png" />
+<img alt="../_images/3df682a34327272d19ffa1016ac0f0ea19d5ea8d948248354269ef44f8831358.png" src="../_images/3df682a34327272d19ffa1016ac0f0ea19d5ea8d948248354269ef44f8831358.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using the Euler and RK4 methods with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#bvp-euler-rk4-figure" title="Link to this image">#</a></p>
 </figcaption>
@@ -879,7 +885,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -425,14 +424,14 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-explicit-runge-kutta-methods">
 <span id="erk-chapter"></span><h1><span class="section-number">2. </span>Chapter 2. Explicit Runge-Kutta Methods<a class="headerlink" href="#chapter-2-explicit-runge-kutta-methods" title="Link to this heading">#</a></h1>
 <figure class="margin align-default" id="id1">
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Voit_202_Karl_Runge.jpg/220px-Voit_202_Karl_Runge.jpg"><img alt="Carl Runge" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Voit_202_Karl_Runge.jpg/220px-Voit_202_Karl_Runge.jpg" style="width: 200px;" />
+<a class="reference internal image-reference" href="../_images/2_Karl_Runge.jpg"><img alt="Karl Runge" src="../_images/2_Karl_Runge.jpg" style="width: 200px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 2.1 </span><span class="caption-text"><a href="https://en.wikipedia.org/wiki/Carl_Runge" target="_blank">Carl Runge (1856 - 1927)</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="margin align-default" id="id2">
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Martin_Wilhelm_Kutta.jpg/250px-Martin_Wilhelm_Kutta.jpg"><img alt="Martin Kutta" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Martin_Wilhelm_Kutta.jpg/250px-Martin_Wilhelm_Kutta.jpg" style="width: 200px;" />
+<a class="reference internal image-reference" href="../_images/2_Martin_Kutta.jpg"><img alt="Martin Kutta" src="../_images/2_Martin_Kutta.jpg" style="width: 200px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 2.2 </span><span class="caption-text"><a href="https://en.wikipedia.org/wiki/Martin_Kutta" target="_blank">Martin Kutta (1867 - 1944)</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
@@ -465,14 +464,14 @@ document.write(`
 <p>So comparing equations <a class="reference internal" href="#equation-rk2-method-equation">(2.2)</a> and <a class="reference internal" href="#equation-2-stage-rk-method">(2.3)</a> we can see that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    b_1 &amp;= \frac{1}{2}, &amp;
-    b_2 &amp;= \frac{1}{2}, \\
     c_1 &amp;= 0, &amp;
     a_{11} &amp;= 0, &amp;
     a_{12} &amp;= 0, \\
     c_2 &amp;= 1, &amp;
     a_{21} &amp;= 1, &amp;
-    a_{22} &amp;= 0.
+    a_{22} &amp;= 0, \\
+    &amp;&amp; b_1 &amp;= \frac{1}{2}, &amp;
+    b_2 &amp;= \frac{1}{2}, \\
 \end{align*} \end{split}\]</div>
 <section id="butcher-tableau">
 <span id="butcher-tableau-section"></span><h3><span class="section-number">2.1.1. </span>Butcher tableau<a class="headerlink" href="#butcher-tableau" title="Link to this heading">#</a></h3>
@@ -693,7 +692,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>

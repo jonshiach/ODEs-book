@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.5. QR decomposition &#8212; Runge-Kutta Methods</title>
+    <title>6.4. QR decomposition &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -55,7 +55,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -67,8 +67,8 @@
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.6. Calculating eigenvalues using QR decomposition" href="6.6_Calculating_eigenvalues_using_QR.html" />
-    <link rel="prev" title="6.4. Cholesky decomposition" href="6.4_Cholesky_decomposition.html" />
+    <link rel="next" title="6.6. Matrix decomposition exercises" href="6.7_Matrix_decomposition_exercises.html" />
+    <link rel="prev" title="6.3. Cholesky decomposition" href="6.3_Cholesky_decomposition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -214,8 +214,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -234,12 +235,11 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_Solving_systems_using_LU.html">6.2. Solving systems of linear equations using LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_LUP_decomposition.html">6.3. LU decomposition with partial pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.4_Cholesky_decomposition.html">6.4. Cholesky decomposition</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.5. QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.6_Calculating_eigenvalues_using_QR.html">6.6. Calculating eigenvalues using QR decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.7. Matrix decomposition exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.4. QR decomposition</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="D_Lecture_slides.html">Lecture Slides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -403,17 +402,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-the-gram-schmidt-process">6.5.1. QR decomposition using the Gram-Schmidt process</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6.4. QR decomposition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-the-gram-schmidt-process">6.4.1. QR decomposition using the Gram-Schmidt process</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-diagonal-elements-of-r">Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.5.2. QR decomposition using Householder reflections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.4.2. QR decomposition using Householder reflections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-orthogonality">6.4.3. Loss of orthogonality</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-orthogonality">6.5.3. Loss of orthogonality</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-eigenvalues-using-qr-decomposition">6.5. Calculating eigenvalues using QR decomposition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-qr-algorithm">6.5.1. The QR algorithm</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -425,25 +428,25 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="qr-decomposition">
-<span id="qr-section"></span><h1><span class="section-number">6.5. </span>QR decomposition<a class="headerlink" href="#qr-decomposition" title="Link to this heading">#</a></h1>
-<p>QR decomposition is another decomposition method that factorises a matrix in the product of two matrices <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(R\)</span> such that</p>
+<span id="qr-section"></span><h1><span class="section-number">6.4. </span>QR decomposition<a class="headerlink" href="#qr-decomposition" title="Link to this heading">#</a></h1>
+<p>QR decomposition is another decomposition method that factorises a matrix in the product of an orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and an upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    A = QR,
+    A = QR.
 \end{align*} \]</div>
-<p>where <span class="math notranslate nohighlight">\(Q\)</span> is an orthogonal matrix and <span class="math notranslate nohighlight">\(R\)</span> is an upper triangular matrix.</p>
+<p>QR decomposition is particularly useful for solving least-squares problems and computing eigenvalues. Unlike LU decomposition, QR decomposition can be applied to rectangular matrices and is numerically more stable.</p>
 <div class="proof definition admonition" id="orthogonal-vector-definition">
-<p class="admonition-title"><span class="caption-number">Definition 6.2 </span> (Orthogonal vectors)</p>
+<p class="admonition-title"><span class="caption-number">Definition 6.3 </span> (Orthogonal vectors)</p>
 <section class="definition-content" id="proof-content">
-<p>A set of vectors <span class="math notranslate nohighlight">\(\lbrace \mathbf{v}_1 ,\mathbf{v}_2 ,\mathbf{v}_3 ,\dots \rbrace\)</span> is said to be <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i \cdot \mathbf{v}_j =0\)</span> for <span class="math notranslate nohighlight">\(i\not= j\)</span>. Furthermore the set is said to be <strong>orthonormal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> are all unit vectors.</p>
+<p>A set of vectors <span class="math notranslate nohighlight">\(\{ \mathbf{v}_1 ,\mathbf{v}_2 ,\mathbf{v}_3 ,\dots \}\)</span> is said to be <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i \cdot \mathbf{v}_j =0\)</span> for <span class="math notranslate nohighlight">\(i\not= j\)</span>. Furthermore the set is said to be <strong>orthonormal</strong> if <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> are unit vectors.</p>
 </section>
 </div><div class="proof definition admonition" id="orthogonal-matrix-definition">
-<p class="admonition-title"><span class="caption-number">Definition 6.3 </span> (Orthogonal matrix)</p>
+<p class="admonition-title"><span class="caption-number">Definition 6.4 </span> (Orthogonal matrix)</p>
 <section class="definition-content" id="proof-content">
-<p>An <strong>orthogonal matrix</strong> is a matrix where the columns are a set of orthonormal vectors. If <span class="math notranslate nohighlight">\(A\)</span> is an orthogonal matrix if</p>
+<p>An <strong>orthogonal matrix</strong> is a matrix whose columns form an orthonormal set. Equivalently</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    A^\mathsf{T} A=I.
+    A^\mathsf{T} A = AA^\mathsf{T} = I.
 \end{align*} \]</div>
 </section>
 </div><p>For example consider the matrix</p>
@@ -470,10 +473,9 @@ document.write(`
         0 &amp; 1
     \end{pmatrix}=I.
 \end{align*} \end{split}\]</div>
-<p>Futhermore it is an orthonormal matrix since the magnitude of the columns for <span class="math notranslate nohighlight">\(A\)</span> are both 1.</p>
 <hr class="docutils" />
 <section id="qr-decomposition-using-the-gram-schmidt-process">
-<span id="qr-gramschmidt-section"></span><h2><span class="section-number">6.5.1. </span>QR decomposition using the Gram-Schmidt process<a class="headerlink" href="#qr-decomposition-using-the-gram-schmidt-process" title="Link to this heading">#</a></h2>
+<span id="qr-gramschmidt-section"></span><h2><span class="section-number">6.4.1. </span>QR decomposition using the Gram-Schmidt process<a class="headerlink" href="#qr-decomposition-using-the-gram-schmidt-process" title="Link to this heading">#</a></h2>
 <p>Consider the <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> represented as the concatenation of the column vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{pmatrix}
@@ -496,17 +498,17 @@ document.write(`
 </figure>
 <p>We begin by letting <span class="math notranslate nohighlight">\(\mathbf{u}_1 = \mathbf{a}_1\)</span> and seek to find a vector <span class="math notranslate nohighlight">\(\mathbf{u}_2\)</span> that is orthogonal to <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span> and in the same span as <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>. To do this we subtract the <a href="https://en.wikipedia.org/wiki/Vector_projection" target="_blank">vector projection</a> of <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
-\[ \mathbf{u}_2 = \mathbf{a}_2 - \left( \frac{\mathbf{q}_1 \cdot \mathbf{a}_1}{\mathbf{q}_1 \cdot \mathbf{u}_1} \right) \mathbf{u}_1.\]</div>
+\[ \mathbf{u}_2 = \mathbf{a}_2 - \left( \frac{\mathbf{u}_1 \cdot \mathbf{a}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \right) \mathbf{u}_1.\]</div>
 <p>We can simplify things by normalising <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{q}_1 = \dfrac{\mathbf{u}_1}{\|\mathbf{u}_1\|}\)</span> so we have</p>
 <div class="math notranslate nohighlight" id="equation-gramschmidt-u2-equation">
-<span class="eqno">(6.3)<a class="headerlink" href="#equation-gramschmidt-u2-equation" title="Link to this equation">#</a></span>\[ \mathbf{u}_2 = \mathbf{a}_2 - (\mathbf{q}_1 \cdot \mathbf{a}_2) \mathbf{q}_1, \]</div>
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-gramschmidt-u2-equation" title="Link to this equation">#</a></span>\[ \mathbf{u}_2 = \mathbf{a}_2 - (\mathbf{q}_1 \cdot \mathbf{a}_2) \mathbf{q}_1, \]</div>
 <p>which we also normalise to give <span class="math notranslate nohighlight">\(\mathbf{q}_2 = \dfrac{\mathbf{u}_2}{\|\mathbf{u}_2\|}\)</span>. For the next vector <span class="math notranslate nohighlight">\(\mathbf{a}_3\)</span> we want the vector <span class="math notranslate nohighlight">\(\mathbf{u}_3\)</span> to be orthogonal to both <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span> so we subtract both the vector projections of <span class="math notranslate nohighlight">\(\mathbf{a}_3\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span></p>
 <div class="math notranslate nohighlight" id="equation-gramschmidt-u3-equation">
-<span class="eqno">(6.4)<a class="headerlink" href="#equation-gramschmidt-u3-equation" title="Link to this equation">#</a></span>\[ \mathbf{u}_3 = \mathbf{a}_3 - (\mathbf{q}_1 \cdot \mathbf{a}_3) \mathbf{q}_1 - (\mathbf{q}_2 \cdot \mathbf{a}_3) \mathbf{q}_2, \]</div>
-<p>which is normalised to give <span class="math notranslate nohighlight">\(\mathbf{q}_3\)</span>. Using <span class="math notranslate nohighlight">\(\mathbf{u}_i = (\mathbf{q}_i \cdot \mathbf{a}_i) \mathbf{q}_i\)</span> and rearranging <a class="reference internal" href="#equation-gramschmidt-u2-equation">(6.3)</a> and <a class="reference internal" href="#equation-gramschmidt-u3-equation">(6.4)</a> to make <span class="math notranslate nohighlight">\(\mathbf{a}_i\)</span> the subject and</p>
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-gramschmidt-u3-equation" title="Link to this equation">#</a></span>\[ \mathbf{u}_3 = \mathbf{a}_3 - (\mathbf{q}_1 \cdot \mathbf{a}_3) \mathbf{q}_1 - (\mathbf{q}_2 \cdot \mathbf{a}_3) \mathbf{q}_2, \]</div>
+<p>which is normalised to give <span class="math notranslate nohighlight">\(\mathbf{q}_3\)</span>. Using <span class="math notranslate nohighlight">\(\mathbf{u}_i = (\mathbf{q}_i \cdot \mathbf{a}_i) \mathbf{q}_i\)</span> and rearranging <a class="reference internal" href="#equation-gramschmidt-u2-equation">(6.4)</a> and <a class="reference internal" href="#equation-gramschmidt-u3-equation">(6.5)</a> to make <span class="math notranslate nohighlight">\(\mathbf{a}_i\)</span> the subject and</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-  \mathbf{a}_1 &amp;= (\mathbf{q}_1 \cdot \mathbf{a}_1), \\
+  \mathbf{a}_1 &amp;= (\mathbf{q}_1 \cdot \mathbf{a}_1) \mathbf{q}_1, \\
   \mathbf{a}_2 &amp;= (\mathbf{q}_1 \cdot \mathbf{a}_2) \mathbf{q}_1 + (\mathbf{q}_2 \cdot \mathbf{a}_2) \mathbf{q}_2, \\
   \mathbf{a}_3 &amp;= (\mathbf{q}_1 \cdot \mathbf{a}_3) \mathbf{q}_1 + (\mathbf{q}_2 \cdot \mathbf{a}_3) \mathbf{q}_2 + (\mathbf{q}_3 \cdot \mathbf{a}_3) \mathbf{q}_3, \\
   &amp; \vdots 
@@ -523,7 +525,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} R = \begin{pmatrix}
   (\mathbf{q}_1 \cdot \mathbf{a}_1) &amp; (\mathbf{q}_1 \cdot \mathbf{a}_2) &amp; \cdots &amp; (\mathbf{q}_1 \cdot \mathbf{a}_n) \\
-  0 &amp; (\mathbf{q}_2 \cdot \mathbf{a}_2) &amp; \cdots &amp; (\mathbf{q}_1 \cdot \mathbf{a}_n) \\
+  0 &amp; (\mathbf{q}_2 \cdot \mathbf{a}_2) &amp; \cdots &amp; (\mathbf{q}_2 \cdot \mathbf{a}_n) \\
   \vdots &amp; \ddots &amp; \ddots &amp; \vdots \\
   0 &amp; \cdots &amp; 0 &amp; (\mathbf{q}_n \cdot \mathbf{a}_n)
 \end{pmatrix}. \end{split}\]</div>
@@ -531,24 +533,20 @@ document.write(`
 <h3>Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span><a class="headerlink" href="#positive-diagonal-elements-of-r" title="Link to this heading">#</a></h3>
 <p>It has become standard convention to impose a condition that the diagonal elements of <span class="math notranslate nohighlight">\(R\)</span> must be positive so that we get a unique factorisation. Consider <span class="math notranslate nohighlight">\(A = QR\)</span> then multiplying a column of <span class="math notranslate nohighlight">\(Q\)</span> by <span class="math notranslate nohighlight">\(-1\)</span> and the corresponding row of <span class="math notranslate nohighlight">\(R\)</span> by <span class="math notranslate nohighlight">\(-1\)</span> doesn’t change the product <span class="math notranslate nohighlight">\(QR\)</span>. So if any of the diagonal elements of <span class="math notranslate nohighlight">\(R\)</span> are negative we multiply the corresponding column of <span class="math notranslate nohighlight">\(Q\)</span> and row of <span class="math notranslate nohighlight">\(R\)</span> by <span class="math notranslate nohighlight">\(-1\)</span>.</p>
 <div class="proof algorithm admonition" id="qr-gramschmidt-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 6.7 </span> (QR decomposition using the Gram-Schmidt process)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 6.5 </span> (QR decomposition using the Gram-Schmidt process)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p><strong>Outputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and and <span class="math notranslate nohighlight">\(n \times n\)</span> upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
 <ul class="simple">
 <li><p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span> do</p>
 <ul>
-<li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, j - 1\)</span> do</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(r_{ij} \gets \mathbf{q}_i \cdot \mathbf{a}_j\)</span></p></li>
-</ul>
-</li>
+<li><p><span class="math notranslate nohighlight">\(r_{ij} \gets \mathbf{q}_i \cdot \mathbf{a}_j, \qquad i = 1, \ldots, j - 1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{u}_j \gets \mathbf{a}_j - \displaystyle\sum_{i=1}^{j-1} r_{ij} \mathbf{q}_i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(r_{jj} \gets \| \mathbf{u}_j \|\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{q}_j \gets \dfrac{\mathbf{u}_j}{r_{jj}}\)</span></p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(Q \gets (\mathbf{q}_1, \mathbf{q}_2, \ldots, \mathbf{q}_2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q \gets (\mathbf{q}_1, \mathbf{q}_2, \ldots, \mathbf{q}_n)\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
 <ul>
 <li><p>If <span class="math notranslate nohighlight">\(r_{ii} &lt; 0\)</span> then</p>
@@ -563,7 +561,7 @@ document.write(`
 </ul>
 </section>
 </div><div class="proof example admonition" id="qr-gramschmidt-example">
-<p class="admonition-title"><span class="caption-number">Example 6.8 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 6.7 </span></p>
 <section class="example-content" id="proof-content">
 <p>Calculate the QR decomposition of the following matrix using the Gram-Schmidt process</p>
 <div class="math notranslate nohighlight">
@@ -663,90 +661,29 @@ document.write(`
 \end{align*} \end{split}\]</div>
 </section>
 </div></section>
-<section id="code">
-<h3>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h3>
-<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">qr_gramschmidt()</span></code> which calculates the QR decomposition of a matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> using the Gram-Schmidt process.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-0">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">qr_gramschmidt</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-
-    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
-
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
-            <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[:,</span><span class="n">j</span><span class="p">])</span>
-            <span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
-        
-        <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">])</span>
-        <span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">/</span> <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-1">
-MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[Q, R] = qr_gramschmidt</span><span class="p">(</span>A<span class="p">)</span>
-
-<span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
-<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
-<span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-
-<span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">        </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">),</span><span class="w"> </span><span class="n">A</span><span class="p">(:,</span><span class="nb">j</span><span class="p">));</span>
-<span class="w">        </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">);</span>
-<span class="w">    </span><span class="k">end</span>
-
-<span class="w">    </span><span class="n">R</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">));</span>
-<span class="w">    </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="nb">j</span><span class="p">);</span>
-<span class="k">end</span>
-
-<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">        </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,:);</span>
-<span class="w">        </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">);</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="k">end</span>
-
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="qr-decomposition-using-householder-reflections">
-<span id="qr-householder-section"></span><h2><span class="section-number">6.5.2. </span>QR decomposition using Householder reflections<a class="headerlink" href="#qr-decomposition-using-householder-reflections" title="Link to this heading">#</a></h2>
+<span id="qr-householder-section"></span><h2><span class="section-number">6.4.2. </span>QR decomposition using Householder reflections<a class="headerlink" href="#qr-decomposition-using-householder-reflections" title="Link to this heading">#</a></h2>
 <p>Another method we can use to calculate the QR decomposition of a matrix is by the use of <strong>Householder reflections</strong>.</p>
 <div class="proof definition admonition" id="definition-4">
-<p class="admonition-title"><span class="caption-number">Definition 6.4 </span> (Householder matrix)</p>
+<p class="admonition-title"><span class="caption-number">Definition 6.5 </span> (Householder matrix)</p>
 <section class="definition-content" id="proof-content">
 <p>The Householder matrix is an orthogonal reflection matrix of the form</p>
 <div class="math notranslate nohighlight" id="equation-householder-equation">
-<span class="eqno">(6.5)<a class="headerlink" href="#equation-householder-equation" title="Link to this equation">#</a></span>\[ H = I - 2 \frac{\mathbf{v} \mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}, \]</div>
+<span class="eqno">(6.6)<a class="headerlink" href="#equation-householder-equation" title="Link to this equation">#</a></span>\[ H = I - 2 \frac{\mathbf{v} \mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}, \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is a non-zero column vector. The matrix <span class="math notranslate nohighlight">\(H\)</span> is symmetric and orthogonal.</p>
 </section>
 </div><figure class="align-default" id="householder-1-figure">
 <a class="reference internal image-reference" href="../_images/householder_1.svg"><img alt="../_images/householder_1.svg" src="../_images/householder_1.svg" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane normal to the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 6.2</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane represented by the dashed line so that it is parallel to the first basis vector of the standard basis <span class="math notranslate nohighlight">\(\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathsf{T}\)</span>. The Householder matrix that achieves this reflection is written in terms of the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> which is orthogonal to the dashed line and calculated using</p>
+<p>Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 6.2</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane so that it is parallel to the first basis vector of the standard basis <span class="math notranslate nohighlight">\(\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathsf{T}\)</span>. The Householder matrix that achieves this reflection is written in terms of the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> which is normal to the reflecting hyperplane</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{v} = \mathbf{x} - \|\mathbf{x}\|\mathbf{e}_1. \]</div>
-<p>If the magnitude of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is close to being parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> will be close to <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> and the calculation of <a class="reference internal" href="#equation-householder-equation">(6.5)</a> will involve the division by a number close to zero. To overcome this we use a Householder transformation to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead of <span class="math notranslate nohighlight">\(+\mathbf{e}_1\)</span>.</p>
+<p>If the magnitude of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is close to being parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> will be close to <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> and the calculation of <a class="reference internal" href="#equation-householder-equation">(6.6)</a> will involve the division by a number close to zero. To overcome this we use a Householder transformation to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead of <span class="math notranslate nohighlight">\(+\mathbf{e}_1\)</span>.</p>
 <figure class="align-default" id="householder-2-figure">
 <a class="reference internal image-reference" href="../_images/householder_2.svg"><img alt="../_images/householder_2.svg" src="../_images/householder_2.svg" style="width: 450px;" />
 </a>
@@ -802,15 +739,16 @@ MATLAB</label><div class="sd-tab-content docutils">
 \[ \begin{align*}
   Q = H_1H_2 \ldots H_{m-1}.
 \end{align*} \]</div>
+<p>Since each Householder matrix is orthogonal, their product is also orthogonal. Therefore <span class="math notranslate nohighlight">\(Q\)</span> is automatically orthogonal.</p>
 <div class="proof algorithm admonition" id="qr-householder-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 6.8 </span> (QR decomposition using Householder reflections)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 6.6 </span> (QR decomposition using Householder reflections)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs:</strong> An <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p><strong>Outputs:</strong> An <span class="math notranslate nohighlight">\(n \times n\)</span> orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> and and <span class="math notranslate nohighlight">\(n \times n\)</span> upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(A = QR\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(Q \gets I_m\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R \gets A\)</span></p></li>
-<li><p>For <span class="math notranslate nohighlight">\(j = 1, \ldots, m - 1\)</span> do</p>
+<li><p>for <span class="math notranslate nohighlight">\(j = 1, \ldots, \min(m - 1, n)\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{x} \gets\)</span> column <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(R\)</span> starting at the <span class="math notranslate nohighlight">\(j\)</span>-th row</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \mathbf{x} - \operatorname{sign} (x_1) \|\mathbf{x}\|\mathbf{e}_1\)</span></p></li>
@@ -820,7 +758,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <li><p><span class="math notranslate nohighlight">\(Q \gets Q H\)</span></p></li>
 </ul>
 </li>
-<li><p>For <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
+<li><p>for <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> do</p>
 <ul>
 <li><p>If <span class="math notranslate nohighlight">\(R(i,i) &lt; 0\)</span> then</p>
 <ul>
@@ -834,7 +772,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </ul>
 </section>
 </div><div class="proof example admonition" id="qr-householder-example">
-<p class="admonition-title"><span class="caption-number">Example 6.9 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 6.8 </span></p>
 <section class="example-content" id="proof-content">
 <p>Calculate the QR decomposition of the following matrix using Householder reflections</p>
 <div class="math notranslate nohighlight">
@@ -1015,83 +953,250 @@ MATLAB</label><div class="sd-tab-content docutils">
   \end{pmatrix} = I.
 \end{align*} \end{split}\]</div>
 </section>
-</div><section id="id1">
-<h3>Code<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">qr_householder()</span></code> that calculates the QR decomposition of an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> using Householder reflections. This has been used to calculate the QR decomposition of the matrix from <a class="reference internal" href="#qr-householder-example">Example 6.9</a>.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-2">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">qr_householder</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    
-    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span>  <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">i</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-        <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-        <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">:,</span><span class="n">i</span><span class="p">:]</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-        <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
-        <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="n">Q</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-3">
-MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[Q, R] = qr_householder</span><span class="p">(</span>A<span class="p">)</span>
-
-<span class="p">[</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
-<span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
-<span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
-
-<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">sign</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
-<span class="w">    </span><span class="k">else</span>
-<span class="w">        </span><span class="n">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
-<span class="w">    </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="nb">i</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="o">&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
-<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">H</span><span class="p">;</span>
-<span class="k">end</span>
-
-<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">        </span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="p">(</span><span class="nb">i</span><span class="p">,:);</span>
-<span class="w">        </span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">Q</span><span class="p">(:,</span><span class="nb">i</span><span class="p">);</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="k">end</span>
-
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
+</div></section>
 <hr class="docutils" />
 <section id="loss-of-orthogonality">
-<h2><span class="section-number">6.5.3. </span>Loss of orthogonality<a class="headerlink" href="#loss-of-orthogonality" title="Link to this heading">#</a></h2>
-<p>Like any numerical technique, the QR decomposition methods shown here are prone to computational rounding errors. If <span class="math notranslate nohighlight">\(Q\)</span> is perfectly orthogonal then <span class="math notranslate nohighlight">\(Q^\mathsf{T}Q = I\)</span>, but if there is bound to be some small error. If we let this error be <span class="math notranslate nohighlight">\(E\)</span> then <span class="math notranslate nohighlight">\(Q^\mathsf{T}Q = I + E\)</span>. Rearranging gives</p>
+<h2><span class="section-number">6.4.3. </span>Loss of orthogonality<a class="headerlink" href="#loss-of-orthogonality" title="Link to this heading">#</a></h2>
+<p>Like any numerical technique, the QR decomposition methods shown here are prone to computational rounding errors. If <span class="math notranslate nohighlight">\(Q\)</span> is perfectly orthogonal then <span class="math notranslate nohighlight">\(Q^\mathsf{T}Q = I\)</span>, but if there is bound to be some small error, i.e.,</p>
 <div class="math notranslate nohighlight">
-\[ \| Q^\mathsf{T}Q - I\| = E,\]</div>
-<p>which is known as the Frobenius norm and is a measure of the <strong>loss of orthogonality</strong>.</p>
+\[ Q^\mathsf{T}Q = I + E \]</div>
+<p>where <span class="math notranslate nohighlight">\(E\)</span> is the orthogonality error matrix. A single value for the loss of orthogonality can be computed using</p>
+<div class="math notranslate nohighlight">
+\[ \| E \|_F = \| Q^\mathsf{T}Q - I \|_F, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\| \cdot \|_F\)</span> is the Frobenius norm defined by</p>
+<div class="math notranslate nohighlight">
+\[ \| A \|_F = \sqrt{ \displaystyle\sum_{i=1}^m \displaystyle\sum_{j=1}^n |a_{ij}|^2}. \]</div>
 <p>The both QR decomposition methods shown here use an iterative approach where we orthogonalised the columns of the <span class="math notranslate nohighlight">\(A\)</span> matrix in turn based upon the previous iterations. So an error in column <span class="math notranslate nohighlight">\(i\)</span> will have a knock on effect on all subsequent columns. To analyse the methods, the QR decomposition of a random <span class="math notranslate nohighlight">\(200 \times 200\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> was computed using the Gram-Schmidt process and Householder reflections. The Frobenius norm was calculated for the first <span class="math notranslate nohighlight">\(n\)</span> columns of <span class="math notranslate nohighlight">\(Q\)</span> where <span class="math notranslate nohighlight">\(n = 1 \ldots 200\)</span> giving the loss of orthogonality for those iterations and plotted in below.</p>
-<figure class="align-default">
-<img alt="../_images/ae754b3b0821552012188e3c1b33f48b5d261bcb030734ba8b616dfe8eee7379.png" src="../_images/ae754b3b0821552012188e3c1b33f48b5d261bcb030734ba8b616dfe8eee7379.png" />
+<figure class="align-default" id="id3">
+<img alt="../_images/8c29ccc6ef91afce33996762c26a187b47339f15013540a2ef8db11eca090493.png" src="../_images/8c29ccc6ef91afce33996762c26a187b47339f15013540a2ef8db11eca090493.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Comparisons between the loss of orthogonality using Gram-Schmidt and Householder reflections to compute the QR decomposition of a 200 column matrix.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
 </figure>
-<p>Here we can see that computing QR decomposition using Householder reflections is less prone to orthogonality errors than using the Gram-Schmidt process.</p>
+<p>The loss of orthogonality grows much more slowly for Householder reflections than for classical Gram-Schmidt. For this reason, Householder QR is the method used in most numerical linear algebra software.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="calculating-eigenvalues-using-qr-decomposition">
+<span id="eigenvalues-using-qr-decomposition-section"></span><h1><span class="section-number">6.5. </span>Calculating eigenvalues using QR decomposition<a class="headerlink" href="#calculating-eigenvalues-using-qr-decomposition" title="Link to this heading">#</a></h1>
+<p><a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">Eigenvalues and eigenvectors</a> feature prominently in the study of numerical methods for ODEs. Given a system of ODEs, the eigenvalues of the coefficient matrix provide information about the stability, divergence, oscillatory behavior, and constant solutions of the system.</p>
+<div class="proof definition admonition" id="eigenvalue-definition">
+<p class="admonition-title"><span class="caption-number">Definition 6.6 </span> (Eigenvalue)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix. A scalar <span class="math notranslate nohighlight">\(\lambda\)</span> is an <strong>eigenvalue</strong> of <span class="math notranslate nohighlight">\(A\)</span> if there exists a non-zero vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eigenvalue-definition-equation">
+<span class="eqno">(6.7)<a class="headerlink" href="#equation-eigenvalue-definition-equation" title="Link to this equation">#</a></span>\[A \mathbf{v} = \lambda \mathbf{v}.\]</div>
+<p>The vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is called the <strong>eigenvector</strong> associated with the eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</section>
+</div><p>Rearranging equation <a class="reference internal" href="#equation-eigenvalue-definition-equation">(6.7)</a> we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    A \mathbf{v} &amp;= \lambda \mathbf{v} \\
+    (A - \lambda I) \mathbf{v} &amp;= \mathbf{0}.
+\end{align*} \end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{v} \ne \mathbf{0}\)</span>, the homogeneous system <span class="math notranslate nohighlight">\((A - \lambda I) \mathbf{v} = \mathbf{0}\)</span> has non-trivial solution. This occurs if and only if <span class="math notranslate nohighlight">\(A - \lambda I\)</span> is singular, which means</p>
+<div class="math notranslate nohighlight" id="equation-eigenvalue-determinant-formula-equation">
+<span class="eqno">(6.8)<a class="headerlink" href="#equation-eigenvalue-determinant-formula-equation" title="Link to this equation">#</a></span>\[ \det(A - \lambda I) = 0.\]</div>
+<p>For example, consider the eigenvalues of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \begin{pmatrix} 2 &amp; 1 \\ 2 &amp; 3 \end{pmatrix}.\end{split}\]</div>
+<p>Using equation <a class="reference internal" href="#equation-eigenvalue-determinant-formula-equation">(6.8)</a></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \det \begin{pmatrix} 2 - \lambda &amp; 1 \\ 2 &amp; 3 - \lambda \end{pmatrix} &amp;= 0 \\
+    \lambda^2 - 5 \lambda + 4 &amp;= 0 \\
+    (\lambda - 1)(\lambda - 4) &amp;= 0
+\end{align*} \end{split}\]</div>
+<p>so the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = 4\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = 1\)</span> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The problem with using determinants to calculate eigenvalues is that it is too computationally expensive for larger matrices.</p>
+<hr class="docutils" />
+<section id="the-qr-algorithm">
+<h2><span class="section-number">6.5.1. </span>The QR algorithm<a class="headerlink" href="#the-qr-algorithm" title="Link to this heading">#</a></h2>
+<p>Although the characteristic polynomial can be used to determine eigenvalues analytically for small matrices, it becomes computationally expensive and numerically unreliable for large matrices. Modern numerical software therefore uses iterative methods such as the QR algorithm.</p>
+<p>The <strong>QR algorithm</strong> is a method of computing the eigenvalues of a square matrix <span class="math notranslate nohighlight">\(A\)</span>. Let</p>
+<div class="math notranslate nohighlight">
+\[ A_0 = A, \]</div>
+<p>and for <span class="math notranslate nohighlight">\(k = 0, 1, \ldots, \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    A_k &amp;= Q_k R_k,\\
+    A_{k+1} &amp;= R_k Q_k.
+\end{align*} \end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(Q_k\)</span> is orthogonal then <span class="math notranslate nohighlight">\(Q^{-1} = Q^T\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[ A_{k+1} = R_kQ_k = Q_k^{-1} (Q_kR_k) Q_k = Q^{-1}A_kQ_k = Q_k^\mathrm{T}A_kQ_k. \]</div>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[ A_{k+1} = Q_k^\mathsf{T} A_k Q_k, \]</div>
+<p>each iterate is similar to the previous iterate. Therefore all matrices <span class="math notranslate nohighlight">\(A_0, A_1, A_2, \ldots \)</span> have exactly the same eigenvalues. Under suitable conidtions, <span class="math notranslate nohighlight">\(A_k\)</span> converges to an upper triangular matrix.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A_{k \to \infty} =
+\begin{pmatrix}
+    \lambda_1 &amp; \star &amp; \cdots &amp; \star \\
+    0 &amp; \lambda_2 &amp; \ddots &amp; \vdots \\
+    \vdots &amp; \ddots &amp; \ddots &amp; \star \\
+    0 &amp; \cdots &amp; 0 &amp; \lambda_n 
+\end{pmatrix}. \end{split}\]</div>
+<div class="proof theorem admonition" id="theorem-8">
+<p class="admonition-title"><span class="caption-number">Theorem 6.4 </span> (QR algorithm)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(A_0 = A\)</span> and suppose</p>
+<div class="math notranslate nohighlight">
+\[ A_k = Q_kR_k, \]</div>
+<p>is the QR decomposition of <span class="math notranslate nohighlight">\(A_k\)</span>. Define</p>
+<div class="math notranslate nohighlight">
+\[ A_{k+1} = R_kQ_k. \]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[ A_{k+1} = Q_k^\mathsf{T} A_k Q_k, \]</div>
+<p>so <span class="math notranslate nohighlight">\(A_{k+1}\)</span> is similar to <span class="math notranslate nohighlight">\(A_k\)</span> and therefore has the same eigenvalues.</p>
+</section>
+</div><div class="proof algorithm admonition" id="qr-algorithm">
+<p class="admonition-title"><span class="caption-number">Algorithm 6.7 </span> (The QR algorithm)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs:</strong> An <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol\)</span>.</p>
+<p><strong>Outputs:</strong> A vector <span class="math notranslate nohighlight">\((\lambda_1, \lambda_2, \ldots, \lambda_n)\)</span> containing the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<ul class="simple">
+<li><p>for <span class="math notranslate nohighlight">\(k = 1, 2, \ldots\)</span></p>
+<ul>
+<li><p>Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \gets R Q\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\max(|a_{ij}| \text{ for } i &gt; j) &lt; tol\)</span></p>
+<ul>
+<li><p>Break</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Return <span class="math notranslate nohighlight">\(\operatorname{diag}(A)\)</span></p></li>
+</ul>
+</section>
+</div><div class="proof example admonition" id="qr-algorithm-example">
+<p class="admonition-title"><span class="caption-number">Example 6.9 </span></p>
+<section class="example-content" id="proof-content">
+<p>Use the QR algorithm to compute the eigenvalues of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}, \end{split}\]</div>
+<p>using an accuracy tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span>.</p>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A_0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    Q_0 &amp;= \begin{pmatrix} 
+         0.3162 &amp; 0.9487 \\ 
+         0.9487 &amp; -0.3162 
+    \end{pmatrix}, \\
+    R_0 &amp;= \begin{pmatrix} 
+        3.1623 &amp; 4.4272 \\
+        0 &amp; 0.6325
+    \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>and calculate <span class="math notranslate nohighlight">\(A_1 = R_0Q_0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    A_1 &amp;= 
+    \begin{pmatrix} 
+        3.1623 &amp; 4.4272 \\
+        0 &amp; 0.6325
+    \end{pmatrix}
+    \begin{pmatrix} 
+        0.3162 &amp; 0.9487 \\ 
+        0.9487 &amp; -0.3162 
+    \end{pmatrix} \\
+    &amp;=
+    \begin{pmatrix}
+        5.2 &amp; 1.6 \\
+        0.6 &amp; -0.2 
+    \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>Calculate the QR decomposition of <span class="math notranslate nohighlight">\(A_1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    Q_1 &amp;=
+    \begin{pmatrix}
+        0.9943 &amp; 0.1146 \\
+        0.1146 &amp; -0.9934
+    \end{pmatrix}, \\
+    R_1 &amp;= 
+    \begin{pmatrix}
+        5.2345 &amp; 1.5665 \\
+        0 &amp; 0.3821
+    \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>and calculate <span class="math notranslate nohighlight">\(A_2 = R_1Q_1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    A_2 &amp;=
+    \begin{pmatrix}
+        5.2345 &amp; 1.5665 \\
+        0 &amp; 0.3821
+    \end{pmatrix}
+    \begin{pmatrix}
+        0.9943 &amp; 0.1146 \\
+        0.1146 &amp; -0.9934
+    \end{pmatrix} \\
+    &amp;=
+    \begin{pmatrix}
+        5.3796 &amp; -0.9562 \\
+        0.0438 &amp; -0.3796
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Continuing the iteration gives the sequence of diagonal estimates shown below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\lambda_1\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\lambda_2\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\max(|a_{ij}|, i &gt; j)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1.000000</p></td>
+<td class="text-center"><p>4.000000</p></td>
+<td class="text-center"><p>3.000000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>5.200000</p></td>
+<td class="text-center"><p>-0.200000</p></td>
+<td class="text-center"><p>0.600000</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>2</p></td>
+<td class="text-center"><p>5.379562</p></td>
+<td class="text-center"><p>-0.379562</p></td>
+<td class="text-center"><p>0.043796</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>3</p></td>
+<td class="text-center"><p>5.371753</p></td>
+<td class="text-center"><p>-0.371753</p></td>
+<td class="text-center"><p>0.003026</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4</p></td>
+<td class="text-center"><p>5.372318</p></td>
+<td class="text-center"><p>-0.372318</p></td>
+<td class="text-center"><p>0.000210</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>5</p></td>
+<td class="text-center"><p>5.372279</p></td>
+<td class="text-center"><p>-0.372279</p></td>
+<td class="text-center"><p>0.000015</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Using the characteristic polynomial to compute the actual eigenvalues</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \det \begin{pmatrix} 1 - \lambda &amp; 2 \\ 3 &amp; 4 - \lambda \end{pmatrix} = \lambda^2 - 5 \lambda - 2,
+\end{align*} \end{split}\]</div>
+<p>so <span class="math notranslate nohighlight">\(\lambda_1 = (5 + \sqrt{33})/2 \approx 5.372281\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = (5 - \sqrt{33}) / 2 \approx -0.372281\)</span> which shows the QR algorithm has calculated the eigenvalues correct to four decimal places.</p>
+</section>
+</div><hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Eigenvalues are usually listed in descending order by their absolute values.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -1126,20 +1231,20 @@ MATLAB</label><div class="sd-tab-content docutils">
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="6.4_Cholesky_decomposition.html"
+       href="6.3_Cholesky_decomposition.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6.4. </span>Cholesky decomposition</p>
+        <p class="prev-next-title"><span class="section-number">6.3. </span>Cholesky decomposition</p>
       </div>
     </a>
     <a class="right-next"
-       href="6.6_Calculating_eigenvalues_using_QR.html"
+       href="6.7_Matrix_decomposition_exercises.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.6. </span>Calculating eigenvalues using QR decomposition</p>
+        <p class="prev-next-title"><span class="section-number">6.6. </span>Matrix decomposition exercises</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1159,17 +1264,21 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-the-gram-schmidt-process">6.5.1. QR decomposition using the Gram-Schmidt process</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6.4. QR decomposition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-the-gram-schmidt-process">6.4.1. QR decomposition using the Gram-Schmidt process</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-diagonal-elements-of-r">Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.5.2. QR decomposition using Householder reflections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-householder-reflections">6.4.2. QR decomposition using Householder reflections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-orthogonality">6.4.3. Loss of orthogonality</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-orthogonality">6.5.3. Loss of orthogonality</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-eigenvalues-using-qr-decomposition">6.5. Calculating eigenvalues using QR decomposition</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-qr-algorithm">6.5.1. The QR algorithm</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -1193,7 +1302,7 @@ By Dr Jon Shiach
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>
