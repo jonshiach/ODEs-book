@@ -427,41 +427,41 @@ document.write(`
 <p>On the previous page we saw that to solve a single ODE using an IRK method, we need to recast the stage value expressions as a linear system which is solved at each step of the method. When we have a system of multiple ODEs, this becomes more complicated as we need to do this for each equation in the system, and the stage values may form non-linear equations.</p>
 <p>Consider the solution of the IVP of the form</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{y}' = f(t, \mathbf{y}), \qquad t \in [t_0, t_{\max}], \qquad \mathbf{y}(0) = \mathbf{y}_0, \]</div>
+\[\mathbf{y}' = \mathbf{f}(t, \mathbf{y}), \qquad t \in [t_0, t_{\max}], \qquad \mathbf{y}(0) = \mathbf{y}_0, \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{y} &amp;= \begin{pmatrix} y_1 \\ \vdots \\ y_N \end{pmatrix}, &amp;
-    f(t, \mathbf{y}) &amp;= \begin{pmatrix} f_1(t, \mathbf{y}) \\ \vdots \\ f_N(t, \mathbf{y}) \end{pmatrix}.
+    \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} f_1(t, \mathbf{y}) \\ \vdots \\ f_N(t, \mathbf{y}) \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Recall that the general form of a Runge-Kutta method for solving a system of ODEs is</p>
 <div class="math notranslate nohighlight" id="equation-general-irk-system">
 <span class="eqno">(3.6)<a class="headerlink" href="#equation-general-irk-system" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
    \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i \mathbf{k}_i,\\
-   \mathbf{k}_i &amp;= f(t_n +c_i h,\mathbf{y}_n + h \sum_{j=1}^s a_{ij} \mathbf{k}_j),
+   \mathbf{k}_i &amp;= \mathbf{f}(t_n +c_i h,\mathbf{y}_n + h \sum_{j=1}^s a_{ij} \mathbf{k}_j),
 \end{align*} \end{split}\]</div>
-<p>In a similar approach to solving single ODEs, we introduce an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> for the second parameter in <span class="math notranslate nohighlight">\(f(t, y)\)</span> in the stage value expressions</p>
+<p>In a similar approach to solving single ODEs, we introduce an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> for the second parameter in <span class="math notranslate nohighlight">\(\mathbf{f}(t, y)\)</span> in the stage value expressions</p>
 <div class="math notranslate nohighlight" id="equation-irk-systems-yi">
 <span class="eqno">(3.7)<a class="headerlink" href="#equation-irk-systems-yi" title="Link to this equation">#</a></span>\[\mathbf{Y}_i = \mathbf{y}_n + h \displaystyle\sum_{j=1}^s a_{ij} \mathbf{k}_j, \]</div>
 <p>and the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> becomes</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{k}_i = f(t_n + c_ih, \mathbf{Y}_i). \]</div>
+\[\mathbf{k}_i = \mathbf{f}(t_n + c_ih, \mathbf{Y}_i). \]</div>
 <p>Substituting this into equation <a class="reference internal" href="#equation-irk-systems-yi">(3.7)</a> we have</p>
 <div class="math notranslate nohighlight" id="equation-irk-systems-yi-2">
 <span class="eqno">(3.8)<a class="headerlink" href="#equation-irk-systems-yi-2" title="Link to this equation">#</a></span>\[ \begin{align*}
-    \mathbf{Y}_i = \mathbf{y}_n + h \sum_{j = 1}^s a_{ij} f(t_n + c_j h, \mathbf{Y}_j). 
+    \mathbf{Y}_i = \mathbf{y}_n + h \sum_{j = 1}^s a_{ij} \mathbf{f}(t_n + c_j h, \mathbf{Y}_j). 
 \end{align*} \]</div>
 <p>and also into equation <a class="reference internal" href="#equation-general-irk-system">(3.6)</a> gives</p>
 <div class="math notranslate nohighlight" id="equation-irk-yn-1">
 <span class="eqno">(3.9)<a class="headerlink" href="#equation-irk-yn-1" title="Link to this equation">#</a></span>\[ \begin{align*}
-   \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i f(t_n + c_i h, \mathbf{Y}_i).
+   \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i \mathbf{f}(t_n + c_i h, \mathbf{Y}_i).
 \end{align*} \]</div>
 <p>Using an <span class="math notranslate nohighlight">\(s\)</span>-stage IRK method, the values of <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> given by equation <a class="reference internal" href="#equation-irk-systems-yi-2">(3.8)</a> are</p>
 <div class="math notranslate nohighlight" id="equation-irk-systems-yi-3">
 <span class="eqno">(3.10)<a class="headerlink" href="#equation-irk-systems-yi-3" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
-    \mathbf{Y}_1 &amp;= \mathbf{y}_n + h (a_{11} f(t_n + c_1h, \mathbf{Y}_1) + \cdots + a_{1s} f(t_n + c_s h, \mathbf{Y}_s)), \\
+    \mathbf{Y}_1 &amp;= \mathbf{y}_n + h (a_{11} \mathbf{f}(t_n + c_1h, \mathbf{Y}_1) + \cdots + a_{1s} \mathbf{f}(t_n + c_s h, \mathbf{Y}_s)), \\
     \vdots \\
-    \mathbf{Y}_s &amp;= \mathbf{y}_n + h (a_{s1} f(t_n + c_1h, \mathbf{Y}_1) + \cdots + a_{ss} f(t_n + c_s h, \mathbf{Y}_s)).
+    \mathbf{Y}_s &amp;= \mathbf{y}_n + h (a_{s1} \mathbf{f}(t_n + c_1h, \mathbf{Y}_1) + \cdots + a_{ss} \mathbf{f}(t_n + c_s h, \mathbf{Y}_s)).
 \end{align*}\end{split}\]</div>
 <p>Writing this as a matrix equation</p>
 <div class="math notranslate nohighlight" id="equation-irk-systems-yi-matrix-form-1">
@@ -470,9 +470,9 @@ document.write(`
     =
     \begin{pmatrix} \mathbf{y}_n \\ \vdots \\ \mathbf{y}_n \end{pmatrix} + 
     \begin{pmatrix}
-        h a_{11} f(t_n + c_1h, \mathbf{Y}_1) + \cdots + h a_{1s} f(t_n + c_sh, \mathbf{Y}_s) \\
+        h a_{11} \mathbf{f}(t_n + c_1h, \mathbf{Y}_1) + \cdots + h a_{1s} \mathbf{f}(t_n + c_sh, \mathbf{Y}_s) \\
         \vdots \\
-        h a_{s1} f(t_n + c_1h, \mathbf{Y}_1) + \cdots + h a_{ss} f(t_n + c_sh, \mathbf{Y}_s) \\
+        h a_{s1} \mathbf{f}(t_n + c_1h, \mathbf{Y}_1) + \cdots + h a_{ss} \mathbf{f}(t_n + c_sh, \mathbf{Y}_s) \\
     \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> are <span class="math notranslate nohighlight">\(N \times 1\)</span> vectors then these are <span class="math notranslate nohighlight">\(sN \times 1\)</span> vectors. We can replace the summation with matrix multiplications using a <strong>Kronecker product</strong>.</p>
@@ -498,11 +498,11 @@ document.write(`
     &amp;= 
     \begin{pmatrix} \mathbf{y}_n \\ \mathbf{y}_n \end{pmatrix} + h
     \begin{pmatrix}
-        a_{11} f(t_n + c_1h, \mathbf{Y}_1) + a_{12} f(t_n + c_2h, \mathbf{Y}_2) \\
-        a_{21} f(t_n + c_1h, \mathbf{Y}_1) + a_{22} f(t_n + c_2h, \mathbf{Y}_2)
+        a_{11} \mathbf{f}(t_n + c_1h, \mathbf{Y}_1) + a_{12} \mathbf{f}(t_n + c_2h, \mathbf{Y}_2) \\
+        a_{21} \mathbf{f}(t_n + c_1h, \mathbf{Y}_1) + a_{22} \mathbf{f}(t_n + c_2h, \mathbf{Y}_2)
     \end{pmatrix},
 \end{align*} \end{split}\]</div>
-<p>Let’s say we have a system of <span class="math notranslate nohighlight">\(N = 3\)</span> ODEs. Introducing a notation where <span class="math notranslate nohighlight">\(y_{j}\)</span>, <span class="math notranslate nohighlight">\(Y_{i,j}\)</span> and <span class="math notranslate nohighlight">\(f_{i,j}\)</span> are the <span class="math notranslate nohighlight">\(j\)</span>-th elements of <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>, <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> and <span class="math notranslate nohighlight">\(f(t_n + c_ih, \mathbf{Y}_i)\)</span> respectively, then this can be written as</p>
+<p>Let’s say we have a system of <span class="math notranslate nohighlight">\(N = 3\)</span> ODEs. Introducing a notation where <span class="math notranslate nohighlight">\(y_{j}\)</span>, <span class="math notranslate nohighlight">\(Y_{i,j}\)</span> and <span class="math notranslate nohighlight">\(f_{i,j}\)</span> are the <span class="math notranslate nohighlight">\(j\)</span>-th elements of <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>, <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> and <span class="math notranslate nohighlight">\(\mathbf{f}(t_n + c_ih, \mathbf{Y}_i)\)</span> respectively, then this can be written as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \begin{pmatrix} Y_{1,1} \\ Y_{1,2} \\ Y_{1,3} \\ Y_{2,1} \\ Y_{2,2} \\ Y_{2,3}  \end{pmatrix}
@@ -535,14 +535,15 @@ document.write(`
         f_{2,3}
     \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p>The <span class="math notranslate nohighlight">\(6\times 6\)</span> matrix is <span class="math notranslate nohighlight">\(A \otimes I_N\)</span> so we can write the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> as</p>
+<p>The <span class="math notranslate nohighlight">\(6 \times 6\)</span> matrix is <span class="math notranslate nohighlight">\(A \otimes I_N\)</span> so we can write the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> as</p>
 <div class="math notranslate nohighlight" id="equation-irk-systems-yi-matrix-form-2">
 <span class="eqno">(3.12)<a class="headerlink" href="#equation-irk-systems-yi-matrix-form-2" title="Link to this equation">#</a></span>\[ \mathbf{Y} = \mathbf{e} \otimes \mathbf{y}_n + h (A \otimes I_N) F(\mathbf{Y}), \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{e} = (1, \ldots, 1)^\mathsf{T} \in \mathbb{R}^s\)</span></p>
+<p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{Y} &amp;= \begin{pmatrix} \mathbf{Y}_1 \\ \vdots \\ \mathbf{Y}_s \end{pmatrix}, &amp;
-    F(\mathbf{Y}) &amp;= \begin{pmatrix} f(t_n + c_1h, \mathbf{Y}_1) \\ \vdots \\ f(t_n + c_s h, \mathbf{Y}_s) \end{pmatrix}.
+    \mathbf{e} &amp;= \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}, &amp;
+    F(\mathbf{Y}) &amp;= \begin{pmatrix} \mathbf{f}(t_n + c_1h, \mathbf{Y}_1) \\ \vdots \\ \mathbf{f}(t_n + c_s h, \mathbf{Y}_s) \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>We can also use a Kronecker product to simplify the expression for the summation in <a class="reference internal" href="#equation-irk-yn-1">(3.9)</a></p>
 <div class="math notranslate nohighlight" id="equation-irk-matrix-form">
@@ -550,7 +551,7 @@ document.write(`
 <hr class="docutils" />
 <section id="newton-s-method">
 <h2><span class="section-number">3.4.1. </span>Newton’s method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h2>
-<p>To compute the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_1, \ldots, \mathbf{Y}_s\)</span>​, we must solve the system given in equation <a class="reference internal" href="#equation-irk-systems-yi-matrix-form-2">(3.12)</a>. Unlike the examples in the previous page, this system is generally nonlinear because the function <span class="math notranslate nohighlight">\(f(t,\mathbf{y})\)</span> may contain nonlinear terms. This means we cannot rearrange the equations into a linear system and solve them directly. To solve these equations we use  <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a>, which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function.</p>
+<p>To compute the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_1, \ldots, \mathbf{Y}_s\)</span>​, we must solve the system given in equation <a class="reference internal" href="#equation-irk-systems-yi-matrix-form-2">(3.12)</a>. Unlike the examples in the previous page, this system is generally nonlinear because the function <span class="math notranslate nohighlight">\(\mathbf{f}(t,\mathbf{y})\)</span> may contain nonlinear terms. This means we cannot rearrange the equations into a linear system and solve them directly. To solve these equations we use  <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a>, which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function.</p>
 <section id="newton-s-method-for-a-single-equation">
 <h3>Newton’s method for a single equation<a class="headerlink" href="#newton-s-method-for-a-single-equation" title="Link to this heading">#</a></h3>
 <p>Suppose we wish to solve</p>
@@ -613,7 +614,7 @@ document.write(`
 \end{pmatrix}\end{split}\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
-\[ J_f^{(i)} = \frac{\partial}{\partial \mathbf{y}} f(t_n + c_ih, \mathbf{Y}_i).\]</div>
+\[ J_f^{(i)} = \frac{\partial}{\partial \mathbf{y}} \mathbf{f}(t_n + c_ih, \mathbf{Y}_i).\]</div>
 <p>Each Jacobian <span class="math notranslate nohighlight">\(J_f^{(i)}\)</span> is an <span class="math notranslate nohighlight">\(N \times N\)</span> matrix so <span class="math notranslate nohighlight">\(J_g\)</span> is a <span class="math notranslate nohighlight">\(sN \times sN\)</span> matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -630,7 +631,7 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>Computing <span class="math notranslate nohighlight">\(J_f^{(1)}, \ldots, J_f^{(s)}\)</span> at every Newton iteration can be expensive. A common simplification is</p>
 <div class="math notranslate nohighlight">
-\[ J_f^{(i)} \approx \frac{\partial}{\partial \mathbf{y}} f(t_n, \mathbf{y}_n)\]</div>
+\[ J_f^{(i)} \approx \frac{\partial}{\partial \mathbf{y}} \mathbf{f}(t_n, \mathbf{y}_n)\]</div>
 <p>so equation <a class="reference internal" href="#equation-g-jacobian-1">(3.14)</a> becomes</p>
 <div class="math notranslate nohighlight">
 \[ J_g = I_{sN} - h (A \otimes J_f) \]</div>
@@ -639,11 +640,11 @@ document.write(`
 <h3>Computing <span class="math notranslate nohighlight">\(J_f\)</span><a class="headerlink" href="#computing-j-f" title="Link to this heading">#</a></h3>
 <p>The individual <span class="math notranslate nohighlight">\(J_f\)</span> Jacobians can be computed using a finite difference approximation</p>
 <div class="math notranslate nohighlight">
-\[ J_{f}^{(i)} = \frac{\partial f}{\partial \mathbf{y}_i} \approx \frac{f(t_n, \mathbf{y}_n + \epsilon \, \mathbf{e}_i) - f(t_n, \mathbf{y}_n)}{\epsilon \,},\]</div>
+\[ J_{f}^{(i)} = \frac{\partial f}{\partial \mathbf{y}_i} \approx \frac{\mathbf{f}(t_n, \mathbf{y}_n + \epsilon \, \mathbf{e}_i) - \mathbf{f}(t_n, \mathbf{y}_n)}{\epsilon \,},\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> is some small value and <span class="math notranslate nohighlight">\(\mathbf{e}_i\)</span> is column <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(I_s\)</span>. For example, consider a system of two ODEs</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    f(t, \mathbf{y}) = \begin{pmatrix} f_1(t, y_1, y_2) \\ f_2(t, y_1, y_2) \end{pmatrix}.
+    \mathbf{f}(t, \mathbf{y}) = \begin{pmatrix} f_1(t, y_1, y_2) \\ f_2(t, y_1, y_2) \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>The Jacobian is</p>
 <div class="math notranslate nohighlight">
@@ -653,13 +654,13 @@ document.write(`
 \end{pmatrix}. \end{split}\]</div>
 <p>To approximate the first column, we only perturb <span class="math notranslate nohighlight">\(y_1\)</span></p>
 <div class="math notranslate nohighlight">
-\[ \frac{\partial f}{\partial y_1} \approx \frac{f(t, \mathbf{y} + \epsilon \, \mathbf{e}_1) - f(t, \mathbf{y})}{\epsilon \,}, \]</div>
+\[ \frac{\partial f}{\partial y_1} \approx \frac{\mathbf{f}(t, \mathbf{y} + \epsilon \, \mathbf{e}_1) - \mathbf{f}(t, \mathbf{y})}{\epsilon \,}, \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \mathbf{y} + \epsilon \, \mathbf{e}_1 = \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} + \epsilon \, \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} y_1 + \epsilon \, \\ y_2 \end{pmatrix}. \end{split}\]</div>
 <p>To approximate the second column, we only perturb <span class="math notranslate nohighlight">\(y_2\)</span></p>
 <div class="math notranslate nohighlight">
-\[ \frac{\partial f}{\partial y_2} \approx \frac{f(t, \mathbf{y} + \epsilon \, \mathbf{e}_2) - f(t, \mathbf{y})}{\epsilon \,}, \]</div>
+\[ \frac{\partial f}{\partial y_2} \approx \frac{\mathbf{f}(t, \mathbf{y} + \epsilon \, \mathbf{e}_2) - \mathbf{f}(t, \mathbf{y})}{\epsilon \,}, \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \mathbf{y} + \epsilon \, \mathbf{e}_2 = \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} + \epsilon \, \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} y_1 \\ y_2 + \epsilon \, \end{pmatrix}. \end{split}\]</div>
@@ -673,13 +674,13 @@ document.write(`
 <div class="proof algorithm admonition" id="irk-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 3.1 </span> (Solving an IVP using an IRK method)</p>
 <section class="algorithm-content" id="proof-content">
-<p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, \mathbf{y})\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, a vector of initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = y_0\)</span> and a value of the step length <span class="math notranslate nohighlight">\(h\)</span></p>
+<p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = \mathbf{f}(t, \mathbf{y})\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, a vector of initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = y_0\)</span> and a value of the step length <span class="math notranslate nohighlight">\(h\)</span></p>
 <p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(nsteps \gets \left\lfloor \dfrac{t_{\max} - t_0}{h} \right\rfloor\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, nsteps\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(J_f \gets \dfrac{\partial}{\partial \mathbf{y}} f(t_n, \mathbf{y}_n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(J_f \gets \dfrac{\partial}{\partial \mathbf{y}} \mathbf{f}(t_n, \mathbf{y}_n)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{Y} \gets \mathbf{e} \otimes \mathbf{y}_n\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(k = 1, \ldots, maxiter\)</span></p>
 <ul>
@@ -721,7 +722,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{y}&amp;= \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}, &amp;
-    f(t, \mathbf{y}) &amp;= \begin{pmatrix} y_2 \\ \mu (1 - y_1^2) y_2 - y_1 \end{pmatrix}.
+    \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} y_2 \\ \mu (1 - y_1^2) y_2 - y_1 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>The initial conditions are <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (2, 0)\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span>. The Jacobian matrix is</p>
 <div class="math notranslate nohighlight">
@@ -750,8 +751,8 @@ document.write(`
     \mathbf{Y} &amp;= \mathbf{e} \otimes \mathbf{y}_0 = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 2 \\ 0 \end{pmatrix}= \begin{pmatrix} 2 \\ 0 \\ 2 \\ 0 \end{pmatrix}, &amp;
     F(\mathbf{Y}) &amp;= 
     \begin{pmatrix}
-        f(t_0 + 0h, \mathbf{Y}_1) \\
-        f(t_0 + \frac{2}{3}h, \mathbf{Y}_2)
+        \mathbf{f}(t_0 + 0h, \mathbf{Y}_1) \\
+        \mathbf{f}(t_0 + \frac{2}{3}h, \mathbf{Y}_2)
     \end{pmatrix}
     =
     \begin{pmatrix} 0 \\ -2 \\ 0 \\ -2 \end{pmatrix}
@@ -808,19 +809,13 @@ document.write(`
     \begin{pmatrix} -0.0222 \\ -1.3339 \\ -0.0519 \\ -0.4456 \end{pmatrix}
     = \begin{pmatrix} 1.9956 \\ -0.0667 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>The solution over the full domain <span class="math notranslate nohighlight">\(t \in [0, 50]\)</span> is shown in <a class="reference internal" href="#vanderpol-plot-figure"><span class="std std-numref">Fig. 3.2</span></a>.</p>
-<figure class="align-default" id="vanderpol-plot-figure">
-<img alt="../_images/3d88b58c449649c3b56ccf8fbee348b16ea704f46a9496b6afc0641665a07cad.png" src="../_images/3d88b58c449649c3b56ccf8fbee348b16ea704f46a9496b6afc0641665a07cad.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Solution of the van der Pol oscillator where <span class="math notranslate nohighlight">\(\mu=10\)</span> using the Radau IA IRK method.</span><a class="headerlink" href="#vanderpol-plot-figure" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+<p>The solution over the full domain <span class="math notranslate nohighlight">\(t \in [0, 50]\)</span> is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">vanderpol-plot-figure</span></code>.</p>
 </section>
 </div></section>
 <hr class="docutils" />
 <section id="code">
 <h2><span class="section-number">3.4.3. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
-<p>The code below defines the functions <code class="docutils literal notranslate"><span class="pre">jac()</span></code> and <code class="docutils literal notranslate"><span class="pre">radauIA()</span></code> which computes the Jacobian of a function <span class="math notranslate nohighlight">\(f(t, y)\)</span> and the solution to an initial value problem using the Radau IA method respectively.</p>
+<p>The code below defines the functions <code class="docutils literal notranslate"><span class="pre">jac()</span></code> and <code class="docutils literal notranslate"><span class="pre">radauIA()</span></code> which computes the Jacobian of a function <span class="math notranslate nohighlight">\(\mathbf{f}(t, y)\)</span> and the solution to an initial value problem using the Radau IA method respectively.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
@@ -832,7 +827,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
     
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-        <span class="n">J</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">I</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="n">epsilon</span>
+        <span class="n">J</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>\<span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">I</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> \<span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="n">epsilon</span>
 
     <span class="k">return</span> <span class="n">J</span>
 
@@ -871,8 +866,8 @@ Python</label><div class="sd-tab-content docutils">
         <span class="n">J</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
 
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
-            <span class="n">F</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y</span><span class="p">[:</span><span class="n">N</span><span class="p">])</span>
-            <span class="n">F</span><span class="p">[</span><span class="n">N</span><span class="p">:]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="n">N</span><span class="p">:])</span>
+            <span class="n">F</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> \<span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y</span><span class="p">[:</span><span class="n">N</span><span class="p">])</span>
+            <span class="n">F</span><span class="p">[</span><span class="n">N</span><span class="p">:]</span> <span class="o">=</span> \<span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="n">N</span><span class="p">:])</span>
             <span class="n">g</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span><span class="p">))</span> <span class="o">@</span> <span class="n">F</span>
             <span class="n">delta_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">J</span><span class="p">),</span> <span class="o">-</span><span class="n">g</span><span class="p">)</span>
             <span class="n">Y</span> <span class="o">+=</span> <span class="n">delta_Y</span>
@@ -906,7 +901,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">epsilon</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span>
 
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">N</span>
-<span class="w">    </span><span class="n">J</span><span class="p">(:,</span><span class="w"> </span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsilon</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="p">(:,</span><span class="nb">i</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
+<span class="w">    </span><span class="n">J</span><span class="p">(:,</span><span class="w"> </span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsilon</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="p">(:,</span><span class="nb">i</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
 <span class="k">end</span>
 
 <span class="k">end</span>
@@ -944,8 +939,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">max_iter</span>
-<span class="w">        </span><span class="n">F</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">)</span><span class="o">&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
-<span class="w">             </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="o">&#39;</span><span class="p">)];</span>
+<span class="w">        </span><span class="n">F</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">)</span><span class="o">&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="w">             </span><span class="o">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="o">&#39;</span><span class="p">)];</span>
 <span class="w">        </span><span class="n">g</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">F</span><span class="p">;</span>
 <span class="w">        </span><span class="n">delta_Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">eye</span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">J</span><span class="p">))</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="p">;</span>
 <span class="w">        </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">delta_Y</span><span class="p">;</span>

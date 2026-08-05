@@ -1,0 +1,120 @@
+Traceback (most recent call last):
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/55093290/anaconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/55093290/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+
+def jac(f, t, y):
+    N = len(y)
+    J = np.zeros((N, N))
+    I = np.eye(N)
+    epsilon = 1e-6
+    
+    for i in range(N):
+        J[:,i] = (\mathbf{f}(t, y + epsilon * I[:,i]) - \mathbf{f}(t,y)) / epsilon
+
+    return J
+
+
+def radauIA(f, tspan, y0, h):
+    
+    # Determine the number of ODEs in the system
+    N = len(y0)
+
+    # Calculate the number of steps required
+    nsteps = int((tspan[1] - tspan[0]) / h)
+
+    # Define solution arrays and assign initial values
+    t = np.zeros(nsteps + 1)
+    y = np.zeros((nsteps + 1, N))
+    t[0] = tspan[0]
+    y[0,:] = y0
+    
+    # Define Butcher tableau
+    A = np.array([[1/4, -1/4],
+                  [1/4, 5/12]])
+    b = np.array([1/4, 3/4])
+    c = np.array([0, 2/3])
+    s = 2
+
+    # Define maximum Newton iterations
+    max_iter = 10
+
+    # Loop through steps
+    for n in range(nsteps):
+
+        # Use Newton's method to solve for the stage values
+        e = np.ones(s)
+        Y = np.kron(e, y[n,:])
+        F = np.zeros(N * s)
+        J = jac(f, t[n], y[n,:])
+
+        for k in range(max_iter):
+            F[:N] = \mathbf{f}(t[n] + c[0] * h, Y[:N])
+            F[N:] = \mathbf{f}(t[n] + c[1] * h, Y[N:])
+            g = Y - np.kron(e, y[n,:]) - h * np.kron(A, np.eye(N)) @ F
+            delta_Y = np.linalg.solve(np.eye(N * s) - h * np.kron(A, J), -g)
+            Y += delta_Y
+
+            if np.linalg.norm(delta_Y) < 1e-6:
+                break
+
+        y[n+1,:] = y[n,:] + h * np.kron(b.T, np.eye(N)) @ F
+        t[n+1] = t[n] + h
+
+    return t, y
+
+
+# Define van der Pol system
+def vanderpol(t, y):
+    return np.array([y[1], mu * (1 - y[0] ** 2) * y[1] - y[0]])
+
+
+# Setup IVP
+tspan = [0, 50]
+y0 = [2, 0]
+h = 0.1
+mu = 10
+
+# Solve IVP
+t, y = radauIA(vanderpol, tspan, y0, h)
+
+# Plot solution 
+fig, ax = plt.subplots()
+plt.plot(t, y[:,0], 'b')
+plt.xlabel('$t$')
+plt.ylabel('$y$')
+plt.show()
+
+
+from myst_nb import glue
+glue("vanderpol_plot", fig, display=False)
+------------------
+
+[0;36m  Cell [0;32mIn[1], line 11[0;36m[0m
+[0;31m    J[:,i] = (\mathbf{f}(t, y + epsilon * I[:,i]) - \mathbf{f}(t,y)) / epsilon[0m
+[0m               ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m unexpected character after line continuation character
+
+SyntaxError: unexpected character after line continuation character (2064364958.py, line 11)
+
