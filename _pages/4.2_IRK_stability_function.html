@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -419,10 +419,11 @@ document.write(`
 <p>In the <a class="reference internal" href="#rk-rz-definition"><span class="xref myst">previous section</span></a>, we derived the stability function for a general Runge-Kutta method</p>
 <div class="math notranslate nohighlight">
 \[ R(z) = 1 + z \mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e}. \]</div>
+<p>For implicit methods, <span class="math notranslate nohighlight">\(A\)</span> is not lower triangular so we cannot use a power series summation to determin the stability function. Instead, we can use a result from linear algebra to to express the stability function as a quotient of determinants.</p>
 <p>The <a href="https://en.wikipedia.org/wiki/Matrix_determinant_lemma" target="_blank">matrix determinant lemma</a> is</p>
 <div class="math notranslate nohighlight">
 \[ \det(M + \mathbf{uv}^{\mathsf{T}}) = (1 + \mathbf{v}^\mathsf{T}M^{-1}\mathbf{u}) \det(M), \]</div>
-<p>where <span class="math notranslate nohighlight">\(M\)</span> is an invertible square matrix. Let <span class="math notranslate nohighlight">\(M = I - zA\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u} = z \mathbf{e}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v} = \mathbf{b}\)</span> then</p>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> is an invertible square matrix and <span class="math notranslate nohighlight">\(\mathbf{u}, \mathbf{v}\)</span> are column vectors. Let <span class="math notranslate nohighlight">\(M = I - zA\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u} = z \mathbf{e}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v} = \mathbf{b}\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \det(I - zA + z \mathbf{eb}^\mathsf{T}) = (1 + z \mathbf{b}^\mathsf{T}(I - zA)^{-1} \mathbf{e}) \det(I - zA), \]</div>
 <p>therefore</p>

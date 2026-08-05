@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -430,8 +430,9 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>Then the boundary condition <span class="math notranslate nohighlight">\(y(t_0) = a\)</span> gives <span class="math notranslate nohighlight">\(y_1(t_0) = a\)</span>, but the initial value <span class="math notranslate nohighlight">\(y_2(t_0) = y'(t_0)\)</span> is unknown. The <strong>shooting method</strong> treats this missing value as an unknown parameter <span class="math notranslate nohighlight">\(s\)</span>. For a chosen value of <span class="math notranslate nohighlight">\(s\)</span>, we solve the resulting initial values problem and compare the computed value of <span class="math notranslate nohighlight">\(y_1(t_{\max})\)</span> with the required boundary condition <span class="math notranslate nohighlight">\(b\)</span>. The value of <span class="math notranslate nohighlight">\(s\)</span> is then adjusted until the boundary condition at <span class="math notranslate nohighlight">\(t = t_{\max}\)</span> is satisfied.</p>
 <p>The method is called the <em>shooting method</em> because it resembles aiming at a target. If the computed solution misses the required boundary value, the initial slope is adjusted and another “shot” is taken until the target is hit.</p>
-<!-- ````{prf:example} -->
-<p>:label: shooting-example-1</p>
+<div class="proof example admonition" id="shooting-example-1">
+<p class="admonition-title"><span class="caption-number">Example 5.2 </span></p>
+<section class="example-content" id="proof-content">
 <p>Use the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span> and the shooting method to solve the following boundary value problem</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
@@ -556,18 +557,16 @@ document.write(`
 </div>
 <p>The solutions using the three guess values of <span class="math notranslate nohighlight">\(s=1\)</span>, <span class="math notranslate nohighlight">\(s=2\)</span> and <span class="math notranslate nohighlight">\(s=1.5\)</span> are plotted below.</p>
 <figure class="align-default" id="bvp-example-figure" style="width: 600px">
-<img alt="../_images/53f2541db909db8e7746e6d8154f01ff44d1fe4986058df523b9bf5465009686.png" src="../_images/53f2541db909db8e7746e6d8154f01ff44d1fe4986058df523b9bf5465009686.png" />
+<img alt="../_images/ce840ccb0a3fd1148060fbfe070d9390ba9023ab5ebf56e70f55ece3c88fb7a7.png" src="../_images/ce840ccb0a3fd1148060fbfe070d9390ba9023ab5ebf56e70f55ece3c88fb7a7.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Solutions of the BVP <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using initial values for <span class="math notranslate nohighlight">\(y'(0) = s\)</span> where <span class="math notranslate nohighlight">\(s = 1\)</span>, <span class="math notranslate nohighlight">\(s = 2\)</span> and <span class="math notranslate nohighlight">\(s = 1.5\)</span>.</span><a class="headerlink" href="#bvp-example-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The approximation obtained using <span class="math notranslate nohighlight">\(s=1.5\)</span> is closer to satisfying the boundary condition at <span class="math notranslate nohighlight">\(t=1\)</span> than the previous guesses. In practice, the shooting method is usually combined with a root-finding algorithm such as the secant method to determine the value of <span class="math notranslate nohighlight">\(s\)</span> automatically.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<section id="improving-the-guess-value-using-the-secant-method">
+</section>
+</div><section id="improving-the-guess-value-using-the-secant-method">
 <span id="secant-method-section"></span><h2><span class="section-number">5.2.1. </span>Improving the guess value using the secant method<a class="headerlink" href="#improving-the-guess-value-using-the-secant-method" title="Link to this heading">#</a></h2>
-<p>In <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">shooting-example-1</span></code>, successive guesses for the unknown initial slope produced numerical solutions that moved closer to the required boundary value at <span class="math notranslate nohighlight">\(t = t_{\max}\)</span>. One approach would be to repeatedly halve the interval containing the correct value of <span class="math notranslate nohighlight">\(s\)</span>, a strategy known as the <em>bisection method</em>. A more efficient alternative is the <strong>secant method</strong> which uses previous approximations to predict and improved value of <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>In <a class="reference internal" href="#shooting-example-1">Example 5.2</a>, successive guesses for the unknown initial slope produced numerical solutions that moved closer to the required boundary value at <span class="math notranslate nohighlight">\(t = t_{\max}\)</span>. One approach would be to repeatedly halve the interval containing the correct value of <span class="math notranslate nohighlight">\(s\)</span>, a strategy known as the <em>bisection method</em>. A more efficient alternative is the <strong>secant method</strong> which uses previous approximations to predict and improved value of <span class="math notranslate nohighlight">\(s\)</span>.</p>
 <p>The goal of the shooting method is to determine the value of <span class="math notranslate nohighlight">\(s = y'(t_0)\)</span> that satisfies the boundary condition</p>
 <div class="math notranslate nohighlight">
 \[ y(t_{\max}) = b. \]</div>
@@ -586,12 +585,12 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ |s_n - s_{n-1}| &lt; tol. \]</div>
 <div class="proof example admonition" id="secant-method-example">
-<p class="admonition-title"><span class="caption-number">Example 5.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 5.3 </span></p>
 <section class="example-content" id="proof-content">
-<p>Use the secant method to calculate the next guess value <span class="math notranslate nohighlight">\(s\)</span> for the solution of the boundary value problem <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">shooting-example-1</span></code> and calculate the solution to the BVP using this guess value.</p>
+<p>Use the secant method to calculate the next guess value <span class="math notranslate nohighlight">\(s\)</span> for the solution of the boundary value problem <a class="reference internal" href="#shooting-example-1">Example 5.2</a> and calculate the solution to the BVP using this guess value.</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
-<p>From <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">shooting-example-1</span></code> we have solutions at the upper boundary of</p>
+<p>From <a class="reference internal" href="#shooting-example-1">Example 5.2</a> we have solutions at the upper boundary of</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_1(1) &amp;= 3.1712, &amp; s_1 &amp;= 2, \\
@@ -647,7 +646,7 @@ document.write(`
 </div>
 <p>Here the solution at the upper boundary is <span class="math notranslate nohighlight">\(y(t_{\max}) = 2\)</span> which agrees to the required boundary condition <span class="math notranslate nohighlight">\(y(1) = 2\)</span> correct to 4 decimal places.</p>
 <figure class="align-default" id="bvp-example-figure-2" style="width: 600px">
-<img alt="../_images/0bc20446795f2f2368d97922392abdb73e7f5bfa955583533a66c86d2ab43175.png" src="../_images/0bc20446795f2f2368d97922392abdb73e7f5bfa955583533a66c86d2ab43175.png" />
+<img alt="../_images/35a7928bf3ec6ce508d6568e273b6d596bb7115b30a329f3ba7b8b5f9520f7f1.png" src="../_images/35a7928bf3ec6ce508d6568e273b6d596bb7115b30a329f3ba7b8b5f9520f7f1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Solution of the BVP <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using the shooting method.</span><a class="headerlink" href="#bvp-example-figure-2" title="Link to this image">#</a></p>
 </figcaption>
@@ -721,7 +720,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </section>
 <section id="a-note-about-accuracy">
 <h2><span class="section-number">5.2.3. </span>A note about accuracy<a class="headerlink" href="#a-note-about-accuracy" title="Link to this heading">#</a></h2>
-<p>In <a class="reference internal" href="#secant-method-example">Example 5.2</a> we iterated the Secant method until convergence and got a very accurate solution for the value of <span class="math notranslate nohighlight">\(y(b)\)</span>. We must be careful not to forget that this solution was obtained using the Euler method which being only first-order so expect it to be relatively inaccurate for the other values in the domain.</p>
+<p>In <a class="reference internal" href="#secant-method-example">Example 5.3</a> we iterated the Secant method until convergence and got a very accurate solution for the value of <span class="math notranslate nohighlight">\(y(b)\)</span>. We must be careful not to forget that this solution was obtained using the Euler method which being only first-order so expect it to be relatively inaccurate for the other values in the domain.</p>
 <p>The exact solution to the boundary value problem used here is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
@@ -785,7 +784,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </table>
 </div>
 <figure class="align-default" id="bvp-euler-rk4-figure" style="width: 600px">
-<img alt="../_images/3df682a34327272d19ffa1016ac0f0ea19d5ea8d948248354269ef44f8831358.png" src="../_images/3df682a34327272d19ffa1016ac0f0ea19d5ea8d948248354269ef44f8831358.png" />
+<img alt="../_images/0c41cdc7ed4d6de4faadc4753dd4e9a13b46d1480484119b876820b000dfb776.png" src="../_images/0c41cdc7ed4d6de4faadc4753dd4e9a13b46d1480484119b876820b000dfb776.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Solutions to the boundary value problem <span class="math notranslate nohighlight">\(y'' - y' - y = 0\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0) = 0\)</span>, <span class="math notranslate nohighlight">\(y(1) = 2\)</span> using the Euler and RK4 methods with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#bvp-euler-rk4-figure" title="Link to this image">#</a></p>
 </figcaption>

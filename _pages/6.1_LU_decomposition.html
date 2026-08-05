@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -501,10 +501,11 @@ u_{ij} &amp;= a_{ij} - \sum_{k=1}^{i-1} \ell_{ik}u_{kj}, &amp; i &amp;= 1, \ldot
 </section>
 </div><div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Not every square matrix admits an LU decomposition without row exchanges. The formulas below require the pivots ujju_{jj}ujj​ to be non-zero. If a zero pivot is encountered, row interchanges are required, leading to the more general <span class="math notranslate nohighlight">\(PA=LU\)</span> factorisation discussed later.</p>
+<p>Not every square matrix admits an LU decomposition without row exchanges. The formulas below require the pivots <span class="math notranslate nohighlight">\(u_{jj}\)</span> to be non-zero. If a zero pivot is encountered, row interchanges are required, leading to the more general <span class="math notranslate nohighlight">\(PA=LU\)</span> factorisation discussed later.</p>
 </div>
-<!-- ```{prf:algorithm} LU decomposition -->
-<p>:label: lu-algorithm</p>
+<div class="proof algorithm admonition" id="lu-algorithm">
+<p class="admonition-title"><span class="caption-number">Algorithm 6.1 </span> (LU decomposition)</p>
+<section class="algorithm-content" id="proof-content">
 <p><strong>Inputs:</strong> A square <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p><strong>Outputs:</strong> Two square <span class="math notranslate nohighlight">\(n \times n\)</span> matrices <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> such that <span class="math notranslate nohighlight">\(A = LU\)</span>.</p>
 <ul class="simple">
@@ -518,26 +519,23 @@ u_{ij} &amp;= a_{ij} - \sum_{k=1}^{i-1} \ell_{ik}u_{kj}, &amp; i &amp;= 1, \ldot
 </li>
 <li><p>Return <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span></p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-The computational cost of LU decomposition  is $O(n^3)$, comparable to Gaussian elimination. Once the factorisation has been computed, multiple systems $A \mathbf{x} = \mathbf{b}$ can be solved efficiently using back substitution.
-
-```{prf:example}
-:class: seealso
-:label: lu-example
-
-Determine the LU decomposition of the following matrix
-
-$$ A = \begin{pmatrix}
+</section>
+</div><p>The computational cost of LU decomposition  is <span class="math notranslate nohighlight">\(O(n^3)\)</span>, comparable to Gaussian elimination. Once the factorisation has been computed, multiple systems <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> can be solved efficiently using back substitution.</p>
+<div class="proof example seealso admonition" id="lu-example">
+<p class="admonition-title"><span class="caption-number">Example 6.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Determine the LU decomposition of the following matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \begin{pmatrix}
     2 &amp; 3 &amp; 1 \\
     -4 &amp; -7 &amp; 0 \\
     6 &amp; 7 &amp; 10
-\end{pmatrix}.$$
-
----
-
-**Solution**
-
-$$ \begin{align*}
+\end{pmatrix}.\end{split}\]</div>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Loop through the columns of <span class="math notranslate nohighlight">\(A\)</span> and compute the elements of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     j &amp;= 1: &amp; u_{11} &amp;= a_{11} = 2, \\
     &amp;&amp; \ell_{21} &amp;= \frac{1}{u_{11}}a_{21} = \frac{1}{2}(-4) = -2, \\
     &amp;&amp; \ell_{31} &amp;= \frac{1}{u_{11}}a_{31} = \frac{1}{2}(6) = 3, \\
@@ -547,11 +545,10 @@ $$ \begin{align*}
     j &amp;= 3: &amp; u_{13} &amp;= a_{13} = 1, \\
     &amp;&amp; u_{23} &amp;= a_{23} - \ell_{21}u_{13} = 0 - (-2)(1) = 2, \\
     &amp;&amp; u_{33} &amp;= a_{33} - \ell_{31}u_{13} - \ell_{32}u_{23} = 10 - 3(1) - 2(2) = 3,
-\end{align*} $$
-
-therefore
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p>therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     L &amp;= \begin{pmatrix}
         1 &amp; 0 &amp; 0\\
         -2 &amp; 1 &amp; 0\\
@@ -562,11 +559,10 @@ $$ \begin{align*}
         0 &amp; -1 &amp; 2 \\
         0 &amp; 0 &amp; 3
     \end{pmatrix}.
-\end{align*} $$
-
-Checking that $LU=A$
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p>Checking that <span class="math notranslate nohighlight">\(LU=A\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     \begin{pmatrix}
         1 &amp; 0 &amp; 0\\
         -2 &amp; 1 &amp; 0\\
@@ -581,12 +577,10 @@ $$ \begin{align*}
           2 &amp; 3 &amp; 1 \\
           -4 &amp; -7 &amp; 0 \\
           6 &amp; 7 &amp; 10
-      \end{pmatrix}.
-\end{align*} $$
-
-</pre></div>
-</div>
-<hr class="docutils" />
+      \end{pmatrix}. \quad \checkmark
+\end{align*} \end{split}\]</div>
+</section>
+</div><hr class="docutils" />
 <section id="solving-systems-of-linear-equations-using-lu-decomposition">
 <h2><span class="section-number">6.1.1. </span>Solving systems of linear equations using LU decomposition<a class="headerlink" href="#solving-systems-of-linear-equations-using-lu-decomposition" title="Link to this heading">#</a></h2>
 <p>Given a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> where LU decomposition has been applied to the coefficient matrix then since <span class="math notranslate nohighlight">\(A = LU\)</span> we have</p>
@@ -600,7 +594,7 @@ $$ \begin{align*}
 \[ U \mathbf{x} = \mathbf{y}, \]</div>
 <p>using <a href="https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution" target="_blank">back substitution</a>.</p>
 <div class="proof algorithm admonition" id="lu-solution-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 6.1 </span> (Solving systems of linear equations using LU decomposition)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 6.2 </span> (Solving systems of linear equations using LU decomposition)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs:</strong> A system of linear equations expressed using the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> and variable vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> such that <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span>.</p>
 <p><strong>Outputs:</strong> The solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
@@ -628,9 +622,9 @@ $$ \begin{align*}
   A \mathbf{x}^{(2)} &amp;= \mathbf{b}^{(2)}, &amp; \ldots
 \end{align*} \]</div>
 <p>with the same coefficient matrix <span class="math notranslate nohighlight">\(A\)</span>. The decomposition <span class="math notranslate nohighlight">\(A = LU\)</span> is only computed once, after which each new right-hand side requires only one forware-substitution step and one back-substitution step.</p>
-<p>This is why LU decomposition is commonly used in {prf:ref}implicit Runge-Kutta methods<irk-algorithm>. During the Newton iterations, the coefficient matrix <span class="math notranslate nohighlight">\(I−h(A \otimes J_f)\)</span> remains unchanged while the right-hand side vector <span class="math notranslate nohighlight">\(g(\mathbf{Y})\)</span> varies. Consequently, the LU decomposition is computed once and reused for each linear solve, leading to a substantial reduction in computational effort.</p>
+<p>This is why LU decomposition is commonly used in <a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html#irk-algorithm">implicit Runge-Kutta methods</a>. During the Newton iterations, the coefficient matrix <span class="math notranslate nohighlight">\(I−h(A \otimes J_f)\)</span> remains unchanged while the right-hand side vector <span class="math notranslate nohighlight">\(g(\mathbf{Y})\)</span> varies. Consequently, the LU decomposition is computed once and reused for each linear solve, leading to a substantial reduction in computational effort.</p>
 <div class="proof example admonition" id="lu-solution-example">
-<p class="admonition-title"><span class="caption-number">Example 6.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 6.2 </span></p>
 <section class="example-content" id="proof-content">
 <p>Solve the following system using LU decomposition</p>
 <div class="math notranslate nohighlight">
@@ -645,7 +639,7 @@ $$ \begin{align*}
 \end{align*} \end{split}\]</div>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
-<p>We saw in the <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">lu-example</span></code> above that the LU decomposition of the coefficient matrix is</p>
+<p>We saw in the <a class="reference internal" href="#lu-example">Example 6.1</a> above that the LU decomposition of the coefficient matrix is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     L &amp;= \begin{pmatrix}
@@ -706,60 +700,10 @@ $$ \begin{align*}
         6 &amp; 7 &amp; 10
     \end{pmatrix}
     \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}=
-    \begin{pmatrix} -1 \\ 10 \\ 22 \end{pmatrix} \quad \checkmark
+    \begin{pmatrix} -1 \\ 10 \\ 22 \end{pmatrix}. \quad \checkmark
 \end{align*} \end{split}\]</div>
 </section>
-</div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">lu</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
-    
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-                <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">U</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-            
-            <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-        
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
-                <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">U</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-
-            <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="n">U</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-                
-    <span class="k">return</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span>
-
-
-<span class="c1"># Define matrix</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-              <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-              <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-
-<span class="c1"># Calculate LU decomposition</span>
-<span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;L = </span><span class="se">\n</span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">U = </span><span class="se">\n</span><span class="si">{</span><span class="n">U</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L = 
-[[ 1.  0.  0.]
- [-2.  1.  0.]
- [ 3.  2.  1.]]
-
-U = 
-[[ 2.  3.  1.]
- [ 0. -1.  2.]
- [ 0.  0.  3.]]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">

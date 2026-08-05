@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -427,6 +427,7 @@ document.write(`
 </ul>
 <p>Improving the order of accuracy of the method is often not straightforward and can place restrictions on the applicability of the method. Reducing the step length used will improve the accuracy of the approximation but since more steps are required to advance through the domain, this will increase the computational cost. The behaviour of the solution will have an effect on the accuracy of the approximation because computational methods are more accurate where the solution is slowly varying and less accurate where there are rapid variations in the solution.</p>
 <p>For each step of the algorithm we compute two solutions of order <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(p+1\)</span> and use these to estimate the local truncation error. If the error estimate is within a desired accuracy tolerance, the step is considered to be <strong>successful</strong> and the algorithm proceeds onto the next step, and the step length is increased. If the error estimate is larger than the accuracy tolerance, the step is considered to have <strong>failed</strong>, and is repeated using a smaller step length.</p>
+<p>The adaptive strategy described here forms the basis of many modern ODE solvers, including MATLAB’s ode23 and ode45 functions and SciPy’s RK23 and RK45 solvers.</p>
 <hr class="docutils" />
 <section id="embedded-runge-kutta-methods">
 <h2><span class="section-number">2.7.1. </span>Embedded Runge-Kutta methods<a class="headerlink" href="#embedded-runge-kutta-methods" title="Link to this heading">#</a></h2>
@@ -451,9 +452,10 @@ document.write(`
 <p>Since both solutions use the same stage values <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> the extra cost of computing the additional solution is very small. The difference between the two solutions provides an estimate of the local truncation error incurred over the current step</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{e} = \mathbf{y}^{(p + 1)} - \mathbf{y}^{(p)}. \]</div>
+<p>Although the error estimate is obtained from the difference of the two approximations, the accepted solution is usually taken to be the higher-order approximation <span class="math notranslate nohighlight">\(\mathbf y^{(p+1)}\)</span>.</p>
 <p>Examples of two embedded Runge-Kutta methods are the Bogacki-Shampine 3(2) method, which computes third- and second-order solutions, and Fehlberg’s 5(4) method which computes fifth- and fourth-order solutions.</p>
 <div class="proof definition admonition" id="bogacki-shampine-equation">
-<p class="admonition-title"><span class="caption-number">Definition 2.3 </span> (Bogacki-Shampine 3(2) Runge-Kutta method (RK23))</p>
+<p class="admonition-title"><span class="caption-number">Definition 2.2 </span> (Bogacki-Shampine 3(2) Runge-Kutta method (RK23))</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -469,7 +471,7 @@ document.write(`
 <p><span id="id1">Bogacki and Shampine [<a class="reference internal" href="E_References.html#id15" title="Przemyslaw Bogacki and Lawrence F Shampine. A 3(2) pair of runge-kutta formulas. Applied Mathematics Letters, 2(4):321–325, 1989.">1989</a>]</span></p>
 </section>
 </div><div class="proof definition admonition" id="fehlbergs-method-equation">
-<p class="admonition-title"><span class="caption-number">Definition 2.4 </span> (Fehlberg’s order 5(4) Runge-Kutta method (RKF45))</p>
+<p class="admonition-title"><span class="caption-number">Definition 2.3 </span> (Fehlberg’s order 5(4) Runge-Kutta method (RKF45))</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cccccc}
@@ -510,13 +512,14 @@ document.write(`
 <p>and compute a scaling factor using</p>
 <div class="math notranslate nohighlight">
 \[ s_i = atol + rtol \, \max( |y_i^{(n)}| , |y_i^{(p+1)}|), \]</div>
-<p>where <span class="math notranslate nohighlight">\(y_i^{(n)}\)</span> is the solution at the current step (element <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>). The use of both <span class="math notranslate nohighlight">\(y_i^{(n)}\)</span> and <span class="math notranslate nohighlight">\(y_i^{(p+1)}\)</span> ensures that the scaling remains appropriate when the solution is rapidly changing or passes through zero. The scaled error is then</p>
+<p>where <span class="math notranslate nohighlight">\(y_i^{(n)}\)</span> is the solution at the current step (element <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>). The absolute tolerance controls the error when the solution components are close to zero, while the relative tolerance controls the error when the solution components are large. The use of both <span class="math notranslate nohighlight">\(y_i^{(n)}\)</span> and <span class="math notranslate nohighlight">\(y_i^{(p+1)}\)</span> ensures that the scaling remains appropriate when the solution is rapidly changing or passes through zero.</p>
+<p>The scaled error is then</p>
 <div class="math notranslate nohighlight">
 \[ e_i^* = \frac{ e_i}{s_i}, \]</div>
 <p>and we can then use the <strong>Root Mean Square (RMS)</strong> of the scaled errors to compute <span class="math notranslate nohighlight">\(\Delta\)</span></p>
 <div class="math notranslate nohighlight">
 \[ \Delta = \sqrt{\frac{1}{N} \sum_{i=1}^N \left( \frac{ e_i}{s_i} \right)^2}. \]</div>
-<p>The value of <span class="math notranslate nohighlight">\(\Delta\)</span> is used to determine whether the estimation of the local truncation error is within the accuracy tolerances specified by <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span></p>
+<p>The value of <span class="math notranslate nohighlight">\(\Delta\)</span> is used to determine whether the estimation of the local truncation error is within the accuracy tolerances specified by <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span>. Using the RMS norm prevents a single component from completely dominating the error measure while still penalising large componentwise errors.</p>
 <ul class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(\Delta \leq 1\)</span></p>
 <ul>
@@ -549,10 +552,10 @@ document.write(`
 <p>since the <span class="math notranslate nohighlight">\(O(h^{p+1})\)</span> term dominates the <span class="math notranslate nohighlight">\(O(h^{p+2})\)</span> term. The scaling factors <span class="math notranslate nohighlight">\(s_i\)</span> do not depend on <span class="math notranslate nohighlight">\(h\)</span>, so the scaled error measure <span class="math notranslate nohighlight">\(\Delta\)</span> also satisfies</p>
 <div class="math notranslate nohighlight">
 \[ \Delta = O(h^{p+1}).\]</div>
-<p>By the definition of big-O notation, the scaled error satisfies</p>
+<p>Assuming the aysmptotic regime has been reached, the dominant error term may be written as</p>
 <div class="math notranslate nohighlight" id="equation-h-error">
-<span class="eqno">(2.19)<a class="headerlink" href="#equation-h-error" title="Link to this equation">#</a></span>\[ \Delta = C h^{p + 1}, \]</div>
-<p>for some constant <span class="math notranslate nohighlight">\(C\)</span>. We want to compute a new step length <span class="math notranslate nohighlight">\(h_{new}\)</span> which results in a desired value of <span class="math notranslate nohighlight">\(\Delta = 1\)</span>, i.e.,</p>
+<span class="eqno">(2.19)<a class="headerlink" href="#equation-h-error" title="Link to this equation">#</a></span>\[ \Delta \approx C h^{p + 1}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is approximately constant over one step. We want to compute a new step length <span class="math notranslate nohighlight">\(h_{new}\)</span> which results in a desired value of <span class="math notranslate nohighlight">\(\Delta = 1\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight" id="equation-hnew-error">
 <span class="eqno">(2.20)<a class="headerlink" href="#equation-hnew-error" title="Link to this equation">#</a></span>\[ 1 = C h_{new}^{p+1}. \]</div>
 <p>Defining a ratio <span class="math notranslate nohighlight">\(r\)</span> between the new and current step lengths</p>
@@ -574,6 +577,7 @@ document.write(`
 <p>The initial step length is chosen so that it is small enough that the local truncation error is likely to satisfy the specified accuracy tolerances. A simple initial estimate is</p>
 <div class="math notranslate nohighlight">
 \[ h = 0.8 \, rtol^{1/(p+1)}. \]</div>
+<p>This is a crude estimate intended only to obtain a reasonable starting value. Production-quality software usually employs a more sophisticated procedure based on the initial derivative and tolerance values.</p>
 <div class="proof algorithm admonition" id="step-size-control-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 2.2 </span> (Solving an IVP using a single step method with adaptive step size control)</p>
 <section class="algorithm-content" id="proof-content">
@@ -643,6 +647,7 @@ document.write(`
     &amp;= 0 + 0.8(\tfrac{7}{24}(1) + \tfrac{1}{4}(1.039147) + \tfrac{1}{3}(1.057719) + \tfrac{1}{8}(1.075841)) = 0.083081.
 \end{align*} \end{split}\]</div>
 <p>Computing the RMS of the scaled error estimate</p>
+<p>[1.56304757e-05] [8.40961743e-05] 0.18586428943743688</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     e_1 &amp;= | y^{(3)} - y^{(2)} | = |0.083096 - 0.083081| = 1.5 \times 10^{-5}, \\
@@ -652,21 +657,21 @@ document.write(`
 <p>Since <span class="math notranslate nohighlight">\(\Delta = 0.178368 \leq 1\)</span> the step has succeeded, and we accept <span class="math notranslate nohighlight">\(y_1 = y^{(3)} = 0.083096\)</span>. We now compute the new value of <span class="math notranslate nohighlight">\(h\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    r &amp;= \min(5, \max(0.1, 0.8 \Delta^{-1/3})) = \min(5, \max(0.1, 0.8(0.178368)^{-1/3})) = 1.421187, \\
-    h &amp;= rh = 1.421187(0.8) = 1.136950.
+    r &amp;= \min(5, \max(0.1, 0.8 \Delta^{-1/3})) = \min(5, \max(0.1, 0.8(0.178368)^{-1/3})) = 1.776484, \\
+    h &amp;= rh = 1.421187(0.8) = 1.421187.
 \end{align*} \end{split}\]</div>
 <p>The solution over the full domain <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> is shown in <a class="reference internal" href="#rk23-example-figure"><span class="std std-numref">Fig. 2.7</span></a>.</p>
 <figure class="align-default" id="rk23-example-figure">
-<img alt="../_images/2931057ac8b80b1115180ec2c761da497d960d7db3df73bb4f3f28b0645c8bf4.png" src="../_images/2931057ac8b80b1115180ec2c761da497d960d7db3df73bb4f3f28b0645c8bf4.png" />
+<img alt="../_images/f6ad83b56bd7a77c1ca61505faec9cb45fedc04c9f25a9a065ac103f0087a7df.png" src="../_images/f6ad83b56bd7a77c1ca61505faec9cb45fedc04c9f25a9a065ac103f0087a7df.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = -21y + e^{-t}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span> with an initial step length <span class="math notranslate nohighlight">\(h=0.1\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</span><a class="headerlink" href="#rk23-example-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = e^{t - y\sin(y)}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span> with an initial step length <span class="math notranslate nohighlight">\(h=0.1\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</span><a class="headerlink" href="#rk23-example-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A plot of the step lengths used across the domain is shown in <a class="reference internal" href="#rk23-example-step-size-plot-figure"><span class="std std-numref">Fig. 2.8</span></a>. Note how the step lengths decrease where the solution is steeper and increase where it is more slowly varying.</p>
 <figure class="align-default" id="rk23-example-step-size-plot-figure">
-<img alt="../_images/acaeb5e451d5168a4642bf083e0d1b72f15b455ec1cef224fcf81106d8001710.png" src="../_images/acaeb5e451d5168a4642bf083e0d1b72f15b455ec1cef224fcf81106d8001710.png" />
+<img alt="../_images/dfc50fbbe1679674db617c28de9bd50c2d1d3b2c0e8ffdc3627422f56260cd18.png" src="../_images/dfc50fbbe1679674db617c28de9bd50c2d1d3b2c0e8ffdc3627422f56260cd18.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = e^{t - y\sin(y)}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span>.</span><a class="headerlink" href="#rk23-example-step-size-plot-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Step lengths used for the Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = e^{t - y\sin(y)}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span>.</span><a class="headerlink" href="#rk23-example-step-size-plot-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -720,7 +725,7 @@ Python</label><div class="sd-tab-content docutils">
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="c1"># Compute ratio of new step to old</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">Delta</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">)))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">Delta</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)))</span>
 
         <span class="c1"># Update h</span>
         <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>

@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -416,7 +416,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="systems-of-odes">
 <span id="solving-systems-of-odes-section"></span><h1><span class="section-number">1.3. </span>Systems of ODEs<a class="headerlink" href="#systems-of-odes" title="Link to this heading">#</a></h1>
-<p>So far we have only looked at the solution of a single ODE. In most practical cases, a system of multiple ODEs is required to model a real-world situation. Recall that a single first-order ODE is expressed as a function of the single independent variable <span class="math notranslate nohighlight">\(t\)</span> and a dependent function <span class="math notranslate nohighlight">\(y\)</span></p>
+<p>So far we have considered initial value problems involving a single differential equation. However, many real-world models involve several interacting quantities, each of which must be described by its own differential equation. Such models lead naturally to systems of ODEs.</p>
+<p>Recall that a single first-order ODE is expressed as a function of the single independent variable <span class="math notranslate nohighlight">\(t\)</span> and a dependent function <span class="math notranslate nohighlight">\(y\)</span></p>
 <div class="math notranslate nohighlight">
 \[ y' = f(t, y). \]</div>
 <p>A system of first-order ODEs is expressed as a set of multiple ODEs such that</p>
@@ -428,11 +429,11 @@ document.write(`
     y_N' &amp;= f_N(t, y_1, y_2, \ldots, y_N),
 \end{align*} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y_1, y_2, \ldots, y_N\)</span> are multiple dependent functions. An IVP involving a system of ODEs requires an initial value for each equation in the system, i.e., <span class="math notranslate nohighlight">\(y_1(t_0) = a_1\)</span>, <span class="math notranslate nohighlight">\(y_2(t_0) = a_2\)</span> etc. where <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_N\)</span> are constants.</p>
-<p>To apply a numerical method to solve a system of ODEs, we can write it in vector form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t, \mathbf{y})\)</span> where</p>
+<p>To apply a numerical method to solve a system of ODEs, we can write it in vector form <span class="math notranslate nohighlight">\(\mathbf{y}' = \mathbf{f}(t, \mathbf{y})\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{y} &amp;= \begin{pmatrix} y_1 \\ \vdots \\ y_N \end{pmatrix}, &amp;
-    f(t, \mathbf{y}) &amp;= 
+    \mathbf{f}(t, \mathbf{y}) &amp;= 
     \begin{pmatrix} 
         f_1(t, \mathbf{y}) \\
         \vdots \\
@@ -441,21 +442,22 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>Recall that the Euler method for solving an IVP for a single ODE is</p>
 <div class="math notranslate nohighlight">
-\[ y_{n+1} = y_n + h f(t_n, y_n), \]</div>
-<p>then for solving a system of first-order ODEs we simply replace <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(f(t_n, y_n)\)</span> with <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span> and <span class="math notranslate nohighlight">\(f(t_n, \mathbf{y}_n)\)</span></p>
+\[ y_{n+1} = y_n + h \mathbf{f}(t_n, y_n). \]</div>
+<p>Since vector addition and scalar multiplication are performed componentwise, the Euler method extends naturally to systems of ODEs</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h f(t_n, \mathbf{y}_n).
+    \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \mathbf{f}(t_n, \mathbf{y}_n).
 \end{align*} \]</div>
+<p>An important consequence of this vector formulation is that higher-order ODEs can be rewritten as systems of first-order ODEs. This allows numerical methods such as Euler’s method and Runge-Kutta methods to be applied to a much wider class of problems.</p>
 <div class="proof example admonition" id="sir-example">
 <p class="admonition-title"><span class="caption-number">Example 1.2 </span></p>
 <section class="example-content" id="proof-content">
 <p>The <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model" target="_blank">SIR model</a> is a simple model that describes the spread of an infectious disease in a population. The model divides the population into three compartments: those who have not yet contracted the disease but are susceptible (<span class="math notranslate nohighlight">\(S\)</span>) those who are infected (<span class="math notranslate nohighlight">\(I\)</span>) and those who have recovered and gained immunity (<span class="math notranslate nohighlight">\(R\)</span>). The formulation of the model is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \dydt{S}{t} &amp;= -\dfrac{\beta}{N} IS, \\
-    \dydt{I}{t} &amp; =\dfrac{\beta}{N} IS - \gamma I, \\
-    \dydt{R}{t} &amp;= \gamma I,
+    \frac{\mathrm{d}S}{\mathrm{d}t} &amp;= -\dfrac{\beta}{N} IS, \\
+    \frac{\mathrm{d}I}{\mathrm{d}t} &amp; =\dfrac{\beta}{N} IS - \gamma I, \\
+    \frac{\mathrm{d}R}{\mathrm{d}t} &amp;= \gamma I,
 \end{align*} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N = S + I + R\)</span> is the total population, <span class="math notranslate nohighlight">\(\beta\)</span> is the infection rate in the number of people per day who become infected, and <span class="math notranslate nohighlight">\(\gamma\)</span> is the recovery rate at which a person who is infected recovers per day.</p>
 <p>A disease breaks out in a population where <span class="math notranslate nohighlight">\(\beta = 0.5\)</span>, <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span> and <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span> and <span class="math notranslate nohighlight">\(R(0) = 0\)</span>. compute the solution to the SIR model over the first 50 days using the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 1\)</span>.</p>
@@ -465,58 +467,59 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{y} &amp;= \begin{pmatrix} y_1 \\ y_2 \\ y_3 \end{pmatrix}, &amp;
-    f(t, \mathbf{y}) &amp;= 
+    \mathbf{f}(t, \mathbf{y}) &amp;= 
     \begin{pmatrix}
         -\dfrac{\beta}{N} y_1 y_2 \\
         \dfrac{\beta}{N} y_1 y_2 - \gamma y_2 \\
         \gamma y_2
     \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>The initial conditions are <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (99, 1, 0)\)</span> and <span class="math notranslate nohighlight">\(N = 100\)</span>, <span class="math notranslate nohighlight">\(\beta = 0.5\)</span>, <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span> and <span class="math notranslate nohighlight">\(\frac{\beta}{N} = 0.005\)</span>. Calculating the first few steps of the Euler method with <span class="math notranslate nohighlight">\(h = 1\)</span></p>
+<p>The initial conditions are <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (99, 1, 0)\)</span> and <span class="math notranslate nohighlight">\(N = 100\)</span>, <span class="math notranslate nohighlight">\(\beta = 0.5\)</span>, <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span> and <span class="math notranslate nohighlight">\(\beta/N = 0.005\)</span>. Calculating the first few steps of the Euler method with <span class="math notranslate nohighlight">\(h = 1\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h f(t_0, \mathbf{y}_0) \\
+    \mathbf{y}_1 &amp;= \mathbf{y}_0 + h \mathbf{f}(t_0, \mathbf{y}_0) \\
     &amp;= 
     \begin{pmatrix} 99 \\ 1 \\ 0 \end{pmatrix} + 1 
     \begin{pmatrix} 
-        -0.05 (99)(1) \\
-         0.05 (99)(1) - 0.1(0) \\
-         0.1(0) 
+        -0.005 (99)(1) \\
+         0.005 (99)(1) - 0.1(1) \\
+         0.1(1) 
     \end{pmatrix}
     = 
     \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix}, \\
     t_1 &amp;= t_0 + h = 0 + 1 = 1, \\ 
     \\
-    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h f(t_1, \mathbf{y}_1) \\
+    \mathbf{y}_2 &amp;= \mathbf{y}_1 + h \mathbf{f}(t_1, \mathbf{y}_1) \\
     &amp;= 
     \begin{pmatrix} 98.505 \\ 1.395 \\ 0.1 \end{pmatrix} + 1 
     \begin{pmatrix} 
-        -0.05 (98.505)(1.395) \\
-        0.05 (98.505)(1.395) - 0.1(0.1) \\
-        0.1(0)
+        -0.005 (98.505)(1.395) \\
+        0.005 (98.505)(1.395) - 0.1(1.395) \\
+        0.1(1.395)
     \end{pmatrix} = 
     \begin{pmatrix} 97.8179 \\  1.9426 \\  0.2395\end{pmatrix}, \\
     t_2 &amp;= t_1 + h = 1 + 1 = 2, \\
     \\
-    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h f(t_2, \mathbf{y}_2) \\
+    \mathbf{y}_3 &amp;= \mathbf{y}_2 + h \mathbf{f}(t_2, \mathbf{y}_2) \\
     &amp;= 
     \begin{pmatrix} 97.8179 \\ 1.9426 \\ 0.2395 \end{pmatrix} + 1 
     \begin{pmatrix} 
-        -0.05 (97.8179)(1.9426) \\
-         0.05 (97.8179)(1.9426) - 0.1(0.2395) \\ 
-         0.1(0)
+        -0.005 (97.8179)(1.9426) \\
+         0.005 (97.8179)(1.9426) - 0.1(1.9426) \\ 
+         0.1(1.9426)
     \end{pmatrix}
     = 
     \begin{pmatrix} 96.8678 \\  2.6984 \\  0.4338 \end{pmatrix}, \\
     t_3 &amp;= t_2 + h = 2 + 1 = 3, \\
 \end{align*} \end{split}\]</div>
-<p>The plot of the solutions to the SIR model using the Euler method for the first 50 days of the infection is shown in <a class="reference internal" href="#sir-figure"><span class="std std-numref">Fig. 1.8</span></a></p>
+<p>The plot of the solutions to the SIR model using the Euler method for the first 50 days of the infection is shown in <a class="reference internal" href="#sir-figure"><span class="std std-numref">Fig. 1.7</span></a></p>
 <figure class="align-default" id="sir-figure" style="width: 600px">
-<img alt="Euler method solutions for the SIR model" src="../_images/fc1640f92db8d6fa022810993e9b2886e2355e20963887ed10b9f5b7fa99603c.png" />
+<img alt="Euler method solutions for the SIR model" src="../_images/a69f6bf921a5719be983bde5f62494cd61a9191d9621283c34a70e1cd4094510.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">Euler method solutions for the SIR model with <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span>, <span class="math notranslate nohighlight">\(R(0) = 0\)</span>, <span class="math notranslate nohighlight">\(\beta = 0.5\)</span> and <span class="math notranslate nohighlight">\(\gamma = 1\)</span>.</span><a class="headerlink" href="#sir-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Euler method solutions for the SIR model with <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span>, <span class="math notranslate nohighlight">\(R(0) = 0\)</span>, <span class="math notranslate nohighlight">\(\beta = 0.5\)</span> and <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span>.</span><a class="headerlink" href="#sir-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>The susceptible population decreases as individuals become infected, the infected population increases through transmission and decreases through recovery, and the recovered population increases as infected individuals recover.</p>
 </section>
 </div><section id="coding-the-euler-method">
 <h2><span class="section-number">1.3.1. </span>Coding the Euler method<a class="headerlink" href="#coding-the-euler-method" title="Link to this heading">#</a></h2>
@@ -531,7 +534,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
 
     <span class="c1"># compute the number of steps required</span>
-    <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
 
     <span class="c1"># Define solution arrays and assign initial values</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -547,6 +550,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
 </pre></div>
 </div>
+<p>This function assumes that the ODE function returns a NumPy array whos length equals the number of equations in the system.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
@@ -574,7 +578,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="k">end</span>
 </pre></div>
 </div>
-<p>Note that this function assumes that the ODE function <code class="docutils literal notranslate"><span class="pre">f</span></code> returns an <span class="math notranslate nohighlight">\(1 \times N\)</span> vector.</p>
+<p>This function assumes that the ODE function returns an column vector whos length equals the number of equations in the system.</p>
 </div>
 </div>
 <p>The inputs to the function are:</p>
@@ -590,33 +594,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="c1"># Define Euler method function</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-    
-    <span class="c1"># Determine the number of ODEs in the system</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
-
-    <span class="c1"># Compute the number of steps required</span>
-    <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
-
-    <span class="c1"># Define solution arrays and assign initial values</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
-    <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
-    
-    <span class="c1"># Loop through the steps and compute the Euler method solution</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
-        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
-        <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
-
-    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
-
-
-<span class="c1"># Define SIR model</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define SIR model</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">SIR</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">y</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">S</span> <span class="o">+</span> <span class="n">I</span> <span class="o">+</span> <span class="n">R</span>
@@ -655,30 +633,7 @@ Python</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-3">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define Euler method</span>
-<span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = euler</span><span class="p">(</span>f, tspan, y0, h<span class="p">)</span>
-
-<span class="c">% Determine the number of ODEs in the system</span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
-
-<span class="c">% Compute the number of steps required</span>
-<span class="n">nsteps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-
-<span class="c">% Define solution arrays and assign initial values</span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
-<span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
-
-<span class="c">% Loop through steps and compute the Euler method solution</span>
-<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nsteps</span>
-<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:))</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
-<span class="k">end</span>
-
-<span class="k">end</span>
-
-<span class="c">% Define SIR function</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define SIR function</span>
 <span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">SIR</span><span class="p">(</span>~, y, beta, gamma<span class="p">)</span>
 
 <span class="n">S</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span>
@@ -712,10 +667,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Susceptible&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Infected&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&quot;east&quot;</span><span class="p">)</span>
 <span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">SIR()</span></code> function returns a <span class="math notranslate nohighlight">\(3 \times 1\)</span> array and since our <code class="docutils literal notranslate"><span class="pre">euler()</span></code> function assumes the ODE function returns a <span class="math notranslate nohighlight">\(1 \times N\)</span> array we transpose <code class="docutils literal notranslate"><span class="pre">f()</span></code> in the <code class="docutils literal notranslate"><span class="pre">euler()</span></code> function. The reason why I coded <code class="docutils literal notranslate"><span class="pre">SIR()</span></code> to return a column vector is because this is the format that MATLAB’s in-built ODE solvers expect.</p>
 </div>
 </div>
 </div>

@@ -27,6 +27,4 @@ The exercises contained in this book have the solutions hidden from the reader b
 
 <a href="https://jonshiach.github.io" target="_blank">Dr Jon Shiach</a> <br>
 Email: <a href="mailto:j.shiach@mmu.ac.uk">j.shiach@mmu.ac.uk</a> <br>
-Homepage: <a href="https://jonshiach.github.io" target="_blank">jonshiach.github.io</a> <br>
-Tel: 0161 247 1515 <br>
-Office: E115b <br>
+Office: DB 3.27 <br>

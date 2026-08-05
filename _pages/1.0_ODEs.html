@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -406,18 +406,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ordinary-differential-equations-ode">
 <span id="ode-chapter"></span><h1><span class="section-number">1. </span>Ordinary Differential Equations (ODE)<a class="headerlink" href="#ordinary-differential-equations-ode" title="Link to this heading">#</a></h1>
-<p>An Ordinary Differential Equation (ODE) is an equation which relates a function of a single independent variable to its derivatives and describe how a quantity changes with respect to another. ODEs are called <strong>ordinary</strong> to distinguish them from Partial Differential Equations (PDEs), which involve functions of multiple variables and their partial derivative.</p>
-<p>A simple ODE can be solved using analytical methods such as integration and Laplace transforms, however the vast majority of ODEs used in the real world cannot be solved using analytical methods which is why we need a numerical approach.</p>
+<p>An Ordinary Differential Equation (ODE) is an equation that relates a function of a single independent variable to one or more of its derivatives. ODEs are used to model how a quantity changes with respect to another variable, typically time. ODEs are called <strong>ordinary</strong> to distinguish them from Partial Differential Equations (PDEs), which involve functions of multiple variables and their partial derivatives.</p>
+<p>Some ODEs can be solved analytically using techniques such as separation of vriables, integration, or Laplace transforms. However, many ODEs arising in practical applications do not possess closed-form solutions, making numerical methods essential.</p>
 <div class="proof definition admonition" id="odes-definition">
 <p class="admonition-title"><span class="caption-number">Definition 1.1 </span> (Ordinary Differential Equation)</p>
 <section class="definition-content" id="proof-content">
-<p>An Ordinary Differential Equation (ODE) is an equation of the form</p>
+<p>An Ordinary Differential Equation (ODE) or order <span class="math notranslate nohighlight">\(n\)</span> is an equation of the form</p>
 <div class="math notranslate nohighlight">
 \[ y^{(n)}(t) = f(t, y(t), y'(t), y''(t), \ldots, y^{(n-1)}(t)), \]</div>
-<p>where <span class="math notranslate nohighlight">\(t\)</span> is an independent variable, <span class="math notranslate nohighlight">\(y(t)\)</span> is a differentiable function of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(y'(t)\)</span>, <span class="math notranslate nohighlight">\(y''(t)\)</span> etc. are derivatives of <span class="math notranslate nohighlight">\(y(t)\)</span>.</p>
-<p>Note that it is common to represent the function <span class="math notranslate nohighlight">\(y(t)\)</span> as <span class="math notranslate nohighlight">\(y\)</span> for brevity.</p>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> is the independent variable and <span class="math notranslate nohighlight">\(y(t)\)</span> is the unknown function. The highest derivative appearing in the equation is the <span class="math notranslate nohighlight">\(n\)</span>th derivative <span class="math notranslate nohighlight">\(y^{(n)}\)</span>.</p>
+<p>For brevity, the dependence on <span class="math notranslate nohighlight">\(t\)</span> is often omitted and <span class="math notranslate nohighlight">\(y(t)\)</span> is written simply as <span class="math notranslate nohighlight">\(y\)</span>.</p>
 </section>
-</div><p>The solution of an ODE is the function <span class="math notranslate nohighlight">\(y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
+</div><p>The <strong>order</strong> of an ODE is determined by the highest derivative that appears in the equation. For example, <span class="math notranslate nohighlight">\(y'' + 3y' = 0\)</span> is a second-order ODE.</p>
+<p>The <strong>solution</strong> of an ODE is the function <span class="math notranslate nohighlight">\(y(t)\)</span> that satisfies the ODE over the domain of <span class="math notranslate nohighlight">\(t\)</span>. For example, consider the following ODE</p>
 <div class="math notranslate nohighlight" id="equation-simple-ode-equation">
 <span class="eqno">(1.1)<a class="headerlink" href="#equation-simple-ode-equation" title="Link to this equation">#</a></span>\[y' = ky, \]</div>
 <p>where <span class="math notranslate nohighlight">\(t \in \mathbb{R}\)</span>. Rewriting this using Leibniz notation and integrating both sides we have</p>
@@ -426,18 +427,17 @@ document.write(`
     \frac{\mathrm{d} y}{\mathrm{d} t} &amp; = ky \\
     \frac{\mathrm{d} y}{y} &amp;= k \, \mathrm{d} t \\
     \int \frac{1}{y} \mathrm{d} y &amp;= \int k \, \mathrm{d} t \\
-    \ln (y) + c_1 &amp;= kt + c_2 \\
-    \ln (y) &amp;= kt + c_2 - c_1
+    \ln |y| &amp;= kt + C. \\
 \end{align*} \end{split}\]</div>
 <p>Solving for <span class="math notranslate nohighlight">\(y\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    y &amp;= e^{kt + c_2 - c_1} = e^{kt}e^{c_2 - c_1} = Ce^{kt},
+    y &amp;= e^{kt + C} = e^{kt}e^{C} = Ae^{kt},
 \end{align*} \]</div>
-<p>where <span class="math notranslate nohighlight">\(C = e^{c_2 - c_1}\)</span> is some constant. Note that there are an infinite number of solutions since <span class="math notranslate nohighlight">\(C\)</span> can be any value. However, if we know that the value of the solution <span class="math notranslate nohighlight">\(y\)</span> for some value of <span class="math notranslate nohighlight">\(t\)</span> then we can calculate <span class="math notranslate nohighlight">\(C\)</span> and give us a single solution to the ODE. For example, if the solution to the ODE in equation <a class="reference internal" href="#equation-simple-ode-equation">(1.1)</a> where <span class="math notranslate nohighlight">\(t = 0\)</span> is known to be <span class="math notranslate nohighlight">\(y(0) = y_0\)</span> then</p>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is some constant. Note that there are an infinite number of solutions since <span class="math notranslate nohighlight">\(A\)</span> can be any value. Specifying the value of the solution at a particular point allows the arbitrary constant to be determined, yielding a unique solution. For example, if the solution to the ODE in equation <a class="reference internal" href="#equation-simple-ode-equation">(1.1)</a> where <span class="math notranslate nohighlight">\(t = 0\)</span> is known to be <span class="math notranslate nohighlight">\(y(0) = y_0\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    y_0 &amp;= C e^{k(0)} = C e^0 = C,
+    y_0 &amp;= A e^{k(0)} = A e^0 = A,
 \end{align*} \]</div>
 <p>so the ODE has the solution</p>
 <div class="math notranslate nohighlight">
@@ -446,23 +446,23 @@ document.write(`
 \end{align*} \]</div>
 <p>So if <span class="math notranslate nohighlight">\(y_0 = 1\)</span> then the solution is <span class="math notranslate nohighlight">\(y = e^{kt}\)</span>, and if <span class="math notranslate nohighlight">\(y_0 = 2\)</span> then the solution is <span class="math notranslate nohighlight">\(y = 2e^{kt}\)</span>.</p>
 <figure class="align-default" id="ode-plot-figure" style="width: 600px">
-<img alt="../_images/410e934460f3140b0d5e4fbaec81dfd842579d56f59717ecc73ab101c5e206d2.png" src="../_images/410e934460f3140b0d5e4fbaec81dfd842579d56f59717ecc73ab101c5e206d2.png" />
+<img alt="../_images/2645582a5caaa0ba23fe147bddeb51e89f1b4fa30054835498fc46c9057cc41d.png" src="../_images/2645582a5caaa0ba23fe147bddeb51e89f1b4fa30054835498fc46c9057cc41d.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Plots of some of the possible solution to the ODE <span class="math notranslate nohighlight">\(y' = y\)</span>.</span><a class="headerlink" href="#ode-plot-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Plots of several solutions of the ODE <span class="math notranslate nohighlight">\(y' = y\)</span> corresponding to different initial conditions.</span><a class="headerlink" href="#ode-plot-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Problems that are described using ODEs where the initial solution at <span class="math notranslate nohighlight">\(t = 0\)</span> is known are known as <strong>Initial Value Problems (IVP)</strong>.</p>
+<p>In the example above, specifying <span class="math notranslate nohighlight">\(y(0) = y_0\)</span> transformed the family of solutions <span class="math notranslate nohighlight">\(y = Ae^{kt}\)</span> into a single solution. Problems of this type are known as <strong>Initial Value Problems (IVP)</strong>.</p>
 <div class="proof definition admonition" id="ivp-definition">
 <p class="admonition-title"><span class="caption-number">Definition 1.2 </span> (Initial value problem)</p>
 <section class="definition-content" id="proof-content">
-<p>An Initial Value Problem (IVP) is an ODE where the initial solution at the lower boundary of the domain is known. For example,</p>
+<p>An Initial Value Problem (IVP) consists of a differential equation together with a specified value of the solution at the inital point of the domain</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     y' = f(t,y), \qquad t \in [t_0, t_{\max}], \qquad y(t_0) = y_0.
 \end{align*} \]</div>
-<p>Here a first-order ODE <span class="math notranslate nohighlight">\(y'=f(t,y)\)</span> is defined over the domain <span class="math notranslate nohighlight">\(t\in [t_0 , t_{\max}]\)</span> and the initial solution <span class="math notranslate nohighlight">\(y(t_0)\)</span> is the known value <span class="math notranslate nohighlight">\(y_0\)</span>.</p>
+<p>Here <span class="math notranslate nohighlight">\(y(t_0) = y_0\)</span> is called the <strong>initial condition</strong>.</p>
 </section>
-</div><p>For most real world practical applications initial value problems cannot be solved using analytical methods, so instead we use numerical methods to approximate the solution. These notes will cover a common class of numerical methods used to solve initial value problems called Runge-Kutta methods.</p>
+</div><p>For many practical applications, an analytical solution is either unavailable or too difficult to obtain. In these situations we seek approximate numerical solutions at a discrete set of points. The Runge-Kutta methods form an important class of numerical algorithms for solving initial value problems and will be the focus of this chapter.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>

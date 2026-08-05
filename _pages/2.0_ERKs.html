@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -406,10 +406,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butcher-tableau">2.1.1. Butcher tableau</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-and-implicit-runge-kutta-methods">2.2. Explicit and implicit Runge-Kutta methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butcher-tableau-for-explicit-and-implicit-runge-kutta-methods">2.2.1. Butcher tableau for explicit and implicit Runge-Kutta methods</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-and-implicit-runge-kutta-methods">2.2. Explicit and implicit Runge-Kutta methods</a></li>
 </ul>
             </nav>
         </div>
@@ -437,17 +434,19 @@ document.write(`
 <p><span class="caption-number">Fig. 2.2 </span><span class="caption-text"><a href="https://en.wikipedia.org/wiki/Martin_Kutta" target="_blank">Martin Kutta (1867 - 1944)</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Runge-Kutta method is the most common numerical method used to solve ODEs. It was developed independently by German mathematicians Carl Runge and Martin Kutta in the late 19th century. The method involves approximating the solution of an ODE by computing the values of the solution at a series of discrete steps. At each step, the method uses a weighted average of the derivative of the solution at different points in the interval to estimate the value of the solution at the next time step. The method is iterative, meaning that the solution at each time step depends on the solution at the previous time step. Runge-Kutta methods are known as <strong>single step methods</strong> because to advance the solution to the next step we only require the values of the current step, as opposed to <strong>multistep methods</strong> such as the <a href="https://en.wikipedia.org/wiki/Linear_multistep_method" target="_blank">linear multistep methods</a> family of methods that require values from multiple steps to compute the next step.</p>
+<p>In the previous chapter we saw that Euler’s method is simple to implement but often requires very small step sizes to obtain accurate solutions. Runge-Kutta methods improve accuracy by evaluating the derivative several times within each step and combining these evaluations in a carefully chosen weighted average. They form one of the most important classes of numerical methods for solving ordinary differential equations and are widely used in science and engineering.</p>
+<p>The Runge-Kutta method was developed independently by German mathematicians Carl Runge and Martin Kutta in the late 19th century. Runge-Kutta methods are known as <strong>single step methods</strong>, since we only require values at the current step to advance the solution to the next, as opposed to <strong>multistep methods</strong> such as the <a href="https://en.wikipedia.org/wiki/Linear_multistep_method" target="_blank">linear multistep methods</a> family of methods that require values from multiple steps to compute the next step.</p>
 <section id="general-form-of-a-runge-kutta-method">
 <span id="general-form-of-a-rk-method-section"></span><h2><span class="section-number">2.1. </span>General form of a Runge-Kutta method<a class="headerlink" href="#general-form-of-a-runge-kutta-method" title="Link to this heading">#</a></h2>
-<p>The general form of a Runge-Kutta method for solving the initial value problem <span class="math notranslate nohighlight">\(y' =f(t,y)\)</span>, <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, <span class="math notranslate nohighlight">\(y(0) = y_0\)</span> is</p>
+<p>The key idea of a Runge-Kutta method is that, instead of using a single estimate of the derivative as in Euler’s method, several derivative evaluations are computed within each step. These derivative evaluations are called <strong>stages</strong>.</p>
+<p>The general form of a Runge-Kutta method for solving the initial value problem <span class="math notranslate nohighlight">\(y' =f(t,y)\)</span>, <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, <span class="math notranslate nohighlight">\(y(t_0) = y_0\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-general-rk-equation">
 <span class="eqno">(2.1)<a class="headerlink" href="#equation-general-rk-equation" title="Link to this equation">#</a></span>\[\begin{split} \begin{align}
     y_{n+1} &amp;=y_n + h \sum_{i=1}^s b_i k_i,\\
     k_i &amp;= f(t_n +c_i h,y_n + h \sum_{j=1}^s a_{ij} k_j ),
 \end{align} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(k_i\)</span> for <span class="math notranslate nohighlight">\(i = 1,2, \ldots, s\)</span> are intermediate <strong>stage values</strong> used to calculate <span class="math notranslate nohighlight">\(y_{n+1}\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> are coefficients that define a particular Runge-Kutta method</p>
-<p>For example, <a href="https://en.wikipedia.org/wiki/Heun%27s_method" target="_blank">Huen’s method</a> is a 2-stage Runge-Kutta method which is written as</p>
+<p>where <span class="math notranslate nohighlight">\(k_i\)</span> for <span class="math notranslate nohighlight">\(i = 1,2, \ldots, s\)</span> are the stages which used to calculate <span class="math notranslate nohighlight">\(y_{n+1}\)</span>. The coefficient <span class="math notranslate nohighlight">\(c_i\)</span> determines where within the step the derivative is evaluated, while <span class="math notranslate nohighlight">\(a_{ij}\)</span> determines how previous stage values are combined and <span class="math notranslate nohighlight">\(b_i\)</span> determines how the stages are weighted to compute <span class="math notranslate nohighlight">\(y_{n+1}\)</span>.</p>
+<p>For example, <a href="https://en.wikipedia.org/wiki/Heun%27s_method" target="_blank">Heun’s method</a> is a 2-stage Runge-Kutta method which is written as</p>
 <div class="math notranslate nohighlight" id="equation-rk2-method-equation">
 <span class="eqno">(2.2)<a class="headerlink" href="#equation-rk2-method-equation" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{2}(k_1 + k_2), \\
@@ -498,7 +497,7 @@ document.write(`
 <div class="proof example admonition" id="butcher-tableau-example">
 <p class="admonition-title"><span class="caption-number">Example 2.1 </span></p>
 <section class="example-content" id="proof-content">
-<p>Write down the Butcher tableau for the 4-stage Runge-Kutta method given below as a Butcher tableau</p>
+<p>Determine theButcher tableau corresponding to the following four-stage Runge-Kutta method</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4), \\
@@ -525,6 +524,7 @@ document.write(`
 </section>
 <section id="explicit-and-implicit-runge-kutta-methods">
 <span id="explicit-and-implicit-rk-methods-section"></span><h2><span class="section-number">2.2. </span>Explicit and implicit Runge-Kutta methods<a class="headerlink" href="#explicit-and-implicit-runge-kutta-methods" title="Link to this heading">#</a></h2>
+<p>Not all Runge-Kutta methods can be evaluated stage-by-stage. Depending on the coefficient matrix <span class="math notranslate nohighlight">\(A = (a_{ij})\)</span>, the stage equations may need to be solved simultaneously. This distinction leads to the classification of Runge-Kutta methods as explicit or implicit.</p>
 <p>The stage values for an <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -546,12 +546,13 @@ document.write(`
     k_2 &amp;=f(t_n +c_2 h,y_n +ha_{21} k_1 ),\\
     k_3 &amp;=f(t_n +c_3 h,y_n +h(a_{31} k_1 +a_{32} k_2 )),\\
     &amp;\vdots \\
-    k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_s +\cdots +a_{s,s-1} k_{s-1} )).
+    k_s &amp;=f(t_n +c_s h,y_n +h(a_{s1} k_1 +a_{s2} k_2 +\cdots +a_{s,s-1} k_{s-1} )).
 \end{align*} \end{split}\]</div>
 <p>These stage values are <em>explicit functions</em> where the subject of the equation does not appear on the right-hand side. Runge-Kutta methods where the stages values are calculated using explicit functions are known as <strong>Explicit Runge Kutta (ERK)</strong> methods. These are easier to compute than implicit Runge-Kutta methods because the stage values can be calculated sequentially in order, i.e., <span class="math notranslate nohighlight">\(k_1\)</span> can be calculated using <span class="math notranslate nohighlight">\(t_n\)</span> and <span class="math notranslate nohighlight">\(y_n\)</span>; <span class="math notranslate nohighlight">\(k_1\)</span> is then used to compute <span class="math notranslate nohighlight">\(k_2\)</span>; <span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> are then used to compute <span class="math notranslate nohighlight">\(k_3\)</span> and so on. However for some ODEs explicit methods require a very small value for the step length and and we must then use implicit methods (see the chapter on <a class="reference internal" href="4.0_Stability.html#stability-chapter"><span class="std std-ref">stability</span></a> for more details).</p>
-<section id="butcher-tableau-for-explicit-and-implicit-runge-kutta-methods">
-<h3><span class="section-number">2.2.1. </span>Butcher tableau for explicit and implicit Runge-Kutta methods<a class="headerlink" href="#butcher-tableau-for-explicit-and-implicit-runge-kutta-methods" title="Link to this heading">#</a></h3>
-<p>Explicit and implicit Runge-Kutta methods can be easily distinguished by looking at their Butcher tableaux. The <span class="math notranslate nohighlight">\(A\)</span> matrix in the top right region of a Butcher tableau for an explicit method is lower-triangular (the values on the main diagonal and in the upper triangular region are all zeros) whereas for an implicit method the main-diagonal and upper triangular elements are non-zero.</p>
+<p>Explicit and implicit Runge-Kutta methods can be easily distinguished by looking at their Butcher tableaux. An explicit method satisfies</p>
+<div class="math notranslate nohighlight">
+\[ a_{ij} = 0, \qquad j \ge 1, \]</div>
+<p>so the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> is strictly lower triangular, whereas an implicit method will have at least one non-zero element in the upper triangular region or main diagonal.</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
 <div class="sd-col sd-d-flex-row docutils">
@@ -566,7 +567,7 @@ Explicit Runge-Kutta method</div>
     c_3  &amp; a_{31}  &amp; a_{32}  &amp;  &amp;  &amp; \\
     \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp;  &amp; \\
     c_s  &amp; a_{s1}  &amp; a_{s2}  &amp; \cdots  &amp; a_{s,s-1}  &amp; \\ \hline
-    &amp; b_1  &amp; b_2  &amp; \cdots  &amp; b_{s-1}  &amp; b_s 
+    &amp; b_1  &amp; b_2  &amp; \cdots  &amp; b_{s-1}  &amp; b_s
 \end{array} \end{split}\]</div>
 </div>
 </div>
@@ -583,14 +584,13 @@ Implicit Runge-Kutta method</div>
     c_3  &amp; a_{31}  &amp; a_{32}  &amp; a_{33}  &amp; \cdots  &amp; a_{3s} \\
     \vdots  &amp; \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\
     c_s  &amp; a_{s1}  &amp; a_{s2}  &amp; a_{s3}  &amp; \cdots  &amp; a_{ss} \\ \hline
-        &amp; b_1  &amp; b_2  &amp; b_3  &amp; \cdots  &amp; b_s 
+        &amp; b_1  &amp; b_2  &amp; b_3  &amp; \cdots  &amp; b_s
 \end{array} \end{split}\]</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -664,10 +664,7 @@ Implicit Runge-Kutta method</div>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butcher-tableau">2.1.1. Butcher tableau</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-and-implicit-runge-kutta-methods">2.2. Explicit and implicit Runge-Kutta methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butcher-tableau-for-explicit-and-implicit-runge-kutta-methods">2.2.1. Butcher tableau for explicit and implicit Runge-Kutta methods</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-and-implicit-runge-kutta-methods">2.2. Explicit and implicit Runge-Kutta methods</a></li>
 </ul>
   </nav></div>
 

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
@@ -379,7 +379,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -395,6 +397,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">2.5.1. Code</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -406,9 +416,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="derivation-of-a-fourth-order-explicit-runge-kutta-method">
 <span id="derivation-of-rk4-section"></span><h1><span class="section-number">2.5. </span>Derivation of a fourth-order explicit Runge-Kutta method<a class="headerlink" href="#derivation-of-a-fourth-order-explicit-runge-kutta-method" title="Link to this heading">#</a></h1>
-<p>We saw in the previous section that we derive a set of order conditions by finding a set <span class="math notranslate nohighlight">\(T\)</span> all the rooted trees up to a certain order and use the following relation between the elementary weight <span class="math notranslate nohighlight">\(\Phi(\tau)\)</span> and density <span class="math notranslate nohighlight">\(\gamma(\tau)\)</span> for each tree <span class="math notranslate nohighlight">\(\tau \in T\)</span></p>
-<div class="math notranslate nohighlight" id="equation-tree-order-condition">
-<span class="eqno">(2.15)<a class="headerlink" href="#equation-tree-order-condition" title="Link to this equation">#</a></span>\[\Phi(\tau) = \dfrac{1}{\gamma(\tau)}.\]</div>
+<p>In the previous section we derived the rooted-tree order conditions for an explicit Runge-Kutta method. We now use these conditions to construct a fourth-order method. Unlike the derivation of RK2, which could be done using Taylor series expansions directly, the rooted-tree approach allows us to derive higher-order methods systematically without lengthy algebraic calculations.</p>
+<p>For a fourth-order method we require all rooted trees of order up to 4. There are eight such trees. For each tree we determine its elementary weight <span class="math notranslate nohighlight">\(\Phi(\tau)\)</span>, density <span class="math notranslate nohighlight">\(\gamma(\tau)\)</span>, and then apply the condition</p>
+<div class="math notranslate nohighlight">
+\[\Phi(\tau) = \dfrac{1}{\gamma(\tau)}.\]</div>
 <p>So to derive the order conditions for a fourth-order explicit method we consider all of the rooted trees up to and including order 4 which are tabulated below along with their elementary weights and densities.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -461,17 +472,17 @@ document.write(`
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Order</p></th>
-<th class="head text-center"><p>1</p></th>
-<th class="head text-center"><p>2</p></th>
-<th class="head text-center"><p>3</p></th>
-<th class="head text-center"><p>4</p></th>
-<th class="head text-center"><p>5</p></th>
-<th class="head text-center"><p>6</p></th>
-<th class="head text-center"><p>7</p></th>
+<th class="head text-center"><p>1st</p></th>
+<th class="head text-center"><p>2nd</p></th>
+<th class="head text-center"><p>3rd</p></th>
+<th class="head text-center"><p>4th</p></th>
+<th class="head text-center"><p>5th</p></th>
+<th class="head text-center"><p>6th</p></th>
+<th class="head text-center"><p>7th</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>Min stages</p></td>
+<tr class="row-even"><td class="text-left"><p>Minimum stages required</p></td>
 <td class="text-center"><p>1</p></td>
 <td class="text-center"><p>2</p></td>
 <td class="text-center"><p>3</p></td>
@@ -483,15 +494,15 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>So the fewest number of stages required for a fourth-order explicit Runge-Kutta method is 4. For a 4-stage ERK method the order conditions are</p>
+<p>Therefore we seek a 4-stage ERK method satisying all fourth-order conditions.</p>
 <div class="math notranslate nohighlight" id="equation-rk4-order-conditions-equation">
-<span class="eqno">(2.16)<a class="headerlink" href="#equation-rk4-order-conditions-equation" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-rk4-order-conditions-equation" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
   \sum_{i=1}^4 b_i &amp;= 1, \\
-  \sum_{i=1}^4 b_ic_i &amp;= \frac{1}{2}, \\
-  \sum_{i=1}^4 b_ic_i^2 &amp;= \frac{1}{3}, \\
-  \sum_{i=1}^4 b_ic_i^3 &amp;= \frac{1}{4}, \\
+  \sum_{i=1}^4 b_ic_i &amp;= \frac12. \\
+  \sum_{i=1}^4 b_ic_i^2 &amp;= \frac13, \\
   \sum_{i,j=1}^4 b_ia_{ij}c_j &amp;= \frac{1}{6}, \\
-  \sum_{i,j=1}^4 b_ia_{ij}c_ic_j &amp;= \frac{1}{8}, \\
+  \sum_{i,j=1}^4 b_ia_{ij}c_j &amp;= \frac{1}{6}, \\
+  \sum_{i,j=1}^4 b_ia_{ij}c_ic_j &amp;= \frac18, \\
   \sum_{i,j=1}^4 b_ia_{ij}c_j^2 &amp;= \frac{1}{12}, \\
   \sum_{i,j,k=1}^4 b_ia_{ij}a_{jk} c_k &amp;= \frac{1}{24}
 \end{align*} \end{split}\]</div>
@@ -506,38 +517,49 @@ document.write(`
     &amp; b_1 &amp; b_2 &amp; b_3 &amp; b_4 
   \end{array}
 \end{align*} \end{split}\]</div>
-<p>So we can omit any terms in the summations where the values of the <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients are zero (i.e., the upper triangular elements of <span class="math notranslate nohighlight">\(A\)</span>). For the first 4 order conditions from equation <a class="reference internal" href="#equation-rk4-order-conditions-equation">(2.16)</a> we have</p>
+<p>So we can omit any terms in the summations where the values of the <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients are zero (i.e., the upper triangular elements of <span class="math notranslate nohighlight">\(A\)</span>). For example</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{align}
+\[\begin{split} \begin{align*} 
+    \sum_{i,j=1}^4 b_ia_{ij}c_j &amp;= b_1a_{11}c_1 + b_1a_{12}c_2 + b_1a_{13}c_3 + b_1a_{14}c_4 \\ 
+    &amp; \qquad b_2a_{21}c_1 + b_2a_{22}c_2 + b_2a_{23}c_3 + b_2a_{24}c_4 \\
+    &amp; \qquad b_3a_{31}c_1 + b_3a_{32}c_2 + b_3a_{33}c_3 + b_3a_{34}c_4 \\
+    &amp; \qquad b_4a_{41}c_1 + b_4a_{42}c_2 + b_4a_{43}c_3 + b_4a_{44}c_4,
+\end{align*} \end{split}\]</div>
+<p>since for an ERK method, <span class="math notranslate nohighlight">\(a_{ij} = 0\)</span> for <span class="math notranslate nohighlight">\(i \le j\)</span> and <span class="math notranslate nohighlight">\(c_1 = 0\)</span>, then this simplifies to</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{i,j=1}^4 = b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3. \]</div>
+<p>So the first four order conditions from equation <a class="reference internal" href="#equation-rk4-order-conditions-equation">(2.15)</a> simplify to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
     b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
-    b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac{1}{2}, \\
-    b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac{1}{3}, \\
-    b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &amp;= \frac{1}{4}, \\
-\end{align} \end{split}\]</div>
-<p>For the next 3 order conditions from equation <a class="reference internal" href="#equation-rk4-order-conditions-equation">(2.16)</a>, the <span class="math notranslate nohighlight">\(a_{ij}c_j\)</span> term is only non-zero when <span class="math notranslate nohighlight">\(i = 3, 4\)</span> and <span class="math notranslate nohighlight">\(j = 2, 3\)</span>, so we have</p>
+    b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac12, \\
+    b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac13, \\
+    b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &amp;= \frac14, \\
+\end{align*} \end{split}\]</div>
+<p>For the next 3 order conditions, the <span class="math notranslate nohighlight">\(a_{ij}c_j\)</span> term is only non-zero when <span class="math notranslate nohighlight">\(i = 3, 4\)</span> and <span class="math notranslate nohighlight">\(j = 2, 3\)</span>, so we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &amp;= \frac{1}{6}, \\
-    b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &amp;= \frac{1}{8}, \\
+    b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &amp;= \frac18, \\
     b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &amp;= \frac{1}{12}.
 \end{align*} \end{split}\]</div>
-<p>For the final order condition from equation <a class="reference internal" href="#equation-rk4-order-conditions-equation">(2.16)</a>, the <span class="math notranslate nohighlight">\(a_{ij}a_{jk}c_j\)</span> term is only non-zero when <span class="math notranslate nohighlight">\(i=4\)</span>, <span class="math notranslate nohighlight">\(j=3\)</span> and <span class="math notranslate nohighlight">\(k=2\)</span> so we have</p>
+<p>For the final order condition from equation <a class="reference internal" href="#equation-rk4-order-conditions-equation">(2.15)</a>, the <span class="math notranslate nohighlight">\(a_{ij}a_{jk}c_j\)</span> term is only non-zero when <span class="math notranslate nohighlight">\(i=4\)</span>, <span class="math notranslate nohighlight">\(j=3\)</span> and <span class="math notranslate nohighlight">\(k=2\)</span> so we have</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
   b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}.
 \end{align*} \]</div>
 <p>We have now derived the order conditions for a fourth-order explicit Runge-Kutta method which are combined with the row sum conditions. Using rooted trees to do this is much easier than expanding out the Taylor series for the ODE <span class="math notranslate nohighlight">\(y'=f(t, y)\)</span> and the general form of a 4-stage Runge-Kutta method which would require several pages of complicated calculus and algebra.</p>
 <div class="proof definition note admonition" id="rk4-order-conditions-definition">
-<p class="admonition-title"><span class="caption-number">Definition 2.2 </span> (Order conditions for a fourth-order explicit Runge-Kutta method)</p>
+<p class="admonition-title"><span class="caption-number">Definition 2.1 </span> (Order conditions for a fourth-order explicit Runge-Kutta method)</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight" id="equation-rk4-order-conditions">
-<span class="eqno">(2.17)<a class="headerlink" href="#equation-rk4-order-conditions" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-rk4-order-conditions" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
     b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
-    b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac{1}{2}, \\
-    b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac{1}{3}, \\
-    b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &amp;= \frac{1}{4}, \\
+    b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac12, \\
+    b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac13, \\
+    b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &amp;= \frac14, \\
     b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &amp;= \frac{1}{6}, \\
-    b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &amp;= \frac{1}{8}, \\
+    b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &amp;= \frac18, \\
     b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &amp;= \frac{1}{12}, \\
     b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}, \\
     c_2 &amp;= a_{21}, \\
@@ -545,14 +567,87 @@ document.write(`
     c_4 &amp;= a_{41} + a_{42} + a_{43}.
 \end{align*} \end{split}\]</div>
 </section>
-</div><p>A fourth-order explicit Runge-Kutta method has 11 order conditions expressed in 14 unknowns (6 <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients, 4 <span class="math notranslate nohighlight">\(b_i\)</span> coefficients and 4 <span class="math notranslate nohighlight">\(c_i\)</span> coefficients). To derive a method we need to select values for at least 3 of the unknown coefficients and solve for the remaining ones.</p>
+</div><p>The method contains 14 coefficients, but the row-sum conditions relate the <span class="math notranslate nohighlight">\(c_i\)</span> values to the <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients. Consequently the system possess three degrees of freedom, allowing infinitely many fourth-order ERK methods. So to derive a method we need to select values for at least three of the unknown coefficients and solve for the remaining ones.</p>
 <div class="proof example admonition" id="rk4-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 2.6 </span></p>
 <section class="example-content" id="proof-content">
-<p>Derive a fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = c_3 = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(c_4 = 1\)</span>.</p>
+<p>Derive a fourth-order Runge-Kutta method where <span class="math notranslate nohighlight">\(c_2 = c_3 = \frac12\)</span>, <span class="math notranslate nohighlight">\(c_4 = 1\)</span> and <span class="math notranslate nohighlight">\(b_2 = b_3\)</span>.</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
-<p>Use Python or MATLAB to solve the order conditions and the row sum conditions. First lets solve the first four order conditions for the <span class="math notranslate nohighlight">\(b_i\)</span> coefficients.</p>
+<p>Substituting <span class="math notranslate nohighlight">\(c_2 = c_3 = \frac12\)</span> and <span class="math notranslate nohighlight">\(c_4 = 1\)</span> into the first four order conditions gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
+    \frac12b_2 + \frac12b_3 + b_4 &amp;= \frac12, \\
+    \frac14b_2 + \frac14b_3 + b_4 &amp;= \frac13, \\
+    \frac18b_2 + \frac18b_3 + b_4 &amp;= \frac14
+\end{align*} \end{split}\]</div>
+<p>Subtracting <span class="math notranslate nohighlight">\(\frac12\)</span> times the second equation from the third</p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{2}b_4 = \frac{1}{12}, \]</div>
+<p>so <span class="math notranslate nohighlight">\(b_4 = \frac16\)</span> and the second equation is</p>
+<div class="math notranslate nohighlight">
+\[ \frac12 b_2 + \frac12 b_3 = \frac13. \]</div>
+<p>Since in this case we want <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(b_3\)</span> to be the same we have <span class="math notranslate nohighlight">\(b_2 = b_3 = \frac13\)</span>. Substituting <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_3\)</span> and <span class="math notranslate nohighlight">\(b_4\)</span> into the first equation gives <span class="math notranslate nohighlight">\(b_1 = \frac16\)</span>.</p>
+<p>Substituting the values of <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> into the fifth, sixth and seventh order conditions gives</p>
+<div class="math notranslate nohighlight" id="equation-rk4-derivation-1">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-rk4-derivation-1" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+    \frac{1}{6}a_{32} + \frac{1}{12} a_{42} + \frac{1}{12} a_{43} &amp;= \frac{1}{6}, \\
+    \frac{1}{12} a_{32} + \frac{1}{12} a_{42} + \frac{1}{12} a_{43} &amp;= \frac{1}{8}, \\
+    \frac{1}{12} a_{32} + \frac{1}{24} a_{42} + \frac{1}{24} a_{43} &amp;= \frac{1}{12}.
+\end{align*} \end{split}\]</div>
+<p>Subtracting <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> times the first equation from the second</p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{24} a_{42} + \frac{1}{24} a_{43} = \frac{1}{24}, \]</div>
+<p>so <span class="math notranslate nohighlight">\(a_{42} = 1 - a_{43}\)</span>. Substituting <span class="math notranslate nohighlight">\(b_4\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> into the eighth order condition gives</p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{12}a_{43}a_{32} = \frac{1}{24},\]</div>
+<p>so <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2a_{43}}\)</span>. Substituting <span class="math notranslate nohighlight">\(a_{32}\)</span> and <span class="math notranslate nohighlight">\(a_{42}\)</span> into the first equation from <a class="reference internal" href="#equation-rk4-derivation-1">(2.17)</a> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \frac{1}{6} \left( \frac{1}{2a_{43}} \right) + \frac{1}{12}(1 - a_{43}) + \frac{1}{12}a_{43} &amp;= \frac{1}{6} \\
+    1 + a_{43} - a_{43}^2 + a_{43}^2 &amp;= 2a_{43} \\
+    a_{43} &amp;= 1.
+\end{align*} \end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(a_{43} = 1\)</span> and <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2}\)</span>. Entering in the known values of <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> into the Butcher tableau we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{array}{c|cccc}
+        0 &amp;  &amp;  &amp;  &amp; \\
+        \frac12 &amp; a_{21} &amp;  &amp;  &amp; \\
+        \frac12 &amp; a_{31} &amp; \frac12 &amp;  &amp; \\
+        1 &amp; a_{41} &amp; 0 &amp; 1 &amp; \\ \hline
+        &amp; \frac{1}{6} &amp; \frac13 &amp; \frac13 &amp; \frac{1}{6}
+    \end{array}
+\end{align*} \end{split}\]</div>
+<p>The remaining values of <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(a_{31}\)</span> and <span class="math notranslate nohighlight">\(a_{41}\)</span> are found using the row-sum condition</p>
+<div class="math notranslate nohighlight">
+\[ c_i = \sum_{j = 1}^{s} a_{ij}, \]</div>
+<p>so <span class="math notranslate nohighlight">\(a_{21} = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(a_{31} = 0\)</span> and <span class="math notranslate nohighlight">\(a_{41} = 0\)</span> and the Butcher tableau is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{array}{c|cccc}
+        0 &amp;  &amp;  &amp;  &amp; \\
+        \frac12 &amp; \frac12 &amp;  &amp;  &amp; \\
+        \frac12 &amp; 0 &amp; \frac12 &amp;  &amp; \\
+        1 &amp; 0 &amp; 0 &amp; 1 &amp; \\ \hline
+        &amp; \frac{1}{6} &amp; \frac13 &amp; \frac13 &amp; \frac{1}{6}
+    \end{array}
+\end{align*} \end{split}\]</div>
+<p>or alternatively</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_{n+1} &amp;=y_n +\frac{h}{6}(k_1 +2 k_2 +2k_3 +k_4 ),\\
+    k_1 &amp;=f(t_n ,y_n ),\\
+    k_2 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_1 ),\\
+    k_3 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_2 ),\\
+    k_4 &amp;=f(t_n +h,y_n +hk_3 ).
+\end{align*} \end{split}\]</div>
+<p>This fourth-order explicit Runge-Kutta method is often referred to as <em>the</em> Runge-Kutta method or RK4 for short. It is simple, robust and accurate and has become the standard go to method for solving ODEs.</p>
+</section>
+</div><section id="code">
+<h2><span class="section-number">2.5.1. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<p>We saw in the example derivation of the RK4 method that solving the order conditions can be quite an involved process. In practice, we utilise mathematical software to do the algebra for us.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
@@ -567,33 +662,36 @@ Python</label><div class="sd-tab-content docutils">
 <span class="c1"># Define order conditions</span>
 <span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">eq4</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">eq5</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">eq6</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">eq7</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">eq7</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">eq8</span> <span class="o">=</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">eq9</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">-</span> <span class="n">c2</span>
 <span class="n">eq10</span> <span class="o">=</span> <span class="n">a31</span> <span class="o">+</span> <span class="n">a32</span> <span class="o">-</span> <span class="n">c3</span>
 <span class="n">eq11</span> <span class="o">=</span> <span class="n">a41</span> <span class="o">+</span> <span class="n">a42</span> <span class="o">+</span> <span class="n">a43</span> <span class="o">-</span> <span class="n">c4</span>
 
+<span class="c1"># Choose b2 = b3 (this is an addition condition for the RK4 method)</span>
+<span class="n">eq12</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">-</span> <span class="n">b3</span>
+
 <span class="c1"># Solve the order conditions</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">))</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">,</span> <span class="n">eq12</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">a31</span><span class="p">:</span> <span class="p">(</span><span class="n">a43</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a43</span><span class="p">),</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">a31</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="n">a32</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
  <span class="n">a41</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
- <span class="n">a32</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a43</span><span class="p">),</span>
- <span class="n">b2</span><span class="p">:</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span> <span class="o">-</span> <span class="n">a43</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
- <span class="n">b4</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>
+ <span class="n">a42</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="n">a43</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
  <span class="n">b1</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>
- <span class="n">a42</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">a43</span><span class="p">,</span>
- <span class="n">b3</span><span class="p">:</span> <span class="n">a43</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
+ <span class="n">b2</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
+ <span class="n">b3</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span>
+ <span class="n">b4</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span>
  <span class="n">a21</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Note that the solution for <span class="math notranslate nohighlight">\(a_{31}\)</span>, <span class="math notranslate nohighlight">\(a_{32}\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(a_{42}\)</span> and <span class="math notranslate nohighlight">\(b_3\)</span> depend upon a value of <span class="math notranslate nohighlight">\(a_{43}\)</span>. If we choose <span class="math notranslate nohighlight">\(a_{43} = 1\)</span> then <span class="math notranslate nohighlight">\(a_{31} = 0\)</span>, <span class="math notranslate nohighlight">\(a_{32} = \frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(a_{42} = 0\)</span> and <span class="math notranslate nohighlight">\(b_2 = b_3 = \frac{1}{3}\)</span>.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
@@ -639,29 +737,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<p>The Butcher tableau for this fourth-order Runge-Kutta method is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    \begin{array}{c|cccc}
-        0 &amp;  &amp;  &amp;  &amp; \\
-        \frac{1}{2} &amp; \frac{1}{2} &amp;  &amp;  &amp; \\
-        \frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp;  &amp; \\
-        1 &amp; 0 &amp; 0 &amp; 1 &amp; \\ \hline
-        &amp; \frac{1}{6} &amp; \frac{1}{3} &amp; \frac{1}{3} &amp; \frac{1}{6}
-    \end{array}
-\end{align*} \end{split}\]</div>
-<p>or alternatively</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    y_{n+1} &amp;=y_n +\frac{h}{6}(k_1 +2 k_2 +2k_3 +k_4 ),\\
-    k_1 &amp;=f(t_n ,y_n ),\\
-    k_2 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_1 ),\\
-    k_3 &amp;=f(t_n +\tfrac{1}{2}h,y_n +\tfrac{1}{2}h k_2 ),\\
-    k_4 &amp;=f(t_n +h,y_n +hk_3 ).
-\end{align*} \end{split}\]</div>
-<p>This fourth-order explicit Runge-Kutta method is often referred to as <em>the</em> Runge-Kutta method or RK4 for short. It is simple, robust and accurate and has become the standard go to method for solving ODEs.</p>
-</section>
-</div><!-- ## Using Python and MATLAB to solve the order conditions
+<!-- ## Using Python and MATLAB to solve the order conditions
 
 The code below derives the fourth-order explicit Runge-Kutta method from {prf:ref}`rk4-derivation-example`.
 
@@ -720,6 +796,7 @@ solve(eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8)
 
 ````
 ````` --></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -775,6 +852,21 @@ solve(eq1, eq2, eq3, eq4, eq5, eq6, eq7, eq8)
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">2.5.1. Code</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
