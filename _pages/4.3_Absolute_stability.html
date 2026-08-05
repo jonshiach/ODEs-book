@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.5. Absolute stability &#8212; Runge-Kutta Methods</title>
+    <title>4.4. Absolute stability &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -67,8 +67,8 @@
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.6. A-stability" href="4.4_A_stability.html" />
-    <link rel="prev" title="4.4. Stability Functions for Implicit Runge-Kutta Methods" href="4.2_IRK_stability_function.html" />
+    <link rel="next" title="4.5. A-stability" href="4.4_A_stability.html" />
+    <link rel="prev" title="4.3. Stability Functions for Implicit Runge-Kutta Methods" href="4.2_IRK_stability_function.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -220,11 +220,11 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.5. Absolute stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -402,9 +402,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#region-of-absolute-stability">4.5.1. Region of absolute stability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-of-absolute-stability">4.5.2. Interval of absolute stability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-stability-regions">4.5.3. Plotting stability regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#region-of-absolute-stability">4.4.1. Region of absolute stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-of-absolute-stability">4.4.2. Interval of absolute stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-stability-regions">4.4.3. Plotting stability regions</a></li>
 </ul>
             </nav>
         </div>
@@ -417,7 +417,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="absolute-stability">
-<span id="absolute-stability-section"></span><h1><span class="section-number">4.5. </span>Absolute stability<a class="headerlink" href="#absolute-stability" title="Link to this heading">#</a></h1>
+<span id="absolute-stability-section"></span><h1><span class="section-number">4.4. </span>Absolute stability<a class="headerlink" href="#absolute-stability" title="Link to this heading">#</a></h1>
 <p>We have seen that a necessary <a class="reference internal" href="4.0_Stability.html#stability-definition">condition for stability</a> of a method is that the local truncation errors must not grow from one step to the next.</p>
 <p>Consider the test equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span>, the numerical solution satisfies</p>
 <div class="math notranslate nohighlight">
@@ -439,7 +439,7 @@ document.write(`
 </div><p>Since <span class="math notranslate nohighlight">\(z = h \lambda\)</span>, changing the step size <span class="math notranslate nohighlight">\(h\)</span> will change <span class="math notranslate nohighlight">\(R(z)\)</span> and therefore a method may be stable for some values of <span class="math notranslate nohighlight">\(h\)</span> and unstable for others. Absolute stability therefore determines which step sizes can be used safely.</p>
 <hr class="docutils" />
 <section id="region-of-absolute-stability">
-<h2><span class="section-number">4.5.1. </span>Region of absolute stability<a class="headerlink" href="#region-of-absolute-stability" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.4.1. </span>Region of absolute stability<a class="headerlink" href="#region-of-absolute-stability" title="Link to this heading">#</a></h2>
 <p>Of course we require our methods to be stable, so it is useful to know for what values of <span class="math notranslate nohighlight">\(h\)</span> we have a stable method. This gives the definition of the <strong>region of absolute stability</strong>.</p>
 <div class="proof definition admonition" id="region-of-absolute-stability-definition">
 <p class="admonition-title"><span class="caption-number">Definition 4.7 </span> (Region of absolute stability)</p>
@@ -478,7 +478,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="interval-of-absolute-stability">
-<h2><span class="section-number">4.5.2. </span>Interval of absolute stability<a class="headerlink" href="#interval-of-absolute-stability" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.4.2. </span>Interval of absolute stability<a class="headerlink" href="#interval-of-absolute-stability" title="Link to this heading">#</a></h2>
 <p>The <strong>interval of absolute stability</strong> is the portion of the real axis that liess inside the region of absolute stability.</p>
 <div class="proof definition admonition" id="interval-of-absolute-stability-definition">
 <p class="admonition-title"><span class="caption-number">Definition 4.8 </span> (Interval of absolute stability)</p>
@@ -502,10 +502,10 @@ document.write(`
 \[ 0 \leq h \leq \frac{2}{|\lambda|}. \]</div>
 <p>So the Euler method is stable for the test equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span> using a step length <span class="math notranslate nohighlight">\(h \leq \dfrac{2}{|\lambda|}\)</span>.</p>
 <p>Consider the solution to the ODE <span class="math notranslate nohighlight">\(y' = -15y\)</span> that we saw earlier in this chapter.</p>
-<figure class="align-default" id="stability-plot-1-figure" style="width: 600px">
+<figure class="align-default" id="stability-plot-2-figure" style="width: 600px">
 <img alt="../_images/e3340dc78eee2b8b6bd80c50056c74154ab2731580006af1b4d7318248ec2380.png" src="../_images/e3340dc78eee2b8b6bd80c50056c74154ab2731580006af1b4d7318248ec2380.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> and <span class="math notranslate nohighlight">\(h=0.125\)</span>.</span><a class="headerlink" href="#stability-plot-1-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> and <span class="math notranslate nohighlight">\(h=0.125\)</span>.</span><a class="headerlink" href="#stability-plot-2-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here <span class="math notranslate nohighlight">\(\lambda = -15\)</span> so the stability interval for the Euler method is</p>
@@ -515,7 +515,7 @@ document.write(`
 <hr class="docutils" />
 </section>
 <section id="plotting-stability-regions">
-<span id="plot-stability-region-section"></span><h2><span class="section-number">4.5.3. </span>Plotting stability regions<a class="headerlink" href="#plotting-stability-regions" title="Link to this heading">#</a></h2>
+<span id="plot-stability-region-section"></span><h2><span class="section-number">4.4.3. </span>Plotting stability regions<a class="headerlink" href="#plotting-stability-regions" title="Link to this heading">#</a></h2>
 <p>We can plot the region of absolute stability by generate a set of points for <span class="math notranslate nohighlight">\(z\)</span> in the complex plane and plot the contour where <span class="math notranslate nohighlight">\(|R(z)| = 1\)</span> which is the boundary of the stability region. The code for producing a plot of the region of absolute stability of the Euler method using Python is shown below.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -614,7 +614,7 @@ MATLAB</label><div class="sd-tab-content docutils">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.4. </span>Stability Functions for Implicit Runge-Kutta Methods</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Stability Functions for Implicit Runge-Kutta Methods</p>
       </div>
     </a>
     <a class="right-next"
@@ -622,7 +622,7 @@ MATLAB</label><div class="sd-tab-content docutils">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.6. </span>A-stability</p>
+        <p class="prev-next-title"><span class="section-number">4.5. </span>A-stability</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -642,9 +642,9 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#region-of-absolute-stability">4.5.1. Region of absolute stability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-of-absolute-stability">4.5.2. Interval of absolute stability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-stability-regions">4.5.3. Plotting stability regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#region-of-absolute-stability">4.4.1. Region of absolute stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-of-absolute-stability">4.4.2. Interval of absolute stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-stability-regions">4.4.3. Plotting stability regions</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.3. Stability Function of a Runge-Kutta Method &#8212; Runge-Kutta Methods</title>
+    <title>4.2. Stability Functions &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -67,7 +67,7 @@
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.4. Stability Functions for Implicit Runge-Kutta Methods" href="4.2_IRK_stability_function.html" />
+    <link rel="next" title="4.3. Stability Functions for Implicit Runge-Kutta Methods" href="4.2_IRK_stability_function.html" />
     <link rel="prev" title="4. Stability" href="4.0_Stability.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -220,11 +220,11 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.3. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2. Stability Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -392,7 +392,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Stability Function of a Runge-Kutta Method</h1>
+    <h1>Stability Functions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -402,8 +402,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-function-of-an-explicit-runge-kutta-method">4.3.1. Stability function of an explicit Runge-Kutta method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.3.2. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-function-of-a-runge-kutta-method">4.2.1. Stability function of a Runge-Kutta method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-function-of-an-explicit-runge-kutta-method">4.2.2. Stability function of an explicit Runge-Kutta method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.2.3. Code</a></li>
 </ul>
             </nav>
         </div>
@@ -415,9 +416,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="stability-function-of-a-runge-kutta-method">
-<h1><span class="section-number">4.3. </span>Stability Function of a Runge-Kutta Method<a class="headerlink" href="#stability-function-of-a-runge-kutta-method" title="Link to this heading">#</a></h1>
-<p>We have seen that the stability function is the function <span class="math notranslate nohighlight">\(R(z)\)</span> such that <span class="math notranslate nohighlight">\(y_{n+1} = R(z) y_n\)</span> where <span class="math notranslate nohighlight">\(y_{n+1}\)</span> is the single step solution of the test ODE <span class="math notranslate nohighlight">\(y' = \lambda y\)</span> and <span class="math notranslate nohighlight">\(z = h\lambda\)</span>. The <a class="reference internal" href="2.0_ERKs.html#general-form-of-a-rk-method-section"><span class="std std-ref">general form of a Runge-Kutta method</span></a> is</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="stability-functions">
+<h1><span class="section-number">4.2. </span>Stability Functions<a class="headerlink" href="#stability-functions" title="Link to this heading">#</a></h1>
+<p>To study the stability properties of a numerical method we consider how it propagates small error from one step to the next. A convenient model problem for this purpose of the linear test equation</p>
+<div class="math notranslate nohighlight" id="equation-test-equation">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-test-equation" title="Link to this equation">#</a></span>\[ y' = \lambda y, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda \in \mathbb{C}\)</span> is a constant. This equation is simple enough to analyse exactly, having solution</p>
+<div class="math notranslate nohighlight">
+\[ y(t) = e^{\lambda t},\]</div>
+<p>yet it captures the essential growth or decay behaviour that numerical methods must reproduce.</p>
+<p>Suppose a numerical mtehod is applied to this test equation. Since the method advances the numerical solution from <span class="math notranslate nohighlight">\(y_n\)</span> to <span class="math notranslate nohighlight">\(y_{n+1}\)</span>, any perturbation or error is propagated by exactly the same update formula. The resulting factor by which the solution (and hence the error) is multiplied in one step is called the <strong>stability function</strong>.</p>
+<div class="proof definition admonition" id="stability-function-definition">
+<p class="admonition-title"><span class="caption-number">Definition 4.2 </span> (Stability function)</p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>stability function</strong> of a method, denoted by <span class="math notranslate nohighlight">\(R(z)\)</span>, is the rate of growth over a single step of the method when applied to calculate the solution of an ODE of the form <span class="math notranslate nohighlight">\(y'=\lambda t\)</span> where <span class="math notranslate nohighlight">\(z = h \lambda\)</span> and <span class="math notranslate nohighlight">\(h\)</span> is the step size</p>
+<div class="math notranslate nohighlight">
+\[ y_{n+1} = R(z)y_n. \]</div>
+</section>
+</div><p>For example, if the Euler method is used to solve the test equation <span class="math notranslate nohighlight">\(y'=\lambda y\)</span> then the solution will be updated over one step using</p>
+<div class="math notranslate nohighlight">
+\[ y_{n+1} = y_n + h f(t_n ,y_n) = y_n + h \lambda y_n, \]</div>
+<p>Let <span class="math notranslate nohighlight">\(z = h\lambda\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[ y_{n+1} = y_n + z y_n =(1+z)y_n. \]</div>
+<p>So the stability function of the Euler method is <span class="math notranslate nohighlight">\(R(z) = 1 + z\)</span>.</p>
+<hr class="docutils" />
+<section id="stability-function-of-a-runge-kutta-method">
+<span id="rk-rz-section"></span><h2><span class="section-number">4.2.1. </span>Stability function of a Runge-Kutta method<a class="headerlink" href="#stability-function-of-a-runge-kutta-method" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="2.0_ERKs.html#general-form-of-a-rk-method-section"><span class="std std-ref">general form of a Runge-Kutta method</span></a> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_{n+1}&amp;=y_n + h \sum_{i=1}^s b_i k_i ,\\
@@ -488,8 +514,9 @@ document.write(`
 \end{align*} \]</div>
 </section>
 </div><hr class="docutils" />
+</section>
 <section id="stability-function-of-an-explicit-runge-kutta-method">
-<span id="erk-rz-section"></span><h2><span class="section-number">4.3.1. </span>Stability function of an explicit Runge-Kutta method<a class="headerlink" href="#stability-function-of-an-explicit-runge-kutta-method" title="Link to this heading">#</a></h2>
+<span id="erk-rz-section"></span><h2><span class="section-number">4.2.2. </span>Stability function of an explicit Runge-Kutta method<a class="headerlink" href="#stability-function-of-an-explicit-runge-kutta-method" title="Link to this heading">#</a></h2>
 <p>Equation <a class="reference internal" href="#equation-stability-function">(4.5)</a> provides the stability function for a general Runge-Kutta method. For explicit Runge-Kutta methods, we can represent the inverse matrix <span class="math notranslate nohighlight">\((I - zA)^{-1}\)</span> as a power series summation.</p>
 <p>The <a href="https://en.wikipedia.org/wiki/Neumann_series" target="_blank">Neumann series</a> for matrices is</p>
 <div class="math notranslate nohighlight">
@@ -593,7 +620,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="code">
-<h2><span class="section-number">4.3.2. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.2.3. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
 <p>The Python and MATLAB code used to determine the stability function for the ERK method from <a class="reference internal" href="#erk-stability-example">Example 4.1</a> is given below.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -681,7 +708,7 @@ MATLAB</label><div class="sd-tab-content docutils">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.4. </span>Stability Functions for Implicit Runge-Kutta Methods</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Stability Functions for Implicit Runge-Kutta Methods</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -701,8 +728,9 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-function-of-an-explicit-runge-kutta-method">4.3.1. Stability function of an explicit Runge-Kutta method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.3.2. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-function-of-a-runge-kutta-method">4.2.1. Stability function of a Runge-Kutta method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-function-of-an-explicit-runge-kutta-method">4.2.2. Stability function of an explicit Runge-Kutta method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.2.3. Code</a></li>
 </ul>
   </nav></div>
 

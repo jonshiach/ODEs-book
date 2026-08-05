@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.6. A-stability &#8212; Runge-Kutta Methods</title>
+    <title>4.5. A-stability &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -67,8 +67,8 @@
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.7. Stability exercises" href="4.5_Stability_exercises.html" />
-    <link rel="prev" title="4.5. Absolute stability" href="4.3_Absolute_stability.html" />
+    <link rel="next" title="4.6. Stability exercises" href="4.5_Stability_exercises.html" />
+    <link rel="prev" title="4.4. Absolute stability" href="4.3_Absolute_stability.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -220,11 +220,11 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.6. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -402,7 +402,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-for-a-stability">4.6.1. Testing for A-stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-for-a-stability">4.5.1. Testing for A-stability</a></li>
 </ul>
             </nav>
         </div>
@@ -415,7 +415,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="a-stability">
-<span id="a-stability-section"></span><h1><span class="section-number">4.6. </span>A-stability<a class="headerlink" href="#a-stability" title="Link to this heading">#</a></h1>
+<span id="a-stability-section"></span><h1><span class="section-number">4.5. </span>A-stability<a class="headerlink" href="#a-stability" title="Link to this heading">#</a></h1>
 <p>The plots of the region of absolute stability for the explicit RK4 method and the implicit Radau IA method are shown in <a class="reference internal" href="#rk4-stability-region-plot"><span class="std std-numref">Fig. 4.5</span></a> and <a class="reference internal" href="#radauia-stability-region-plot"><span class="std std-numref">Fig. 4.6</span></a>. We can see that the region of absolute stability for the explicit method is bounded in the left-hand side of the complex plane, whereas the region of absolute stability for the implicit Radau IA method contains the entire left half-plane. This means that the step length used for the RK4 method needs to be less than some value when solving the test equation <span class="math notranslate nohighlight">\(y = \lambda y\)</span> with <span class="math notranslate nohighlight">\(\text{Re}(\lambda) \leq 0\)</span> in order for the method to be stable, whereas for the Radau IA method any step size may be used. This property is known as <strong>A-stability</strong>.</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row docutils">
@@ -454,7 +454,7 @@ document.write(`
 <p>No explicit Runge-Kutta method can be A-stable <span id="id1">[<a class="reference internal" href="E_References.html#id17" title="G. Dahlquist. A special stability problem for linear multistep methods. BIT, 3:27–43, 1963.">Dahlquist, 1963</a>]</span>.</p>
 </div>
 <section id="testing-for-a-stability">
-<h2><span class="section-number">4.6.1. </span>Testing for A-stability<a class="headerlink" href="#testing-for-a-stability" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.5.1. </span>Testing for A-stability<a class="headerlink" href="#testing-for-a-stability" title="Link to this heading">#</a></h2>
 <p>Verifying A-stability from a plot can be difficult, so we require an algebraic test. Let</p>
 <div class="math notranslate nohighlight">
 \[ R(z) = \frac{P(z)}{Q(z)}, \]</div>
@@ -563,7 +563,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.5. </span>Absolute stability</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Absolute stability</p>
       </div>
     </a>
     <a class="right-next"
@@ -571,7 +571,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.7. </span>Stability exercises</p>
+        <p class="prev-next-title"><span class="section-number">4.6. </span>Stability exercises</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -591,7 +591,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-for-a-stability">4.6.1. Testing for A-stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-for-a-stability">4.5.1. Testing for A-stability</a></li>
 </ul>
   </nav></div>
 

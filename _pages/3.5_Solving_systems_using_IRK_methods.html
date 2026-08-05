@@ -403,10 +403,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.4.1. Newton’s method</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-single-equation">Newton’s method for a single equation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-system-of-equations">Newton’s method for a system of equations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-stage-values-using-newton-s-method">Computing the stage values using Newton’s method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-j-f">Computing <span class="math notranslate nohighlight">\(J_f\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-single-equation">3.4.1.1. Newton’s method for a single equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-system-of-equations">3.4.1.2. Newton’s method for a system of equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-stage-values-using-newton-s-method">3.4.1.3. Computing the stage values using Newton’s method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-j-f">3.4.1.4. Computing <span class="math notranslate nohighlight">\(J_f\)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-an-irk-to-solve-a-system-of-odes">3.4.2. Applying an IRK to solve a system of ODEs</a></li>
@@ -551,9 +551,9 @@ document.write(`
 <hr class="docutils" />
 <section id="newton-s-method">
 <h2><span class="section-number">3.4.1. </span>Newton’s method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h2>
-<p>To compute the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_1, \ldots, \mathbf{Y}_s\)</span>​, we must solve the system given in equation <a class="reference internal" href="#equation-irk-systems-yi-matrix-form-2">(3.12)</a>. Unlike the examples in the previous page, this system is generally nonlinear because the function <span class="math notranslate nohighlight">\(\mathbf{f}(t,\mathbf{y})\)</span> may contain nonlinear terms. This means we cannot rearrange the equations into a linear system and solve them directly. To solve these equations we use  <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a>, which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function.</p>
+<p>To compute the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_1, \ldots, \mathbf{Y}_s\)</span>​, we must solve the system given in equation <a class="reference internal" href="#equation-irk-systems-yi-matrix-form-2">(3.12)</a>. Unlike the examples in the previous page, this system is generally non-linear because the function <span class="math notranslate nohighlight">\(\mathbf{f}(t,\mathbf{y})\)</span> may contain non-linear terms. This means we cannot rearrange the equations into a linear system and solve them directly. To solve these equations we use  <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a>, which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function.</p>
 <section id="newton-s-method-for-a-single-equation">
-<h3>Newton’s method for a single equation<a class="headerlink" href="#newton-s-method-for-a-single-equation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.4.1.1. </span>Newton’s method for a single equation<a class="headerlink" href="#newton-s-method-for-a-single-equation" title="Link to this heading">#</a></h3>
 <p>Suppose we wish to solve</p>
 <div class="math notranslate nohighlight">
 \[ g(x) = 0. \]</div>
@@ -563,7 +563,7 @@ document.write(`
 <p>The iterations continue until successive estimates differ by less than a specified tolerance.</p>
 </section>
 <section id="newton-s-method-for-a-system-of-equations">
-<h3>Newton’s method for a system of equations<a class="headerlink" href="#newton-s-method-for-a-system-of-equations" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.4.1.2. </span>Newton’s method for a system of equations<a class="headerlink" href="#newton-s-method-for-a-system-of-equations" title="Link to this heading">#</a></h3>
 <p>Given a system of equations <span class="math notranslate nohighlight">\(g(\mathbf{x}) = \mathbf{0}\)</span> where <span class="math notranslate nohighlight">\(g = (g_1, g_2, \ldots)\)</span> are differentiable functions, then the matrix form of Newton’s method is</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} - J^{-1}g(\mathbf{x}^{(k)}),\]</div>
@@ -592,7 +592,7 @@ document.write(`
 \[ \| \Delta \mathbf{x} \| &lt; tol.\]</div>
 </section>
 <section id="computing-the-stage-values-using-newton-s-method">
-<h3>Computing the stage values using Newton’s method<a class="headerlink" href="#computing-the-stage-values-using-newton-s-method" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.4.1.3. </span>Computing the stage values using Newton’s method<a class="headerlink" href="#computing-the-stage-values-using-newton-s-method" title="Link to this heading">#</a></h3>
 <p>For an <span class="math notranslate nohighlight">\(s\)</span>-stage IRK method applied to a system of <span class="math notranslate nohighlight">\(N\)</span> ODEs, the unknown vector</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \mathbf{Y} = \begin{pmatrix} \mathbf{Y}_1 \\ \vdots \\ \mathbf{Y}_2 \end{pmatrix}, \end{split}\]</div>
@@ -637,7 +637,7 @@ document.write(`
 \[ J_g = I_{sN} - h (A \otimes J_f) \]</div>
 </section>
 <section id="computing-j-f">
-<h3>Computing <span class="math notranslate nohighlight">\(J_f\)</span><a class="headerlink" href="#computing-j-f" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.4.1.4. </span>Computing <span class="math notranslate nohighlight">\(J_f\)</span><a class="headerlink" href="#computing-j-f" title="Link to this heading">#</a></h3>
 <p>The individual <span class="math notranslate nohighlight">\(J_f\)</span> Jacobians can be computed using a finite difference approximation</p>
 <div class="math notranslate nohighlight">
 \[ J_{f}^{(i)} = \frac{\partial f}{\partial \mathbf{y}_i} \approx \frac{\mathbf{f}(t_n, \mathbf{y}_n + \epsilon \, \mathbf{e}_i) - \mathbf{f}(t_n, \mathbf{y}_n)}{\epsilon \,},\]</div>
@@ -701,7 +701,7 @@ document.write(`
 <li><p>Return <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span></p></li>
 </ul>
 </section>
-</div><p>The additional cost of solving an <span class="math notranslate nohighlight">\(sN\)</span>-dimensional nonlinear system at every step is compensated by the excellent stability properties of IRK methods, making them particularly effective for stiff systems of ODEs.</p>
+</div><p>The additional cost of solving an <span class="math notranslate nohighlight">\(sN\)</span>-dimensional non-linear system at every step is compensated by the excellent stability properties of IRK methods, making them particularly effective for stiff systems of ODEs.</p>
 <div class="proof example admonition" id="example-2">
 <p class="admonition-title"><span class="caption-number">Example 3.4 </span></p>
 <section class="example-content" id="proof-content">
@@ -1039,10 +1039,10 @@ MATLAB</label><div class="sd-tab-content docutils">
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.4.1. Newton’s method</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-single-equation">Newton’s method for a single equation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-system-of-equations">Newton’s method for a system of equations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-stage-values-using-newton-s-method">Computing the stage values using Newton’s method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-j-f">Computing <span class="math notranslate nohighlight">\(J_f\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-single-equation">3.4.1.1. Newton’s method for a single equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-system-of-equations">3.4.1.2. Newton’s method for a system of equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-stage-values-using-newton-s-method">3.4.1.3. Computing the stage values using Newton’s method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-j-f">3.4.1.4. Computing <span class="math notranslate nohighlight">\(J_f\)</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-an-irk-to-solve-a-system-of-odes">3.4.2. Applying an IRK to solve a system of ODEs</a></li>

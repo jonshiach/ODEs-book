@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.4. Stability Functions for Implicit Runge-Kutta Methods &#8212; Runge-Kutta Methods</title>
+    <title>4.3. Stability Functions for Implicit Runge-Kutta Methods &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -67,8 +67,8 @@
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.5. Absolute stability" href="4.3_Absolute_stability.html" />
-    <link rel="prev" title="4.3. Stability Function of a Runge-Kutta Method" href="4.1_ERK_stability_function.html" />
+    <link rel="next" title="4.4. Absolute stability" href="4.3_Absolute_stability.html" />
+    <link rel="prev" title="4.2. Stability Functions" href="4.1_ERK_stability_function.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -220,11 +220,11 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Functions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -402,7 +402,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.4.1. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.3.1. Code</a></li>
 </ul>
             </nav>
         </div>
@@ -415,12 +415,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="stability-functions-for-implicit-runge-kutta-methods">
-<span id="irk-stability-function-section"></span><h1><span class="section-number">4.4. </span>Stability Functions for Implicit Runge-Kutta Methods<a class="headerlink" href="#stability-functions-for-implicit-runge-kutta-methods" title="Link to this heading">#</a></h1>
-<p>In the <a class="reference internal" href="#rk-rz-definition"><span class="xref myst">previous section</span></a>, we derived the stability function for a general Runge-Kutta method</p>
+<span id="irk-stability-function-section"></span><h1><span class="section-number">4.3. </span>Stability Functions for Implicit Runge-Kutta Methods<a class="headerlink" href="#stability-functions-for-implicit-runge-kutta-methods" title="Link to this heading">#</a></h1>
+<p>In the <a class="reference internal" href="#rk-rz-section"><span class="xref myst">previous section</span></a>, we derived the stability function for a general Runge-Kutta method solution to the text equation <span class="math notranslate nohighlight">\(y' = \lambda y\)</span> which is</p>
 <div class="math notranslate nohighlight">
-\[ R(z) = 1 + z \mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e}. \]</div>
-<p>For implicit methods, <span class="math notranslate nohighlight">\(A\)</span> is not lower triangular so we cannot use a power series summation to determin the stability function. Instead, we can use a result from linear algebra to to express the stability function as a quotient of determinants.</p>
-<p>The <a href="https://en.wikipedia.org/wiki/Matrix_determinant_lemma" target="_blank">matrix determinant lemma</a> is</p>
+\[ R(z) = 1 + z \mathbf{b}^\mathsf{T} (I - zA)^{-1} \mathbf{e}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(z = h\lambda\)</span> and <span class="math notranslate nohighlight">\(\mathbf{e} = (1, \ldots, 1)^\mathsf{T}\)</span>.</p>
+<p>For implicit methods, <span class="math notranslate nohighlight">\(A\)</span> is not lower triangular so we cannot use a power series summation to determine the stability function. Instead, we can use a result from linear algebra to to express the stability function as a quotient of determinants. The <a href="https://en.wikipedia.org/wiki/Matrix_determinant_lemma" target="_blank">matrix determinant lemma</a> is</p>
 <div class="math notranslate nohighlight">
 \[ \det(M + \mathbf{uv}^{\mathsf{T}}) = (1 + \mathbf{v}^\mathsf{T}M^{-1}\mathbf{u}) \det(M), \]</div>
 <p>where <span class="math notranslate nohighlight">\(M\)</span> is an invertible square matrix and <span class="math notranslate nohighlight">\(\mathbf{u}, \mathbf{v}\)</span> are column vectors. Let <span class="math notranslate nohighlight">\(M = I - zA\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u} = z \mathbf{e}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v} = \mathbf{b}\)</span> then</p>
@@ -497,7 +497,7 @@ document.write(`
 </section>
 </div><hr class="docutils" />
 <section id="code">
-<h2><span class="section-number">4.4.1. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3.1. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
 <p>The Python and MATLAB code used to determine the stability function for the IRK method from <a class="reference internal" href="#irk-stability-function-example">Example 4.2</a> is given below.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -587,7 +587,7 @@ MATLAB</label><div class="sd-tab-content docutils">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.3. </span>Stability Function of a Runge-Kutta Method</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Stability Functions</p>
       </div>
     </a>
     <a class="right-next"
@@ -595,7 +595,7 @@ MATLAB</label><div class="sd-tab-content docutils">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.5. </span>Absolute stability</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Absolute stability</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -615,7 +615,7 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.4.1. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.3.1. Code</a></li>
 </ul>
   </nav></div>
 

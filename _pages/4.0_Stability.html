@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -67,7 +67,7 @@
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.3. Stability Function of a Runge-Kutta Method" href="4.1_ERK_stability_function.html" />
+    <link rel="next" title="4.2. Stability Functions" href="4.1_ERK_stability_function.html" />
     <link rel="prev" title="3.5. Implicit Runge-Kutta methods exercises" href="3.6_IRK_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -220,11 +220,11 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Stability</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -403,7 +403,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiffness">4.1. Stiffness</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-functions">4.2. Stability functions</a></li>
 </ul>
             </nav>
         </div>
@@ -421,14 +420,14 @@ document.write(`
 <p>For example, consider the Euler method solution to the following initial value problem using step lengths of <span class="math notranslate nohighlight">\(h = 0.25\)</span> and <span class="math notranslate nohighlight">\(h = 0.125\)</span></p>
 <div class="math notranslate nohighlight">
 \[ y' = -15y, \qquad t \in [0, 1], \qquad y(0) = 1. \]</div>
-<p>The exact solution for this initial value problem is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <a class="reference internal" href="4.3_Absolute_stability.html#stability-plot-1-figure"><span class="std std-numref">Fig. 4.4</span></a>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
+<p>The exact solution for this initial value problem is <span class="math notranslate nohighlight">\(y = e^{-15t}\)</span> and the numerical solutions are plotted against the exact solution in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a>. Here we can see that the solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> diverges.</p>
 <figure class="align-default" id="stability-plot-1-figure" style="width: 600px">
 <img alt="../_images/e3340dc78eee2b8b6bd80c50056c74154ab2731580006af1b4d7318248ec2380.png" src="../_images/e3340dc78eee2b8b6bd80c50056c74154ab2731580006af1b4d7318248ec2380.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Solutions to the initial value problem <span class="math notranslate nohighlight">\(y' = -15y\)</span>, <span class="math notranslate nohighlight">\(t\in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span> using the Euler method with <span class="math notranslate nohighlight">\(h=0.25\)</span> and <span class="math notranslate nohighlight">\(h=0.125\)</span>.</span><a class="headerlink" href="#stability-plot-1-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution where the numerical solution remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution which is unbounded. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="1.2_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="1.2_Error_Analysis.html#local-truncation-error-section"><span class="std std-ref">local truncation error</span></a>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="1.2_Error_Analysis.html#global-truncation-error-section"><span class="std std-ref">global truncation error</span></a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="4.3_Absolute_stability.html#stability-plot-1-figure"><span class="std std-numref">Fig. 4.4</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
+<p>The solution using <span class="math notranslate nohighlight">\(h = 0.125\)</span> is an example of a <strong>stable</strong> solution where the numerical solution remains bounded whereas the solution using <span class="math notranslate nohighlight">\(h = 0.25\)</span> is an example of an <strong>unstable</strong> solution which is unbounded. The reason for the instability is due to the truncation of the Taylor series. We saw in the section on <a class="reference internal" href="1.2_Error_Analysis.html#error-analysis-section"><span class="std std-ref">error analysis</span></a> that the higher order terms that are omitted due to truncation causes a <a class="reference internal" href="1.2_Error_Analysis.html#local-truncation-error-section"><span class="std std-ref">local truncation error</span></a>, and the accumulation of these local truncation errors creates the <a class="reference internal" href="1.2_Error_Analysis.html#global-truncation-error-section"><span class="std std-ref">global truncation error</span></a>. If the local truncation error is too large then the global truncation error will eventually diverge as seen in <a class="reference internal" href="#stability-plot-1-figure"><span class="std std-numref">Fig. 4.1</span></a> causing the solution to be unusable. This provides us with the definition of stability.</p>
 <div class="proof definition admonition" id="stability-definition">
 <p class="admonition-title"><span class="caption-number">Definition 4.1 </span> (Stability)</p>
 <section class="definition-content" id="proof-content">
@@ -473,29 +472,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ S = \frac{\lambda_1}{\lambda_2} = \frac{-1000}{-1} = 1000.\]</div>
 <p>Since <span class="math notranslate nohighlight">\(S\)</span> is <em>large</em> then this is a stiff system.</p>
-<p>A similar anaylsis can be performed for nonlinear systems using the Jacobian matrix to linearalise the system.</p>
-<hr class="docutils" />
-</section>
-<section id="stability-functions">
-<span id="stability-functions-section"></span><h2><span class="section-number">4.2. </span>Stability functions<a class="headerlink" href="#stability-functions" title="Link to this heading">#</a></h2>
-<p>To examine the behaviour of the local truncation errors we use the following test equation</p>
-<div class="math notranslate nohighlight" id="equation-test-equation">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-test-equation" title="Link to this equation">#</a></span>\[ y' = \lambda y. \]</div>
-<p>This test equation is chosen as it is a simple ODE which has the solution <span class="math notranslate nohighlight">\(y=e^{\lambda t}\)</span>. Over a single step of a Runge-Kutta method, the values of <span class="math notranslate nohighlight">\(y_{n+1}\)</span> are updated using the values of <span class="math notranslate nohighlight">\(y_n\)</span>, so the values of the local truncation error, <span class="math notranslate nohighlight">\(e_{n+1}\)</span>, are also updated using <span class="math notranslate nohighlight">\(e_n\)</span> by the same method. This allows us to define a <strong>stability function</strong> for a method.</p>
-<div class="proof definition admonition" id="stability-function-definition">
-<p class="admonition-title"><span class="caption-number">Definition 4.2 </span> (Stability function)</p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>stability function</strong> of a method, denoted by <span class="math notranslate nohighlight">\(R(z)\)</span>, is the rate of growth over a single step of the method when applied to calculate the solution of an ODE of the form <span class="math notranslate nohighlight">\(y'=\lambda t\)</span> where <span class="math notranslate nohighlight">\(z = h \lambda\)</span> and <span class="math notranslate nohighlight">\(h\)</span> is the step size</p>
-<div class="math notranslate nohighlight">
-\[ y_{n+1} = R(z)y_n. \]</div>
-</section>
-</div><p>For example, if the Euler method is used to solve the test equation <span class="math notranslate nohighlight">\(y'=\lambda y\)</span> then the solution will be updated over one step using</p>
-<div class="math notranslate nohighlight">
-\[ y_{n+1} = y_n + h f(t_n ,y_n) = y_n + h \lambda y_n, \]</div>
-<p>Let <span class="math notranslate nohighlight">\(z = h\lambda\)</span> then</p>
-<div class="math notranslate nohighlight">
-\[ y_{n+1} = y_n + z y_n =(1+z)y_n. \]</div>
-<p>So the stability function of the Euler method is <span class="math notranslate nohighlight">\(R(z) = 1 + z\)</span>.</p>
+<p>A similar analysis can be performed for non-linear systems using the Jacobian matrix to linearalise the system.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -545,7 +522,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.3. </span>Stability Function of a Runge-Kutta Method</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Stability Functions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -566,7 +543,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiffness">4.1. Stiffness</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-functions">4.2. Stability functions</a></li>
 </ul>
   </nav></div>
 
