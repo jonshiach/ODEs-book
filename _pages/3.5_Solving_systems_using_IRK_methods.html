@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -441,14 +441,14 @@ document.write(`
    \mathbf{k}_i &amp;= f(t_n +c_i h,\mathbf{y}_n + h \sum_{j=1}^s a_{ij} \mathbf{k}_j),
 \end{align*} \end{split}\]</div>
 <p>In a similar approach to solving single ODEs, we introduce an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> for the second parameter in <span class="math notranslate nohighlight">\(f(t, y)\)</span> in the stage value expressions</p>
-<div class="math notranslate nohighlight" id="equation-irk-yi">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-irk-yi" title="Link to this equation">#</a></span>\[\mathbf{Y}_i = \mathbf{y}_n + h \displaystyle\sum_{j=1}^s a_{ij} \mathbf{k}_j, \]</div>
+<div class="math notranslate nohighlight" id="equation-irk-systems-yi">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-irk-systems-yi" title="Link to this equation">#</a></span>\[\mathbf{Y}_i = \mathbf{y}_n + h \displaystyle\sum_{j=1}^s a_{ij} \mathbf{k}_j, \]</div>
 <p>and the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> becomes</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{k}_i = f(t_n + c_ih, \mathbf{Y}_i). \]</div>
-<p>Substituting this into equation <a class="reference internal" href="#equation-irk-yi">(3.7)</a> we have</p>
-<div class="math notranslate nohighlight" id="equation-irk-yi-2">
-<span class="eqno">(3.8)<a class="headerlink" href="#equation-irk-yi-2" title="Link to this equation">#</a></span>\[ \begin{align*}
+<p>Substituting this into equation <a class="reference internal" href="#equation-irk-systems-yi">(3.7)</a> we have</p>
+<div class="math notranslate nohighlight" id="equation-irk-systems-yi-2">
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-irk-systems-yi-2" title="Link to this equation">#</a></span>\[ \begin{align*}
     \mathbf{Y}_i = \mathbf{y}_n + h \sum_{j = 1}^s a_{ij} f(t_n + c_j h, \mathbf{Y}_j). 
 \end{align*} \]</div>
 <p>and also into equation <a class="reference internal" href="#equation-general-irk-system">(3.6)</a> gives</p>
@@ -456,16 +456,16 @@ document.write(`
 <span class="eqno">(3.9)<a class="headerlink" href="#equation-irk-yn-1" title="Link to this equation">#</a></span>\[ \begin{align*}
    \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i f(t_n + c_i h, \mathbf{Y}_i).
 \end{align*} \]</div>
-<p>Using an <span class="math notranslate nohighlight">\(s\)</span>-stage IRK method, the values of <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> given by equation <a class="reference internal" href="#equation-irk-yi-2">(3.8)</a> are</p>
-<div class="math notranslate nohighlight" id="equation-irk-yi-3">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-irk-yi-3" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+<p>Using an <span class="math notranslate nohighlight">\(s\)</span>-stage IRK method, the values of <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> given by equation <a class="reference internal" href="#equation-irk-systems-yi-2">(3.8)</a> are</p>
+<div class="math notranslate nohighlight" id="equation-irk-systems-yi-3">
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-irk-systems-yi-3" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
     \mathbf{Y}_1 &amp;= \mathbf{y}_n + h (a_{11} f(t_n + c_1h, \mathbf{Y}_1) + \cdots + a_{1s} f(t_n + c_s h, \mathbf{Y}_s)), \\
     \vdots \\
     \mathbf{Y}_s &amp;= \mathbf{y}_n + h (a_{s1} f(t_n + c_1h, \mathbf{Y}_1) + \cdots + a_{ss} f(t_n + c_s h, \mathbf{Y}_s)).
 \end{align*}\end{split}\]</div>
 <p>Writing this as a matrix equation</p>
-<div class="math notranslate nohighlight" id="equation-irk-yi-matrix-form-1">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-irk-yi-matrix-form-1" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+<div class="math notranslate nohighlight" id="equation-irk-systems-yi-matrix-form-1">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-irk-systems-yi-matrix-form-1" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
     \begin{pmatrix} \mathbf{Y}_1 \\ \vdots \\ \mathbf{Y}_s \end{pmatrix}
     =
     \begin{pmatrix} \mathbf{y}_n \\ \vdots \\ \mathbf{y}_n \end{pmatrix} + 
@@ -536,8 +536,8 @@ document.write(`
     \end{pmatrix}
 \end{align*} \end{split}\]</div>
 <p>The <span class="math notranslate nohighlight">\(6\times 6\)</span> matrix is <span class="math notranslate nohighlight">\(A \otimes I_N\)</span> so we can write the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> as</p>
-<div class="math notranslate nohighlight" id="equation-irk-yi-matrix-form-2">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-irk-yi-matrix-form-2" title="Link to this equation">#</a></span>\[ \mathbf{Y} = \mathbf{e} \otimes \mathbf{y}_n + h (A \otimes I_N) F(\mathbf{Y}), \]</div>
+<div class="math notranslate nohighlight" id="equation-irk-systems-yi-matrix-form-2">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-irk-systems-yi-matrix-form-2" title="Link to this equation">#</a></span>\[ \mathbf{Y} = \mathbf{e} \otimes \mathbf{y}_n + h (A \otimes I_N) F(\mathbf{Y}), \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{e} = (1, \ldots, 1)^\mathsf{T} \in \mathbb{R}^s\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -550,7 +550,7 @@ document.write(`
 <hr class="docutils" />
 <section id="newton-s-method">
 <h2><span class="section-number">3.4.1. </span>Newton’s method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h2>
-<p>To compute the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_1, \ldots, \mathbf{Y}_s\)</span>​, we must solve the system given in equation <a class="reference internal" href="#equation-irk-yi-matrix-form-2">(3.12)</a>. Unlike the examples in the previous page, this system is generally nonlinear because the function <span class="math notranslate nohighlight">\(f(t,\mathbf{y})\)</span> may contain nonlinear terms. This means we cannot rearrange the equations into a linear system and solve them directly. To solve these equations we use  <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a>, which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function.</p>
+<p>To compute the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_1, \ldots, \mathbf{Y}_s\)</span>​, we must solve the system given in equation <a class="reference internal" href="#equation-irk-systems-yi-matrix-form-2">(3.12)</a>. Unlike the examples in the previous page, this system is generally nonlinear because the function <span class="math notranslate nohighlight">\(f(t,\mathbf{y})\)</span> may contain nonlinear terms. This means we cannot rearrange the equations into a linear system and solve them directly. To solve these equations we use  <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a>, which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function.</p>
 <section id="newton-s-method-for-a-single-equation">
 <h3>Newton’s method for a single equation<a class="headerlink" href="#newton-s-method-for-a-single-equation" title="Link to this heading">#</a></h3>
 <p>Suppose we wish to solve</p>
@@ -595,7 +595,7 @@ document.write(`
 <p>For an <span class="math notranslate nohighlight">\(s\)</span>-stage IRK method applied to a system of <span class="math notranslate nohighlight">\(N\)</span> ODEs, the unknown vector</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \mathbf{Y} = \begin{pmatrix} \mathbf{Y}_1 \\ \vdots \\ \mathbf{Y}_2 \end{pmatrix}, \end{split}\]</div>
-<p>contains <span class="math notranslate nohighlight">\(sN\)</span> unknowns. We rewrite the stage equations <a class="reference internal" href="#equation-irk-yi-matrix-form-2">(3.12)</a> as</p>
+<p>contains <span class="math notranslate nohighlight">\(sN\)</span> unknowns. We rewrite the stage equations <a class="reference internal" href="#equation-irk-systems-yi-matrix-form-2">(3.12)</a> as</p>
 <div class="math notranslate nohighlight" id="equation-g-jacobian-1">
 <span class="eqno">(3.14)<a class="headerlink" href="#equation-g-jacobian-1" title="Link to this equation">#</a></span>\[ g(\mathbf{Y}) = \mathbf{Y} - \mathbf{e} \otimes \mathbf{y}_n - h(A \otimes I_N) F(\mathbf{Y}),\]</div>
 <p>The Jacobian matrix is</p>
