@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.4. Solving Systems of ODEs using IRK Methods &#8212; Runge-Kutta Methods</title>
+    <title>3.3. Solving Systems of ODEs using IRK Methods &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
@@ -62,13 +62,13 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/3.5_Solving_systems_using_IRK_methods';</script>
-    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/3.5_Solving_systems_using_IRK_methods.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/3.3_Solving_systems_using_IRK_methods';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/3.3_Solving_systems_using_IRK_methods.html" />
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.5. Implicit Runge-Kutta methods exercises" href="3.6_IRK_exercises.html" />
-    <link rel="prev" title="3.3. Solving ODEs using Implicit Methods" href="3.4_Solving_ODEs_using_IRK_methods.html" />
+    <link rel="next" title="3.4. Implicit Runge-Kutta methods exercises" href="3.4_IRK_exercises.html" />
+    <link rel="prev" title="3.2. Solving ODEs using Implicit Methods" href="3.2_Solving_ODEs_using_IRK_methods.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -213,10 +213,9 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Solving_ODEs_using_IRK_methods.html">3.2. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -308,7 +307,7 @@
       
       
       
-      <li><a href="../_sources/_pages/3.5_Solving_systems_using_IRK_methods.ipynb" target="_blank"
+      <li><a href="../_sources/_pages/3.3_Solving_systems_using_IRK_methods.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,15 +401,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.4.1. Newton’s method</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-single-equation">3.4.1.1. Newton’s method for a single equation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-system-of-equations">3.4.1.2. Newton’s method for a system of equations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-stage-values-using-newton-s-method">3.4.1.3. Computing the stage values using Newton’s method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-j-f">3.4.1.4. Computing <span class="math notranslate nohighlight">\(J_f\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.3.1. Newton’s method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-single-equation">3.3.1.1. Newton’s method for a single equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-system-of-equations">3.3.1.2. Newton’s method for a system of equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-stage-values-using-newton-s-method">3.3.1.3. Computing the stage values using Newton’s method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-j-f">3.3.1.4. Computing <span class="math notranslate nohighlight">\(J_f\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-an-irk-to-solve-a-system-of-odes">3.4.2. Applying an IRK to solve a system of ODEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.4.3. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-an-irk-to-solve-a-system-of-odes">3.3.2. Applying an IRK to solve a system of ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.3.3. Code</a></li>
 </ul>
             </nav>
         </div>
@@ -423,7 +422,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="solving-systems-of-odes-using-irk-methods">
-<span id="solving-systems-using-irk-methods-section"></span><h1><span class="section-number">3.4. </span>Solving Systems of ODEs using IRK Methods<a class="headerlink" href="#solving-systems-of-odes-using-irk-methods" title="Link to this heading">#</a></h1>
+<span id="solving-systems-using-irk-methods-section"></span><h1><span class="section-number">3.3. </span>Solving Systems of ODEs using IRK Methods<a class="headerlink" href="#solving-systems-of-odes-using-irk-methods" title="Link to this heading">#</a></h1>
 <p>On the previous page we saw that to solve a single ODE using an IRK method, we need to recast the stage value expressions as a linear system which is solved at each step of the method. When we have a system of multiple ODEs, this becomes more complicated as we need to do this for each equation in the system, and the stage values may form non-linear equations.</p>
 <p>Consider the solution of the IVP of the form</p>
 <div class="math notranslate nohighlight">
@@ -440,7 +439,7 @@ document.write(`
    \mathbf{y}_{n+1} &amp;= \mathbf{y}_n + h \sum_{i=1}^s b_i \mathbf{k}_i,\\
    \mathbf{k}_i &amp;= \mathbf{f}(t_n +c_i h,\mathbf{y}_n + h \sum_{j=1}^s a_{ij} \mathbf{k}_j),
 \end{align*} \end{split}\]</div>
-<p>In a similar approach to solving single ODEs, we introduce an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> for the second parameter in <span class="math notranslate nohighlight">\(\mathbf{f}(t, y)\)</span> in the stage value expressions</p>
+<p>In a similar approach to solving single ODEs, we introduce an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector <span class="math notranslate nohighlight">\(\mathbf{Y}_i\)</span> for the solution of the system over intermediate intervals of the step</p>
 <div class="math notranslate nohighlight" id="equation-irk-systems-yi">
 <span class="eqno">(3.7)<a class="headerlink" href="#equation-irk-systems-yi" title="Link to this equation">#</a></span>\[\mathbf{Y}_i = \mathbf{y}_n + h \displaystyle\sum_{j=1}^s a_{ij} \mathbf{k}_j, \]</div>
 <p>and the expression for the stage values <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> becomes</p>
@@ -550,10 +549,10 @@ document.write(`
 <span class="eqno">(3.13)<a class="headerlink" href="#equation-irk-matrix-form" title="Link to this equation">#</a></span>\[ \mathbf{y}_{n+1} = \mathbf{y}_n + h (\mathbf{b}^\mathsf{T} \otimes I_N) F(\mathbf{Y}). \]</div>
 <hr class="docutils" />
 <section id="newton-s-method">
-<h2><span class="section-number">3.4.1. </span>Newton’s method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3.1. </span>Newton’s method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h2>
 <p>To compute the stage values <span class="math notranslate nohighlight">\(\mathbf{Y}_1, \ldots, \mathbf{Y}_s\)</span>​, we must solve the system given in equation <a class="reference internal" href="#equation-irk-systems-yi-matrix-form-2">(3.12)</a>. Unlike the examples in the previous page, this system is generally nonlinear because the function <span class="math notranslate nohighlight">\(\mathbf{f}(t,\mathbf{y})\)</span> may contain nonlinear terms. This means we cannot rearrange the equations into a linear system and solve them directly. To solve these equations we use  <a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank">Newton’s method</a>, which is a well known numerical method to computing the solutions of <span class="math notranslate nohighlight">\(g(x) = 0\)</span> where <span class="math notranslate nohighlight">\(g\)</span> is a differentiable function.</p>
 <section id="newton-s-method-for-a-single-equation">
-<h3><span class="section-number">3.4.1.1. </span>Newton’s method for a single equation<a class="headerlink" href="#newton-s-method-for-a-single-equation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.3.1.1. </span>Newton’s method for a single equation<a class="headerlink" href="#newton-s-method-for-a-single-equation" title="Link to this heading">#</a></h3>
 <p>Suppose we wish to solve</p>
 <div class="math notranslate nohighlight">
 \[ g(x) = 0. \]</div>
@@ -563,7 +562,7 @@ document.write(`
 <p>The iterations continue until successive estimates differ by less than a specified tolerance.</p>
 </section>
 <section id="newton-s-method-for-a-system-of-equations">
-<h3><span class="section-number">3.4.1.2. </span>Newton’s method for a system of equations<a class="headerlink" href="#newton-s-method-for-a-system-of-equations" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.3.1.2. </span>Newton’s method for a system of equations<a class="headerlink" href="#newton-s-method-for-a-system-of-equations" title="Link to this heading">#</a></h3>
 <p>Given a system of equations <span class="math notranslate nohighlight">\(g(\mathbf{x}) = \mathbf{0}\)</span> where <span class="math notranslate nohighlight">\(g = (g_1, g_2, \ldots)\)</span> are differentiable functions, then the matrix form of Newton’s method is</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} - J^{-1}g(\mathbf{x}^{(k)}),\]</div>
@@ -592,7 +591,7 @@ document.write(`
 \[ \| \Delta \mathbf{x} \| &lt; tol.\]</div>
 </section>
 <section id="computing-the-stage-values-using-newton-s-method">
-<h3><span class="section-number">3.4.1.3. </span>Computing the stage values using Newton’s method<a class="headerlink" href="#computing-the-stage-values-using-newton-s-method" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.3.1.3. </span>Computing the stage values using Newton’s method<a class="headerlink" href="#computing-the-stage-values-using-newton-s-method" title="Link to this heading">#</a></h3>
 <p>For an <span class="math notranslate nohighlight">\(s\)</span>-stage IRK method applied to a system of <span class="math notranslate nohighlight">\(N\)</span> ODEs, the unknown vector</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \mathbf{Y} = \begin{pmatrix} \mathbf{Y}_1 \\ \vdots \\ \mathbf{Y}_2 \end{pmatrix}, \end{split}\]</div>
@@ -602,7 +601,7 @@ document.write(`
 <p>The Jacobian matrix is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    J_g &amp;= \frac{\partial g}{\partial \mathbf{Y}} = I_{sN} - h(A \otimes I_N) F'(\mathbf{Y}),
+    J_G &amp;= \frac{\partial G}{\partial \mathbf{Y}} = I_{sN} - h(A \otimes I_N) F'(\mathbf{Y}),
 \end{align*} \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
@@ -611,14 +610,14 @@ document.write(`
     0 &amp; J_f^{(2)} &amp; \ddots &amp; \vdots \\
     \vdots &amp; \ddots &amp; \ddots &amp; 0 \\
     0 &amp; \cdots &amp; 0 &amp; J_f^{(s)}
-\end{pmatrix}\end{split}\]</div>
+\end{pmatrix}, \end{split}\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[ J_f^{(i)} = \frac{\partial}{\partial \mathbf{y}} \mathbf{f}(t_n + c_ih, \mathbf{Y}_i).\]</div>
-<p>Each Jacobian <span class="math notranslate nohighlight">\(J_f^{(i)}\)</span> is an <span class="math notranslate nohighlight">\(N \times N\)</span> matrix so <span class="math notranslate nohighlight">\(J_g\)</span> is a <span class="math notranslate nohighlight">\(sN \times sN\)</span> matrix</p>
+<p>Each Jacobian <span class="math notranslate nohighlight">\(J_f^{(i)}\)</span> is an <span class="math notranslate nohighlight">\(N \times N\)</span> matrix so <span class="math notranslate nohighlight">\(J_G\)</span> is an <span class="math notranslate nohighlight">\(sN \times sN\)</span> matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    J_g &amp;= I_{sN} - h
+    J_G &amp;= I_{sN} - h
     \begin{pmatrix}
         a_{11} J_f^{(1)} &amp; 
         \cdots &amp; 
@@ -627,17 +626,17 @@ document.write(`
         a_{s1} J_f^{(1)} &amp; 
         \cdots &amp; 
         a_{ss} J_f^{(s)}
-    \end{pmatrix}
+    \end{pmatrix}.
 \end{align*} \end{split}\]</div>
 <p>Computing <span class="math notranslate nohighlight">\(J_f^{(1)}, \ldots, J_f^{(s)}\)</span> at every Newton iteration can be expensive. A common simplification is</p>
 <div class="math notranslate nohighlight">
 \[ J_f^{(i)} \approx \frac{\partial}{\partial \mathbf{y}} \mathbf{f}(t_n, \mathbf{y}_n)\]</div>
 <p>so equation <a class="reference internal" href="#equation-g-jacobian-1">(3.14)</a> becomes</p>
 <div class="math notranslate nohighlight">
-\[ J_g = I_{sN} - h (A \otimes J_f) \]</div>
+\[ J_G = I_{sN} - h (A \otimes J_f). \]</div>
 </section>
 <section id="computing-j-f">
-<h3><span class="section-number">3.4.1.4. </span>Computing <span class="math notranslate nohighlight">\(J_f\)</span><a class="headerlink" href="#computing-j-f" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.3.1.4. </span>Computing <span class="math notranslate nohighlight">\(J_f\)</span><a class="headerlink" href="#computing-j-f" title="Link to this heading">#</a></h3>
 <p>The individual <span class="math notranslate nohighlight">\(J_f\)</span> Jacobians can be computed using a finite difference approximation</p>
 <div class="math notranslate nohighlight">
 \[ J_{f}^{(i)} = \frac{\partial}{\partial y_i} \mathbf{f}(t_n, \mathbf{y}_n)\approx \frac{\mathbf{f}(t_n, \mathbf{y}_n + \epsilon \, \mathbf{e}_i) - \mathbf{f}(t_n, \mathbf{y}_n)}{\epsilon \,},\]</div>
@@ -669,25 +668,26 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="applying-an-irk-to-solve-a-system-of-odes">
-<h2><span class="section-number">3.4.2. </span>Applying an IRK to solve a system of ODEs<a class="headerlink" href="#applying-an-irk-to-solve-a-system-of-odes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3.2. </span>Applying an IRK to solve a system of ODEs<a class="headerlink" href="#applying-an-irk-to-solve-a-system-of-odes" title="Link to this heading">#</a></h2>
 <p>The steps used to solve an IVP using an IRK method are outlined in <a class="reference internal" href="#irk-algorithm">Algorithm 3.1</a>.</p>
 <div class="proof algorithm admonition" id="irk-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 3.1 </span> (Solving an IVP using an IRK method)</p>
 <section class="algorithm-content" id="proof-content">
-<p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = \mathbf{f}(t, \mathbf{y})\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, a vector of initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = y_0\)</span> and a value of the step length <span class="math notranslate nohighlight">\(h\)</span></p>
+<p><strong>Inputs</strong> A system of <span class="math notranslate nohighlight">\(N\)</span> first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = \mathbf{f}(t, \mathbf{y})\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, a vector of initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = y_0\)</span> and a value of the step length <span class="math notranslate nohighlight">\(h\)</span></p>
 <p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbf{e} = (1, \ldots, 1)^\mathsf{T} \in \mathbb{R}^s\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(nsteps \gets \dfrac{t_{\max} - t_0}{h}\)</span></p></li>
-<li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, nsteps\)</span></p>
+<li><p><span class="math notranslate nohighlight">\(n_{steps} \gets \dfrac{t_{\max} - t_0}{h}\)</span></p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, n_{steps}\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{Y} \gets \mathbf{e} \otimes \mathbf{y}_n\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(J_f \gets \dfrac{\partial}{\partial \mathbf{y}} \mathbf{f}(t_n, \mathbf{y}_n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(J_G \gets I_{sN} - h (A \otimes J_f)\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(k = 1, \ldots, maxiter\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(F(\mathbf{Y}) \gets \begin{pmatrix} \mathbf{f}(t_n + c_1h, \mathbf{Y}_1) \\ \vdots \\ \mathbf{f}(t_n + c_sh, \mathbf{Y}_s) \end{pmatrix}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(G(\mathbf{Y}) \gets \mathbf{Y} - \mathbf{e} \otimes \mathbf{y}_n - h (A \otimes I_N) F(\mathbf{Y})\)</span></p></li>
-<li><p>Solve the linear system <span class="math notranslate nohighlight">\((I - h (A \otimes J_f)) \Delta \mathbf{Y} = -G(\mathbf{Y})\)</span> for <span class="math notranslate nohighlight">\(\Delta \mathbf{Y}\)</span></p></li>
+<li><p>Solve the linear system <span class="math notranslate nohighlight">\(J_G \Delta \mathbf{Y} = -G(\mathbf{Y})\)</span> for <span class="math notranslate nohighlight">\(\Delta \mathbf{Y}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{Y} \gets \mathbf{Y} + \Delta \mathbf{Y}\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\| \Delta \mathbf{Y} \| &lt; tol\)</span></p>
 <ul>
@@ -711,7 +711,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ \ddot{y} - \mu (1 - y^2) \dot{y} + y = 0, \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu\)</span> is a scalar parameter that governs the strength of the damping.</p>
-<p>Use the Radau IA method to compute the solution to the van der Pol oscillator over the first 50 seconds where <span class="math notranslate nohighlight">\(y(0) = 2\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span>.</p>
+<p>Use the Radau IA method to compute the solution to the van der Pol oscillator over the first 50 seconds where <span class="math notranslate nohighlight">\(y(0) = 2\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span> using a step length of <span class="math notranslate nohighlight">\(h = 0.1\)</span> and a convergence tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span> for Newton’s method.</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
 <p>We need to rewrite the second-order ODE as a system of first-order ODEs. Let <span class="math notranslate nohighlight">\(y_1 = y\)</span> and <span class="math notranslate nohighlight">\(y_2 = \dot{y}_1\)</span> then</p>
@@ -726,7 +726,14 @@ document.write(`
     \mathbf{y}&amp;= \begin{pmatrix} y_1 \\ y_2 \end{pmatrix}, &amp;
     \mathbf{f}(t, \mathbf{y}) &amp;= \begin{pmatrix} y_2 \\ \mu (1 - y_1^2) y_2 - y_1 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>The initial conditions are <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (2, 0)\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span>. The Jacobian matrix is</p>
+<p>The coefficients for the Radau IA method are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    A &amp;= \begin{pmatrix} \frac{1}{4} &amp; -\frac{1}{4} \\ \frac{1}{4} &amp; \frac{5}{12} \end{pmatrix}, &amp;
+    \mathbf{b} &amp;= \begin{pmatrix} \frac{1}{4} \\ \frac{3}{4} \end{pmatrix} &amp;
+    \mathbf{c} &amp;= \begin{pmatrix} 0 \\ \frac{2}{3} \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>The initial conditions are <span class="math notranslate nohighlight">\(\mathbf{y}_0 = (2, 0)\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span>. The Jacobian matrix of the ODE system for the first step is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*} 
     J_f &amp;= 
@@ -737,35 +744,62 @@ document.write(`
     =
     \begin{pmatrix}
         0 &amp; 1 \\
+        -2(10)(2)(0) - 1 &amp; 10(1 - 2^2)
+    \end{pmatrix}
+    =   
+    \begin{pmatrix}
+        0 &amp; 1 \\
         -1 &amp; -30 
-    \end{pmatrix}.
+    \end{pmatrix},
 \end{align*} \end{split}\]</div>
-<p>The coefficients for the Radau IA method are</p>
+<p>so the Jacobian used in the Newton iterations for the first step is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    A &amp;= \begin{pmatrix} \frac{1}{4} &amp; -\frac{1}{4} \\ \frac{1}{4} &amp; \frac{5}{12} \end{pmatrix}, &amp;
-    \mathbf{b} &amp;= \begin{pmatrix} \frac{1}{4} \\ \frac{3}{4} \end{pmatrix} &amp;
-    \mathbf{c} &amp;= \begin{pmatrix} 0 \\ \frac{2}{3} \end{pmatrix}.
+    J_G &amp;= I_4 - h (A \otimes J_f)
+    =
+    \begin{pmatrix} 
+        1 &amp; 0 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 &amp; 0 \\
+        0 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; 0 &amp; 1
+    \end{pmatrix} - 0.1
+    \begin{pmatrix}
+        0 &amp; \frac14 &amp; 0 &amp; -\frac14 \\
+        -\frac14 &amp; -\frac{15}{2} &amp; \frac14 &amp; \frac{15}{2} \\
+        0 &amp; \frac14 &amp; 0 &amp; \frac{5}{12} \\
+        -\frac14 &amp; -\frac{15}{2} &amp; -\frac{5}{12} &amp; -\frac{25}{2}
+    \end{pmatrix} \\
+    &amp;=
+    \begin{pmatrix}
+        1 &amp; -\frac{1}{40} &amp; 0 &amp; \frac{1}{40} \\
+        \frac{1}{40} &amp; \frac74 &amp; -\frac{1}{40} &amp; -\frac34 \\
+        0 &amp; -\frac{1}{40} &amp; 1 &amp; -\frac{1}{24} \\
+        \frac{1}{40} &amp; \frac34 &amp; \frac{1}{24} &amp; \frac94
+    \end{pmatrix},
 \end{align*} \end{split}\]</div>
-<p>Using Newton’s method to solve for <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span></p>
+<p>Computing <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>, <span class="math notranslate nohighlight">\(F(\mathbf{Y})\)</span> and <span class="math notranslate nohighlight">\(G(\mathbf{Y})\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{Y} &amp;= \mathbf{e} \otimes \mathbf{y}_0 = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 2 \\ 0 \end{pmatrix}= \begin{pmatrix} 2 \\ 0 \\ 2 \\ 0 \end{pmatrix}, &amp;
+    \mathbf{Y} &amp;= \mathbf{e} \otimes \mathbf{y}_0 = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 2 \\ 0 \end{pmatrix}= \begin{pmatrix} 2 \\ 0 \\ 2 \\ 0 \end{pmatrix}, \\
     F(\mathbf{Y}) &amp;= 
     \begin{pmatrix}
         \mathbf{f}(t_0 + 0h, \mathbf{Y}_1) \\
         \mathbf{f}(t_0 + \frac{2}{3}h, \mathbf{Y}_2)
+    \end{pmatrix} 
+    =
+    \begin{pmatrix}
+        0 \\ 
+        10(1 - 2^2)(0) - 2 \\
+        0 \\
+        10(1 - 2^2)(0) - 2
     \end{pmatrix}
     =
-    \begin{pmatrix} 0 \\ -2 \\ 0 \\ -2 \end{pmatrix}
-\end{align*} \end{split}\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+    \begin{pmatrix} 0 \\ -2 \\ 0 \\ -2 \end{pmatrix} \\
     G(\mathbf{Y}) &amp;= \mathbf{Y} - \mathbf{e} \otimes \mathbf{y}_n - h(A \otimes I_2) F(\mathbf{Y}) \\
     &amp;= 
-    \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix} -
     \begin{pmatrix} 2 \\ 0 \\ 2 \\ 0 \end{pmatrix} -
+    \begin{pmatrix} 2 \\ 0 \\ 2 \\ 0 \end{pmatrix} -
+    0.1
     \begin{pmatrix} 
         \frac{1}{4} &amp; 0 &amp; -\frac{1}{4} &amp; 0 \\
         0 &amp; \frac{1}{4} &amp; 0 &amp; -\frac{1}{4} \\
@@ -774,15 +808,24 @@ document.write(`
     \end{pmatrix}
     \begin{pmatrix} 0 \\ -2 \\ 0 \\ -2 \end{pmatrix}
     =
-    \begin{pmatrix} 0 \\ 0 \\ 0 \\ \frac{4}{3} \end{pmatrix}.
+    \begin{pmatrix} 0 \\ 0 \\ 0 \\ \frac{2}{15} \end{pmatrix}. \\
 \end{align*} \end{split}\]</div>
-<p>Solving <span class="math notranslate nohighlight">\((I_4 - h(A \otimes J_f))\Delta \mathbf{Y} = -G(\mathbf{Y})\)</span> for <span class="math notranslate nohighlight">\(\Delta \mathbf{Y}\)</span> gives</p>
+<p>Solving the linear system <span class="math notranslate nohighlight">\(J_G \Delta \mathbf{Y} = -G(\mathbf{Y})\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \Delta \mathbf{Y}
-    &amp;=\begin{pmatrix} 0.0007 \\ -0.0222 \\ -0.0027 \\ -0.0518 \end{pmatrix},
+    &amp;=
+    \begin{pmatrix}
+        1 &amp; -\frac{1}{40} &amp; 0 &amp; \frac{1}{40} \\
+        \frac{1}{40} &amp; \frac74 &amp; -\frac{1}{40} &amp; -\frac34 \\
+        0 &amp; -\frac{1}{40} &amp; 1 &amp; -\frac{1}{24} \\
+        \frac{1}{40} &amp; \frac34 &amp; \frac{1}{24} &amp; \frac94
+    \end{pmatrix}^{-1}
+    \begin{pmatrix} 0 \\ 0 \\ 0 \\ -\frac{2}{15} \end{pmatrix}
+    =
+    \begin{pmatrix} 0.0007 \\ -0.0222 \\ -0.0027 \\ -0.0518 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>so the new estimate of <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> is</p>
+<p>The new estimate of <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{Y} &amp;= \mathbf{Y} + \Delta \mathbf{Y}
@@ -792,13 +835,70 @@ document.write(`
     =
     \begin{pmatrix} 2.0007 \\ -0.0222 \\ 1.9973 \\ -0.0518 \end{pmatrix}
 \end{align*}. \end{split}\]</div>
-<p>Here <span class="math notranslate nohighlight">\(\|\Delta \mathbf{Y}\| = 0.056447\)</span> so we need to continue iterating. After just one more iteration, <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> converges to the solution</p>
+<p>Here <span class="math notranslate nohighlight">\(\|\Delta \mathbf{Y}\| = 0.056447 &gt; 10^{-4}\)</span> so we need to continue iterating. Computing <span class="math notranslate nohighlight">\(F(\mathbf{Y})\)</span> and <span class="math notranslate nohighlight">\(G(\mathbf{Y})\)</span> using the new values of <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    F(\mathbf{Y}) &amp;= 
+    \begin{pmatrix}
+        \mathbf{f}(t_0 + 0h, \mathbf{Y}_1) \\
+        \mathbf{f}(t_0 + \frac{2}{3}h, \mathbf{Y}_2)
+    \end{pmatrix} 
+    =
+    \begin{pmatrix}
+        -0.0222 \\ 
+        10(1 - 2.0007^2)(-0.0222) - 2.0007 \\
+        -0.0518 \\
+        10(1 - 1.9973^2)(-0.0518) - 1.9973
+    \end{pmatrix}
+    =
+    \begin{pmatrix} -0.0222 \\ -1.3326 \\ -0.0518 \\ -0.4489 \end{pmatrix} \\
+    G(\mathbf{Y}) &amp;= \mathbf{Y} - \mathbf{e} \otimes \mathbf{y}_n - h(A \otimes I_2) F(\mathbf{Y}) \\
+    &amp;= 
+    \begin{pmatrix} 2.0007 \\ -0.0222 \\ 1.9973 \\ -0.0518 \end{pmatrix} -
+    \begin{pmatrix} 2 \\ 0 \\ 2 \\ 0 \end{pmatrix} -
+    0.1
+    \begin{pmatrix} 
+        \frac{1}{4} &amp; 0 &amp; -\frac{1}{4} &amp; 0 \\
+        0 &amp; \frac{1}{4} &amp; 0 &amp; -\frac{1}{4} \\
+        \frac{1}{4} &amp; 0 &amp; \frac{5}{12} &amp; 0 \\
+        0 &amp; \frac{1}{4} &amp; 0 &amp; \frac{5}{12}
+    \end{pmatrix}
+    \begin{pmatrix} -0.0222 \\ -1.3326 \\ -0.0518 \\ -0.4489 \end{pmatrix}
+    =
+    \begin{pmatrix} 0 \\ -0.0002 \\ 0 \\ -0.0002 \end{pmatrix}. \\
+\end{align*} \end{split}\]</div>
+<p>Solving the linear system <span class="math notranslate nohighlight">\(J_G \Delta \mathbf{Y} = -G(\mathbf{Y})\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \Delta \mathbf{Y}
+    &amp;=
+    \begin{pmatrix}
+        1 &amp; -\frac{1}{40} &amp; 0 &amp; \frac{1}{40} \\
+        \frac{1}{40} &amp; \frac74 &amp; -\frac{1}{40} &amp; -\frac34 \\
+        0 &amp; -\frac{1}{40} &amp; 1 &amp; -\frac{1}{24} \\
+        \frac{1}{40} &amp; \frac34 &amp; \frac{1}{24} &amp; \frac94
+    \end{pmatrix}^{-1}
+    \begin{pmatrix} 0 \\ 0.0002 \\ 0 \\ 0.0002 \end{pmatrix}
+    =
+    \begin{pmatrix} 0 \\ 0 \\ 0 \\ -0.0001 \end{pmatrix},
+\end{align*} \end{split}\]</div>
+<p>The new estimate of <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \mathbf{Y} &amp;= \mathbf{Y} + \Delta \mathbf{Y}
+    =
+    \begin{pmatrix} 2.0007 \\ -0.0222 \\ 1.9973 \\ -0.0518 \end{pmatrix} +
+    \begin{pmatrix} 0 \\ 0 \\ 0 \\ -0.0001 \end{pmatrix}
+    =
+    \begin{pmatrix} 2.0007 \\ -0.0222 \\ 1.9973 \\ -0.0519 \end{pmatrix}
+\end{align*}. \end{split}\]</div>
+<p>Now <span class="math notranslate nohighlight">\(\| \Delta(\mathbf{Y}) \| = 1.1864 \times 10^{-4} &gt; 10^{-4}\)</span> so we need to keep iterating. One more iteration results in <span class="math notranslate nohighlight">\(\Delta \mathbf{Y} = \mathbf{0}\)</span> (correct to 4 significant figures) so</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{Y} &amp;= \begin{pmatrix} 2.0007 \\ -0.0222 \\ 1.9973 \\ -0.0519 \end{pmatrix}, &amp;
     F(\mathbf{Y}) &amp;= \begin{pmatrix} -0.0222 \\ -1.3339 \\ -0.0519 \\ -0.4456 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Calculating <span class="math notranslate nohighlight">\(\mathbf{y}_{1}\)</span></p>
+<p>We can now compute the solution over the first step</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{y}_1 &amp;= \mathbf{y_0} + h(\mathbf{b}^\mathsf{T} \otimes I_2) F(\mathbf{Y}) \\
@@ -813,7 +913,7 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>The solution over the full domain <span class="math notranslate nohighlight">\(t \in [0, 50]\)</span> is shown in <a class="reference internal" href="#vanderpol-plot-figure"><span class="std std-numref">Fig. 3.2</span></a>.</p>
 <figure class="align-default" id="vanderpol-plot-figure">
-<img alt="../_images/42a163fcd3269454dca1f1ba6c17b7e197bba399fb6d37dde8760ee93168629a.png" src="../_images/42a163fcd3269454dca1f1ba6c17b7e197bba399fb6d37dde8760ee93168629a.png" />
+<img alt="../_images/ff5739d60f574a3cba53948138671f4e7cab415c352e313e588910a479f50649.png" src="../_images/ff5739d60f574a3cba53948138671f4e7cab415c352e313e588910a479f50649.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Solution of the van der Pol oscillator where <span class="math notranslate nohighlight">\(\mu=10\)</span> using the Radau IA IRK method.</span><a class="headerlink" href="#vanderpol-plot-figure" title="Link to this image">#</a></p>
 </figcaption>
@@ -822,7 +922,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="code">
-<h2><span class="section-number">3.4.3. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3.3. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
 <p>The code below defines the functions <code class="docutils literal notranslate"><span class="pre">jac()</span></code> and <code class="docutils literal notranslate"><span class="pre">radauIA()</span></code> which computes the Jacobian of a function <span class="math notranslate nohighlight">\(\mathbf{f}(t, y)\)</span> and the solution to an initial value problem using the Radau IA method respectively.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -835,7 +935,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
     
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-        <span class="n">J</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>\<span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">I</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> \<span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="n">epsilon</span>
+        <span class="n">J</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">I</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="n">epsilon</span>
 
     <span class="k">return</span> <span class="n">J</span>
 
@@ -860,8 +960,9 @@ Python</label><div class="sd-tab-content docutils">
     <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">])</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
     <span class="n">s</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
+    <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    
     <span class="c1"># Define maximum Newton iterations</span>
     <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">10</span>
 
@@ -870,8 +971,9 @@ Python</label><div class="sd-tab-content docutils">
 
         <span class="c1"># Use Newton&#39;s method to solve for the stage values</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
-        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span>
-        <span class="n">J</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">Jf</span> <span class="o">=</span> <span class="n">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
+        <span class="n">JG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Jf</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -879,7 +981,7 @@ Python</label><div class="sd-tab-content docutils">
                 <span class="n">F</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
 
             <span class="n">G</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span><span class="p">))</span> <span class="o">@</span> <span class="n">F</span>
-            <span class="n">delta_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">J</span><span class="p">),</span> <span class="o">-</span><span class="n">G</span><span class="p">)</span>
+            <span class="n">delta_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">JG</span><span class="p">,</span> <span class="o">-</span><span class="n">G</span><span class="p">)</span>
             <span class="n">Y</span> <span class="o">+=</span> <span class="n">delta_Y</span>
 
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">delta_Y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">:</span>
@@ -911,7 +1013,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">epsilon</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span>
 
 <span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">N</span>
-<span class="w">    </span><span class="n">J</span><span class="p">(:,</span><span class="w"> </span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsilon</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="p">(:,</span><span class="nb">i</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">f</span><span class="p">}(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
+<span class="w">    </span><span class="n">J</span><span class="p">(:,</span><span class="w"> </span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">epsilon</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">I</span><span class="p">(:,</span><span class="nb">i</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">epsilon</span><span class="p">;</span>
 <span class="k">end</span>
 
 <span class="k">end</span>
@@ -935,7 +1037,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="p">];</span>
 <span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="p">];</span>
 <span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="n">e</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">e</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">ones</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 
 <span class="c">% Define maximum Newton iterations</span>
 <span class="n">max_iter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
@@ -945,15 +1047,17 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="w">    </span><span class="c">% Use Newton&#39;s method to solve for the stage values</span>
 <span class="w">    </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Jf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">jac</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">JG</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">Jf</span><span class="p">);</span>
+
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">max_iter</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">s</span>
 <span class="w">            </span><span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
 <span class="w">            </span><span class="n">F</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">&#39;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">end</span>
 <span class="w">        </span><span class="n">G</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="o">&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="nb">eye</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">F</span><span class="p">;</span>
-<span class="w">        </span><span class="n">delta_Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">eye</span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">kron</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">J</span><span class="p">))</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="o">-</span><span class="n">G</span><span class="p">;</span>
+<span class="w">        </span><span class="n">delta_Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">JG</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="o">-</span><span class="n">G</span><span class="p">;</span>
 <span class="w">        </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">delta_Y</span><span class="p">;</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">delta_Y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-6</span>
@@ -1016,20 +1120,20 @@ MATLAB</label><div class="sd-tab-content docutils">
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="3.4_Solving_ODEs_using_IRK_methods.html"
+       href="3.2_Solving_ODEs_using_IRK_methods.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>Solving ODEs using Implicit Methods</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Solving ODEs using Implicit Methods</p>
       </div>
     </a>
     <a class="right-next"
-       href="3.6_IRK_exercises.html"
+       href="3.4_IRK_exercises.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.5. </span>Implicit Runge-Kutta methods exercises</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Implicit Runge-Kutta methods exercises</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1049,15 +1153,15 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.4.1. Newton’s method</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-single-equation">3.4.1.1. Newton’s method for a single equation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-system-of-equations">3.4.1.2. Newton’s method for a system of equations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-stage-values-using-newton-s-method">3.4.1.3. Computing the stage values using Newton’s method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-j-f">3.4.1.4. Computing <span class="math notranslate nohighlight">\(J_f\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.3.1. Newton’s method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-single-equation">3.3.1.1. Newton’s method for a single equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method-for-a-system-of-equations">3.3.1.2. Newton’s method for a system of equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-stage-values-using-newton-s-method">3.3.1.3. Computing the stage values using Newton’s method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-j-f">3.3.1.4. Computing <span class="math notranslate nohighlight">\(J_f\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-an-irk-to-solve-a-system-of-odes">3.4.2. Applying an IRK to solve a system of ODEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.4.3. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-an-irk-to-solve-a-system-of-odes">3.3.2. Applying an IRK to solve a system of ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">3.3.3. Code</a></li>
 </ul>
   </nav></div>
 

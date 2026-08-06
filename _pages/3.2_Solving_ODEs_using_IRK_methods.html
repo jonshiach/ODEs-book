@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. Boundary Value Problems &#8212; Runge-Kutta Methods</title>
+    <title>3.2. Solving ODEs using Implicit Methods &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -62,13 +62,13 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/5.0_BVPs';</script>
-    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/5.0_BVPs.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/3.2_Solving_ODEs_using_IRK_methods';</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/3.2_Solving_ODEs_using_IRK_methods.html" />
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.2. The shooting method" href="5.1_Shooting_method.html" />
-    <link rel="prev" title="4.6. Stability exercises" href="4.5_Stability_exercises.html" />
+    <link rel="next" title="3.3. Solving Systems of ODEs using IRK Methods" href="3.3_Solving_systems_using_IRK_methods.html" />
+    <link rel="prev" title="3.1. Deriving implicit Runge-Kutta methods" href="3.1_Deriving_IRK_methods.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -211,9 +211,9 @@
 <li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.2_Solving_ODEs_using_IRK_methods.html">3.2. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.2. Solving ODEs using Implicit Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.3_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
@@ -226,7 +226,7 @@
 <li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. Boundary Value Problems</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
@@ -307,7 +307,7 @@
       
       
       
-      <li><a href="../_sources/_pages/5.0_BVPs.md" target="_blank"
+      <li><a href="../_sources/_pages/3.2_Solving_ODEs_using_IRK_methods.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +317,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -378,9 +378,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -391,19 +389,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Boundary Value Problems</h1>
+    <h1>Solving ODEs using Implicit Methods</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existence-and-uniqueness-of-solutions-to-boundary-value-problems">5.1. Existence and uniqueness of solutions to boundary value problems</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -413,100 +403,168 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="boundary-value-problems">
-<span id="bvp-chapter"></span><h1><span class="section-number">5. </span>Boundary Value Problems<a class="headerlink" href="#boundary-value-problems" title="Link to this heading">#</a></h1>
-<p>The ordinary differential equations (ODEs) considered so far have been initial value problems (IVPs), where the value of the solution and, for higher-order equations, its derivatives are specified at a single point in the domain. Another important class of problems are <strong>boundary value problems (BVPs)</strong>, where conditions are specified at the endpoints of the interval. In this chapter, we consider two-point boundary value problems governed by second-order ODEs.</p>
-<div class="proof definition admonition" id="bvp-definition">
-<p class="admonition-title"><span class="caption-number">Definition 5.1 </span> (General two-point boundary value problem)</p>
-<section class="definition-content" id="proof-content">
-<p>A two-point boundary value problem is a second-order ODE together with boundary conditions specified at two distinct points of the domain</p>
-<div class="math notranslate nohighlight" id="equation-bvp-equation">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-bvp-equation" title="Link to this equation">#</a></span>\[ y' = f(t,y),\qquad  t\in [t_{0}, t_{\max}],\qquad y(t_{0}) = a ,\qquad y(t_{\max}) = b, \]</div>
-<p>for some known values <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
-</section>
-</div><section id="existence-and-uniqueness-of-solutions-to-boundary-value-problems">
-<span id="existence-and-uniqueness-of-bvp-solutions-section"></span><h2><span class="section-number">5.1. </span>Existence and uniqueness of solutions to boundary value problems<a class="headerlink" href="#existence-and-uniqueness-of-solutions-to-boundary-value-problems" title="Link to this heading">#</a></h2>
-<p>For well-posed linear initial value problems satisfying the conditions of the existence and uniqueness theorem, a solution is unique. Boundary value problems behave differently and may possess a unique solution, no solution, or infinitely many solutions.</p>
-<p>To illustrate the different possibilities, consider the following examples.</p>
-<div class="math notranslate nohighlight">
-\[ y'' + 4y = 0, \qquad y(0) = 1, \qquad y\left(\dfrac{\pi}{4}\right) = 2. \]</div>
-<p>The general solution to the ODE <span class="math notranslate nohighlight">\(y'' + 4y = 0\)</span> is</p>
-<div class="math notranslate nohighlight" id="equation-bvp-general-solution">
-<span class="eqno">(5.2)<a class="headerlink" href="#equation-bvp-general-solution" title="Link to this equation">#</a></span>\[ y = c_1 \cos(2 t) + c_2 \sin(2 t). \]</div>
-<p>Substituting the boundary values we have</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="solving-odes-using-implicit-methods">
+<h1><span class="section-number">3.2. </span>Solving ODEs using Implicit Methods<a class="headerlink" href="#solving-odes-using-implicit-methods" title="Link to this heading">#</a></h1>
+<p>Recall that the general form of an <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method is</p>
+<div class="math notranslate nohighlight" id="equation-irk-general-form">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-irk-general-form" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+  y_{n+1} &amp;= y_n + h \sum_{i = 1}^s b_i k_i, \\
+  k_i &amp;= f(t_n + c_ih, y_n + h \sum_{j=1}^s a_{ij}k_j).
+\end{align*} \end{split}\]</div>
+<p>Expanding out the summations in the stage values <span class="math notranslate nohighlight">\(k_i\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
-    2 &amp;= c_1 \cos\left(2\left(\frac{\pi}{4}\right)\right) + c_2 \sin\left(2\left(\frac{\pi}{4}\right)\right) = c_2.
+  k_1 &amp;= f(t_n + c_1h, y_n + h (a_{11}k_1 + a_{12}k_2 + \cdots + a_{1s}k_s)), \\
+  k_2 &amp;= f(t_n + c_2h, y_n + h (a_{21}k_1 + a_{22}k_2 + \cdots + a_{2s}k_s)), \\
+  &amp; \vdots \\
+  k_s &amp;= f(t_n + c_sh, y_n + h (a_{s1}k_1 + a_{s2}k_2 + \cdots + a_{ss}k_s)).
 \end{align*} \end{split}\]</div>
-<p>Here we can determine the values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> so this boundary value problem has the unique solution</p>
+<p>The stage equations are implicit because the unknown stage values appear on both sides of the equations. So we need to recast the stage values so that we have a system of equations to solve. To make this easier we introduce variables <span class="math notranslate nohighlight">\(Y_i\)</span> for the solution over intermediate intervals of the step</p>
+<div class="math notranslate nohighlight" id="equation-irk-yi">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-irk-yi" title="Link to this equation">#</a></span>\[ Y_i = y_n + h \sum_{j=1}^s a_{ij} k_j, \]</div>
+<p>and the expression for the stage values <span class="math notranslate nohighlight">\(k_i\)</span> from <a class="reference internal" href="#equation-irk-general-form">(3.2)</a> becomes</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align*}
-    y = \cos(2t) + 2\sin(2t).
-\end{align*} \]</div>
-<p>Changing the boundary conditions produces a very different outcome.</p>
+\[ k_i = f(t_n + c_ih, Y_i). \]</div>
+<p>Substituting this into equation <a class="reference internal" href="#equation-irk-yi">(3.3)</a> gives</p>
+<div class="math notranslate nohighlight" id="equation-irk-yi-2">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-irk-yi-2" title="Link to this equation">#</a></span>\[ Y_i = y_n + h \sum_{j=1}^s a_{ij} f(t_n + c_jh, Y_j), \]</div>
+<p>and also into equation <a class="reference internal" href="#equation-irk-general-form">(3.2)</a> so the solution over a single step is</p>
+<div class="math notranslate nohighlight" id="equation-irk-yi-3">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-irk-yi-3" title="Link to this equation">#</a></span>\[ y_{n+1} = y_n + h \sum_{i=1}^s b_i f(t_n + c_ih, Y_i). \]</div>
+<p>For a general non-linear function <span class="math notranslate nohighlight">\(f(t, y)\)</span>, equation <a class="reference internal" href="#equation-irk-yi-2">(3.4)</a> is a system of <span class="math notranslate nohighlight">\(s\)</span> non-linear equations for the unknown stage values <span class="math notranslate nohighlight">\(Y_1, \ldots Y_s\)</span>​. In practice this system is usually solved using Newton’s method.</p>
+<p>To demonstrate the solution using an IRK method we are going to consider the solution of the IVP</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align*}
-    y'' + 4y = 0, \qquad y(0) = 1, \qquad y(\pi) = 1.
-\end{align*} \]</div>
-<p>Substituting the boundary values into equation <a class="reference internal" href="#equation-bvp-general-solution">(5.2)</a> we have</p>
+\[ y' = ty, \qquad t \in [0, 1], \qquad y(0) = 1, \]</div>
+<p>using the third-order RadauIA method which has the Butcher tableau</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|cc}
+  0 &amp; \frac{1}{4} &amp; -\frac{1}{4} \\ 
+  \frac{2}{3} &amp; \frac{1}{4} &amp; \frac{5}{12} \\
+  \hline
+  &amp; \frac{1}{4} &amp; \frac{3}{4}
+\end{array} \end{split}\]</div>
+<p>and a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span></p>
+<p>Substituting the coefficients for the Radau IA method into equation <a class="reference internal" href="#equation-irk-yi-2">(3.4)</a> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
-    1 &amp;= c_1 \cos(2\pi) + c_2 \sin(2\pi) = c_1.
+  Y_1 &amp;= y_n + h ( \tfrac{1}{4} f(t_n, Y_1) - \tfrac{1}{4} f(t_n + \tfrac{2}{3}h, Y_2)), \\
+  Y_2 &amp;= y_n + h ( \tfrac{1}{4} f(t_n, Y_1) + \tfrac{5}{12} f(t_n + \tfrac{2}{3}h, Y_2)).
 \end{align*} \end{split}\]</div>
-<p>Here we have a solution for <span class="math notranslate nohighlight">\(c_1\)</span> but we cannot determine the value of <span class="math notranslate nohighlight">\(c_2\)</span> so the solution to the boundary value problem is</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    y = \cos(2t) + c_2 \sin(2t),
-\end{align*} \]</div>
-<p>where <span class="math notranslate nohighlight">\(c_2\)</span> can be any value. So we have infinitely many solutions.</p>
-<p>Finally, a slight modification of the upper boundary condition leads to an inconsistent system</p>
-<div class="math notranslate nohighlight">
-\[ \begin{align*}
-    y'' + 4y = 0, \qquad y(0) = 1, \qquad y(\pi) = 2.
-\end{align*} \]</div>
-<p>and substituting the boundary values equation <a class="reference internal" href="#equation-bvp-general-solution">(5.2)</a> we have</p>
+<p>Since <span class="math notranslate nohighlight">\(f(t, y) = ty\)</span> then this becomes</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    1 &amp;= c_1 \cos(0) + c_2 \sin(0) = c_1, \\
-    2 &amp;= c_1 \cos(2\pi) + c_2 \sin(2\pi) = c_1.
+  Y_1 &amp;= y_n + h (\tfrac{1}{4} (t_nY_1) - \tfrac{1}{4} (t_n + \tfrac{2}{3}h)Y_2 ), \\
+  Y_2 &amp;= y_n + h (\tfrac{1}{4} (t_nY_1) + \tfrac{5}{12} (t_n + \tfrac{2}{3}h)Y_2 ).
 \end{align*} \end{split}\]</div>
-<p>Here we have <span class="math notranslate nohighlight">\(c_1 = 1\)</span> and <span class="math notranslate nohighlight">\(c_1 = 2\)</span> which is a contradiction, so this boundary value problem does not have a solution.</p>
-<div class="proof theorem admonition" id="theorem-1">
-<p class="admonition-title"><span class="caption-number">Theorem 5.1 </span> (Uniqueness of the solution to boundary value problems)</p>
-<section class="theorem-content" id="proof-content">
-<p>A linear boundary value problem of the form</p>
-<div class="math notranslate nohighlight" id="equation-bvp-uniqueness-equation">
-<span class="eqno">(5.3)<a class="headerlink" href="#equation-bvp-uniqueness-equation" title="Link to this equation">#</a></span>\[ y'' = p(t)y' + q(t)y + r(t), \qquad t \in [t_0,t_{\max}], \qquad y(t_0) = a , \qquad y(t_{\max}) = b , \]</div>
-<p>where <span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are continuous functions on the interval. The boundary value problem has a unique solution provided that the following conditions are satisfied</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(p(t)\)</span>, <span class="math notranslate nohighlight">\(q(t)\)</span> and <span class="math notranslate nohighlight">\(r(t)\)</span> are continuous on <span class="math notranslate nohighlight">\([t_0, t_{\max}]\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(q(t) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t\in [t_0,t_{\max}]\)</span>.</p></li>
-</ul>
-</section>
-</div><div class="proof example admonition" id="bvp-uniqueness-example">
-<p class="admonition-title"><span class="caption-number">Example 5.1 </span></p>
-<section class="example-content" id="proof-content">
-<p>Show that the following boundary value problem has a unique solution</p>
-<div class="math notranslate nohighlight">
-\[ y'' = (t^3 +5)y + \sin (t), \qquad t \in [0,1], \qquad y(0) = 0, \qquad y(1) = 1. \]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Comparing this boundary value problem to equation <a class="reference internal" href="#equation-bvp-uniqueness-equation">(5.3)</a> we have</p>
+<p>This is a system of linear equations, so we can re-write this in the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span>. Transposing the <span class="math notranslate nohighlight">\(Y_i\)</span> terms to on the left-hand side gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    p(t) &amp;= 0,\\
-    q(t) &amp;= t^3 + 5,\\
-    r(t) &amp;= \sin(t),
+  (1 - \tfrac{1}{4}ht_n)Y_1 + \tfrac{1}{4}h(t_n + \tfrac{2}{3}h)Y_2 &amp;= y_n, \\
+  -\tfrac{1}{4}ht_nY_1 + (1 - \tfrac{5}{12}h(t_n + \tfrac{2}{3}h))Y_2 &amp;= y_n.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">which are all continuous on <span class="math notranslate nohighlight">\([0,1]\)</span> and <span class="math notranslate nohighlight">\(q(t) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t\in [0,1]\)</span> so this boundary value problem has a unique solution.</p>
+<p>Writing this as a matrix equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  \begin{pmatrix}
+    1 - \tfrac{1}{4}ht_n &amp; \frac{1}{4}h(t_n + \frac{2}{3}h) \\
+    -\frac{1}{4}ht_n &amp; 1 - \frac{5}{12}h(t_n + \frac{2}{3}h)
+  \end{pmatrix}
+  \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+  =
+  \begin{pmatrix} y_n \\ y_n \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>For the first step, <span class="math notranslate nohighlight">\(t_0 = 0\)</span>, <span class="math notranslate nohighlight">\(y_0 = 1\)</span> and <span class="math notranslate nohighlight">\(h = 0.2\)</span> so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  \begin{pmatrix}
+    1 &amp; 0.0067 \\
+    0 &amp; 0.9889
+  \end{pmatrix}
+  \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+  =
+  \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Solving the linear system</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+  = 
+  \begin{pmatrix}
+    1 &amp; 0.0067 \\
+    0 &amp; 0.9889
+  \end{pmatrix}^{-1}
+  \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+  =
+  \begin{pmatrix} 0.9933 \\ 1.0112 \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>So the stage values are <span class="math notranslate nohighlight">\(Y_1 = 0.9933\)</span> and <span class="math notranslate nohighlight">\(Y_2 = 1.0112\)</span>. Note that although equation <a class="reference internal" href="#equation-irk-yi-2">(3.4)</a> is generally non-linear, for the test problem <span class="math notranslate nohighlight">\(f(t,y)=ty\)</span> the stage values appear only linearly, resulting in a linear system that can be solved directly.</p>
+<p>The solution of the ODE <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span> over a single time step using the third order RadauIA method is</p>
+<div class="math notranslate nohighlight">
+\[y_{n+1} = y_n + h ( \tfrac{1}{4} f(t_n, Y_1) + \tfrac{3}{4} f(t_n + \tfrac{2}{3}h, Y_2)), \]</div>
+<p>and since here <span class="math notranslate nohighlight">\(y' = ty\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[ y_{n+1} = y_n + h (\tfrac{1}{4} t_n Y_1 + \tfrac{3}{4} (t_n + \tfrac{2}{3}h) Y_2). \]</div>
+<p>So the solution over the first step is</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+  y_1 &amp;= 1 + 0.2 (\tfrac{1}{4}(0)(0.9933) + \tfrac{3}{4}(0 + \tfrac{2}{3}(0.2))(1.0112)) = 1.0202.
+\end{align*} \]</div>
+<p>The solution over the range <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span> using the third-order Radau IA method is tabulated below and plotted against the exact solution in <a class="reference internal" href="#radauia-example-plot"><span class="std std-numref">Fig. 3.1</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(y_n\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(Y_1\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(Y_2\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0.00</p></td>
+<td class="text-center"><p>1.0000</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0.20</p></td>
+<td class="text-center"><p>1.0202</p></td>
+<td class="text-center"><p>0.9933</p></td>
+<td class="text-center"><p>1.0112</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>2</p></td>
+<td class="text-center"><p>0.40</p></td>
+<td class="text-center"><p>1.0833</p></td>
+<td class="text-center"><p>1.0127</p></td>
+<td class="text-center"><p>1.0598</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>3</p></td>
+<td class="text-center"><p>0.60</p></td>
+<td class="text-center"><p>1.1973</p></td>
+<td class="text-center"><p>1.0740</p></td>
+<td class="text-center"><p>1.1562</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4</p></td>
+<td class="text-center"><p>0.80</p></td>
+<td class="text-center"><p>1.3773</p></td>
+<td class="text-center"><p>1.1847</p></td>
+<td class="text-center"><p>1.3131</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>5</p></td>
+<td class="text-center"><p>1.00</p></td>
+<td class="text-center"><p>1.6490</p></td>
+<td class="text-center"><p>1.3592</p></td>
+<td class="text-center"><p>1.5524</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</details></section>
-</div></section>
-<div class="toctree-wrapper compound">
-</div>
+<figure class="align-default" id="radauia-example-plot" style="width: 600px">
+<img alt="../_images/dc1846fb07fe07b6ce1ca7b2579e51585101e47ba5297b865e5687ed6e8b2f68.png" src="../_images/dc1846fb07fe07b6ce1ca7b2579e51585101e47ba5297b865e5687ed6e8b2f68.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">The solution to the IVP <span class="math notranslate nohighlight">\(y'=ty\)</span>, <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=1\)</span> using the third-order Radau IA method with <span class="math notranslate nohighlight">\(h=0.2\)</span>.</span><a class="headerlink" href="#radauia-example-plot" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 
     <script type="text/x-thebe-config">
@@ -540,20 +598,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="4.5_Stability_exercises.html"
+       href="3.1_Deriving_IRK_methods.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.6. </span>Stability exercises</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span>Deriving implicit Runge-Kutta methods</p>
       </div>
     </a>
     <a class="right-next"
-       href="5.1_Shooting_method.html"
+       href="3.3_Solving_systems_using_IRK_methods.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.2. </span>The shooting method</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Solving Systems of ODEs using IRK Methods</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -563,21 +621,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existence-and-uniqueness-of-solutions-to-boundary-value-problems">5.1. Existence and uniqueness of solutions to boundary value problems</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
