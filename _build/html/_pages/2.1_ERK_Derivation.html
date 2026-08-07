@@ -16,44 +16,47 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -63,6 +66,7 @@
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/2.1_ERK_Derivation';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/2.1_ERK_Derivation.html" />
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -71,34 +75,30 @@
     <link rel="prev" title="2. Chapter 2. Explicit Runge-Kutta Methods" href="2.0_ERKs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -106,7 +106,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -114,15 +113,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -131,7 +174,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -161,21 +205,17 @@
     
     
     <img src="../_static/logo2.png" class="logo__image only-light" alt="Runge-Kutta Methods - Home"/>
-    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Runge-Kutta Methods - Home"/>`);</script>
+    <img src="../_static/logo2.png" class="logo__image only-dark pst-js-only" alt="Runge-Kutta Methods - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -188,9 +228,8 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.1_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Learning_and_teaching.html">Learning and teaching</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
@@ -213,18 +252,17 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Solving_ODEs_using_IRK_methods.html">3.2. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -233,13 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -262,9 +294,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -347,7 +384,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -361,25 +398,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -401,7 +430,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-conditions">2.3.1. Order conditions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-a-second-order-erk-method">2.3.2. Deriving a second-order ERK method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-and-matlab-to-solve-the-order-conditions">2.3.3. Using Python and MATLAB to solve the order conditions</a></li>
@@ -418,77 +447,99 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="derivation-of-explicit-runge-kutta-methods">
 <span id="rk2-derivation-section"></span><h1><span class="section-number">2.3. </span>Derivation of Explicit Runge-Kutta Methods<a class="headerlink" href="#derivation-of-explicit-runge-kutta-methods" title="Link to this heading">#</a></h1>
-<p>The derivation of an explicit Runge-Kutta (ERK) method is achieved by comparing the <a href="https://en.wikipedia.org/wiki/Taylor_series" target="_blank">Taylor series</a> for the first-order ODE <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span> to that of the general Runge-Kutta method and ensuring the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> match. Here we will consider the derivation of a second-order ERK method, the second-order Taylor series expansion of <span class="math notranslate nohighlight">\(y(t_n + h)\)</span> is</p>
+<p>Recall the general form of an explicit Runge-Kutta methods</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_{n+1} &amp;= y_n + h \sum_{i = 1}^s b_i k_i, \\
+    k_i &amp;= f(t_n + c_ih, y_n + h \sum_{j = 1}^{i - 1} a_{ij} k_j).
+\end{align*} \end{split}\]</div>
+<p>We need to address a fundamental question: how are the coefficients, <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span>, of a Runge-Kutta method chosen? To construct a method of a given order, we compare the exact solution with the Taylor series expansion of the numerical method. By matching the coefficients of corresponding powers of <span class="math notranslate nohighlight">\(h\)</span>, we obtain equations that the Runge-Kutta coefficients must satisfy. These equations are known as <strong>order conditions</strong>.</p>
+<p>Here we derive a second-order ERK method. A second-order method has global error <span class="math notranslate nohighlight">\(O(h^2)\)</span>, which corresponds to a local truncation error of <span class="math notranslate nohighlight">\(O(h^3)\)</span>. The Taylor series expansion of <span class="math notranslate nohighlight">\(y(t_n + h)\)</span> to <span class="math notranslate nohighlight">\(O(h^3)\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-2nd-order-taylor">
 <span class="eqno">(2.4)<a class="headerlink" href="#equation-2nd-order-taylor" title="Link to this equation">#</a></span>\[ \begin{align*}
     y(t_n + h) = y(t_n) + h y'(t_n) + \frac{h^2}{2} y''(t_n) + O(h^3).
 \end{align*}\]</div>
-<p>Since we are solving the ODE <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, we know that <span class="math notranslate nohighlight">\(y'(t_n) = f(t_n, y_n)\)</span>, and we can use the <a href="https://en.wikipedia.org/wiki/Chain_rule" target="_blank">chain rule</a> to determine <span class="math notranslate nohighlight">\(y''(t_n)\)</span></p>
+<p>We want to solve <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, for convenience let <span class="math notranslate nohighlight">\(f = f(t_n, y_n)\)</span> so the series expansion is</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align*}
-    y''(t_n) &amp;= f_t(t_n, y_n) + f_y(t_n, y_n) y_n' = f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n).
-\end{align*} \]</div>
-<p>Substituting <span class="math notranslate nohighlight">\(y'(t_n)\)</span> and <span class="math notranslate nohighlight">\(y''(t_n)\)</span> into equation <a class="reference internal" href="#equation-2nd-order-taylor">(2.4)</a> and using the notation <span class="math notranslate nohighlight">\(y_{n+1} = y(t_n + h)\)</span> and <span class="math notranslate nohighlight">\(y_n = y(t_n)\)</span> we have</p>
+\[ y(t + h) = y(t_n) + hf + \frac{h^2}{2} f' + O(h^3). \]</div>
+<p>The <a href="https://en.wikipedia.org/wiki/Derivative_(multivariable_calculus)#Total_derivative" target="_blank">total derivative</a> of <span class="math notranslate nohighlight">\(f\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ f' = f_x + f_y y', \]</div>
+<p>and substituting <span class="math notranslate nohighlight">\(y' = f\)</span> and <span class="math notranslate nohighlight">\(y'' = f'\)</span> into equation <a class="reference internal" href="#equation-2nd-order-taylor">(2.4)</a></p>
 <div class="math notranslate nohighlight" id="equation-2nd-order-taylor-2-equation">
 <span class="eqno">(2.5)<a class="headerlink" href="#equation-2nd-order-taylor-2-equation" title="Link to this equation">#</a></span>\[ \begin{align*}
-    y_{n+1} = y_n + h f(t_n, y_n) + \frac{h^2}{2} [ f_t(t_n, y_n) + f_y(t_n, y_n)f(t_n, y_n) ] + O(h^3)
+    y(t+h) = y(t) + h f + \frac{h^2}{2} ( f_t + f_yf ) + O(h^3)
 \end{align*} \]</div>
 <p>This is the Taylor expansion of the ODE we are attempting to solve. What we now need to do is determine an equivalent expansion for the 2-stage ERK method</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     y_{n+1} &amp;= y_n + h (b_1 k_1 + b_2 k_2), \\
     k_1 &amp;= f(t_n, y_n), \\
-    k_2 &amp;= f(t_n + c_2h, y_n + a_{21} h k_1).
+    k_2 &amp;= f(t_n + c_2h, y_n + h a_{21} k_1).
 \end{align*} \end{split}\]</div>
-<p>For a second-order method, we need to ensure that that values of <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> result in a method that has truncation errors <span class="math notranslate nohighlight">\(O(h^3)\)</span>. Substituting <span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> into <span class="math notranslate nohighlight">\(y_{n+1}\)</span></p>
+<p>Substituting <span class="math notranslate nohighlight">\(k_1\)</span> and <span class="math notranslate nohighlight">\(k_2\)</span> into <span class="math notranslate nohighlight">\(y_{n+1}\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-expansion-equation">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-rk2-expansion-equation" title="Link to this equation">#</a></span>\[ \begin{align*}
-    y_{n+1} &amp;= y_n + h b_1 f(t_n, y_n) + h b_2 f(t_n + c_2h, y_n + a_{21} h k_1) + O(h^3).
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-rk2-expansion-equation" title="Link to this equation">#</a></span>\[ y_{n+1} = y_n + h (b_1 f(t_n, y_n) + b_2 f(t_n + c_2h, y_n + ha_{21}k_1)). \]</div>
+<p>For a second-order method, we need to ensure that that values of <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> result in a method that has truncation error <span class="math notranslate nohighlight">\(O(h^3)\)</span>. We need a Taylor series expansion for <span class="math notranslate nohighlight">\(k_2\)</span> for which we can use the <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem#Taylor's_theorem_for_multivariate_functions" target="_blank">bivariate Taylor series</a> expansion up to <span class="math notranslate nohighlight">\(O(h^3)\)</span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*} 
+    f(t + h_1, y + h_2) = f + h_1 f_t + h_2 f_y + \frac{h_1^2}{2}f_{tt} + h_1h_2 f_{ty} + \frac{h_2^2}{2}f_{yy} + O((|h_1| + |h_2|)^3).
 \end{align*} \]</div>
-<p>The <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem#Taylor's_theorem_for_multivariate_functions" target="_blank">bivariate Taylor</a> expansion of the two-variable function <span class="math notranslate nohighlight">\(f(t_n + c_2h, y_n + a_{21} h k_1)\)</span> correct to <span class="math notranslate nohighlight">\(O(h^3)\)</span> is</p>
+<p>Let <span class="math notranslate nohighlight">\(h_1 = c_2h\)</span> and <span class="math notranslate nohighlight">\(h_2 = h a_{21} k_1\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*} 
+    f(t + c_2h, y + ha_{21}k_1) = f + c_2h f_t + ha_{21}k_1 f_y + \frac{c_2^2h^2}{2}f_{tt} + c_2a_{21}k_1h^2 f_{ty} + \frac{h^2 a_{21}^2 k_1^2}{2}f_{yy} + O(h^2).
+\end{align*} \]</div>
+<p>Since this expansion will subsequently be multiplied by <span class="math notranslate nohighlight">\(h\)</span> in equation <a class="reference internal" href="#equation-rk2-expansion-equation">(2.6)</a>, we only require terms up to <span class="math notranslate nohighlight">\(O(h)\)</span> in the expansion of <span class="math notranslate nohighlight">\(f\)</span>. Higher-order terms contribute only to <span class="math notranslate nohighlight">\(O(h^3)\)</span> and can therefore be absorbed into the remainder.</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    f(t_n + c_2 h, y_n + a_{21} h k_1) = f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f_y(t_n, y_n) f(t_n, y_n) + O(h^3).
+    f(t_n + c_2 h, y_n + a_{21} h k_1) = f + c_2 h f_t + h a_{21}k_1 f_y + O(h^2).
+\end{align*} \]</div>
+<p>Since <span class="math notranslate nohighlight">\(k_1 = f(t_n, y_n) = f\)</span>, we may replace <span class="math notranslate nohighlight">\(k_1\)</span> by <span class="math notranslate nohighlight">\(f\)</span> int he first-order terms</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    f(t_n + c_2 h, y_n + a_{21} h k_1) = f + c_2 h f_t + h a_{21}f_yf + O(h^2).
 \end{align*} \]</div>
 <p>Substituting this into equation <a class="reference internal" href="#equation-rk2-expansion-equation">(2.6)</a></p>
 <div class="math notranslate nohighlight" id="equation-rk2-expansion-equation-2">
 <span class="eqno">(2.7)<a class="headerlink" href="#equation-rk2-expansion-equation-2" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
-    y_{n+1} &amp;= y_n + h b_1 f(t_n, y_n) + h b_2 [f(t_n, y_n) + c_2 h f_t(t_n, y_n) + a_{21} h f_y(t_n, y_n) f(t_n, y_n)] + O(h^3) \\
-    &amp;= y_n + h (b_1 + b_2) f(t_n, y_n) + h^2 b_2 c_2f_t(t_n, y_n) + h^2 a_{21} f_y(t_n, y_n) f(t_n, y_n) + O(h^3). \\
+    y_{n+1} &amp;= y_n + h b_1 f + h b_2 (f + c_2 h f_t + a_{21} h f_y f) + O(h^3) \\
+    &amp;= y_n + h (b_1 + b_2) f + h^2 b_2 c_2f_t + h^2 b_2 a_{21} f_y f + O(h^3). \\
 \end{align*} \end{split}\]</div>
-<p>This is the Taylor expansion of a general 2-stage ERK method.</p>
+<p>Equation <a class="reference internal" href="#equation-2nd-order-taylor-2-equation">(2.5)</a> represents the exact solution expanded about <span class="math notranslate nohighlight">\(t_n\)</span>​, whereas equation <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.7)</a> represents the numerical Runge-Kutta method​. To achieve second-order accuracy, these expansions must agree through all terms of order <span class="math notranslate nohighlight">\(h^2\)</span>.</p>
 <section id="order-conditions">
 <h2><span class="section-number">2.3.1. </span>Order conditions<a class="headerlink" href="#order-conditions" title="Link to this heading">#</a></h2>
 <p>To derive a second-order ERK method to solve the ODE <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, we need equations<a class="reference internal" href="#equation-2nd-order-taylor-2-equation">(2.5)</a> and <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.7)</a> to be equal so that the local truncation errors in the ERK method are <span class="math notranslate nohighlight">\(O(h^3)\)</span>. We have four unknowns in <a class="reference internal" href="#equation-rk2-expansion-equation-2">(2.7)</a>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(c_2\)</span> and <span class="math notranslate nohighlight">\(a_{21}\)</span>, so that the two expressions are equal.</p>
-<p>To determine the values of <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> we can equate the coefficients of <span class="math notranslate nohighlight">\(hf(t_n, y_n)\)</span></p>
+<p>Since <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(f_t\)</span> and <span class="math notranslate nohighlight">\(f_yf\)</span> are independent quantities, the coefficients multiplying each term must be equal in the two expansions. For the coefficents of <span class="math notranslate nohighlight">\(f\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-1">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-rk2-condition-1" title="Link to this equation">#</a></span>\[ \begin{align*}
-    b_1 + b_2 &amp;= 1. 
-\end{align*} \]</div>
-<p>To determine the value of <span class="math notranslate nohighlight">\(c_2\)</span> we can equate the coefficients of <span class="math notranslate nohighlight">\(h^2 f_t(t_n, y_n)\)</span></p>
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-rk2-condition-1" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+    h(b_1 + b_2) &amp;= h \\ 
+    \therefore b_1 + b_2 &amp;= 1,
+\end{align*} \end{split}\]</div>
+<p>for the coefficients of <span class="math notranslate nohighlight">\(f_t\)</span></p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-2">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-rk2-condition-2" title="Link to this equation">#</a></span>\[ \begin{align*}
-    b_2 c_2 &amp;= \frac{1}{2}.
-\end{align*} \]</div>
-<p>To determine the value of <span class="math notranslate nohighlight">\(a_{21}\)</span> we can equate the coefficients of <span class="math notranslate nohighlight">\(h^2f_y(t_n, y_n)f(t_n, y_n)\)</span></p>
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-rk2-condition-2" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+    h^2 b_2 c_2 &amp;= \frac{h^2}{2} \\
+    \therefore b_2 c_2 &amp;= \frac{1}{2},
+\end{align*} \end{split}\]</div>
+<p>and for the coefficients of <span class="math notranslate nohighlight">\(f_yf\)</span></p>
 <div class="math notranslate nohighlight">
-\[ \begin{align*}
-    b_2 a_{21} &amp;= \frac{1}{2},
-\end{align*} \]</div>
-<p>since we know from equation <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> that <span class="math notranslate nohighlight">\(b_2 = \dfrac{1}{2c_2}\)</span> then</p>
+\[\begin{split} \begin{align*}
+    h^2 b_2 a_{21} &amp;= \frac{h^2}{2} \\
+    \therefore b_2 a_{21} &amp;= \frac{1}{2}.
+\end{align*} \end{split}\]</div>
+<p>Since we know from equation <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> that <span class="math notranslate nohighlight">\(b_2 = \dfrac{1}{2c_2}\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-rk2-condition-3">
 <span class="eqno">(2.10)<a class="headerlink" href="#equation-rk2-condition-3" title="Link to this equation">#</a></span>\[ a_{21} = c_2 .\]</div>
 <p>So we have the three equations <a class="reference internal" href="#equation-rk2-condition-1">(2.8)</a>, <a class="reference internal" href="#equation-rk2-condition-2">(2.9)</a> and <a class="reference internal" href="#equation-rk2-condition-3">(2.10)</a> expressed in the four unknowns. Any set of values that satisfy these this system of equations give an ERK method with local truncation errors <span class="math notranslate nohighlight">\(O(h^3)\)</span>, so the global truncation errors are <span class="math notranslate nohighlight">\(O(h^2)\)</span>, and we have a second-order method.</p>
 <p>These conditions are known as the <strong>order conditions</strong> for a method. Since we have an <a href="https://en.wikipedia.org/wiki/Underdetermined_system" target="_blank">under determined system</a> to get a unique solution we choose a value for one of the unknowns and solve for the others.</p>
-<div class="proof definition admonition" id="rk2-order-conditions-definition">
-<p class="admonition-title"><span class="caption-number">Definition 2.1 </span> (Order conditions for a second-order explicit Runge-Kutta method)</p>
-<section class="definition-content" id="proof-content">
+<div class="proof theorem admonition" id="rk2-order-conditions-definition">
+<p class="admonition-title"><span class="caption-number">Theorem 2.1 </span> (Order conditions for a second-order explicit Runge-Kutta method)</p>
+<section class="theorem-content" id="proof-content">
+<p>By matching the Taylor series expansion of the exact solution with that of the Runge-Kutta method, we obtain the following order conditions:</p>
 <div class="math notranslate nohighlight" id="equation-rk2-order-conditions-equation">
-<span class="eqno">(2.11)<a class="headerlink" href="#equation-rk2-order-conditions-equation" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
-    b_1 +b_2 &amp;=1,\\
-    c_2 b_2 &amp;=\frac{1}{2},\\
-    a_{21} &amp;= c_2.
-\end{align*} \end{split}\]</div>
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-rk2-order-conditions-equation" title="Link to this equation">#</a></span>\[\begin{split} \begin{aligned} b_1 + b_2 &amp;= 1,\\ b_2c_2 &amp;= \frac{1}{2},\\ a_{21} &amp;= c_2. \end{aligned} \end{split}\]</div>
+<p>Any coefficients satisfying these conditions define a second-order explicit Runge-Kutta method.</p>
 </section>
 </div></section>
 <section id="deriving-a-second-order-erk-method">
@@ -513,7 +564,7 @@ document.write(`
     0 &amp; 0 &amp; 0 \\
     1 &amp; 1 &amp; 0 \\
     \hline
-    &amp; \frac{1}{2} &amp; \frac{!}{2} 
+    &amp; \frac{1}{2} &amp; \frac{1}{2} 
 \end{array} \end{split}\]</div>
 <p>This method is known as <a href="https://en.wikipedia.org/wiki/Heun%27s_method#" target="_blank">Heun’s method</a> or the RK2 method.</p>
 <div class="proof example admonition" id="rk2-derivation-example">
@@ -538,7 +589,7 @@ document.write(`
         &amp; 0 &amp; 1
     \end{array}
 \end{align*}\]</div>
-<p>This method is known as the <a href="https://en.wikipedia.org/wiki/Midpoint_method" target="_blank">midpoint method</a>.</p>
+<p>Since <span class="math notranslate nohighlight">\(c_2 = \frac{1}{2}\)</span>, the derivative used to advance the solution is evaluated at the midpoint of the interval, hence this method is known as the <a href="https://en.wikipedia.org/wiki/Midpoint_method" target="_blank">midpoint method</a>.</p>
 </section>
 </div></section>
 <hr class="docutils" />
@@ -564,6 +615,10 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">))</span>
 </pre></div>
 </div>
+<p>This produces the output</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{a21: 1, b1: 1/2, b2: 1/2}
+</pre></div>
+</div>
 <p>Here we have used the Python library <a href="https://www.sympy.org/en/index.html" target="_blank">SymPy</a> (short for <em>Symbolic Python</em>) that has functions that can solve algebraic equations. After importing SymPy we have declared symbolic variables for each of the coefficients <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> using the <code class="docutils literal notranslate"><span class="pre">sp.symbols()</span></code> command before setting <span class="math notranslate nohighlight">\(c_2 = 1\)</span>. Each order condition is then defined using these symbolic variables. Note that SymPy assumes that equations are equal to zero which is why we have subtracted the right-hand side. We have also used the <code class="docutils literal notranslate"><span class="pre">sp.Rational(1,2)</span></code> command for the fraction <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> so that SymPy will output any fractional values as fractions rather than decimals. The system of three equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code>, <code class="docutils literal notranslate"><span class="pre">eq2</span></code> and <code class="docutils literal notranslate"><span class="pre">eq3</span></code> is then solved using the <code class="docutils literal notranslate"><span class="pre">sp.solve</span></code> command.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
@@ -580,6 +635,13 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="c">% Solve order conditions</span>
 <span class="n">solve</span><span class="p">(</span><span class="n">eq1</span><span class="p">,</span><span class="w"> </span><span class="n">eq2</span><span class="p">,</span><span class="w"> </span><span class="n">eq3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This produces the output</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ans = struct with fields:
+    a21: 1
+     b1: 1/2
+     b2: 1/2
 </pre></div>
 </div>
 <p>Here we have declared symbolic variables for each of the coefficients <span class="math notranslate nohighlight">\(a_{21}\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> using the <code class="docutils literal notranslate"><span class="pre">syms</span></code> command before setting <span class="math notranslate nohighlight">\(c_2 = 1\)</span>. Each order condition is then defined using these symbolic variables. Note that the <code class="docutils literal notranslate"><span class="pre">==</span></code> command is used for the equals sign in each order condition. The system of three equations <code class="docutils literal notranslate"><span class="pre">eq1</span></code>, <code class="docutils literal notranslate"><span class="pre">eq2</span></code> and <code class="docutils literal notranslate"><span class="pre">eq3</span></code> is then solved using the <code class="docutils literal notranslate"><span class="pre">solve</span></code> command.</p>
@@ -643,15 +705,17 @@ MATLAB</label><div class="sd-tab-content docutils">
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-conditions">2.3.1. Order conditions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-a-second-order-erk-method">2.3.2. Deriving a second-order ERK method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-and-matlab-to-solve-the-order-conditions">2.3.3. Using Python and MATLAB to solve the order conditions</a></li>
@@ -703,8 +767,8 @@ By Dr Jon Shiach
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

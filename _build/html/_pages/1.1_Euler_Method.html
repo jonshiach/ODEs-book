@@ -16,44 +16,47 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -63,6 +66,7 @@
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/1.1_Euler_Method';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/1.1_Euler_Method.html" />
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -71,34 +75,30 @@
     <link rel="prev" title="1. Ordinary Differential Equations (ODE)" href="1.0_ODEs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -106,7 +106,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -114,15 +113,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -131,7 +174,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -161,21 +205,17 @@
     
     
     <img src="../_static/logo2.png" class="logo__image only-light" alt="Runge-Kutta Methods - Home"/>
-    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Runge-Kutta Methods - Home"/>`);</script>
+    <img src="../_static/logo2.png" class="logo__image only-dark pst-js-only" alt="Runge-Kutta Methods - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -188,9 +228,8 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.1_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Learning_and_teaching.html">Learning and teaching</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
@@ -213,18 +252,17 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Solving_ODEs_using_IRK_methods.html">3.2. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -233,13 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -262,9 +294,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -347,7 +384,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -361,25 +398,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -401,7 +430,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-an-ivp-using-the-euler-method">1.1.1. Solving an IVP using the Euler method</a></li>
 </ul>
             </nav>
@@ -423,10 +452,10 @@ document.write(`
 <p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Leonard Euler (1707 - 1783)</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The <a href="https://en.wikipedia.org/wiki/Euler_method" target="_blank">Euler method</a> named after Swiss mathematician <a href="https://en.wikipedia.org/wiki/Leonhard_Euler" target="_blank">Leonard Euler</a> (pronounced <em>“Oy-ler”</em>) is the simplest numerical method used to solve ODEs. Consider the general first-order IVP</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Euler_method" target="_blank">Euler method</a>, named after Swiss mathematician <a href="https://en.wikipedia.org/wiki/Leonhard_Euler" target="_blank">Leonhard Euler</a> (pronounced <em>“Oy-ler”</em>), is the simplest numerical method used to solve ODEs. Consider the general first-order IVP</p>
 <div class="math notranslate nohighlight">
 \[ y' = f(t, y), \qquad y(t_0) = y_0.\]</div>
-<p>The tangent line for <span class="math notranslate nohighlight">\(y\)</span> where <span class="math notranslate nohighlight">\(t = t_0\)</span> has the gradient <span class="math notranslate nohighlight">\(f(t_0, y_0)\)</span> is shown in <a class="reference internal" href="#euler-method-figure"><span class="std std-numref">Fig. 1.3</span></a>.</p>
+<p>Since <span class="math notranslate nohighlight">\(y'(t_0) = f(t_0, y_0)\)</span>, the solution curve has gradient <span class="math notranslate nohighlight">\(f(t_0, y_0)\)</span> at the point <span class="math notranslate nohighlight">\((t_0, y_0)\)</span>. We approximate the solution locally by replacing the curve with its tangent line.</p>
 <figure class="align-default" id="euler-method-figure">
 <a class="reference internal image-reference" href="../_images/1_Euler_method.svg"><img alt="Derivation of the Euler method" src="../_images/1_Euler_method.svg" style="width: 400px;" />
 </a>
@@ -434,13 +463,13 @@ document.write(`
 <p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">The derivation of the Euler method.</span><a class="headerlink" href="#euler-method-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The equation of this tangent line is</p>
+<p>The equation of the tangent line is</p>
 <div class="math notranslate nohighlight">
 \[ y = y_0 + f(t_0, y_0)  (t - t_0). \]</div>
-<p>We can approximate the value of <span class="math notranslate nohighlight">\(y(t_1)\)</span> by calculating the point on the tangent where <span class="math notranslate nohighlight">\(t = t_1\)</span></p>
+<p>Let <span class="math notranslate nohighlight">\(y_n\)</span> denote a numerical approximation to the exact solution <span class="math notranslate nohighlight">\(y(t_n)\)</span>. We can approximate the value of <span class="math notranslate nohighlight">\(y_1\)</span> by calculating the point on the tangent where <span class="math notranslate nohighlight">\(t = t_1\)</span></p>
 <div class="math notranslate nohighlight">
 \[ y_1 = y_0 + f(t_0, y_0) (t_1 - t_0). \]</div>
-<p>Assuming that <span class="math notranslate nohighlight">\(y_1\)</span> is a reasonable approximation of <span class="math notranslate nohighlight">\(y(t_1)\)</span> then we can approximate the value of <span class="math notranslate nohighlight">\(y(t_2)\)</span> using the the tangent line at <span class="math notranslate nohighlight">\(t = t_1\)</span>. The gradient of this tangent line is <span class="math notranslate nohighlight">\(f(t_1, y_1)\)</span> so</p>
+<p>We now treat the numerical approximation <span class="math notranslate nohighlight">\(y_1\)</span> as though it were the exact sotluion value at <span class="math notranslate nohighlight">\(t_1\)</span>, allowing us to construct a new tangent approximation and continue the process. The gradient of the new tangent is <span class="math notranslate nohighlight">\(f(t_1, y_1)\)</span> so</p>
 <div class="math notranslate nohighlight">
 \[ y_2 = y_1 + f(t_1, y_1) (t_2 - t_1). \]</div>
 <p>Doing similar for more points along the <span class="math notranslate nohighlight">\(t\)</span> domain</p>
@@ -451,7 +480,13 @@ document.write(`
     &amp; \vdots \\
     y_{n+1} &amp;= y_n + f(t_n, y_n) (t_{n+1} - t_n).
 \end{align*} \end{split}\]</div>
-<p>If we use equally spaced points for <span class="math notranslate nohighlight">\(t_0, t_1, t_2, \ldots\)</span> such that <span class="math notranslate nohighlight">\(t_{n+1} - t_n = h\)</span> then the approximation of the solution at <span class="math notranslate nohighlight">\(t_{n+1}\)</span> is</p>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[ t_n = t_0 + nh, \qquad n = 0, 1, 2, \ldots \]</div>
+<p>denote a sequence of equally spaced points in the domain where <span class="math notranslate nohighlight">\(h\)</span> is the step length and</p>
+<div class="math notranslate nohighlight">
+\[ t_{n+1} = t_n + h.\]</div>
+<p>The approximation of the solution to <span class="math notranslate nohighlight">\(y_{n+1}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[ y_{n+1} = y_n + h f(t_n, y_n), \]</div>
 <p>which is the Euler method.</p>
@@ -471,16 +506,16 @@ document.write(`
 \[ t_n = t_0 + nh,\]</div>
 <p>so</p>
 <div class="math notranslate nohighlight">
-\[ n = \left\lfloor \frac{t_{\max} - t_0}{h} \right\rfloor, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\lfloor x \rfloor\)</span> is the floor function that returns the value of <span class="math notranslate nohighlight">\(x\)</span> rounded to the integer below. We then calculate <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="#equation-euler-method-equation">(1.2)</a> and <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span>. Then we use the values of <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the values of <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(t_2\)</span> and continue this way until we have calculated <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span> across the domain <span class="math notranslate nohighlight">\([t_0, t_{\max}]\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step. The other type of numerical method for solving ODEs is the <a href="https://en.wikipedia.org/wiki/Linear_multistep_method" target="_blank">linear multistep methods</a> that requires information from multiple previous steps.</p>
+\[ n_{steps} = \frac{t_{\max} - t_0}{h} , \]</div>
+<p>where <span class="math notranslate nohighlight">\(n_{steps}\)</span> is an integer. We then calculate <span class="math notranslate nohighlight">\(y_1\)</span> using equation <a class="reference internal" href="#equation-euler-method-equation">(1.2)</a> and <span class="math notranslate nohighlight">\(t_1 = t_0 + h\)</span>. Then we use the values of <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(y_1\)</span> to calculate the values of <span class="math notranslate nohighlight">\(y_2\)</span> and <span class="math notranslate nohighlight">\(t_2\)</span> and continue this way until we have calculated <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(t_n\)</span> across the domain <span class="math notranslate nohighlight">\([t_0, t_{\max}]\)</span>. The Euler method is an example of a <strong>single step method</strong> since it only requires information from a single step of the solution to calculate the next step. The other type of numerical method for solving ODEs is the <a href="https://en.wikipedia.org/wiki/Linear_multistep_method" target="_blank">linear multistep methods</a> that requires information from multiple previous steps.</p>
 <div class="proof algorithm admonition" id="algorithm-1">
 <p class="admonition-title"><span class="caption-number">Algorithm 1.1 </span> (Solving an IVP using the Euler method)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs</strong> A first-order ODE of the form <span class="math notranslate nohighlight">\(y' = f(t,y)\)</span>, a domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, an initial value <span class="math notranslate nohighlight">\(y(t_0) = y_0\)</span> and a step length <span class="math notranslate nohighlight">\(h\)</span></p>
 <p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((y_0, y_1, \ldots)\)</span></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(nsteps \gets \left\lfloor \dfrac{t_{\max} - t_0}{h} \right\rfloor\)</span></p></li>
-<li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, nsteps\)</span></p>
+<li><p><span class="math notranslate nohighlight">\(nsteps \gets \dfrac{t_{\max} - t_0}{h} \)</span></p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n = 0, \ldots, n_{steps} - 1\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(y_{n+1} \gets y_n + hf(t_n, y_n)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(t_{n+1} \gets t_n + h\)</span></p></li>
@@ -606,15 +641,17 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-an-ivp-using-the-euler-method">1.1.1. Solving an IVP using the Euler method</a></li>
 </ul>
   </nav></div>
@@ -664,8 +701,8 @@ By Dr Jon Shiach
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

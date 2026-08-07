@@ -16,44 +16,47 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -63,6 +66,7 @@
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/2.5_Adaptive_step_size_control';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/2.5_Adaptive_step_size_control.html" />
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -71,34 +75,30 @@
     <link rel="prev" title="2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods" href="2.4_Solving_IVPs_using_ERK_methods.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -106,7 +106,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -114,15 +113,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -131,7 +174,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -161,21 +205,17 @@
     
     
     <img src="../_static/logo2.png" class="logo__image only-light" alt="Runge-Kutta Methods - Home"/>
-    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Runge-Kutta Methods - Home"/>`);</script>
+    <img src="../_static/logo2.png" class="logo__image only-dark pst-js-only" alt="Runge-Kutta Methods - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -188,9 +228,8 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminaries</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0.1_Teaching_schedule.html">Teaching schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0.2_Software.html">Python and MATLAB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0.3_Learning_and_teaching.html">Learning and teaching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.1_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Learning_and_teaching.html">Learning and teaching</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
@@ -213,18 +252,17 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.3_IRK_order.html">3.2. Determining the order of an implicit Runge-Kutta method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.4_Solving_ODEs_using_IRK_methods.html">3.3. Solving ODEs using Implicit Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.5_Solving_systems_using_IRK_methods.html">3.4. Solving Systems of ODEs using IRK Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.6_IRK_exercises.html">3.5. Implicit Runge-Kutta methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Solving_ODEs_using_IRK_methods.html">3.2. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.3. Stability Function of a Runge-Kutta Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.4. Stability Functions for Implicit Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.5. Absolute stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.6. A-stability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.7. Stability exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -233,13 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.5_QR_decomposition.html">6.4. QR decomposition</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="6.7_Matrix_decomposition_exercises.html">6.6. Matrix decomposition exercises</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -262,9 +294,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -347,7 +384,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -361,25 +398,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -401,7 +430,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-runge-kutta-methods">2.7.1. Embedded Runge-Kutta methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-scaling">2.7.2. Error scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-new-step-length">2.7.3. Computing the new step length</a></li>
@@ -427,6 +456,7 @@ document.write(`
 </ul>
 <p>Improving the order of accuracy of the method is often not straightforward and can place restrictions on the applicability of the method. Reducing the step length used will improve the accuracy of the approximation but since more steps are required to advance through the domain, this will increase the computational cost. The behaviour of the solution will have an effect on the accuracy of the approximation because computational methods are more accurate where the solution is slowly varying and less accurate where there are rapid variations in the solution.</p>
 <p>For each step of the algorithm we compute two solutions of order <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(p+1\)</span> and use these to estimate the local truncation error. If the error estimate is within a desired accuracy tolerance, the step is considered to be <strong>successful</strong> and the algorithm proceeds onto the next step, and the step length is increased. If the error estimate is larger than the accuracy tolerance, the step is considered to have <strong>failed</strong>, and is repeated using a smaller step length.</p>
+<p>The adaptive strategy described here forms the basis of many modern ODE solvers, including MATLAB’s ode23 and ode45 functions and SciPy’s RK23 and RK45 solvers.</p>
 <hr class="docutils" />
 <section id="embedded-runge-kutta-methods">
 <h2><span class="section-number">2.7.1. </span>Embedded Runge-Kutta methods<a class="headerlink" href="#embedded-runge-kutta-methods" title="Link to this heading">#</a></h2>
@@ -451,9 +481,10 @@ document.write(`
 <p>Since both solutions use the same stage values <span class="math notranslate nohighlight">\(\mathbf{k}_i\)</span> the extra cost of computing the additional solution is very small. The difference between the two solutions provides an estimate of the local truncation error incurred over the current step</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{e} = \mathbf{y}^{(p + 1)} - \mathbf{y}^{(p)}. \]</div>
+<p>Although the error estimate is obtained from the difference of the two approximations, the accepted solution is usually taken to be the higher-order approximation <span class="math notranslate nohighlight">\(\mathbf y^{(p+1)}\)</span>.</p>
 <p>Examples of two embedded Runge-Kutta methods are the Bogacki-Shampine 3(2) method, which computes third- and second-order solutions, and Fehlberg’s 5(4) method which computes fifth- and fourth-order solutions.</p>
 <div class="proof definition admonition" id="bogacki-shampine-equation">
-<p class="admonition-title"><span class="caption-number">Definition 2.3 </span> (Bogacki-Shampine 3(2) Runge-Kutta method (RK23))</p>
+<p class="admonition-title"><span class="caption-number">Definition 2.2 </span> (Bogacki-Shampine 3(2) Runge-Kutta method (RK23))</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
@@ -466,10 +497,10 @@ document.write(`
         &amp; \frac{7}{24} &amp; \frac{1}{4} &amp; \frac{1}{3} &amp; \frac{1}{8}
     \end{array}
 \end{align*} \end{split}\]</div>
-<p><span id="id1">Bogacki and Shampine [<a class="reference internal" href="E_References.html#id15" title="Przemyslaw Bogacki and Lawrence F Shampine. A 3(2) pair of runge-kutta formulas. Applied Mathematics Letters, 2(4):321–325, 1989.">1989</a>]</span></p>
+<p><span class="bibtex-citation" id="id1">Bogacki and Shampine [<a class="reference internal" href="E_References.html#id15" title="Przemyslaw Bogacki and Lawrence F Shampine. A 3(2) pair of runge-kutta formulas. Applied Mathematics Letters, 2(4):321–325, 1989.">1989</a>]</span></p>
 </section>
 </div><div class="proof definition admonition" id="fehlbergs-method-equation">
-<p class="admonition-title"><span class="caption-number">Definition 2.4 </span> (Fehlberg’s order 5(4) Runge-Kutta method (RKF45))</p>
+<p class="admonition-title"><span class="caption-number">Definition 2.3 </span> (Fehlberg’s order 5(4) Runge-Kutta method (RKF45))</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cccccc}
@@ -482,7 +513,7 @@ document.write(`
     &amp; \frac{16}{135} &amp; 0 &amp; \frac{6656}{12825} &amp; \frac{28561}{56430} &amp; -\frac{9}{50} &amp; \frac{2}{55} \\
     &amp; \frac{25}{216} &amp; 0 &amp; \frac{1408}{2565} &amp; \frac{2197}{4104} &amp; -\frac{1}{5} &amp; 0 
 \end{array} \end{split}\]</div>
-<p><span id="id2">Fehlberg [<a class="reference internal" href="E_References.html#id10" title="E. Fehlberg. Klassische runge-kutta-formeln fünfter und siebenter ordnung mit schrittweiten-kontrolle (classical runge-kutta formulas of fifth and seventh order with step size control). Computing, 1969.">1969</a>]</span></p>
+<p><span class="bibtex-citation" id="id2">Fehlberg [<a class="reference internal" href="E_References.html#id10" title="E. Fehlberg. Klassische runge-kutta-formeln fünfter und siebenter ordnung mit schrittweiten-kontrolle (classical runge-kutta formulas of fifth and seventh order with step size control). Computing, 1969.">1969</a>]</span></p>
 </section>
 </div></section>
 <hr class="docutils" />
@@ -510,13 +541,14 @@ document.write(`
 <p>and compute a scaling factor using</p>
 <div class="math notranslate nohighlight">
 \[ s_i = atol + rtol \, \max( |y_i^{(n)}| , |y_i^{(p+1)}|), \]</div>
-<p>where <span class="math notranslate nohighlight">\(y_i^{(n)}\)</span> is the solution at the current step (element <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>). The use of both <span class="math notranslate nohighlight">\(y_i^{(n)}\)</span> and <span class="math notranslate nohighlight">\(y_i^{(p+1)}\)</span> ensures that the scaling remains appropriate when the solution is rapidly changing or passes through zero. The scaled error is then</p>
+<p>where <span class="math notranslate nohighlight">\(y_i^{(n)}\)</span> is the solution at the current step (element <span class="math notranslate nohighlight">\(i\)</span> of <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>). The absolute tolerance controls the error when the solution components are close to zero, while the relative tolerance controls the error when the solution components are large. The use of both <span class="math notranslate nohighlight">\(y_i^{(n)}\)</span> and <span class="math notranslate nohighlight">\(y_i^{(p+1)}\)</span> ensures that the scaling remains appropriate when the solution is rapidly changing or passes through zero.</p>
+<p>The scaled error is then</p>
 <div class="math notranslate nohighlight">
 \[ e_i^* = \frac{ e_i}{s_i}, \]</div>
 <p>and we can then use the <strong>Root Mean Square (RMS)</strong> of the scaled errors to compute <span class="math notranslate nohighlight">\(\Delta\)</span></p>
 <div class="math notranslate nohighlight">
 \[ \Delta = \sqrt{\frac{1}{N} \sum_{i=1}^N \left( \frac{ e_i}{s_i} \right)^2}. \]</div>
-<p>The value of <span class="math notranslate nohighlight">\(\Delta\)</span> is used to determine whether the estimation of the local truncation error is within the accuracy tolerances specified by <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span></p>
+<p>The value of <span class="math notranslate nohighlight">\(\Delta\)</span> is used to determine whether the estimation of the local truncation error is within the accuracy tolerances specified by <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span>. Using the RMS norm prevents a single component from completely dominating the error measure while still penalising large componentwise errors.</p>
 <ul class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(\Delta \leq 1\)</span></p>
 <ul>
@@ -549,10 +581,10 @@ document.write(`
 <p>since the <span class="math notranslate nohighlight">\(O(h^{p+1})\)</span> term dominates the <span class="math notranslate nohighlight">\(O(h^{p+2})\)</span> term. The scaling factors <span class="math notranslate nohighlight">\(s_i\)</span> do not depend on <span class="math notranslate nohighlight">\(h\)</span>, so the scaled error measure <span class="math notranslate nohighlight">\(\Delta\)</span> also satisfies</p>
 <div class="math notranslate nohighlight">
 \[ \Delta = O(h^{p+1}).\]</div>
-<p>By the definition of big-O notation, the scaled error satisfies</p>
+<p>Assuming the aysmptotic regime has been reached, the dominant error term may be written as</p>
 <div class="math notranslate nohighlight" id="equation-h-error">
-<span class="eqno">(2.19)<a class="headerlink" href="#equation-h-error" title="Link to this equation">#</a></span>\[ \Delta = C h^{p + 1}, \]</div>
-<p>for some constant <span class="math notranslate nohighlight">\(C\)</span>. We want to compute a new step length <span class="math notranslate nohighlight">\(h_{new}\)</span> which results in a desired value of <span class="math notranslate nohighlight">\(\Delta = 1\)</span>, i.e.,</p>
+<span class="eqno">(2.19)<a class="headerlink" href="#equation-h-error" title="Link to this equation">#</a></span>\[ \Delta \approx C h^{p + 1}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is approximately constant over one step. We want to compute a new step length <span class="math notranslate nohighlight">\(h_{new}\)</span> which results in a desired value of <span class="math notranslate nohighlight">\(\Delta = 1\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight" id="equation-hnew-error">
 <span class="eqno">(2.20)<a class="headerlink" href="#equation-hnew-error" title="Link to this equation">#</a></span>\[ 1 = C h_{new}^{p+1}. \]</div>
 <p>Defining a ratio <span class="math notranslate nohighlight">\(r\)</span> between the new and current step lengths</p>
@@ -574,10 +606,11 @@ document.write(`
 <p>The initial step length is chosen so that it is small enough that the local truncation error is likely to satisfy the specified accuracy tolerances. A simple initial estimate is</p>
 <div class="math notranslate nohighlight">
 \[ h = 0.8 \, rtol^{1/(p+1)}. \]</div>
+<p>This is a crude estimate intended only to obtain a reasonable starting value. Production-quality software usually employs a more sophisticated procedure based on the initial derivative and tolerance values.</p>
 <div class="proof algorithm admonition" id="step-size-control-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 2.2 </span> (Solving an IVP using a single step method with adaptive step size control)</p>
 <section class="algorithm-content" id="proof-content">
-<p><strong>Inputs</strong> A system of first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t,\mathbf{y})\)</span>, the domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, the initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = \mathbf{y}_0\)</span>, and desired accuracy tolerances <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span>.</p>
+<p><strong>Inputs</strong> A system of <span class="math notranslate nohighlight">\(N\)</span> first-order ODEs of the form <span class="math notranslate nohighlight">\(\mathbf{y}' = f(t,\mathbf{y})\)</span>, the domain <span class="math notranslate nohighlight">\(t \in [t_0, t_{\max}]\)</span>, the initial values <span class="math notranslate nohighlight">\(\mathbf{y}(t_0) = \mathbf{y}_0\)</span>, and desired accuracy tolerances <span class="math notranslate nohighlight">\(atol\)</span> and <span class="math notranslate nohighlight">\(rtol\)</span>.</p>
 <p><strong>Outputs</strong> <span class="math notranslate nohighlight">\((t_0, t_1, \ldots)\)</span> and <span class="math notranslate nohighlight">\((\mathbf{y}_0, \mathbf{y}_1, \ldots)\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(h \gets 0.8 \, rtol^{1/(p+1)}\)</span></p></li>
@@ -585,8 +618,8 @@ document.write(`
 <li><p>while <span class="math notranslate nohighlight">\(t_n &lt; t_{\max}\)</span></p>
 <ul>
 <li><p>Compute the <span class="math notranslate nohighlight">\(\mathbf{y}^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}^{(p)}\)</span> solutions</p></li>
-<li><p><span class="math notranslate nohighlight">\(e_i \gets | y_i^{(p+1)} - y_i^{(p)} ||\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(s_i \gets atol + rtol \max(|y_i^{(n)}|, |y_i^{(p+1)}|)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e_i \gets | y_i^{(p+1)} - y_i^{(p)} ||, \qquad i = 1, \ldots, N\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s_i \gets atol + rtol \max(|y_i^{(n)}|, |y_i^{(p+1)}|), \qquad i = 1, \ldots, N\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\Delta \gets \sqrt{ \dfrac{1}{N} \displaystyle\sum_{i=1}^N \left( \dfrac{e_i}{s_i} \right)^2}\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\Delta \leq 1\)</span></p>
 <ul>
@@ -643,6 +676,7 @@ document.write(`
     &amp;= 0 + 0.8(\tfrac{7}{24}(1) + \tfrac{1}{4}(1.039147) + \tfrac{1}{3}(1.057719) + \tfrac{1}{8}(1.075841)) = 0.083081.
 \end{align*} \end{split}\]</div>
 <p>Computing the RMS of the scaled error estimate</p>
+<p>[1.56304757e-05] [8.40961743e-05] 0.18586428943743688</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     e_1 &amp;= | y^{(3)} - y^{(2)} | = |0.083096 - 0.083081| = 1.5 \times 10^{-5}, \\
@@ -652,21 +686,21 @@ document.write(`
 <p>Since <span class="math notranslate nohighlight">\(\Delta = 0.178368 \leq 1\)</span> the step has succeeded, and we accept <span class="math notranslate nohighlight">\(y_1 = y^{(3)} = 0.083096\)</span>. We now compute the new value of <span class="math notranslate nohighlight">\(h\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    r &amp;= \min(5, \max(0.1, 0.8 \Delta^{-1/3})) = \min(5, \max(0.1, 0.8(0.178368)^{-1/3})) = 1.421187, \\
-    h &amp;= rh = 1.421187(0.8) = 1.136950.
+    r &amp;= \min(5, \max(0.1, 0.8 \Delta^{-1/3})) = \min(5, \max(0.1, 0.8(0.178368)^{-1/3})) = 1.776484, \\
+    h &amp;= rh = 1.421187(0.8) = 1.421187.
 \end{align*} \end{split}\]</div>
 <p>The solution over the full domain <span class="math notranslate nohighlight">\(t\in [0, 5]\)</span> is shown in <a class="reference internal" href="#rk23-example-figure"><span class="std std-numref">Fig. 2.7</span></a>.</p>
 <figure class="align-default" id="rk23-example-figure">
-<img alt="../_images/2931057ac8b80b1115180ec2c761da497d960d7db3df73bb4f3f28b0645c8bf4.png" src="../_images/2931057ac8b80b1115180ec2c761da497d960d7db3df73bb4f3f28b0645c8bf4.png" />
+<img alt="../_images/9199de42f0a46e9308ccddb5c782d3b7cdacaa9c10590217bfc2a49859fabfbf.png" src="../_images/9199de42f0a46e9308ccddb5c782d3b7cdacaa9c10590217bfc2a49859fabfbf.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = -21y + e^{-t}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span> with an initial step length <span class="math notranslate nohighlight">\(h=0.1\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</span><a class="headerlink" href="#rk23-example-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = e^{t - y\sin(y)}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span> with an initial step length <span class="math notranslate nohighlight">\(h=0.1\)</span> and an accuracy tolerance <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span>.</span><a class="headerlink" href="#rk23-example-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A plot of the step lengths used across the domain is shown in <a class="reference internal" href="#rk23-example-step-size-plot-figure"><span class="std std-numref">Fig. 2.8</span></a>. Note how the step lengths decrease where the solution is steeper and increase where it is more slowly varying.</p>
 <figure class="align-default" id="rk23-example-step-size-plot-figure">
-<img alt="../_images/acaeb5e451d5168a4642bf083e0d1b72f15b455ec1cef224fcf81106d8001710.png" src="../_images/acaeb5e451d5168a4642bf083e0d1b72f15b455ec1cef224fcf81106d8001710.png" />
+<img alt="../_images/e8139540b10de3f58a93f37aa26fa97978476d2899ab6ac5a98fbec0fa5992e6.png" src="../_images/e8139540b10de3f58a93f37aa26fa97978476d2899ab6ac5a98fbec0fa5992e6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = e^{t - y\sin(y)}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span>.</span><a class="headerlink" href="#rk23-example-step-size-plot-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Step lengths used for the Bogacki-Shampine 3(2) method solution to the initial value problem <span class="math notranslate nohighlight">\(y' = e^{t - y\sin(y)}\)</span>, <span class="math notranslate nohighlight">\(t\in [0,1]\)</span>, <span class="math notranslate nohighlight">\(y(0)=0\)</span>.</span><a class="headerlink" href="#rk23-example-step-size-plot-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -720,7 +754,7 @@ Python</label><div class="sd-tab-content docutils">
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="c1"># Compute ratio of new step to old</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">Delta</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">)))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">Delta</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)))</span>
 
         <span class="c1"># Update h</span>
         <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
@@ -846,15 +880,17 @@ MATLAB</label><div class="sd-tab-content docutils">
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-runge-kutta-methods">2.7.1. Embedded Runge-Kutta methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-scaling">2.7.2. Error scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-new-step-length">2.7.3. Computing the new step length</a></li>
@@ -907,8 +943,8 @@ By Dr Jon Shiach
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
