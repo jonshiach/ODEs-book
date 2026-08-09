@@ -39,7 +39,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -266,7 +265,12 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_QR_decomposition.html">6.4. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Matrix_decomposition_exercises.html">6.5. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -437,49 +441,39 @@
 <p>An IVP is given by</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    y' + y = 1 - e^{-t}  \qquad t\in [0,4], \qquad y(0) = 1.
+    y' = t - y  \qquad t\in [0,2], \qquad y(0) = 1.
 \end{align*}\]</div>
 <p>(a)   Using a pen and calculator and working to 4 decimal places, compute the solution to the IVP using the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 0.4\)</span>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(t \in [0, 4]\)</span> and <span class="math notranslate nohighlight">\(h = 0.4\)</span> then</p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(t \in [0, 2]\)</span> and <span class="math notranslate nohighlight">\(h = 0.4\)</span> then</p>
 <div class="math notranslate nohighlight">
-\[ n_{steps} = \frac{4 - 0}{0.4} = 10. \]</div>
+\[ n_{steps} = \frac{2 - 0}{0.4} = 5. \]</div>
 <p class="sd-card-text">The Euler method is</p>
 <div class="math notranslate nohighlight">
 \[ y_{n+1} = y_n + h f(t_n, y_n), \]</div>
-<p class="sd-card-text">and in this case <span class="math notranslate nohighlight">\(f(t, y) = 1 - e^{-t} - y\)</span>, <span class="math notranslate nohighlight">\(t_0 = 0\)</span> and <span class="math notranslate nohighlight">\(y_0 = 1\)</span>, then</p>
+<p class="sd-card-text">and here <span class="math notranslate nohighlight">\(f(t, y) = t - y\)</span>, <span class="math notranslate nohighlight">\(t_0 = 0\)</span> and <span class="math notranslate nohighlight">\(y_0 = 1\)</span>, then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    y_1 &amp;= 1 + 0.4 (1 - e^{-0} - 1) = 0.6, \\
-    t_1 &amp;= 0 + 0.4 = 0.4, \\ \\
-    y_2 &amp;= 0.6 + 0.4 (1 - e^{-0.4} - 0.6) = 0.4919, \\
-    t_2 &amp;= 0.4 + 0.4 = 1.8, \\ \\
-    y_3 &amp;= 0.4919 + 0.4 (1 - e^{-0.8} - 0.4919) = 0.5154, \\
-    t_3 &amp;= 0.8 + 0.4 = 1.2, \\ \\
-    y_4 &amp;= 0.5154 + 0.4 (1 - e^{-1.2} - 0.5154) = 0.5888, \\
-    t_4 &amp;= 1.2 + 0.4 = 1.6, \\ \\
-    y_5 &amp;= 0.5888 + 0.4 (1 - e^{-1.6} - 0.5888) = 0.6725, \\
-    t_5 &amp;= 1.6 + 0.4 = 2, \\ \\
-    y_6 &amp;= 0.6725 + 0.4 (1 - e^{-2} - 0.6725) = 0.7494, \\
-    t_6 &amp;= 2 + 0.4 = 2.4, \\ \\
-    y_7 &amp;= 0.7494 + 0.4 (1 - e^{-2.4} - 0.7494) = 0.8134, \\
-    t_7 &amp;= 2.4 + 0.4 = 2.8, \\ \\
-    y_8 &amp;= 0.8134 + 0.4 (1 - e^{-2.8} - 0.8134) = 0.8637, \\
-    t_8 &amp;= 2.8 + 0.4 = 3.2, \\ \\
-    y_9 &amp;= 0.8637 + 0.4 (1 - e^{-3.2} - 0.8637) = 0.9019, \\
-    t_9 &amp;= 3.2 + 0.4 = 3.6, \\ \\
-    y_{10} &amp;= 0.9019 + 0.4 (1 - e^{-3.6} - 0.9019) = 0.9302, \\
-    t_{10} &amp;= 3.6 + 0.4.
+    y_1 &amp;= 1 + 0.4(0 - 1) = 0.6, &amp;
+    t_1 &amp;= 0 + 0.4 = 0.4, \\
+    y_2 &amp;= 0.6 + 0.4(0.4 - 0.6) = 0.52, &amp;
+    t_2 &amp;= 0.4 + 0.4 = 0.8, \\
+    y_3 &amp;= 0.52 + 0.4(0.8 - 0.52) = 0.632, &amp;
+    t_3 &amp;= 0.8 + 0.4 = 1.2, \\
+    y_4 &amp;= 0.632 + 0.4(1.2 - 0.632) = 0.8592, &amp;
+    t_4 &amp;= 1.2 + 0.4 = 1.6, \\
+    y_5 &amp;= 0.8592 + 0.4(1.6 - 0.8592) = 1.15552, &amp;
+    t_5 &amp;= 1.6 + 0.4 = 2.
 \end{align*} \end{split}\]</div>
 </div>
-</details><p>(b)   Repeat part (a) using Python or MATLAB to perform the computations. Produce a plot of the solution <span class="math notranslate nohighlight">\(y\)</span> against <span class="math notranslate nohighlight">\(t\)</span> and the exact solution which is <span class="math notranslate nohighlight">\(y(t) = 1 - te^{-t}\)</span> on the same set of axes.</p>
+</details><p>(b)   Repeat part (a) using Python or MATLAB to perform the computations. Produce a plot of the solution <span class="math notranslate nohighlight">\(y\)</span> against <span class="math notranslate nohighlight">\(t\)</span> and the exact solution which is <span class="math notranslate nohighlight">\(y(t) = t + 2e^{-t} - 1\)</span> on the same set of axes.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/c66e00deb0e8c54ea57b470de544146032b37c106b6e4927ac9b6fbc4a187729.png" src="../_images/c66e00deb0e8c54ea57b470de544146032b37c106b6e4927ac9b6fbc4a187729.png" />
+<img alt="../_images/769479be33e2f1b199b522a112dc156f75159f30395fdc6d6d4d4d143a3d1225.png" src="../_images/769479be33e2f1b199b522a112dc156f75159f30395fdc6d6d4d4d143a3d1225.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -513,12 +507,12 @@ Python</label><div class="sd-tab-content docutils">
 
 <span class="c1"># Define ODE function</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">-</span> <span class="n">y</span>
 
 
 <span class="c1"># Define exact solution</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">exact</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
 
 <span class="c1"># Define IVP parameters</span>
@@ -572,8 +566,8 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="k">end</span>
 
 <span class="c">% Define ODE function and exact solution</span>
-<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">);</span>
-<span class="n">exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">);</span>
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="n">exact</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
 <span class="c">% Define IVP parameters</span>
 <span class="n">tspan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">];</span>
@@ -595,7 +589,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;$x$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;$y$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
-<span class="nb">title</span><span class="p">(</span><span class="s">&quot;$y&#39; + y = 1 - e^{-t}$, $y(0) = 1$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;$y&#39; + y = t - y$, $y(0) = 1$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
 <span class="nb">legend</span><span class="p">([</span><span class="s">&quot;Exact&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&quot;Euler (h = %0.1f)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">)])</span>
 <span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
 </pre></div>
@@ -608,7 +602,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/927a39103c257b28a40f45eecf27556b5f3386027acd4b3b53351cb9a6b89b58.png" src="../_images/927a39103c257b28a40f45eecf27556b5f3386027acd4b3b53351cb9a6b89b58.png" />
+<img alt="../_images/825e6f349911c2ab40adb59eb177fb81e4905c078031b8be431f99e5c25b8616.png" src="../_images/825e6f349911c2ab40adb59eb177fb81e4905c078031b8be431f99e5c25b8616.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
@@ -654,17 +648,17 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</details><p>(d)   Calculate the global truncation errors for the four solutions at <span class="math notranslate nohighlight">\(t = 2\)</span>. Present your results in the form of a table with columns for the value of <span class="math notranslate nohighlight">\(h\)</span>, the numerical solution for <span class="math notranslate nohighlight">\(y(2)\)</span> and the global truncation error <span class="math notranslate nohighlight">\(E\)</span>.</p>
+</details><p>(d)   Calculate the global truncation errors for the four numerical solutions of <span class="math notranslate nohighlight">\(y(t=2)\)</span>. Present your results in the form of a table with columns for the value of <span class="math notranslate nohighlight">\(h\)</span>, the numerical solution and the global truncation error <span class="math notranslate nohighlight">\(E\)</span>.</p>
 <p>Hint: you can use the NumPy command <code class="docutils literal notranslate"><span class="pre">idx</span> <span class="pre">=</span> <span class="pre">np.argmin(abs(t</span> <span class="pre">-</span> <span class="pre">2))</span></code> or the MATLAB command <code class="docutils literal notranslate"><span class="pre">[~,idx]</span> <span class="pre">=</span> <span class="pre">min(abs(t</span> <span class="pre">-</span> <span class="pre">2))</span></code> to determine the index of the value in the array <code class="docutils literal notranslate"><span class="pre">t</span></code> which is closest to 2.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>  <span class="n">h</span>   <span class="o">|</span>  <span class="n">Euler</span>   <span class="o">|</span>   <span class="n">GTE</span>    <span class="o">|</span>
 <span class="o">|------|----------|----------|</span>
-<span class="o">|</span> <span class="mf">0.40</span> <span class="o">|</span> <span class="mf">0.672496</span> <span class="o">|</span> <span class="mf">5.68e-02</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mf">0.20</span> <span class="o">|</span> <span class="mf">0.701442</span> <span class="o">|</span> <span class="mf">2.79e-02</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mf">0.10</span> <span class="o">|</span> <span class="mf">0.715579</span> <span class="o">|</span> <span class="mf">1.38e-02</span> <span class="o">|</span>
-<span class="o">|</span> <span class="mf">0.05</span> <span class="o">|</span> <span class="mf">0.722507</span> <span class="o">|</span> <span class="mf">6.82e-03</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.40</span> <span class="o">|</span>  <span class="mf">3.79936</span> <span class="o">|</span> <span class="mf">2.53e+00</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.20</span> <span class="o">|</span>  <span class="mf">4.86547</span> <span class="o">|</span> <span class="mf">3.59e+00</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.10</span> <span class="o">|</span>  <span class="mf">5.37676</span> <span class="o">|</span> <span class="mf">4.11e+00</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mf">0.05</span> <span class="o">|</span>  <span class="mf">5.62644</span> <span class="o">|</span> <span class="mf">4.36e+00</span> <span class="o">|</span>
 </pre></div>
 </div>
 <div class="sd-tab-set docutils">
@@ -678,7 +672,7 @@ Python</label><div class="sd-tab-content docutils">
     <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
     <span class="n">E</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">0.6</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">8.6</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">8.2e</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -692,7 +686,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 <span class="w">    </span><span class="p">[</span><span class="o">~</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
 <span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">E</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))];</span>
-<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;| %0.2f | %0.6f | %0.2e |\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">E</span><span class="p">(</span><span class="k">end</span><span class="p">))</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;| %4.2f | %8.6f | %8.2e |\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">E</span><span class="p">(</span><span class="k">end</span><span class="p">))</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -704,7 +698,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/f5be044dc4a1e4aad6a8f697eec377481d6b07513a5a34fe2002e3d55ea6f54a.png" src="../_images/f5be044dc4a1e4aad6a8f697eec377481d6b07513a5a34fe2002e3d55ea6f54a.png" />
+<img alt="../_images/92033a44a27485d42be414c508f273579e9c6d805439a27fb4681b96f643d18b.png" src="../_images/92033a44a27485d42be414c508f273579e9c6d805439a27fb4681b96f643d18b.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
@@ -750,8 +744,15 @@ MATLAB</label><div class="sd-tab-content docutils">
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Let <span class="math notranslate nohighlight">\(\theta_1 = \theta\)</span> and <span class="math notranslate nohighlight">\(\theta_2 = \dot{\theta}\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \dot{\theta_1} &amp;= \theta_2, \\
+    \dot{\theta_2} &amp;= -\frac{g}{L} \sin(\theta_1).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Solving this system using the Euler method results in</p>
 <figure class="align-default">
-<img alt="../_images/d023459647241e6750bab35e8b7126796bf3d8988283f6aa3ef46a87b60e93a1.png" src="../_images/d023459647241e6750bab35e8b7126796bf3d8988283f6aa3ef46a87b60e93a1.png" />
+<img alt="../_images/6373cabc8c02100caa25337c148e1c221c3ff777fe205d5813b308e82a9ebdbe.png" src="../_images/6373cabc8c02100caa25337c148e1c221c3ff777fe205d5813b308e82a9ebdbe.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
@@ -785,7 +786,7 @@ Python</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" for="sd-tab-item-9">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define ODE</span>
-<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="o">-</span><span class="mf">9.81</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">))];</span>
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">))];</span>
 
 <span class="c">% Define IVP</span>
 <span class="n">tspan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">];</span>
@@ -795,13 +796,14 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">L</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
 <span class="c">% Solve IVP</span>
-<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">euler</span><span class="p">(@(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">),</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 
 <span class="c">% Plot solution</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;b-&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&quot;b&quot;</span><span class="p">)</span>
 
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;$t$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;$\theta$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FontSize</span><span class="p">=</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;$t$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;$\theta$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;$\dot{\theta} + \frac{g}{L}\sin(\theta) = 0$, $\theta(0) = 1$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
 <span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
 </pre></div>
 </div>
@@ -821,12 +823,12 @@ MATLAB</label><div class="sd-tab-content docutils">
     \frac{\mathrm{d}y}{\mathrm{d}t} &amp;= -cy + dxy,
 \end{align*} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are the population densities of the prey and predator species respectively, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are the parameters that govern the birth and death rate of the prey species, and <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span> are parameters that govern the birth and death rates of the predator species.</p>
-<p>(a)   In a given square kilometer the population of rabbits (<span class="math notranslate nohighlight">\(x\)</span>) and foxes (<span class="math notranslate nohighlight">\(y\)</span>) is known to be <span class="math notranslate nohighlight">\(x(0) = y(0) = 5\)</span>. Given the the birth and death rates is 0.1 and 0.02 for the rabbit population and 0.4 and 0.04 for the fox population, use the Lotka-Volterra to model the population of the two species over a time frame of <span class="math notranslate nohighlight">\([0, 100]\)</span> using a step length of <span class="math notranslate nohighlight">\(h = 0.01\)</span>. Produce a plot of the population of both species on the same set of axes.</p>
+<p>In a given square kilometer the population of rabbits (<span class="math notranslate nohighlight">\(x\)</span>) and foxes (<span class="math notranslate nohighlight">\(y\)</span>) is known to be <span class="math notranslate nohighlight">\(x(0) = y(0) = 5\)</span>. Given the the birth and death rates is 0.1 and 0.02 for the rabbit population and 0.4 and 0.04 for the fox population, use the Lotka-Volterra to model the population of the two species over a time frame of <span class="math notranslate nohighlight">\([0, 100]\)</span> using a step length of <span class="math notranslate nohighlight">\(h = 0.01\)</span>. Produce a plot of the population of both species on the same set of axes.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/fe6bd9a7efb77ac1a2ec50f3069abc1c6f49ba9565ea00aa20fb8e2aa4677cac.png" src="../_images/fe6bd9a7efb77ac1a2ec50f3069abc1c6f49ba9565ea00aa20fb8e2aa4677cac.png" />
+<img alt="../_images/2d4c60d191347968199744fc2f77c454f08d5515234e23ed3666a4ee65e6f777.png" src="../_images/2d4c60d191347968199744fc2f77c454f08d5515234e23ed3666a4ee65e6f777.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
@@ -895,66 +897,64 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</details><p>(b)   Repeat the calculations with the initial populations <span class="math notranslate nohighlight">\(x(0) = y(0) = 5\)</span> and increasing by 5 each time until <span class="math notranslate nohighlight">\(x(0) = y(0) = 30\)</span>. Produce a plot of the fox population against the rabbit population for each solution on the same set of axes (known as a <a href="https://en.wikipedia.org/wiki/Phase_space" target="_blank">phase-space</a> plot).</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<figure class="align-default">
-<img alt="../_images/5495f4bb542c62a6449fc226e1e1f239797902a23b4df81aaf6997896213959d.png" src="../_images/5495f4bb542c62a6449fc226e1e1f239797902a23b4df81aaf6997896213959d.png" />
-</figure>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-6" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-12">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</details><!-- (b) &emsp; Repeat the calculations with the initial populations $x(0) = y(0) = 5$ and increasing by 5 each time until $x(0) = y(0) = 30$. Produce a plot of the fox population against the rabbit population for each solution on the same set of axes (known as a <a href="https://en.wikipedia.org/wiki/Phase_space" target="_blank">phase-space</a> plot). 
 
-<span class="n">init_pop</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="mf">0.001</span>
 
-<span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="n">init_pop</span><span class="p">:</span>
-    <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x0</span><span class="p">])</span>
-    <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">lotka_volterra</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$(</span><span class="si">{</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;ko&#39;</span><span class="p">)</span>
-    <span class="n">y0</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+``````{dropdown} Solution
+```{glue:figure} ex1.3b_plot
+```
+
+`````{tab-set}
+````{tab-item} Python
+```python
+fig, ax = plt.subplots()
+
+init_pop = range(5, 35, 5)
+h = 0.001
+
+for x0 in init_pop:
+    y0 = np.array([x0, x0])
+    t, y = euler(lotka_volterra, tspan, y0, h)
+    plt.plot(y[:,0], y[:,1], label=f"$({y0[0]}, {y0[1]})$")
+    plt.plot(y0[0], y0[1], 'ko')
+    y0 += np.array([5, 5])
     
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Rabbits&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Foxes&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lotka-Volterra Model&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-13" name="sd-tab-set-6" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-13">
-MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">clf</span>
-<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+plt.legend()
+plt.xlabel("Rabbits", fontsize=12)
+plt.ylabel("Foxes", fontsize=12)
+plt.title("Lotka-Volterra Model")
+plt.show()
+```
+````
 
-<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.001</span><span class="p">;</span>
-<span class="n">init_pop</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span>
-<span class="n">legend_labels</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+````{tab-item} MATLAB
+```matlab
+clf
+hold on
 
-<span class="k">for</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">init_pop</span>
-<span class="w">    </span><span class="n">y0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">];</span>
-<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">euler</span><span class="p">(@(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="n">lotka_volterra</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="w">    </span><span class="nb">plot</span><span class="p">(</span><span class="n">y</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="w">    </span><span class="n">legend_labels</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">legend_labels</span><span class="p">,</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&quot;(%i, %i)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">)</span><span class="w"> </span><span class="p">];</span>
-<span class="k">end</span>
+h = 0.001;
+init_pop = 5 : 5 : 30;
+legend_labels = [];
 
-<span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
-<span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;Rabbits&quot;</span><span class="p">)</span>
-<span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;Foxes&quot;</span><span class="p">)</span>
-<span class="nb">legend</span><span class="p">(</span><span class="n">legend_labels</span><span class="p">)</span>
-<span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
-<span class="nb">box</span><span class="w"> </span><span class="n">on</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</details></section>
+for x0 = init_pop
+    y0 = [x0, x0];
+    [t, y] = euler(@(t, y)lotka_volterra(t, y, a, b, c, d)', tspan, y0, h);
+    plot(y(:,1), y(:,2), LineWidth=2)
+    legend_labels = [ legend_labels, sprintf("(%i, %i)", x0, x0) ];
+end
+
+hold off
+xlabel("Rabbits")
+ylabel("Foxes")
+legend(legend_labels)
+axis padded
+box on
+```
+````
+`````
+
+`````` -->
+</section>
 </div>
 </section>
 

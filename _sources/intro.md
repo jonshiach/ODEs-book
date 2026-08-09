@@ -19,10 +19,10 @@ The teaching schedule for the Runge-Kutta methods part of the module is shown be
 |  3 | 13/10/2025 | [Explicit Runge-Kutta Methods (ERK) cont](applying-erk-methods-to-solve-ivps-section) | {numref}`ch2-ex-rk2-hand-calc` to {numref}`ch2-ex-rk23` |
 |  4 | 20/10/2025 | [Implicit Runge-Kutta Methods (IRK)](irk-chapter) |{numref}`ch3-ex-radauIA-order` to {numref}`ch3-ex-stiff` |
 |  5 | 27/10/2025 | [Stability](stability-chapter) | {numref}`ch4-ex-erk-stability-function` to {numref}`ch4-ex-stiffness-ratio` |
-|  6 | 03/11/2025 | [Boundary Value Problems (BVP)](bvp-chapter) | {numref}`ch5-ex-uniqueness` to {numref}`ch5-ex-python` |
-|  7 | 10/11/2025 | [Matrix Decomposition Methods](matrix-decomposition-chapter) | {numref}`ex-lu` to {numref}`ex-lu-python` |
-|  8 | 17/11/2025 | [Matrix Decomposition Methods cont.](qr-section) | {numref}`ex-gramschmidt` to {numref}`ex-qr-python` |
-| 9  | 24/11/2025 | [Indirect methods](indirect-methods-chapter) | {numref}`indirect-methods-ex-jacobi` to {numref}`indirect-methods-ex-convergence-2` |
+|  6 | 03/11/2025 | [Boundary Value Problems (BVP)](bvp-chapter) | {numref}`ch2-ex-bvp-hand-calc` to {numref}`ch5-ex-python` |
+|  7 | 10/11/2025 | [Matrix Decomposition Methods](matrix-decomposition-chapter) | {numref}`ex-lu` to {numref}`ex-cholesky` |
+|  8 | 17/11/2025 | [Matrix Decomposition Methods cont.](qr-section) | {numref}`ex-gramschmidt` to {numref}`ex-householder` |
+| 9  | 24/11/2025 | [Iterative methods](indirect-methods-chapter) | {numref}`indirect-methods-ex-jacobi` to {numref}`indirect-methods-ex-convergence-2` |
 | 10 | 01/12/2025 | **Exam preparation** |
 | 11 | 08/12/2025 | **Exam preparation** |
 

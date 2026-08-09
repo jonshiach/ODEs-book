@@ -39,7 +39,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -266,7 +265,12 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_QR_decomposition.html">6.4. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Matrix_decomposition_exercises.html">6.5. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -565,57 +569,58 @@
 
 <p class="admonition-title"><span class="caption-number">Exercise 2.7 </span></p>
 <section id="exercise-content">
-<p>Using pen and paper, apply your Runge-Kutta method derived in <a class="reference internal" href="#ch2-ex-rk2-derivation"><span class="std std-numref">Exercise 2.3</span></a> to solve the following initial value problem using a step length of <span class="math notranslate nohighlight">\(h=0.4\)</span></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    y' = t - y, \qquad t\in [0,2],\qquad y(0)=1
-\end{align*}\]</div>
-<p>Write your solutions correct to 4 decimal places.</p>
+<p>Using pen and paper and working to 4 decimal places, apply your Runge-Kutta method derived in <a class="reference internal" href="#ch2-ex-rk2-derivation"><span class="std std-numref">Exercise 2.3</span></a> to solve the following initial value problem using a step length of <span class="math notranslate nohighlight">\(h=0.4\)</span></p>
+<div class="math notranslate nohighlight">
+\[ y' = t - y, \qquad t\in [0,2],\qquad y(0)=1. \]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_n\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k_1\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k_2\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.00</p></td>
-<td class="text-center"><p class="sd-card-text">1.0000</p></td>
-<td class="text-center"><p class="sd-card-text">-</p></td>
-<td class="text-center"><p class="sd-card-text">-</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.40</p></td>
-<td class="text-center"><p class="sd-card-text">0.7600</p></td>
-<td class="text-center"><p class="sd-card-text">-1.0000</p></td>
-<td class="text-center"><p class="sd-card-text">-0.4000</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.80</p></td>
-<td class="text-center"><p class="sd-card-text">0.7248</p></td>
-<td class="text-center"><p class="sd-card-text">-0.3600</p></td>
-<td class="text-center"><p class="sd-card-text">0.0480</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1.20</p></td>
-<td class="text-center"><p class="sd-card-text">0.8289</p></td>
-<td class="text-center"><p class="sd-card-text">0.0752</p></td>
-<td class="text-center"><p class="sd-card-text">0.3526</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">1.60</p></td>
-<td class="text-center"><p class="sd-card-text">1.0276</p></td>
-<td class="text-center"><p class="sd-card-text">0.3711</p></td>
-<td class="text-center"><p class="sd-card-text">0.5598</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">2.00</p></td>
-<td class="text-center"><p class="sd-card-text">1.2908</p></td>
-<td class="text-center"><p class="sd-card-text">0.5724</p></td>
-<td class="text-center"><p class="sd-card-text">0.7007</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p class="sd-card-text">The Runge-Kutta method derived in <a class="reference internal" href="#ch2-ex-rk2-derivation"><span class="std std-numref">Exercise 2.3</span></a> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+    k_1 &amp;= f(t_n, y_n), \\
+    k_2 &amp;= f(t_n + \tfrac{3}{4}h, y_n + \tfrac{3}{4}hk_1), \\
+    y_{n+1} &amp;= y_n + \frac{h}{3}(k_1 + 2k_2).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Here <span class="math notranslate nohighlight">\(t_0 = 0\)</span>, <span class="math notranslate nohighlight">\(y_0 = 1\)</span> and <span class="math notranslate nohighlight">\(f(t, y) = t - y\)</span> so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    k_1 &amp;= f(t_0, y_0) = t_0 - y_0 \\
+    &amp;= 0 - 1 = -1, \\
+    k_2 &amp;= f(t_0 + \tfrac{3}{4}h, y_0 + \tfrac{3}{4}hk_1) = (t_0 + \tfrac{3}{4}h) - (y_0 + \tfrac{3}{4}hk_1) \\
+    &amp;=(0 + \tfrac{3}{4}(0.4)) - (1 + \tfrac{3}{4}(0.4)(-1)) = -0.4, \\
+    y_1 &amp;= y_0 + \frac{h}{3}(k_1 + 2k_2) \\
+    &amp;= 1 + \frac{0.4}{3}(-1 + 2(-0.4)) = 0.76, \\
+    t_1 &amp;= t_0 + 0.4 = 0 + 0.4 = 0.4, \\ \\
+    k_1 &amp;= f(t_1, y_1) = t_1 - y_1 \\
+    &amp;= 0.4 - 0.76 = -0.36, \\
+    k_2 &amp;= f(t_1 + \tfrac{3}{4}h, y_1 + \tfrac{3}{4}hk_1) = (t_1 + \tfrac{3}{4}h) - (y_1 + \tfrac{3}{4}hk_1) \\
+    &amp;= (0.4 + \tfrac{3}{4}(0.4)) - (0.76 + \tfrac{3}{4}(0.4)(-0.36)) = 0.048, \\
+    y_2 &amp;= y_1 + \frac{h}{3}(k_1 + 2k_2) \\
+    &amp;= 0.76 + \frac{0.4}{3}(-0.36 + 2(0.048)) = 0.7248, \\
+    t_2 &amp;= t_1 + h = 0.4 + 0.4 = 0.8, \\ \\
+    k_1 &amp;= f(t_2, y_2) = t_2 - y_2 \\
+    &amp;= 0.8 - 0.7248 = 0.0752, \\
+    k_2 &amp;= f(t_2 + \tfrac{3}{4}h, y_2 + \tfrac{3}{4}hk_1) = (t_2 + \tfrac{3}{4}h) - (y_2 + \tfrac{3}{4}hk_1) \\
+    &amp;= (0.8 + \tfrac{3}{4}(0.4)) - (0.7248 + \tfrac{3}{4}(0.4)(0.0752)) = 0.3526, \\
+    y_3 &amp;= y_2 + \frac{h}{3}(k_1 + 2k_2) \\
+    &amp;= 0.7248 + \frac{0.4}{3}(0.0752 + 2(0.3526)) = 0.8289, \\
+    t_3 &amp;= t_2 + h = 0.8 + 0.4 = 1.2, \\ \\
+    k_1 &amp;= f(t_3, y_3) = t_3 - y_3 \\
+    &amp;= 1.2 - 0.8289 = 0.3711, \\
+    k_2 &amp;= f(t_3 + \tfrac{3}{4}h, y_3 + \tfrac{3}{4}hk_1) = (t_3 + \tfrac{3}{4}h) - (y_3 + \tfrac{3}{4}hk_1) \\
+    &amp;= (1.2 + \tfrac{3}{4}(0.4)) - (0.8289 + \tfrac{3}{4}(0.4)(0.3711)) = 0.5598, \\
+    y_4 &amp;= y_3 + \frac{h}{3}(k_1 + 2k_2) \\
+    &amp;= 0.8289 + \frac{0.4}{3}(0.3711 + 2(0.5598)) = 1.0277, \\
+    t_4 &amp;= t_3 + h = 1.2 + 0.4 = 1.6, \\ \\
+    k_1 &amp;= f(t_4, y_4) = t_4 - y_4 \\
+    &amp;= 1.6 - 1.0277 = 0.5723, \\
+    k_2 &amp;= f(t_3 + \tfrac{3}{4}h, y_3 + \tfrac{3}{4}hk_1) = (t_3 + \tfrac{3}{4}h) - (y_3 + \tfrac{3}{4}hk_1) \\
+    &amp;= (1.6 + \tfrac{3}{4}(0.4)) - (1.0277 + \tfrac{3}{4}(0.4)(0.5723)) = 0.7006, \\
+    y_5 &amp;= y_4 + \frac{h}{3}(k_1 + 2k_2) \\
+    &amp;= 1.0277 + \frac{0.4}{3}(0.5723 + 2(0.7006)) = 1.2908, \\
+    t_5 &amp;= t_4 + h = 1.6 + 0.4 = 2, \\ \\
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div>
@@ -767,57 +772,18 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <p class="admonition-title"><span class="caption-number">Exercise 2.9 </span></p>
 <section id="exercise-content">
-<p>A third-order explicit Runge-Kutta method has the Butcher tableau</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{array}{c|ccc}
-    0 &amp; 0 \\
-    \frac{1}{2} &amp; \frac{1}{2} \\
-    1 &amp; -1 &amp; 2 \\
-    \hline
-    &amp; \frac{1}{6} &amp; \frac{2}{3} &amp; \frac{1}{6}
-\end{array} \end{split}\]</div>
-<p>Write a Python or MATLAB program which uses this third-order method, and the fourth-order method derived in <a class="reference internal" href="#ch2-ex-rk4-derivation"><span class="std std-numref">Exercise 2.6</span></a>, to solve the IVP from <a class="reference internal" href="#ch2-ex-rk2-hand-calc"><span class="std std-numref">Exercise 2.7</span></a>. Produce a plot the compares the second-, third- and fourth-order numerical solutions to the exact solution.</p>
+<p>Write a Python or MATLAB program which uses the fourth-order method derived in <a class="reference internal" href="#ch2-ex-rk4-derivation"><span class="std std-numref">Exercise 2.6</span></a>, to solve the IVP from <a class="reference internal" href="#ch2-ex-rk2-hand-calc"><span class="std std-numref">Exercise 2.7</span></a>. Produce a plot that compares the second and fourth-order numerical solutions to the exact solution.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/292650f03f8b7b195bb9629800015c4b3acb23a7fffcb35860c22fc72ee6e718.png" src="../_images/292650f03f8b7b195bb9629800015c4b3acb23a7fffcb35860c22fc72ee6e718.png" />
+<img alt="../_images/b31ad937710520719d586a8dbdb0b943628af7fd73246a423c1bd65788afb16c.png" src="../_images/b31ad937710520719d586a8dbdb0b943628af7fd73246a423c1bd65788afb16c.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-2">
 Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define RK3 method function</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">rk3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-
-    <span class="c1"># Determine the number of ODEs in the system</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
-
-    <span class="c1"># Calculate the number of steps required</span>
-    <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
-
-    <span class="c1"># Define solution arrays and assign initial values</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
-    <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y0</span>
-    
-    <span class="c1"># Loop through the stages</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
-
-        <span class="c1"># Compute the stage values</span>
-        <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span>
-        <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
-        <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span><span class="p">))</span>
-
-        <span class="c1"># Compute the solution for the next step</span>
-        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="n">k3</span><span class="p">)</span>
-        <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
-
-    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
-
-
-<span class="c1"># Define RK4 method function</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define fourth-order Runge-Kutta method function</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
 
     <span class="c1"># Determine the number of ODEs in the system</span>
@@ -858,7 +824,6 @@ Python</label><div class="sd-tab-content docutils">
 
 <span class="c1"># Solve the IVP</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">y_rk2</span> <span class="o">=</span> <span class="n">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-<span class="n">t</span><span class="p">,</span> <span class="n">y_rk3</span> <span class="o">=</span> <span class="n">rk3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">y_rk4</span> <span class="o">=</span> <span class="n">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
 <span class="c1"># Calculate exact solution</span>
@@ -869,7 +834,6 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_rk2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;b-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_rk3</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;r-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK3&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_rk4</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;g-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK4&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">)</span>
@@ -883,37 +847,7 @@ Python</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-3">
 MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define RK3 method function</span>
-<span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = rk3</span><span class="p">(</span>f, tspan, y0, h<span class="p">)</span>
-
-<span class="c">% Determine the number of ODEs in the system</span>
-<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">y0</span><span class="p">);</span>
-
-<span class="c">% Compute the number of steps required</span>
-<span class="n">nsteps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">floor</span><span class="p">((</span><span class="n">tspan</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-
-<span class="c">% Define solution arrays and assign initial values</span>
-<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
-<span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tspan</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y0</span><span class="p">;</span>
-
-<span class="c">% Loop through the steps</span>
-<span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
-
-<span class="w">    </span><span class="c">% Compute the stage values</span>
-<span class="w">    </span><span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:))</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">k3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">))</span><span class="o">&#39;</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c">% Compute the solution for the next step</span>
-<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">,:)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="o">/</span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k3</span><span class="p">);</span>
-<span class="w">    </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
-<span class="k">end</span>
-
-<span class="k">end</span>
-
-<span class="c">% Define RK4 method function</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define fourth-order Runge-Kutta method function</span>
 <span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = rk4</span><span class="p">(</span>f, tspan, y0, h<span class="p">)</span>
 
 <span class="c">% Determine the number of ODEs in the system</span>
@@ -955,7 +889,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="c">% Solve IVP</span>
 <span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk3</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rk3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 <span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk4</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 
 <span class="c">% Compute exact solution</span>
@@ -966,13 +899,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="nb">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span><span class="w"> </span><span class="n">y_exact</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;k&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;b-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk3</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;r-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk4</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;g-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
 
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;$t$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;$y$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
-<span class="nb">legend</span><span class="p">([</span><span class="s">&quot;Exact&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RK2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RK3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RK4&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&quot;northwest&quot;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">([</span><span class="s">&quot;Exact&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RK2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RK4&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&quot;northwest&quot;</span><span class="p">)</span>
 <span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
 </pre></div>
 </div>
@@ -986,43 +918,37 @@ MATLAB</label><div class="sd-tab-content docutils">
 <p class="admonition-title"><span class="caption-number">Exercise 2.10 </span></p>
 <section id="exercise-content">
 <p>Repeat the calculations from <a class="reference internal" href="#ch2-ex-rk3-rk4-solution"><span class="std std-numref">Exercise 2.9</span></a> using a range of values of the step length starting at <span class="math notranslate nohighlight">\(h=0.4\)</span> and halving each time until <span class="math notranslate nohighlight">\(h = 0.025\)</span>.</p>
-<p>(a)   Calculate the global truncation error for <span class="math notranslate nohighlight">\(y(2)\)</span> for each of the solutions and present this information in a table.</p>
+<p>(a)   Calculate the global truncation error for <span class="math notranslate nohighlight">\(y(2)\)</span> for the two methods and present this information in a table.</p>
 <p>Hint: you can use the NumPy command <code class="docutils literal notranslate"><span class="pre">idx</span> <span class="pre">=</span> <span class="pre">np.argmin(abs(t</span> <span class="pre">-</span> <span class="pre">2))</span></code> or the MATLAB command <code class="docutils literal notranslate"><span class="pre">[~,idx]</span> <span class="pre">=</span> <span class="pre">min(abs(t</span> <span class="pre">-</span> <span class="pre">2))</span></code> to determine the index of the value in the array <code class="docutils literal notranslate"><span class="pre">t</span></code> which is closest to 2.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text">h</p></th>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(h\)</span></p></th>
 <th class="head text-center"><p class="sd-card-text">RK2</p></th>
-<th class="head text-center"><p class="sd-card-text">RK3</p></th>
 <th class="head text-center"><p class="sd-card-text">RK4</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-center"><p class="sd-card-text">0.400</p></td>
 <td class="text-center"><p class="sd-card-text">2.01e-02</p></td>
-<td class="text-center"><p class="sd-card-text">1.99e-03</p></td>
 <td class="text-center"><p class="sd-card-text">1.61e-04</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.200</p></td>
 <td class="text-center"><p class="sd-card-text">4.23e-03</p></td>
-<td class="text-center"><p class="sd-card-text">2.12e-04</p></td>
 <td class="text-center"><p class="sd-card-text">8.53e-06</p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p class="sd-card-text">0.100</p></td>
 <td class="text-center"><p class="sd-card-text">9.74e-04</p></td>
-<td class="text-center"><p class="sd-card-text">2.44e-05</p></td>
 <td class="text-center"><p class="sd-card-text">4.90e-07</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.050</p></td>
 <td class="text-center"><p class="sd-card-text">2.34e-04</p></td>
-<td class="text-center"><p class="sd-card-text">2.93e-06</p></td>
 <td class="text-center"><p class="sd-card-text">2.94e-08</p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p class="sd-card-text">0.025</p></td>
 <td class="text-center"><p class="sd-card-text">5.75e-05</p></td>
-<td class="text-center"><p class="sd-card-text">3.60e-07</p></td>
 <td class="text-center"><p class="sd-card-text">1.80e-09</p></td>
 </tr>
 </tbody>
@@ -1037,14 +963,13 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">tval</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="c1"># Initialise error lists</span>
-<span class="n">E_rk2</span><span class="p">,</span> <span class="n">E_rk3</span><span class="p">,</span> <span class="n">E_rk4</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">E_rk2</span><span class="p">,</span> <span class="n">E_rk4</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
 
 <span class="c1"># Loop through h values</span>
 <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hvals</span><span class="p">:</span>
 
-    <span class="c1"># Solve IVP using Euler, RK2 and RK4 methods</span>
+    <span class="c1"># Solve IVP using the RK2 and RK4 methods</span>
     <span class="n">t</span><span class="p">,</span> <span class="n">y_rk2</span> <span class="o">=</span> <span class="n">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
-    <span class="n">t</span><span class="p">,</span> <span class="n">y_rk3</span> <span class="o">=</span> <span class="n">rk3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
     <span class="n">t</span><span class="p">,</span> <span class="n">y_rk4</span> <span class="o">=</span> <span class="n">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
     <span class="c1"># Determine index of closest element to tval</span>
@@ -1052,15 +977,14 @@ Python</label><div class="sd-tab-content docutils">
 
     <span class="c1"># Compute errors and append to error lists</span>
     <span class="n">E_rk2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_rk2</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="n">E_rk3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_rk3</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">E_rk4</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_rk4</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
 
 
 <span class="c1"># Print table of solution values</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|  $h$  |   RK2    |   RK3    |    RK4   |&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|:-----:|:--------:|:--------:|:--------:|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|   h   |   RK2    |   RK4   |&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|:-----:|:--------:|:-------:|&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hvals</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">hvals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E_rk2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E_rk3</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E_rk4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">hvals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E_rk2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">E_rk4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -1073,15 +997,13 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="c">% Initialise error lists</span>
 <span class="n">E_rk2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="n">E_rk3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
 <span class="n">E_rk4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
 
 <span class="c">% Loop through h values</span>
 <span class="k">for</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">hvals</span>
 
-<span class="w">    </span><span class="c">% Solve IVP using Euler, RK2 and RK4 methods</span>
+<span class="w">    </span><span class="c">% Solve IVP using the RK2 and RK4 methods</span>
 <span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rk2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
-<span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk3</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rk3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 <span class="w">    </span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y_rk4</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">tspan</span><span class="p">,</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c">% Determine index of closest element to tval</span>
@@ -1089,17 +1011,16 @@ MATLAB</label><div class="sd-tab-content docutils">
 
 <span class="w">    </span><span class="c">% Compute errors and append to error lists</span>
 <span class="w">    </span><span class="n">E_rk2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">E_rk2</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_rk2</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">))];</span>
-<span class="w">    </span><span class="n">E_rk3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">E_rk3</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_rk3</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">))];</span>
 <span class="w">    </span><span class="n">E_rk4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">E_rk4</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">exact</span><span class="p">(</span><span class="n">tval</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_rk4</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">))];</span>
 
 <span class="k">end</span>
 
 <span class="c">% Output table of errors</span>
 <span class="k">if</span><span class="w"> </span><span class="nb">true</span>
-<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;|   h   |   RK2    |   RK3    |   RK4    |&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;|:-----:|:--------:|:--------:|:--------:|&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;|   h   |   RK2    |   RK4    |&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;|:-----:|:--------:|:--------:|&#39;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">hvals</span><span class="p">)</span>
-<span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;| %1.3f | %1.2e | %1.2e | %1.2e |\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">hvals</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">E_rk2</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">E_rk3</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">E_rk4</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;| %1.3f | %1.2e | %1.2e |\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">hvals</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">E_rk2</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">E_rk4</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
@@ -1112,7 +1033,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/4c03e0707bc55800288c40db4a2d429a52d43fb2aa3e009836235c3dc87705f1.png" src="../_images/4c03e0707bc55800288c40db4a2d429a52d43fb2aa3e009836235c3dc87705f1.png" />
+<img alt="../_images/8e3b0110b2dfa0bf83aa478734392b54582485a38ca062d0ccdb8ede42d9bde5.png" src="../_images/8e3b0110b2dfa0bf83aa478734392b54582485a38ca062d0ccdb8ede42d9bde5.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
@@ -1121,7 +1042,6 @@ Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot errors</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span> <span class="n">E_rk2</span><span class="p">,</span> <span class="s2">&quot;b-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span> <span class="n">E_rk3</span><span class="p">,</span> <span class="s2">&quot;r-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK3&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span> <span class="n">E_rk4</span><span class="p">,</span> <span class="s2">&quot;g-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK4&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$h$&quot;</span><span class="p">)</span>
@@ -1138,14 +1058,13 @@ MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Plot errors</span>
 <span class="nb">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span><span class="w"> </span><span class="n">E_rk2</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;b-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
-<span class="nb">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span><span class="w"> </span><span class="n">E_rk3</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;r-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">loglog</span><span class="p">(</span><span class="n">hvals</span><span class="p">,</span><span class="w"> </span><span class="n">E_rk4</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;g-o&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MarkerFaceColor</span><span class="p">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">LineWidth</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">hold</span><span class="w"> </span><span class="n">off</span>
 
 <span class="nb">xlabel</span><span class="p">(</span><span class="s">&quot;$h$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s">&quot;global truncation error&quot;</span><span class="p">)</span>
 <span class="nb">title</span><span class="p">(</span><span class="s">&quot;$y&#39; = t - y$, $y(0) = 1$&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">=</span><span class="s">&quot;latex&quot;</span><span class="p">)</span>
-<span class="nb">legend</span><span class="p">([</span><span class="s">&quot;RK2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RK3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RK4&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&quot;northwest&quot;</span><span class="p">)</span>
+<span class="nb">legend</span><span class="p">([</span><span class="s">&quot;RK2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RK4&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">Location</span><span class="p">=</span><span class="s">&quot;northwest&quot;</span><span class="p">)</span>
 <span class="nb">axis</span><span class="w"> </span><span class="n">padded</span>
 </pre></div>
 </div>
@@ -1156,33 +1075,16 @@ MATLAB</label><div class="sd-tab-content docutils">
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">RK2: <span class="math notranslate nohighlight">\(n \approx 2.11\)</span>, RK3: <span class="math notranslate nohighlight">\(n \approx 3.11\)</span>, RK4: <span class="math notranslate nohighlight">\(n \approx 4.11\)</span></p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-8">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate order</span>
-<span class="n">n_rk2</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">E_rk2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">E_rk2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">n_rk3</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">E_rk3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">E_rk3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">n_rk4</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">E_rk4</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">E_rk4</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RK2: n = </span><span class="si">{</span><span class="n">n_rk2</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="se">\n</span><span class="s2">RK3: n = </span><span class="si">{</span><span class="n">n_rk3</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="se">\n</span><span class="s2">RK4: n = </span><span class="si">{</span><span class="n">n_rk4</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-9">
-MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Estimate order</span>
-<span class="n">n_rk2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="n">E_rk2</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="n">E_rk2</span><span class="p">(</span><span class="k">end</span><span class="p">)))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">(</span><span class="k">end</span><span class="p">)));</span>
-<span class="n">n_rk3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="n">E_rk3</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="n">E_rk3</span><span class="p">(</span><span class="k">end</span><span class="p">)))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">(</span><span class="k">end</span><span class="p">)));</span>
-<span class="n">n_rk4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="n">E_rk4</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="n">E_rk4</span><span class="p">(</span><span class="k">end</span><span class="p">)))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="n">hvals</span><span class="p">(</span><span class="k">end</span><span class="p">)));</span>
-
-<span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;RK2: n = %0.2f\nRK3: n = %0.2f\nRK4: n = %0.2f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n_rk2</span><span class="p">,</span><span class="w"> </span><span class="n">n_rk3</span><span class="p">,</span><span class="w"> </span><span class="n">n_rk4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p class="sd-card-text">The order of a numerical method can be estimated using</p>
+<div class="math notranslate nohighlight">
+\[ n \approx \frac{\log \left( \dfrac{E(h_1)}{E(h_2)} \right)}{ \log \left( \dfrac{h_1}{h_2} \right)}, \]</div>
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(h_1 &gt; h_2\)</span> are step lengths and <span class="math notranslate nohighlight">\(E(h)\)</span> is the global truncation error using step length <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p class="sd-card-text">Using the errors computed earlier</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \textsf{RK2}: &amp;&amp; n &amp;\approx \frac{\log \left( \dfrac{2.01\times 10^{-2}}{5.75 \times 10^{-5}} \right)}{\log \left ( \dfrac{0.4}{0.025} \right)} = 2.11, \\
+    \textsf{RK4}: &amp;&amp; n &amp;\approx \frac{\log \left( \dfrac{1.61\times 10^{-4}}{1.80 \times 10^{-9}} \right)}{\log \left ( \dfrac{0.4}{0.025} \right)} = 4.11.
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div>
@@ -1199,17 +1101,17 @@ MATLAB</label><div class="sd-tab-content docutils">
     &amp; \frac{1}{6} &amp; \frac{2}{3} &amp; \frac{1}{6} \\
     &amp; 0 &amp; 1 &amp; 0 
 \end{array}\end{split}\]</div>
-<p>where the first row of the <span class="math notranslate nohighlight">\(b\)</span> coefficients gives the third-order accurate solution and the second row gives the second-order accurate solution. Write a Python or MATLAB program that solves the initial value problem from <a class="reference internal" href="#ch2-ex-rk2-hand-calc"><span class="std std-numref">Exercise 2.7</span></a> using an absolute tolerance of <span class="math notranslate nohighlight">\(10^{-6}\)</span> and a relative tolerance of <span class="math notranslate nohighlight">\(10^{-3}\)</span>.</p>
-<p>(a)   Produce a plot that compares the numerical solution with the exact solution.</p>
+<p>where the first row of the <span class="math notranslate nohighlight">\(b\)</span> coefficients gives the third-order accurate solution and the second row gives the second-order accurate solution.</p>
+<p>Write a Python or MATLAB program that solves the initial value problem from <a class="reference internal" href="#ch2-ex-rk2-hand-calc"><span class="std std-numref">Exercise 2.7</span></a> using an absolute tolerance of <span class="math notranslate nohighlight">\(10^{-6}\)</span> and a relative tolerance of <span class="math notranslate nohighlight">\(10^{-3}\)</span>. Produce a plot that compares the numerical solution with the exact solution.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/62ee8f93402d1ed8b9f9a931ac1487df2547e0df2bec86549af86b7378801e5f.png" src="../_images/62ee8f93402d1ed8b9f9a931ac1487df2547e0df2bec86549af86b7378801e5f.png" />
+<img alt="../_images/32938b4a840defc78927bd137a5c072615c5c11e6cc6e1dd6334fb1691627998.png" src="../_images/32938b4a840defc78927bd137a5c072615c5c11e6cc6e1dd6334fb1691627998.png" />
 </figure>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-10">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rk23</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
 
@@ -1251,7 +1153,7 @@ Python</label><div class="sd-tab-content docutils">
             <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="c1"># Compute ratio of new step to old</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">Delta</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">)))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">Delta</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)))</span>
 
         <span class="c1"># Update h</span>
         <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
@@ -1267,16 +1169,16 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;b-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RK3(2)&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y(t)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;$y&#39; = t - y$, $y(0) = 1$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-11" name="sd-tab-set-5" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-11">
+<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-9">
 MATLAB</label><div class="sd-tab-content docutils">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[t, y] = rk23</span><span class="p">(</span>f, tspan, y0, atol, rtol<span class="p">)</span>
 
@@ -1349,12 +1251,6 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</div>
-</details><p>(b)   Determine the number of successful steps, failed steps and the number of times the ODE function was evaluated.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">There were 15 successful steps, 0 failed steps and 45 function evaluations.</p>
 </div>
 </details></section>
 </div>

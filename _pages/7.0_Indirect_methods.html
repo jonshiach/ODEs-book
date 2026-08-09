@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Indirect Methods &#8212; Runge-Kutta Methods</title>
+    <title>7. Iterative Methods &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -39,7 +39,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -72,7 +71,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7.1. Jacobi method" href="7.1_Jacobi_method.html" />
-    <link rel="prev" title="6. Matrix Decomposition Methods" href="6.0_Matrix_decomposition.html" />
+    <link rel="prev" title="6.5. Matrix decomposition exercises" href="6.5_Matrix_decomposition_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -266,15 +265,20 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_QR_decomposition.html">6.4. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Matrix_decomposition_exercises.html">6.5. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">7. Indirect Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">7. Iterative Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of iterative methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Indirect methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Iterative methods exercises</a></li>
 </ul>
 </details></li>
 </ul>
@@ -414,7 +418,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Indirect Methods</h1>
+    <h1>Iterative Methods</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,18 +432,22 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="indirect-methods">
-<span id="indirect-methods-chapter"></span><h1><span class="section-number">7. </span>Indirect Methods<a class="headerlink" href="#indirect-methods" title="Link to this heading">#</a></h1>
-<p>Indirect methods for solving systems of linear equations use an iterative approach to repeatedly update estimates of the exact solution to the linear system. They are called <strong>indirect methods</strong> since multiple applications of the method is required to calculate a solution unlike <a class="reference internal" href="6.0_Matrix_decomposition.html#matrix-decomposition-chapter"><span class="std std-ref">matrix decomposition methods</span></a> such as Gaussian elimination and <a class="reference internal" href="#lu-section"><span class="xref myst">LU decomposition</span></a> which require a single application to calculate the solution. However, direct methods are inefficient for large systems of equations for which we tend to use indirect methods instead.</p>
-<p>An indirect method for solving a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x}= \mathbf{b}\)</span> is</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="iterative-methods">
+<span id="indirect-methods-chapter"></span><h1><span class="section-number">7. </span>Iterative Methods<a class="headerlink" href="#iterative-methods" title="Link to this heading">#</a></h1>
+<p><strong>Iterative methods</strong> generate a sequence of approximations that converge to the solution of a linear system. For very large sparse systems, storing matrix factors and performing elimination can be computationally expensive. Iterative methods often require less memory and can exploit sparsity efficiently.</p>
+<p>The matrix equation of a linear system <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span> can be rewritten as</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{x} = T \mathbf{x} + \mathbf{c}, \]</div>
+<p><span class="math notranslate nohighlight">\(T\)</span> is an <strong>iteration matrix</strong> and <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> is some vector. This leads to the iterative form</p>
 <div class="math notranslate nohighlight" id="equation-iteration-matrix-equation">
 <span class="eqno">(7.1)<a class="headerlink" href="#equation-iteration-matrix-equation" title="Link to this equation">#</a></span>\[ \mathbf{x}^{(k+1)} =T\mathbf{x}^{(k)} + \mathbf{c}, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> are the current and improved estimates of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> respectively, <span class="math notranslate nohighlight">\(T\)</span> is an <strong>iteration matrix</strong> and <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> is some vector. This equation is iterated updating the values of the estimates such that <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)} \to \mathbf{x}\)</span> as <span class="math notranslate nohighlight">\(k\to \infty\)</span>. Note that unlike direct methods which will calculate the exact solution, indirect methods only calculate an estimate (albeit very close) of the exact solution.</p>
-<p>These notes will introduce three common indirect methods</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}^{(k+1)}\)</span> are the current and improved estimates of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> respectively. Equation <a class="reference internal" href="#equation-iteration-matrix-equation">(7.1)</a> is iterated updating the values of the estimates such that <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)} \to \mathbf{x}\)</span> as <span class="math notranslate nohighlight">\(k\to \infty\)</span>. Not every iteration matrix <span class="math notranslate nohighlight">\(T\)</span> leads to convergence. An important question is determining the conditions under which the sequence <span class="math notranslate nohighlight">\(x^{(k)}\)</span> converges to the true solution.</p>
+<p>Note that unlike direct methods which will calculate the exact solution, iterative methods only calculate an estimate (albeit very close) of the exact solution.</p>
+<p>These notes will introduce three common iterative methods</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">the Jacobi method</span></a>;</p></li>
-<li><p><a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">the Gauss-Seidel method</span></a>;</p></li>
-<li><p><a class="reference internal" href="7.4_SOR_method.html#sor-method-section"><span class="std std-ref">the SOR method</span></a></p></li>
+<li><p><a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">the Jacobi method</span></a>: updates all variables simultaneously using values from the previous iteration</p></li>
+<li><p><a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">the Gauss-Seidel method</span></a>: updates variables sequentially using the newest available values</p></li>
+<li><p><a class="reference internal" href="7.4_SOR_method.html#sor-method-section"><span class="std std-ref">the SOR method</span></a>: accelerates Gauss-Seidel using a relaxation parameter</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -476,12 +484,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="6.0_Matrix_decomposition.html"
+       href="6.5_Matrix_decomposition_exercises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Matrix Decomposition Methods</p>
+        <p class="prev-next-title"><span class="section-number">6.5. </span>Matrix decomposition exercises</p>
       </div>
     </a>
     <a class="right-next"

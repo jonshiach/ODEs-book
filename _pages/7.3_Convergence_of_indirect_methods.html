@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.3. Convergence of indirect methods &#8212; Runge-Kutta Methods</title>
+    <title>7.3. Convergence of iterative methods &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -39,7 +39,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -266,15 +265,20 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_QR_decomposition.html">6.4. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Matrix_decomposition_exercises.html">6.5. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Iterative Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Convergence of iterative methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Indirect methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Iterative methods exercises</a></li>
 </ul>
 </details></li>
 </ul>
@@ -414,7 +418,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Convergence of indirect methods</h1>
+    <h1>Convergence of iterative methods</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,10 +432,10 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="convergence-of-indirect-methods">
-<span id="convergence-of-indirect-methods-section"></span><h1><span class="section-number">7.3. </span>Convergence of indirect methods<a class="headerlink" href="#convergence-of-indirect-methods" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="convergence-of-iterative-methods">
+<span id="convergence-of-indirect-methods-section"></span><h1><span class="section-number">7.3. </span>Convergence of iterative methods<a class="headerlink" href="#convergence-of-iterative-methods" title="Link to this heading">#</a></h1>
 <p>We have seen that both the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">Jacobi</span></a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel</span></a> methods are iterated until the estimates of the solution converge to a given tolerance. In <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> required 49 iterations to converge to the solution of a system of linear equations whereas in <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Example 7.2</a> only required 20 iterations to converge to the solution for the same system.</p>
-<p>Not all indirect methods will converge for a given system of linear equations, we can establish whether a method will be convergent using the theorem below. Let <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)} = \|\mathbf{x} - \mathbf{x}^{(k)}\|\)</span> be the error between the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span>. The error from one estimate to the next is updated using the iteration matrix for the method</p>
+<p>Not all iterative methods will converge for a given system of linear equations, we can establish whether a method will be convergent using the theorem below. Let <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)} = \|\mathbf{x} - \mathbf{x}^{(k)}\|\)</span> be the error between the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span>. The error from one estimate to the next is updated using the iteration matrix for the method</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{e}^{(k+1)} = T\mathbf{e}^{(k)}. \]</div>
 <p>We can write the first error, <span class="math notranslate nohighlight">\(\mathbf{e}^{(0)}\)</span> as a linear combination of some vectors <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span></p>
@@ -463,11 +467,11 @@
 <p>where <span class="math notranslate nohighlight">\(\lambda_i\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </section>
 </div><div class="proof theorem admonition" id="indirect-methods-convergence-criteria-theorem">
-<p class="admonition-title"><span class="caption-number">Theorem 7.1 </span> (Convergence criteria for an indirect method)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 7.1 </span> (Convergence criteria for an iterative method)</p>
 <section class="theorem-content" id="proof-content">
-<p>The spectral radius of <span class="math notranslate nohighlight">\(T\)</span> gives us the following information about an indirect method</p>
+<p>The spectral radius of <span class="math notranslate nohighlight">\(T\)</span> gives us the following information about an iterative method</p>
 <ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(\rho (T) &gt; 1\)</span> then the errors will increase over each iteration, therefore for an indirect method to converge to the solution we require <span class="math notranslate nohighlight">\(\rho (T)&lt; 1\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\rho (T) &gt; 1\)</span> then the errors will increase over each iteration, therefore for an iterative method to converge to the solution we require <span class="math notranslate nohighlight">\(\rho (T)&lt; 1\)</span>.</p></li>
 <li><p>The smaller the value of <span class="math notranslate nohighlight">\(\rho (T)\)</span> the faster the errors will tend to zero.</p></li>
 </ul>
 </section>

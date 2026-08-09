@@ -1,0 +1,862 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6.1. LU decomposition &#8212; Runge-Kutta Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/6.1_LU_decomposition';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/6.1_LU_decomposition.html" />
+    <link rel="icon" href="../_static/favicon.jpeg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.2. LU Decomposition with Partial Pivoting" href="6.2_LUP_decomposition.html" />
+    <link rel="prev" title="6. Matrix Decomposition Methods" href="6.0_Matrix_decomposition.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo2.png" class="logo__image only-light" alt="Runge-Kutta Methods - Home"/>
+    <img src="../_static/logo2.png" class="logo__image only-dark pst-js-only" alt="Runge-Kutta Methods - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0.1_Software.html">Python and MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0.2_Learning_and_teaching.html">Learning and teaching</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="1.0_ODEs.html">1. Ordinary Differential Equations (ODE)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.1_Euler_Method.html">1.1. The Euler method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2_Error_Analysis.html">1.2. Error analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3_Systems_of_ODEs.html">1.3. Systems of ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4_Higher_order_ODEs.html">1.4. Higher-order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5_ODEs_exercises.html">1.5. ODEs Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2.0_ERKs.html">2. Chapter 2. Explicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.1_ERK_Derivation.html">2.3. Derivation of Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2_Deriving_order_conditions_using_trees.html">2.4. Deriving order conditions using trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3_RK4_Derivation.html">2.5. Derivation of a fourth-order explicit Runge-Kutta method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4_Solving_IVPs_using_ERK_methods.html">2.6. Solving Initial Value Problems using Explicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.5_Adaptive_step_size_control.html">2.7. Adaptive step size control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.7_ERK_exercises.html">2.8. Explicit Runge-Kutta Methods Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="3.0_IRKs.html">3. Implicit Runge-Kutta Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="3.1_Deriving_IRK_methods.html">3.1. Deriving implicit Runge-Kutta methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.2_Solving_ODEs_using_IRK_methods.html">3.2. Solving ODEs using Implicit Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.3_Solving_systems_using_IRK_methods.html">3.3. Solving Systems of ODEs using IRK Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.4_IRK_exercises.html">3.4. Implicit Runge-Kutta methods exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="4.0_Stability.html">4. Stability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.1_ERK_stability_function.html">4.2. Stability Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.2_IRK_stability_function.html">4.3. Stability Functions for Implicit Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.3_Absolute_stability.html">4.4. Absolute stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.4_A_stability.html">4.5. A-stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.5_Stability_exercises.html">4.6. Stability exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="5.0_BVPs.html">5. Boundary Value Problems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.1_Shooting_method.html">5.2. The shooting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2_Finite_difference_method.html">5.3. The finite-difference method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_QR_decomposition.html">6.4. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Matrix_decomposition_exercises.html">6.5. Matrix decomposition exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of indirect methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Indirect methods exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_pages/6.1_LU_decomposition.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>LU decomposition</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-systems-of-linear-equations-using-lu-decomposition">6.1.1. Solving systems of linear equations using LU decomposition</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lu-decomposition">
+<span id="lu-section"></span><h1><span class="section-number">6.1. </span>LU decomposition<a class="headerlink" href="#lu-decomposition" title="Link to this heading">#</a></h1>
+<p><strong>LU decomposition</strong> (also known as <strong>LU factorisation</strong>) is a procedure for decomposing a square matrix <span class="math notranslate nohighlight">\(A\)</span> into the product of a lower triangular matrix <span class="math notranslate nohighlight">\(L\)</span> and an upper triangular matrix <span class="math notranslate nohighlight">\(U\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[ A = LU. \]</div>
+<p>The advantage of writing a matrix as a product of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> is that the solution to a triangular set of equations is easy to calculate using forward or back substitution. Consider the LU decomposition of a <span class="math notranslate nohighlight">\(3\times 3\)</span> matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        a_{11}  &amp; a_{12}  &amp; a_{13} \\
+        a_{21}  &amp; a_{22}  &amp; a_{23} \\
+        a_{31}  &amp; a_{32}  &amp; a_{33} 
+    \end{pmatrix}=
+    \begin{pmatrix}
+        \ell_{11}  &amp; 0 &amp; 0\\
+        \ell_{21}  &amp; \ell_{22}  &amp; 0\\
+        \ell_{31}  &amp; \ell_{32}  &amp; \ell_{33} 
+    \end{pmatrix}\begin{pmatrix}
+        u_{11}  &amp; u_{12}  &amp; u_{13} \\
+        0 &amp; u_{22}  &amp; u_{23} \\
+        0 &amp; 0 &amp; u_{33} 
+    \end{pmatrix},
+\end{align*} \end{split}\]</div>
+<p>which gives a system of 9 equations (one for each element in <span class="math notranslate nohighlight">\(A\)</span>) in 12 unknowns. Since there are more unknowns than equations, the factorisation is not unique. A standard convention is to set the diagonal entries of <span class="math notranslate nohighlight">\(L\)</span> equal to 1 (<span class="math notranslate nohighlight">\(\ell_{ii}=1\)</span>), which produces a unique decomposition whenever it exists.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        a_{11}  &amp; a_{12}  &amp; a_{13} \\
+        a_{21}  &amp; a_{22}  &amp; a_{23} \\
+        a_{31}  &amp; a_{32}  &amp; a_{33} 
+    \end{pmatrix}
+    &amp;=
+    \begin{pmatrix}
+        1 &amp; 0 &amp; 0 \\
+        \ell_{21} &amp; 1 &amp; 0 \\
+        \ell_{31} &amp; \ell_{32} &amp; 1 
+    \end{pmatrix}
+    \begin{pmatrix}
+        u_{11} &amp; u_{12} &amp; u_{13} \\
+        0 &amp; u_{22} &amp; u_{23} \\
+        0 &amp; 0 &amp; u_{33}
+    \end{pmatrix} \\
+    &amp;=
+    \begin{pmatrix}
+        u_{11}  &amp; u_{12}  &amp; u_{13} \\
+        \ell_{21} u_{11}  &amp; u_{22} + \ell_{21} u_{12}  &amp; u_{23} + \ell_{21} u_{13} \\
+        \ell_{31} u_{11}  &amp; \ell_{31} u_{12} + \ell_{32} u_{22}  &amp; u_{33} + \ell_{31} u_{13} +\ell_{32} u_{23}
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>In general,</p>
+<div class="math notranslate nohighlight">
+\[ a_{ij} = \sum_{k=1}^{\min(i,j)} \ell_{ij}u_{kj}. \]</div>
+<p>The triangular structure of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> limits which terms are non-zero, leading to separate formulas for <span class="math notranslate nohighlight">\(i &gt; j\)</span> and <span class="math notranslate nohighlight">\(i &lt; j\)</span>.</p>
+<p>The elements in the lower triangular region, where <span class="math notranslate nohighlight">\(i&gt;j\)</span>, are</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    a_{ij} =\sum_{k=1}^j \ell_{ik} u_{kj} =\ell_{ij} u_{jj} +\sum_{k=1}^{j-1} \ell_{ik} u_{kj}, 
+\end{align*} \]</div>
+<p>which is rearranged to</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \ell_{ij} =\frac{1}{u_{jj} }\left(a_{ij} -\sum_{k=1}^{j-1} \ell_{ik} u_{kj} \right).
+\end{align*} \]</div>
+<p>For the elements in the upper triangular region where <span class="math notranslate nohighlight">\(i\le j\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    a_{ij} = u_{ij} +\sum_{k=1}^{i-1} \ell_{ik} u_{kj},
+\end{align*} \]</div>
+<p>which is rearranged to</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    u_{ij} = a_{ij} -\sum_{k=1}^{i-1} \ell_{ik} u_{kj}.
+\end{align*} \]</div>
+<p>So to calculate an LU decomposition we loop through each column of <span class="math notranslate nohighlight">\(A\)</span> and calculate the elements of <span class="math notranslate nohighlight">\(\ell_{ij}\)</span> and <span class="math notranslate nohighlight">\(u_{ij}\)</span> for that column.</p>
+<div class="proof theorem admonition" id="lu-theorem">
+<p class="admonition-title"><span class="caption-number">Theorem 6.1 </span> (LU decomposition)</p>
+<section class="theorem-content" id="proof-content">
+<p>The LU decomposition of an <span class="math notranslate nohighlight">\(n \times n\)</span> square matrix <span class="math notranslate nohighlight">\(A\)</span> results in two <span class="math notranslate nohighlight">\(n \times n\)</span> matrices <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> such that <span class="math notranslate nohighlight">\(A = LU\)</span>. The elements of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> are calculated using</p>
+<div class="math notranslate nohighlight" id="equation-lu-equation">
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-lu-equation" title="Link to this equation">#</a></span>\[\begin{split} \begin{align*}
+u_{ij} &amp;= a_{ij} - \sum_{k=1}^{i-1} \ell_{ik}u_{kj}, &amp; i &amp;= 1, \ldots, j, \\
+\ell_{ij} &amp;= \dfrac{1}{u_{jj}} \left(a_{ij} - \displaystyle \sum_{k=1}^{j-1} \ell_{ik}u_{kj}\right), &amp; i &amp;= j+1, \ldots, n.
+\end{align*} \end{split}\]</div>
+<p>The quantity <span class="math notranslate nohighlight">\(u_{jj}\)</span> is called the <strong>pivot</strong>. The algorithm fails if a pivot is zero.</p>
+</section>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not every square matrix admits an LU decomposition without row exchanges. The formulas below require the pivots <span class="math notranslate nohighlight">\(u_{jj}\)</span> to be non-zero. If a zero pivot is encountered, row interchanges are required, leading to the more general <span class="math notranslate nohighlight">\(PA=LU\)</span> factorisation discussed later.</p>
+</div>
+<div class="proof algorithm admonition" id="lu-algorithm">
+<p class="admonition-title"><span class="caption-number">Algorithm 6.1 </span> (LU decomposition)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs:</strong> A square <span class="math notranslate nohighlight">\(n \times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p><strong>Outputs:</strong> Two square <span class="math notranslate nohighlight">\(n \times n\)</span> matrices <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> such that <span class="math notranslate nohighlight">\(A = LU\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L \gets I_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(U \gets \mathbf{0}_{n \times n}\)</span></p></li>
+<li><p>for <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(u_{ij} \gets a_{ij} - \displaystyle\sum_{k=1}^{i-1} \ell_{ik}u_{kj}, \qquad i = 1, \ldots, j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\ell_{ij} \gets \dfrac{1}{u_{jj}} \left( a_{ij} - \displaystyle \sum_{k=1}^{j-1} \ell_{ik}u_{kj} \right), \qquad i = j + 1, \ldots, n\)</span></p></li>
+</ul>
+</li>
+<li><p>Return <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span></p></li>
+</ul>
+</section>
+</div><p>The computational cost of LU decomposition  is <span class="math notranslate nohighlight">\(O(n^3)\)</span>, comparable to Gaussian elimination. Once the factorisation has been computed, multiple systems <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> can be solved efficiently using back substitution.</p>
+<div class="proof example seealso admonition" id="lu-example">
+<p class="admonition-title"><span class="caption-number">Example 6.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Determine the LU decomposition of the following matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \begin{pmatrix}
+    2 &amp; 3 &amp; 1 \\
+    -4 &amp; -7 &amp; 0 \\
+    6 &amp; 7 &amp; 10
+\end{pmatrix}.\end{split}\]</div>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>Loop through the columns of <span class="math notranslate nohighlight">\(A\)</span> and compute the elements of <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    j &amp;= 1: &amp; u_{11} &amp;= a_{11} = 2, \\
+    &amp;&amp; \ell_{21} &amp;= \frac{1}{u_{11}}a_{21} = \frac{1}{2}(-4) = -2, \\
+    &amp;&amp; \ell_{31} &amp;= \frac{1}{u_{11}}a_{31} = \frac{1}{2}(6) = 3, \\
+    j &amp;= 2: &amp; u_{12} &amp;= a_{12} = 3, \\
+    &amp;&amp; u_{22} &amp;= a_{22} - \ell_{21}u_{12} = -7 - (-2)(3) = -1, \\
+    &amp;&amp; \ell_{32} &amp;= \frac{1}{u_{22}}(a_{32} - \ell_{31}u_{12}) = \frac{1}{-1}(7 - 3(3)) = 2, \\
+    j &amp;= 3: &amp; u_{13} &amp;= a_{13} = 1, \\
+    &amp;&amp; u_{23} &amp;= a_{23} - \ell_{21}u_{13} = 0 - (-2)(1) = 2, \\
+    &amp;&amp; u_{33} &amp;= a_{33} - \ell_{31}u_{13} - \ell_{32}u_{23} = 10 - 3(1) - 2(2) = 3,
+\end{align*} \end{split}\]</div>
+<p>therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    L &amp;= \begin{pmatrix}
+        1 &amp; 0 &amp; 0\\
+        -2 &amp; 1 &amp; 0\\
+        3 &amp; 2 &amp; 1
+    \end{pmatrix},&amp;
+    U &amp;= \begin{pmatrix}
+        2 &amp; 3 &amp; 1 \\
+        0 &amp; -1 &amp; 2 \\
+        0 &amp; 0 &amp; 3
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Checking that <span class="math notranslate nohighlight">\(LU=A\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        1 &amp; 0 &amp; 0\\
+        -2 &amp; 1 &amp; 0\\
+        3 &amp; 2 &amp; 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        2 &amp; 3 &amp; 1 \\
+        0 &amp; -1 &amp; 2 \\
+        0 &amp; 0 &amp; 3
+    \end{pmatrix} =
+    \begin{pmatrix}
+          2 &amp; 3 &amp; 1 \\
+          -4 &amp; -7 &amp; 0 \\
+          6 &amp; 7 &amp; 10
+      \end{pmatrix}. \quad \checkmark
+\end{align*} \end{split}\]</div>
+</section>
+</div><hr class="docutils" />
+<section id="solving-systems-of-linear-equations-using-lu-decomposition">
+<span id="solving-systems-using-lu-section"></span><h2><span class="section-number">6.1.1. </span>Solving systems of linear equations using LU decomposition<a class="headerlink" href="#solving-systems-of-linear-equations-using-lu-decomposition" title="Link to this heading">#</a></h2>
+<p>Given a system of linear equations of the form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> where LU decomposition has been applied to the coefficient matrix then since <span class="math notranslate nohighlight">\(A = LU\)</span> we have</p>
+<div class="math notranslate nohighlight" id="equation-lux-b">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-lux-b" title="Link to this equation">#</a></span>\[ LU \mathbf{x} = \mathbf{b}.\]</div>
+<p>Introduce an intermediate vector <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> defined by</p>
+<div class="math notranslate nohighlight">
+\[ L \mathbf{y} = \mathbf{b}. \]</div>
+<p>Since <span class="math notranslate nohighlight">\(L\)</span> is lower triangular, the solution of <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span> is easily computed using <a href="https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution" target="_blank">forward substitution</a>. Once <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> has been determined, the solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is obtained from</p>
+<div class="math notranslate nohighlight">
+\[ U \mathbf{x} = \mathbf{y}, \]</div>
+<p>using <a href="https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution" target="_blank">back substitution</a>.</p>
+<div class="proof algorithm admonition" id="lu-solution-algorithm">
+<p class="admonition-title"><span class="caption-number">Algorithm 6.2 </span> (Solving systems of linear equations using LU decomposition)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs:</strong> A system of linear equations expressed using the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> and variable vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> such that <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span>.</p>
+<p><strong>Outputs:</strong> The solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+<ul class="simple">
+<li><p>Compute the LU decomposition of <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p>Solve <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span> using forward substitution</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(y_1 = b_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i \gets b_i - \displaystyle\sum_{j=1}^{i-1} \ell_{ij} y_j\)</span>, <span class="math notranslate nohighlight">\(\qquad i = 2, \ldots, n\)</span></p></li>
+</ul>
+</li>
+<li><p>Solve <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span> using back substitution</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(x_n \gets \dfrac{y_n}{u_{nn}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_i \gets \dfrac{1}{u_{ii}} \left( y_i - \displaystyle \sum_{j=i+1}^{n} u_{ij} x_j \right)\)</span>, <span class="math notranslate nohighlight">\(\qquad i = n-1, \ldots, 1\)</span></p></li>
+</ul>
+</li>
+<li><p>Return <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p></li>
+</ul>
+</section>
+</div><p>The main advantage of LU decomposition arises when solving several systems</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+  A \mathbf{x}^{(1)} &amp;= \mathbf{b}^{(1)}, &amp;
+  A \mathbf{x}^{(2)} &amp;= \mathbf{b}^{(2)}, &amp; \ldots
+\end{align*} \]</div>
+<p>with the same coefficient matrix <span class="math notranslate nohighlight">\(A\)</span>. The decomposition <span class="math notranslate nohighlight">\(A = LU\)</span> is only computed once, after which each new right-hand side requires only one forware-substitution step and one back-substitution step.</p>
+<p>This is why LU decomposition is commonly used in <a class="reference internal" href="3.3_Solving_systems_using_IRK_methods.html#irk-algorithm">implicit Runge-Kutta methods</a>. During the Newton iterations, the coefficient matrix <span class="math notranslate nohighlight">\(I−h(A \otimes J_f)\)</span> remains unchanged while the right-hand side vector <span class="math notranslate nohighlight">\(g(\mathbf{Y})\)</span> varies. Consequently, the LU decomposition is computed once and reused for each linear solve, leading to a substantial reduction in computational effort.</p>
+<div class="proof example admonition" id="lu-solution-example">
+<p class="admonition-title"><span class="caption-number">Example 6.2 </span></p>
+<section class="example-content" id="proof-content">
+<p>Solve the following system using LU decomposition</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        2 &amp; 3 &amp; 1 \\
+        -4 &amp; -7 &amp; 0 \\
+        6 &amp; 7 &amp; 10
+    \end{pmatrix}
+    \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix}=
+    \begin{pmatrix} -1 \\ 10 \\ 22 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>We saw in the <a class="reference internal" href="#lu-example">Example 6.1</a> above that the LU decomposition of the coefficient matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    L &amp;= \begin{pmatrix}
+        1 &amp; 0 &amp; 0\\
+        -2 &amp; 1 &amp; 0\\
+        3 &amp; 2 &amp; 1
+    \end{pmatrix},&amp;
+    U &amp;= \begin{pmatrix}
+        2 &amp; 3 &amp; 1 \\
+        0 &amp; -1 &amp; 2 \\
+        0 &amp; 0 &amp; 3
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p>Solving <span class="math notranslate nohighlight">\(L \mathbf{y} = \mathbf{b}\)</span> using forward substitution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        1 &amp; 0 &amp; 0\\
+        -2 &amp; 1 &amp; 0\\
+        3 &amp; 2 &amp; 1
+    \end{pmatrix}
+    \begin{pmatrix} y_1 \\ y_2 \\ y_3 \end{pmatrix} =
+    \begin{pmatrix} -1\\ 10 \\ 22
+    \end{pmatrix},
+\end{align*} \end{split}\]</div>
+<p>gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_1 &amp;= -1,\\
+    y_2 &amp;= 10 + 2y_1 = 10 + 2(-1) = 8,\\
+    y_3 &amp;= 22 - 3y_1 - 2y_2 = 22 - 3(-1) - 2(8) = 9.
+\end{align*} \end{split}\]</div>
+<p>Solving <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span> using back substitution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        2 &amp; 3 &amp; 1 \\
+        0 &amp; -1 &amp; 2 \\
+        0 &amp; 0 &amp; 3
+    \end{pmatrix}
+    \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} =
+    \begin{pmatrix} -1 \\ 8 \\ 9 \end{pmatrix},
+\end{align*} \end{split}\]</div>
+<p>gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_3 &amp;= \frac{9}{3} = 3,\\
+    x_2 &amp;= -(8 - 2x_3) = -(8 - 2(3)) = -2, \\
+    x_1 &amp;= \frac{1}{2}(-1 - 3x_2 - x_3) = \frac{1}{2}(-1 - 3(-2) - 3) = 1.
+\end{align*} \end{split}\]</div>
+<p>So the solution is <span class="math notranslate nohighlight">\(\mathbf{x}=(1, -2, 3)\)</span>.</p>
+<p>To verify the solution we check that <span class="math notranslate nohighlight">\(A \mathbf{x} = b\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \begin{pmatrix}
+        2 &amp; 3 &amp; 1 \\
+        -4 &amp; -7 &amp; 0 \\
+        6 &amp; 7 &amp; 10
+    \end{pmatrix}
+    \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}=
+    \begin{pmatrix} -1 \\ 10 \\ 22 \end{pmatrix}. \quad \checkmark
+\end{align*} \end{split}\]</div>
+</section>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_pages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="6.0_Matrix_decomposition.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Matrix Decomposition Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6.2_LUP_decomposition.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>LU Decomposition with Partial Pivoting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-systems-of-linear-equations-using-lu-decomposition">6.1.1. Solving systems of linear equations using LU decomposition</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Jon Shiach
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

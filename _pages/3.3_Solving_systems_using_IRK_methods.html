@@ -39,7 +39,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -270,7 +269,12 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_QR_decomposition.html">6.4. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Matrix_decomposition_exercises.html">6.5. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -692,7 +696,7 @@
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \mathbf{y} + \epsilon \, \mathbf{e}_2 = \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} + \epsilon \, \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} y_1 \\ y_2 + \epsilon \, \end{pmatrix}. \end{split}\]</div>
-<p>The Jacobian matrix <span class="math notranslate nohighlight">\(J_f\)</span> is constant for all Newton iterations, so the solution of the linear system is well suited to <a class="reference internal" href="#lu-section"><span class="xref myst">LU decomposition</span></a>.</p>
+<p>The Jacobian matrix <span class="math notranslate nohighlight">\(J_f\)</span> is constant for all Newton iterations, so the solution of the linear system is well suited to <a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a>.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -1113,7 +1117,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The solution of the linear system for Newton’s method in the code above was done using NumPy’s and MATLAB’s linear system solvers. In practice, this is done using <a class="reference internal" href="#lu-section"><span class="xref myst">LU decomposition</span></a> which is more efficient in this case since the coefficient method is constant for all iterations in a step. I used NumPy’s and MATLAB’s solvers here since have yet to meet LU decomposition which is covered in a later chapters.</p>
+<p>The solution of the linear system for Newton’s method in the code above was done using NumPy’s and MATLAB’s linear system solvers. In practice, this is done using <a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a> which is more efficient in this case since the coefficient method is constant for all iterations in a step. I used NumPy’s and MATLAB’s solvers here since have yet to meet LU decomposition which is covered in a later chapters.</p>
 </div>
 </section>
 </section>
