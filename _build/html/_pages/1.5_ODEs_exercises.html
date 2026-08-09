@@ -439,12 +439,47 @@
 \[\begin{align*}
     y' + y = 1 - e^{-t}  \qquad t\in [0,4], \qquad y(0) = 1.
 \end{align*}\]</div>
-<p>(a)   Using Python or MATLAB, compute the solution to the IVP using the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 0.4\)</span>. Produce a plot of the solution <span class="math notranslate nohighlight">\(y(t)\)</span> against <span class="math notranslate nohighlight">\(t\)</span> and the exact solution which is <span class="math notranslate nohighlight">\(y = 1 - te^{-t}\)</span> on the same set of axes.</p>
+<p>(a)   Using a pen and calculator and working to 4 decimal places, compute the solution to the IVP using the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 0.4\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(t \in [0, 4]\)</span> and <span class="math notranslate nohighlight">\(h = 0.4\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[ n_{steps} = \frac{4 - 0}{0.4} = 10. \]</div>
+<p class="sd-card-text">The Euler method is</p>
+<div class="math notranslate nohighlight">
+\[ y_{n+1} = y_n + h f(t_n, y_n), \]</div>
+<p class="sd-card-text">and in this case <span class="math notranslate nohighlight">\(f(t, y) = 1 - e^{-t} - y\)</span>, <span class="math notranslate nohighlight">\(t_0 = 0\)</span> and <span class="math notranslate nohighlight">\(y_0 = 1\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    y_1 &amp;= 1 + 0.4 (1 - e^{-0} - 1) = 0.6, \\
+    t_1 &amp;= 0 + 0.4 = 0.4, \\
+    y_2 &amp;= 0.6 + 0.4 (1 - e^{-0.4} - 0.6) = 0.4919, \\
+    t_2 &amp;= 0.4 + 0.4 = 1.8, \\
+    y_3 &amp;= 0.4919 + 0.4 (1 - e^{-0.8} - 0.4919) = 0.5154, \\
+    t_3 &amp;= 0.8 + 0.4 = 1.2, \\
+    y_4 &amp;= 0.5154 + 0.4 (1 - e^{-1.2} - 0.5154) = 0.5888, \\
+    t_4 &amp;= 1.2 + 0.4 = 1.6, \\
+    y_5 &amp;= 0.5888 + 0.4 (1 - e^{-1.6} - 0.5888) = 0.6725, \\
+    t_5 &amp;= 1.6 + 0.4 = 2, \\
+    y_6 &amp;= 0.6725 + 0.4 (1 - e^{-2} - 0.6725) = 0.7494, \\
+    t_6 &amp;= 2 + 0.4 = 2.4, \\
+    y_7 &amp;= 0.7494 + 0.4 (1 - e^{-2.4} - 0.7494) = 0.8134, \\
+    t_7 &amp;= 2.4 + 0.4 = 2.8, \\
+    y_8 &amp;= 0.8134 + 0.4 (1 - e^{-2.8} - 0.8134) = 0.8637, \\
+    t_8 &amp;= 2.8 + 0.4 = 3.2, \\
+    y_9 &amp;= 0.8637 + 0.4 (1 - e^{-3.2} - 0.8637) = 0.9019, \\
+    t_9 &amp;= 3.2 + 0.4 = 3.6, \\
+    y_{10} &amp;= 0.9019 + 0.4 (1 - e^{-3.6} - 0.9019) = 0.9302, \\
+    t_{10} &amp;= 3.6 + 0.4.
+\end{align*} \end{split}\]</div>
+</div>
+</details><p>(b)   Repeat part (a) using Python or MATLAB to perform the computations. Produce a plot of the solution <span class="math notranslate nohighlight">\(y(t)\)</span> against <span class="math notranslate nohighlight">\(t\)</span> and the exact solution which is <span class="math notranslate nohighlight">\(y = 1 - te^{-t}\)</span> on the same set of axes.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/52440d3c30936af96c4ffcaae337a3d486a92fb62c31fe1ce1da8ccb29510297.png" src="../_images/52440d3c30936af96c4ffcaae337a3d486a92fb62c31fe1ce1da8ccb29510297.png" />
+<img alt="../_images/c66e00deb0e8c54ea57b470de544146032b37c106b6e4927ac9b6fbc4a187729.png" src="../_images/c66e00deb0e8c54ea57b470de544146032b37c106b6e4927ac9b6fbc4a187729.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -568,12 +603,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</details><p>(b)   Compute the solution to this IVP using step lengths of <span class="math notranslate nohighlight">\(h = 0.4, 0.2, 0.1, 0.05\)</span>. Produce a plot of the four numerical solutions and the exact solution on the same axes.</p>
+</details><p>(c)   Compute the solution to this IVP using step lengths of <span class="math notranslate nohighlight">\(h = 0.4, 0.2, 0.1, 0.05\)</span>. Produce a plot of the four numerical solutions and the exact solution on the same axes.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/90c48c2d2a47015added996d92026c440b3ca7a204b30bd1d9b269ef122913ae.png" src="../_images/90c48c2d2a47015added996d92026c440b3ca7a204b30bd1d9b269ef122913ae.png" />
+<img alt="../_images/927a39103c257b28a40f45eecf27556b5f3386027acd4b3b53351cb9a6b89b58.png" src="../_images/927a39103c257b28a40f45eecf27556b5f3386027acd4b3b53351cb9a6b89b58.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
@@ -619,7 +654,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</details><p>(c)   Calculate the global truncation errors for the four solutions at <span class="math notranslate nohighlight">\(t = 2\)</span>. Present your results in the form of a table with columns for the value of <span class="math notranslate nohighlight">\(h\)</span>, the numerical solution for <span class="math notranslate nohighlight">\(y(2)\)</span> and the global truncation error <span class="math notranslate nohighlight">\(E\)</span>.</p>
+</details><p>(d)   Calculate the global truncation errors for the four solutions at <span class="math notranslate nohighlight">\(t = 2\)</span>. Present your results in the form of a table with columns for the value of <span class="math notranslate nohighlight">\(h\)</span>, the numerical solution for <span class="math notranslate nohighlight">\(y(2)\)</span> and the global truncation error <span class="math notranslate nohighlight">\(E\)</span>.</p>
 <p>Hint: you can use the NumPy command <code class="docutils literal notranslate"><span class="pre">idx</span> <span class="pre">=</span> <span class="pre">np.argmin(abs(t</span> <span class="pre">-</span> <span class="pre">2))</span></code> or the MATLAB command <code class="docutils literal notranslate"><span class="pre">[~,idx]</span> <span class="pre">=</span> <span class="pre">min(abs(t</span> <span class="pre">-</span> <span class="pre">2))</span></code> to determine the index of the value in the array <code class="docutils literal notranslate"><span class="pre">t</span></code> which is closest to 2.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -664,12 +699,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</details><p>(d)   Produce a plot of the global truncation errors <span class="math notranslate nohighlight">\(E\)</span> against the step length <span class="math notranslate nohighlight">\(h\)</span>.</p>
+</details><p>(e)   Produce a plot of the global truncation errors <span class="math notranslate nohighlight">\(E\)</span> against the step length <span class="math notranslate nohighlight">\(h\)</span>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/b1a54768588d8b59422dfbc686af4d00d17573404d9b8ba5c7e91af7c95f3c44.png" src="../_images/b1a54768588d8b59422dfbc686af4d00d17573404d9b8ba5c7e91af7c95f3c44.png" />
+<img alt="../_images/f5be044dc4a1e4aad6a8f697eec377481d6b07513a5a34fe2002e3d55ea6f54a.png" src="../_images/f5be044dc4a1e4aad6a8f697eec377481d6b07513a5a34fe2002e3d55ea6f54a.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
@@ -716,7 +751,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/5aba738f0b5a02e5bf35e865adb6642b2a0e7b0733e24bb471eb261477a580c8.png" src="../_images/5aba738f0b5a02e5bf35e865adb6642b2a0e7b0733e24bb471eb261477a580c8.png" />
+<img alt="../_images/d023459647241e6750bab35e8b7126796bf3d8988283f6aa3ef46a87b60e93a1.png" src="../_images/d023459647241e6750bab35e8b7126796bf3d8988283f6aa3ef46a87b60e93a1.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
@@ -791,7 +826,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/25b40864966fbc0bec388d9663e22aee2238365121205c70f907975039d9bec9.png" src="../_images/25b40864966fbc0bec388d9663e22aee2238365121205c70f907975039d9bec9.png" />
+<img alt="../_images/fe6bd9a7efb77ac1a2ec50f3069abc1c6f49ba9565ea00aa20fb8e2aa4677cac.png" src="../_images/fe6bd9a7efb77ac1a2ec50f3069abc1c6f49ba9565ea00aa20fb8e2aa4677cac.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-10" name="sd-tab-set-5" type="radio">
@@ -865,7 +900,7 @@ MATLAB</label><div class="sd-tab-content docutils">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default">
-<img alt="../_images/edad64d40176230212e54126be29e3284e54ec10924afd5c055e053e2acdc435.png" src="../_images/edad64d40176230212e54126be29e3284e54ec10924afd5c055e053e2acdc435.png" />
+<img alt="../_images/5495f4bb542c62a6449fc226e1e1f239797902a23b4df81aaf6997896213959d.png" src="../_images/5495f4bb542c62a6449fc226e1e1f239797902a23b4df81aaf6997896213959d.png" />
 </figure>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-12" name="sd-tab-set-6" type="radio">

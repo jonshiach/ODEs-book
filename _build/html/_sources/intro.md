@@ -14,7 +14,7 @@ The teaching schedule for the Runge-Kutta methods part of the module is shown be
 
 | Week | Date (w/c) | Lecture | Lab |
 |:--:|:--:|:--|:--|
-|  1 | 29/09/2025 | [Ordinary Differential Equations (ODE)**](ode-chapter) | {numref}`ch1-ex1` to {numref}`ch1-ex3` |
+|  1 | 29/09/2025 | [Ordinary Differential Equations (ODE)](ode-chapter) | {numref}`ch1-ex1` to {numref}`ch1-ex3` |
 |  2 |  06/10/2025 | [Explicit Runge-Kutta Methods (ERK)](erk-chapter) | {numref}`ch2-ex-eq-to-butcher` to {numref}`ch2-ex-rk4-derivation` |
 |  3 | 13/10/2025 | [Explicit Runge-Kutta Methods (ERK) cont](applying-erk-methods-to-solve-ivps-section) | {numref}`ch2-ex-rk2-hand-calc` to {numref}`ch2-ex-rk23` |
 |  4 | 20/10/2025 | [Implicit Runge-Kutta Methods (IRK)](irk-chapter) |{numref}`ch3-ex-radauIA-order` to {numref}`ch3-ex-stiff` |
