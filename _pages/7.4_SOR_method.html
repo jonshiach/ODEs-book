@@ -70,8 +70,8 @@
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.5. Indirect methods exercises" href="7.5_Indirect_methods_exercises.html" />
-    <link rel="prev" title="7.3. Convergence of indirect methods" href="7.3_Convergence_of_indirect_methods.html" />
+    <link rel="next" title="7.5. Iterative methods exercises" href="7.5_Indirect_methods_exercises.html" />
+    <link rel="prev" title="7.3. Convergence of iterative methods" href="7.3_Convergence_of_indirect_methods.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -277,12 +277,12 @@
 <li class="toctree-l2"><a class="reference internal" href="6.5_Matrix_decomposition_exercises.html">6.5. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of indirect methods</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Iterative Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. The Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. The Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of iterative methods</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.4. The Successive Over Relaxation (SOR) method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Indirect methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Iterative methods exercises</a></li>
 </ul>
 </details></li>
 </ul>
@@ -434,10 +434,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-iteration-matrix-for-the-sor-method">7.4.1. The iteration matrix for the SOR method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#under-and-over-relaxation">7.4.2. Under and over relaxation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#under-and-over-relaxation">7.4.1. Under and over relaxation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-iteration-matrix-for-the-sor-method">7.4.2. The iteration matrix for the SOR method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-value-of-the-relaxation-parameter">7.4.3. Optimum value of the relaxation parameter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">7.4.4. Code</a></li>
 </ul>
             </nav>
         </div>
@@ -451,7 +450,18 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-successive-over-relaxation-sor-method">
 <span id="sor-method-section"></span><h1><span class="section-number">7.4. </span>The Successive Over Relaxation (SOR) method<a class="headerlink" href="#the-successive-over-relaxation-sor-method" title="Link to this heading">#</a></h1>
-<p>The <strong>Successive Over Relaxation (SOR)</strong> method improves on the convergence rate of the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel</span></a> method by applying a weighting factor to the updated estimates to adjust the extent of the change. Let <span class="math notranslate nohighlight">\(\omega\)</span> be a <strong>relaxation parameter</strong> in the range <span class="math notranslate nohighlight">\([0,2]\)</span> then the SOR method is</p>
+<p>The <strong>Successive Over Relaxation (SOR)</strong> method is a modification of the Gauss-Seidel method that introduces a relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>. By choosing <span class="math notranslate nohighlight">\(\omega\)</span> appropriately, the rate of convergence can often be significantly improved.</p>
+<p>The Gauss-Seidel method computes a new approximation <span class="math notranslate nohighlight">\(x_{i,GS}^{(k+1)}\)</span>​. The SOR method updates the solution by moving a fraction <span class="math notranslate nohighlight">\(\omega\)</span> of the way from the current approximation <span class="math notranslate nohighlight">\(x_i^{(k)}\)</span>​ towards this Gauss-Seidel approximation:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    x_{i}^{(k+1)} &amp;= x_i^{(k)} + \omega (x_{i,GS}^{(k+1)} - x_i^{(k)}).
+\end{align*} \]</div>
+<p>The equation for the Gauss-Seidel method is</p>
+<div class="math notranslate nohighlight">
+\[ x_{i,GS}^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k+1)} - \sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \]</div>
+<p>so the SOR method is</p>
+<div class="math notranslate nohighlight">
+\[ x_i^{(k+1)} = (1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii}} \left( b_i - \sum_{i=1}^{i-1} a_{ij}x_j^{(k+1)} - \sum_{i=i+1}^n a_{ij} x_j^{(k)} \right). \]</div>
 <div class="proof definition admonition" id="sor-method-definition">
 <p class="admonition-title"><span class="caption-number">Definition 7.5 </span> (The Successive Over Relaxation (SOR) method)</p>
 <section class="definition-content" id="proof-content">
@@ -460,8 +470,55 @@
 <span class="eqno">(7.9)<a class="headerlink" href="#equation-sor-method-equation" title="Link to this equation">#</a></span>\[ x_i^{(k+1)} =(1 - \omega) x_i^{(k)} + \frac{\omega}{a_{ii} }\left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} -\sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \qquad i = 1, \ldots, n. \]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega \in [0, 2]\)</span>.</p>
 </section>
-</div><section id="the-iteration-matrix-for-the-sor-method">
-<h2><span class="section-number">7.4.1. </span>The iteration matrix for the SOR method<a class="headerlink" href="#the-iteration-matrix-for-the-sor-method" title="Link to this heading">#</a></h2>
+</div><p>When <span class="math notranslate nohighlight">\(\omega=1\)</span>, equation <a class="reference internal" href="#equation-sor-method-equation">(7.9)</a> reduces to the Gauss-Seidel method. Therefore, the SOR method can be viewed as a generalisation of the Gauss-Seidel method.</p>
+<hr class="docutils" />
+<section id="under-and-over-relaxation">
+<h2><span class="section-number">7.4.1. </span>Under and over relaxation<a class="headerlink" href="#under-and-over-relaxation" title="Link to this heading">#</a></h2>
+<p>The value of <span class="math notranslate nohighlight">\(\omega\)</span> affects the rate of convergence of the SOR method and is determined by how the Gauss-Seidel method converges to the exact solution. Consider the diagrams in <a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 7.4</span></a> and <a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 7.5</span></a> below that shows the two types of convergence of the Gauss-Seidel method.</p>
+<figure class="align-default" id="over-relaxation-figure">
+<a class="reference internal image-reference" href="../_images/sor_1.svg"><img alt="../_images/sor_1.svg" src="../_images/sor_1.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.4 </span><span class="caption-text">Monotonic convergence of the Gauss-Seidel method. In this case choosing <span class="math notranslate nohighlight">\(\omega&gt;1\)</span> may accelerate convergence.</span><a class="headerlink" href="#over-relaxation-figure" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="under-relaxation-figure">
+<a class="reference internal image-reference" href="../_images/sor_2.svg"><img alt="../_images/sor_2.svg" src="../_images/sor_2.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 7.5 </span><span class="caption-text">Oscillatory convergence of the Gauss-Seidel method. In this case choosing <span class="math notranslate nohighlight">\(\omega&lt;1\)</span> may reduce oscillations.</span><a class="headerlink" href="#under-relaxation-figure" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When the Gauss-Seidel iterates converge monotonically (<a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 7.4</span></a>), choosing <span class="math notranslate nohighlight">\(\omega &gt; 1\)</span> often accelerates convergence. When the Gauss-Seidel iterates oscillate about the exact solution, (<a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 7.5</span></a>), choosing <span class="math notranslate nohighlight">\(\omega &lt; 1\)</span> can dampen oscillations and improve convergence. For most practical problems, choosing <span class="math notranslate nohighlight">\(\omega \ge 2\)</span> causes the method to become unstable and divergence is likely. Consequently the relaxation parameter is usually restricted to <span class="math notranslate nohighlight">\(0&lt;\omega&lt;2\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Value of <span class="math notranslate nohighlight">\(\omega\)</span></p></th>
+<th class="head text-left"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\omega = 1\)</span></p></td>
+<td class="text-left"><p>Gauss-Seidel method</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(0 &lt; \omega&lt; 1\)</span></p></td>
+<td class="text-left"><p>Under-relaxation</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(1 &lt; \omega &lt; 2\)</span></p></td>
+<td class="text-left"><p>Over-relaxation</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\omega \ge 2\)</span></p></td>
+<td class="text-left"><p>Usually diverges</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="the-iteration-matrix-for-the-sor-method">
+<h2><span class="section-number">7.4.2. </span>The iteration matrix for the SOR method<a class="headerlink" href="#the-iteration-matrix-for-the-sor-method" title="Link to this heading">#</a></h2>
+<p>The convergence properties of the SOR method depend strongly on the choice of the relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>. Poor choices of <span class="math notranslate nohighlight">\(\omega\)</span> can lead to slower convergence than the Gauss-Seidel method or even divergence. As with the Jacobi and Gauss-Seidel methods, the convergence of the SOR method depends on the spectral radius of its iteration matrix. The method converges when</p>
+<div class="math notranslate nohighlight">
+\[ \rho(T_{SOR}) &lt; 1. \]</div>
 <p>The iteration matrix for the SOR method is derived by writing the coefficient matrix of the linear system <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> using</p>
 <div class="math notranslate nohighlight">
 \[ A = L+\left(1-\frac{1}{\omega }\right)D+\frac{1}{\omega }D+U. \]</div>
@@ -479,24 +536,8 @@
 <p>and the iteration matrix is</p>
 <div class="math notranslate nohighlight" id="equation-sor-method-iteration-matrix-equation">
 <span class="eqno">(7.10)<a class="headerlink" href="#equation-sor-method-iteration-matrix-equation" title="Link to this equation">#</a></span>\[ T_{SOR} =(D+\omega L)^{-1} ((1-\omega )D-\omega U). \]</div>
-</section>
-<section id="under-and-over-relaxation">
-<h2><span class="section-number">7.4.2. </span>Under and over relaxation<a class="headerlink" href="#under-and-over-relaxation" title="Link to this heading">#</a></h2>
-<p>The value of <span class="math notranslate nohighlight">\(\omega\)</span> affects the rate of convergence of the SOR method and is determined by how the Gauss-Seidel method converges to the exact solution. Consider the diagrams in <a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 7.4</span></a> and <a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 7.5</span></a> below that shows the two types of convergence of the Gauss-Seidel method. When we have monotonic convergence where each successive iteration approaches the exact solution from a single side (<a class="reference internal" href="#over-relaxation-figure"><span class="std std-numref">Fig. 7.4</span></a>), the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &gt; 1\)</span> so that the change in subsequent approximations is increased. When we have oscillatory convergence where successive iterations overshoot the exact solution (<a class="reference internal" href="#under-relaxation-figure"><span class="std std-numref">Fig. 7.5</span></a>) the rate of convergence is improved by using <span class="math notranslate nohighlight">\(\omega &lt; 1\)</span> so that the change in the subsequent approximation is decreased.</p>
-<figure class="align-default" id="over-relaxation-figure">
-<a class="reference internal image-reference" href="../_images/sor_1.svg"><img alt="../_images/sor_1.svg" src="../_images/sor_1.svg" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 7.4 </span><span class="caption-text">The estimated solution approaches the exact solution monotonically.</span><a class="headerlink" href="#over-relaxation-figure" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="under-relaxation-figure">
-<a class="reference internal image-reference" href="../_images/sor_2.svg"><img alt="../_images/sor_2.svg" src="../_images/sor_2.svg" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 7.5 </span><span class="caption-text">The estimated solution oscillates about the exact solution.</span><a class="headerlink" href="#under-relaxation-figure" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+<p>The convergence properties of the SOR method depend on the choice of the relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>. Since the SOR method is based upon the Gauss-Seidel method, the <a class="reference internal" href="7.3_Convergence_of_indirect_methods.html#diagonal-dominance-test">diagonal dominance test for convergence</a> also applies to the SOR method.</p>
+<hr class="docutils" />
 </section>
 <section id="optimum-value-of-the-relaxation-parameter">
 <span id="optimum-relaxation-parameter-section"></span><h2><span class="section-number">7.4.3. </span>Optimum value of the relaxation parameter<a class="headerlink" href="#optimum-value-of-the-relaxation-parameter" title="Link to this heading">#</a></h2>
@@ -507,17 +548,18 @@
 <p><span class="caption-number">Fig. 7.6 </span><span class="caption-text">Plot of the spectral radius <span class="math notranslate nohighlight">\(\rho(T_{SOR})\)</span> of the iteration matrix for the SOR method when used to solve the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a>.</span><a class="headerlink" href="#optimum-relaxation-parameter-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>So an estimation of the optimum value of the relaxation parameters is <span class="math notranslate nohighlight">\(\omega = 1.25\)</span>. If the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> has real eigenvalues we can use the following theorem to calculate the exact value of <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
+<p>The optimal relaxation parameter corresponds to the minimum point on the graph. At this value, the spectral radius is smallest and the error decreases most rapidly from one iteration to the next. An estimation of the optimum value of the relaxation parameter is <span class="math notranslate nohighlight">\(\omega = 1.25\)</span>.</p>
+<p>The optimal value of <span class="math notranslate nohighlight">\(\omega\)</span> depends on the coefficient matrix and is generally not known in advance. In practice it is often estimated experimentally or approximated using theoretical results. If the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> has real eigenvalues we can use the following theorem to calculate the exact value of <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
 <div class="proof theorem admonition" id="optimum-relaxation-parameter-theorem">
-<p class="admonition-title"><span class="caption-number">Theorem 7.2 </span> (Optimum relaxation parameter)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 7.3 </span> (Optimum relaxation parameter)</p>
 <section class="theorem-content" id="proof-content">
-<p>If a system of linear equations of the form <span class="math notranslate nohighlight">\(A\mathbf{x}=\mathbf{b}\)</span> has a coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> with all real eigenvalues then the optimum relaxation parameter for the SOR method can be calculated using</p>
+<p>If the eigenvalues of the Jacobi iteration matrix <span class="math notranslate nohighlight">\(T_J\)</span>​ are real, then the optimum relaxation parameter is</p>
 <div class="math notranslate nohighlight" id="equation-optimum-relaxation-parameter-equation">
 <span class="eqno">(7.11)<a class="headerlink" href="#equation-optimum-relaxation-parameter-equation" title="Link to this equation">#</a></span>\[ \omega_{opt} = 1+{\left(\frac{\rho (T_J )}{1+\sqrt{1-\rho (T_J )^2 }}\right)}^2, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the iteration matrix of the Jacobi method calculation using equation <a class="reference internal" href="7.1_Jacobi_method.html#equation-jacobi-method-iteration-matrix-equation">(7.4)</a>.</p>
+<p>where <span class="math notranslate nohighlight">\(\rho(T_J)\)</span> is the spectral radius of the iteration matrix of the Jacobi method calculation using equation <code class="xref eq docutils literal notranslate"><span class="pre">jacobi-method-iteration-matrix-equation</span></code>.</p>
 </section>
 </div><div class="proof example admonition" id="optimum-relaxation-parameter-example">
-<p class="admonition-title"><span class="caption-number">Example 7.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 7.5 </span></p>
 <section class="example-content" id="proof-content">
 <p>Determine the optimum relaxation parameter for the SOR method when applied to the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(7.11)</a>.</p>
 <hr class="docutils" />
@@ -526,13 +568,13 @@
 <p>Using equation <a class="reference internal" href="#equation-optimum-relaxation-parameter-equation">(7.11)</a></p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    \omega = 1 + \left( \frac{0.7906}{1 + \sqrt{1 - 0.7906)^2}} \right)^2 \approx 1.2404.
+    \omega = 1 + \left( \frac{0.7906}{1 + \sqrt{1 - 0.7906^2}} \right)^2 \approx 1.2404.
 \end{align*} \]</div>
 </section>
 </div><div class="proof example admonition" id="sor-method-example">
-<p class="admonition-title"><span class="caption-number">Example 7.5 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 7.6 </span></p>
 <section class="example-content" id="proof-content">
-<p>Solve the system of linear equations from from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> using the SOR method with <span class="math notranslate nohighlight">\(\omega = 1.24\)</span> and an accuracy tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span></p>
+<p>Solve the system of linear equations from from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> using the SOR method with <span class="math notranslate nohighlight">\(\omega = 1.24\)</span> and an accuracy tolerance of <span class="math notranslate nohighlight">\(\text{tol} = 10^{-4}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     4x_1 +3x_2 &amp;=-2,\\
@@ -548,47 +590,47 @@
     x_{2}^{(k+1)} &amp;= (1 - \omega) x_{2}^{(k)} + \frac{\omega}{4} \left( -8 - 3 x_{1}^{(k+1)} + x_{3}^{(k)} \right), \\
     x_{3}^{(k+1)} &amp;= (1 - \omega) x_{3}^{(k)} + \frac{\omega}{4} \left( 14 + x_{2}^{(k+1)} \right).
 \end{align*} \end{split}\]</div>
-<p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Calculating the first iteration</p>
+<p>Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>. Computing the first iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(1)} &amp;= (1 - 1.24) (0.000000) + \frac{1.24}{4} \left( -2 - 3 (0.000000) \right) = -0.620000, \\
-    x_{2}^{(1)} &amp;= (1 - 1.24) (0.000000) + \frac{1.24}{4} \left( -8 - 3 (-0.620000) + 0.000000 \right) = -1.903400, \\
-    x_{3}^{(1)} &amp;= (1 - 1.24) (0.000000) + \frac{1.24}{4} \left( 14 + (-1.903400) \right) = 3.749946.
+    x_{1}^{(1)} &amp;= (1 - 1.24) (0) + \frac{1.24}{4} \left( -2 - 3 (0) \right) = -0.62, \\
+    x_{2}^{(1)} &amp;= (1 - 1.24) (0) + \frac{1.24}{4} \left( -8 - 3 (-0.62) + 0 \right) = -1.9034, \\
+    x_{3}^{(1)} &amp;= (1 - 1.24) (0) + \frac{1.24}{4} \left( 14 + (-1.9034) \right) = 3.749946.
 \end{align*} \end{split}\]</div>
-<p>Calculate the residual</p>
+<p>Compute the residual</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{r}^{(1)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
     \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
     \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
-    \begin{pmatrix} -0.620000 \\ -1.903400 \\ 3.749946 \end{pmatrix} =
-    \begin{pmatrix} 6.190200 \\ 5.223546 \\ -2.903184 \end{pmatrix}.
+    \begin{pmatrix} -0.62 \\ -1.9034 \\ 3.749946 \end{pmatrix} =
+    \begin{pmatrix} 6.1902 \\ 5.223546 \\ -2.903184 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(1)} |) = 6.190200 &gt; 10^{-4}\)</span> we continue iterating. Calculating the second iteration</p>
+<p>Since <span class="math notranslate nohighlight">\(\| \mathbf{r}^{(1)} \|_\infty = 6.1902 &gt; 10^{-4}\)</span> we continue iterating. Computing the second iteration</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    x_{1}^{(2)} &amp;= (1 - 1.24) (-0.620000) + \frac{1.24}{4} \left( -2 - 3 (-1.903400) \right) = 1.298962, \\
-    x_{2}^{(2)} &amp;= (1 - 1.24) (-1.903400) + \frac{1.24}{4} \left( -8 - 3 (1.298962) + 3.749946 \right) = -2.068735, \\
+    x_{1}^{(2)} &amp;= (1 - 1.24) (-0.62) + \frac{1.24}{4} \left( -2 - 3 (-1.9034) \right) = 1.298962, \\
+    x_{2}^{(2)} &amp;= (1 - 1.24) (-1.9034) + \frac{1.24}{4} \left( -8 - 3 (1.298962) + 3.749946 \right) = -2.068735, \\
     x_{3}^{(2)} &amp;= (1 - 1.24) (3.749946) + \frac{1.24}{4} \left( 14 + (-2.068735) \right) = 2.798705.
 \end{align*} \end{split}\]</div>
-<p>Calculate the residual</p>
+<p>Compute the residual</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(1)} = 
+    \mathbf{r}^{(2)} = \mathbf{b} - A \mathbf{x}^{(2)} = 
     \begin{pmatrix} -2 \\ -8 \\ 14 \end{pmatrix} -
     \begin{pmatrix} 4 &amp; 3 &amp; 0 \\ 3 &amp; 4 &amp; -1 \\ 0 &amp; -1 &amp; 4 \end{pmatrix}
     \begin{pmatrix} 1.298962 \\ -2.068735 \\ 2.798705 \end{pmatrix} =
     \begin{pmatrix} -0.989642 \\ -0.823239 \\ 0.736445 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\max(| \mathbf{r}^{(2)} |) = 0.989642 &gt; 10^{-4}\)</span> we continue iterating.</p>
-<p>The SOR method was iterated until <span class="math notranslate nohighlight">\(\max(|\mathbf{r}|) &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(tol=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations and the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Gauss-Seidel method</a> took 19 iterations to achieve the same accuracy.</p>
+<p>Since <span class="math notranslate nohighlight">\(\| \mathbf{r}^{(2)} \|_\infty = 0.989642 &gt; 10^{-4}\)</span> we continue iterating.</p>
+<p>The SOR method was iterated until <span class="math notranslate nohighlight">\(\| \mathbf{r}^{(k)} \|_\infty &lt; 10^{-4}\)</span> and the iteration values are given in the table below. Note that the SOR method took 9 iterations to achieve convergence to <span class="math notranslate nohighlight">\(\text{tol}=10^{-4}\)</span> whereas the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Jacobi method</a> took 49 iterations and the <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Gauss-Seidel method</a> took 19 iterations to achieve the same accuracy.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{1}\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{2}\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{3}\)</span></p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(\max( | \mathbf{r} | )\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{1}^{(k)}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{2}^{(k)}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(x_{3}^{(k)}\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\| \mathbf{r}^{(k)} \|_\infty\)</span></p></th>
 </tr>
 </thead>
 <tbody>
@@ -656,62 +698,27 @@
 </table>
 </div>
 </section>
-</div></section>
-<section id="code">
-<h2><span class="section-number">7.4.4. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
-<p>The code below defines a function called <code class="docutils literal notranslate"><span class="pre">sor()</span></code> which solves a linear system of equations of the for <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> using the SOR method with a relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-0">
-Python</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="n">sum_</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
-                    <span class="n">sum_</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-        
-            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
-            
-        <span class="n">r</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
-            <span class="k">break</span>
-    
-    <span class="k">return</span> <span class="n">x</span>
-</pre></div>
+</div><p>The table below compares the number of iteration required for the Jacobi, Gauss-Seidel and SOR methods to achieve convergence when applied to the same linear system used in the examples.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Method</p></th>
+<th class="head text-left"><p>Iterations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Jacobi</p></td>
+<td class="text-left"><p>49</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Gauss-Seidel</p></td>
+<td class="text-left"><p>20</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>SOR (<span class="math notranslate nohighlight">\(\omega = 1.24\)</span>)</p></td>
+<td class="text-left"><p>9</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-1">
-MATLAB</label><div class="sd-tab-content docutils">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">sor</span><span class="p">(</span>A, b, omega, tol<span class="p">)</span>
-
-<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
-<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
-<span class="w">        </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="nb">i</span>
-<span class="w">                </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sum_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">j</span><span class="p">);</span>
-<span class="w">            </span><span class="k">end</span>
-<span class="w">        </span><span class="k">end</span>
-<span class="w">        </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">omega</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sum_</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
-<span class="w">        </span><span class="k">break</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="k">end</span>
-
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>For this example, the SOR method reduces the iteration count by more than 80% compared to the Jacobi method and by more than 50% compared to the Gauss-Seidel method.</p>
 </section>
 </section>
 
@@ -751,7 +758,7 @@ MATLAB</label><div class="sd-tab-content docutils">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.3. </span>Convergence of indirect methods</p>
+        <p class="prev-next-title"><span class="section-number">7.3. </span>Convergence of iterative methods</p>
       </div>
     </a>
     <a class="right-next"
@@ -759,7 +766,7 @@ MATLAB</label><div class="sd-tab-content docutils">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.5. </span>Indirect methods exercises</p>
+        <p class="prev-next-title"><span class="section-number">7.5. </span>Iterative methods exercises</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -781,10 +788,9 @@ MATLAB</label><div class="sd-tab-content docutils">
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-iteration-matrix-for-the-sor-method">7.4.1. The iteration matrix for the SOR method</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#under-and-over-relaxation">7.4.2. Under and over relaxation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#under-and-over-relaxation">7.4.1. Under and over relaxation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-iteration-matrix-for-the-sor-method">7.4.2. The iteration matrix for the SOR method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-value-of-the-relaxation-parameter">7.4.3. Optimum value of the relaxation parameter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">7.4.4. Code</a></li>
 </ul>
   </nav></div>
 

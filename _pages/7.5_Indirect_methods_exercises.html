@@ -278,8 +278,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Iterative Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. The Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. The Gauss-Seidel method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of iterative methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.5. Iterative methods exercises</a></li>
@@ -447,8 +447,8 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="iterative-methods-exercises">
-<span id="indirect-methods-exercises-section"></span><h1><span class="section-number">7.5. </span>Iterative methods exercises<a class="headerlink" href="#iterative-methods-exercises" title="Link to this heading">#</a></h1>
-<div class="exercise admonition" id="indirect-methods-ex-jacobi">
+<span id="iterative-methods-exercises-section"></span><h1><span class="section-number">7.5. </span>Iterative methods exercises<a class="headerlink" href="#iterative-methods-exercises" title="Link to this heading">#</a></h1>
+<div class="exercise admonition" id="iterative-methods-ex-jacobi">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.1 </span></p>
 <section id="exercise-content">
@@ -463,130 +463,141 @@
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_1\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_2\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_3\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_4\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">3.5000</p></td>
-<td class="text-center"><p class="sd-card-text">2.5000</p></td>
-<td class="text-center"><p class="sd-card-text">-3.0000</p></td>
-<td class="text-center"><p class="sd-card-text">1.0000</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">1.8750</p></td>
-<td class="text-center"><p class="sd-card-text">1.1250</p></td>
-<td class="text-center"><p class="sd-card-text">-2.0000</p></td>
-<td class="text-center"><p class="sd-card-text">1.6667</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p class="sd-card-text">The Jacobi method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(k+1)} &amp;= \frac{1}{4} \left( 14 - x_2^{(k)} + x_3^{(k)} - x_4^{(k)} \right), \\
+    x_2^{(k+1)} &amp;= \frac{1}{4} \left( 10 - x_1^{(k)} + x_3^{(k)} + x_4^{(k)} \right), \\
+    x_3^{(k+1)} &amp;= \frac{1}{5} \left( -15 + x_1^{(k)} + x_2^{(k)} - x_4^{(k)} \right), \\
+    x_4^{(k+1)} &amp;= \frac{1}{3} \left( 3 - x_1^{(k)} + x_2^{(k)} - x_3^{(k)} \right).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)} = \mathbf{0}\)</span>, computing the first iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= \frac{1}{4}(14 - 0 + 0 - 0) = 3.5, \\
+    x_2^{(1)} &amp;= \frac{1}{4}(10 - 0 + 0 + 0) = 2.5, \\
+    x_3^{(1)} &amp;= \frac{1}{5}(-15 + 0 + 0 - 0) = -3, \\
+    x_4^{(1)} &amp;= \frac{1}{3}(3 - 0 + 0 - 0) = 1.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Computing the second iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= \frac{1}{4}(14 - 2.5 + (-3) - 1) = 1.875, \\
+    x_2^{(1)} &amp;= \frac{1}{4}(10 - 3.5 + (-3) + 1) = 1.125, \\
+    x_3^{(1)} &amp;= \frac{1}{5}(-15 + 3.5 + 2.5 - 1) = -2, \\
+    x_4^{(1)} &amp;= \frac{1}{3}(3 - 3.5 + 2.5 - (-3)) = 1.6667.
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-gauss-seidel">
+<div class="exercise admonition" id="iterative-methods-ex-gauss-seidel">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.2 </span></p>
 <section id="exercise-content">
-<p>Repeat <a class="reference internal" href="#indirect-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the Gauss-Seidel method.</p>
+<p>Repeat <a class="reference internal" href="#iterative-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the Gauss-Seidel method.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_1\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_2\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_3\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_4\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">3.5000</p></td>
-<td class="text-center"><p class="sd-card-text">1.6250</p></td>
-<td class="text-center"><p class="sd-card-text">-1.9750</p></td>
-<td class="text-center"><p class="sd-card-text">1.0333</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">2.3417</p></td>
-<td class="text-center"><p class="sd-card-text">1.6792</p></td>
-<td class="text-center"><p class="sd-card-text">-2.4025</p></td>
-<td class="text-center"><p class="sd-card-text">1.5800</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p class="sd-card-text">The Gauss-Seidel method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(k+1)} &amp;= \frac{1}{4} \left( 14 - x_2^{(k)} + x_3^{(k)} - x_4^{(k)} \right), \\
+    x_2^{(k+1)} &amp;= \frac{1}{4} \left( 10 - x_1^{(k+1)} + x_3^{(k)} + x_4^{(k)} \right), \\
+    x_3^{(k+1)} &amp;= \frac{1}{5} \left( -15 + x_1^{(k+1)} + x_2^{(k+1)} - x_4^{(k)} \right), \\
+    x_4^{(k+1)} &amp;= \frac{1}{3} \left( 3 - x_1^{(k+1)} + x_2^{(k+1)} - x_3^{(k+1)} \right).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)} = \mathbf{0}\)</span>, computing the first iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= \frac{1}{4}(14 - 0 + 0 - 0) = 3.5, \\
+    x_2^{(1)} &amp;= \frac{1}{4}(10 - 3.5 + 0 + 0) = 1.625, \\
+    x_3^{(1)} &amp;= \frac{1}{5}(-15 + 3.5 + 1.625 - 0) = -1.975, \\
+    x_4^{(1)} &amp;= \frac{1}{3}(3 - 3.5 + 1.625 - (-1.975)) = 1.0333.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Computing the second iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= \frac{1}{4}(14 - 1.625 + (-1.975) - 1.0333) = 1.875, \\
+    x_2^{(1)} &amp;= \frac{1}{4}(10 - 1.875 + (-1.975) + 1.0333) = 1.6792, \\
+    x_3^{(1)} &amp;= \frac{1}{5}(-15 + 1.875 + 1.6792 - 1.0333) = -2.4025, \\
+    x_4^{(1)} &amp;= \frac{1}{3}(3 - 1.875 + 1.6792 - (-2.4025)) = 1.5800.
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-sor">
+<div class="exercise admonition" id="iterative-methods-ex-sor">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.3 </span></p>
 <section id="exercise-content">
-<p>Repeat <a class="reference internal" href="#indirect-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the SOR method using the optimum value for the relaxation parameter.</p>
+<p>Repeat <a class="reference internal" href="#iterative-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the SOR method using the optimum value for the relaxation parameter.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(\omega = 1.1136\)</span></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_1\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_2\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_3\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_4\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">3.8977</p></td>
-<td class="text-center"><p class="sd-card-text">1.6989</p></td>
-<td class="text-center"><p class="sd-card-text">-2.0944</p></td>
-<td class="text-center"><p class="sd-card-text">1.0749</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">2.0994</p></td>
-<td class="text-center"><p class="sd-card-text">1.7227</p></td>
-<td class="text-center"><p class="sd-card-text">-2.4910</p></td>
-<td class="text-center"><p class="sd-card-text">1.7763</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    4x_1 +x_2 -x_3 +x_4 &amp;=14,\\
+    x_1 +4x_2 -x_3 -x_4 &amp;=10,\\
+    -x_1 -x_2 +5x_3 +x_4 &amp;=-15,\\
+    x_1 -x_2 +x_3 +3x_4 &amp;=3.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">The iteration matrix for the Jacobi method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    T_J &amp;= -D^{-1}(L + U)
+    = \begin{pmatrix}
+        0 &amp; \frac14 &amp; -\frac14 &amp; \frac14 \\
+        \frac14 &amp; 0 &amp; -\frac14 &amp; -\frac14 \\
+        -\frac15 &amp; -\frac15 &amp; 0 &amp; \frac15 \\
+        \frac13 &amp; -\frac13 &amp; \frac13 &amp; 0
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">The eigenvalues of <span class="math notranslate nohighlight">\(T_J\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \lambda_1 &amp;= 0.6054, &amp;
+    \lambda_2 &amp;= -0.5425, &amp;
+    \lambda_3 &amp;= -0.2853, &amp;
+    \lambda_4 &amp;= 0.2224,
+\end{align*} \]</div>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(\rho(T_J) = 0.6054\)</span> and the optimum relaxation parameter</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \omega &amp;= 1 + \left( \frac{\rho(T_J)}{1 + \sqrt{1 - \rho(T_J)^2}} \right)^2
+    = 1 + \left( \frac{0.6054}{1 + \sqrt{1 - 0.6054^2}} \right)^2
+    = 1.1136.
+\end{align*} \]</div>
+<p class="sd-card-text">The SOR method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(k+1)} &amp;= -0.1136 x_1^{(k)} + \frac{1.1136}{4} \left( 14 - x_2^{(k)} + x_3^{(k)} - x_4^{(k)} \right), \\
+    x_2^{(k+1)} &amp;= -0.1136 x_1^{(k)} + \frac{1.1136}{4} \left( 10 - x_1^{(k+1)} + x_3^{(k)} + x_4^{(k)} \right), \\
+    x_3^{(k+1)} &amp;= -0.1136 + \frac{1.1136}{5} \left( -15 + x_1^{(k+1)} + x_2^{(k+1)} - x_4^{(k)} \right), \\
+    x_4^{(k+1)} &amp;= -0.1136 + \frac{1.1136}{3} \left( 3 - x_1^{(k+1)} + x_2^{(k+1)} - x_3^{(k+1)} \right).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)} = \mathbf{0}\)</span>, computing the first iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= -0.1136(0) + \frac{1.1136}{4}(14 - 0 + 0 - 0) = 3.8977, \\
+    x_2^{(1)} &amp;= -0.1136(0) + \frac{1.1136}{4}(10 - 3.8977 + 0 + 0) = 1.6989, \\
+    x_3^{(1)} &amp;= -0.1136(0) + \frac{1.1136}{5}(-15 + 3.8977 + 1.6989 - 0) = -2.0944, \\
+    x_4^{(1)} &amp;= -0.1136(0) + \frac{1.1136}{3}(3 - 3.8977 + 1.6989 - (-2.0944)) = 1.0749.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Computing the second iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= -0.1136(3.8977) + \frac{1.1136}{4}(14 - 1.6989 + (-2.0944) - 1.0749) = 2.0994, \\
+    x_2^{(1)} &amp;= -0.1136(1.6989) + \frac{1.1136}{4}(10 - 2.0994 + (-2.0944) + 1.0749) = 1.7227, \\
+    x_3^{(1)} &amp;= -0.1136(-2.0944) + \frac{1.1136}{5}(-15 + 2.0994 + 1.7227 - 1.0749) = -2.4910, \\
+    x_4^{(1)} &amp;= -0.1136(1.7763) + \frac{1.1136}{3}(3 - 2.0994 + 1.7227 - (-2.4910)) = 1.0749.
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-convergence">
+<div class="exercise admonition" id="iterative-methods-ex-convergence">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.4 </span></p>
 <section id="exercise-content">
-<p>Calculate the spectral radii for the three methods used to compute the solution to the system from <a class="reference internal" href="#indirect-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a>. Which of the three methods would you expect to converge to a solution the fastest?</p>
+<p>Calculate the spectral radii for the three methods used to compute the solution to the system from <a class="reference internal" href="#iterative-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a>. Which of the three methods would you expect to converge to a solution the fastest?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -601,11 +612,11 @@
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-code">
+<div class="exercise admonition" id="iterative-methods-ex-code">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.5 </span></p>
 <section id="exercise-content">
-<p>Write a program to calculate the solution to the system of linear equations from <a class="reference internal" href="#indirect-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the Jacobi, Gauss-Seidel and SOR methods using a convergence tolerance of <span class="math notranslate nohighlight">\(tol=10^{-6}\)</span>. How many iterations did each of the three methods take to converge to the solution?</p>
+<p>Write a program to calculate the solution to the system of linear equations from <a class="reference internal" href="#iterative-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the Jacobi, Gauss-Seidel and SOR methods using a convergence tolerance of <span class="math notranslate nohighlight">\(tol=10^{-6}\)</span>. How many iterations did each of the three methods take to converge to the solution?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -618,7 +629,7 @@
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-convergence-2">
+<div class="exercise admonition" id="iterative-methods-ex-convergence-2">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.6 </span></p>
 <section id="exercise-content">

@@ -278,8 +278,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="_pages/7.0_Indirect_methods.html">7. Iterative Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="_pages/7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_pages/7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pages/7.1_Jacobi_method.html">7.1. The Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_pages/7.2_Gauss_Seidel_method.html">7.2. The Gauss-Seidel method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_pages/7.3_Convergence_of_indirect_methods.html">7.3. Convergence of iterative methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_pages/7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_pages/7.5_Indirect_methods_exercises.html">7.5. Iterative methods exercises</a></li>
@@ -415,6 +415,8 @@
    <a href="#cap-convergence-example"><strong>convergence-example</strong></a> | 
    <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-determinant-test-for-positive-definite-matrix-theorem"><strong>determinant-test-for-positive-definite-matrix-theorem</strong></a> | 
+   <a href="#cap-diagonal-dominance-example"><strong>diagonal-dominance-example</strong></a> | 
+   <a href="#cap-diagonal-dominance-test"><strong>diagonal-dominance-test</strong></a> | 
    <a href="#cap-eigenvalue-definition"><strong>eigenvalue-definition</strong></a> | 
    <a href="#cap-elementary-weights-example"><strong>elementary-weights-example</strong></a> | 
    <a href="#cap-embedded-rk-example"><strong>embedded-rk-example</strong></a> | 
@@ -429,11 +431,11 @@
    <a href="#cap-gauss-seidel-method-definition"><strong>gauss-seidel-method-definition</strong></a> | 
    <a href="#cap-gauss-seidel-method-example"><strong>gauss-seidel-method-example</strong></a> | 
    <a href="#cap-householder-matrix definition"><strong>householder-matrix definition</strong></a> | 
-   <a href="#cap-indirect-methods-convergence-criteria-theorem"><strong>indirect-methods-convergence-criteria-theorem</strong></a> | 
    <a href="#cap-interval-of-absolute-stability-definition"><strong>interval-of-absolute-stability-definition</strong></a> | 
    <a href="#cap-irk-algorithm"><strong>irk-algorithm</strong></a> | 
    <a href="#cap-irk-rz-definition"><strong>irk-rz-definition</strong></a> | 
    <a href="#cap-irk-stability-function-example"><strong>irk-stability-function-example</strong></a> | 
+   <a href="#cap-iterative-methods-convergence-criteria-theorem"><strong>iterative-methods-convergence-criteria-theorem</strong></a> | 
    <a href="#cap-ivp-definition"><strong>ivp-definition</strong></a> | 
    <a href="#cap-jacobi-method-definition"><strong>jacobi-method-definition</strong></a> | 
    <a href="#cap-jacobi-method-example"><strong>jacobi-method-example</strong></a> | 
@@ -463,6 +465,7 @@
    <a href="#cap-qr-householder-example"><strong>qr-householder-example</strong></a> | 
    <a href="#cap-radauIA-derivation-example"><strong>radauIA-derivation-example</strong></a> | 
    <a href="#cap-region-of-absolute-stability-definition"><strong>region-of-absolute-stability-definition</strong></a> | 
+   <a href="#cap-remark-5"><strong>remark-5</strong></a> | 
    <a href="#cap-residual-definition"><strong>residual-definition</strong></a> | 
    <a href="#cap-rk-order-conditions-trees"><strong>rk-order-conditions-trees</strong></a> | 
    <a href="#cap-rk-rz-definition"><strong>rk-rz-definition</strong></a> | 
@@ -672,6 +675,22 @@
        <a href="_pages/6.3_Cholesky_decomposition.html#determinant-test-for-positive-definite-matrix-theorem"><code class="xref">determinant-test-for-positive-definite-matrix-theorem</code></a> <em>(_pages/6.3_Cholesky_decomposition)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-diagonal-dominance-example"><td></td><td>
+       <strong>diagonal-dominance-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="_pages/7.3_Convergence_of_indirect_methods.html#diagonal-dominance-example"><code class="xref">diagonal-dominance-example</code></a> <em>(_pages/7.3_Convergence_of_indirect_methods)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-diagonal-dominance-test"><td></td><td>
+       <strong>diagonal-dominance-test</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="_pages/7.3_Convergence_of_indirect_methods.html#diagonal-dominance-test"><code class="xref">diagonal-dominance-test</code></a> <em>(_pages/7.3_Convergence_of_indirect_methods)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-eigenvalue-definition"><td></td><td>
        <strong>eigenvalue-definition</strong></td><td></td></tr>
      <tr>
@@ -784,14 +803,6 @@
        <a href="_pages/6.4_QR_decomposition.html#householder-matrix definition"><code class="xref">householder-matrix definition</code></a> <em>(_pages/6.4_QR_decomposition)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-indirect-methods-convergence-criteria-theorem"><td></td><td>
-       <strong>indirect-methods-convergence-criteria-theorem</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="_pages/7.3_Convergence_of_indirect_methods.html#indirect-methods-convergence-criteria-theorem"><code class="xref">indirect-methods-convergence-criteria-theorem</code></a> <em>(_pages/7.3_Convergence_of_indirect_methods)</em></td><td>
-       <em>theorem</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-interval-of-absolute-stability-definition"><td></td><td>
        <strong>interval-of-absolute-stability-definition</strong></td><td></td></tr>
      <tr>
@@ -823,6 +834,14 @@
        <td>
        <a href="_pages/4.2_IRK_stability_function.html#irk-stability-function-example"><code class="xref">irk-stability-function-example</code></a> <em>(_pages/4.2_IRK_stability_function)</em></td><td>
        <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-iterative-methods-convergence-criteria-theorem"><td></td><td>
+       <strong>iterative-methods-convergence-criteria-theorem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="_pages/7.3_Convergence_of_indirect_methods.html#iterative-methods-convergence-criteria-theorem"><code class="xref">iterative-methods-convergence-criteria-theorem</code></a> <em>(_pages/7.3_Convergence_of_indirect_methods)</em></td><td>
+       <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-ivp-definition"><td></td><td>
        <strong>ivp-definition</strong></td><td></td></tr>
@@ -1055,6 +1074,14 @@
        <td>
        <a href="_pages/4.3_Absolute_stability.html#region-of-absolute-stability-definition"><code class="xref">region-of-absolute-stability-definition</code></a> <em>(_pages/4.3_Absolute_stability)</em></td><td>
        <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-5"><td></td><td>
+       <strong>remark-5</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="_pages/7.3_Convergence_of_indirect_methods.html#remark-5"><code class="xref">remark-5</code></a> <em>(_pages/7.3_Convergence_of_indirect_methods)</em></td><td>
+       <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-residual-definition"><td></td><td>
        <strong>residual-definition</strong></td><td></td></tr>

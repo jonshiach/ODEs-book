@@ -71,7 +71,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7.4. The Successive Over Relaxation (SOR) method" href="7.4_SOR_method.html" />
-    <link rel="prev" title="7.2. Gauss-Seidel method" href="7.2_Gauss_Seidel_method.html" />
+    <link rel="prev" title="7.2. The Gauss-Seidel method" href="7.2_Gauss_Seidel_method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -158,6 +158,10 @@
     </div>
   
 
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
   
 </div>
 
@@ -274,8 +278,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Iterative Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. The Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. The Gauss-Seidel method</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Convergence of iterative methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Iterative methods exercises</a></li>
@@ -407,7 +411,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -423,6 +429,15 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-matrices-for-the-jacobi-and-gauss-seidel-methods">7.3.1. Iteration matrices for the Jacobi and Gauss-Seidel methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-dominance-test">7.3.2. Diagonal dominance test</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -433,15 +448,15 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convergence-of-iterative-methods">
-<span id="convergence-of-indirect-methods-section"></span><h1><span class="section-number">7.3. </span>Convergence of iterative methods<a class="headerlink" href="#convergence-of-iterative-methods" title="Link to this heading">#</a></h1>
-<p>We have seen that both the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">Jacobi</span></a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel</span></a> methods are iterated until the estimates of the solution converge to a given tolerance. In <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> required 49 iterations to converge to the solution of a system of linear equations whereas in <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Example 7.2</a> only required 20 iterations to converge to the solution for the same system.</p>
-<p>Not all iterative methods will converge for a given system of linear equations, we can establish whether a method will be convergent using the theorem below. Let <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)} = \|\mathbf{x} - \mathbf{x}^{(k)}\|\)</span> be the error between the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span>. The error from one estimate to the next is updated using the iteration matrix for the method</p>
+<span id="convergence-of-iterative-methods-section"></span><h1><span class="section-number">7.3. </span>Convergence of iterative methods<a class="headerlink" href="#convergence-of-iterative-methods" title="Link to this heading">#</a></h1>
+<p>We have seen that both the <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-section"><span class="std std-ref">Jacobi</span></a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-section"><span class="std std-ref">Gauss-Seidel</span></a> methods are iterated until the estimates of the solution converge to a given tolerance. In <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a>, the Jacobi method required 49 iterations to converge to the solution of a system of linear equations, whereas in <a class="reference internal" href="7.2_Gauss_Seidel_method.html#gauss-seidel-method-example">Example 7.2</a> the Gauss-Seidel method required only 20 iterations for the same system. Not all iterative methods converge for every linear system, so it is important to establish conditions under which convergence occurs.</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)} = \mathbf{x} - \mathbf{x}^{(k)}\)</span> be the error between the exact solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and the estimate <span class="math notranslate nohighlight">\(\mathbf{x}^{(k)}\)</span>. The error from one estimate to the next is updated using the iteration matrix for the method</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{e}^{(k+1)} = T\mathbf{e}^{(k)}. \]</div>
-<p>We can write the first error, <span class="math notranslate nohighlight">\(\mathbf{e}^{(0)}\)</span> as a linear combination of some vectors <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span></p>
+<p>Assuming that <span class="math notranslate nohighlight">\(T\)</span> has <span class="math notranslate nohighlight">\(n\)</span> linearly dependent <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">eigenvectors</a> <span class="math notranslate nohighlight">\(\mathbf{v}_1, \ldots, \mathbf{v}_n\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{e}^{(0)} =\alpha_1 \mathbf{v}_1 +\alpha_2 \mathbf{v}_2 +\cdots +\alpha_n \mathbf{v}_n =\sum_{i=1}^n \alpha_i \mathbf{v}_i, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha_i\)</span> are scalars. If <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> are the <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank">eigenvalues</a> of the iteration matrix <span class="math notranslate nohighlight">\(T\)</span> with eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> so <span class="math notranslate nohighlight">\(T\mathbf{v}_i = \lambda_i \mathbf{v}_i\)</span> then iterating <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)}\)</span> gives</p>
+<p>where <span class="math notranslate nohighlight">\(\alpha_i\)</span> are scalars. Since <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> are eigenvectors of <span class="math notranslate nohighlight">\(T\)</span> then <span class="math notranslate nohighlight">\(T\mathbf{v}_i = \lambda_i \mathbf{v}_i\)</span> where <span class="math notranslate nohighlight">\(\lambda_i\)</span> are the corresponding eigenvalues, iterating <span class="math notranslate nohighlight">\(\mathbf{e}^{(k)}\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     \mathbf{e}^{(1)} &amp;= T\mathbf{e}^{(0)} =T\left(\sum_{i=1}^n \alpha_i \mathbf{v}_i \right)=\sum_{i=1}^n \alpha_i T\mathbf{v}_i = \sum_{i=1}^n \alpha_i \lambda_i \mathbf{v}_i , \\
@@ -449,33 +464,91 @@
     &amp;\vdots \\
     \mathbf{e}^{(k+1)} &amp;=\sum_{i=1}^n \alpha_i \lambda_i^{k+1} \mathbf{v}_i .
 \end{align*} \end{split}\]</div>
-<p>If <span class="math notranslate nohighlight">\(|\lambda_1|&gt;\lambda_2, \lambda_3, \ldots \lambda_n\)</span> then</p>
+<p>Extracting the first summation term and factorising gives</p>
 <div class="math notranslate nohighlight">
-\[ \mathbf{e}^{(k+1)} =\alpha_1 \lambda_1^{k+1} \mathbf{v}_1 +\sum_{i=2}^n \alpha_i \lambda_i^{k+1} \mathbf{v}_i =\lambda_1^{k+1} \left(\alpha_1 \mathbf{v}_1 +\sum_{i=2}^n \alpha_i \mathbf{v}_i {\left(\frac{\lambda_i }{\lambda_1 }\right)}^{k+1} \right) \]</div>
-<p>and since <span class="math notranslate nohighlight">\(\dfrac{\lambda_i}{\lambda_ 1} &lt; 1\)</span> then</p>
+\[\begin{split} \begin{align*}
+    \mathbf{e}^{(k+1)} &amp;= \alpha_1 \lambda_1^{k+1} \mathbf{v}_1 +\sum_{i=2}^n \alpha_i \lambda_i^{k+1} \mathbf{v}_i \\
+    &amp;= \lambda_1^{k+1} \left(\alpha_1 \mathbf{v}_1 +\sum_{i=2}^n \alpha_i \mathbf{v}_i {\left(\frac{\lambda_i }{\lambda_1 }\right)}^{k+1} \right) 
+\end{align*} \end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\lambda_1\)</span> be the eigenvalue of largest magnitude then <span class="math notranslate nohighlight">\(\lambda_i / \lambda_1 &lt; 1\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
     \lim_{k\to \infty } \mathbf{e}^{(k+1)} =\alpha_1 \lambda_1^{k+1} \mathbf{v}_1 .
 \end{align*} \]</div>
-<p>This means that as the number of iterations increases, the error varies by a factor of <span class="math notranslate nohighlight">\(\lambda_1^{k+1}\)</span> where <span class="math notranslate nohighlight">\(\lambda_1\)</span> is the largest eigenvalue of <span class="math notranslate nohighlight">\(T\)</span> which is known as the <strong>spectral radius</strong>.</p>
+<p>This means that as the number of iterations increases, the error varies by a factor of <span class="math notranslate nohighlight">\(\lambda_1^{k+1}\)</span> where <span class="math notranslate nohighlight">\(\lambda_1\)</span> is the largest eigenvalue of <span class="math notranslate nohighlight">\(T\)</span> which is known as the <strong>spectral radius</strong>. For a method to converge to the solution, we require the this limit to tend to zero which only happens when</p>
+<div class="math notranslate nohighlight">
+\[ |\lambda_1| &lt; 1. \]</div>
 <div class="proof definition admonition" id="spectral-radius-definition">
 <p class="admonition-title"><span class="caption-number">Definition 7.4 </span> (Spectral radius)</p>
 <section class="definition-content" id="proof-content">
 <p>The spectral radius of <span class="math notranslate nohighlight">\(A\)</span> denoted by <span class="math notranslate nohighlight">\(\rho(A)\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-spectral-radius-equation">
-<span class="eqno">(7.8)<a class="headerlink" href="#equation-spectral-radius-equation" title="Link to this equation">#</a></span>\[ \rho(A) = \max_i(| \lambda_i |). \]</div>
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-spectral-radius-equation" title="Link to this equation">#</a></span>\[ \rho(A) = \max_i(| \lambda_i |). \]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda_i\)</span> are the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </section>
-</div><div class="proof theorem admonition" id="indirect-methods-convergence-criteria-theorem">
-<p class="admonition-title"><span class="caption-number">Theorem 7.1 </span> (Convergence criteria for an iterative method)</p>
+</div><div class="proof theorem admonition" id="iterative-methods-convergence-criteria-theorem">
+<p class="admonition-title"><span class="caption-number">Theorem 7.1 </span> (Convergence criterion for a stationary iterative method)</p>
 <section class="theorem-content" id="proof-content">
-<p>The spectral radius of <span class="math notranslate nohighlight">\(T\)</span> gives us the following information about an iterative method</p>
-<ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(\rho (T) &gt; 1\)</span> then the errors will increase over each iteration, therefore for an iterative method to converge to the solution we require <span class="math notranslate nohighlight">\(\rho (T)&lt; 1\)</span>.</p></li>
-<li><p>The smaller the value of <span class="math notranslate nohighlight">\(\rho (T)\)</span> the faster the errors will tend to zero.</p></li>
-</ul>
+<p>An iterative method of the form</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{x}^{(k+1)} = T\mathbf{x}^{(k)} + \mathbf{c} \]</div>
+<p>converges for every initial approximation (\mathbf{x}^{(0)}) if and only if</p>
+<div class="math notranslate nohighlight">
+\[ \rho(T)&lt;1. \]</div>
+<p>Furthermore, smaller values of (\rho(T)) generally lead to faster convergence.</p>
 </section>
-</div><div class="proof example admonition" id="convergence-example">
+</div><section id="iteration-matrices-for-the-jacobi-and-gauss-seidel-methods">
+<h2><span class="section-number">7.3.1. </span>Iteration matrices for the Jacobi and Gauss-Seidel methods<a class="headerlink" href="#iteration-matrices-for-the-jacobi-and-gauss-seidel-methods" title="Link to this heading">#</a></h2>
+<p>Given a linear system <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span>, we can split up the coefficient matrix <span class="math notranslate nohighlight">\(A\)</span> into three matrices such that</p>
+<div class="math notranslate nohighlight">
+\[ A = L + D + U, \]</div>
+<p>where <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(U\)</span> arethe <strong>lower triangular</strong> and <strong>upper triangular</strong> parts of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(D\)</span> is the diagonal matrix, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{pmatrix}
+    a_{11} &amp; a_{12} &amp; a_{13} \\
+    a_{21} &amp; a_{22} &amp; a_{23} \\
+    a_{31} &amp; a_{32} &amp; a_{33}
+\end{pmatrix} = 
+\begin{pmatrix} 
+    0 &amp; 0 &amp; 0 \\
+    a_{21} &amp; 0 &amp; 0 \\
+    a_{31} &amp; a_{32} &amp; 0
+\end{pmatrix} +
+\begin{pmatrix} 
+    a_{11} &amp; 0 &amp; 0 \\
+    0 &amp; a_{22} &amp; 0 \\
+    0 &amp; 0 &amp; a_{33} 
+\end{pmatrix} +
+\begin{pmatrix}
+    0 &amp; a_{12} &amp; a_{13} \\
+    0 &amp; 0 &amp; a_{23} \\
+    0 &amp; 0 &amp; 0
+\end{pmatrix}. \end{split}\]</div>
+<p>Rewriting <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span> using <span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(U\)</span></p>
+<div class="math notranslate nohighlight" id="equation-l-d-u-equation">
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-l-d-u-equation" title="Link to this equation">#</a></span>\[ (L + D + U) \mathbf{x} = \mathbf{b}, \]</div>
+<p>which can be rearranged to</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{x} = -D^{-1}(L + U)\mathbf{x} + D^{-1} \mathbf{b}. \]</div>
+<p>The Jacobi method assumes the values on the left-hand side are the new approximations and the values on the right-hand side are the current approximations so</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{x}^{(k+1)} =-D^{-1}(L + U)\mathbf{x}^{(k)} + D^{-1} \mathbf{b}. \]</div>
+<p>The iteraiton matrix <span class="math notranslate nohighlight">\(T_J\)</span> satisfies</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{x}^{(k+1)} = T \mathbf{x}^{(k)} + \mathbf{c}, \]</div>
+<p>so</p>
+<div class="math notranslate nohighlight" id="equation-jacobi-iteration-matrix-equation">
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-jacobi-iteration-matrix-equation" title="Link to this equation">#</a></span>\[ T_J = -D^{-1}(L + U). \]</div>
+<p>The iteration matrix for the Gauss-Seidel method can be derived in a similar way, rearranging equation <a class="reference internal" href="#equation-l-d-u-equation">(7.6)</a></p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{x} = -(L + D)^{-1} U \mathbf{x} + (L + D)^{-1} \mathbf{b}, \]</div>
+<p>and assuming the left-hand term are the new approximations and the right-hand terms are the current approximations then</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{x}^{(k+1)} = -(L + D)^{-1} U \mathbf{x}^{(k)} + (L + D)^{-1} \mathbf{b}, \]</div>
+<p>and the iteration matrix for the Gauss-Seidel method is</p>
+<div class="math notranslate nohighlight" id="equation-gauss-seidel-iteration-matrix-equation">
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-gauss-seidel-iteration-matrix-equation" title="Link to this equation">#</a></span>\[ T_{GS} = -(L + D)^{-1}U. \]</div>
+<div class="proof example admonition" id="convergence-example">
 <p class="admonition-title"><span class="caption-number">Example 7.3 </span></p>
 <section class="example-content" id="proof-content">
 <p>Show that the Jacobi and Gauss-Seidel methods are convergent of the system of linear equations from <a class="reference internal" href="7.1_Jacobi_method.html#jacobi-method-example">Example 7.1</a> (shown below)</p>
@@ -497,7 +570,7 @@
     D &amp;= \begin{pmatrix} 4 &amp; 0 &amp; 0 \\ 0 &amp; 4 &amp; 0 \\ 0 &amp; 0 &amp; 4 \end{pmatrix}, &amp;
     U &amp;= \begin{pmatrix} 0 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; -1 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}.
 \end{align*} \end{split}\]</div>
-<p>The iteration matrices for the Jacobi and Gauss-Seidel methods are given in equations <a class="reference internal" href="7.1_Jacobi_method.html#equation-jacobi-method-iteration-matrix-equation">(7.4)</a> and <a class="reference internal" href="7.2_Gauss_Seidel_method.html#equation-gauss-seidel-method-iteration-matrix-equation">(7.7)</a> which for this system are</p>
+<p>The iteration matrices for the Jacobi and Gauss-Seidel methods are given in equations <a class="reference internal" href="#equation-jacobi-iteration-matrix-equation">(7.7)</a> and <a class="reference internal" href="#equation-gauss-seidel-iteration-matrix-equation">(7.8)</a> which for this system are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
     T_J &amp;= -D^{-1} ( L + U)  \\
@@ -524,6 +597,108 @@
 <p>Calculating the spectral radius for these iteration matrices gives <span class="math notranslate nohighlight">\(\rho(T_J )=0.7906\)</span> and <span class="math notranslate nohighlight">\(\rho (T_{GS})=0.625\)</span> which are both less than 1 so both of these methods are convergent for this system. Furthermore, the Gauss-Seidel method will converge faster than the Jacobi method since it has a smaller spectral radius.</p>
 </section>
 </div></section>
+<section id="diagonal-dominance-test">
+<h2><span class="section-number">7.3.2. </span>Diagonal dominance test<a class="headerlink" href="#diagonal-dominance-test" title="Link to this heading">#</a></h2>
+<p>From the previous section we know that an iterative method converges if</p>
+<div class="math notranslate nohighlight">
+\[ \rho(T) &lt; 1, \]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is the iteration matrix and <span class="math notranslate nohighlight">\(\rho(T)\)</span> is the spectral radius of <span class="math notranslate nohighlight">\(T_J\)</span>. Since</p>
+<div class="math notranslate nohighlight">
+\[ \rho(T) \leq \| T \|, \]</div>
+<p>for any matrix norm, it is sufficient to show that</p>
+<div class="math notranslate nohighlight">
+\[ \| T \|_\infty &lt; 1. \]</div>
+<p>where <span class="math notranslate nohighlight">\(\|T\|_\infty\)</span> is the matrix infinity norm</p>
+<div class="math notranslate nohighlight">
+\[ \| T \|_\infty = \max_i \sum_{j=1}^n |(T)_{ij}|. \]</div>
+<p>The iteration matrix for the Jacobi method is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+T_J &amp;= -D^{-1}(L + U) \\
+&amp;= -
+\begin{pmatrix}
+    \frac{1}{a_{11}} &amp; 0 &amp; \cdots &amp; 0 \\
+    0 &amp; \frac{1}{a_{22}} &amp; \ddots &amp; \vdots \\
+    \vdots &amp; \ddots &amp; \ddots &amp; 0 \\
+    0 &amp; \cdots &amp; 0 &amp; \frac{1}{a_{nn}}
+\end{pmatrix} 
+\begin{pmatrix}
+    0 &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+    a_{21} &amp; 0 &amp; \ddots &amp; \vdots \\
+    \vdots &amp; \ddots &amp; \ddots &amp; a_{n-1,n} \\
+    a_{n1} &amp; \cdots &amp; a_{n,n-1} &amp; 0
+\end{pmatrix} \\
+&amp;=
+\begin{pmatrix}
+    0 &amp; -\frac{a_{12}}{a_{22}} &amp; \cdots &amp; -\frac{a_{1n}}{a_{11}} \\
+    -\frac{a_{21}}{a_{22}} &amp; 0 &amp; \ddots &amp; \vdots \\
+    \vdots &amp; \ddots &amp; \ddots &amp; -\frac{a_{n-1,n}}{a_{n-1,n-1}} \\
+    -\frac{a_{n1}}{a_{nn}} &amp; \cdots &amp; -\frac{a_{n,n-1}}{a_{nn}} &amp; 0
+\end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    \| T_J \| &amp;= \max_i \sum_{j=1}^n |(T_J)_{ij}| \\
+    &amp;= \max_i \sum_{j=1,j\ne i}^n \left| \frac{a_{ij}}{a_{ii}} \right| \\
+    &amp;= \max_i \frac{1}{|a_{ii}|} \sum_{j=1,j\ne i}^n |a_{ij}|.
+\end{align*} \end{split}\]</div>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is strictly <strong>diagonally dominant</strong> so that</p>
+<div class="math notranslate nohighlight">
+\[ |a_{ii}| &gt; \sum_{j=1,j \ne i}^n |a_{ij}|, \qquad i = 1, \ldots, n,\]</div>
+<p>then <span class="math notranslate nohighlight">\(\| T_J \|_\infty &lt; 1\)</span> and the Jacobi method converges. It can also be shown that the diaongal dominance test applies to the Gauss-Seidel method.</p>
+<div class="proof theorem admonition" id="diagonal-dominance-test">
+<p class="admonition-title"><span class="caption-number">Theorem 7.2 </span> (Diagonal dominance test for convergence)</p>
+<section class="theorem-content" id="proof-content">
+<p>The Jacobi and Gauss-Seidel methods are guaranteed to converge for any initial approximation <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)}\)</span> if the coefficient matrix <span class="math notranslate nohighlight">\(A=[a_{ij}]\)</span> is strictly diagonally dominant, that is,</p>
+<div class="math notranslate nohighlight">
+\[ |a_{ii}| &gt; \sum_{j=1,j \neq i}^n |a_{ij}|, \qquad i = 1,\ldots,n. \]</div>
+<p>In other words, the magnitude of each diagonal element must be greater
+than the sum of the magnitudes of all the other elements in the same row.</p>
+</section>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Strict diagonal dominance is a sufficient condition for convergence, but it is not necessary. Some matrices that are not diagonally dominant still yield convergent Jacobi iterations.</p>
+</div>
+<div class="proof example admonition" id="diagonal-dominance-example">
+<p class="admonition-title"><span class="caption-number">Example 7.4 </span></p>
+<section class="example-content" id="proof-content">
+<p>Use the diagonal dominance test to determine whether the Jacobi and Gauss-Seidel methods will converge for the following linear system</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1 + 4x_2 + x_3 &amp;= 6, \\
+    x_1 + 2x_2 + 6x_3 &amp;= 9, \\
+    8x_1 - x_2 + x_3 &amp;= 7.
+\end{align*} \end{split}\]</div>
+<hr class="docutils" />
+<p><strong>Solution</strong></p>
+<p>The coefficient matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = 
+\begin{pmatrix}
+    1 &amp; 4 &amp; 1 \\ 
+    1 &amp; 2 &amp; 6 \\
+    8 &amp; -1 &amp; 1
+\end{pmatrix} \quad
+\begin{matrix} 1 &lt; 4 + 1 \\ 2 &lt; 1 + 6 \\ 1 &lt; 8 + 1 \end{matrix}. \end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(A\)</span> is clearly not diagonally dominant. However, if we swap rows 1 and 3 we get the coefficient matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = 
+\begin{pmatrix}
+    8 &amp; -1 &amp; 1 \\
+    1 &amp; 4 &amp; 1 \\ 
+    1 &amp; 2 &amp; 6 \\
+\end{pmatrix} \quad
+\begin{matrix} 8 &gt; 1 + 1 \\ 4 &gt; 1 + 1 \\ 6 &gt; 1 + 2 \end{matrix}. \end{split}\]</div>
+<p>which is diagonally dominant.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-5">
+<p class="admonition-title"><span class="caption-number">Remark 7.1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Although the spectral radius criterion is the fundamental test for convergence, computing eigenvalues is often impractical for large systems. In practice, strict diagonal dominance is frequently used as a simple sufficient test for convergence of the Jacobi and Gauss-Seidel methods.</p>
+</section>
+</div></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -561,7 +736,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>Gauss-Seidel method</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>The Gauss-Seidel method</p>
       </div>
     </a>
     <a class="right-next"
@@ -579,6 +754,24 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-matrices-for-the-jacobi-and-gauss-seidel-methods">7.3.1. Iteration matrices for the Jacobi and Gauss-Seidel methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-dominance-test">7.3.2. Diagonal dominance test</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
