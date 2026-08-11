@@ -453,9 +453,10 @@
 <p>The <strong>Successive Over Relaxation (SOR)</strong> method is a modification of the Gauss-Seidel method that introduces a relaxation parameter <span class="math notranslate nohighlight">\(\omega\)</span>. By choosing <span class="math notranslate nohighlight">\(\omega\)</span> appropriately, the rate of convergence can often be significantly improved.</p>
 <p>The Gauss-Seidel method computes a new approximation <span class="math notranslate nohighlight">\(x_{i,GS}^{(k+1)}\)</span>​. The SOR method updates the solution by moving a fraction <span class="math notranslate nohighlight">\(\omega\)</span> of the way from the current approximation <span class="math notranslate nohighlight">\(x_i^{(k)}\)</span>​ towards this Gauss-Seidel approximation:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align*}
-    x_{i}^{(k+1)} &amp;= x_i^{(k)} + \omega (x_{i,GS}^{(k+1)} - x_i^{(k)}).
-\end{align*} \]</div>
+\[\begin{split} \begin{align*}
+    x_{i}^{(k+1)} &amp;= x_i^{(k)} + \omega (x_{i,GS}^{(k+1)} - x_i^{(k)}) \\
+    &amp;= (1 - \omega) x_i^{(k)} + \omega x_{i,GS}^{(k+1)}
+\end{align*} \end{split}\]</div>
 <p>The equation for the Gauss-Seidel method is</p>
 <div class="math notranslate nohighlight">
 \[ x_{i,GS}^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k+1)} - \sum_{j=i+1}^n a_{ij} x_j^{(k)} \right), \]</div>
