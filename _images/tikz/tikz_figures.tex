@@ -4,6 +4,8 @@
 \usepackage{graphicx}
 \renewcommand\familydefault{\sfdefault} 
 \usepackage[T1]{fontenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 \usetikzlibrary{arrows,shapes,calc,math,decorations.fractals,patterns,backgrounds,decorations.markings,decorations.pathmorphing,patterns}
 \tikzset{every picture/.style={/utils/exec={\sffamily}}}
@@ -67,41 +69,138 @@
 % \end{tikzpicture}
 
 % Euler method
-\begin{tikzpicture}[scale=1.2] 
-    \pgfmathdeclarefunction{f}{1}{\pgfmathparse{0.1*#1^2+1}}
-    \pgfmathdeclarefunction{fd}{1}{\pgfmathparse{0.2*#1+0.925}}
-
-    % Axes 
-    \draw[axis] (0,0) -- (6,0) node [right] {$t$}; 
-    \draw[axis] (0,0) -- (0,4) node [left] {$y$}; 
+\begin{tikzpicture} 
+    \begin{axis}[ 
+        width=8cm, 
+        height=6cm, 
+        axis lines=left,
+        axis line style={thick,-stealth'},
+        xlabel={$t$}, 
+        ylabel={$y$}, 
+        xmin=0, xmax=6, 
+        ymin=0, ymax=4, 
+        xtick=\empty, 
+        ytick=\empty, 
+        clip=false, 
+        xlabel style={ 
+            at={(current axis.right of origin)}, 
+            anchor=west 
+        }, 
+        ylabel style={ 
+            at={(current axis.above origin)}, 
+            anchor=south,
+            rotate=-90,
+        },
+        declare function={ 
+            f(\x)=0.1*\x^2+1; 
+            fd(\x)=0.4*\x+0.6; 
+        }
+    ] 
     
-    % Exact solution curve 
-    \draw[thick,blue,domain=0.5:5,smooth] plot (\x,{f(\x)}) node[right] {Exact solution}; 
+    % Parameters 
+    \pgfmathsetmacro{\tzero}{1.5} 
+    \pgfmathsetmacro{\h}{2.5} 
+    \pgfmathsetmacro{\tone}{\tzero+\h} 
     
-    % Current point
-    \coordinate (A) at (1.5,{f(1.5)}); \fill (A) circle (2pt); \node[below right] at (A) {$(t_0,y_0)$};
+    % Exact solution 
+    \addplot[ blue, thick, domain=0.5:5, samples=100 ] {f(x)}; 
+    \node[blue,right] at (axis cs:5,3.5) {Exact solution}; 
     
     % Tangent line 
-    \draw[red,thick,domain=0.5:5,smooth] plot (\x,{fd(\x)}) node [right] {Tangent};
+    \addplot[ red, thick, domain=0.5:5, samples=2 ] {fd(x)}; 
+    \node[red,right] at (axis cs:5,{fd(5)}) {Tangent}; 
     
-    % Step size h 
-    \tikzmath{\h=2.5;}
-    \draw[dashed] (1.5,0) -- ++(0,{f(1.5)}); 
-    \draw[dashed] (1.5+\h,0) -- ++(0,{f(1.5+\h)}); 
-    \draw[<->] (1.5,0.2) -- ++(\h,0) node [pos=0.5,above] {$h$}; 
-    \node [below] at (1.5,0) {$t_0$};
-    \node [below] at (1.5+\h,0) {$t_1$};
+    % Dashed verticals 
+    \draw[dashed] (axis cs:\tzero,0) -- (axis cs:\tzero,{0.1*\tzero^2+1}); 
+    \draw[dashed] (axis cs:\tone,0) -- (axis cs:\tone,{0.1*\tone^2+1}); 
     
-    % Euler approximation 
-    \coordinate (B) at (1.5+\h,{fd(1.5+\h)}); 
-    \fill (B) circle (2pt); 
-    \node[below right] at (B) {$(t_{1},y_{1})$}; 
+    % h arrow 
+    \draw[<->] (axis cs:\tzero,0.2) -- (axis cs:\tone,0.2) node[midway,above] {$h$}; 
     
-    % Exact value at t_{n+1} 
-    \coordinate (C) at (1.5+\h,{f(1.5+\h)}); 
-    \fill[blue] (C) circle (2pt); 
-    \node[above left] at (C) {$y(t_1)$}; 
+    % Axis labels 
+    \node[below] at (axis cs:\tzero,0) {$t_0$};
+    \node[below] at (axis cs:\tone,0) {$t_1$}; 
+    
+    % Current point A 
+    \addplot[ only marks, mark=*, mark size=2pt ] coordinates {(\tzero,{0.1*\tzero^2+1})}; 
+    \node[below right] at (axis cs:\tzero,{0.1*\tzero^2+1}) {$(t_0,y_0)$}; 
+    
+    % Euler approximation B 
+    \addplot[ only marks, mark=*, mark size=2pt ] coordinates {(\tone,{fd(\tone)})} coordinate (approx); 
+    \node[below right] at (approx) {$(t_{1},y_{1})$}; 
+    
+    % Exact value C 
+    \addplot[ only marks, blue, mark=*, mark size=2pt ] coordinates {(\tone,{0.1*\tone^2+1})}; 
+    \node[above left] at (axis cs:\tone,{0.1*\tone^2+1}) {$y(t_1)$}; \end{axis}
+\end{tikzpicture}
 
+\begin{tikzpicture} 
+    \begin{axis}[ 
+            width=10cm, 
+            height=8cm, 
+            axis lines=left,
+            axis line style={thick,-stealth'},
+            xlabel={$t$}, 
+            ylabel={$y$}, 
+            xmin=0, xmax=10, 
+            ymin=0, ymax=12, 
+            xtick=\empty, 
+            ytick=\empty, 
+            clip=false, 
+            xlabel style={ 
+                at={(current axis.right of origin)}, 
+                anchor=west 
+            }, 
+            ylabel style={ 
+                at={(current axis.above origin)}, 
+                anchor=south,
+                rotate=-90,
+            },
+            declare function={ 
+                f(\x)=0.1*\x^2+1; 
+                fd(\x)=0.4*\x+0.6; 
+            }
+        ] 
+
+        % Parameters 
+        \pgfmathsetmacro{\h}{2} 
+        \pgfmathsetmacro{\tzero}{2} 
+        \pgfmathsetmacro{\tone}{\tzero+\h} 
+        \pgfmathsetmacro{\ttwo}{\tzero+2*\h} 
+        \pgfmathsetmacro{\tthree}{\tzero+3*\h}
+        
+        % Exact solution 
+        \addplot[ blue, thick, domain=0.5:9, samples=100 ] {f(x)}; 
+        \node[blue,right] at (axis cs:5,3.5) {Exact solution}; 
+        
+        % Tangent line 
+        \addplot[ red, thick, domain=0.5:5, samples=2 ] {fd(x)}; 
+        \node[red,right] at (axis cs:5,{fd(5)}) {Tangent}; 
+        
+        % Dashed verticals 
+        \draw[dashed] (axis cs:\tzero,0) -- (axis cs:\tzero,{0.1*\tzero^2+1}); 
+        \draw[dashed] (axis cs:\tone,0) -- (axis cs:\tone,{0.1*\tone^2+1}); 
+        \draw[dashed] (axis cs:\ttwo,0) -- (axis cs:\ttwo,{0.1*\ttwo^2+1}); 
+        \draw[dashed] (axis cs:\tthree,0) -- (axis cs:\tthree,{0.1*\tthree^2+1}); 
+        
+        % Axis labels 
+        \node[below] at (axis cs:\tzero,0) {$t_0$};
+        \node[below] at (axis cs:\tone,0) {$t_0+c_2h$}; 
+        \node[below] at (axis cs:\ttwo,0) {$t_0+c_3h$}; 
+        \node[below] at (axis cs:\tthree,0) {$t_0+c_4h$};
+        
+        % Current point A 
+        \addplot[ only marks, mark=*, mark size=2pt ] coordinates {(\tzero,{0.1*\tzero^2+1})}; 
+        \node[below right] at (axis cs:\tzero,{0.1*\tzero^2+1}) {$(t_0,y_0)$}; 
+        
+        % Euler approximation B 
+        \addplot[ only marks, mark=*, mark size=2pt ] coordinates {(\tone,{0.2*\tone+0.925})}; 
+        \node[below right] at (axis cs:\tone,{0.2*\tone+0.925}) {$(t_{1},y_{1})$}; 
+        
+        % Exact value C 
+        \addplot[ only marks, blue, mark=*, mark size=2pt ] coordinates {(\tone,{0.1*\tone^2+1})}; 
+        \node[above left] at (axis cs:\tone,{0.1*\tone^2+1}) {$y(t_1)$}; 
+    \end{axis}
 \end{tikzpicture}
 
 % Graph

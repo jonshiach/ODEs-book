@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.5. Indirect methods exercises &#8212; Runge-Kutta Methods</title>
+    <title>7.5. Iterative methods exercises &#8212; Runge-Kutta Methods</title>
   
   
   
@@ -16,47 +16,43 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-proof.css?v=9dc65063" />
   
-  <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -66,39 +62,42 @@
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/7.5_Indirect_methods_exercises';</script>
-    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/7.5_Indirect_methods_exercises.html" />
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="References" href="E_References.html" />
+    <link rel="next" title="Examination Questions" href="A_Exam_questions.html" />
     <link rel="prev" title="7.4. The Successive Over Relaxation (SOR) method" href="7.4_SOR_method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
-  
-    
-    <script src="../_static/searchtools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <script src="../searchindex.js"></script>
-  
   </head>
-  <body data-default-mode="">
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  
-  <dialog id="pst-search-dialog">
-    
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -106,6 +105,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -113,59 +113,15 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-<div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
-    <span class="fa-solid fa-bars"></span>
-  </button>
-  
-  
-  <div class="col-lg-9 navbar-header-items">
-    
-    
-    <div class="navbar-header-items__end">
-      
-        <div class="navbar-item navbar-persistent--container">
-          
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button>
-        </div>
-      
-      
-    </div>
-    
-  </div>
-  
-  
-    <div class="navbar-persistent--mobile">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button>
-    </div>
-  
-
-  
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
-      <span class="fa-solid fa-outdent"></span>
-    </button>
-  
-</div>
-
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -174,8 +130,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -205,17 +160,21 @@
     
     
     <img src="../_static/logo2.png" class="logo__image only-light" alt="Runge-Kutta Methods - Home"/>
-    <img src="../_static/logo2.png" class="logo__image only-dark pst-js-only" alt="Runge-Kutta Methods - Home"/>
+    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Runge-Kutta Methods - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -270,20 +229,26 @@
 <li class="toctree-l2"><a class="reference internal" href="5.3_BVP_exercises.html">5.4. Boundary value problems exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="6.0_Matrix_decomposition.html">6. Matrix Decomposition Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.1_LU_decomposition.html">6.1. LU decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.2_LUP_decomposition.html">6.2. LU Decomposition with Partial Pivoting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.3_Cholesky_decomposition.html">6.3. Cholesky decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.4_QR_decomposition.html">6.4. QR decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.5_Matrix_decomposition_exercises.html">6.5. Matrix decomposition exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Indirect Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. Jacobi method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. Gauss-Seidel method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of indirect methods</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="7.0_Indirect_methods.html">7. Iterative Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="7.1_Jacobi_method.html">7.1. The Jacobi method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. The Gauss-Seidel method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of iterative methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.5. Indirect methods exercises</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.5. Iterative methods exercises</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A_Exam_questions.html">Examination Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="E_References.html">References</a></li>
 </ul>
 
@@ -293,14 +258,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -383,7 +343,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  class="btn btn-sm btn-fullscreen-button"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -397,19 +357,25 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+  </button>
+`);
+</script>
+
 </div></div>
       
     </div>
@@ -420,19 +386,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Indirect methods exercises</h1>
+    <h1>Iterative methods exercises</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">7.5.1. Solutions</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -442,9 +400,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="indirect-methods-exercises">
-<span id="indirect-methods-exercises-section"></span><h1><span class="section-number">7.5. </span>Indirect methods exercises<a class="headerlink" href="#indirect-methods-exercises" title="Link to this heading">#</a></h1>
-<div class="exercise admonition" id="indirect-methods-ex-jacobi">
+  <section class="tex2jax_ignore mathjax_ignore" id="iterative-methods-exercises">
+<span id="iterative-methods-exercises-section"></span><h1><span class="section-number">7.5. </span>Iterative methods exercises<a class="headerlink" href="#iterative-methods-exercises" title="Link to this heading">#</a></h1>
+<div class="exercise admonition" id="iterative-methods-ex-jacobi">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.1 </span></p>
 <section id="exercise-content">
@@ -459,189 +417,457 @@
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_1\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_2\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_3\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_4\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">3.5000</p></td>
-<td class="text-center"><p class="sd-card-text">2.5000</p></td>
-<td class="text-center"><p class="sd-card-text">-3.0000</p></td>
-<td class="text-center"><p class="sd-card-text">1.0000</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">1.8750</p></td>
-<td class="text-center"><p class="sd-card-text">1.1250</p></td>
-<td class="text-center"><p class="sd-card-text">-2.0000</p></td>
-<td class="text-center"><p class="sd-card-text">1.6667</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p class="sd-card-text">The Jacobi method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(k+1)} &amp;= \frac{1}{4} \left( 14 - x_2^{(k)} + x_3^{(k)} - x_4^{(k)} \right), \\
+    x_2^{(k+1)} &amp;= \frac{1}{4} \left( 10 - x_1^{(k)} + x_3^{(k)} + x_4^{(k)} \right), \\
+    x_3^{(k+1)} &amp;= \frac{1}{5} \left( -15 + x_1^{(k)} + x_2^{(k)} - x_4^{(k)} \right), \\
+    x_4^{(k+1)} &amp;= \frac{1}{3} \left( 3 - x_1^{(k)} + x_2^{(k)} - x_3^{(k)} \right).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)} = \mathbf{0}\)</span>, computing the first iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= \frac{1}{4}(14 - 0 + 0 - 0) = 3.5, \\
+    x_2^{(1)} &amp;= \frac{1}{4}(10 - 0 + 0 + 0) = 2.5, \\
+    x_3^{(1)} &amp;= \frac{1}{5}(-15 + 0 + 0 - 0) = -3, \\
+    x_4^{(1)} &amp;= \frac{1}{3}(3 - 0 + 0 - 0) = 1.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Computing the second iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= \frac{1}{4}(14 - 2.5 + (-3) - 1) = 1.875, \\
+    x_2^{(1)} &amp;= \frac{1}{4}(10 - 3.5 + (-3) + 1) = 1.125, \\
+    x_3^{(1)} &amp;= \frac{1}{5}(-15 + 3.5 + 2.5 - 1) = -2, \\
+    x_4^{(1)} &amp;= \frac{1}{3}(3 - 3.5 + 2.5 - (-3)) = 1.6667.
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-gauss-seidel">
+<div class="exercise admonition" id="iterative-methods-ex-gauss-seidel">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.2 </span></p>
 <section id="exercise-content">
-<p>Repeat <a class="reference internal" href="#indirect-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the Gauss-Seidel method.</p>
+<p>Repeat <a class="reference internal" href="#iterative-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the Gauss-Seidel method.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_1\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_2\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_3\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_4\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">3.5000</p></td>
-<td class="text-center"><p class="sd-card-text">1.6250</p></td>
-<td class="text-center"><p class="sd-card-text">-1.9750</p></td>
-<td class="text-center"><p class="sd-card-text">1.0333</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">2.3417</p></td>
-<td class="text-center"><p class="sd-card-text">1.6792</p></td>
-<td class="text-center"><p class="sd-card-text">-2.4025</p></td>
-<td class="text-center"><p class="sd-card-text">1.5800</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p class="sd-card-text">The Gauss-Seidel method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(k+1)} &amp;= \frac{1}{4} \left( 14 - x_2^{(k)} + x_3^{(k)} - x_4^{(k)} \right), \\
+    x_2^{(k+1)} &amp;= \frac{1}{4} \left( 10 - x_1^{(k+1)} + x_3^{(k)} + x_4^{(k)} \right), \\
+    x_3^{(k+1)} &amp;= \frac{1}{5} \left( -15 + x_1^{(k+1)} + x_2^{(k+1)} - x_4^{(k)} \right), \\
+    x_4^{(k+1)} &amp;= \frac{1}{3} \left( 3 - x_1^{(k+1)} + x_2^{(k+1)} - x_3^{(k+1)} \right).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)} = \mathbf{0}\)</span>, computing the first iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= \frac{1}{4}(14 - 0 + 0 - 0) = 3.5, \\
+    x_2^{(1)} &amp;= \frac{1}{4}(10 - 3.5 + 0 + 0) = 1.625, \\
+    x_3^{(1)} &amp;= \frac{1}{5}(-15 + 3.5 + 1.625 - 0) = -1.975, \\
+    x_4^{(1)} &amp;= \frac{1}{3}(3 - 3.5 + 1.625 - (-1.975)) = 1.0333.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Computing the second iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= \frac{1}{4}(14 - 1.625 + (-1.975) - 1.0333) = 1.875, \\
+    x_2^{(1)} &amp;= \frac{1}{4}(10 - 1.875 + (-1.975) + 1.0333) = 1.6792, \\
+    x_3^{(1)} &amp;= \frac{1}{5}(-15 + 1.875 + 1.6792 - 1.0333) = -2.4025, \\
+    x_4^{(1)} &amp;= \frac{1}{3}(3 - 1.875 + 1.6792 - (-2.4025)) = 1.5800.
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-sor">
+<div class="exercise admonition" id="iterative-methods-ex-sor">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.3 </span></p>
 <section id="exercise-content">
-<p>Repeat <a class="reference internal" href="#indirect-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the SOR method using the optimum value for the relaxation parameter.</p>
+<p>Repeat <a class="reference internal" href="#iterative-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the SOR method using the optimum value for the relaxation parameter.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(\omega = 1.1136\)</span></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_1\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_2\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_3\)</span></p></th>
-<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(x_4\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-<td class="text-center"><p class="sd-card-text">0.0000</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
-<td class="text-center"><p class="sd-card-text">3.8977</p></td>
-<td class="text-center"><p class="sd-card-text">1.6989</p></td>
-<td class="text-center"><p class="sd-card-text">-2.0944</p></td>
-<td class="text-center"><p class="sd-card-text">1.0749</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
-<td class="text-center"><p class="sd-card-text">2.0994</p></td>
-<td class="text-center"><p class="sd-card-text">1.7227</p></td>
-<td class="text-center"><p class="sd-card-text">-2.4910</p></td>
-<td class="text-center"><p class="sd-card-text">1.7763</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p class="sd-card-text">The iteration matrix for the Jacobi method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    T_J &amp;= -D^{-1}(L + U)
+    = \begin{pmatrix}
+        0 &amp; \frac14 &amp; -\frac14 &amp; \frac14 \\
+        \frac14 &amp; 0 &amp; -\frac14 &amp; -\frac14 \\
+        -\frac15 &amp; -\frac15 &amp; 0 &amp; \frac15 \\
+        \frac13 &amp; -\frac13 &amp; \frac13 &amp; 0
+    \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">The eigenvalues of <span class="math notranslate nohighlight">\(T_J\)</span> are</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \lambda_1 &amp;= 0.6054, &amp;
+    \lambda_2 &amp;= -0.5425, &amp;
+    \lambda_3 &amp;= -0.2853, &amp;
+    \lambda_4 &amp;= 0.2224,
+\end{align*} \]</div>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(\rho(T_J) = 0.6054\)</span> and the optimum relaxation parameter</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+    \omega &amp;= 1 + \left( \frac{\rho(T_J)}{1 + \sqrt{1 - \rho(T_J)^2}} \right)^2
+    = 1 + \left( \frac{0.6054}{1 + \sqrt{1 - 0.6054^2}} \right)^2
+    = 1.1136.
+\end{align*} \]</div>
+<p class="sd-card-text">The SOR method for this system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(k+1)} &amp;= -0.1136 x_1^{(k)} + \frac{1.1136}{4} \left( 14 - x_2^{(k)} + x_3^{(k)} - x_4^{(k)} \right), \\
+    x_2^{(k+1)} &amp;= -0.1136 x_1^{(k)} + \frac{1.1136}{4} \left( 10 - x_1^{(k+1)} + x_3^{(k)} + x_4^{(k)} \right), \\
+    x_3^{(k+1)} &amp;= -0.1136 + \frac{1.1136}{5} \left( -15 + x_1^{(k+1)} + x_2^{(k+1)} - x_4^{(k)} \right), \\
+    x_4^{(k+1)} &amp;= -0.1136 + \frac{1.1136}{3} \left( 3 - x_1^{(k+1)} + x_2^{(k+1)} - x_3^{(k+1)} \right).
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Using starting values of <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)} = \mathbf{0}\)</span>, computing the first iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= -0.1136(0) + \frac{1.1136}{4}(14 - 0 + 0 - 0) = 3.8977, \\
+    x_2^{(1)} &amp;= -0.1136(0) + \frac{1.1136}{4}(10 - 3.8977 + 0 + 0) = 1.6989, \\
+    x_3^{(1)} &amp;= -0.1136(0) + \frac{1.1136}{5}(-15 + 3.8977 + 1.6989 - 0) = -2.0944, \\
+    x_4^{(1)} &amp;= -0.1136(0) + \frac{1.1136}{3}(3 - 3.8977 + 1.6989 - (-2.0944)) = 1.0749.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Computing the second iteration</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+    x_1^{(1)} &amp;= -0.1136(3.8977) + \frac{1.1136}{4}(14 - 1.6989 + (-2.0944) - 1.0749) = 2.0994, \\
+    x_2^{(1)} &amp;= -0.1136(1.6989) + \frac{1.1136}{4}(10 - 2.0994 + (-2.0944) + 1.0749) = 1.7227, \\
+    x_3^{(1)} &amp;= -0.1136(-2.0944) + \frac{1.1136}{5}(-15 + 2.0994 + 1.7227 - 1.0749) = -2.4910, \\
+    x_4^{(1)} &amp;= -0.1136(1.7763) + \frac{1.1136}{3}(3 - 2.0994 + 1.7227 - (-2.4910)) = 1.0749.
+\end{align*} \end{split}\]</div>
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-convergence">
+<div class="exercise admonition" id="iterative-methods-ex-convergence">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.4 </span></p>
 <section id="exercise-content">
-<p>Calculate the spectral radii for the three methods used to compute the solution to the system from <a class="reference internal" href="#indirect-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a>. Which of the three methods would you expect to converge to a solution the fastest?</p>
+<p>Compute the spectral radii for the three methods used to compute the solution to the system from <a class="reference internal" href="#iterative-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a>. Which of the three methods would you expect to converge to a solution the fastest?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The spectral radii of the iteration matrices for the three methods are</p>
+<p class="sd-card-text">The iteration matrices for the three methods applied to this system are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  T_J &amp;= -D^{-1}(L + U) = 
+  \begin{pmatrix}
+    0 &amp; \frac14 &amp; -\frac14 &amp; \frac14 \\
+    \frac14 &amp; 0 &amp; -\frac14 &amp; -\frac14 \\
+    -\frac15 &amp; -\frac15 &amp; 0 &amp; \frac15 \\
+    \frac13 &amp; -\frac33 &amp; \frac13 &amp; 0
+  \end{pmatrix}, \\
+  T_{GS} &amp;= -(L + D)^{-1}U = 
+  \begin{pmatrix}
+    0 &amp; -\frac14 &amp; \frac14 &amp; -\frac14 \\
+    0 &amp; \frac{1}{16} &amp; \frac{3}{16} &amp; \frac{5}{16} \\
+    0 &amp; -\frac{3}{80} &amp; \frac{7}{80} &amp; -\frac{3}{16} \\
+    0 &amp; \frac{7}{60} &amp; -\frac{1}{20} &amp; \frac14
+  \end{pmatrix}, \\
+  T_{SOR} &amp;= (D + \omega L)^{-1} ((1 - \omega)D - \omega U) =
+  \begin{pmatrix}
+    -0.1136 &amp; -0.2784 &amp;  0.2784 &amp; -0.2784 \\   
+     0.0316 &amp; -0.0361 &amp;  0.2009 &amp;  0.3559 \\
+    -0.0183 &amp; -0.0700 &amp; -0.0069 &amp; -0.2055 \\
+     0.0607 &amp;  0.1159 &amp; -0.0262 &amp;  0.1981 \\
+  \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">The spectral radius of the iteration matrices are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
   \rho(T_J) &amp;= 0.6054, \\
   \rho(T_{GS}) &amp;= 0.3553, \\
   \rho(T_{SOR}) &amp;= 0.1968.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">So the SOR method should converge the fastest.</p>
+<p class="sd-card-text">So the SOR method should converge the fastest, followed by the Gauss-Seidel method (as expected).</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define linear system</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">],</span> 
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> 
+              <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="p">]])</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mf">1.1136</span>
+
+<span class="c1"># Extract L, D and U matrices from A</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Compute the iteration matrices</span>
+<span class="n">TJ</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="o">@</span> <span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="n">U</span><span class="p">)</span>
+<span class="n">TGS</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="n">D</span><span class="p">)</span> <span class="o">@</span> <span class="n">U</span>
+<span class="n">TSOR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span> <span class="o">@</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span><span class="p">)</span> <span class="o">*</span> <span class="n">D</span> <span class="o">-</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">U</span><span class="p">)</span>
+
+<span class="c1"># Compute the spectral radius</span>
+<span class="n">rho_TJ</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">TJ</span><span class="p">)))</span>
+<span class="n">rho_TGS</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">TGS</span><span class="p">)))</span>
+<span class="n">rho_TSOR</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">TSOR</span><span class="p">)))</span>
+
+<span class="c1"># Output results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TJ = </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">TJ</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TGS = </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">TGS</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TSOR = </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">TSOR</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">rho_TJ = </span><span class="si">{</span><span class="n">rho_TJ</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho_TGS = </span><span class="si">{</span><span class="n">rho_TGS</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho_TSOR = </span><span class="si">{</span><span class="n">rho_TSOR</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define linear system</span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">];</span>
+<span class="n">omega</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.1136</span><span class="p">;</span>
+
+<span class="c">% Extract L, D and U matrices from A</span>
+<span class="n">L</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tril</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diag</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span><span class="n">A</span><span class="p">));</span>
+<span class="n">U</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">triu</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c">% Compute the iteration matrices</span>
+<span class="n">TJ</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="nb">inv</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">U</span><span class="p">);</span>
+<span class="n">TGS</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="nb">inv</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">D</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">U</span><span class="p">;</span>
+<span class="n">TSOR</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">inv</span><span class="p">(</span><span class="n">D</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">omega</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">U</span><span class="p">);</span>
+
+<span class="c">% Compute the spectral radius</span>
+<span class="n">rho_TJ</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">eig</span><span class="p">(</span><span class="n">TJ</span><span class="p">)));</span>
+<span class="n">rho_TGS</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">eig</span><span class="p">(</span><span class="n">TGS</span><span class="p">)));</span>
+<span class="n">rho_TSOR</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">eig</span><span class="p">(</span><span class="n">TSOR</span><span class="p">)));</span>
+
+<span class="c">% Output results</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="n">TJ</span>
+<span class="w">    </span><span class="n">TGS</span>
+<span class="w">    </span><span class="n">TSOR</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;rho_TJ = %0.4f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rho_TJ</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;rho_TGS = %0.4f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rho_TGS</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;rho_TSOR = %0.4f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rho_TSOR</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </details></section>
 </div>
-<div class="exercise admonition" id="indirect-methods-ex-code">
+<div class="exercise admonition" id="iterative-methods-ex-code">
 
 <p class="admonition-title"><span class="caption-number">Exercise 7.5 </span></p>
 <section id="exercise-content">
-<p>Write a program to calculate the solution to the system of linear equations from <a class="reference internal" href="#indirect-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the Jacobi, Gauss-Seidel and SOR methods using a convergence tolerance of <span class="math notranslate nohighlight">\(tol=10^{-6}\)</span>. How many iterations did each of the three methods take to converge to the solution?</p>
+<p>Write a program to calculate the solution to the system of linear equations from <a class="reference internal" href="#iterative-methods-ex-jacobi"><span class="std std-numref">Exercise 7.1</span></a> using the Jacobi, Gauss-Seidel and SOR methods using a convergence tolerance of <span class="math notranslate nohighlight">\(tol=10^{-6}\)</span>. How many iterations did each of the three methods take to converge to the solution?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(\mathbf{x} = (1.93150692,  1.82191783, -2.61643835,  1.83561641)\)</span></p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(x_1 = 1.931507, x_2 = 1.821918, x_3 = -2.616438, x_4 = 1.835616\)</span></p>
 <ul class="simple">
 <li><p class="sd-card-text">Jacobi: 28 iterations</p></li>
 <li><p class="sd-card-text">Gauss-Seidel: 15 iterations</p></li>
 <li><p class="sd-card-text">SOR: 10 iterations</p></li>
 </ul>
-</div>
-</details></section>
-</div>
-<div class="exercise admonition" id="indirect-methods-ex-convergence-2">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<p class="admonition-title"><span class="caption-number">Exercise 7.6 </span></p>
-<section id="exercise-content">
-<p>A linear system has the following coefficient matrix. What is the largest value that <span class="math notranslate nohighlight">\(\alpha\)</span> can be in order for the Jacobi method to be convergent?</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-    A = \begin{pmatrix}
-        2 &amp; 1 \\
-        \alpha  &amp; 2
-    \end{pmatrix}
-\end{align*} \end{split}\]</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(\alpha &lt; \sqrt{2}\)</span></p>
+<span class="k">def</span><span class="w"> </span><span class="nf">jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxiter</span><span class="p">):</span>
+        <span class="n">xold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">sum_</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                    <span class="n">sum_</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">xold</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+            
+        <span class="n">r</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Jacobi method took </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> iterations to converge&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gauss_seidel</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxiter</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">sum_</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                    <span class="n">sum_</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+            
+        <span class="n">r</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Gauss-Seidel method took </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> iterations to converge&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">maxiter</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxiter</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">sum_</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                    <span class="n">sum_</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum_</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+            
+        <span class="n">r</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The SOR method took </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> iterations to converge&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+
+
+ <span class="c1"># Define system</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> 
+              <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># Solve system</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">gauss_seidel</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">omega</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">x1 = </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">0.6f</span><span class="si">}</span><span class="s2">, x2 = </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">0.6f</span><span class="si">}</span><span class="s2">, x3 = </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">0.6f</span><span class="si">}</span><span class="s2">, x4 = </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">0.6f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+MATLAB</label><div class="sd-tab-content docutils">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">jacobi</span><span class="p">(</span>A, b, tol<span class="p">)</span>
+
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">maxiter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="n">xold</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="nb">i</span>
+<span class="w">                </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sum_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">xold</span><span class="p">(</span><span class="nb">j</span><span class="p">);</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sum_</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="k">end</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;The Jacobi method took %i iterations to converge&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span>
+
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">gauss_seidel</span><span class="p">(</span>A, b, tol<span class="p">)</span>
+
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">maxiter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="nb">i</span>
+<span class="w">                </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sum_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">j</span><span class="p">);</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sum_</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;The Gauss-Seidel method took %i iterations to converge&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span>
+
+<span class="k">end</span>
+
+<span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">sor</span><span class="p">(</span>A, b, omega, tol<span class="p">)</span>
+
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">n</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="nb">i</span>
+<span class="w">                </span><span class="n">sum_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sum_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">j</span><span class="p">);</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">omega</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sum_</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">norm</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">inf</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;The SOR method took %i iterations to converge&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span>
+
+<span class="k">end</span>
+
+<span class="c">% Define system</span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="w">      </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="w">     </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="w">      </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">];</span>
+<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">10</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span>
+
+<span class="c">% Solve system</span>
+<span class="n">tol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span>
+<span class="n">omega</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.1136</span><span class="p">;</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">tol</span><span class="p">);</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gauss_seidel</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">tol</span><span class="p">);</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">omega</span><span class="p">,</span><span class="w"> </span><span class="n">tol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </details></section>
 </div>
-<hr class="docutils" />
-<section id="solutions">
-<h2><span class="section-number">7.5.1. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
-<p>The solutions to these exercises downloaded below:</p>
-<ul class="simple">
-<li><p><a class="reference download internal" download="" href="../_downloads/084b4c56d6794c63cf874b8663661023/chapter7_exercises.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code></a></p></li>
-<li><p><a class="reference download internal" download="" href="../_downloads/828ee047700e6480d1661c8ff73b3dc9/chapter7_exercises.mlx"><code class="xref download docutils literal notranslate"><span class="pre">MATLAB</span> <span class="pre">Live</span> <span class="pre">Script</span></code></a></p></li>
-</ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -684,11 +910,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="E_References.html"
+       href="A_Exam_questions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">References</p>
+        <p class="prev-next-title">Examination Questions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -698,23 +924,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item"><div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">7.5.1. Solutions</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
@@ -759,8 +968,8 @@ By Dr Jon Shiach
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
