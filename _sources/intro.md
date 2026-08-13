@@ -1,6 +1,6 @@
 # Introduction
 
-These are the lecture notes that accompany the teaching of Runge-Kutta methods and computational linear algebra on the third year of the Mathematics course at the Manchester Metropolitan university. They can be accessed through a standard web browser on a computer or mobile device. Whilst these notes cover all of the material necessary for students to successfully pass the unit, it is advisable to seek out other sources of information either on the internet or textbooks. Mathematical notation can differ between authors and these notes have been written to use notation that is most commonly found online.
+These are the lecture notes that accompany the teaching of Runge-Kutta methods and computational linear algebra on the third year of the Mathematics course at the Manchester Metropolitan university. They can be accessed through a standard web browser on a computer or mobile device. Whilst these notes cover all of the material necessary for students to successfully pass the module, it is advisable to seek out other sources of information either on the internet or textbooks. Mathematical notation can differ between authors and these notes have been written to use notation that is most commonly found online.
 
 Students are advised to read through the relevant section of the lecture notes prior to attending the lecture. Do not worry about trying to understand everything when you first read through them. Reading mathematics is not like reading a novel, it often requires repeated reading of a passage before you fully grasp the concepts that are being explained. In the lectures we will explain the various topics and provide more insight than what is written in the notes.
 
@@ -14,17 +14,17 @@ The teaching schedule for the Runge-Kutta methods part of the module is shown be
 
 | Week | Date (w/c) | Lecture | Lab |
 |:--:|:--:|:--|:--|
-|  1 | 29/09/2025 | [Ordinary Differential Equations (ODE)](ode-chapter) | {numref}`ch1-ex1` to {numref}`ch1-ex3` |
-|  2 |  06/10/2025 | [Explicit Runge-Kutta Methods (ERK)](erk-chapter) | {numref}`ch2-ex-eq-to-butcher` to {numref}`ch2-ex-rk4-derivation` |
-|  3 | 13/10/2025 | [Explicit Runge-Kutta Methods (ERK) cont](applying-erk-methods-to-solve-ivps-section) | {numref}`ch2-ex-rk2-hand-calc` to {numref}`ch2-ex-rk23` |
-|  4 | 20/10/2025 | [Implicit Runge-Kutta Methods (IRK)](irk-chapter) |{numref}`ch3-ex-radauIA-order` to {numref}`ch3-ex-stiff` |
-|  5 | 27/10/2025 | [Stability](stability-chapter) | {numref}`ch4-ex-erk-stability-function` to {numref}`ch4-ex-stiffness-ratio` |
-|  6 | 03/11/2025 | [Boundary Value Problems (BVP)](bvp-chapter) | {numref}`ch2-ex-bvp-hand-calc` to {numref}`ch5-ex-python` |
-|  7 | 10/11/2025 | [Matrix Decomposition Methods](matrix-decomposition-chapter) | {numref}`ex-lu` to {numref}`ex-cholesky` |
-|  8 | 17/11/2025 | [Matrix Decomposition Methods cont.](qr-section) | {numref}`ex-gramschmidt` to {numref}`ex-householder` |
-| 9  | 24/11/2025 | [Iterative methods](iterative-methods-chapter) | {numref}`iterative-methods-ex-jacobi` to {numref}`iterative-methods-ex-convergence-2` |
-| 10 | 01/12/2025 | **Exam preparation** |
-| 11 | 08/12/2025 | **Exam preparation** |
+|  1 | 05/10/2026 | [Ordinary Differential Equations (ODE)](ode-chapter) | {numref}`ch1-ex1` to {numref}`ch1-ex3` |
+|  2 |  12/10/2026 | [Explicit Runge-Kutta Methods (ERK)](erk-chapter) | {numref}`ch2-ex-eq-to-butcher` to {numref}`ch2-ex-rk4-derivation` |
+|  3 | 19/10/2026 | [Explicit Runge-Kutta Methods (ERK) cont](applying-erk-methods-to-solve-ivps-section) | {numref}`ch2-ex-rk2-hand-calc` to {numref}`ch2-ex-rk23` |
+|  4 | 26/10/2026 | [Implicit Runge-Kutta Methods (IRK)](irk-chapter) |{numref}`ch3-ex-radauIA-order` to {numref}`ch3-ex-stiff` |
+|  5 | 02/11/2026 | [Stability](stability-chapter) | {numref}`ch4-ex-erk-stability-function` to {numref}`ch4-ex-stiffness-ratio` |
+|  6 | 09/11/2026 | [Boundary Value Problems (BVP)](bvp-chapter) | {numref}`ch2-ex-bvp-hand-calc` to {numref}`ch5-ex-python` |
+|  7 | 16/11/2026 | [Matrix Decomposition Methods](matrix-decomposition-chapter) | {numref}`ex-lu` to {numref}`ex-cholesky` |
+|  8 | 23/11/2026 | [Matrix Decomposition Methods cont.](qr-section) | {numref}`ex-gramschmidt` to {numref}`ex-householder` |
+| 9  | 30/11/2026 | [Iterative methods](iterative-methods-chapter) | {numref}`iterative-methods-ex-jacobi` to {numref}`iterative-methods-ex-convergence-2` |
+| 10 | 07/12/2026 | **Exam preparation** |
+| 11 | 14/12/2026 | **Exam preparation** |
 
 ## Contact information
 
