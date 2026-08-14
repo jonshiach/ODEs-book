@@ -36,8 +36,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -622,7 +622,7 @@
 \[ \mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} + \Delta \mathbf{x}. \]</div>
 <p>This process is repeated until</p>
 <div class="math notranslate nohighlight">
-\[ \| \Delta \mathbf{x} \| &lt; tol.\]</div>
+\[ \| \Delta \mathbf{x} \| &lt; \text{tol}.\]</div>
 </section>
 <section id="computing-the-stage-values-using-newton-s-method">
 <h3><span class="section-number">3.3.1.3. </span>Computing the stage values using Newton’s method<a class="headerlink" href="#computing-the-stage-values-using-newton-s-method" title="Link to this heading">#</a></h3>
@@ -630,13 +630,11 @@
 <div class="math notranslate nohighlight">
 \[\begin{split} \mathbf{Y} = \begin{pmatrix} \mathbf{Y}_1 \\ \vdots \\ \mathbf{Y}_2 \end{pmatrix}, \end{split}\]</div>
 <p>contains <span class="math notranslate nohighlight">\(sN\)</span> unknowns. We rewrite the stage equations <a class="reference internal" href="#equation-irk-systems-yi-matrix-form-2">(3.12)</a> as</p>
-<div class="math notranslate nohighlight" id="equation-g-jacobian-1">
-<span class="eqno">(3.14)<a class="headerlink" href="#equation-g-jacobian-1" title="Link to this equation">#</a></span>\[ G(\mathbf{Y}) = \mathbf{Y} - \mathbf{e} \otimes \mathbf{y}_n - h(A \otimes I_N) F(\mathbf{Y}),\]</div>
-<p>The Jacobian matrix is</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align*}
-    J_G &amp;= \frac{\partial G}{\partial \mathbf{Y}} = I_{sN} - h(A \otimes I_N) F'(\mathbf{Y}),
-\end{align*} \]</div>
+\[ G(\mathbf{Y}) = \mathbf{Y} - \mathbf{e} \otimes \mathbf{y}_n - h(A \otimes I_N) F(\mathbf{Y}),\]</div>
+<p>The Jacobian matrix for <span class="math notranslate nohighlight">\(G(\mathbf{Y})\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-g-jacobian-1">
+<span class="eqno">(3.14)<a class="headerlink" href="#equation-g-jacobian-1" title="Link to this equation">#</a></span>\[ J_G = \frac{\partial G}{\partial \mathbf{Y}} = I_{sN} - h(A \otimes I_N) F'(\mathbf{Y}), \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} F'(\mathbf{Y}) = \begin{pmatrix}
@@ -723,7 +721,7 @@
 <li><p><span class="math notranslate nohighlight">\(G(\mathbf{Y}) \gets \mathbf{Y} - \mathbf{e} \otimes \mathbf{y}_n - h (A \otimes I_N) F(\mathbf{Y})\)</span></p></li>
 <li><p>Solve the linear system <span class="math notranslate nohighlight">\(J_G \Delta \mathbf{Y} = -G(\mathbf{Y})\)</span> for <span class="math notranslate nohighlight">\(\Delta \mathbf{Y}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{Y} \gets \mathbf{Y} + \Delta \mathbf{Y}\)</span></p></li>
-<li><p>If <span class="math notranslate nohighlight">\(\| \Delta \mathbf{Y} \| &lt; tol\)</span></p>
+<li><p>If <span class="math notranslate nohighlight">\(\| \Delta \mathbf{Y} \| &lt; \text{tol}\)</span></p>
 <ul>
 <li><p>break</p></li>
 </ul>
@@ -745,7 +743,7 @@
 <div class="math notranslate nohighlight">
 \[ \ddot{y} - \mu (1 - y^2) \dot{y} + y = 0, \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu\)</span> is a scalar parameter that governs the strength of the damping.</p>
-<p>Use the Radau IA method to compute the solution to the van der Pol oscillator over the first 50 seconds where <span class="math notranslate nohighlight">\(y(0) = 2\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span> using a step length of <span class="math notranslate nohighlight">\(h = 0.1\)</span> and a convergence tolerance of <span class="math notranslate nohighlight">\(tol = 10^{-4}\)</span> for Newton’s method.</p>
+<p>Use the Radau IA method to compute the solution to the van der Pol oscillator over the first 50 seconds where <span class="math notranslate nohighlight">\(y(0) = 2\)</span> and <span class="math notranslate nohighlight">\(\mu = 10\)</span> using a step length of <span class="math notranslate nohighlight">\(h = 0.1\)</span> and a convergence tolerance of <span class="math notranslate nohighlight">\(\text{tol} = 10^{-4}\)</span> for Newton’s method.</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
 <p>We need to rewrite the second-order ODE as a system of first-order ODEs. Let <span class="math notranslate nohighlight">\(y_1 = y\)</span> and <span class="math notranslate nohighlight">\(y_2 = \dot{y}_1\)</span> then</p>
