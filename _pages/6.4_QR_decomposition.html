@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -242,7 +242,7 @@
 <li class="toctree-l2"><a class="reference internal" href="7.2_Gauss_Seidel_method.html">7.2. The Gauss-Seidel method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.3_Convergence_of_indirect_methods.html">7.3. Convergence of iterative methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.4_SOR_method.html">7.4. The Successive Over Relaxation (SOR) method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.5_Indirect_methods_exercises.html">7.5. Iterative methods exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.5_Iterative_methods_exercises.html">7.5. Iterative methods exercises</a></li>
 </ul>
 </details></li>
 </ul>
@@ -482,7 +482,7 @@ document.write(`
 \end{pmatrix} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{a}_j = (a_{1j}, a_{2j}, a_{3j})^\mathsf{T}\)</span>. To calculate the orthogonal <span class="math notranslate nohighlight">\(Q\)</span> matrix we need a set of vectors <span class="math notranslate nohighlight">\(\{\mathbf{q}_1, \mathbf{q}_2, \mathbf{q}_3\}\)</span> that span the same space as <span class="math notranslate nohighlight">\(\{\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\}\)</span> but are orthogonal to each other. One way to do this is using the <strong>Gram-Schmidt process</strong>. Consider the diagram shown in <a class="reference internal" href="#gram-schmidt-figure"><span class="std std-numref">Fig. 6.1</span></a> that shows the first two non-orthogonal vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>.</p>
 <figure class="align-default" id="gram-schmidt-figure">
-<a class="reference internal image-reference" href="../_images/gram_schmidt.svg"><img alt="../_images/gram_schmidt.svg" src="../_images/gram_schmidt.svg" style="width: 400px;" />
+<a class="reference internal image-reference" href="../_images/06_gram_schmidt.svg"><img alt="../_images/06_gram_schmidt.svg" src="../_images/06_gram_schmidt.svg" style="width: 400px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">The Gram-Schmidt process</span><a class="headerlink" href="#gram-schmidt-figure" title="Link to this image">#</a></p>
@@ -666,7 +666,7 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is a non-zero column vector. The matrix <span class="math notranslate nohighlight">\(H\)</span> is symmetric and orthogonal.</p>
 </section>
 </div><figure class="align-default" id="householder-1-figure">
-<a class="reference internal image-reference" href="../_images/householder_1.svg"><img alt="../_images/householder_1.svg" src="../_images/householder_1.svg" style="width: 350px;" />
+<a class="reference internal image-reference" href="../_images/06_householder_1.svg"><img alt="../_images/06_householder_1.svg" src="../_images/06_householder_1.svg" style="width: 350px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane normal to the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Link to this image">#</a></p>
@@ -677,7 +677,7 @@ document.write(`
 \[ \mathbf{v} = \mathbf{x} - \|\mathbf{x}\|\mathbf{e}_1. \]</div>
 <p>If the magnitude of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is close to being parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> will be close to <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> and the calculation of <a class="reference internal" href="#equation-householder-equation">(6.6)</a> will involve the division by a number close to zero. To overcome this we use a Householder transformation to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead of <span class="math notranslate nohighlight">\(+\mathbf{e}_1\)</span>.</p>
 <figure class="align-default" id="householder-2-figure">
-<a class="reference internal image-reference" href="../_images/householder_2.svg"><img alt="../_images/householder_2.svg" src="../_images/householder_2.svg" style="width: 450px;" />
+<a class="reference internal image-reference" href="../_images/06_householder_2.svg"><img alt="../_images/06_householder_2.svg" src="../_images/06_householder_2.svg" style="width: 450px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-2-figure" title="Link to this image">#</a></p>
