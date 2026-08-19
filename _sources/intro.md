@@ -22,7 +22,7 @@ The teaching schedule for the Runge-Kutta methods part of the module is shown be
 |  6 | 09/11/2026 | [Boundary Value Problems (BVP)](bvp-chapter) | {numref}`ch2-ex-bvp-hand-calc` to {numref}`ch5-ex-python` |
 |  7 | 16/11/2026 | [Matrix Decomposition Methods](matrix-decomposition-chapter) | {numref}`ex-lu` to {numref}`ex-cholesky` |
 |  8 | 23/11/2026 | [Matrix Decomposition Methods cont.](qr-section) | {numref}`ex-gramschmidt` to {numref}`ex-householder` |
-| 9  | 30/11/2026 | [Iterative methods](iterative-methods-chapter) | {numref}`iterative-methods-ex-jacobi` to {numref}`iterative-methods-ex-convergence-2` |
+| 9  | 30/11/2026 | [Iterative methods](iterative-methods-chapter) | {numref}`iterative-methods-ex-jacobi` to {numref}`iterative-methods-ex-code` |
 | 10 | 07/12/2026 | **Exam preparation** |
 | 11 | 14/12/2026 | **Exam preparation** |
 
