@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -304,7 +304,7 @@
       
       
       
-      <li><a href="../_sources/_pages/A_Exam_questions.ipynb" target="_blank"
+      <li><a href="../_sources/_pages/A_Exam_questions.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +314,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -400,7 +400,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-runge-kutta-methods">Explicit Runge-Kutta Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-runge-kutta-methods">Implicit Runge-Kutta Methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-decomposition-methods">Matrix Decomposition Methods</a></li>
 </ul>
             </nav>
         </div>
@@ -414,42 +413,38 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="examination-questions">
 <h1>Examination Questions<a class="headerlink" href="#examination-questions" title="Link to this heading">#</a></h1>
-<p>The following are examination questions from previous examinations for this module. Students are advised to work through these in preparation for the examination.</p>
+<p>The following are example examination questions that are similar in style and scope to the ones that you can expect to see in your examination. You are advised to work through these in preparation for the examination. The examination takes place in a PC lab where you will be permitted access to Python (Jupyter Notebook or Spyder), MATLAB and Excel. You are advised to familiarise yourself with one or more to help you answer the questions.</p>
 <hr class="docutils" />
 <section id="explicit-runge-kutta-methods">
 <h2>Explicit Runge-Kutta Methods<a class="headerlink" href="#explicit-runge-kutta-methods" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p>(a) An explicit Runge-Kutta method is expressed using the Butcher tableau below.</p>
+<div class="exercise admonition" id="erk-exam-1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1 </span> (Exam Question 1)</p>
+<section id="exercise-content">
+<p>(a) An explicit Runge-Kutta method is expressed using the Butcher tableau below.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
    \begin{array}{c|cccc}
-     0 &amp; 0 \\
-     \frac{1}{4} &amp; \frac{1}{4} \\
-     \frac{1}{2} &amp; 0 &amp; \frac{1}{2} \\
-     1 &amp; 1 &amp; -2 &amp; 2 \\ \hline
-     &amp; \frac{1}{6} &amp; 0 &amp; \frac{2}{3} &amp; \frac{1}{6}
+   0 &amp; 0 \\
+   \frac{1}{4} &amp; \frac{1}{4} \\
+   \frac{1}{2} &amp; 0 &amp; \frac{1}{2} \\
+   1 &amp; 1 &amp; -2 &amp; 2 \\ \hline
+   &amp; \frac{1}{6} &amp; 0 &amp; \frac{2}{3} &amp; \frac{1}{6}
    \end{array}
-   \end{align*} \end{split}\]</div>
+\end{align*} \end{split}\]</div>
 <p>Use this Runge-Kutta method with a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span> to solve the following IVP</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-     y' &amp;= t - 2 y, &amp; t &amp;\in [0, 1], &amp; y(0) &amp;= 2.  
-   \end{align*} \]</div>
+   y' &amp;= t - 2 y, &amp; t &amp;\in [0, 1], &amp; y(0) &amp;= 2.  
+\end{align*} \]</div>
 <div style="text-align: right">[10 marks]</div>
-<p>(b) The exact solution to the IVP from part (a) is <span class="math notranslate nohighlight">\(y(t) = \frac{1}{9}(3t + 19 e^{-3t} - 1)\)</span>. Calculate the global truncation error for the numerical solution to the IVP for <span class="math notranslate nohighlight">\(y(1)\)</span> using the Runge-Kutta method from part (a) with <span class="math notranslate nohighlight">\(h = 0.2\)</span> and <span class="math notranslate nohighlight">\(h = 0.1\)</span>. Use your global truncation errors to estimate the order accuracy of this Runge-Kutta method.</p>
-<div style="text-align: right">[10 marks]</div>
-<p>(c) Explain in words how step size control is implemented within a Runge-Kutta method.</p>
-<div style="text-align: right">[5 marks]</div>
-</li>
-</ol>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">(a)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-  \mathbf{t} &amp;= (0, 0.2, 0.4, 0.6, 0.8, 1), \\
-  \mathbf{y} &amp;= (2, 1.3584, 0.9612, 0.7279, 0.6045, 0.5547).
+   \mathbf{t} &amp;= (0, 0.2, 0.4, 0.6, 0.8, 1), \\
+   \mathbf{y} &amp;= (2, 1.3584, 0.9612, 0.7279, 0.6045, 0.5547).
 \end{align*} \end{split}\]</div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -458,7 +453,7 @@ Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
-    <span class="k">return</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span>
+<span class="k">return</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span>
 
 <span class="n">h</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">nsteps</span> <span class="o">=</span> <span class="mi">5</span>
@@ -467,12 +462,12 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
-    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
-    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
-    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k2</span><span class="p">)</span>
-    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k3</span><span class="p">))</span>
+<span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+<span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+<span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k2</span><span class="p">)</span>
+<span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k3</span><span class="p">))</span>
 
-    <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span>
+<span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
@@ -492,12 +487,12 @@ MATLAB</label><div class="sd-tab-content docutils">
 <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 
 <span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">nsteps</span>
-<span class="w">    </span><span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
-<span class="w">    </span><span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">k3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">);</span>
-<span class="w">    </span><span class="n">k4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="p">));</span>
+<span class="n">k1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="n">k2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k1</span><span class="p">);</span>
+<span class="n">k3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="p">);</span>
+<span class="n">k4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="p">));</span>
 
-<span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k4</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k4</span><span class="p">);</span>
 <span class="k">end</span>
 
 <span class="n">t</span>
@@ -507,212 +502,529 @@ MATLAB</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <p class="sd-card-text">Note: solutions may also be calculated using a pen and calculator or using Excel.</p>
-<p class="sd-card-text">(b) The exact solution is <span class="math notranslate nohighlight">\(y(1) = 0.554504\)</span> and numerical solutions are <span class="math notranslate nohighlight">\(y(1, h= 0.2) = 0.554686\)</span> and <span class="math notranslate nohighlight">\(y(1,h = 0.1) = 0.554514\)</span> so the GTE are</p>
+</div>
+</details><p>(b) The exact solution to the IVP from part (a) is <span class="math notranslate nohighlight">\(y(t) = \frac{1}{9}(3t + 19 e^{-3t} - 1)\)</span>. Calculate the global truncation error for the numerical solution to the IVP for <span class="math notranslate nohighlight">\(y(1)\)</span> using the Runge-Kutta method from part (a) with <span class="math notranslate nohighlight">\(h = 0.2\)</span> and <span class="math notranslate nohighlight">\(h = 0.1\)</span>. Use your global truncation errors to estimate the order accuracy of this Runge-Kutta method.</p>
+<div style="text-align: right">[10 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The exact solution is <span class="math notranslate nohighlight">\(y(1) = 0.554504\)</span> and numerical solutions are <span class="math notranslate nohighlight">\(y(1, h= 0.2) = 0.554686\)</span> and <span class="math notranslate nohighlight">\(y(1,h = 0.1) = 0.554514\)</span> so the GTE are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-  E(h = 0.2) = |0.554504 - 0.554686| = 1.82 \times 10^{-4}, \\
-  E(h = 0.1) = |0.554504 - 0.554515| = 9.60 \times 10^{-5},
+   E(h = 0.2) = |0.554504 - 0.554686| = 1.82 \times 10^{-4}, \\
+   E(h = 0.1) = |0.554504 - 0.554515| = 9.60 \times 10^{-5},
 \end{align*} \end{split}\]</div>
 <p class="sd-card-text">therefore</p>
 <div class="math notranslate nohighlight">
 \[ \text{order} \approx \frac{\log \left( \dfrac{E(h1)}{E(h2)}\right)}{\log \left( \dfrac{h_1}{h_2}\right)} = \frac{\log \left( \dfrac{1.82 \times 10^{-4}}{9.60 \times 10^{-5}} \right)}{\log \left( \dfrac{0.2}{0.1} \right)} = 4.24. \]</div>
 </div>
+</details><p>(c) Explain in words how step size control is implemented within a Runge-Kutta method.</p>
+<div style="text-align: right">[5 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+</div>
 </details></section>
+</div>
+<div class="exercise admonition" id="erk-exam-2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 2 </span></p>
+<section id="exercise-content">
+<p>(a) The order conditions for a fourth-order explicit Runge-Kutta method are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
+b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac12, \\
+b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac13, \\
+b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &amp;= \frac14, \\
+b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &amp;= \frac{1}{6}, \\
+b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &amp;= \frac18, \\
+b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &amp;= \frac{1}{12}, \\
+b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}, \\
+c_2 &amp;= a_{21}, \\
+c_3 &amp;= a_{31} + a_{32}, \\
+c_4 &amp;= a_{41} + a_{42} + a_{43}.
+\end{align*} \end{split}\]</div>
+<p>Derive a fourth-order explicit Runge-Kutta method with <span class="math notranslate nohighlight">\(c_2 = \frac13\)</span>, <span class="math notranslate nohighlight">\(c_3 = \frac23\)</span> and <span class="math notranslate nohighlight">\(c_4=1\)</span>. Write down your method in the form of a Butcher tableau.</p>
+<div style="text-align: right">[10 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|cccc}
+  0 &amp; 0 \\
+  \frac13 &amp; \frac13 \\
+  \frac23 &amp; -\frac13 &amp; 1 \\
+  1 &amp; 1 &amp; -1 &amp; 1 \\
+  \hline
+  &amp; \frac18 &amp; \frac38 &amp; \frac38 &amp; \frac18
+\end{array} \end{split}\]</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span><span class="p">,</span> <span class="n">a43</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;b1, b2, b3, b4, a21, a31, a32, a41, a42, a43&quot;</span><span class="p">)</span>
+
+<span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c4</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">c3</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">c4</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">eq7</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a42</span> <span class="o">*</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">c3</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">eq8</span> <span class="o">=</span> <span class="n">b4</span> <span class="o">*</span> <span class="n">a43</span> <span class="o">*</span> <span class="n">a32</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">eq9</span> <span class="o">=</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">a21</span>
+<span class="n">eq10</span> <span class="o">=</span> <span class="n">c3</span> <span class="o">-</span> <span class="n">a31</span> <span class="o">-</span> <span class="n">a32</span>
+<span class="n">eq11</span> <span class="o">=</span> <span class="n">c4</span> <span class="o">-</span> <span class="n">a41</span> <span class="o">-</span> <span class="n">a42</span> <span class="o">-</span> <span class="n">a43</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">,</span> <span class="n">eq7</span><span class="p">,</span> <span class="n">eq8</span><span class="p">,</span> <span class="n">eq9</span><span class="p">,</span> <span class="n">eq10</span><span class="p">,</span> <span class="n">eq11</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</details><p>(b)   Use your method from part (a) to solve the following initial value problem using a step length of <span class="math notranslate nohighlight">\(h = 0.1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ y' = -3ty, \qquad t \in [0, \tfrac12], \qquad y(0) = 1. \]</div>
+<p>Present the solution as a table of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values correct to 6 decimal places.</p>
+<div style="text-align: right">[10 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.0</p></td>
+<td class="text-center"><p class="sd-card-text">1.000000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.1</p></td>
+<td class="text-center"><p class="sd-card-text">0.985112</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.2</p></td>
+<td class="text-center"><p class="sd-card-text">0.941764</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.3</p></td>
+<td class="text-center"><p class="sd-card-text">0.873714</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0.4</p></td>
+<td class="text-center"><p class="sd-card-text">0.786625</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">0.5</p></td>
+<td class="text-center"><p class="sd-card-text">0.687286</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+
+    <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
+        <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">k1</span><span class="p">)</span>
+        <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="n">k2</span><span class="p">))</span>
+        <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">-</span> <span class="n">k2</span> <span class="o">+</span> <span class="n">k3</span><span class="p">))</span>
+
+        <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">8</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="o">-</span><span class="mi">3</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">y</span>
+
+
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">rk4</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t = </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</details><p>(c)   The exact solution of the IVP from part (b) is <span class="math notranslate nohighlight">\(y = e^{-(3t^2)/2}\)</span>. Compute the global truncation errors for your Runge-Kutta method for <span class="math notranslate nohighlight">\(y(\frac12)\)</span> with step lengths <span class="math notranslate nohighlight">\(h=0.1\)</span> and <span class="math notranslate nohighlight">\(h = 0.05\)</span>. Use the global truncation errors to estimate the order of accuracy of your Runge-Kutta method from part (a).</p>
+<div style="text-align: right">[5 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The numerical solutions using the two step lengths are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  y_5(h = 0.1) &amp;= 3.47 \times 10^{-6}, \\
+  y_5(h = 0.05) &amp;= 1.97 \times 10^{-7},
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">so the order estimate is</p>
+<div class="math notranslate nohighlight">
+\[ \text{order} = \frac{\log \left( \frac{3.47 \times 10^{-6}}{1.97 \times 10^{-7}} \right)}{ \log \left( \frac{0.1}{0.05} \right)} = 4.14.\]</div>
+<div class="sd-tab-set docutils">
+</div>
+</div>
+</details></section>
+</div>
+</section>
 <hr class="docutils" />
 <section id="implicit-runge-kutta-methods">
 <h2>Implicit Runge-Kutta Methods<a class="headerlink" href="#implicit-runge-kutta-methods" title="Link to this heading">#</a></h2>
-<ol class="arabic" start="2">
-<li><p>(a) The <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions for a Runge-Kutta method are</p>
+<div class="exercise admonition" id="irk-exam-1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3 </span></p>
+<section id="exercise-content">
+<p>(a) The <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions for a Runge-Kutta method are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-      B(k):&amp;&amp; \sum_{i=1}^s b_i c_i^{j-1} &amp;= \frac{1}{j}, &amp; j &amp;= 1 \ldots k, \\
-      C(k):&amp;&amp; \sum_{j=1}^s a_{ij}c_j^{\ell - 1} &amp;= \frac{1}{\ell} c_i^\ell, &amp; i &amp;= 1 \ldots s, &amp; \ell &amp;= 1 \ldots k,
-   \end{align*} \end{split}\]</div>
+   B(k):&amp;&amp; \sum_{i=1}^s b_i c_i^{j-1} &amp;= \frac{1}{j}, &amp; j &amp;= 1 \ldots k, \\
+   C(k):&amp;&amp; \sum_{j=1}^s a_{ij}c_j^{\ell - 1} &amp;= \frac{1}{\ell} c_i^\ell, &amp; i &amp;= 1 \ldots s, &amp; \ell &amp;= 1 \ldots k,
+\end{align*} \end{split}\]</div>
 <p>and the <span class="math notranslate nohighlight">\(n\)</span>-order Legendre polynomial is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-      P_n(x) = \sum_{i=0}^n {n \choose i} {n + i \choose i} (x - 1)^i,
-   \end{align*} \]</div>
+   P_n(x) = \sum_{i=0}^n {n \choose i} {n + i \choose i} (x - 1)^i,
+\end{align*} \]</div>
 <p>where <span class="math notranslate nohighlight">\({n \choose i}\)</span> is the Binomial coefficient.</p>
 <p>An <span class="math notranslate nohighlight">\(s\)</span>-stage Radau IIA method has order <span class="math notranslate nohighlight">\(2s - 1\)</span>, the <span class="math notranslate nohighlight">\(c_i\)</span> values are the roots of <span class="math notranslate nohighlight">\(P_s(x) - P_{s-1}(x)\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> coefficients are chosen to satisfy the <span class="math notranslate nohighlight">\(B(2s)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions respectively.</p>
 <p>Derive a third-order Radau IIA method expressing your solution as a Butcher tableau.</p>
 <div style="text-align: right">[10 marks]</div>
-<p>(b) A 2-stage SDIRK method is given below</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-      \begin{array}{c|cc}
-        \frac{1}{8} &amp; \frac{1}{8} &amp; 0 \\
-        \frac{7}{8} &amp; \frac{3}{4} &amp; \frac{1}{8} \\ \hline
-        &amp; \frac{1}{2} &amp; \frac{1}{2}
-      \end{array}
-    \end{align*} \end{split}\]</div>
-<p>Write the stability function of this method and determine whether it is A-stable or not. You may find the following formulae useful:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-      R(z) &amp;= \frac{\det(I - zA + z\mathbf{eb}^\mathsf{T})}{\det(I - zA)}, \\
-      E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2.
-    \end{align*} \end{split}\]</div>
- <div style="text-align: right">[10 marks]</div>
-<p>(c) Explain what is meant by a stiff system of equations. What methods would be most suitable for solving stiff and non-stiff problems?</p>
- <div style="text-align: right">[5 marks]</div>
-</li>
-</ol>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">A third-order Radua IIA method has <span class="math notranslate nohighlight">\(s = 2\)</span> stages. The values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the roots of <span class="math notranslate nohighlight">\(P_2(x) - P_1(x) = 0\)</span></p>
+<p class="sd-card-text">A third-order Radau IIA method has <span class="math notranslate nohighlight">\(s = 2\)</span> stages. The values of <span class="math notranslate nohighlight">\(c_1\)</span> and <span class="math notranslate nohighlight">\(c_2\)</span> are the roots of <span class="math notranslate nohighlight">\(P_2(x) - P_1(x) = 0\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    0 &amp;= P_2(x) - P_1(x) \\
-    &amp;= 1 + {2 \choose 1}{3 \choose 1}(x - 1) + {2 \choose 2}{4 \choose 2}(x - 1)^2 - 1 - {1 \choose 1}{2 \choose 1} (x - 1) \\
-    &amp;= 6x^2 - 8x + 2 \\
-    &amp;= (3x - 1)(x - 1)
+   0 &amp;= P_2(x) - P_1(x) \\
+   &amp;= 1 + {2 \choose 1}{3 \choose 1}(x - 1) + {2 \choose 2}{4 \choose 2}(x - 1)^2 - 1 - {1 \choose 1}{2 \choose 1} (x - 1) \\
+   &amp;= 6x^2 - 8x + 2 \\
+   &amp;= (3x - 1)(x - 1)
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">so <span class="math notranslate nohighlight">\(c_1 = \frac{1}{3}\)</span> and <span class="math notranslate nohighlight">\(c_2 = 1\)</span>. The <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> values satsisfy the <span class="math notranslate nohighlight">\(B(2)\)</span> order conditions</p>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(c_1 = \frac{1}{3}\)</span> and <span class="math notranslate nohighlight">\(c_2 = 1\)</span>. The <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(b_2\)</span> values satisfy the <span class="math notranslate nohighlight">\(B(2)\)</span> order conditions</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    b_1 + b_2 &amp;= 1, \\
-    \frac{1}{3}b_1 + b_2 &amp;= \frac{1}{2},
+   b_1 + b_2 &amp;= 1, \\
+   \frac{1}{3}b_1 + b_2 &amp;= \frac{1}{2},
 \end{align*} \end{split}\]</div>
 <p class="sd-card-text">so <span class="math notranslate nohighlight">\(b_1 = \frac{3}{4}\)</span> and <span class="math notranslate nohighlight">\(b_2 = \frac{1}{4}\)</span>. The <span class="math notranslate nohighlight">\(A\)</span> values satisfy the <span class="math notranslate nohighlight">\(C(1)\)</span> order conditions</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    a_{11} + a_{12} &amp;= \frac{1}{3}, \\
-    a_{21} + a_{22} &amp;= 1, \\
-    \frac{1}{3}a_{11} + a_{12} &amp;= \frac{1}{18}, \\
-    \frac{1}{3}a_{21} + a_{22} &amp;= \frac{1}{2}.
+   a_{11} + a_{12} &amp;= \frac{1}{3}, \\
+   a_{21} + a_{22} &amp;= 1, \\
+   \frac{1}{3}a_{11} + a_{12} &amp;= \frac{1}{18}, \\
+   \frac{1}{3}a_{21} + a_{22} &amp;= \frac{1}{2}.
 \end{align*} \end{split}\]</div>
-<p class="sd-card-text">Substracting the third equation from the first gives <span class="math notranslate nohighlight">\(a_{11} = \frac{5}{12}\)</span> so <span class="math notranslate nohighlight">\(a_{12} = -\frac{1}{12}\)</span>. Subtracting the fourth equation from the second gives <span class="math notranslate nohighlight">\(a_{21} = \frac{3}{4}\)</span> and <span class="math notranslate nohighlight">\(a_{22} = \frac{1}{4}\)</span>. So the Butcher tableau for the third-order Radau IIA method is</p>
+<p class="sd-card-text">Subtracting the third equation from the first gives <span class="math notranslate nohighlight">\(a_{11} = \frac{5}{12}\)</span> so <span class="math notranslate nohighlight">\(a_{12} = -\frac{1}{12}\)</span>. Subtracting the fourth equation from the second gives <span class="math notranslate nohighlight">\(a_{21} = \frac{3}{4}\)</span> and <span class="math notranslate nohighlight">\(a_{22} = \frac{1}{4}\)</span>. So the Butcher tableau for the third-order Radau IIA method is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cc}
-    \frac{1}{3} &amp; \frac{5}{12} &amp; -\frac{1}{12} \\
-    1 &amp; \frac{3}{4} &amp; \frac{1}{4} \\
-    \hline
-    &amp; \frac{3}{4} &amp; \frac{1}{4}
+   \frac{1}{3} &amp; \frac{5}{12} &amp; -\frac{1}{12} \\
+   1 &amp; \frac{3}{4} &amp; \frac{1}{4} \\
+   \hline
+   &amp; \frac{3}{4} &amp; \frac{1}{4}
 \end{array} \end{split}\]</div>
-<p class="sd-card-text">(b) The stability function for this DIRK method is</p>
+</div>
+</details><p>(b) A 2-stage SDIRK method is given below</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    R(z) &amp;= \frac{\det
-        \left(
-            \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
-            \begin{pmatrix} \frac18 &amp; 0 \\ \frac34 &amp; \frac18 \end{pmatrix} + z
-            \begin{pmatrix} \frac12 &amp; \frac12 \\ \frac12 &amp; \frac12 \end{pmatrix}
-        \right)
-    }{\det
-        \left(
-            \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
-            \begin{pmatrix} \frac18 &amp; 0 \\ \frac34 &amp; \frac18 \end{pmatrix}
-        \right)
-    } \\
-    &amp;= \frac{\det
-        \begin{pmatrix} 1 + \frac{3}{8}z &amp; \frac{1}{2}z \\ -\frac14 z &amp; 1 + \frac{3}{8}z \end{pmatrix}
-    }{\det
-        \begin{pmatrix} 1 - \frac18 z &amp; 0 \\ -\frac34 z &amp; 1 - \frac18 z \end{pmatrix}
-    }
-    = \frac{1 + \frac34 z + \frac{17}{64}z^2}{1 - \frac14 z + \frac{1}{64}z^2}
+   \begin{array}{c|cc}
+      \frac{1}{8} &amp; \frac{1}{8} &amp; 0 \\
+      \frac{7}{8} &amp; \frac{3}{4} &amp; \frac{1}{8} \\ \hline
+      &amp; \frac{1}{2} &amp; \frac{1}{2}
+      \end{array}
+\end{align*} \end{split}\]</div>
+<p>Write the stability function of this method and determine whether it is A-stable or not. You may find the following formulae useful:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+   R(z) &amp;= \frac{\det(I - zA + z\mathbf{eb}^\mathsf{T})}{\det(I - zA)}, \\
+   E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2.
+\end{align*} \end{split}\]</div>
+<div style="text-align: right">[10 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The stability function for this DIRK method is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+   R(z) &amp;= \frac{\det
+   \left(
+   \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
+   \begin{pmatrix} \frac18 &amp; 0 \\ \frac34 &amp; \frac18 \end{pmatrix} + z
+   \begin{pmatrix} \frac12 &amp; \frac12 \\ \frac12 &amp; \frac12 \end{pmatrix}
+   \right)
+   }{\det
+   \left(
+   \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
+   \begin{pmatrix} \frac18 &amp; 0 \\ \frac34 &amp; \frac18 \end{pmatrix}
+   \right)
+   } \\
+   &amp;= \frac{\det
+   \begin{pmatrix} 1 + \frac{3}{8}z &amp; \frac{1}{2}z \\ -\frac14 z &amp; 1 + \frac{3}{8}z \end{pmatrix}
+   }{\det
+   \begin{pmatrix} 1 - \frac18 z &amp; 0 \\ -\frac34 z &amp; 1 - \frac18 z \end{pmatrix}
+   }
+   = \frac{1 + \frac34 z + \frac{17}{64}z^2}{1 - \frac14 z + \frac{1}{64}z^2}
 \end{align*} \end{split}\]</div>
 <p class="sd-card-text">The roots of the denominator are</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-    z &amp;= \frac{\frac14 \pm \sqrt{\frac{1}{16} - \frac{1}{16}}}{\frac{1}{32}} = 8,
+   z &amp;= \frac{\frac14 \pm \sqrt{\frac{1}{16} - \frac{1}{16}}}{\frac{1}{32}} = 8,
 \end{align*} \]</div>
 <p class="sd-card-text">which is positive so the first condition for A-stability is satisfied.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-    E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2 \\
-    &amp;= \left| 1 - \frac14 iy - \frac{1}{64}y^2 \right|^2 - \left| 1 + \frac34 iy - \frac{17}{64}y^2 \right|^2 \\
-    &amp;= \left( 1 - \frac{1}{64}y^2 \right)^2 + \left( -\frac{1}{4}iy\right)^2 - \left( 1 - \frac{17}{64}y^2\right)^2 - \left( \frac{3}{4}iy \right)^2 \\
-    &amp;= 1 - \frac{1}{32}y^2 + \frac{1}{4096}y^4 + \frac{1}{16}y^2 - 1 + \frac{17}{32}y^2 - \frac{289}{4096}y^4 + \frac{9}{16}y^2 \\
-    &amp;= \frac54 y^2 - \frac{9}{128}y^4
+   E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2 \\
+   &amp;= \left| 1 - \frac14 iy - \frac{1}{64}y^2 \right|^2 - \left| 1 + \frac34 iy - \frac{17}{64}y^2 \right|^2 \\
+   &amp;= \left( 1 - \frac{1}{64}y^2 \right)^2 + \left( -\frac{1}{4}y \right)^2 - \left( 1 - \frac{17}{64}y^2 \right)^2 - \left( \frac{3}{4}y \right)^2 \\
+   &amp;= 1 - \frac{1}{32}y^2 + \frac{1}{4096}y^4 + \frac{1}{16}y^2 - 1 + \frac{17}{32}y^2 - \frac{289}{4096}y^4 - \frac{9}{16}y^2 \\
+   &amp;= - \frac{9}{128}y^4
 \end{align*} \end{split}\]</div>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(E(y) &lt; 0\)</span> for all <span class="math notranslate nohighlight">\(y \in \mathbb{R}\)</span> so this DIRK method is non A-stable.</p>
 </div>
-</details></section>
-<hr class="docutils" />
-<section id="matrix-decomposition-methods">
-<h2>Matrix Decomposition Methods<a class="headerlink" href="#matrix-decomposition-methods" title="Link to this heading">#</a></h2>
-<ol class="arabic" start="3">
-<li><p>(a) Use LUP decomposition to solve the following system of equations</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-      2x_1 + 2x_2 +  x_3 &amp;= 11, \\
-      4x_1 +  x_2 + 3x_3 &amp;= 46, \\
-      -3x_1 - 5x_2 + 4x_3 &amp;= 14.
-   \end{align*} \end{split}\]</div>
-<div style="text-align: right">[10 marks]</div>
-<p>(b) The Gram-Schmidt method for computing the QR decomplsition of the matrix <span class="math notranslate nohighlight">\(A\)</span> is:</p>
-<ul class="simple">
-<li><p>for <span class="math notranslate nohighlight">\(j = 1 \ldots n\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(r_{ij} = \mathbf{q}_i \cdot \mathbf{a}_j, \qquad i = 1, \ldots, j - 1\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{u}_j = \mathbf{a}_i - \displaystyle\sum_{i=1}^{j - 1} r_{ij} \mathbf{q}_i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(r_{jj} = \| \mathbf{u}_j \|\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{q}_j = \dfrac{\mathbf{u}_i}{r_{jj}}\)</span></p></li>
-</ul>
-</li>
-</ul>
-<p>Calculate the QR decomposition of the following matrix using the Gram-Schmidt process and verify that your decomposition is an orthogonal matrix.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-     A = \begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3 \\ 1 &amp; 3 &amp; 4 \end{pmatrix}
-     \end{align*} \end{split}\]</div>
-  <div style="text-align: right">[10 marks]</div>
-<p>(c) Explain how LU decomposition used in the calculation of the stage values of an implicit Runge-Kutta method. What advantages does it have for this application over other methods for solving systems of linear equations?</p>
-  <div style="text-align: right">[5 marks]</div>
-</li>
-</ol>
+</details><p>(c) Explain what is meant by a stiff system of equations. What methods would be most suitable for solving stiff and non-stiff problems?</p>
+<div style="text-align: right">[5 marks]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">(a) Performing partial pivoting on the coefficient matrix</p>
+</div>
+</details></section>
+</div>
+<div class="exercise admonition" id="irk-exam-2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 4 </span></p>
+<section id="exercise-content">
+<p>(a) The <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions for an <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
+  B(k): &amp;&amp; \sum_{i=1}^s b_ic_i^{j - 1} &amp;= \frac{1}{j}, &amp; j &amp;= 1, \ldots, k, \\
+  C(k): &amp;&amp; \sum_{j=1}^s a_{ij}c_j^{\ell - 1} &amp;= \frac{1}{\ell} c_i^\ell, &amp; i &amp;= 1, \ldots, s, &amp; \ell &amp;= 1, \ldots, k,
+\end{align*} \end{split}\]</div>
+<p>and the Legendre polynomial is</p>
+<div class="math notranslate nohighlight">
+\[ P_n(x) = \sum_{i=0}^n {n \choose i}{n+i \choose i} (x - 1)^i, \]</div>
+<p>where  <span class="math notranslate nohighlight">\({n \choose i}\)</span> is the Binomial coefficient.</p>
+<p>Given that an <span class="math notranslate nohighlight">\(s\)</span>-stage Gauss-Legendre implicit Runge-Kutta method has order <span class="math notranslate nohighlight">\(2s\)</span> where the <span class="math notranslate nohighlight">\(c_i\)</span> coefficients are the roots of the Legendre polynomial <span class="math notranslate nohighlight">\(P_s(x)\)</span> and the <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> coefficients satisfy the <span class="math notranslate nohighlight">\(B(s)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions, derive a fourth-order Gauss-Legendre method.</p>
+<div style="text-align: right">[10 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">A fourth-order Gauss-Legendre method has <span class="math notranslate nohighlight">\(s = 2\)</span> stages. The <span class="math notranslate nohighlight">\(c_i\)</span> values are the roots of <span class="math notranslate nohighlight">\(P_2(x)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  P_3(x) &amp;= 1 + {2 \choose 1}{3 \choose 1}(x - 1) + {2 \choose 2}{4 \choose 2}(x - 1)^2  \\
+  &amp;= 1 + 6(x - 1) + 6 (x^2 - 2x + 1) \\
+  &amp;= 6x^2 - 6x + 1,
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">using Python or MATLAB to compute the roots of <span class="math notranslate nohighlight">\(P_3(x)\)</span> results in</p>
+<div class="math notranslate nohighlight">
+\[ c_1 = \frac12 - \frac{\sqrt{3}}{6}, \qquad c_2 = \frac12 + \frac{\sqrt{3}}{6}.\]</div>
+<p class="sd-card-text">The <span class="math notranslate nohighlight">\(b_i\)</span> and <span class="math notranslate nohighlight">\(a_{ij}\)</span> satisfy the <span class="math notranslate nohighlight">\(B(2)\)</span> and <span class="math notranslate nohighlight">\(c(2)\)</span> order conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  b_1 + b_2 &amp;= 1, \\
+  b_1c_1 + b_2c_2 &amp;= \frac12, \\
+  a_{11} + a_{12} &amp;= c_1, \\
+  a_{21} + a_{22} &amp;= c_2, \\
+  a_{11}c_1 + a_{12}c_2 &amp;= \frac12 c_1^2, \\
+  a_{21}c_1 + a_{22}c_2 &amp;= \frac12 c_2^2.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Solving using Python or MATLAB gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|cc}
+  \frac12 - \frac{\sqrt{3}}{6} &amp; \frac14 &amp; \frac14 - \frac{\sqrt{3}}{6} \\
+  \frac12 + \frac{\sqrt{3}}{6} &amp; \frac14 + \frac{\sqrt{3}}{6} &amp; \frac14 \\
+  \hline
+  &amp; \frac12 &amp; \frac12
+\end{array} \end{split}\]</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+
+<span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;b1, b2, a11, a12, a21, a22&quot;</span><span class="p">)</span>
+
+<span class="n">eq1</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">eq3</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">+</span> <span class="n">a12</span> <span class="o">-</span> <span class="n">c1</span>
+<span class="n">eq4</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">+</span> <span class="n">a22</span> <span class="o">-</span> <span class="n">c2</span>
+<span class="n">eq5</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">a12</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">c1</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">eq6</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">a22</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">-</span> <span class="n">c2</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">eq1</span><span class="p">,</span> <span class="n">eq2</span><span class="p">,</span> <span class="n">eq3</span><span class="p">,</span> <span class="n">eq4</span><span class="p">,</span> <span class="n">eq5</span><span class="p">,</span> <span class="n">eq6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</details></section>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>(b) Another implicit method has the following Butcher tableau:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|cc}
+  \frac12 &amp; \frac12 &amp; 0 \\
+  \frac32 &amp; -\frac12 &amp; 2 \\
+  \hline
+  &amp; -\frac12 &amp; \frac32
+\end{array} \end{split}\]</div>
+<p>State with reasons whether it is A-stable or not. You may find the following useful:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  R(z) &amp;= \frac{\det(I - zA + z\mathbf{eb}^\mathsf{T})}{\det(I - zA)}, \\
+  E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2,
+\end{align*} \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R(z) = P(z) / Q(z)\)</span> and <span class="math notranslate nohighlight">\(i^2 = -1\)</span>.</p>
+<div style="text-align: right">[10 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The stability function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  R(z) &amp;= \frac{
+    \det \left( 
+      \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
+      \begin{pmatrix} \frac12 &amp; 0 \\ -\frac12 &amp; 2 \end{pmatrix} + z
+      \begin{pmatrix} -\frac12 &amp; \frac32 \\ -\frac12 &amp; \frac32 \end{pmatrix}
+    \right)
+  }{
+    \det \left(
+        \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
+        \begin{pmatrix} \frac12 &amp; 0 \\ -\frac12 &amp; 2 \end{pmatrix}
+    \right)
+  } \\
+  &amp;= \frac{\det
+    \begin{pmatrix} 1 - z &amp; \frac32 z \\ 0 &amp; 1 - \frac12 z\end{pmatrix}
+    }{ \det
+    \begin{pmatrix} 1 - \frac12 z &amp; 0 \\ \frac12 z &amp; 1 - 2z \end{pmatrix}
+    }
+  = \frac{1 - \frac32 z + \frac12 z^2}{1 - \frac52 z + z^2}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">A method is A-stable if</p>
+<ul class="simple">
+<li><p class="sd-card-text">the roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> have positive real parts and</p></li>
+<li><p class="sd-card-text"><span class="math notranslate nohighlight">\(E(y) \geq 0\)</span> for all <span class="math notranslate nohighlight">\(y \in \mathbb{R}\)</span>.</p></li>
+</ul>
+<p class="sd-card-text">Checking the roots of <span class="math notranslate nohighlight">\(Q(z)\)</span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align*}
+  z &amp;= \frac{\frac52 \pm \sqrt{\frac{25}{4} - 4}}{2}
+  = \frac54 \pm \frac34=\frac12, 2
+\end{align*} \]</div>
+<p class="sd-card-text">So the first condition is satisfied. Checking <span class="math notranslate nohighlight">\(E(y) \ge 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  E(y) &amp;= \left| 1 - \frac52 iy - y^2 \right|^2 - \left| 1 - \frac32 iy - \frac12 y^2 \right|^2 \\
+  &amp;= (1 - y^2)^2 + \left( -\frac52 y \right)^2 - \left( 1 - \frac12 y^2 \right)^2 - \left( -\frac32 y \right)^2 \\
+  &amp;= 1 - 2y^2 + y^4 + \frac{25}{4}y^2 - 1 + y^2 - \frac14 y^4 - \frac94 y^2 \\
+  &amp;= 3y^2 + \frac34 y^4,
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">so <span class="math notranslate nohighlight">\(E(y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(y \in \mathbb{R}\)</span> so the second condition is satisfied and this is an A-stable method.</p>
+</div>
+</details><p>(c) What are the advantages and disadvantages of using an A-stable implicit Runge-Kutta method over an explicit Runge-Kutta method. In what situation would you choose to implement one over the other?</p>
+<div style="text-align: right">[5 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-kebab-horizontal no-title" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a2 2 0 1 1-.001-3.999A2 2 0 0 1 20 14ZM6 12a2 2 0 1 1-3.999.001A2 2 0 0 1 6 12Zm8 0a2 2 0 1 1-3.999.001A2 2 0 0 1 14 12Z"></path></svg></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+</div>
+</details><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+---
+
+## Matrix Decomposition Methods
+
+````{exercise}
+:label: matrix-decomposition-exam-1
+
+(a) Use LUP decomposition to solve the following system of equations
+
+$$ \begin{align*}
+   2x_1 + 2x_2 +  x_3 &amp;= 11, \\
+   4x_1 +  x_2 + 3x_3 &amp;= 46, \\
+   -3x_1 - 5x_2 + 4x_3 &amp;= 14.
+\end{align*} $$
+
+&lt;div style=&quot;text-align: right&quot;&gt;[10 marks]&lt;/div&gt;
+
+```{dropdown} Solution
+
+Performing partial pivoting on the coefficient matrix
+
+$$ \begin{align*}
    &amp; \begin{pmatrix}
-      2 &amp; 2 &amp; 1 \\
-      4 &amp; 1 &amp; 3 \\ 
-      -3 &amp; -5 &amp; 4
+   2 &amp; 2 &amp; 1 \\
+   4 &amp; 1 &amp; 3 \\ 
+   -3 &amp; -5 &amp; 4
    \end{pmatrix}
    \begin{matrix} R_1 \leftrightarrow R_2 \\ \phantom{x} \\ \phantom{x} \end{matrix} &amp;
    \longrightarrow
    &amp; \begin{pmatrix}
-      4 &amp; 1 &amp; 3 \\ 
-      2 &amp; 2 &amp; 1 \\
-      -3 &amp; -5 &amp; 4
+   4 &amp; 1 &amp; 3 \\ 
+   2 &amp; 2 &amp; 1 \\
+   -3 &amp; -5 &amp; 4
    \end{pmatrix}
    \begin{matrix}  \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{matrix} \\
    \longrightarrow
    &amp; \begin{pmatrix}
-      4 &amp; 1 &amp; 3 \\ 
-      -3 &amp; -5 &amp; 4 \\
-      2 &amp; 2 &amp; 1 
+   4 &amp; 1 &amp; 3 \\ 
+   -3 &amp; -5 &amp; 4 \\
+   2 &amp; 2 &amp; 1 
    \end{pmatrix} = PA.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Performing the same row swaps on <span class="math notranslate nohighlight">\(I_3\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+\end{align*} $$
+
+Performing the same row swaps on $I_3$
+
+$$ \begin{align*}
    &amp; \begin{pmatrix}
-      1 &amp; 0 &amp; 0 \\
-      0 &amp; 1 &amp; 0 \\
-      0 &amp; 0 &amp; 1
+   1 &amp; 0 &amp; 0 \\
+   0 &amp; 1 &amp; 0 \\
+   0 &amp; 0 &amp; 1
    \end{pmatrix}
    \begin{matrix} R_1 \leftrightarrow R_2 \\ \phantom{x} \\ \phantom{x} \end{matrix} &amp;
    \longrightarrow
    &amp; \begin{pmatrix}
-      0 &amp; 1 &amp; 0 \\
-      1 &amp; 0 &amp; 0 \\
-      0 &amp; 0 &amp; 1
+   0 &amp; 1 &amp; 0 \\
+   1 &amp; 0 &amp; 0 \\
+   0 &amp; 0 &amp; 1
    \end{pmatrix}
    \begin{matrix}  \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{matrix} \\
    \longrightarrow
    &amp; \begin{pmatrix}
-      0 &amp; 1 &amp; 0 \\
-      0 &amp; 0 &amp; 1 \\
-      1 &amp; 0 &amp; 0
+   0 &amp; 1 &amp; 0 \\
+   0 &amp; 0 &amp; 1 \\
+   1 &amp; 0 &amp; 0
    \end{pmatrix} = P.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Computing the LU decomposition of <span class="math notranslate nohighlight">\(PA\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+\end{align*} $$
+
+Computing the LU decomposition of $PA$
+
+$$ \begin{align*}
    j &amp;= 1: &amp; u_{11} &amp;= a_{11} = 4, \\
    &amp;&amp; \ell_{21} &amp;= \frac{1}{u_{11}}a_{21} = \frac14(-3) = -\frac34, \\
    &amp;&amp; \ell_{31} &amp;= \frac{1}{u_{11}}a_{31} = \frac14(2) = \frac12, \\
@@ -722,32 +1034,34 @@ MATLAB</label><div class="sd-tab-content docutils">
    j &amp;= 3: &amp; u_{13} &amp;= a_{13} = 3, \\
    &amp;&amp; u_{23} &amp;= a_{23} - \ell_{21}u_{13} = 4 - \left( -\frac34 \right)(3) = \frac{25}{4}, \\
    &amp;&amp; u_{33} &amp;= a_{33} - \ell_{31}u_{13} - \ell_{32}u_{23} = 1 - \frac12(3) - \left( -\frac{25}{4} \right) = \frac{29}{17},
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">therefore</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+\end{align*} $$
+
+therefore
+
+$$ \begin{align*}
    L &amp;=
    \begin{pmatrix}
-      1 &amp; 0 &amp; 0 \\
-      -\frac34 &amp; 1 &amp; 0 \\
-      \frac12 &amp; -\frac{6}{17} &amp; 1
+   1 &amp; 0 &amp; 0 \\
+   -\frac34 &amp; 1 &amp; 0 \\
+   \frac12 &amp; -\frac{6}{17} &amp; 1
    \end{pmatrix}, &amp;
    U &amp;= 
    \begin{pmatrix}
-      4 &amp; 1 &amp; 3 \\
-      0 &amp; -\frac{17}{4} &amp; \frac{25}{4} \\
-      0 &amp; 0 &amp; \frac{29}{17}
+   4 &amp; 1 &amp; 3 \\
+   0 &amp; -\frac{17}{4} &amp; \frac{25}{4} \\
+   0 &amp; 0 &amp; \frac{29}{17}
    \end{pmatrix}, &amp;
    P &amp;= 
    \begin{pmatrix}
-      0 &amp; 1 &amp; 0 \\
-      0 &amp; 0 &amp; 1 \\
-      1 &amp; 0 &amp; 0 
+   0 &amp; 1 &amp; 0 \\
+   0 &amp; 0 &amp; 1 \\
+   1 &amp; 0 &amp; 0 
    \end{pmatrix}.
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(L\mathbf{y} = P \mathbf{b}\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+\end{align*} $$
+
+Solving $L\mathbf{y} = P \mathbf{b}$ 
+
+$$ \begin{align*}
    \begin{pmatrix}
       1 &amp; 0 &amp; 0 \\
       -\frac34 &amp; 1 &amp; 0 \\
@@ -769,10 +1083,11 @@ MATLAB</label><div class="sd-tab-content docutils">
       y_2 &amp;= 14 - (-\tfrac34)(46) = \tfrac{97}{2}, \\
       y_3 &amp;= 11 - \tfrac12(46) - (-\tfrac{6}{17}) = \tfrac{87}{17}.
    \end{aligned}
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
+\end{align*} $$
+
+Solving $U \mathbf{x} = \mathbf{y}$
+
+$$ \begin{align*}
    \begin{pmatrix}
       4 &amp; 1 &amp; 3 \\
       0 &amp; -\frac{17}{4} &amp; \frac{25}{4} \\
@@ -783,76 +1098,106 @@ MATLAB</label><div class="sd-tab-content docutils">
    \begin{pmatrix} 46 \\ \frac{97}{2} \\ \frac{87}{17} \end{pmatrix}
    \quad \implies \quad
    \begin{aligned}
-      x_3 &amp;= \tfrac{17}{29} (\tfrac{87}{17}) = 3, \\
-      x_2 &amp;= -\tfrac{17}{4} (\tfrac{97}{2} - \tfrac{25}{4}(3)) = -7, \\
-      x_1 &amp;= \tfrac{1}{4} (46 - (-7) - 3(3)) = 11.
+   x_3 &amp;= \tfrac{17}{29} (\tfrac{87}{17}) = 3, \\
+   x_2 &amp;= -\tfrac{17}{4} (\tfrac{97}{2} - \tfrac{25}{4}(3)) = -7, \\
+   x_1 &amp;= \tfrac{1}{4} (46 - (-7) - 3(3)) = 11.
    \end{aligned}
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">(b)</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-   j &amp;= 1; &amp; \mathbf{u}_1 &amp;= \mathbf{a}_1 = 
-   \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \\
-   &amp;&amp; r_{11} &amp;= \| \mathbf{u}_1 \| = \sqrt{3}, \\
-   &amp;&amp; \mathbf{q}_1 &amp;= \frac{\mathbf{u}_1}{r_{11}} = \frac{1}{\sqrt{3}}
-   \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} = 
-   \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix}, \\
-   j &amp;= 2: &amp; r_{12} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_2 =
-   \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix}
-   \cdot
-   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} = 2\sqrt{3}, \\
-   &amp;&amp; \mathbf{u}_2 &amp;= \mathbf{a}_2 - r_{12} \mathbf{q}_1 =
-   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} - 2 \sqrt{3}
-   \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix}
-   =
-   \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}, \\
-   &amp;&amp; r_{22} &amp;= \| \mathbf{u}_2 \| = \sqrt{2}, \\
-   &amp;&amp; \mathbf{q}_2 &amp;= \frac{\mathbf{u}_2}{r_{22}} = \frac{\sqrt{2}}{2}
-   \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}
-   =
-   \begin{pmatrix} -\frac{\sqrt{2}}{2} \\ 0 \\ \frac{\sqrt{2}}{2}\end{pmatrix}, \\
-   j &amp;=3 &amp; r_{13} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_3 
-   =
-   \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix} \cdot
-   \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix} 
-   = \frac{8\sqrt{3}}{3}, \\
-   &amp;&amp; r_{23} &amp;= \mathbf{q}_2 \cdot \mathbf{a}_3
-   =
-   \begin{pmatrix} -\frac{\sqrt{2}}{2} \\ 0 \\ \frac{\sqrt{2}}{2}\end{pmatrix} \cdot
-   \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix} 
-   =
-   \frac{3\sqrt{2}}{2}, \\
-   &amp;&amp; \mathbf{u}_3 &amp;= \mathbf{a}_3 - r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2
-   =
-   \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix} - \frac{8\sqrt{3}}{3}
-   \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix} - \frac{3\sqrt{2}}{2}
-   \begin{pmatrix} -\frac{\sqrt{2}}{2} \\ 0 \\ \frac{\sqrt{2}}{2}\end{pmatrix}
-   =
-   \begin{pmatrix} -\frac16 \\ \frac13 \\ -\frac16 \end{pmatrix}, \\
-   &amp;&amp; r_{33} &amp;= \| \mathbf{u}_3 \| = \frac{\sqrt{6}}{6}, \\
-   &amp;&amp; \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3}{r_{33}} = \sqrt{6}
-   \begin{pmatrix} -\frac16 \\ \frac13 \\ -\frac16 \end{pmatrix}
-   =
-   \begin{pmatrix} -\frac{\sqrt{6}}{6} \\ \frac{\sqrt{6}}{3} \\ -\frac{\sqrt{6}}{6} \end{pmatrix},
-\end{align*} \end{split}\]</div>
-<p class="sd-card-text">therefore</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{align*}
-   Q &amp;= 
-   \begin{pmatrix}
-      \frac{\sqrt{3}}{3} &amp; -\frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{6}}{6} \\
-      \frac{\sqrt{3}}{3} &amp; 0 &amp; \frac{\sqrt{6}}{3} \\
-      \frac{\sqrt{3}}{3} &amp; \frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{6}}{6}
-   \end{pmatrix}, &amp;
-   R &amp;=
-   \begin{pmatrix}
-      \sqrt{3} &amp; 2 \sqrt{3} &amp; \frac{8\sqrt{3}}{3} \\
-      0 &amp; \sqrt{2} &amp; \frac{3\sqrt{2}}{2} \\
-      0 &amp; 0 &amp; \frac{\sqrt{6}}{6}
-   \end{pmatrix}.
-\end{align*} \end{split}\]</div>
+\end{align*} $$
+
+```
+
+(b) The Gram-Schmidt method for computing the QR decomposition of the matrix $A$ is:
+
+- for $j = 1 \ldots n$
+  - $r_{ij} = \mathbf{q}_i \cdot \mathbf{a}_j, \qquad i = 1, \ldots, j - 1$
+  - $\mathbf{u}_j = \mathbf{a}_i - \displaystyle\sum_{i=1}^{j - 1} r_{ij} \mathbf{q}_i$
+  - $r_{jj} = \| \mathbf{u}_j \|$
+  - $\mathbf{q}_j = \dfrac{\mathbf{u}_i}{r_{jj}}$
+
+Calculate the QR decomposition of the following matrix using the Gram-Schmidt process and verify that your decomposition is an orthogonal matrix.
+
+$$ \begin{align*}
+  A = \begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3 \\ 1 &amp; 3 &amp; 4 \end{pmatrix}
+\end{align*} $$
+
+&lt;div style=&quot;text-align: right&quot;&gt;[10 marks]&lt;/div&gt;
+
+```{dropdown} Solution
+
+$$ \begin{align*}
+  j &amp;= 1; &amp; \mathbf{u}_1 &amp;= \mathbf{a}_1 = 
+  \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \\
+  &amp;&amp; r_{11} &amp;= \| \mathbf{u}_1 \| = \sqrt{3}, \\
+  &amp;&amp; \mathbf{q}_1 &amp;= \frac{\mathbf{u}_1}{r_{11}} = \frac{1}{\sqrt{3}}
+  \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} = 
+  \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix}, \\
+  j &amp;= 2: &amp; r_{12} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_2 =
+  \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix}
+  \cdot
+  \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} = 2\sqrt{3}, \\
+  &amp;&amp; \mathbf{u}_2 &amp;= \mathbf{a}_2 - r_{12} \mathbf{q}_1 =
+  \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} - 2 \sqrt{3}
+  \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix}
+  =
+  \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}, \\
+  &amp;&amp; r_{22} &amp;= \| \mathbf{u}_2 \| = \sqrt{2}, \\
+  &amp;&amp; \mathbf{q}_2 &amp;= \frac{\mathbf{u}_2}{r_{22}} = \frac{\sqrt{2}}{2}
+  \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}
+  =
+  \begin{pmatrix} -\frac{\sqrt{2}}{2} \\ 0 \\ \frac{\sqrt{2}}{2}\end{pmatrix}, \\
+  j &amp;=3 &amp; r_{13} &amp;= \mathbf{q}_1 \cdot \mathbf{a}_3 
+  =
+  \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix} \cdot
+  \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix} 
+  = \frac{8\sqrt{3}}{3}, \\
+  &amp;&amp; r_{23} &amp;= \mathbf{q}_2 \cdot \mathbf{a}_3
+  =
+  \begin{pmatrix} -\frac{\sqrt{2}}{2} \\ 0 \\ \frac{\sqrt{2}}{2}\end{pmatrix} \cdot
+  \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix} 
+  =
+  \frac{3\sqrt{2}}{2}, \\
+  &amp;&amp; \mathbf{u}_3 &amp;= \mathbf{a}_3 - r_{13} \mathbf{q}_1 - r_{23} \mathbf{q}_2
+  =
+  \begin{pmatrix} 1 \\ 3 \\ 4 \end{pmatrix} - \frac{8\sqrt{3}}{3}
+  \begin{pmatrix} \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \\ \frac{\sqrt{3}}{3} \end{pmatrix} - \frac{3\sqrt{2}}{2}
+  \begin{pmatrix} -\frac{\sqrt{2}}{2} \\ 0 \\ \frac{\sqrt{2}}{2}\end{pmatrix}
+  =
+  \begin{pmatrix} -\frac16 \\ \frac13 \\ -\frac16 \end{pmatrix}, \\
+  &amp;&amp; r_{33} &amp;= \| \mathbf{u}_3 \| = \frac{\sqrt{6}}{6}, \\
+  &amp;&amp; \mathbf{q}_3 &amp;= \frac{\mathbf{u}_3}{r_{33}} = \sqrt{6}
+  \begin{pmatrix} -\frac16 \\ \frac13 \\ -\frac16 \end{pmatrix}
+  =
+  \begin{pmatrix} -\frac{\sqrt{6}}{6} \\ \frac{\sqrt{6}}{3} \\ -\frac{\sqrt{6}}{6} \end{pmatrix},
+\end{align*} $$
+
+therefore
+
+$$ \begin{align*}
+  Q &amp;= 
+  \begin{pmatrix}
+    \frac{\sqrt{3}}{3} &amp; -\frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{6}}{6} \\
+    \frac{\sqrt{3}}{3} &amp; 0 &amp; \frac{\sqrt{6}}{3} \\
+    \frac{\sqrt{3}}{3} &amp; \frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{6}}{6}
+  \end{pmatrix}, &amp;
+  R &amp;=
+  \begin{pmatrix}
+    \sqrt{3} &amp; 2 \sqrt{3} &amp; \frac{8\sqrt{3}}{3} \\
+    0 &amp; \sqrt{2} &amp; \frac{3\sqrt{2}}{2} \\
+    0 &amp; 0 &amp; \frac{\sqrt{6}}{6}
+  \end{pmatrix}.
+\end{align*} $$
+```
+
+(c) Explain how LU decomposition used in the calculation of the stage values of an implicit Runge-Kutta method. What advantages does it have for this application over other methods for solving systems of linear equations?
+
+&lt;div style=&quot;text-align: right&quot;&gt;[5 marks]&lt;/div&gt;
+
+```{dropdown} Solution
+LU decomposition is commonly used to compute the solution to the linear system required by Newton&#39;s method to solve for the stages values. Since we assume the Jacobian matrix is constant for all Newton iterations, the LU decomposition only needs to be computed once per step, whereas other solution methods for linear systems such as Gaussian elimination would need to be re-computed for each iteration.
+```
+</pre></div>
 </div>
-</details></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -921,7 +1266,6 @@ MATLAB</label><div class="sd-tab-content docutils">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-runge-kutta-methods">Explicit Runge-Kutta Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-runge-kutta-methods">Implicit Runge-Kutta Methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-decomposition-methods">Matrix Decomposition Methods</a></li>
 </ul>
   </nav></div>
 
