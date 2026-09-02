@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -399,7 +399,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-runge-kutta-methods">Explicit Runge-Kutta Methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-runge-kutta-methods">Implicit Runge-Kutta Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-decomposition-methods">Matrix Decomposition Methods</a></li>
 </ul>
             </nav>
         </div>
@@ -417,26 +417,23 @@ document.write(`
 <hr class="docutils" />
 <section id="explicit-runge-kutta-methods">
 <h2>Explicit Runge-Kutta Methods<a class="headerlink" href="#explicit-runge-kutta-methods" title="Link to this heading">#</a></h2>
-<div class="exercise admonition" id="erk-exam-1">
-
-<p class="admonition-title"><span class="caption-number">Exercise 1 </span> (Exam Question 1)</p>
-<section id="exercise-content">
-<p>(a) An explicit Runge-Kutta method is expressed using the Butcher tableau below.</p>
+<ol class="arabic">
+<li><p>(a) An explicit Runge-Kutta method is expressed using the Butcher tableau below.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-   \begin{array}{c|cccc}
-   0 &amp; 0 \\
-   \frac{1}{4} &amp; \frac{1}{4} \\
-   \frac{1}{2} &amp; 0 &amp; \frac{1}{2} \\
-   1 &amp; 1 &amp; -2 &amp; 2 \\ \hline
-   &amp; \frac{1}{6} &amp; 0 &amp; \frac{2}{3} &amp; \frac{1}{6}
-   \end{array}
-\end{align*} \end{split}\]</div>
+      \begin{array}{c|cccc}
+      0 &amp; 0 \\
+      \frac{1}{4} &amp; \frac{1}{4} \\
+      \frac{1}{2} &amp; 0 &amp; \frac{1}{2} \\
+      1 &amp; 1 &amp; -2 &amp; 2 \\ \hline
+      &amp; \frac{1}{6} &amp; 0 &amp; \frac{2}{3} &amp; \frac{1}{6}
+      \end{array}
+   \end{align*} \end{split}\]</div>
 <p>Use this Runge-Kutta method with a step length of <span class="math notranslate nohighlight">\(h = 0.2\)</span> to solve the following IVP</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-   y' &amp;= t - 2 y, &amp; t &amp;\in [0, 1], &amp; y(0) &amp;= 2.  
-\end{align*} \]</div>
+      y' &amp;= t - 2 y, &amp; t &amp;\in [0, 1], &amp; y(0) &amp;= 2.  
+   \end{align*} \]</div>
 <div style="text-align: right">[10 marks]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -524,27 +521,22 @@ MATLAB</label><div class="sd-tab-content docutils">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 </div>
-</details></section>
-</div>
-<div class="exercise admonition" id="erk-exam-2">
-
-<p class="admonition-title"><span class="caption-number">Exercise 2 </span></p>
-<section id="exercise-content">
-<p>(a) The order conditions for a fourth-order explicit Runge-Kutta method are:</p>
+</details></li>
+<li><p>(a) The order conditions for a fourth-order explicit Runge-Kutta method are:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
-b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac12, \\
-b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac13, \\
-b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &amp;= \frac14, \\
-b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &amp;= \frac{1}{6}, \\
-b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &amp;= \frac18, \\
-b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &amp;= \frac{1}{12}, \\
-b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}, \\
-c_2 &amp;= a_{21}, \\
-c_3 &amp;= a_{31} + a_{32}, \\
-c_4 &amp;= a_{41} + a_{42} + a_{43}.
-\end{align*} \end{split}\]</div>
+   b_1 + b_2 + b_3 + b_4 &amp;= 1, \\
+   b_2c_2 + b_3c_3 + b_4c_4 &amp;= \frac12, \\
+   b_2c_2^2 + b_3c_3^2 + b_4c_4^2 &amp;= \frac13, \\
+   b_2c_2^3 + b_3c_3^3 + b_4c_4^3 &amp;= \frac14, \\
+   b_3a_{32}c_2 + b_4a_{42}c_2 + b_4a_{43}c_3 &amp;= \frac{1}{6}, \\
+   b_3a_{32}c_2c_3 + b_4a_{42}c_2c_4 + b_4a_{43}c_3c_4 &amp;= \frac18, \\
+   b_3a_{32}c_2^2 + b_4a_{42}c_2^2 + b_4a_{43}c_3^2 &amp;= \frac{1}{12}, \\
+   b_4a_{43}a_{32}c_2 &amp;= \frac{1}{24}, \\
+   c_2 &amp;= a_{21}, \\
+   c_3 &amp;= a_{31} + a_{32}, \\
+   c_4 &amp;= a_{41} + a_{42} + a_{43}.
+   \end{align*} \end{split}\]</div>
 <p>Derive a fourth-order explicit Runge-Kutta method with <span class="math notranslate nohighlight">\(c_2 = \frac13\)</span>, <span class="math notranslate nohighlight">\(c_3 = \frac23\)</span> and <span class="math notranslate nohighlight">\(c_4=1\)</span>. Write down your method in the form of a Butcher tableau.</p>
 <div style="text-align: right">[10 marks]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -683,27 +675,286 @@ Python</label><div class="sd-tab-content docutils">
 <div class="sd-tab-set docutils">
 </div>
 </div>
-</details></section>
-</div>
-</section>
-<hr class="docutils" />
-<section id="implicit-runge-kutta-methods">
-<h2>Implicit Runge-Kutta Methods<a class="headerlink" href="#implicit-runge-kutta-methods" title="Link to this heading">#</a></h2>
-<div class="exercise admonition" id="irk-exam-1">
-
-<p class="admonition-title"><span class="caption-number">Exercise 3 </span></p>
-<section id="exercise-content">
-<p>(a) The <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions for a Runge-Kutta method are</p>
+</details></li>
+<li><p>(a) A Runge-Kutta method is expressed in the following Butcher tableau</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|cccc}
+      0 &amp; 0 \\
+      \frac13 &amp; \frac13 \\
+      \frac12 &amp; \frac58 &amp; -\frac18 \\
+      1 &amp; \frac32 &amp; \frac32 &amp; -2 \\
+      \hline
+      &amp; -\frac12 &amp; 3 &amp; -2 &amp; \frac12
+   \end{array} \end{split}\]</div>
+<p>Determin the stability function of this Runge-Kutta method, and hence state the order of the method.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-kebab-horizontal no-title" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a2 2 0 1 1-.001-3.999A2 2 0 0 1 20 14ZM6 12a2 2 0 1 1-3.999.001A2 2 0 0 1 6 12Zm8 0a2 2 0 1 1-3.999.001A2 2 0 0 1 14 12Z"></path></svg></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The stabilty function of an explicit Runge-Kutta method is</p>
+<div class="math notranslate nohighlight">
+\[ R(z) = 1 + z \sum_{k=0}^{s-1} \mathbf{b}^\mathsf{T}A^k \mathbf{e} z^{k+1}. \]</div>
+<p class="sd-card-text">Computing the coefficents</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-   B(k):&amp;&amp; \sum_{i=1}^s b_i c_i^{j-1} &amp;= \frac{1}{j}, &amp; j &amp;= 1 \ldots k, \\
-   C(k):&amp;&amp; \sum_{j=1}^s a_{ij}c_j^{\ell - 1} &amp;= \frac{1}{\ell} c_i^\ell, &amp; i &amp;= 1 \ldots s, &amp; \ell &amp;= 1 \ldots k,
+   k &amp;= 0: &amp; \mathbf{b}^\mathsf{T}A^0 \mathbf{e}
+   &amp;= (-\tfrac12, 3, -2, \tfrac12) 
+   \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}
+   = 1, \\
+   k &amp;= 1: &amp; \mathbf{b}^\mathsf{T}A \mathbf{e}
+   &amp;= (-\tfrac12, 3, -2, \tfrac12)
+   \begin{pmatrix} 
+      0 &amp; 0 &amp; 0 &amp; 0 \\
+      \frac13 &amp; 0 &amp; 0 &amp; 0 \\
+      \frac58 &amp; -\frac18 &amp; 0 &amp; 0 \\
+      \frac32 &amp; \frac32 &amp; -2 &amp; 0
+   \end{pmatrix}
+   \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}
+   = \frac12, \\
+   k &amp;= 2: &amp; \mathbf{b}^\mathsf{T}A \mathbf{e}
+   &amp;= (-\tfrac12, 3, -2, \tfrac12)
+   \begin{pmatrix} 
+      0 &amp; 0 &amp; 0 &amp; 0 \\
+      0 &amp; 0 &amp; 0 &amp; 0 \\
+      -\frac{1}{24} &amp; 0 &amp; 0 &amp; 0 \\
+      -\frac34 &amp; \frac14 &amp; 0 &amp; 0
+   \end{pmatrix}
+   \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}
+   = -\frac16, \\
+   k &amp;= 3: &amp; \mathbf{b}^\mathsf{T}A \mathbf{e}
+   &amp;= (-\tfrac12, 3, -2, \tfrac12)
+   \begin{pmatrix} 
+      0 &amp; 0 &amp; 0 &amp; 0 \\
+      0 &amp; 0 &amp; 0 &amp; 0 \\
+      0 &amp; 0 &amp; 0 &amp; 0 \\
+      \frac{1}{12} &amp; 0 &amp; 0 &amp; 0
+   \end{pmatrix}
+   \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}
+   = \frac{1}{24},
 \end{align*} \end{split}\]</div>
+<p class="sd-card-text">therefore the stability function is</p>
+<div class="math notranslate nohighlight">
+\[ R(z) = 1 + z + \frac12 z^2 - \frac16 z^3 + \frac{1}{24} z^4. \]</div>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(R(z)\)</span> is the series expansion of <span class="math notranslate nohighlight">\(e^z\)</span> correct to the second-order term, so this Runge-Kutta method is second-order accurate.</p>
+</div>
+</details><p>(b) An implicit Runge-Kutta method is expressed as the following Butcher tableau</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{c|cc}
+      \frac14 &amp; \frac14 &amp; 0 \\
+      \frac34 &amp; \frac12 &amp; \frac14 \\
+      \hline
+      &amp; \frac12 &amp; \frac12
+   \end{array} \end{split}\]</div>
+<p>Determine the stability function of this method and state with reasons whether it is A-stable or not.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The stability function of an implicit Runge-Kutta method is</p>
+<div class="math notranslate nohighlight">
+\[ R(z) = \frac{\det(I - zA + z \mathbf{eb}^\mathsf{T})}{\det(I - zA)}. \]</div>
+<p class="sd-card-text">Therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+   R(z) &amp;= \frac{
+      \det \left(
+         \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
+         \begin{pmatrix} \frac14 &amp; 0 \\ \frac12 &amp; \frac14 \end{pmatrix} + z
+         \begin{pmatrix} \frac12 &amp; \frac12 \\ \frac12 &amp; \frac12 \end{pmatrix}
+      \right)
+   }{
+      \det \left(
+         \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} - z
+         \begin{pmatrix} \frac14 &amp; 0 \\ \frac12 &amp; \frac14 \end{pmatrix}
+      \right)
+   } \\
+   &amp;= \frac{
+      \det 
+      \begin{pmatrix} 1 + \frac14 z &amp; \frac12 z \\ 0 &amp; 1 + \frac14 z \end{pmatrix}
+   }{
+      \det
+      \begin{pmatrix} 1 - \frac14 z &amp; 0 \\ -\frac12 z &amp; 1 - \frac14 z \end{pmatrix}
+   }
+   = \frac{1 + \frac12 z + \frac{1}{16}z^2}{1 - \frac12 z + \frac{1}{16}z^2}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">An IRK method is A-stable if</p>
+<ul class="simple">
+<li><p class="sd-card-text">the roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> have positive real parts and</p></li>
+<li><p class="sd-card-text">the polynomial <span class="math notranslate nohighlight">\(E(y) = |Q(iy)|^2 - |P(iy)|^2\)</span> is greater than or equal to zero for all <span class="math notranslate nohighlight">\(y \in \mathbb{R}\)</span></p></li>
+</ul>
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(R(z) = P(z) / Q(z)\)</span>. The roots of <span class="math notranslate nohighlight">\(Q(z)\)</span> is <span class="math notranslate nohighlight">\(z = \frac14\)</span> so the first condition is satisfied. The polynomial <span class="math notranslate nohighlight">\(E(y)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*} 
+   E(y) &amp;= \left| 1 - \frac12 iy - \frac{1}{16} y^2 \right|^2 - \left| 1 + \frac12 iy - \frac{1}{16} y^2 \right|^2 \\
+   &amp;= \left( 1 - \frac{1}{16} y^2 \right)^2 + \left( -\frac12 y \right)^2 - \left( 1 - \frac{1}{16} y^2 \right)^2 - \left( \frac12 y \right)^2 \\
+   &amp;= \frac14 y^2 - \frac14 y^2 = 0.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">So the second condition is satisfied and this is an A-stable method.</p>
+</div>
+</details><p>(c) The initial value problem below</p>
+<div class="math notranslate nohighlight">
+\[ y' = t - 4y, \qquad t \in [0, 1], \qquad y(0) = 1, \]</div>
+<p>is to be solved using the Runge-Kutta method from part (b) using a step length of <span class="math notranslate nohighlight">\(h = 0.1\)</span>.</p>
+<p>(i)   The stage values of an implicit Runge-Kutta method can be calculated using the following</p>
+<div class="math notranslate nohighlight">
+\[ Y_i = y_n + h \sum_{j=1}^s a_{ij} f(t_n + c_jh, Y_j). \]</div>
+<p>Calculate the stage values <span class="math notranslate nohighlight">\(Y_1\)</span> and <span class="math notranslate nohighlight">\(Y_2\)</span> for the first step.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+   Y_1 &amp;= y_n + h (\tfrac14 (t_n + \tfrac14 h - 4Y_1)), \\
+   Y_2 &amp;= y_n + h (\tfrac12 (t_n + \tfrac14 h - 4Y_1) + \tfrac14(t_n + \tfrac34 h - 4Y_2)),
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">which can be rearranged to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+   (1 + h)Y_1 &amp;= y_n + \tfrac14 ht_n + \tfrac{1}{16}h^2, \\
+   2hY_1 + (1 + h) Y_2 &amp;= y_n + \tfrac34 ht_n + \tfrac{5}{16}h^2,
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">and writing as a matrix equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+   \begin{pmatrix} 1 + h &amp; 0 \\ 2h &amp; 1 + h \end{pmatrix}
+   \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+   =
+   \begin{pmatrix} y_n + \frac14 ht_n + \frac{1}{16}h^2 \\ y_n + \frac34 ht_n + \frac{5}{16} h^2 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">For the first step, <span class="math notranslate nohighlight">\(t_0 = 0\)</span>, <span class="math notranslate nohighlight">\(y_0 = 1\)</span> and since <span class="math notranslate nohighlight">\(h = 0.1\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+   \begin{pmatrix} 1.1 &amp; 0 \\ 0.2 &amp; 1.1 \end{pmatrix}
+   \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+   &amp;=
+   \begin{pmatrix} 1.000625 \\ 1.003125 \end{pmatrix} \\
+   \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix} 
+   &amp;= 
+   \begin{pmatrix} \frac{11}{10} &amp; 0 \\ -\frac{20}{121} &amp; \frac{11}{10} \end{pmatrix}
+   \begin{pmatrix} 1.000625 \\ 1.003125 \end{pmatrix}
+   =
+   \begin{pmatrix} 0.909659 \\ 0.746539 \end{pmatrix}.
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Therefore <span class="math notranslate nohighlight">\(Y_1 = 0.909659\)</span> and <span class="math notranslate nohighlight">\(Y_2 = 0.746539\)</span>.</p>
+</div>
+</details><p>(ii) Hence calculate the solution at <span class="math notranslate nohighlight">\(t = 0.1\)</span>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+   y_1 &amp;= y_0 + \frac{h}{2} (f(t_0 + \tfrac14 h, Y_1) + f(t_0 + \tfrac34 h, Y_2)) \\
+   &amp;= 1 + \frac{0.1}{2}((0 + \tfrac14(0.1) - 4(0.909659)) + (0 + \tfrac34 (0.1) - 4(0.746539))) \\
+   &amp;= 0.673760.
+\end{align*} \end{split}\]</div>
+</div>
+</details><p>(iii) Using MATLAB or Python, compute the solution to this initial value problem over the interval <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span>. Present your solution as a table with values stated using 4 decimal places.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(t_n\)</span></p></th>
+<th class="head text-center"><p class="sd-card-text"><span class="math notranslate nohighlight">\(y_n\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">0</p></td>
+<td class="text-center"><p class="sd-card-text">0.0</p></td>
+<td class="text-center"><p class="sd-card-text">1.0000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">1</p></td>
+<td class="text-center"><p class="sd-card-text">0.1</p></td>
+<td class="text-center"><p class="sd-card-text">0.6738</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">2</p></td>
+<td class="text-center"><p class="sd-card-text">0.2</p></td>
+<td class="text-center"><p class="sd-card-text">0.4636</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">3</p></td>
+<td class="text-center"><p class="sd-card-text">0.3</p></td>
+<td class="text-center"><p class="sd-card-text">0.3312</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">4</p></td>
+<td class="text-center"><p class="sd-card-text">0.4</p></td>
+<td class="text-center"><p class="sd-card-text">0.2509</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">5</p></td>
+<td class="text-center"><p class="sd-card-text">0.5</p></td>
+<td class="text-center"><p class="sd-card-text">0.2053</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">6</p></td>
+<td class="text-center"><p class="sd-card-text">0.6</p></td>
+<td class="text-center"><p class="sd-card-text">0.1831</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">7</p></td>
+<td class="text-center"><p class="sd-card-text">0.7</p></td>
+<td class="text-center"><p class="sd-card-text">0.1765</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">8</p></td>
+<td class="text-center"><p class="sd-card-text">0.8</p></td>
+<td class="text-center"><p class="sd-card-text">0.1803</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">9</p></td>
+<td class="text-center"><p class="sd-card-text">0.9</p></td>
+<td class="text-center"><p class="sd-card-text">0.1912</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">10</p></td>
+<td class="text-center"><p class="sd-card-text">1.0</p></td>
+<td class="text-center"><p class="sd-card-text">0.2067</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="n">y0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">h</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="mi">0</span> <span class="p">],</span> <span class="p">[</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">h</span> <span class="p">]])</span>
+<span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;| n  | tn  |   yn   |&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|----|-----|--------|&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="mi">0</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">16</span> <span class="o">*</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> 
+                  <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span><span class="o">/</span><span class="mi">16</span> <span class="o">*</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">Ainv</span> <span class="o">@</span> <span class="n">b</span>
+
+    <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</details></li>
+<li><p>(a) The <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions for a Runge-Kutta method are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+      B(k):&amp;&amp; \sum_{i=1}^s b_i c_i^{j-1} &amp;= \frac{1}{j}, &amp; j &amp;= 1 \ldots k, \\
+      C(k):&amp;&amp; \sum_{j=1}^s a_{ij}c_j^{\ell - 1} &amp;= \frac{1}{\ell} c_i^\ell, &amp; i &amp;= 1 \ldots s, &amp; \ell &amp;= 1 \ldots k,
+   \end{align*} \end{split}\]</div>
 <p>and the <span class="math notranslate nohighlight">\(n\)</span>-order Legendre polynomial is</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
-   P_n(x) = \sum_{i=0}^n {n \choose i} {n + i \choose i} (x - 1)^i,
-\end{align*} \]</div>
+      P_n(x) = \sum_{i=0}^n {n \choose i} {n + i \choose i} (x - 1)^i,
+   \end{align*} \]</div>
 <p>where <span class="math notranslate nohighlight">\({n \choose i}\)</span> is the Binomial coefficient.</p>
 <p>An <span class="math notranslate nohighlight">\(s\)</span>-stage Radau IIA method has order <span class="math notranslate nohighlight">\(2s - 1\)</span>, the <span class="math notranslate nohighlight">\(c_i\)</span> values are the roots of <span class="math notranslate nohighlight">\(P_s(x) - P_{s-1}(x)\)</span> and the <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> coefficients are chosen to satisfy the <span class="math notranslate nohighlight">\(B(2s)\)</span> and <span class="math notranslate nohighlight">\(C(s)\)</span> order conditions respectively.</p>
 <p>Derive a third-order Radau IIA method expressing your solution as a Butcher tableau.</p>
@@ -745,18 +996,18 @@ Python</label><div class="sd-tab-content docutils">
 </details><p>(b) A 2-stage SDIRK method is given below</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-   \begin{array}{c|cc}
-      \frac{1}{8} &amp; \frac{1}{8} &amp; 0 \\
-      \frac{7}{8} &amp; \frac{3}{4} &amp; \frac{1}{8} \\ \hline
-      &amp; \frac{1}{2} &amp; \frac{1}{2}
-      \end{array}
-\end{align*} \end{split}\]</div>
+      \begin{array}{c|cc}
+         \frac{1}{8} &amp; \frac{1}{8} &amp; 0 \\
+         \frac{7}{8} &amp; \frac{3}{4} &amp; \frac{1}{8} \\ \hline
+         &amp; \frac{1}{2} &amp; \frac{1}{2}
+         \end{array}
+   \end{align*} \end{split}\]</div>
 <p>Write the stability function of this method and determine whether it is A-stable or not. You may find the following formulae useful:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-   R(z) &amp;= \frac{\det(I - zA + z\mathbf{eb}^\mathsf{T})}{\det(I - zA)}, \\
-   E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2.
-\end{align*} \end{split}\]</div>
+      R(z) &amp;= \frac{\det(I - zA + z\mathbf{eb}^\mathsf{T})}{\det(I - zA)}, \\
+      E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2.
+   \end{align*} \end{split}\]</div>
 <div style="text-align: right">[10 marks]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -805,18 +1056,13 @@ Python</label><div class="sd-tab-content docutils">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 </div>
-</details></section>
-</div>
-<div class="exercise admonition" id="irk-exam-2">
-
-<p class="admonition-title"><span class="caption-number">Exercise 4 </span></p>
-<section id="exercise-content">
-<p>(a) The <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions for an <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method are</p>
+</details></li>
+<li><p>(a) The <span class="math notranslate nohighlight">\(B(k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions for an <span class="math notranslate nohighlight">\(s\)</span>-stage Runge-Kutta method are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-  B(k): &amp;&amp; \sum_{i=1}^s b_ic_i^{j - 1} &amp;= \frac{1}{j}, &amp; j &amp;= 1, \ldots, k, \\
-  C(k): &amp;&amp; \sum_{j=1}^s a_{ij}c_j^{\ell - 1} &amp;= \frac{1}{\ell} c_i^\ell, &amp; i &amp;= 1, \ldots, s, &amp; \ell &amp;= 1, \ldots, k,
-\end{align*} \end{split}\]</div>
+     B(k): &amp;&amp; \sum_{i=1}^s b_ic_i^{j - 1} &amp;= \frac{1}{j}, &amp; j &amp;= 1, \ldots, k, \\
+     C(k): &amp;&amp; \sum_{j=1}^s a_{ij}c_j^{\ell - 1} &amp;= \frac{1}{\ell} c_i^\ell, &amp; i &amp;= 1, \ldots, s, &amp; \ell &amp;= 1, \ldots, k,
+   \end{align*} \end{split}\]</div>
 <p>and the Legendre polynomial is</p>
 <div class="math notranslate nohighlight">
 \[ P_n(x) = \sum_{i=0}^n {n \choose i}{n+i \choose i} (x - 1)^i, \]</div>
@@ -855,8 +1101,8 @@ Python</label><div class="sd-tab-content docutils">
   &amp; \frac12 &amp; \frac12
 \end{array} \end{split}\]</div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-4" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-4">
+<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-5" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -881,25 +1127,20 @@ Python</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-</details></section>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>(b) Another implicit method has the following Butcher tableau:</p>
+</details><p>(b) Another implicit method has the following Butcher tableau:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{c|cc}
-  \frac12 &amp; \frac12 &amp; 0 \\
-  \frac32 &amp; -\frac12 &amp; 2 \\
-  \hline
-  &amp; -\frac12 &amp; \frac32
-\end{array} \end{split}\]</div>
+     \frac12 &amp; \frac12 &amp; 0 \\
+     \frac32 &amp; -\frac12 &amp; 2 \\
+     \hline
+     &amp; -\frac12 &amp; \frac32
+   \end{array} \end{split}\]</div>
 <p>State with reasons whether it is A-stable or not. You may find the following useful:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-  R(z) &amp;= \frac{\det(I - zA + z\mathbf{eb}^\mathsf{T})}{\det(I - zA)}, \\
-  E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2,
-\end{align*} \end{split}\]</div>
+     R(z) &amp;= \frac{\det(I - zA + z\mathbf{eb}^\mathsf{T})}{\det(I - zA)}, \\
+     E(y) &amp;= |Q(iy)|^2 - |P(iy)|^2,
+   \end{align*} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(R(z) = P(z) / Q(z)\)</span> and <span class="math notranslate nohighlight">\(i^2 = -1\)</span>.</p>
 <div style="text-align: right">[10 marks]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -952,31 +1193,29 @@ Python</label><div class="sd-tab-content docutils">
 <div style="text-align: right">[5 marks]</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-kebab-horizontal no-title" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a2 2 0 1 1-.001-3.999A2 2 0 0 1 20 14ZM6 12a2 2 0 1 1-3.999.001A2 2 0 0 1 6 12Zm8 0a2 2 0 1 1-3.999.001A2 2 0 0 1 14 12Z"></path></svg></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 </div>
-</details><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
----
-
-## Matrix Decomposition Methods
-
-````{exercise}
-:label: matrix-decomposition-exam-1
-
-(a) Use LUP decomposition to solve the following system of equations
-
-$$ \begin{align*}
-   2x_1 + 2x_2 +  x_3 &amp;= 11, \\
-   4x_1 +  x_2 + 3x_3 &amp;= 46, \\
-   -3x_1 - 5x_2 + 4x_3 &amp;= 14.
-\end{align*} $$
-
-&lt;div style=&quot;text-align: right&quot;&gt;[10 marks]&lt;/div&gt;
-
-```{dropdown} Solution
-
-Performing partial pivoting on the coefficient matrix
-
-$$ \begin{align*}
+</details></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="matrix-decomposition-methods">
+<h2>Matrix Decomposition Methods<a class="headerlink" href="#matrix-decomposition-methods" title="Link to this heading">#</a></h2>
+<ol class="arabic" start="5">
+<li><p>(a) Use LUP decomposition to solve the following system of equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+      2x_1 + 2x_2 +  x_3 &amp;= 11, \\
+      4x_1 +  x_2 + 3x_3 &amp;= 46, \\
+      -3x_1 - 5x_2 + 4x_3 &amp;= 14.
+   \end{align*} \end{split}\]</div>
+<div style="text-align: right">[10 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Performing partial pivoting on the coefficient matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
    &amp; \begin{pmatrix}
    2 &amp; 2 &amp; 1 \\
    4 &amp; 1 &amp; 3 \\ 
@@ -989,18 +1228,17 @@ $$ \begin{align*}
    2 &amp; 2 &amp; 1 \\
    -3 &amp; -5 &amp; 4
    \end{pmatrix}
-   \begin{matrix}  \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{matrix} \\
+   \begin{matrix}  \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{matrix} &amp;
    \longrightarrow
    &amp; \begin{pmatrix}
    4 &amp; 1 &amp; 3 \\ 
    -3 &amp; -5 &amp; 4 \\
    2 &amp; 2 &amp; 1 
    \end{pmatrix} = PA.
-\end{align*} $$
-
-Performing the same row swaps on $I_3$
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Performing the same row swaps on <span class="math notranslate nohighlight">\(I_3\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
    &amp; \begin{pmatrix}
    1 &amp; 0 &amp; 0 \\
    0 &amp; 1 &amp; 0 \\
@@ -1013,18 +1251,17 @@ $$ \begin{align*}
    1 &amp; 0 &amp; 0 \\
    0 &amp; 0 &amp; 1
    \end{pmatrix}
-   \begin{matrix}  \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{matrix} \\
+   \begin{matrix}  \\ R_2 \leftrightarrow R_3 \\ \phantom{x} \end{matrix} &amp;
    \longrightarrow
    &amp; \begin{pmatrix}
    0 &amp; 1 &amp; 0 \\
    0 &amp; 0 &amp; 1 \\
    1 &amp; 0 &amp; 0
    \end{pmatrix} = P.
-\end{align*} $$
-
-Computing the LU decomposition of $PA$
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Computing the LU decomposition of <span class="math notranslate nohighlight">\(PA\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
    j &amp;= 1: &amp; u_{11} &amp;= a_{11} = 4, \\
    &amp;&amp; \ell_{21} &amp;= \frac{1}{u_{11}}a_{21} = \frac14(-3) = -\frac34, \\
    &amp;&amp; \ell_{31} &amp;= \frac{1}{u_{11}}a_{31} = \frac14(2) = \frac12, \\
@@ -1034,11 +1271,10 @@ $$ \begin{align*}
    j &amp;= 3: &amp; u_{13} &amp;= a_{13} = 3, \\
    &amp;&amp; u_{23} &amp;= a_{23} - \ell_{21}u_{13} = 4 - \left( -\frac34 \right)(3) = \frac{25}{4}, \\
    &amp;&amp; u_{33} &amp;= a_{33} - \ell_{31}u_{13} - \ell_{32}u_{23} = 1 - \frac12(3) - \left( -\frac{25}{4} \right) = \frac{29}{17},
-\end{align*} $$
-
-therefore
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
    L &amp;=
    \begin{pmatrix}
    1 &amp; 0 &amp; 0 \\
@@ -1057,11 +1293,10 @@ $$ \begin{align*}
    0 &amp; 0 &amp; 1 \\
    1 &amp; 0 &amp; 0 
    \end{pmatrix}.
-\end{align*} $$
-
-Solving $L\mathbf{y} = P \mathbf{b}$ 
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(L\mathbf{y} = P \mathbf{b}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
    \begin{pmatrix}
       1 &amp; 0 &amp; 0 \\
       -\frac34 &amp; 1 &amp; 0 \\
@@ -1083,11 +1318,10 @@ $$ \begin{align*}
       y_2 &amp;= 14 - (-\tfrac34)(46) = \tfrac{97}{2}, \\
       y_3 &amp;= 11 - \tfrac12(46) - (-\tfrac{6}{17}) = \tfrac{87}{17}.
    \end{aligned}
-\end{align*} $$
-
-Solving $U \mathbf{x} = \mathbf{y}$
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">Solving <span class="math notranslate nohighlight">\(U \mathbf{x} = \mathbf{y}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
    \begin{pmatrix}
       4 &amp; 1 &amp; 3 \\
       0 &amp; -\frac{17}{4} &amp; \frac{25}{4} \\
@@ -1102,29 +1336,30 @@ $$ \begin{align*}
    x_2 &amp;= -\tfrac{17}{4} (\tfrac{97}{2} - \tfrac{25}{4}(3)) = -7, \\
    x_1 &amp;= \tfrac{1}{4} (46 - (-7) - 3(3)) = 11.
    \end{aligned}
-\end{align*} $$
-
-```
-
-(b) The Gram-Schmidt method for computing the QR decomposition of the matrix $A$ is:
-
-- for $j = 1 \ldots n$
-  - $r_{ij} = \mathbf{q}_i \cdot \mathbf{a}_j, \qquad i = 1, \ldots, j - 1$
-  - $\mathbf{u}_j = \mathbf{a}_i - \displaystyle\sum_{i=1}^{j - 1} r_{ij} \mathbf{q}_i$
-  - $r_{jj} = \| \mathbf{u}_j \|$
-  - $\mathbf{q}_j = \dfrac{\mathbf{u}_i}{r_{jj}}$
-
-Calculate the QR decomposition of the following matrix using the Gram-Schmidt process and verify that your decomposition is an orthogonal matrix.
-
-$$ \begin{align*}
-  A = \begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3 \\ 1 &amp; 3 &amp; 4 \end{pmatrix}
-\end{align*} $$
-
-&lt;div style=&quot;text-align: right&quot;&gt;[10 marks]&lt;/div&gt;
-
-```{dropdown} Solution
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+</div>
+</details><p>(b) The Gram-Schmidt method for computing the QR decomposition of the matrix <span class="math notranslate nohighlight">\(A\)</span> is:</p>
+<ul class="simple">
+<li><p>for <span class="math notranslate nohighlight">\(j = 1 \ldots n\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(r_{ij} = \mathbf{q}_i \cdot \mathbf{a}_j, \qquad i = 1, \ldots, j - 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u}_j = \mathbf{a}_i - \displaystyle\sum_{i=1}^{j - 1} r_{ij} \mathbf{q}_i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r_{jj} = \| \mathbf{u}_j \|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{q}_j = \dfrac{\mathbf{u}_i}{r_{jj}}\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Calculate the QR decomposition of the following matrix using the Gram-Schmidt process and verify that your decomposition is an orthogonal matrix.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+     A = \begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3 \\ 1 &amp; 3 &amp; 4 \end{pmatrix}
+   \end{align*} \end{split}\]</div>
+<div style="text-align: right">[10 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
   j &amp;= 1; &amp; \mathbf{u}_1 &amp;= \mathbf{a}_1 = 
   \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \\
   &amp;&amp; r_{11} &amp;= \| \mathbf{u}_1 \| = \sqrt{3}, \\
@@ -1168,11 +1403,10 @@ $$ \begin{align*}
   \begin{pmatrix} -\frac16 \\ \frac13 \\ -\frac16 \end{pmatrix}
   =
   \begin{pmatrix} -\frac{\sqrt{6}}{6} \\ \frac{\sqrt{6}}{3} \\ -\frac{\sqrt{6}}{6} \end{pmatrix},
-\end{align*} $$
-
-therefore
-
-$$ \begin{align*}
+\end{align*} \end{split}\]</div>
+<p class="sd-card-text">therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
   Q &amp;= 
   \begin{pmatrix}
     \frac{\sqrt{3}}{3} &amp; -\frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{6}}{6} \\
@@ -1185,18 +1419,17 @@ $$ \begin{align*}
     0 &amp; \sqrt{2} &amp; \frac{3\sqrt{2}}{2} \\
     0 &amp; 0 &amp; \frac{\sqrt{6}}{6}
   \end{pmatrix}.
-\end{align*} $$
-```
-
-(c) Explain how LU decomposition used in the calculation of the stage values of an implicit Runge-Kutta method. What advantages does it have for this application over other methods for solving systems of linear equations?
-
-&lt;div style=&quot;text-align: right&quot;&gt;[5 marks]&lt;/div&gt;
-
-```{dropdown} Solution
-LU decomposition is commonly used to compute the solution to the linear system required by Newton&#39;s method to solve for the stages values. Since we assume the Jacobian matrix is constant for all Newton iterations, the LU decomposition only needs to be computed once per step, whereas other solution methods for linear systems such as Gaussian elimination would need to be re-computed for each iteration.
-```
-</pre></div>
+\end{align*} \end{split}\]</div>
 </div>
+</details><p>(c) Explain how LU decomposition used in the calculation of the stage values of an implicit Runge-Kutta method. What advantages does it have for this application over other methods for solving systems of linear equations?</p>
+<div style="text-align: right">[5 marks]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">LU decomposition is commonly used to compute the solution to the linear system required by Newton’s method to solve for the stages values. Since we assume the Jacobian matrix is constant for all Newton iterations, the LU decomposition only needs to be computed once per step, whereas other solution methods for linear systems such as Gaussian elimination would need to be re-computed for each iteration.</p>
+</div>
+</details></li>
+</ol>
 </section>
 </section>
 
@@ -1265,7 +1498,7 @@ LU decomposition is commonly used to compute the solution to the linear system r
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-runge-kutta-methods">Explicit Runge-Kutta Methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-runge-kutta-methods">Implicit Runge-Kutta Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-decomposition-methods">Matrix Decomposition Methods</a></li>
 </ul>
   </nav></div>
 
