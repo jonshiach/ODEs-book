@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -423,11 +423,11 @@ document.write(`
 <p>Here we derive a second-order ERK method. A second-order method has global error <span class="math notranslate nohighlight">\(O(h^2)\)</span>, which corresponds to a local truncation error of <span class="math notranslate nohighlight">\(O(h^3)\)</span>. The Taylor series expansion of <span class="math notranslate nohighlight">\(y(t_n + h)\)</span> to <span class="math notranslate nohighlight">\(O(h^3)\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-2nd-order-taylor">
 <span class="eqno">(2.4)<a class="headerlink" href="#equation-2nd-order-taylor" title="Link to this equation">#</a></span>\[ \begin{align*}
-    y(t_n + h) = y(t_n) + h y'(t_n) + \frac{h^2}{2} y''(t_n) + O(h^3).
+    y(t + h) = y(t) + h y'(t) + \frac{h^2}{2} y''(t) + O(h^3).
 \end{align*}\]</div>
 <p>We want to solve <span class="math notranslate nohighlight">\(y' = f(t, y)\)</span>, for convenience let <span class="math notranslate nohighlight">\(f = f(t_n, y_n)\)</span> so the series expansion is</p>
 <div class="math notranslate nohighlight">
-\[ y(t + h) = y(t_n) + hf + \frac{h^2}{2} f' + O(h^3). \]</div>
+\[ y(t + h) = y(t) + hf + \frac{h^2}{2} f' + O(h^3). \]</div>
 <p>The <a href="https://en.wikipedia.org/wiki/Derivative_(multivariable_calculus)#Total_derivative" target="_blank">total derivative</a> of <span class="math notranslate nohighlight">\(f\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[ f' = f_t + f_y y', \]</div>
@@ -569,7 +569,7 @@ Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
 <span class="c1"># Declare symbolic variables</span>
-<span class="n">a21</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;a21, b1, b2, c2&quot;</span><span class="p">)</span>
+<span class="n">a21</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">"a21, b1, b2, c2"</span><span class="p">)</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1"># Define order conditions</span>
