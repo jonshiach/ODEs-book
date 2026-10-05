@@ -32,10 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -455,7 +455,7 @@ document.write(`
     \frac{\mathrm{d}R}{\mathrm{d}t} &amp;= \gamma I,
 \end{align*} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N = S + I + R\)</span> is the total population, <span class="math notranslate nohighlight">\(\beta\)</span> is the infection rate in the number of people per day who become infected, and <span class="math notranslate nohighlight">\(\gamma\)</span> is the recovery rate at which a person who is infected recovers per day.</p>
-<p>A disease breaks out in a population where <span class="math notranslate nohighlight">\(\beta = 0.5\)</span>, <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span> and <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span> and <span class="math notranslate nohighlight">\(R(0) = 0\)</span>. compute the solution to the SIR model over the first 50 days using the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 1\)</span>.</p>
+<p>A disease breaks out in a population where <span class="math notranslate nohighlight">\(\beta = 0.5\)</span>, <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span> and <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span> and <span class="math notranslate nohighlight">\(R(0) = 0\)</span>. Compute the solution to the SIR model over the first 50 days using the Euler method with a step length of <span class="math notranslate nohighlight">\(h = 1\)</span>.</p>
 <hr class="docutils" />
 <p><strong>Solution</strong></p>
 <p>Let <span class="math notranslate nohighlight">\(y_1 = S\)</span>, <span class="math notranslate nohighlight">\(y_2 = I\)</span> and <span class="math notranslate nohighlight">\(y_3 = R\)</span> and writing the SIR model in vector form we have</p>
@@ -509,7 +509,7 @@ document.write(`
 \end{align*} \end{split}\]</div>
 <p>The plot of the solutions to the SIR model using the Euler method for the first 50 days of the infection is shown in <a class="reference internal" href="#sir-figure"><span class="std std-numref">Fig. 1.7</span></a></p>
 <figure class="align-default" id="sir-figure" style="width: 600px">
-<img alt="Euler method solutions for the SIR model" src="../_images/a69f6bf921a5719be983bde5f62494cd61a9191d9621283c34a70e1cd4094510.png" />
+<img alt="Euler method solutions for the SIR model" src="../_images/fc1640f92db8d6fa022810993e9b2886e2355e20963887ed10b9f5b7fa99603c.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Euler method solutions for the SIR model with <span class="math notranslate nohighlight">\(S(0) = 99\)</span>, <span class="math notranslate nohighlight">\(I(0) = 1\)</span>, <span class="math notranslate nohighlight">\(R(0) = 0\)</span>, <span class="math notranslate nohighlight">\(\beta = 0.5\)</span> and <span class="math notranslate nohighlight">\(\gamma = 0.1\)</span>.</span><a class="headerlink" href="#sir-figure" title="Link to this image">#</a></p>
 </figcaption>
@@ -617,11 +617,6 @@ Python</label><div class="sd-tab-content docutils">
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;sir_plot&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
