@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -547,7 +547,7 @@ document.write(`
 <p>since the <span class="math notranslate nohighlight">\(O(h^{p+1})\)</span> term dominates the <span class="math notranslate nohighlight">\(O(h^{p+2})\)</span> term. The scaling factors <span class="math notranslate nohighlight">\(s_i\)</span> do not depend on <span class="math notranslate nohighlight">\(h\)</span>, so the scaled error measure <span class="math notranslate nohighlight">\(\Delta\)</span> also satisfies</p>
 <div class="math notranslate nohighlight">
 \[ \Delta = O(h^{p+1}).\]</div>
-<p>Assuming the aysmptotic regime has been reached, the dominant error term may be written as</p>
+<p>The dominant error term may be written as</p>
 <div class="math notranslate nohighlight" id="equation-h-error">
 <span class="eqno">(2.19)<a class="headerlink" href="#equation-h-error" title="Link to this equation">#</a></span>\[ \Delta \approx C h^{p + 1}, \]</div>
 <p>where <span class="math notranslate nohighlight">\(C\)</span> is approximately constant over one step. We want to compute a new step length <span class="math notranslate nohighlight">\(h_{new}\)</span> which results in a desired value of <span class="math notranslate nohighlight">\(\Delta = 1\)</span>, i.e.,</p>
@@ -584,7 +584,7 @@ document.write(`
 <li><p>while <span class="math notranslate nohighlight">\(t_n &lt; t_{\max}\)</span></p>
 <ul>
 <li><p>Compute the <span class="math notranslate nohighlight">\(\mathbf{y}^{(p+1)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}^{(p)}\)</span> solutions</p></li>
-<li><p><span class="math notranslate nohighlight">\(e_i \gets | y_i^{(p+1)} - y_i^{(p)} ||, \qquad i = 1, \ldots, N\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e_i \gets | y_i^{(p+1)} - y_i^{(p)} |, \qquad i = 1, \ldots, N\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(s_i \gets atol + rtol \max(|y_i^{(n)}|, |y_i^{(p+1)}|), \qquad i = 1, \ldots, N\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\Delta \gets \sqrt{ \dfrac{1}{N} \displaystyle\sum_{i=1}^N \left( \dfrac{e_i}{s_i} \right)^2}\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\Delta \leq 1\)</span></p>
