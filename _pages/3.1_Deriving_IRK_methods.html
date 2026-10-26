@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -429,9 +429,9 @@ document.write(`
 <section id="gauss-legendre-methods">
 <span id="gauss-legendre-derivation"></span><h2><span class="section-number">3.1.1. </span>Gauss-Legendre methods<a class="headerlink" href="#gauss-legendre-methods" title="Link to this heading">#</a></h2>
 <p>Gauss-Legendre methods are a family of methods that are derived using <a href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature" target="_blank">Gauss-Legendre quadrature</a>. An <span class="math notranslate nohighlight">\(s\)</span>-stage Gauss-Legendre method has order <span class="math notranslate nohighlight">\(2s\)</span>. They are derived using <a href="https://en.wikipedia.org/wiki/Legendre_polynomials" target="_blank">Legendre polynomials</a> which are are a system of orthogonal polynomials.</p>
-<p>For an order <span class="math notranslate nohighlight">\(k\)</span> Gauss-Legendre IRK method, the values of the <span class="math notranslate nohighlight">\(c_i\)</span> coefficients are chosen to be the roots of the Legendre polynomial</p>
+<p>For an order <span class="math notranslate nohighlight">\(n\)</span> Gauss-Legendre IRK method, the values of the <span class="math notranslate nohighlight">\(c_i\)</span> coefficients are chosen to be the roots of the Legendre polynomial</p>
 <div class="math notranslate nohighlight">
-\[ P_k (x)=\sum_{i=0}^n \binom{n}{i} \binom{n+i}{i} \left( x - 1 \right)^i, \]</div>
+\[ P_n (x)=\sum_{i=0}^n \binom{n}{i} \binom{n+i}{i} \left( x - 1 \right)^i, \]</div>
 <p>where <span class="math notranslate nohighlight">\(\displaystyle{n \choose i} = \dfrac{n!}{i!(n - i)!}\)</span> is the <a href="https://en.wikipedia.org/wiki/Binomial_coefficient" target="_blank">binomial coefficient</a>. The values of <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> are then chosen to satisfy the <span class="math notranslate nohighlight">\(B(2k)\)</span> and <span class="math notranslate nohighlight">\(C(k)\)</span> order conditions from equation <a class="reference internal" href="#equation-irk-order-conditions">(3.1)</a>.</p>
 <div class="proof example admonition" id="gauss-legendre-derivation-example">
 <p class="admonition-title"><span class="caption-number">Example 3.1 </span></p>

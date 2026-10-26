@@ -627,18 +627,17 @@ document.write(`
     \dfrac{\partial f_1}{\partial y_1} &amp; \dfrac{\partial f_1}{\partial y_2} \\
     \dfrac{\partial f_2}{\partial y_1} &amp; \dfrac{\partial f_2}{\partial y_2}
 \end{pmatrix}. \end{split}\]</div>
-<p>To approximate the first column, we only perturb <span class="math notranslate nohighlight">\(y_1\)</span></p>
+<p>To approximate the first column, we only perturb <span class="math notranslate nohighlight">\(y_1\)</span>, and to approximate the second column, we only perturb <span class="math notranslate nohighlight">\(y_2\)</span></p>
 <div class="math notranslate nohighlight">
-\[ \frac{\partial}{\partial y_1} \mathbf{f}(t, \mathbf{y}) \approx \frac{\mathbf{f}(t, \mathbf{y} + \epsilon \, \mathbf{e}_1) - \mathbf{f}(t, \mathbf{y})}{\epsilon \,}, \]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \mathbf{y} + \epsilon \, \mathbf{e}_1 = \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} + \epsilon \, \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} y_1 + \epsilon \, \\ y_2 \end{pmatrix}. \end{split}\]</div>
-<p>To approximate the second column, we only perturb <span class="math notranslate nohighlight">\(y_2\)</span></p>
-<div class="math notranslate nohighlight">
-\[ \frac{\partial}{\partial y_2}\mathbf{f}(t, \mathbf{y}) \approx \frac{\mathbf{f}(t, \mathbf{y} + \epsilon \, \mathbf{e}_2) - \mathbf{f}(t, \mathbf{y})}{\epsilon \,}, \]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \mathbf{y} + \epsilon \, \mathbf{e}_2 = \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} + \epsilon \, \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} y_1 \\ y_2 + \epsilon \, \end{pmatrix}. \end{split}\]</div>
+\[\begin{split} \begin{align*}
+    J_f &amp;=
+    \begin{pmatrix}
+        \dfrac{f_1(t, y_1 + \epsilon, y_2) - f_1(t, y_1, y_2)}{\epsilon} &amp;
+        \dfrac{f_1(t, y_1, y_2 + \epsilon) - f_1(t, y_1, y_2)}{\epsilon} \\
+        \dfrac{f_2(t, y_1 + \epsilon, y_2) - f_2(t, y_1, y_2)}{\epsilon} &amp;
+        \dfrac{f_2(t, y_1, y_2 + \epsilon) - f_2(t, y_1, y_2)}{\epsilon}
+    \end{pmatrix}
+\end{align*} \end{split}\]</div>
 <p>The Jacobian matrix <span class="math notranslate nohighlight">\(J_f\)</span> is constant for all Newton iterations, so the solution of the linear system is well suited to <a class="reference internal" href="6.1_LU_decomposition.html#lu-section"><span class="std std-ref">LU decomposition</span></a>.</p>
 </section>
 <hr class="docutils" />
