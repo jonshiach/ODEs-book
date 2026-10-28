@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=20b57f81" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -420,11 +420,11 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ y(t) = e^{\lambda t},\]</div>
 <p>yet it captures the essential growth or decay behaviour that numerical methods must reproduce.</p>
-<p>Suppose a numerical mtehod is applied to this test equation. Since the method advances the numerical solution from <span class="math notranslate nohighlight">\(y_n\)</span> to <span class="math notranslate nohighlight">\(y_{n+1}\)</span>, any perturbation or error is propagated by exactly the same update formula. The resulting factor by which the solution (and hence the error) is multiplied in one step is called the <strong>stability function</strong>.</p>
+<p>Suppose a numerical method is applied to this test equation. Since the method advances the numerical solution from <span class="math notranslate nohighlight">\(y_n\)</span> to <span class="math notranslate nohighlight">\(y_{n+1}\)</span>, any perturbation or error is propagated by exactly the same update formula. The resulting factor by which the solution (and hence the error) is multiplied in one step is called the <strong>stability function</strong>.</p>
 <div class="proof definition admonition" id="stability-function-definition">
 <p class="admonition-title"><span class="caption-number">Definition 4.2 </span> (Stability function)</p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>stability function</strong> of a method, denoted by <span class="math notranslate nohighlight">\(R(z)\)</span>, is the rate of growth over a single step of the method when applied to calculate the solution of an ODE of the form <span class="math notranslate nohighlight">\(y'=\lambda t\)</span> where <span class="math notranslate nohighlight">\(z = h \lambda\)</span> and <span class="math notranslate nohighlight">\(h\)</span> is the step size</p>
+<p>The <strong>stability function</strong> of a method, denoted by <span class="math notranslate nohighlight">\(R(z)\)</span>, is the rate of growth over a single step of the method when applied to calculate the solution of an ODE of the form <span class="math notranslate nohighlight">\(y'=\lambda y\)</span> where <span class="math notranslate nohighlight">\(z = h \lambda\)</span> and <span class="math notranslate nohighlight">\(h\)</span> is the step size</p>
 <div class="math notranslate nohighlight">
 \[ y_{n+1} = R(z)y_n. \]</div>
 </section>
