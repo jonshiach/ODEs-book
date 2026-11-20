@@ -16,43 +16,46 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css?v=982b99e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -62,7 +65,8 @@
     <script>window.MathJax = {"tex": {"macros": {"vec": ["\\mathbf{#1}", 1], "dydt": ["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}", 2]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_pages/6.4_QR_decomposition';</script>
-    <link rel="canonical" href="https://jonshiach.github.io/LA-book/_pages/6.4_QR_decomposition.html" />
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://github.com/jonshiach/ODEs-book/_pages/6.4_QR_decomposition.html" />
     <link rel="icon" href="../_static/favicon.jpeg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -70,34 +74,30 @@
     <link rel="prev" title="6.3. Cholesky decomposition" href="6.3_Cholesky_decomposition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -105,7 +105,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -113,15 +112,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -130,7 +173,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -160,21 +204,17 @@
     
     
     <img src="../_static/logo2.png" class="logo__image only-light" alt="Runge-Kutta Methods - Home"/>
-    <script>document.write(`<img src="../_static/logo2.png" class="logo__image only-dark" alt="Runge-Kutta Methods - Home"/>`);</script>
+    <img src="../_static/logo2.png" class="logo__image only-dark pst-js-only" alt="Runge-Kutta Methods - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -257,9 +297,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -290,6 +335,21 @@
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+<a href="https://github.com/jonshiach/ODEs-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
 
 
 
@@ -342,7 +402,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -356,25 +416,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -396,7 +448,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-the-gram-schmidt-process">6.4.1. QR decomposition using the Gram-Schmidt process</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-diagonal-elements-of-r">6.4.1.1. Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span></a></li>
 </ul>
@@ -481,44 +533,60 @@ document.write(`
 \end{pmatrix} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{a}_j = (a_{1j}, a_{2j}, a_{3j})^\mathsf{T}\)</span>. To calculate the orthogonal <span class="math notranslate nohighlight">\(Q\)</span> matrix we need a set of vectors <span class="math notranslate nohighlight">\(\{\mathbf{q}_1, \mathbf{q}_2, \mathbf{q}_3\}\)</span> that span the same space as <span class="math notranslate nohighlight">\(\{\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\}\)</span> but are orthogonal to each other. One way to do this is using the <strong>Gram-Schmidt process</strong>. Consider the diagram shown in <a class="reference internal" href="#gram-schmidt-figure"><span class="std std-numref">Fig. 6.1</span></a> that shows the first two non-orthogonal vectors <span class="math notranslate nohighlight">\(\mathbf{a}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>.</p>
 <figure class="align-default" id="gram-schmidt-figure">
-<a class="reference internal image-reference" href="../_images/06_gram_schmidt.svg"><img alt="../_images/06_gram_schmidt.svg" src="../_images/06_gram_schmidt.svg" width="400" /></a>
+<a class="reference internal image-reference" href="../_images/06_gram_schmidt.svg"><img alt="../_images/06_gram_schmidt.svg" src="../_images/06_gram_schmidt.svg" style="width: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">The Gram-Schmidt process</span><a class="headerlink" href="#gram-schmidt-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>We begin by letting <span class="math notranslate nohighlight">\(\mathbf{u}_1 = \mathbf{a}_1\)</span> and seek to find a vector <span class="math notranslate nohighlight">\(\mathbf{u}_2\)</span> that is orthogonal to <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span> and in the same span as <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>. To do this we subtract the <a href="https://en.wikipedia.org/wiki/Vector_projection" target="_blank">vector projection</a> of <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>, i.e.,</p>
-<div class="math notranslate nohighlight">
-\[ \mathbf{u}_2 = \mathbf{a}_2 - \left( \frac{\mathbf{u}_1 \cdot \mathbf{a}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \right) \mathbf{u}_1.\]</div>
-<p>We can simplify things by normalising <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{q}_1 = \dfrac{\mathbf{u}_1}{\|\mathbf{u}_1\|}\)</span> so we have</p>
+<p>We begin by letting <span class="math notranslate nohighlight">\(\mathbf{u}_1 = \mathbf{a}_1\)</span> and seek to find a vector <span class="math notranslate nohighlight">\(\mathbf{u}_2\)</span> that is orthogonal to <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span> and in the same span as <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span>. To do this we normalise <span class="math notranslate nohighlight">\(\mathbf{u}_1 =  \mathbf{q}_1\)</span> and subtract the <a href="https://en.wikipedia.org/wiki/Vector_projection" target="_blank">vector projection</a> of <span class="math notranslate nohighlight">\(\mathbf{a}_2\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight" id="equation-gramschmidt-u2-equation">
 <span class="eqno">(6.4)<a class="headerlink" href="#equation-gramschmidt-u2-equation" title="Link to this equation">#</a></span>\[ \mathbf{u}_2 = \mathbf{a}_2 - (\mathbf{q}_1 \cdot \mathbf{a}_2) \mathbf{q}_1, \]</div>
-<p>which we also normalise to give <span class="math notranslate nohighlight">\(\mathbf{q}_2 = \dfrac{\mathbf{u}_2}{\|\mathbf{u}_2\|}\)</span>. For the next vector <span class="math notranslate nohighlight">\(\mathbf{a}_3\)</span> we want the vector <span class="math notranslate nohighlight">\(\mathbf{u}_3\)</span> to be orthogonal to both <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span> so we subtract both the vector projections of <span class="math notranslate nohighlight">\(\mathbf{a}_3\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span></p>
+<p>which we also normalise to give <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span>. For the next vector <span class="math notranslate nohighlight">\(\mathbf{a}_3\)</span> we want the vector <span class="math notranslate nohighlight">\(\mathbf{u}_3\)</span> to be orthogonal to both <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span> so we subtract both the vector projections of <span class="math notranslate nohighlight">\(\mathbf{a}_3\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{q}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}_2\)</span></p>
 <div class="math notranslate nohighlight" id="equation-gramschmidt-u3-equation">
 <span class="eqno">(6.5)<a class="headerlink" href="#equation-gramschmidt-u3-equation" title="Link to this equation">#</a></span>\[ \mathbf{u}_3 = \mathbf{a}_3 - (\mathbf{q}_1 \cdot \mathbf{a}_3) \mathbf{q}_1 - (\mathbf{q}_2 \cdot \mathbf{a}_3) \mathbf{q}_2, \]</div>
-<p>which is normalised to give <span class="math notranslate nohighlight">\(\mathbf{q}_3\)</span>. Using <span class="math notranslate nohighlight">\(\mathbf{u}_i = (\mathbf{q}_i \cdot \mathbf{a}_i) \mathbf{q}_i\)</span> and rearranging <a class="reference internal" href="#equation-gramschmidt-u2-equation">(6.4)</a> and <a class="reference internal" href="#equation-gramschmidt-u3-equation">(6.5)</a> to make <span class="math notranslate nohighlight">\(\mathbf{a}_i\)</span> the subject and</p>
+<p>which is normalised to give <span class="math notranslate nohighlight">\(\mathbf{q}_3\)</span>. Note that <span class="math notranslate nohighlight">\(\mathbf{u}_i = (\mathbf{q}_i \cdot \mathbf{a}_i) \mathbf{q}_i\)</span>, i.e., <span class="math notranslate nohighlight">\(\mathbf{u}_i\)</span> it the vector projection of <span class="math notranslate nohighlight">\(\mathbf{a}_i\)</span> onto the unit vector that points in the direction of <span class="math notranslate nohighlight">\(\mathbf{u}_i\)</span> so <a class="reference internal" href="#equation-gramschmidt-u2-equation">(6.4)</a> and <a class="reference internal" href="#equation-gramschmidt-u3-equation">(6.5)</a> can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{align*}
+  (\mathbf{q}_1 \cdot \mathbf{a}_1) \mathbf{q}_1 &amp;= \mathbf{a}_1, \\
+  (\mathbf{q}_2 \cdot \mathbf{a}_2) \mathbf{q}_2 &amp;= \mathbf{a}_2 - (\mathbf{q}_1 \cdot \mathbf{a}_2) \mathbf{q}_2, \\
+  (\mathbf{q}_3 \cdot \mathbf{a}_3) \mathbf{q}_3 &amp;= \mathbf{a}_3 - (\mathbf{q}_1 \cdot \mathbf{a}_3) \mathbf{q}_3 - (\mathbf{q}_2 \cdot \mathbf{a}_3) \mathbf{q}_3.
+\end{align*} \end{split}\]</div>
+<p>Rearranging to make <span class="math notranslate nohighlight">\(\mathbf{a}_i\)</span> the subject gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
   \mathbf{a}_1 &amp;= (\mathbf{q}_1 \cdot \mathbf{a}_1) \mathbf{q}_1, \\
   \mathbf{a}_2 &amp;= (\mathbf{q}_1 \cdot \mathbf{a}_2) \mathbf{q}_1 + (\mathbf{q}_2 \cdot \mathbf{a}_2) \mathbf{q}_2, \\
-  \mathbf{a}_3 &amp;= (\mathbf{q}_1 \cdot \mathbf{a}_3) \mathbf{q}_1 + (\mathbf{q}_2 \cdot \mathbf{a}_3) \mathbf{q}_2 + (\mathbf{q}_3 \cdot \mathbf{a}_3) \mathbf{q}_3, \\
-  &amp; \vdots 
+  \mathbf{a}_3 &amp;= (\mathbf{q}_1 \cdot \mathbf{a}_3) \mathbf{q}_1 + (\mathbf{q}_2 \cdot \mathbf{a}_3) \mathbf{q}_2 + (\mathbf{q}_3 \cdot \mathbf{a}_3) \mathbf{q}_3.
 \end{align*} \end{split}\]</div>
-<p>The columns of the <span class="math notranslate nohighlight">\(Q\)</span> matrix are formed using the vectors <span class="math notranslate nohighlight">\(\mathbf{q}_i\)</span></p>
+<p>This can be written as the matrix equation</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} Q = 
-\begin{pmatrix}
-    \uparrow &amp; \uparrow &amp; &amp; \uparrow \\
-    \mathbf{q}_1 &amp; \mathbf{q}_2 &amp; \cdots &amp; \mathbf{q}_n \\
-    \downarrow &amp; \downarrow &amp; &amp; \downarrow
-\end{pmatrix}, \end{split}\]</div>
-<p>and the elements of the <span class="math notranslate nohighlight">\(R\)</span> matrix are formed from the dot products of the <span class="math notranslate nohighlight">\(\mathbf{q}_i\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_j\)</span> vectors such that</p>
+\[\begin{split} \begin{align*}
+  \begin{pmatrix}
+    \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \mathbf{a}_3
+  \end{pmatrix} =
+  \begin{pmatrix}
+    \mathbf{q}_1 &amp; \mathbf{q}_2 &amp; \mathbf{q}_3
+  \end{pmatrix}
+  \begin{pmatrix}
+    (\mathbf{q}_1 \cdot \mathbf{a}_1) &amp; (\mathbf{q}_1 \cdot \mathbf{a}_2) &amp; (\mathbf{q}_1 \cdot \mathbf{a}_3) \\
+    0 &amp; (\mathbf{q}_2 \cdot \mathbf{a}_2) &amp; (\mathbf{q}_2 \cdot \mathbf{a}_3) \\
+    0 &amp; 0 &amp; (\mathbf{q}_3 \cdot \mathbf{a}_3)
+  \end{pmatrix}
+\end{align*} \end{split}\]</div>
+<p>so</p>
 <div class="math notranslate nohighlight">
-\[\begin{split} R = \begin{pmatrix}
-  (\mathbf{q}_1 \cdot \mathbf{a}_1) &amp; (\mathbf{q}_1 \cdot \mathbf{a}_2) &amp; \cdots &amp; (\mathbf{q}_1 \cdot \mathbf{a}_n) \\
-  0 &amp; (\mathbf{q}_2 \cdot \mathbf{a}_2) &amp; \cdots &amp; (\mathbf{q}_2 \cdot \mathbf{a}_n) \\
-  \vdots &amp; \ddots &amp; \ddots &amp; \vdots \\
-  0 &amp; \cdots &amp; 0 &amp; (\mathbf{q}_n \cdot \mathbf{a}_n)
-\end{pmatrix}. \end{split}\]</div>
+\[\begin{split} \begin{align*}
+  Q &amp;= 
+  \begin{pmatrix}
+    \mathbf{q}_1 &amp; \mathbf{q}_2 &amp; \mathbf{q}_n \\
+  \end{pmatrix}, &amp; 
+  R &amp;= \begin{pmatrix}
+    (\mathbf{q}_1 \cdot \mathbf{a}_1) &amp; (\mathbf{q}_1 \cdot \mathbf{a}_2) &amp; (\mathbf{q}_1 \cdot \mathbf{a}_3) \\
+    0 &amp; (\mathbf{q}_2 \cdot \mathbf{a}_2) &amp; (\mathbf{q}_2 \cdot \mathbf{a}_3) \\
+    0 &amp; 0 &amp; (\mathbf{q}_3 \cdot \mathbf{a}_3)
+  \end{pmatrix}.
+\end{align*} \end{split}\]</div>
 <section id="positive-diagonal-elements-of-r">
 <h3><span class="section-number">6.4.1.1. </span>Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span><a class="headerlink" href="#positive-diagonal-elements-of-r" title="Link to this heading">#</a></h3>
 <p>It has become standard convention to impose a condition that the diagonal elements of <span class="math notranslate nohighlight">\(R\)</span> must be positive so that we get a unique factorisation. Consider <span class="math notranslate nohighlight">\(A = QR\)</span> then multiplying a column of <span class="math notranslate nohighlight">\(Q\)</span> by <span class="math notranslate nohighlight">\(-1\)</span> and the corresponding row of <span class="math notranslate nohighlight">\(R\)</span> by <span class="math notranslate nohighlight">\(-1\)</span> doesn’t change the product <span class="math notranslate nohighlight">\(QR\)</span>. So if any of the diagonal elements of <span class="math notranslate nohighlight">\(R\)</span> are negative we multiply the corresponding column of <span class="math notranslate nohighlight">\(Q\)</span> and row of <span class="math notranslate nohighlight">\(R\)</span> by <span class="math notranslate nohighlight">\(-1\)</span>.</p>
@@ -654,7 +722,15 @@ document.write(`
 </section>
 <section id="qr-decomposition-using-householder-reflections">
 <span id="qr-householder-section"></span><h2><span class="section-number">6.4.2. </span>QR decomposition using Householder reflections<a class="headerlink" href="#qr-decomposition-using-householder-reflections" title="Link to this heading">#</a></h2>
-<p>Another method we can use to calculate the QR decomposition of a matrix is by the use of <strong>Householder reflections</strong>.</p>
+<p>Another method we can use to calculate the QR decomposition of a matrix is by the use of <strong>Householder reflections</strong>. A Householder reflection is a linear transformation that reflects a vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> about a line passing through the origin that is normal to another vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> (<a class="reference internal" href="#householder-reflection-figure"><span class="std std-numref">Fig. 6.2</span></a>).</p>
+<figure class="align-default" id="householder-reflection-figure">
+<a class="reference internal image-reference" href="../_images/06_Householder_reflection.svg"><img alt="../_images/06_Householder_reflection.svg" src="../_images/06_Householder_reflection.svg" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane normal to the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</span><a class="headerlink" href="#householder-reflection-figure" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The matrix that performs this reflection is known as the <strong>Householder matrix</strong>.</p>
 <div class="proof definition admonition" id="householder-matrix definition">
 <p class="admonition-title"><span class="caption-number">Definition 6.5 </span> (Householder matrix)</p>
 <section class="definition-content" id="proof-content">
@@ -663,71 +739,79 @@ document.write(`
 <span class="eqno">(6.6)<a class="headerlink" href="#equation-householder-equation" title="Link to this equation">#</a></span>\[ H = I - 2 \frac{\mathbf{v} \mathbf{v}^\mathsf{T}}{\mathbf{v}^\mathsf{T} \mathbf{v}}, \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> is a non-zero column vector. The matrix <span class="math notranslate nohighlight">\(H\)</span> is symmetric and orthogonal.</p>
 </section>
-</div><figure class="align-default" id="householder-1-figure">
-<a class="reference internal image-reference" href="../_images/06_householder_1.svg"><img alt="../_images/06_householder_1.svg" src="../_images/06_householder_1.svg" width="350" /></a>
+</div><p>Consider the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \begin{pmatrix}
+    \uparrow &amp; \uparrow &amp; &amp; \uparrow \\
+    \mathbf{a}_1 &amp; \mathbf{a}_2 &amp; \cdots &amp; \mathbf{a}_n \\
+    \downarrow &amp; \downarrow &amp; &amp; \downarrow
+\end{pmatrix}. \end{split}\]</div>
+<p>To determine the set of orthogonal vectors <span class="math notranslate nohighlight">\(\{ \mathbf{q}_1, \mathbf{q}_2, \ldots, \mathbf{q}_n \}\)</span> that will form the columns of <span class="math notranslate nohighlight">\(Q\)</span> start by letting <span class="math notranslate nohighlight">\(R = A\)</span> and reflect the first column of <span class="math notranslate nohighlight">\(R\)</span> so that it is parallel to the first basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1 = (1, 0, \ldots, 0)\)</span> (<a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 6.3</span></a>).</p>
+<figure class="align-default" id="householder-1-figure">
+<a class="reference internal image-reference" href="../_images/06_householder_1.svg"><img alt="../_images/06_householder_1.svg" src="../_images/06_householder_1.svg" style="width: 400px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane normal to the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the line normal to <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-1-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Consider the diagram in <a class="reference internal" href="#householder-1-figure"><span class="std std-numref">Fig. 6.2</span></a> where the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the hyperplane so that it is parallel to the first basis vector of the standard basis <span class="math notranslate nohighlight">\(\mathbf{e}_1 = (1, 0, \ldots, 0)^\mathsf{T}\)</span>. The Householder matrix that achieves this reflection is written in terms of the vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> which is normal to the reflecting hyperplane</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> be the first column of <span class="math notranslate nohighlight">\(R\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{v} = \mathbf{x} - \|\mathbf{x}\|\mathbf{e}_1. \]</div>
-<p>If the magnitude of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is close to being parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span> then <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> will be close to <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> and the calculation of <a class="reference internal" href="#equation-householder-equation">(6.6)</a> will involve the division by a number close to zero. To overcome this we use a Householder transformation to reflect <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead of <span class="math notranslate nohighlight">\(+\mathbf{e}_1\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is nearly parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>, then <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> will be close to <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> and the denominator in <a class="reference internal" href="#equation-householder-equation">(6.6)</a> will be very small. To avoid this, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected so that it is parallel to <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span> instead of <span class="math notranslate nohighlight">\(+\mathbf{e}_1\)</span> (<a class="reference internal" href="#householder-2-figure"><span class="std std-numref">Fig. 6.4</span></a>).</p>
 <figure class="align-default" id="householder-2-figure">
-<a class="reference internal image-reference" href="../_images/06_householder_2.svg"><img alt="../_images/06_householder_2.svg" src="../_images/06_householder_2.svg" width="450" /></a>
+<a class="reference internal image-reference" href="../_images/06_householder_2.svg"><img alt="../_images/06_householder_2.svg" src="../_images/06_householder_2.svg" style="width: 450px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is parallel to the basis vector <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-2-figure" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">The vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is reflected about the dashed line so that it is points along the negative basis vector <span class="math notranslate nohighlight">\(-\mathbf{e}_1\)</span>.</span><a class="headerlink" href="#householder-2-figure" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>To do this we calculate <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> by adding <span class="math notranslate nohighlight">\(\| \mathbf{x} \| \mathbf{e}_1\)</span> to <span class="math notranslate nohighlight">\( \mathbf{x}\)</span> when the sign of <span class="math notranslate nohighlight">\(x_1\)</span> is negative, i.e.,</p>
+<p>To do this we calculate <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> using</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{v} = \mathbf{x} - \operatorname{sign}(x_1) \| \mathbf{x} \| \mathbf{e}_1, \]</div>
-<p>where <span class="math notranslate nohighlight">\(\operatorname{sign}(x)\)</span> returns <span class="math notranslate nohighlight">\(+1\)</span> if <span class="math notranslate nohighlight">\(x \geq 0\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> if <span class="math notranslate nohighlight">\(x &lt; 0\)</span>. To compute the QR decomposition of a matrix <span class="math notranslate nohighlight">\(A\)</span>, we reflect the first column of <span class="math notranslate nohighlight">\(A\)</span>, using Householder reflection so that it is parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>. This means that <span class="math notranslate nohighlight">\(r_{11}\)</span> is the only non-zero element in the first column of <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<p>where the function <span class="math notranslate nohighlight">\(\operatorname{sign}(x_1)\)</span> returns <span class="math notranslate nohighlight">\(+1\)</span> if <span class="math notranslate nohighlight">\(x_1 \geq 0\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> if <span class="math notranslate nohighlight">\(x_1 &lt; 0\)</span>. The Householder matrix is an <span class="math notranslate nohighlight">\(m \times m\)</span> matrix <span class="math notranslate nohighlight">\(H_1\)</span> and is multiplied on the left by <span class="math notranslate nohighlight">\(R\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-  R = H_1 A = 
-  \begin{pmatrix}
-    r_{11} &amp; r_{12} &amp; r_{13} &amp; \cdots &amp; r_{1n} \\
-    0 &amp; b_{22} &amp; b_{23} &amp; \cdots &amp; b_{2n} \\
-    0 &amp; b_{32} &amp; b_{33} &amp; \cdots &amp; b_{3n} \\
-    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-    0 &amp; b_{m2} &amp; b_{m3} &amp; \cdots &amp; b_{mn}
-  \end{pmatrix}
+    R &amp;= H_1 R =
+    \begin{pmatrix}
+        r_{11} &amp; r_{12} &amp; \cdots &amp; r_{1m} \\
+        0 \\
+        \vdots &amp; &amp; R' \\
+        0 
+    \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p>We then look to do the same for the sub-matrix of <span class="math notranslate nohighlight">\(R\)</span> formed by omitted its first row and column. We do this by calculating a <span class="math notranslate nohighlight">\((m-1) \times (m-1)\)</span> Householder matrix <span class="math notranslate nohighlight">\(H'\)</span> using the second column of <span class="math notranslate nohighlight">\(R\)</span> starting from the diagonal element, i.e., <span class="math notranslate nohighlight">\(\mathbf{x} = (b_{22}, b_{32}, \ldots, b_{m2})^\mathsf{T}\)</span>. This is used to form the <span class="math notranslate nohighlight">\(m \times m\)</span> Householder matrix <span class="math notranslate nohighlight">\(H_2\)</span> by padding out the first row and column of the identity matrix.</p>
+<p>The first column of <span class="math notranslate nohighlight">\(R\)</span> is now parallel to <span class="math notranslate nohighlight">\(\mathbf{e}_1\)</span>. We now repeat this process for the sub-matrix <span class="math notranslate nohighlight">\(R'\)</span>. The resulting Householder matrix will be an <span class="math notranslate nohighlight">\(m -1 \times m-1\)</span> matrix <span class="math notranslate nohighlight">\(H'\)</span>. Since we want to apply this to <span class="math notranslate nohighlight">\(R\)</span> we use the first rows and columns of the identity matrix to pad it out, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
-  H_2 = \begin{pmatrix} 
-    1 &amp; \begin{matrix} 0 &amp; \cdots &amp; 0 \end{matrix} \\
-    \begin{matrix} 0 \\ \vdots \\ 0 \end{matrix} &amp; H'
-  \end{pmatrix}
+H_k = \begin{pmatrix}
+    I_{k-1} &amp; 0 \\
+    0 &amp; H_k'
+\end{pmatrix},
 \end{align*} \end{split}\]</div>
-<p>The Householder matrix <span class="math notranslate nohighlight">\(H_2\)</span> is then applied to <span class="math notranslate nohighlight">\(R\)</span> so that the elements of the second column below the diagonal are zeroed out.</p>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> corresponds to the columns of <span class="math notranslate nohighlight">\(R\)</span> that is being reflected. Applying <span class="math notranslate nohighlight">\(H_2\)</span> to <span class="math notranslate nohighlight">\(R\)</span> results in</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{align*}
   R = H_2 R = 
   \begin{pmatrix}
-    r_{11} &amp; r_{12} &amp; r_{13} &amp; \cdots &amp; r_{1n} \\
-    0 &amp; r_{22} &amp; r_{23} &amp; \cdots &amp; r_{2n} \\
-    0 &amp; 0 &amp; c_{33} &amp;\cdots &amp; c_{3n} \\
-    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-    0 &amp; 0 &amp; c_{n3} &amp; \cdots &amp; c_{nn}
+      r_{11} &amp; r_{12} &amp; r_{13} &amp; \cdots &amp; r_{1n} \\
+      0 &amp; r_{22} &amp; r_{23} &amp; \cdots &amp; r_{2n} \\
+      0 &amp; 0  \\
+      \vdots &amp; \vdots &amp; &amp; R' \\
+      0 &amp; 0
   \end{pmatrix}
 \end{align*} \end{split}\]</div>
-<p>We repeat this process until column <span class="math notranslate nohighlight">\(j = m - 1\)</span> when <span class="math notranslate nohighlight">\(R\)</span> will be an upper triangular matrix. If <span class="math notranslate nohighlight">\(A\)</span> has <span class="math notranslate nohighlight">\(n\)</span> columns then</p>
+<p>We repeat this process for all columns of <span class="math notranslate nohighlight">\(R\)</span> upon which <span class="math notranslate nohighlight">\(R\)</span> will be an upper triangular matrix, i.e,</p>
 <div class="math notranslate nohighlight">
-\[R = H_{m-1}\ldots H_2 H_1 A,\]</div>
-<p>rearranging gives</p>
+\[R = H_{n}\ldots H_2 H_1 A,\]</div>
+<p>Rearranging gives</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
-  H_1^{-1} H_2^{-1} \ldots H_{m-1}^{-1} R = A.
+  H_1^{-1} H_2^{-1} \ldots H_{n}^{-1} R = A.
 \end{align*} \]</div>
-<p>The Householder matrices are symmetric and orthogonal so <span class="math notranslate nohighlight">\(H^{-1} = H\)</span> and since we want <span class="math notranslate nohighlight">\(A = QR\)</span> then</p>
+<p>The Householder matrices are symmetric and orthogonal so <span class="math notranslate nohighlight">\(H^{-1} = H\)</span> and since <span class="math notranslate nohighlight">\(A = QR\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align*}
   Q = H_1H_2 \ldots H_{m-1}.
 \end{align*} \]</div>
-<p>Since each Householder matrix is orthogonal, their product is also orthogonal. Therefore <span class="math notranslate nohighlight">\(Q\)</span> is automatically orthogonal.</p>
 <div class="proof algorithm admonition" id="qr-householder-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 6.7 </span> (QR decomposition using Householder reflections)</p>
 <section class="algorithm-content" id="proof-content">
@@ -736,7 +820,7 @@ document.write(`
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(Q \gets I_m\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(R \gets A\)</span></p></li>
-<li><p>for <span class="math notranslate nohighlight">\(j = 1, \ldots, \min(m - 1, n)\)</span></p>
+<li><p>for <span class="math notranslate nohighlight">\(j = 1, \ldots, \min(m, n)\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{x} \gets\)</span> column <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(R\)</span> starting at the <span class="math notranslate nohighlight">\(j\)</span>-th row</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{v} \gets \mathbf{x} - \operatorname{sign} (x_1) \|\mathbf{x}\|\mathbf{e}_1\)</span></p></li>
@@ -956,9 +1040,9 @@ document.write(`
 \[ \| A \|_F = \sqrt{ \displaystyle\sum_{i=1}^m \displaystyle\sum_{j=1}^n |a_{ij}|^2}. \]</div>
 <p>The both QR decomposition methods shown here use an iterative approach where we orthogonalised the columns of the <span class="math notranslate nohighlight">\(A\)</span> matrix in turn based upon the previous iterations. So an error in column <span class="math notranslate nohighlight">\(i\)</span> will have a knock on effect on all subsequent columns. To analyse the methods, the QR decomposition of a random <span class="math notranslate nohighlight">\(200 \times 200\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> was computed using the Gram-Schmidt process and Householder reflections. The Frobenius norm was calculated for the first <span class="math notranslate nohighlight">\(n\)</span> columns of <span class="math notranslate nohighlight">\(Q\)</span> where <span class="math notranslate nohighlight">\(n = 1 \ldots 200\)</span> giving the loss of orthogonality for those iterations and plotted in below.</p>
 <figure class="align-default" id="id3">
-<img alt="../_images/11bc67830776881da81e27d3ce2cfc303295b3236b70a8652d792c2883f2bef9.png" src="../_images/11bc67830776881da81e27d3ce2cfc303295b3236b70a8652d792c2883f2bef9.png" />
+<img alt="../_images/07327882251fadfc0c922f3efd9b1cbd4cb5225ee9fcd516f30153b8f5fd4975.png" src="../_images/07327882251fadfc0c922f3efd9b1cbd4cb5225ee9fcd516f30153b8f5fd4975.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Comparisons between the loss of orthogonality using Gram-Schmidt and Householder reflections to compute the QR decomposition of a 200 column matrix.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">Comparisons between the loss of orthogonality using Gram-Schmidt and Householder reflections to compute the QR decomposition of a 200 column matrix.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The loss of orthogonality grows much more slowly for Householder reflections than for classical Gram-Schmidt. For this reason, Householder QR is the method used in most numerical linear algebra software.</p>
@@ -1242,15 +1326,17 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition-using-the-gram-schmidt-process">6.4.1. QR decomposition using the Gram-Schmidt process</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-diagonal-elements-of-r">6.4.1.1. Positive diagonal elements of <span class="math notranslate nohighlight">\(R\)</span></a></li>
 </ul>
@@ -1309,8 +1395,8 @@ By Dr Jon Shiach
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
